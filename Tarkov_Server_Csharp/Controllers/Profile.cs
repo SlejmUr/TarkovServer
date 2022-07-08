@@ -5,49 +5,41 @@ using System.Text;
 
 namespace Tarkov_Server_Csharp.Controllers
 {
-    internal class Profile
+    internal class Profile //AKA AccountController
     {
+        public static List<JsonD.JsonProfile> Profiles;
+        public static List<JsonD.Account> Accounts;
+        public static List<string> ActiveAccountIds;
         public static string Login(string JsonInfo)
         {
             var profile = JsonConvert.DeserializeObject<JsonD.JsonProfile>(JsonInfo);
-            string ID = findAccountIdByUsernameAndPassword(profile.UserName, profile.Password);
+            string ID = FindAccountIdByUsernameAndPassword(profile.UserName, profile.Password);
 
             if (ID == null)
             {
                 Console.WriteLine("Login FAILED! " + ID);
+               
                 return "FAILED";
             }
             else 
             {
                 Console.WriteLine("Login Success! " + ID);
+                if (!ActiveAccountIds.Contains(ID))
+                {
+                    ActiveAccountIds.Add(ID);
+                }
                 return ID;
             }
         }
-
-        public static string findAccountIdByUsernameAndPassword(string name,string passw)
-        {
-            if (!Directory.Exists("user/profiles")) { Directory.CreateDirectory("user/profiles"); }
-
-            string[] dirs = Directory.GetDirectories("user/profiles");
-            foreach (string dir in dirs)
-            {
-                if (!File.Exists($"{dir}/account.json")) { continue; }
-                var account = JsonConvert.DeserializeObject<JsonD.Account>(File.ReadAllText($"{dir}/account.json"));
-                if (account.Email == name && account.Password == passw)
-                {
-                    Console.WriteLine(dir);
-                    return dir.Replace("user/profiles\\","");
-                }
-            }
-            return null;
-        }
-
         public static string Register(string JsonInfo)
         {
             var profile = JsonConvert.DeserializeObject<JsonD.JsonProfile>(JsonInfo);
-            string ID = findAccountIdByUsernameAndPassword(profile.UserName, profile.Password);
+            string ID = FindAccountIdByUsernameAndPassword(profile.UserName, profile.Password);
 
-            //isEmailAlreadyInUse(profile.UserName)
+            if (IsEmailAlreadyInUse(profile.UserName))
+            {
+                return "ALREADY_IN_USE";
+            }
 
             if (ID == null)
             {
@@ -62,6 +54,10 @@ namespace Tarkov_Server_Csharp.Controllers
                 if (!Directory.Exists($"user/profiles/{AccountID}")) { Directory.CreateDirectory($"user/profiles/{AccountID}"); }
                 File.WriteAllText($"user/profiles/{AccountID}/account.json", serjson);
                 Console.WriteLine("Register Success! " + AccountID);
+                if (!ActiveAccountIds.Contains(AccountID))
+                {
+                    ActiveAccountIds.Add(AccountID);
+                }
                 return AccountID;
             }
             else
@@ -71,6 +67,77 @@ namespace Tarkov_Server_Csharp.Controllers
             }
 
         }
+        public static string FindAccountIdByUsernameAndPassword(string name, string passw)
+        {
+            if (!Directory.Exists("user/profiles")) { Directory.CreateDirectory("user/profiles"); }
+
+            string[] dirs = Directory.GetDirectories("user/profiles");
+            foreach (string dir in dirs)
+            {
+                if (!File.Exists($"{dir}/account.json")) { continue; }
+                var account = JsonConvert.DeserializeObject<JsonD.Account>(File.ReadAllText($"{dir}/account.json"));
+                if (account.Email == name && account.Password == passw)
+                {
+                    Console.WriteLine(dir);
+                    return dir.Replace("user/profiles\\", "");
+                }
+            }
+            return null;
+        }
+
+        public static bool IsEmailAlreadyInUse(string name)
+        {
+            if (!Directory.Exists("user/profiles")) { Directory.CreateDirectory("user/profiles"); }
+
+            string[] dirs = Directory.GetDirectories("user/profiles");
+            foreach (string dir in dirs)
+            {
+                if (!File.Exists($"{dir}/account.json")) { continue; }
+                var account = JsonConvert.DeserializeObject<JsonD.Account>(File.ReadAllText($"{dir}/account.json"));
+                if (account.Email == name)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+        public static bool ClientHasProfile(string sessionID)
+        {
+            GetAccountList();
+            foreach (var account in Accounts)
+            {
+                if (account.Id == sessionID)
+                {
+                    if (!File.Exists("user/profiles/" + sessionID + "/character.json"))
+                    {
+                        Console.WriteLine($"New account {sessionID} logged in!");
+                    }
+                    return true;
+                }
+            }
+            return false;
+        }
+        public static void GetAccountList()
+        {
+            string[] dirs = Directory.GetDirectories("user/profiles");
+            foreach (string dir in dirs)
+            {
+                if (!File.Exists($"{dir}/account.json")) { continue; }
+                var account = JsonConvert.DeserializeObject<JsonD.Account>(File.ReadAllText($"{dir}/account.json"));
+                if (!Accounts.Contains(account))
+                {
+                    Accounts.Add(account);
+                }
+            }
+        }
+
+
+
+
+
+
+
+
 
         public static string CreateNewProfileID()
         {
