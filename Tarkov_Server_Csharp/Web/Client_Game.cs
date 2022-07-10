@@ -23,11 +23,11 @@ namespace Tarkov_Server_Csharp.Web
             var TimeThingy = (Utils.UnixTimeNow() / 1000).ToString().Replace(",", ".");
             if (Controllers.AccountController.ClientHasProfile(SessionID))
             {
-                resp = Response.GetBody("{\"utc_time\":" + TimeThingy.Remove(TimeThingy.Length - 2) + "}");
+                resp = Response.GetBody("{\"utc_time\":" + TimeThingy.Remove(TimeThingy.Length - 4) + "}");
             }
             else
             {
-                resp = Response.GetBody("{\"utc_time\":" + TimeThingy.Remove(TimeThingy.Length - 2) + "}", 999, "Profile Not Found!!");
+                resp = Response.GetBody("{\"utc_time\":" + TimeThingy.Remove(TimeThingy.Length - 4) + "}", 999, "Profile Not Found!!");
             }
 
             //DECODE AS BASE64!!!
@@ -35,7 +35,7 @@ namespace Tarkov_Server_Csharp.Web
             byte[] rsp = ZlibStream.CompressString(resp);
             //byte[]  rsp = DeflateStream.CompressString(resp);
             //Pooled9LevelZLib.CompressToBytesNonAlloc(resp, rsp);
-            Console.WriteLine("RSP: " + resp + " L: " + rsp.Length + " b64: \n" + Convert.ToBase64String(rsp));
+            Console.WriteLine("RSP: " + resp + " L: " + rsp.Length + " rsp byte:\n" + Utils.ByteArrayToString(rsp));
             ctx.Response.StatusCode = 200;
             ctx.Response.ContentType = "application/json";
             ctx.Response.ContentLength = rsp.Length;
