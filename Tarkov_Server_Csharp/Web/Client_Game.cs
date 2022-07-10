@@ -1,6 +1,7 @@
 ﻿using HttpServerLite;
 using Ionic.Zlib;
 using ComponentAce.Compression.Libs.zlib;
+using System.Text;
 
 namespace Tarkov_Server_Csharp.Web
 {
@@ -10,12 +11,7 @@ namespace Tarkov_Server_Csharp.Web
         public virtual async Task GameStart(HttpContext ctx)
         {
             //REQ stuff
-            foreach (var bytes in ctx.Request.DataAsBytes)
-            {
-                Console.Write("0x{0}",bytes);
-            
-            }
-
+            Console.WriteLine(Utils.ByteArrayToString(ctx.Request.DataAsBytes));
 
             //Console.WriteLine(ctx.Request.ToJson(true));
             //Console.WriteLine("Headers:\n" + string.Join("\n", ctx.Request.Headers.Select(pair => $"{pair.Key} => {pair.Value}")));
@@ -35,8 +31,7 @@ namespace Tarkov_Server_Csharp.Web
             }
 
             //DECODE AS BASE64!!!
-            
-            //byte[] rsp = SimpleZlib.CompressToBytes(resp, 9);
+
             byte[] rsp = ZlibStream.CompressString(resp);
             //byte[]  rsp = DeflateStream.CompressString(resp);
             //Pooled9LevelZLib.CompressToBytesNonAlloc(resp, rsp);

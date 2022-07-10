@@ -24,5 +24,9 @@ namespace Tarkov_Server_Csharp
             }
             return null;
         }
+        public static string ByteArrayToString(byte[] bytearray)
+        {
+            return BitConverter.ToString(bytearray).Replace("-", " ");
+        }
     }
 }
