@@ -12,7 +12,8 @@ namespace Tarkov_Server_Csharp
             CertHelper.Make(IPAddress.Parse(IP_Address));
             Console.WriteLine("Hello World!");
             Console.WriteLine($"http://{IP_Address}:{Port}/");
-            WebServer.MainStart(IP_Address,Port);
+            WebServer webServer = new WebServer();
+            webServer.MainStart(IP_Address,Port);
         }
     }
 }

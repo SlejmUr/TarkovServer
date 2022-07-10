@@ -5,14 +5,14 @@ using System.Text;
 
 namespace Tarkov_Server_Csharp.Controllers
 {
-    internal class Profile //AKA AccountController
+    internal class AccountController //AKA AccountController
     {
-        public static List<JsonD.JsonProfile> Profiles;
-        public static List<JsonD.Account> Accounts;
-        public static List<string> ActiveAccountIds;
+        public static List<JsonD.Profile> Profiles = new();
+        public static List<JsonD.Account> Accounts = new();
+        public static List<string> ActiveAccountIds = new();
         public static string Login(string JsonInfo)
         {
-            var profile = JsonConvert.DeserializeObject<JsonD.JsonProfile>(JsonInfo);
+            var profile = JsonConvert.DeserializeObject<JsonD.Profile>(JsonInfo);
             string ID = FindAccountIdByUsernameAndPassword(profile.UserName, profile.Password);
 
             if (ID == null)
@@ -33,7 +33,7 @@ namespace Tarkov_Server_Csharp.Controllers
         }
         public static string Register(string JsonInfo)
         {
-            var profile = JsonConvert.DeserializeObject<JsonD.JsonProfile>(JsonInfo);
+            var profile = JsonConvert.DeserializeObject<JsonD.Profile>(JsonInfo);
             string ID = FindAccountIdByUsernameAndPassword(profile.UserName, profile.Password);
 
             if (IsEmailAlreadyInUse(profile.UserName))
@@ -103,6 +103,7 @@ namespace Tarkov_Server_Csharp.Controllers
         }
         public static bool ClientHasProfile(string sessionID)
         {
+            if (sessionID==null) { Console.WriteLine("SessionID null?"); return false; }
             GetAccountList();
             foreach (var account in Accounts)
             {
@@ -110,7 +111,7 @@ namespace Tarkov_Server_Csharp.Controllers
                 {
                     if (!File.Exists("user/profiles/" + sessionID + "/character.json"))
                     {
-                        Console.WriteLine($"New account {sessionID} logged in!");
+                        Console.WriteLine($"\nNew account {sessionID} logged in!");
                     }
                     return true;
                 }

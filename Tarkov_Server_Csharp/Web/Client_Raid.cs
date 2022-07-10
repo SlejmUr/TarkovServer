@@ -6,8 +6,8 @@ namespace Tarkov_Server_Csharp.Web
 {
     internal class Client_Raid
     {
-        [StaticRoute(HttpServerLite.HttpMethod.GET, "/client/raid/person/killed/showMessage")]
-        public static async Task ShowMessage(HttpContext ctx)
+        [StaticRoute(HttpServerLite.HttpMethod.POST, "/client/raid/person/killed/showMessage")]
+        public virtual async Task ShowMessage(HttpContext ctx)
         {
             //REQ stuff
             Console.WriteLine(ctx.Request.ContentType);

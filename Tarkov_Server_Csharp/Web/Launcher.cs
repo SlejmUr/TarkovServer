@@ -6,7 +6,7 @@ namespace Tarkov_Server_Csharp.Web
     internal class Launcher
     {
         [StaticRoute(HttpServerLite.HttpMethod.POST, "/launcher/profile/login")]
-        public static async Task LauncherLogin(HttpContext ctx)
+        public virtual async Task LauncherLogin(HttpContext ctx)
         {
             //REQ stuff
             Console.WriteLine(ctx.Request.ContentType);
@@ -15,7 +15,7 @@ namespace Tarkov_Server_Csharp.Web
             Console.WriteLine("Headers:\n" + string.Join("\n", ctx.Request.Headers.Select(pair => $"{pair.Key} => {pair.Value}")));
 
             // RPS
-            string resp = Controllers.Profile.Login(Uncompressed);
+            string resp = Controllers.AccountController.Login(Uncompressed);
             var rsp = ZlibStream.CompressString(resp);
             ctx.Response.StatusCode = 200;
             ctx.Response.ContentType = "text/plain";
@@ -26,7 +26,7 @@ namespace Tarkov_Server_Csharp.Web
         }
 
         [StaticRoute(HttpServerLite.HttpMethod.POST, "/launcher/profile/register")]
-        public static async Task LauncherRegister(HttpContext ctx)
+        public virtual async Task LauncherRegister(HttpContext ctx)
         {
             //REQ stuff
             Console.WriteLine(ctx.Request.ContentType);
@@ -35,7 +35,7 @@ namespace Tarkov_Server_Csharp.Web
             Console.WriteLine("Headers:\n" + string.Join("\n", ctx.Request.Headers.Select(pair => $"{pair.Key} => {pair.Value}")));
 
             // RPS
-            string resp = Controllers.Profile.Register(Uncompressed);
+            string resp = Controllers.AccountController.Register(Uncompressed);
             var rsp = ZlibStream.CompressString(resp);
             ctx.Response.StatusCode = 200;
             ctx.Response.ContentType = "text/plain";

@@ -9,9 +9,61 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Files\configs\blacklist.json" />
+    <None Remove="Files\configs\cluster.json" />
+    <None Remove="Files\configs\gameplay.json" />
+    <None Remove="Files\configs\gameplay_base.json" />
+    <None Remove="Files\configs\mods.json" />
+    <None Remove="Files\configs\server.json" />
+    <None Remove="Files\configs\server_base.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Files\configs\blacklist.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\configs\cluster.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\configs\gameplay.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\configs\gameplay_base.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\configs\mods.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\configs\server.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\configs\server_base.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="HttpServerLite" Version="1.2.4" />
     <PackageReference Include="Iconic.Zlib.Netstandard" Version="1.0.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="bsg.componentace.compression.libs.zlib">
+      <HintPath>..\Ref\bsg.componentace.compression.libs.zlib.dll</HintPath>
+    </Reference>
+    <Reference Include="bsg.microsoft.extensions.objectpool">
+      <HintPath>..\Ref\bsg.microsoft.extensions.objectpool.dll</HintPath>
+    </Reference>
+    <Reference Include="bsg.system.buffers">
+      <HintPath>..\Ref\bsg.system.buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine">
+      <HintPath>..\Ref\UnityEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>..\Ref\UnityEngine.CoreModule.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>

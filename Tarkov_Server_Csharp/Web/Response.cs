@@ -9,9 +9,9 @@ namespace Tarkov_Server_Csharp.Web
     internal class Response
     {
 
-        public static string GetBody(string Data, int errorcode = 0, string errormsg = null)
+        public static string GetBody(string Data, int errorcode = 0, string errormsg = "null")
         {
-            var Stuff =  "{ \"err\": "+ errorcode + ", \"errmsg\": "+ errormsg + ", \"data\": " + Data + " }";
+            var Stuff =  "{\"err\":"+ errorcode + ",\"errmsg\":"+ errormsg + ",\"data\":" + Data + "}";
             return Stuff;
         }
         public static string NullResponse()
