@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using ComponentAce.Compression.Libs.zlib;
+using Ionic.Zlib;
 
 namespace Tarkov_Server_Csharp.Web
 {
-    internal class Response
+    internal class ResponseControl
     {
 
         public static string GetBody(string Data, int errorcode = 0, string errormsg = "null")
@@ -21,6 +18,14 @@ namespace Tarkov_Server_Csharp.Web
         public static string EmptyArrayResponse()
         {
             return GetBody("[]");
+        }
+        public static byte[] CompressRsp(string data)
+        {
+            return SimpleZlib.CompressToBytes(data, 6);
+        }
+        public static string DeCompressReq(byte[] data)
+        {
+            return ZlibStream.UncompressString(data);
         }
     }
 }

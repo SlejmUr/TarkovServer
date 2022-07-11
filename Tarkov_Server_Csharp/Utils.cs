@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Tarkov_Server_Csharp
 {
@@ -11,7 +8,7 @@ namespace Tarkov_Server_Csharp
         public static double UnixTimeNow()
         {
             var timeSpan = (DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0));
-            return timeSpan.TotalMilliseconds;
+            return timeSpan.TotalSeconds;
         }
 
         public static string GetSessionID(Dictionary<string,string> HttpHeaders)
@@ -27,6 +24,45 @@ namespace Tarkov_Server_Csharp
         public static string ByteArrayToString(byte[] bytearray)
         {
             return BitConverter.ToString(bytearray).Replace("-", " ");
+        }
+        public static string CreateNewProfileID()
+        {
+            Random rand = new Random();
+
+            // Choosing the size of string
+            // Using Next() string
+            int stringlen = 24;
+            int randValue;
+            string str = "";
+            char letter;
+            for (int i = 0; i < stringlen; i++)
+            {
+
+                // Generating a random number.
+                randValue = rand.Next(0, 26);
+
+                // Generating random character by converting
+                // the random number into character.
+                letter = Convert.ToChar(randValue + 65);
+
+                // Appending the letter to string.
+                str = str + letter;
+            }
+            string md5_str = ConvertStringtoMD5(str);
+            return "AID" + md5_str;
+        }
+
+        public static string ConvertStringtoMD5(string strword)
+        {
+            MD5 md5 = MD5.Create();
+            byte[] inputBytes = Encoding.ASCII.GetBytes(strword);
+            byte[] hash = md5.ComputeHash(inputBytes);
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < hash.Length; i++)
+            {
+                sb.Append(hash[i].ToString("x2"));
+            }
+            return sb.ToString();
         }
     }
 }

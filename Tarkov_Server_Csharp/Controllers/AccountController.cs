@@ -1,11 +1,8 @@
 ﻿using Newtonsoft.Json;
-using System.IO;
-using System.Security.Cryptography;
-using System.Text;
 
 namespace Tarkov_Server_Csharp.Controllers
 {
-    internal class AccountController //AKA AccountController
+    internal class AccountController
     {
         public static List<JsonD.Profile> Profiles = new();
         public static List<JsonD.Account> Accounts = new();
@@ -43,7 +40,7 @@ namespace Tarkov_Server_Csharp.Controllers
 
             if (ID == null)
             {
-                string AccountID = CreateNewProfileID();
+                string AccountID = Utils.CreateNewProfileID();
                 JsonD.Account account = new();
                 account.Email = profile.Email;
                 account.Password = profile.Password;
@@ -104,14 +101,14 @@ namespace Tarkov_Server_Csharp.Controllers
         public static bool ClientHasProfile(string sessionID)
         {
             if (sessionID==null) { Console.WriteLine("SessionID null?"); return false; }
-            GetAccountList();
+            ReloadAccountBySessionID(sessionID);
             foreach (var account in Accounts)
             {
                 if (account.Id == sessionID)
                 {
                     if (!File.Exists("user/profiles/" + sessionID + "/character.json"))
                     {
-                        Console.WriteLine($"\nNew account {sessionID} logged in!");
+                        Console.WriteLine($"New account {sessionID} logged in!");
                     }
                     return true;
                 }
@@ -131,54 +128,39 @@ namespace Tarkov_Server_Csharp.Controllers
                 }
             }
         }
-
-
-
-
-
-
-
-
-
-        public static string CreateNewProfileID()
+        //Same as Controllers/AccountController.js&func=getAllAccounts()
+        public static void GetAccounts()
         {
-            Random rand = new Random();
-
-            // Choosing the size of string
-            // Using Next() string
-            int stringlen = 24;
-            int randValue;
-            string str = "";
-            char letter;
-            for (int i = 0; i < stringlen; i++)
+            string[] dirs = Directory.GetDirectories("user/profiles");
+            foreach (string dir in dirs)
             {
-
-                // Generating a random number.
-                randValue = rand.Next(0, 26);
-
-                // Generating random character by converting
-                // the random number into character.
-                letter = Convert.ToChar(randValue + 65);
-
-                // Appending the letter to string.
-                str = str + letter;
+                if (!File.Exists($"{dir}/character.json")) { continue; }
+                var account = JsonConvert.DeserializeObject<JsonD.Account>(File.ReadAllText($"{dir}/character.json"));
+                if (!Accounts.Contains(account))
+                {
+                    Accounts.Add(account);
+                }
             }
-            string md5_str = ConvertStringtoMD5(str);
-            Console.Write("Random String: " + md5_str + "\n");
-            return "AID" + md5_str;
         }
 
-        public static string ConvertStringtoMD5(string strword)
+        //Same as Controllers/AccountController.js&func=reloadAccountBySessionID()
+        public static void ReloadAccountBySessionID(string sessionID) 
         {
-            MD5 md5 = MD5.Create();
-            byte[] inputBytes = System.Text.Encoding.ASCII.GetBytes(strword);
-            byte[] hash = md5.ComputeHash(inputBytes);
-            StringBuilder sb = new StringBuilder();
-            for (int i = 0; i < hash.Length; i++)
+            if (!File.Exists($"user/profiles/{sessionID}/account.json"))
             {
-                sb.Append(hash[i].ToString("x2"));
+                Console.WriteLine("[WARN] Account file not exist. ID: " + sessionID);
             }
-            return sb.ToString();
+            else
+            {
+                if (Accounts.Where(x => x.Id == sessionID).Count() == 0)
+                {
+                    Console.WriteLine("[WARN] Account isnt Cached, Load from disk. ID:" + sessionID);
+                    var account = JsonConvert.DeserializeObject<JsonD.Account>(File.ReadAllText($"user/profiles/{sessionID}/account.json"));
+                    Accounts.Add(account);
+                }
+            } 
         }
+
+
     }
 }

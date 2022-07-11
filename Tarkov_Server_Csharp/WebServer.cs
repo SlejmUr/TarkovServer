@@ -1,5 +1,4 @@
 ﻿using HttpServerLite;
-using Ionic.Zlib;
 
 namespace Tarkov_Server_Csharp
 {
@@ -36,13 +35,8 @@ namespace Tarkov_Server_Csharp
         [StaticRoute(HttpServerLite.HttpMethod.GET, "/getBundleList")]
         public async Task GetBundeList(HttpContext ctx)
         {
-            //REQ stuff
-            Console.WriteLine(ctx.Request.ContentType);
-            Console.WriteLine("Headers:\n" + string.Join("\n", ctx.Request.Headers.Select(pair => $"{pair.Key} => {pair.Value}")));
-
-            // RPS
-            string resp = "{}";
-            var rsp = ZlibStream.CompressString(resp);
+            string resp = "[]";
+            var rsp = Web.ResponseControl.CompressRsp(resp);
             ctx.Response.StatusCode = 200;
             ctx.Response.ContentType = "application/json";
             ctx.Response.ContentLength = rsp.Length;
