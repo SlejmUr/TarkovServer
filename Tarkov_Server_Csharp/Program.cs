@@ -15,6 +15,8 @@ namespace Tarkov_Server_Csharp
             CertHelper.Make(IPAddress.Parse(IP_Address));
             Console.WriteLine("Hello MAIN!");
             Console.WriteLine(ip_port);
+            Controllers.AccountController.GetAccounts();
+
             Controllers.AccountController.Init();
             WebServer webServer = new WebServer();
             webServer.MainStart(IP_Address,Port);
