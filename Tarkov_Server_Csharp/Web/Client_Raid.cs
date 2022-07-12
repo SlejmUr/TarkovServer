@@ -18,8 +18,7 @@ namespace Tarkov_Server_Csharp.Web
             ctx.Response.StatusCode = 200;
             ctx.Response.ContentType = "text/plain";
             ctx.Response.ContentLength = rsp.Length;
-            ctx.Response.Headers.Add("Content-Encoding", "deflate");
-            await ctx.Response.SendWithoutCloseAsync(rsp);
+            await ctx.Response.SendAsync(rsp);
             return;
         }
     }

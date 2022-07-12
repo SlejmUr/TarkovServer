@@ -4,9 +4,25 @@ namespace Tarkov_Server_Csharp.Controllers
 {
     internal class AccountController
     {
-        public static List<JsonD.Profile> Profiles = new();
-        public static List<JsonD.Account> Accounts = new();
-        public static List<string> ActiveAccountIds = new();
+        public static List<JsonD.Profile> Profiles;
+        public static List<JsonD.Account> Accounts;
+        public static List<string> ActiveAccountIds;
+
+        public static void Init()
+        {
+            Profiles = new();
+            Profiles.Clear();
+            Accounts = new();
+            Accounts.Clear();
+            ActiveAccountIds = new();
+            ActiveAccountIds.Clear();
+            Console.WriteLine("Init Done!");
+        }
+
+
+
+
+
         public static string Login(string JsonInfo)
         {
             var profile = JsonConvert.DeserializeObject<JsonD.Profile>(JsonInfo);
@@ -157,6 +173,10 @@ namespace Tarkov_Server_Csharp.Controllers
                     Console.WriteLine("[WARN] Account isnt Cached, Load from disk. ID:" + sessionID);
                     var account = JsonConvert.DeserializeObject<JsonD.Account>(File.ReadAllText($"user/profiles/{sessionID}/account.json"));
                     Accounts.Add(account);
+                }
+                else
+                { 
+                
                 }
             } 
         }

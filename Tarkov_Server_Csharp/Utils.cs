@@ -25,6 +25,11 @@ namespace Tarkov_Server_Csharp
         {
             return BitConverter.ToString(bytearray).Replace("-", " ");
         }
+
+        public static string ToBase64(byte[] bytearray)
+        {
+            return Convert.ToBase64String(bytearray);
+        }
         public static string CreateNewProfileID()
         {
             Random rand = new Random();
