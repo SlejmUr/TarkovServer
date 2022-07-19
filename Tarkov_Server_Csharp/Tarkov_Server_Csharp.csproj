@@ -13,13 +13,12 @@
     <None Remove="Files\characters\character_usec.json" />
     <None Remove="Files\characters\defaultCustomization.json" />
     <None Remove="Files\characters\storage.json" />
-    <None Remove="Files\configs\blacklist.json" />
-    <None Remove="Files\configs\cluster.json" />
     <None Remove="Files\configs\gameplay.json" />
     <None Remove="Files\configs\gameplay_base.json" />
     <None Remove="Files\configs\mods.json" />
     <None Remove="Files\configs\server.json" />
     <None Remove="Files\configs\server_base.json" />
+    <None Remove="Files\quests\quests.json" />
   </ItemGroup>
 
   <ItemGroup>
@@ -35,12 +34,6 @@
     <Content Include="Files\characters\storage.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Files\configs\blacklist.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Files\configs\cluster.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="Files\configs\gameplay.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -54,6 +47,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Files\configs\server_base.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\quests\quests.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

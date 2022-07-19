@@ -15,9 +15,16 @@ namespace Tarkov_Server_Csharp
             CertHelper.Make(IPAddress.Parse(IP_Address));
             Console.WriteLine("Hello MAIN!");
             Console.WriteLine(ip_port);
-            Controllers.AccountController.GetAccounts();
-
             Controllers.AccountController.Init();
+            Controllers.AccountController.GetAccountList();
+            var allacc = Controllers.AccountController.GetAccounts();
+
+            foreach (var account in allacc)
+            {
+                Console.WriteLine(account.Id);
+            
+            }
+
             WebServer webServer = new WebServer();
             webServer.MainStart(IP_Address,Port);
         }

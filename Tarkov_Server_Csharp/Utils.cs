@@ -30,7 +30,7 @@ namespace Tarkov_Server_Csharp
         {
             return Convert.ToBase64String(bytearray);
         }
-        public static string CreateNewProfileID()
+        public static string CreateNewProfileID(string prefix = "")
         {
             Random rand = new Random();
 
@@ -54,7 +54,11 @@ namespace Tarkov_Server_Csharp
                 str = str + letter;
             }
             string md5_str = ConvertStringtoMD5(str);
-            return "AID" + md5_str;
+            if (prefix == "AID")
+            {
+                md5_str = "AID" + md5_str;
+            }
+            return md5_str;
         }
 
         public static string ConvertStringtoMD5(string strword)
