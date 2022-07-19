@@ -30,21 +30,6 @@ namespace Tarkov_Server_Csharp.Web
             await ctx.Response.TrySendAsync(rsp);
             return;
         }
-        [StaticRoute(HttpServerLite.HttpMethod.POST, "/client/menu/locale/en")]
-        public virtual async Task GameMenuLang(HttpContext ctx)
-        {
-            //REQ stuff
-            ResponseControl.DeCompressReq(ctx.Request.DataAsBytes);
-            string SessionID = Utils.GetSessionID(ctx.Request.Headers);
-            Console.WriteLine("SID : " + SessionID);
 
-            var resp = ResponseControl.NullResponse();
-            var rsp = ResponseControl.CompressRsp(resp);
-            ctx.Response.StatusCode = 200;
-            ctx.Response.ContentType = "application/json";
-            ctx.Response.ContentLength = rsp.Length;
-            await ctx.Response.SendWithoutCloseAsync(rsp);
-            return;
-        }
     }
 }

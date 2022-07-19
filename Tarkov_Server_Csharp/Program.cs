@@ -17,13 +17,8 @@ namespace Tarkov_Server_Csharp
             Console.WriteLine(ip_port);
             Controllers.AccountController.Init();
             Controllers.AccountController.GetAccountList();
-            var allacc = Controllers.AccountController.GetAccounts();
 
-            foreach (var account in allacc)
-            {
-                Console.WriteLine(account.Id);
-            
-            }
+            Controllers.ConfigController.Init();
 
             WebServer webServer = new WebServer();
             webServer.MainStart(IP_Address,Port);
