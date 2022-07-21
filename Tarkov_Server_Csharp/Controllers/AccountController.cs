@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Tarkov_Server_Csharp.Controllers
 {
-    internal class AccountController
+    public class AccountController
     {
         public static List<JsonD.Profile> Profiles;
         public static List<JsonD.Account> Accounts;
@@ -13,6 +13,8 @@ namespace Tarkov_Server_Csharp.Controllers
         #region Custom Made Functions
         public static void Init()
         {
+            if (!Directory.Exists("user/profiles")) { Directory.CreateDirectory("user/profiles"); }
+
             Profiles = new();
             Profiles.Clear();
             Accounts = new();

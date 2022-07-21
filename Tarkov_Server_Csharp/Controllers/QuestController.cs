@@ -8,7 +8,7 @@ using Newtonsoft.Json.Linq;
 
 namespace Tarkov_Server_Csharp.Controllers
 {
-    internal class QuestController
+    public class QuestController
     {
         //public event QuestEvent
         //Todo : Make event to do something, 

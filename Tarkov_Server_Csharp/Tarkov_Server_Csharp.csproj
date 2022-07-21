@@ -6,9 +6,26 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <ApplicationManifest>app.manifest</ApplicationManifest>
+    <AssemblyVersion>1.0</AssemblyVersion>
+    <FileVersion>1.0</FileVersion>
+    <Copyright>(c)2022 SlejmUr</Copyright>
+    <Product>Tarkov Server</Product>
+    <Description>Tarkov Server in C#</Description>
+    <Authors>SlejmUr</Authors>
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Files\base\botBase.json" />
+    <None Remove="Files\base\botCore.json" />
+    <None Remove="Files\base\botNames.json" />
+    <None Remove="Files\base\client.settings.json" />
+    <None Remove="Files\base\fleaOffer.json" />
+    <None Remove="Files\base\globals.0.12.12.15.json" />
+    <None Remove="Files\base\globals.0.12.12.30.json" />
+    <None Remove="Files\base\globals.json" />
+    <None Remove="Files\base\locations.json" />
+    <None Remove="Files\base\matchMetrics.json" />
+    <None Remove="Files\base\SpawnPresets.json" />
     <None Remove="Files\characters\character_bear.json" />
     <None Remove="Files\characters\character_usec.json" />
     <None Remove="Files\characters\defaultCustomization.json" />
@@ -18,13 +35,76 @@
     <None Remove="Files\configs\mods.json" />
     <None Remove="Files\configs\server.json" />
     <None Remove="Files\configs\server_base.json" />
+    <None Remove="Files\locales\ch\locale.json" />
+    <None Remove="Files\locales\ch\menu.json" />
+    <None Remove="Files\locales\cz\locale.json" />
+    <None Remove="Files\locales\cz\menu.json" />
+    <None Remove="Files\locales\es-mx\locale.json" />
+    <None Remove="Files\locales\es-mx\menu.json" />
+    <None Remove="Files\locales\es\locale.json" />
+    <None Remove="Files\locales\es\menu.json" />
+    <None Remove="Files\locales\fr\locale.json" />
+    <None Remove="Files\locales\fr\menu.json" />
+    <None Remove="Files\locales\ge\locale.json" />
+    <None Remove="Files\locales\ge\menu.json" />
+    <None Remove="Files\locales\hu\locale.json" />
+    <None Remove="Files\locales\hu\menu.json" />
+    <None Remove="Files\locales\it\locale.json" />
+    <None Remove="Files\locales\it\menu.json" />
+    <None Remove="Files\locales\jp\locale.json" />
+    <None Remove="Files\locales\jp\menu.json" />
+    <None Remove="Files\locales\kr\locale.json" />
+    <None Remove="Files\locales\kr\menu.json" />
     <None Remove="Files\locales\languages.json" />
     <None Remove="Files\locales\en\locale.json" />
     <None Remove="Files\locales\en\menu.json" />
+    <None Remove="Files\locales\pl\locale.json" />
+    <None Remove="Files\locales\pl\menu.json" />
+    <None Remove="Files\locales\po\locale.json" />
+    <None Remove="Files\locales\po\menu.json" />
+    <None Remove="Files\locales\ru\locale.json" />
+    <None Remove="Files\locales\ru\menu.json" />
+    <None Remove="Files\locales\sk\locale.json" />
+    <None Remove="Files\locales\sk\menu.json" />
+    <None Remove="Files\locales\tu\locale.json" />
+    <None Remove="Files\locales\tu\menu.json" />
     <None Remove="Files\quests\quests.json" />
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="Files\base\botBase.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\base\botCore.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\base\botNames.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\base\client.settings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\base\fleaOffer.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\base\globals.0.12.12.15.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\base\globals.0.12.12.30.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\base\globals.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\base\locations.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\base\matchMetrics.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\base\SpawnPresets.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Files\characters\character_bear.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -52,6 +132,66 @@
     <Content Include="Files\configs\server_base.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Files\locales\ch\locale.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\locales\ch\menu.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\locales\cz\locale.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\locales\cz\menu.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\locales\es-mx\locale.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\locales\es-mx\menu.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\locales\es\locale.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\locales\es\menu.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\locales\fr\locale.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\locales\fr\menu.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\locales\ge\locale.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\locales\ge\menu.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\locales\hu\locale.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\locales\hu\menu.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\locales\it\locale.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\locales\it\menu.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\locales\jp\locale.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\locales\jp\menu.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\locales\kr\locale.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\locales\kr\menu.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Files\locales\languages.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -59,6 +199,36 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Files\locales\en\menu.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\locales\pl\locale.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\locales\pl\menu.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\locales\po\locale.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\locales\po\menu.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\locales\ru\locale.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\locales\ru\menu.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\locales\sk\locale.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\locales\sk\menu.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\locales\tu\locale.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\locales\tu\menu.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Files\quests\quests.json">

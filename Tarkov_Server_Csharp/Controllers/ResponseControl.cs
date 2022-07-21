@@ -3,7 +3,7 @@ using Ionic.Zlib;
 
 namespace Tarkov_Server_Csharp.Web
 {
-    internal class ResponseControl
+    public class ResponseControl
     {
 
         public static string GetBody(string Data, int errorcode = 0, string errormsg = "null")

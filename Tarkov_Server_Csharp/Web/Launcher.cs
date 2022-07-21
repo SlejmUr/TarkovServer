@@ -1,9 +1,10 @@
 ﻿using HttpServerLite;
 using Ionic.Zlib;
+using Tarkov_Server_Csharp.Controllers;
 
 namespace Tarkov_Server_Csharp.Web
 {
-    internal class Launcher
+    public class Launcher
     {
         [StaticRoute(HttpServerLite.HttpMethod.POST, "/launcher/profile/login")]
         public virtual async Task LauncherLogin(HttpContext ctx)
@@ -15,7 +16,7 @@ namespace Tarkov_Server_Csharp.Web
             Console.WriteLine("Headers:\n" + string.Join("\n", ctx.Request.Headers.Select(pair => $"{pair.Key} => {pair.Value}")));
 
             // RPS
-            string resp = Controllers.AccountController.Login(Uncompressed);
+            string resp = AccountController.Login(Uncompressed);
             var rsp = ZlibStream.CompressString(resp);
             ctx.Response.StatusCode = 200;
             ctx.Response.ContentType = "text/plain";
@@ -35,7 +36,7 @@ namespace Tarkov_Server_Csharp.Web
             Console.WriteLine("Headers:\n" + string.Join("\n", ctx.Request.Headers.Select(pair => $"{pair.Key} => {pair.Value}")));
 
             // RPS
-            string resp = Controllers.AccountController.Register(Uncompressed);
+            string resp = AccountController.Register(Uncompressed);
             var rsp = ZlibStream.CompressString(resp);
             ctx.Response.StatusCode = 200;
             ctx.Response.ContentType = "text/plain";

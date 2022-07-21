@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Tarkov_Server_Csharp.Controllers
 {
-    internal class ConfigController
+    public class ConfigController
     {
         public static void Init()
         {

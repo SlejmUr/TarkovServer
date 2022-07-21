@@ -2,7 +2,7 @@
 
 namespace Tarkov_Server_Csharp
 {
-    internal class WebServer
+    public class WebServer
     {
         Webserver _Server;
         public void MainStart(string IP, int Port)
@@ -33,7 +33,7 @@ namespace Tarkov_Server_Csharp
         }
 
         [StaticRoute(HttpServerLite.HttpMethod.GET, "/getBundleList")]
-        public async Task GetBundeList(HttpContext ctx)
+        public virtual async Task GetBundeList(HttpContext ctx)
         {
             string resp = "[]";
             var rsp = Web.ResponseControl.CompressRsp(resp);
@@ -42,6 +42,17 @@ namespace Tarkov_Server_Csharp
             ctx.Response.ContentLength = rsp.Length;
             ctx.Response.Headers.Add("Content-Encoding", "deflate");
             await ctx.Response.SendWithoutCloseAsync(rsp);
+            return;
+        }
+
+        [StaticRoute(HttpServerLite.HttpMethod.GET, "/test")]
+        public virtual async Task Test(HttpContext ctx)
+        {
+            string resp = "TEST";
+            ctx.Response.StatusCode = 200;
+            ctx.Response.ContentType = "application/json";
+            ctx.Response.ContentLength = resp.Length;
+            await ctx.Response.SendWithoutCloseAsync(resp);
             return;
         }
     }

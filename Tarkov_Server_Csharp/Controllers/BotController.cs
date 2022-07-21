@@ -8,7 +8,7 @@ using Newtonsoft.Json.Linq;
 
 namespace Tarkov_Server_Csharp.Controllers
 {
-    internal class BotController
+    public class BotController
     {
 
         public static string GetNewBotProfile(string JsonInfo,string SessionId)

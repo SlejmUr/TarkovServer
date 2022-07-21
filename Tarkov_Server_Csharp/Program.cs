@@ -2,6 +2,11 @@
 using Ionic.Zlib;
 using System.Net;
 using System.Text;
+using System.Linq;
+using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
+using Tarkov_Server_Csharp.Handlers;
+using Tarkov_Server_Csharp.Controllers;
 
 namespace Tarkov_Server_Csharp
 {
@@ -12,13 +17,30 @@ namespace Tarkov_Server_Csharp
         public static string ip_port = $"https://{IP_Address}:{Port}";
         static void Main(string[] args)
         {
+            ArgumentHandler.MainArg(args);
+            if (ArgumentHandler.AskHelp)
+            {
+                ArgumentHandler.PrintHelp();
+            }
+            ModLoader.LoadMod();
             CertHelper.Make(IPAddress.Parse(IP_Address));
             Console.WriteLine("Hello MAIN!");
             Console.WriteLine(ip_port);
-            Controllers.AccountController.Init();
-            Controllers.AccountController.GetAccountList();
+            AccountController.Init();
+            AccountController.GetAccountList();
 
-            Controllers.ConfigController.Init();
+            /*
+            HOW TO Add to an array outside
+            var acc = Controllers.AccountController.FindAccount("AID9b38399c1e9c5bc056387382");
+            var list = acc.Friends.ToList(); 
+            list.Add("yeehaw");
+            acc.Friends = list.ToArray();
+            Console.WriteLine(JsonConvert.SerializeObject(acc));      
+             */
+
+            ConfigController.Init();
+
+            LocaleController.Init();
 
             WebServer webServer = new WebServer();
             webServer.MainStart(IP_Address,Port);

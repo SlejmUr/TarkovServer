@@ -1,8 +1,9 @@
 ﻿using HttpServerLite;
+using Tarkov_Server_Csharp.Controllers;
 
 namespace Tarkov_Server_Csharp.Web
 {
-    internal class Client_Game
+    public class Client_Game
     {
         [StaticRoute(HttpServerLite.HttpMethod.POST, "/client/game/start")]
         public virtual async Task GameStart(HttpContext ctx)
@@ -14,7 +15,7 @@ namespace Tarkov_Server_Csharp.Web
             // RPS
             var TimeThingy = Utils.UnixTimeNow().ToString().Replace(",", ".");
             TimeThingy = TimeThingy.Remove(TimeThingy.Length - 4);
-            if (Controllers.AccountController.ClientHasProfile(SessionID))
+            if (AccountController.ClientHasProfile(SessionID))
             {
                 resp = ResponseControl.GetBody("{\"utc_time\":" + TimeThingy + "}");
             }

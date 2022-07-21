@@ -3,7 +3,7 @@ using System.Text;
 
 namespace Tarkov_Server_Csharp
 {
-    internal class Utils
+    public class Utils
     {
         public static double UnixTimeNow()
         {

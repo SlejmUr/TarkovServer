@@ -3,7 +3,7 @@ using System.Security.Cryptography.X509Certificates;
 
 namespace Tarkov_Server_Csharp
 {
-    internal class CertHelper
+    public class CertHelper
     {
         public static void Make(System.Net.IPAddress serveraddress)
         {

@@ -1,8 +1,9 @@
 ﻿using HttpServerLite;
+using Tarkov_Server_Csharp.Controllers;
 
 namespace Tarkov_Server_Csharp.Web
 {
-    internal class WebLogin
+    public class WebLogin
     {
         /*
         Currently this ?u=x&m=x&e=eod&p=x NOT Working
@@ -15,12 +16,13 @@ namespace Tarkov_Server_Csharp.Web
         }
         and will work!
         */
+        /*
         [StaticRoute(HttpServerLite.HttpMethod.POST, "/webprofile/login")]
         public virtual async Task GameStart(HttpContext ctx)
         {
             Console.WriteLine(ctx.Request.ToJson(true));
             // RPS
-            string resp = Controllers.AccountController.Login(ctx.Request.DataAsString);
+            string resp = AccountController.Login(ctx.Request.DataAsString);
             ctx.Response.StatusCode = 200;
             ctx.Response.ContentType = "text/plain";
             ctx.Response.ContentLength = resp.Length;
@@ -33,12 +35,12 @@ namespace Tarkov_Server_Csharp.Web
             //REQ stuff
             Console.WriteLine(ctx.Request.ToJson(true));
             // RPS
-            string resp = Controllers.AccountController.Register(ctx.Request.DataAsString);
+            string resp = AccountController.Register(ctx.Request.DataAsString);
             ctx.Response.StatusCode = 200;
             ctx.Response.ContentType = "text/plain";
             ctx.Response.ContentLength = resp.Length;
             await ctx.Response.SendWithoutCloseAsync(resp);
             return;
-        }
+        }*/
     }
 }

@@ -1,9 +1,10 @@
 ﻿using HttpServerLite;
 using Newtonsoft.Json;
+using Tarkov_Server_Csharp.Controllers;
 
 namespace Tarkov_Server_Csharp.Web
 {
-    internal class Client_Raid
+    public class Client_Raid
     {
         [StaticRoute(HttpServerLite.HttpMethod.POST, "/client/raid/person/killed/showMessage")]
         public virtual async Task ShowMessage(HttpContext ctx)
