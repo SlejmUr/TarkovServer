@@ -1,0 +1,24 @@
+{
+	"items": {
+		"specialItems": {
+			"min": 0,
+			"max": 0
+		},
+		"healing": {
+			"min": 1,
+			"max": 5
+		},
+		"looseLoot": {
+			"min": 0,
+			"max": 5
+		},
+		"magazines": {
+			"min": 1,
+			"max": 4
+		},
+		"grenades": {
+			"min": 1,
+			"max": 5
+		}
+	}
+}

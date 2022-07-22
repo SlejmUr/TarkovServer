@@ -1,0 +1,28 @@
+{
+  "Common": {
+    "BotReload": {
+      "min": 1000,
+      "max": 1000
+    },
+    "CovertMovement": {
+      "min": 5100,
+      "max": 5100
+    },
+    "Sniping": {
+      "min": 5100,
+      "max": 5100
+    },
+    "ProneMovement": {
+      "min": 5100,
+      "max": 5100
+    },
+    "SilentOps": {
+      "min": 5100,
+      "max": 5100
+    },
+    "BotSound": {
+      "min": 1000,
+      "max": 1000
+    }
+  }
+}

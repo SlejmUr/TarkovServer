@@ -1,0 +1,40 @@
+{
+	"equipment": {
+		"Headwear": 100,
+		"Earpiece": 0,
+		"FaceCover": 0,
+		"ArmorVest": 100,
+		"Eyewear": 0,
+		"ArmBand": 0,
+		"TacticalVest": 100,
+		"Backpack": 0,
+		"FirstPrimaryWeapon": 100,
+		"SecondPrimaryWeapon": 0,
+		"Holster": 6,
+		"Scabbard": 13,
+		"Pockets": 100,
+		"SecuredContainer": 100
+	},
+	"mods": {
+		"mod_reciever": 100,
+		"mod_magazine": 100,
+		"mod_charge": 13,
+		"mod_stock_001": 100,
+		"mod_stock": 100,
+		"mod_mount_000": 100,
+		"mod_mount_001": 84,
+		"mod_scope": 40,
+		"mod_foregrip": 9,
+		"mod_tactical_000": 0,
+		"mod_muzzle": 87,
+		"mod_sight_rear": 53,
+		"mod_equipment": 100,
+		"mod_mount_003": 100,
+		"mod_tactical": 71,
+		"mod_launcher": 0,
+		"mod_stock_akms": 100,
+		"mod_sight_front": 0,
+		"mod_mount": 0,
+		"mod_mount_002": 0
+	}
+}

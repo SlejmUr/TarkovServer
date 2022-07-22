@@ -1,21 +1,12 @@
 {
 	"ip": "127.0.0.1",
-	"ip_backend": "127.0.0.1",
 	"port": 443,
-	"eventPollIntervalSec": 60,
 	"name": "SIT Server",
 	"discord": "",
 	"website": "",
 	"version": "",
-  "runSimpleHttpServer": false,
+	"debug": true,
 	"lootDebug": true,
-	"hideInfoLogs": false,
-	"debugTimer": true,
-  "showDebugLogs": false,
-	"translations": {
-		"alreadyInUse": "The nickname is already in use",
-		"tooShort": "The nickname is too short"
-	},
   "serverIPs": {
     "Enable": false,
     "Trading": "https://127.0.0.1:443",

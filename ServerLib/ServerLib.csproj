@@ -18,6 +18,334 @@
     <None Remove="Files\base\locations.json" />
     <None Remove="Files\base\matchMetrics.json" />
     <None Remove="Files\base\SpawnPresets.json" />
+    <None Remove="Files\bots\assaultgroup\appearance.json" />
+    <None Remove="Files\bots\assaultgroup\chances.json" />
+    <None Remove="Files\bots\assaultgroup\difficulty\easy.json" />
+    <None Remove="Files\bots\assaultgroup\difficulty\hard.json" />
+    <None Remove="Files\bots\assaultgroup\difficulty\impossible.json" />
+    <None Remove="Files\bots\assaultgroup\difficulty\normal.json" />
+    <None Remove="Files\bots\assaultgroup\experience.json" />
+    <None Remove="Files\bots\assaultgroup\generation.json" />
+    <None Remove="Files\bots\assaultgroup\health.json" />
+    <None Remove="Files\bots\assaultgroup\inventory.json" />
+    <None Remove="Files\bots\assaultgroup\inventory\0_80.json" />
+    <None Remove="Files\bots\assaultgroup\names.json" />
+    <None Remove="Files\bots\assault\appearance.json" />
+    <None Remove="Files\bots\assault\chances.json" />
+    <None Remove="Files\bots\assault\difficulty\easy.json" />
+    <None Remove="Files\bots\assault\difficulty\hard.json" />
+    <None Remove="Files\bots\assault\difficulty\impossible.json" />
+    <None Remove="Files\bots\assault\difficulty\normal.json" />
+    <None Remove="Files\bots\assault\experience.json" />
+    <None Remove="Files\bots\assault\generation.json" />
+    <None Remove="Files\bots\assault\health.json" />
+    <None Remove="Files\bots\assault\inventory.json" />
+    <None Remove="Files\bots\assault\inventory\0_10.json" />
+    <None Remove="Files\bots\assault\inventory\10_20.json" />
+    <None Remove="Files\bots\assault\inventory\20_30.json" />
+    <None Remove="Files\bots\assault\inventory\30_40.json" />
+    <None Remove="Files\bots\assault\inventory\40_50.json" />
+    <None Remove="Files\bots\assault\inventory\50_80.json" />
+    <None Remove="Files\bots\assault\names.json" />
+    <None Remove="Files\bots\bear\appearance.json" />
+    <None Remove="Files\bots\bear\chances.json" />
+    <None Remove="Files\bots\bear\difficulty\easy.json" />
+    <None Remove="Files\bots\bear\difficulty\hard.json" />
+    <None Remove="Files\bots\bear\difficulty\impossible.json" />
+    <None Remove="Files\bots\bear\difficulty\normal.json" />
+    <None Remove="Files\bots\bear\experience.json" />
+    <None Remove="Files\bots\bear\generation.json" />
+    <None Remove="Files\bots\bear\health.json" />
+    <None Remove="Files\bots\bear\inventory.json" />
+    <None Remove="Files\bots\bear\inventory\0_10.json" />
+    <None Remove="Files\bots\bear\inventory\10_20.json" />
+    <None Remove="Files\bots\bear\inventory\20_30.json" />
+    <None Remove="Files\bots\bear\inventory\30_40.json" />
+    <None Remove="Files\bots\bear\inventory\40_50.json" />
+    <None Remove="Files\bots\bear\inventory\50_80.json" />
+    <None Remove="Files\bots\bear\names.json" />
+    <None Remove="Files\bots\bear\skills.json" />
+    <None Remove="Files\bots\bossbully\appearance.json" />
+    <None Remove="Files\bots\bossbully\chances.json" />
+    <None Remove="Files\bots\bossbully\difficulty\normal.json" />
+    <None Remove="Files\bots\bossbully\experience.json" />
+    <None Remove="Files\bots\bossbully\generation.json" />
+    <None Remove="Files\bots\bossbully\health.json" />
+    <None Remove="Files\bots\bossbully\inventory.json" />
+    <None Remove="Files\bots\bossbully\inventory\0_80.json" />
+    <None Remove="Files\bots\bossbully\names.json" />
+    <None Remove="Files\bots\bossgluhar\appearance.json" />
+    <None Remove="Files\bots\bossgluhar\chances.json" />
+    <None Remove="Files\bots\bossgluhar\difficulty\normal.json" />
+    <None Remove="Files\bots\bossgluhar\experience.json" />
+    <None Remove="Files\bots\bossgluhar\generation.json" />
+    <None Remove="Files\bots\bossgluhar\health.json" />
+    <None Remove="Files\bots\bossgluhar\inventory.json" />
+    <None Remove="Files\bots\bossgluhar\inventory\0_80.json" />
+    <None Remove="Files\bots\bossgluhar\names.json" />
+    <None Remove="Files\bots\bosskilla\appearance.json" />
+    <None Remove="Files\bots\bosskilla\chances.json" />
+    <None Remove="Files\bots\bosskilla\difficulty\normal.json" />
+    <None Remove="Files\bots\bosskilla\experience.json" />
+    <None Remove="Files\bots\bosskilla\generation.json" />
+    <None Remove="Files\bots\bosskilla\health.json" />
+    <None Remove="Files\bots\bosskilla\inventory.json" />
+    <None Remove="Files\bots\bosskilla\inventory\0_80.json" />
+    <None Remove="Files\bots\bosskilla\names.json" />
+    <None Remove="Files\bots\bosskilla\skills.json" />
+    <None Remove="Files\bots\bossknight\difficulty\normal.json" />
+    <None Remove="Files\bots\bossknight\names.json" />
+    <None Remove="Files\bots\bossknight\profile\SavagebossKnightProfile.json" />
+    <None Remove="Files\bots\bosskojaniy\appearance.json" />
+    <None Remove="Files\bots\bosskojaniy\chances.json" />
+    <None Remove="Files\bots\bosskojaniy\difficulty\normal.json" />
+    <None Remove="Files\bots\bosskojaniy\experience.json" />
+    <None Remove="Files\bots\bosskojaniy\generation.json" />
+    <None Remove="Files\bots\bosskojaniy\health.json" />
+    <None Remove="Files\bots\bosskojaniy\inventory.json" />
+    <None Remove="Files\bots\bosskojaniy\inventory\0_80.json" />
+    <None Remove="Files\bots\bosskojaniy\names.json" />
+    <None Remove="Files\bots\bosskojaniy\skills.json" />
+    <None Remove="Files\bots\bosssanitar\appearance.json" />
+    <None Remove="Files\bots\bosssanitar\chances.json" />
+    <None Remove="Files\bots\bosssanitar\difficulty\normal.json" />
+    <None Remove="Files\bots\bosssanitar\experience.json" />
+    <None Remove="Files\bots\bosssanitar\generation.json" />
+    <None Remove="Files\bots\bosssanitar\health.json" />
+    <None Remove="Files\bots\bosssanitar\inventory.json" />
+    <None Remove="Files\bots\bosssanitar\inventory\0_80.json" />
+    <None Remove="Files\bots\bosssanitar\names.json" />
+    <None Remove="Files\bots\bosstagilla\appearance.json" />
+    <None Remove="Files\bots\bosstagilla\chances.json" />
+    <None Remove="Files\bots\bosstagilla\difficulty\normal.json" />
+    <None Remove="Files\bots\bosstagilla\experience.json" />
+    <None Remove="Files\bots\bosstagilla\generation.json" />
+    <None Remove="Files\bots\bosstagilla\health.json" />
+    <None Remove="Files\bots\bosstagilla\info.json" />
+    <None Remove="Files\bots\bosstagilla\inventory.json" />
+    <None Remove="Files\bots\bosstagilla\inventory\0_80.json" />
+    <None Remove="Files\bots\bosstagilla\names.json" />
+    <None Remove="Files\bots\bosstagilla\skills.json" />
+    <None Remove="Files\bots\bosstest\appearance.json" />
+    <None Remove="Files\bots\bosstest\chances.json" />
+    <None Remove="Files\bots\bosstest\difficulty\normal.json" />
+    <None Remove="Files\bots\bosstest\experience.json" />
+    <None Remove="Files\bots\bosstest\generation.json" />
+    <None Remove="Files\bots\bosstest\health.json" />
+    <None Remove="Files\bots\bosstest\inventory.json" />
+    <None Remove="Files\bots\bosstest\inventory\0_80.json" />
+    <None Remove="Files\bots\bosstest\names.json" />
+    <None Remove="Files\bots\cursedassault\appearance.json" />
+    <None Remove="Files\bots\cursedassault\chances.json" />
+    <None Remove="Files\bots\cursedassault\difficulty\easy.json" />
+    <None Remove="Files\bots\cursedassault\difficulty\hard.json" />
+    <None Remove="Files\bots\cursedassault\difficulty\impossible.json" />
+    <None Remove="Files\bots\cursedassault\difficulty\normal.json" />
+    <None Remove="Files\bots\cursedassault\experience.json" />
+    <None Remove="Files\bots\cursedassault\generation.json" />
+    <None Remove="Files\bots\cursedassault\health.json" />
+    <None Remove="Files\bots\cursedassault\inventory.json" />
+    <None Remove="Files\bots\cursedassault\inventory\0_80.json" />
+    <None Remove="Files\bots\cursedassault\names.json" />
+    <None Remove="Files\bots\exusec\appearance.json" />
+    <None Remove="Files\bots\exusec\chances.json" />
+    <None Remove="Files\bots\exusec\difficulty\normal.json" />
+    <None Remove="Files\bots\exusec\experience.json" />
+    <None Remove="Files\bots\exusec\generation.json" />
+    <None Remove="Files\bots\exusec\health.json" />
+    <None Remove="Files\bots\exusec\inventory.json" />
+    <None Remove="Files\bots\exusec\inventory\0_10.json" />
+    <None Remove="Files\bots\exusec\inventory\10_20.json" />
+    <None Remove="Files\bots\exusec\inventory\20_30.json" />
+    <None Remove="Files\bots\exusec\inventory\30_40.json" />
+    <None Remove="Files\bots\exusec\inventory\40_50.json" />
+    <None Remove="Files\bots\exusec\inventory\50_80.json" />
+    <None Remove="Files\bots\exusec\names.json" />
+    <None Remove="Files\bots\followerbigpipe\difficulty\normal.json" />
+    <None Remove="Files\bots\followerbigpipe\names.json" />
+    <None Remove="Files\bots\followerbigpipe\profile\SavagefollowerBigPipeProfile.json" />
+    <None Remove="Files\bots\followerbirdeye\difficulty\normal.json" />
+    <None Remove="Files\bots\followerbirdeye\names.json" />
+    <None Remove="Files\bots\followerbirdeye\profile\SavagefollowerBirdEyeProfile.json" />
+    <None Remove="Files\bots\followerbully\appearance.json" />
+    <None Remove="Files\bots\followerbully\chances.json" />
+    <None Remove="Files\bots\followerbully\difficulty\normal.json" />
+    <None Remove="Files\bots\followerbully\experience.json" />
+    <None Remove="Files\bots\followerbully\generation.json" />
+    <None Remove="Files\bots\followerbully\health.json" />
+    <None Remove="Files\bots\followerbully\inventory.json" />
+    <None Remove="Files\bots\followerbully\inventory\0_80.json" />
+    <None Remove="Files\bots\followerbully\names.json" />
+    <None Remove="Files\bots\followerbully\skills.json" />
+    <None Remove="Files\bots\followergluharassault\appearance.json" />
+    <None Remove="Files\bots\followergluharassault\chances.json" />
+    <None Remove="Files\bots\followergluharassault\difficulty\normal.json" />
+    <None Remove="Files\bots\followergluharassault\experience.json" />
+    <None Remove="Files\bots\followergluharassault\generation.json" />
+    <None Remove="Files\bots\followergluharassault\health.json" />
+    <None Remove="Files\bots\followergluharassault\inventory.json" />
+    <None Remove="Files\bots\followergluharassault\inventory\0_80.json" />
+    <None Remove="Files\bots\followergluharassault\names.json" />
+    <None Remove="Files\bots\followergluharscout\appearance.json" />
+    <None Remove="Files\bots\followergluharscout\chances.json" />
+    <None Remove="Files\bots\followergluharscout\difficulty\normal.json" />
+    <None Remove="Files\bots\followergluharscout\experience.json" />
+    <None Remove="Files\bots\followergluharscout\generation.json" />
+    <None Remove="Files\bots\followergluharscout\health.json" />
+    <None Remove="Files\bots\followergluharscout\inventory.json" />
+    <None Remove="Files\bots\followergluharscout\inventory\0_80.json" />
+    <None Remove="Files\bots\followergluharscout\names.json" />
+    <None Remove="Files\bots\followergluharsecurity\appearance.json" />
+    <None Remove="Files\bots\followergluharsecurity\chances.json" />
+    <None Remove="Files\bots\followergluharsecurity\difficulty\normal.json" />
+    <None Remove="Files\bots\followergluharsecurity\experience.json" />
+    <None Remove="Files\bots\followergluharsecurity\generation.json" />
+    <None Remove="Files\bots\followergluharsecurity\health.json" />
+    <None Remove="Files\bots\followergluharsecurity\inventory.json" />
+    <None Remove="Files\bots\followergluharsecurity\inventory\0_80.json" />
+    <None Remove="Files\bots\followergluharsecurity\names.json" />
+    <None Remove="Files\bots\followergluharsnipe\appearance.json" />
+    <None Remove="Files\bots\followergluharsnipe\chances.json" />
+    <None Remove="Files\bots\followergluharsnipe\difficulty\normal.json" />
+    <None Remove="Files\bots\followergluharsnipe\experience.json" />
+    <None Remove="Files\bots\followergluharsnipe\generation.json" />
+    <None Remove="Files\bots\followergluharsnipe\health.json" />
+    <None Remove="Files\bots\followergluharsnipe\inventory.json" />
+    <None Remove="Files\bots\followergluharsnipe\inventory\0_80.json" />
+    <None Remove="Files\bots\followergluharsnipe\names.json" />
+    <None Remove="Files\bots\followerkojaniy\appearance.json" />
+    <None Remove="Files\bots\followerkojaniy\chances.json" />
+    <None Remove="Files\bots\followerkojaniy\difficulty\normal.json" />
+    <None Remove="Files\bots\followerkojaniy\experience.json" />
+    <None Remove="Files\bots\followerkojaniy\generation.json" />
+    <None Remove="Files\bots\followerkojaniy\health.json" />
+    <None Remove="Files\bots\followerkojaniy\inventory.json" />
+    <None Remove="Files\bots\followerkojaniy\inventory\0_80.json" />
+    <None Remove="Files\bots\followerkojaniy\names.json" />
+    <None Remove="Files\bots\followerkojaniy\skills.json" />
+    <None Remove="Files\bots\followersanitar\appearance.json" />
+    <None Remove="Files\bots\followersanitar\chances.json" />
+    <None Remove="Files\bots\followersanitar\difficulty\normal.json" />
+    <None Remove="Files\bots\followersanitar\experience.json" />
+    <None Remove="Files\bots\followersanitar\generation.json" />
+    <None Remove="Files\bots\followersanitar\health.json" />
+    <None Remove="Files\bots\followersanitar\inventory.json" />
+    <None Remove="Files\bots\followersanitar\inventory\0_80.json" />
+    <None Remove="Files\bots\followersanitar\names.json" />
+    <None Remove="Files\bots\followertagilla\appearance.json" />
+    <None Remove="Files\bots\followertagilla\chances.json" />
+    <None Remove="Files\bots\followertagilla\difficulty\normal.json" />
+    <None Remove="Files\bots\followertagilla\experience.json" />
+    <None Remove="Files\bots\followertagilla\generation.json" />
+    <None Remove="Files\bots\followertagilla\health.json" />
+    <None Remove="Files\bots\followertagilla\info.json" />
+    <None Remove="Files\bots\followertagilla\inventory.json" />
+    <None Remove="Files\bots\followertagilla\inventory\0_80.json" />
+    <None Remove="Files\bots\followertagilla\names.json" />
+    <None Remove="Files\bots\followertagilla\skills.json" />
+    <None Remove="Files\bots\followertest\appearance.json" />
+    <None Remove="Files\bots\followertest\chances.json" />
+    <None Remove="Files\bots\followertest\difficulty\normal.json" />
+    <None Remove="Files\bots\followertest\experience.json" />
+    <None Remove="Files\bots\followertest\generation.json" />
+    <None Remove="Files\bots\followertest\health.json" />
+    <None Remove="Files\bots\followertest\inventory.json" />
+    <None Remove="Files\bots\followertest\inventory\0_80.json" />
+    <None Remove="Files\bots\followertest\names.json" />
+    <None Remove="Files\bots\gifter\appearance.json" />
+    <None Remove="Files\bots\gifter\chances.json" />
+    <None Remove="Files\bots\gifter\difficulty\normal.json" />
+    <None Remove="Files\bots\gifter\experience.json" />
+    <None Remove="Files\bots\gifter\generation.json" />
+    <None Remove="Files\bots\gifter\health.json" />
+    <None Remove="Files\bots\gifter\inventory.json" />
+    <None Remove="Files\bots\gifter\inventory\0_80.json" />
+    <None Remove="Files\bots\gifter\names.json" />
+    <None Remove="Files\bots\marksman\appearance.json" />
+    <None Remove="Files\bots\marksman\chances.json" />
+    <None Remove="Files\bots\marksman\difficulty\easy.json" />
+    <None Remove="Files\bots\marksman\difficulty\hard.json" />
+    <None Remove="Files\bots\marksman\difficulty\impossible.json" />
+    <None Remove="Files\bots\marksman\difficulty\normal.json" />
+    <None Remove="Files\bots\marksman\experience.json" />
+    <None Remove="Files\bots\marksman\generation.json" />
+    <None Remove="Files\bots\marksman\health.json" />
+    <None Remove="Files\bots\marksman\inventory.json" />
+    <None Remove="Files\bots\marksman\inventory\0_80.json" />
+    <None Remove="Files\bots\marksman\names.json" />
+    <None Remove="Files\bots\playerscav\appearance.json" />
+    <None Remove="Files\bots\playerscav\chances.json" />
+    <None Remove="Files\bots\playerscav\difficulty\easy.json" />
+    <None Remove="Files\bots\playerscav\difficulty\hard.json" />
+    <None Remove="Files\bots\playerscav\difficulty\impossible.json" />
+    <None Remove="Files\bots\playerscav\difficulty\normal.json" />
+    <None Remove="Files\bots\playerscav\experience.json" />
+    <None Remove="Files\bots\playerscav\generation.json" />
+    <None Remove="Files\bots\playerscav\health.json" />
+    <None Remove="Files\bots\playerscav\inventory.json" />
+    <None Remove="Files\bots\playerscav\inventory\0_10.json" />
+    <None Remove="Files\bots\playerscav\inventory\10_20.json" />
+    <None Remove="Files\bots\playerscav\inventory\20_30.json" />
+    <None Remove="Files\bots\playerscav\inventory\30_40.json" />
+    <None Remove="Files\bots\playerscav\inventory\40_50.json" />
+    <None Remove="Files\bots\playerscav\inventory\50_80.json" />
+    <None Remove="Files\bots\playerscav\names.json" />
+    <None Remove="Files\bots\pmcbot\appearance.json" />
+    <None Remove="Files\bots\pmcbot\chances.json" />
+    <None Remove="Files\bots\pmcbot\difficulty\normal.json" />
+    <None Remove="Files\bots\pmcbot\experience.json" />
+    <None Remove="Files\bots\pmcbot\generation.json" />
+    <None Remove="Files\bots\pmcbot\health.json" />
+    <None Remove="Files\bots\pmcbot\inventory.json" />
+    <None Remove="Files\bots\pmcbot\inventory\0_80.json" />
+    <None Remove="Files\bots\pmcbot\names.json" />
+    <None Remove="Files\bots\pmcbot\skills.json" />
+    <None Remove="Files\bots\sectantpriest\appearance.json" />
+    <None Remove="Files\bots\sectantpriest\chances.json" />
+    <None Remove="Files\bots\sectantpriest\difficulty\normal.json" />
+    <None Remove="Files\bots\sectantpriest\experience.json" />
+    <None Remove="Files\bots\sectantpriest\generation.json" />
+    <None Remove="Files\bots\sectantpriest\health.json" />
+    <None Remove="Files\bots\sectantpriest\inventory.json" />
+    <None Remove="Files\bots\sectantpriest\inventory\0_80.json" />
+    <None Remove="Files\bots\sectantpriest\names.json" />
+    <None Remove="Files\bots\sectantpriest\skills.json" />
+    <None Remove="Files\bots\sectantwarrior\appearance.json" />
+    <None Remove="Files\bots\sectantwarrior\chances.json" />
+    <None Remove="Files\bots\sectantwarrior\difficulty\normal.json" />
+    <None Remove="Files\bots\sectantwarrior\experience.json" />
+    <None Remove="Files\bots\sectantwarrior\generation.json" />
+    <None Remove="Files\bots\sectantwarrior\health.json" />
+    <None Remove="Files\bots\sectantwarrior\inventory.json" />
+    <None Remove="Files\bots\sectantwarrior\inventory\0_80.json" />
+    <None Remove="Files\bots\sectantwarrior\names.json" />
+    <None Remove="Files\bots\test\appearance.json" />
+    <None Remove="Files\bots\test\chances.json" />
+    <None Remove="Files\bots\test\difficulty\normal.json" />
+    <None Remove="Files\bots\test\experience.json" />
+    <None Remove="Files\bots\test\generation.json" />
+    <None Remove="Files\bots\test\health.json" />
+    <None Remove="Files\bots\test\inventory.json" />
+    <None Remove="Files\bots\test\inventory\0_80.json" />
+    <None Remove="Files\bots\test\names.json" />
+    <None Remove="Files\bots\usec\appearance.json" />
+    <None Remove="Files\bots\usec\chances.json" />
+    <None Remove="Files\bots\usec\difficulty\easy.json" />
+    <None Remove="Files\bots\usec\difficulty\hard.json" />
+    <None Remove="Files\bots\usec\difficulty\impossible.json" />
+    <None Remove="Files\bots\usec\difficulty\normal.json" />
+    <None Remove="Files\bots\usec\experience.json" />
+    <None Remove="Files\bots\usec\generation.json" />
+    <None Remove="Files\bots\usec\health.json" />
+    <None Remove="Files\bots\usec\inventory.json" />
+    <None Remove="Files\bots\usec\inventory\0_10.json" />
+    <None Remove="Files\bots\usec\inventory\10_20.json" />
+    <None Remove="Files\bots\usec\inventory\20_30.json" />
+    <None Remove="Files\bots\usec\inventory\30_40.json" />
+    <None Remove="Files\bots\usec\inventory\40_50.json" />
+    <None Remove="Files\bots\usec\inventory\50_80.json" />
+    <None Remove="Files\bots\usec\names.json" />
+    <None Remove="Files\bots\usec\skills.json" />
     <None Remove="Files\characters\character_bear.json" />
     <None Remove="Files\characters\character_usec.json" />
     <None Remove="Files\characters\defaultCustomization.json" />
@@ -316,6 +644,990 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Files\base\SpawnPresets.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\assaultgroup\appearance.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\assaultgroup\chances.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\assaultgroup\difficulty\easy.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\assaultgroup\difficulty\hard.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\assaultgroup\difficulty\impossible.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\assaultgroup\difficulty\normal.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\assaultgroup\experience.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\assaultgroup\generation.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\assaultgroup\health.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\assaultgroup\inventory.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\assaultgroup\inventory\0_80.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\assaultgroup\names.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\assault\appearance.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\assault\chances.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\assault\difficulty\easy.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\assault\difficulty\hard.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\assault\difficulty\impossible.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\assault\difficulty\normal.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\assault\experience.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\assault\generation.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\assault\health.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\assault\inventory.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\assault\inventory\0_10.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\assault\inventory\10_20.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\assault\inventory\20_30.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\assault\inventory\30_40.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\assault\inventory\40_50.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\assault\inventory\50_80.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\assault\names.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\bear\appearance.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\bear\chances.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\bear\difficulty\easy.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\bear\difficulty\hard.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\bear\difficulty\impossible.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\bear\difficulty\normal.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\bear\experience.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\bear\generation.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\bear\health.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\bear\inventory.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\bear\inventory\0_10.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\bear\inventory\10_20.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\bear\inventory\20_30.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\bear\inventory\30_40.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\bear\inventory\40_50.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\bear\inventory\50_80.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\bear\names.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\bear\skills.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\bossbully\appearance.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\bossbully\chances.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\bossbully\difficulty\normal.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\bossbully\experience.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\bossbully\generation.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\bossbully\health.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\bossbully\inventory.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\bossbully\inventory\0_80.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\bossbully\names.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\bossgluhar\appearance.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\bossgluhar\chances.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\bossgluhar\difficulty\normal.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\bossgluhar\experience.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\bossgluhar\generation.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\bossgluhar\health.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\bossgluhar\inventory.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\bossgluhar\inventory\0_80.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\bossgluhar\names.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\bosskilla\appearance.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\bosskilla\chances.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\bosskilla\difficulty\normal.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\bosskilla\experience.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\bosskilla\generation.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\bosskilla\health.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\bosskilla\inventory.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\bosskilla\inventory\0_80.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\bosskilla\names.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\bosskilla\skills.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\bossknight\difficulty\normal.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\bossknight\names.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\bossknight\profile\SavagebossKnightProfile.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\bosskojaniy\appearance.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\bosskojaniy\chances.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\bosskojaniy\difficulty\normal.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\bosskojaniy\experience.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\bosskojaniy\generation.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\bosskojaniy\health.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\bosskojaniy\inventory.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\bosskojaniy\inventory\0_80.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\bosskojaniy\names.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\bosskojaniy\skills.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\bosssanitar\appearance.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\bosssanitar\chances.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\bosssanitar\difficulty\normal.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\bosssanitar\experience.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\bosssanitar\generation.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\bosssanitar\health.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\bosssanitar\inventory.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\bosssanitar\inventory\0_80.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\bosssanitar\names.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\bosstagilla\appearance.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\bosstagilla\chances.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\bosstagilla\difficulty\normal.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\bosstagilla\experience.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\bosstagilla\generation.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\bosstagilla\health.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\bosstagilla\info.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\bosstagilla\inventory.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\bosstagilla\inventory\0_80.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\bosstagilla\names.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\bosstagilla\skills.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\bosstest\appearance.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\bosstest\chances.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\bosstest\difficulty\normal.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\bosstest\experience.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\bosstest\generation.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\bosstest\health.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\bosstest\inventory.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\bosstest\inventory\0_80.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\bosstest\names.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\cursedassault\appearance.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\cursedassault\chances.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\cursedassault\difficulty\easy.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\cursedassault\difficulty\hard.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\cursedassault\difficulty\impossible.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\cursedassault\difficulty\normal.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\cursedassault\experience.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\cursedassault\generation.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\cursedassault\health.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\cursedassault\inventory.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\cursedassault\inventory\0_80.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\cursedassault\names.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\exusec\appearance.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\exusec\chances.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\exusec\difficulty\normal.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\exusec\experience.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\exusec\generation.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\exusec\health.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\exusec\inventory.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\exusec\inventory\0_10.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\exusec\inventory\10_20.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\exusec\inventory\20_30.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\exusec\inventory\30_40.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\exusec\inventory\40_50.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\exusec\inventory\50_80.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\exusec\names.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\followerbigpipe\difficulty\normal.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\followerbigpipe\names.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\followerbigpipe\profile\SavagefollowerBigPipeProfile.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\followerbirdeye\difficulty\normal.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\followerbirdeye\names.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\followerbirdeye\profile\SavagefollowerBirdEyeProfile.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\followerbully\appearance.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\followerbully\chances.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\followerbully\difficulty\normal.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\followerbully\experience.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\followerbully\generation.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\followerbully\health.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\followerbully\inventory.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\followerbully\inventory\0_80.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\followerbully\names.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\followerbully\skills.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\followergluharassault\appearance.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\followergluharassault\chances.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\followergluharassault\difficulty\normal.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\followergluharassault\experience.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\followergluharassault\generation.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\followergluharassault\health.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\followergluharassault\inventory.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\followergluharassault\inventory\0_80.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\followergluharassault\names.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\followergluharscout\appearance.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\followergluharscout\chances.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\followergluharscout\difficulty\normal.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\followergluharscout\experience.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\followergluharscout\generation.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\followergluharscout\health.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\followergluharscout\inventory.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\followergluharscout\inventory\0_80.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\followergluharscout\names.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\followergluharsecurity\appearance.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\followergluharsecurity\chances.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\followergluharsecurity\difficulty\normal.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\followergluharsecurity\experience.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\followergluharsecurity\generation.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\followergluharsecurity\health.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\followergluharsecurity\inventory.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\followergluharsecurity\inventory\0_80.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\followergluharsecurity\names.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\followergluharsnipe\appearance.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\followergluharsnipe\chances.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\followergluharsnipe\difficulty\normal.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\followergluharsnipe\experience.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\followergluharsnipe\generation.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\followergluharsnipe\health.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\followergluharsnipe\inventory.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\followergluharsnipe\inventory\0_80.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\followergluharsnipe\names.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\followerkojaniy\appearance.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\followerkojaniy\chances.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\followerkojaniy\difficulty\normal.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\followerkojaniy\experience.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\followerkojaniy\generation.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\followerkojaniy\health.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\followerkojaniy\inventory.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\followerkojaniy\inventory\0_80.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\followerkojaniy\names.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\followerkojaniy\skills.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\followersanitar\appearance.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\followersanitar\chances.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\followersanitar\difficulty\normal.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\followersanitar\experience.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\followersanitar\generation.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\followersanitar\health.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\followersanitar\inventory.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\followersanitar\inventory\0_80.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\followersanitar\names.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\followertagilla\appearance.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\followertagilla\chances.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\followertagilla\difficulty\normal.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\followertagilla\experience.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\followertagilla\generation.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\followertagilla\health.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\followertagilla\info.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\followertagilla\inventory.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\followertagilla\inventory\0_80.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\followertagilla\names.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\followertagilla\skills.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\followertest\appearance.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\followertest\chances.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\followertest\difficulty\normal.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\followertest\experience.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\followertest\generation.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\followertest\health.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\followertest\inventory.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\followertest\inventory\0_80.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\followertest\names.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\gifter\appearance.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\gifter\chances.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\gifter\difficulty\normal.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\gifter\experience.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\gifter\generation.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\gifter\health.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\gifter\inventory.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\gifter\inventory\0_80.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\gifter\names.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\marksman\appearance.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\marksman\chances.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\marksman\difficulty\easy.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\marksman\difficulty\hard.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\marksman\difficulty\impossible.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\marksman\difficulty\normal.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\marksman\experience.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\marksman\generation.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\marksman\health.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\marksman\inventory.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\marksman\inventory\0_80.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\marksman\names.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\playerscav\appearance.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\playerscav\chances.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\playerscav\difficulty\easy.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\playerscav\difficulty\hard.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\playerscav\difficulty\impossible.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\playerscav\difficulty\normal.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\playerscav\experience.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\playerscav\generation.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\playerscav\health.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\playerscav\inventory.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\playerscav\inventory\0_10.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\playerscav\inventory\10_20.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\playerscav\inventory\20_30.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\playerscav\inventory\30_40.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\playerscav\inventory\40_50.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\playerscav\inventory\50_80.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\playerscav\names.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\pmcbot\appearance.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\pmcbot\chances.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\pmcbot\difficulty\normal.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\pmcbot\experience.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\pmcbot\generation.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\pmcbot\health.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\pmcbot\inventory.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\pmcbot\inventory\0_80.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\pmcbot\names.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\pmcbot\skills.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\sectantpriest\appearance.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\sectantpriest\chances.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\sectantpriest\difficulty\normal.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\sectantpriest\experience.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\sectantpriest\generation.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\sectantpriest\health.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\sectantpriest\inventory.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\sectantpriest\inventory\0_80.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\sectantpriest\names.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\sectantpriest\skills.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\sectantwarrior\appearance.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\sectantwarrior\chances.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\sectantwarrior\difficulty\normal.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\sectantwarrior\experience.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\sectantwarrior\generation.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\sectantwarrior\health.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\sectantwarrior\inventory.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\sectantwarrior\inventory\0_80.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\sectantwarrior\names.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\test\appearance.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\test\chances.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\test\difficulty\normal.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\test\experience.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\test\generation.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\test\health.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\test\inventory.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\test\inventory\0_80.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\test\names.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\usec\appearance.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\usec\chances.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\usec\difficulty\easy.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\usec\difficulty\hard.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\usec\difficulty\impossible.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\usec\difficulty\normal.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\usec\experience.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\usec\generation.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\usec\health.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\usec\inventory.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\usec\inventory\0_10.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\usec\inventory\10_20.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\usec\inventory\20_30.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\usec\inventory\30_40.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\usec\inventory\40_50.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\usec\inventory\50_80.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\usec\names.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bots\usec\skills.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Files\characters\character_bear.json">

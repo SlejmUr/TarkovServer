@@ -1,0 +1,25 @@
+{
+  "equipment": {
+    "Headwear": 100,
+    "Earpiece": 0,
+    "FaceCover": 100,
+    "ArmorVest": 0,
+    "Eyewear": 0,
+    "ArmBand": 0,
+    "TacticalVest": 100,
+    "Backpack": 100,
+    "FirstPrimaryWeapon": 100,
+    "SecondPrimaryWeapon": 0,
+    "Holster": 100,
+    "Scabbard": 100,
+    "Pockets": 100,
+    "SecuredContainer": 100
+  },
+  "mods": {
+    "mod_sight_rear": 0,
+    "mod_magazine": 100,
+    "mod_muzzle": 0,
+    "mod_mount_001": 0,
+    "mod_mount": 0
+  }
+}

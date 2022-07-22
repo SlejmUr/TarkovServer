@@ -28,6 +28,7 @@ namespace ServerLib.Controllers
         }
         static void LoadBasics()
         {
+            DataBase.Server = File.ReadAllText("Files/configs/server_base.json");
             DataBase.Globals = File.ReadAllText("Files/base/globals.json");
             DataBase.Gameplay = File.ReadAllText("Files/configs/gameplay_base.json");
             DataBase.Items = File.ReadAllText("Files/items/items.json");
@@ -38,7 +39,17 @@ namespace ServerLib.Controllers
         {
             DataBase.Bots = new();
             JsonD.Database.bots bots = new();
-
+            string stuff = "Files/bots";
+            var dirs = Directory.GetDirectories("Files/bots");
+            foreach (var dir in dirs)
+            {
+                var files = Directory.GetFiles(dir);
+                foreach (var file in files)
+                {
+                    string localename = dir.Replace(stuff + "\\", "");
+                    string localename_add = file.Replace(dir + "\\", "").Replace(".json", "");
+                }
+            }
 
             DataBase.Bots.Add("", bots);
 

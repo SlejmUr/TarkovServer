@@ -56,6 +56,7 @@ namespace ServerLib.Utilities
 
         public class Database
         {
+            public string Server { get; set; }
             public string Globals { get; set; }
             public string Gameplay { get; set; }
             public string Items { get; set; }
@@ -71,6 +72,7 @@ namespace ServerLib.Utilities
             public Dictionary<string, bots> Bots { get; set; }
             public class bots
             {
+                public string Profile { get; set; }
                 public string BotNames { get; set; }
                 public string Appearance { get; set; }
                 public appearance Appearances { get; set; }

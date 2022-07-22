@@ -1,0 +1,12 @@
+{
+  "Common": {
+    "BotReload": {
+      "min": 1000,
+      "max": 1000
+    },
+    "BotSound": {
+      "min": 1000,
+      "max": 1000
+    }
+  }
+}
