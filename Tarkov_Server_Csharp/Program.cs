@@ -5,8 +5,11 @@ using System.Text;
 using System.Linq;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
-using Tarkov_Server_Csharp.Handlers;
-using Tarkov_Server_Csharp.Controllers;
+using ServerLib.Handlers;
+using ServerLib.Controllers;
+using ServerLib.Utilities;
+using ServerLib.Web;
+using ServerLib;
 
 namespace Tarkov_Server_Csharp
 {
@@ -22,8 +25,7 @@ namespace Tarkov_Server_Csharp
             {
                 ArgumentHandler.PrintHelp();
             }
-            ModLoader.LoadMod();
-            CertHelper.Make(IPAddress.Parse(IP_Address));
+            CertHelper.Make(IPAddress.Parse(IP_Address), ip_port);
             Console.WriteLine("Hello MAIN!");
             Console.WriteLine(ip_port);
             AccountController.Init();
@@ -44,6 +46,16 @@ namespace Tarkov_Server_Csharp
 
             WebServer webServer = new WebServer();
             webServer.MainStart(IP_Address,Port);
+            PluginLoader.LoadPlugins();
+
+
+            Console.ReadLine();
+            PluginLoader.DoWebLoad(webServer);
+            Console.ReadLine();
+
+            PluginLoader.UnloadPlugins();
+            Console.ReadLine();
+
         }
     }
 }

@@ -1,0 +1,26 @@
+{
+	"_id": "5e074e5e2108b14e1c62f2a7",
+	"ProductionTime": 19200,
+	"Requirements": [
+		{
+			"templateId": "5c12613b86f7743bbe2c3f76",
+			"count": 1,
+			"isFunctional": false,
+			"type": "Item"
+		}
+	],
+	"EndProducts": {
+		"Rare": {
+			"min": "2",
+			"max": "4"
+		},
+		"Superrare": {
+			"min": "2",
+			"max": "3"
+		},
+		"Common": {
+			"min": "0",
+			"max": "0"
+		}
+	}
+}

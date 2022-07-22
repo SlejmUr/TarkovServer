@@ -1,0 +1,29 @@
+{
+	"_id": "61b9da6a66f37641c8240014",
+	"areaType": 21,
+	"requirements": [
+		{
+			"areaType": 21,
+			"requiredLevel": 1,
+			"type": "Area"
+		},
+		{
+			"templateId": "5df8a6a186f77412640e2e80",
+			"count": 3,
+			"isFunctional": false,
+			"type": "Item"
+		},
+		{
+			"templateId": "5df8a72c86f77412640e2e83",
+			"count": 2,
+			"isFunctional": false,
+			"type": "Item"
+		}
+	],
+	"productionTime": 8400,
+	"boosters": null,
+	"endProduct": "5c0e531d86f7747fa23f4d42",
+	"continuous": false,
+	"count": 1,
+	"productionLimitCount": 0
+}

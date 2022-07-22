@@ -1,0 +1,87 @@
+{
+	"_id": "5d494a0e5b56502f18c98a02",
+	"type": 13,
+	"enabled": true,
+	"needsFuel": true,
+	"takeFromSlotLocked": false,
+	"craftGivesExp": true,
+	"stages": {
+		"0": {
+			"requirements": [],
+			"bonuses": [],
+			"slots": 0,
+			"constructionTime": 0,
+			"description": ""
+		},
+		"1": {
+			"requirements": [
+				{
+					"areaType": 9,
+					"requiredLevel": 3,
+					"type": "Area"
+				},
+				{
+					"templateId": "5449016a4bdc2d6f028b456f",
+					"count": 400000,
+					"isFunctional": false,
+					"type": "Item"
+				},
+				{
+					"skillName": "Memory",
+					"skillLevel": 8,
+					"type": "Skill"
+				},
+				{
+					"templateId": "573478bc24597738002c6175",
+					"count": 1,
+					"isFunctional": false,
+					"type": "Item"
+				},
+				{
+					"templateId": "573474f924597738002c6174",
+					"count": 2,
+					"isFunctional": false,
+					"type": "Item"
+				},
+				{
+					"templateId": "590c639286f774151567fa95",
+					"count": 5,
+					"isFunctional": false,
+					"type": "Item"
+				},
+				{
+					"templateId": "590c645c86f77412b01304d9",
+					"count": 2,
+					"isFunctional": false,
+					"type": "Item"
+				},
+				{
+					"templateId": "590c651286f7741e566b6461",
+					"count": 2,
+					"isFunctional": false,
+					"type": "Item"
+				}
+			],
+			"bonuses": [
+				{
+					"value": 15,
+					"passive": true,
+					"production": false,
+					"visible": true,
+					"type": "ExperienceRate"
+				},
+				{
+					"value": 30,
+					"passive": true,
+					"production": false,
+					"visible": true,
+					"skillType": "Practical",
+					"type": "SkillGroupLevelingBoost"
+				}
+			],
+			"slots": 0,
+			"constructionTime": 194400,
+			"description": ""
+		}
+	}
+}

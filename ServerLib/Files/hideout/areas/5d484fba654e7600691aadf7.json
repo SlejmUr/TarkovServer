@@ -1,0 +1,173 @@
+{
+	"_id": "5d484fba654e7600691aadf7",
+	"type": 2,
+	"enabled": true,
+	"needsFuel": false,
+	"takeFromSlotLocked": false,
+	"craftGivesExp": true,
+	"stages": {
+		"0": {
+			"requirements": [],
+			"bonuses": [],
+			"slots": 0,
+			"constructionTime": 0,
+			"description": ""
+		},
+		"1": {
+			"requirements": [
+				{
+					"templateId": "5449016a4bdc2d6f028b456f",
+					"count": 2000,
+					"isFunctional": false,
+					"type": "Item"
+				},
+				{
+					"templateId": "5c13cef886f774072e618e82",
+					"count": 1,
+					"isFunctional": false,
+					"type": "Item"
+				},
+				{
+					"templateId": "57347c93245977448d35f6e3",
+					"count": 1,
+					"isFunctional": false,
+					"type": "Item"
+				},
+				{
+					"templateId": "5c13cd2486f774072c757944",
+					"count": 1,
+					"isFunctional": false,
+					"type": "Item"
+				}
+			],
+			"bonuses": [
+				{
+					"value": 1,
+					"passive": true,
+					"production": false,
+					"visible": true,
+					"type": "UnlockArmorRepair"
+				}
+			],
+			"slots": 0,
+			"constructionTime": 0,
+			"description": ""
+		},
+		"2": {
+			"requirements": [
+				{
+					"templateId": "59e35cbb86f7741778269d83",
+					"count": 3,
+					"isFunctional": false,
+					"type": "Item"
+				},
+				{
+					"templateId": "59e35ef086f7741777737012",
+					"count": 5,
+					"isFunctional": false,
+					"type": "Item"
+				},
+				{
+					"templateId": "59e35de086f7741778269d84",
+					"count": 1,
+					"isFunctional": false,
+					"type": "Item"
+				},
+				{
+					"areaType": 6,
+					"requiredLevel": 1,
+					"type": "Area"
+				},
+				{
+					"areaType": 0,
+					"requiredLevel": 1,
+					"type": "Area"
+				},
+				{
+					"areaType": 2,
+					"requiredLevel": 1,
+					"type": "Area"
+				},
+				{
+					"templateId": "5e2af29386f7746d4159f077",
+					"count": 1,
+					"isFunctional": false,
+					"type": "Item"
+				},
+				{
+					"templateId": "61bf83814088ec1a363d7097",
+					"count": 1,
+					"isFunctional": false,
+					"type": "Item"
+				}
+			],
+			"bonuses": [
+				{
+					"value": 3,
+					"passive": true,
+					"production": false,
+					"visible": true,
+					"type": "RepairArmorBonus"
+				}
+			],
+			"slots": 0,
+			"constructionTime": 10800,
+			"description": ""
+		},
+		"3": {
+			"requirements": [
+				{
+					"templateId": "59e35cbb86f7741778269d83",
+					"count": 6,
+					"isFunctional": false,
+					"type": "Item"
+				},
+				{
+					"templateId": "5d1b327086f7742525194449",
+					"count": 2,
+					"isFunctional": false,
+					"type": "Item"
+				},
+				{
+					"templateId": "590c2e1186f77425357b6124",
+					"count": 1,
+					"isFunctional": false,
+					"type": "Item"
+				},
+				{
+					"areaType": 0,
+					"requiredLevel": 2,
+					"type": "Area"
+				},
+				{
+					"areaType": 6,
+					"requiredLevel": 2,
+					"type": "Area"
+				},
+				{
+					"templateId": "590c346786f77423e50ed342",
+					"count": 3,
+					"isFunctional": false,
+					"type": "Item"
+				},
+				{
+					"areaType": 2,
+					"requiredLevel": 2,
+					"type": "Area"
+				}
+			],
+			"bonuses": [
+				{
+					"value": 6,
+					"passive": true,
+					"production": false,
+					"visible": true,
+					"type": "RepairArmorBonus"
+				}
+			],
+			"slots": 0,
+			"constructionTime": 25200,
+			"description": ""
+		}
+	}
+}
