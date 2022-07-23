@@ -8,12 +8,16 @@ namespace ServerLib.Handlers
         public static int Port { get; internal set; } = 7777;
         public static bool Debug { get; internal set; } = false;
         public static bool AskHelp { get; internal set; } = false;
+        public static bool DontLoadPlugin { get; internal set; } = false;
+        public static string LoadMyPlugin { get; internal set; } = "";
         public static void MainArg(string[] args)
         {
             Ip = GetParameter<string>(args, "-ip");
             Port = GetParameter<int>(args, "-port");
             Debug = HasParameter(args, "-debug");
             AskHelp = HasParameter(args, "-help");
+            DontLoadPlugin = HasParameter(args, "-noplugin");
+            LoadMyPlugin = GetParameter<string>(args, "-loadplugin");
         }
         public static void PrintHelp()
         {

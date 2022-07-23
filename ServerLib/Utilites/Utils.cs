@@ -1,10 +1,66 @@
-﻿using System.Security.Cryptography;
+﻿using System.Reflection;
+using System.Security.Cryptography;
 using System.Text;
+using HttpServerLite;
+using ServerLib.Handlers;
 
 namespace ServerLib.Utilities
 {
     public class Utils
     {
+        public static Func<HttpContext, Task> ToRouteMethod(MethodInfo method)
+        {
+            if (method.IsStatic)
+            {
+                return (Func<HttpContext, Task>)Delegate.CreateDelegate(typeof(Func<HttpContext, Task>), method);
+            }
+            else
+            {
+                object instance = Activator.CreateInstance(method.DeclaringType ?? throw new Exception("Declaring class is null"));
+                return (Func<HttpContext, Task>)Delegate.CreateDelegate(typeof(Func<HttpContext, Task>), instance, method);
+            }
+        }
+        public static bool IsStaticRoute(MethodInfo method)
+        {
+            return method.GetCustomAttributes().OfType<StaticRouteAttribute>().Any()
+               && method.ReturnType == typeof(Task)
+               && method.GetParameters().Length == 1
+               && method.GetParameters().First().ParameterType == typeof(HttpContext);
+        }
+        public static void PrintDebug(string ToPrint, string type = "info",string prefix = "[DEBUG]")
+        {
+            if (ArgumentHandler.Debug)
+            { 
+                Console.ForegroundColor = GetColorByType(type);
+                Console.WriteLine(prefix + " " + ToPrint);
+                Console.ResetColor();
+            }      
+        }
+        public static void PrintRequest(HttpRequest req)
+        {
+            string time = req.TimestampUtc.ToString();
+            string fullurl = req.Url.Full;
+            string from_ip = req.Source.IpAddress;
+            string SessionID = GetSessionID(req.Headers);
+            Console.WriteLine("[" + time + "] " + from_ip + " | " + SessionID + " = " + fullurl);
+        }
+        static ConsoleColor GetColorByType(string type)
+        {
+            switch (type)
+            {
+                case "warning":
+                    return ConsoleColor.Yellow;
+                case "error":
+                    return ConsoleColor.DarkRed;
+                case "debug":
+                    return ConsoleColor.Green;
+                case "info":
+                    return ConsoleColor.Blue;
+                default:
+                    return ConsoleColor.White;
+            }     
+        }
+
         public static double UnixTimeNow()
         {
             var timeSpan = (DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0));
@@ -18,6 +74,17 @@ namespace ServerLib.Utilities
                 var Cookie = HttpHeaders["Cookie"];
                 var SessionID = Cookie.Split("=")[1];
                 return SessionID;
+            }
+            return null;
+        }
+
+        public static string GetVersion(Dictionary<string, string> HttpHeaders)
+        {
+            if (HttpHeaders.ContainsKey("App-Version"))
+            {
+                var AppVersion = HttpHeaders["App-Version"];
+                var Version = AppVersion.Replace("EFT Client ", "");
+                return Version;
             }
             return null;
         }

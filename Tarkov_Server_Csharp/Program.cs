@@ -25,9 +25,19 @@ namespace Tarkov_Server_Csharp
             {
                 ArgumentHandler.PrintHelp();
             }
+            if (!string.IsNullOrWhiteSpace(ArgumentHandler.LoadMyPlugin))
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Warning! You loading a plugin before everything else is loaded!");
+                Console.ResetColor();
+
+                Console.WriteLine(ArgumentHandler.LoadMyPlugin);
+                PluginLoader.ManualLoadPlugin(ArgumentHandler.LoadMyPlugin);
+            }
+
             CertHelper.Make(IPAddress.Parse(IP_Address), ip_port);
-            Console.WriteLine("Hello MAIN!");
-            Console.WriteLine(ip_port);
+            Utils.PrintDebug(ip_port);
+            DatabaseController.Init();
             AccountController.Init();
             AccountController.GetAccountList();
 
@@ -40,22 +50,21 @@ namespace Tarkov_Server_Csharp
             Console.WriteLine(JsonConvert.SerializeObject(acc));      
              */
 
-            ConfigController.Init();
 
-            LocaleController.Init();
 
             WebServer webServer = new WebServer();
             webServer.MainStart(IP_Address,Port);
-            PluginLoader.LoadPlugins();
 
-
+            if (!ArgumentHandler.DontLoadPlugin)
+            {
+                PluginLoader.LoadPlugins();
+                Console.ReadLine();
+                PluginLoader.PluginWebOverride(webServer);
+                Console.ReadLine();
+                PluginLoader.UnloadPlugins();
+                
+            }
             Console.ReadLine();
-            PluginLoader.DoWebLoad(webServer);
-            Console.ReadLine();
-
-            PluginLoader.UnloadPlugins();
-            Console.ReadLine();
-
         }
     }
 }

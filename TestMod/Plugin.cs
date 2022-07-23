@@ -10,12 +10,15 @@ namespace Plugin
     [Export(typeof(IPlugin))]
     public class Plugin : IPlugin, IDisposable
     {
-		public Plugin()
-		{
-            Console.WriteLine("This will be called First!");
+        public void Dispose()
+        {
+        }
+        public Plugin() //This will be called First!
+        {
+            Console.WriteLine("Welcome from " + Name + " !");
 		}
 
-        public string Name { get; } = "TestMod";
+        public string Name { get; } = "TestPlugin";
 
         public string Author { get; } = "SlejmUr";
 
@@ -23,33 +26,35 @@ namespace Plugin
 
         public string Mode { get; } = "Server";
 
+        public string Description { get; } = "Testing and showoff for future plugins";
+
         public void Initialize()
         {
             Console.WriteLine("Initalized");
-            Class1 c = new();
-            c.This();
+            //Put here something if you want to start after it was called
         }
-        public void Dispose()
+        public void ShutDown()
         {
+            var called = Assembly.GetCallingAssembly();
             if (_webserver != null)
             {
-                PlusFromWeb plusFromWeb = new();
                 var staticRoutes = this.GetType().Assembly //Get This Assembly
                     .GetTypes() // Get all classes from assembly
                     .SelectMany(x => x.GetMethods()) // Get all methods from assembly
-                    .Where(PlusFromWeb.IsStaticRoute);
+                    .Where(Utils.IsStaticRoute);
                 foreach (var staticRoute in staticRoutes)
                 {
                     var attribute = staticRoute.GetCustomAttributes().OfType<StaticRouteAttribute>().First();
-                    if (_webserver._Server.Routes.Parameter.Exists(attribute.Method, attribute.Path))
+                    if (_webserver._Server.Routes.Static.Exists(attribute.Method, attribute.Path))
                     {
-                        Console.WriteLine(attribute.Method + " " + attribute.Path + " is not Existed, created!");
+                        Console.WriteLine(attribute.Method + " " + attribute.Path + " is Existed, Remove!");
                         _webserver._Server.Routes.Static.Remove(attribute.Method, attribute.Path);
                     }
 
                 }
                 Console.WriteLine("WebOverride is deleted! (Probably some leftover)");
-                FixWeb();
+                FixWeb(called);
+                Console.WriteLine("Leftovers fixed!");
             }
         }
 
@@ -59,12 +64,12 @@ namespace Plugin
             var staticRoutes = this.GetType().Assembly //Get This Assembly
                 .GetTypes() // Get all classes from assembly
                 .SelectMany(x => x.GetMethods()) // Get all methods from assembly
-                .Where(PlusFromWeb.IsStaticRoute);
+                .Where(Utils.IsStaticRoute);
 
             var staticRoutes_called = Assembly.GetCallingAssembly() //Get called assembly (ServerLib)
                 .GetTypes() // Get all classes from assembly
                 .SelectMany(x => x.GetMethods()) // Get all methods from assembly
-                .Where(PlusFromWeb.IsStaticRoute);
+                .Where(Utils.IsStaticRoute);
 
             foreach (var staticRoute in staticRoutes)
             {
@@ -76,15 +81,15 @@ namespace Plugin
                     {
                         Console.WriteLine(attribute.Method + " " + attribute.Path + " == " + attribute_called.Method + " " + attribute_called.Path);
                         var called_route = webServer._Server.Routes.Static.Get(attribute_called.Method, attribute_called.Path);
-                        called_route.Handler = PlusFromWeb.ToRouteMethod(staticRoute);
+                        called_route.Handler = Utils.ToRouteMethod(staticRoute);
                         //called_route.Method = attribute.Method;
                         //called_route.Path = attribute.Path;
                     }
                 }
-                if (!webServer._Server.Routes.Parameter.Exists(attribute.Method, attribute.Path))
+                if (!webServer._Server.Routes.Static.Exists(attribute.Method, attribute.Path))
                 {
                     Console.WriteLine(attribute.Method + " " + attribute.Path + " is not Existed, created!");
-                    webServer._Server.Routes.Static.Add(attribute.Method, attribute.Path, PlusFromWeb.ToRouteMethod(staticRoute));
+                    webServer._Server.Routes.Static.Add(attribute.Method, attribute.Path, Utils.ToRouteMethod(staticRoute));
                 }
 
             }
@@ -92,24 +97,27 @@ namespace Plugin
         }
         private WebServer _webserver;
 
-        private void FixWeb()
+        private void FixWeb(Assembly called)
         {
             if (_webserver != null)
             {
-                var staticRoutes_called = Assembly.GetCallingAssembly() //Get called assembly (ServerLib)
+                var staticRoutes_called = called //Get called assembly (ServerLib)
                    .GetTypes() // Get all classes from assembly
                    .SelectMany(x => x.GetMethods()) // Get all methods from assembly
-                   .Where(PlusFromWeb.IsStaticRoute);
+                   .Where(Utils.IsStaticRoute);
                 foreach (var staticRoute_called in staticRoutes_called)
                 {
                     var attribute_called = staticRoute_called.GetCustomAttributes().OfType<StaticRouteAttribute>().First();
-                    if (!_webserver._Server.Routes.Parameter.Exists(attribute_called.Method, attribute_called.Path))
+
+                    if (!_webserver._Server.Routes.Static.Exists(attribute_called.Method, attribute_called.Path))
                     {
                         Console.WriteLine(attribute_called.Method + " " + attribute_called.Path + " is not Existed, created (Fixed)!");
-                        _webserver._Server.Routes.Static.Add(attribute_called.Method, attribute_called.Path, PlusFromWeb.ToRouteMethod(staticRoute_called));
+                        _webserver._Server.Routes.Static.Add(attribute_called.Method, attribute_called.Path, Utils.ToRouteMethod(staticRoute_called));
                     }
                 }
             }
         }
+
+
     }
 }

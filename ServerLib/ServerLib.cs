@@ -7,31 +7,27 @@ namespace ServerLib
 {
     public class ServerLib
     {
+        WebServer _webServer;
         public void InitAll(string Ip,int port)
         {
             string ip_port = $"https://{Ip}:{port}";
             CertHelper.Make(IPAddress.Parse(Ip), ip_port);
-            Console.WriteLine("Hello MAIN!");
-            Console.WriteLine(ip_port);
-            ConfigController.Init();
-
-
+            DatabaseController.Init();
             AccountController.Init();
             AccountController.GetAccountList();
-
-            
-
-            LocaleController.Init();
-
             WebServer webServer = new WebServer();
             webServer.MainStart(Ip, port);
-            PluginLoader.LoadPlugins();
-
-
-            Console.ReadLine();
+            _webServer = webServer;
+            if (!ArgumentHandler.DontLoadPlugin)
+            {
+                PluginLoader.LoadPlugins();
+                PluginLoader.PluginWebOverride(webServer);
+            }
+        }
+        public void Stop()
+        {
             PluginLoader.UnloadPlugins();
-
-
+            _webServer.StopServer();
         }
     }
 }

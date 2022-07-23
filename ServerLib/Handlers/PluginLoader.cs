@@ -18,11 +18,12 @@ namespace ServerLib.Handlers
 				if (pluginsList.ContainsKey(iPlugin.Name))
 				{
 					Console.WriteLine("Plugin already loaded?");
+					iPlugin.ShutDown();
 					iPlugin.Dispose();
 				}
 				else
 				{
-					BuildEmulatorTab(iPlugin);
+					EmulatorInit(iPlugin);
 					pluginsList.Add(iPlugin.Name, new PluginInfos
 					{
 						PluginPath = file,
@@ -31,7 +32,7 @@ namespace ServerLib.Handlers
 				}
 			}
 		}
-		public static void DoWebLoad(WebServer webServer)
+		public static void PluginWebOverride(WebServer webServer)
 		{
 			foreach (var plugin in pluginsList)
 			{
@@ -43,13 +44,42 @@ namespace ServerLib.Handlers
 		{
 			foreach (var plugin in pluginsList)
 			{
+				plugin.Value.Plugin.ShutDown();
 				plugin.Value.Plugin.Dispose();
 				Console.WriteLine($"Plugin {plugin.Key} is now unloaded!");
 			}
 		}
-		private static void BuildEmulatorTab(IPlugin iPlugin)
+		public static void ManualLoadPlugin(string DllName)
+		{
+
+			string currdir = Directory.GetCurrentDirectory();
+			IPlugin iPlugin = (IPlugin)Activator.CreateInstance(Assembly.LoadFile(currdir + "/Plugins/" + DllName + ".dll").GetType("Plugin.Plugin"));
+			if (pluginsList.ContainsKey(iPlugin.Name))
+			{
+				Console.WriteLine("Plugin already loaded?");
+				iPlugin.ShutDown();
+				iPlugin.Dispose();
+			}
+			else
+			{
+				EmulatorInit(iPlugin);
+				pluginsList.Add(iPlugin.Name, new PluginInfos
+				{
+					PluginPath = currdir + "/Plugins/" + DllName + ".dll",
+					Plugin = iPlugin
+				});
+			}
+		}
+		private static void EmulatorInit(IPlugin iPlugin)
 		{
 			iPlugin.Initialize();
+			Utils.PrintDebug("New Plugin Loaded" +
+				"\nPlugin Name: " + iPlugin.Name +
+				"\nPlugin Version: " + iPlugin.Version +
+				"\nPlugin Author: " + iPlugin.Author +
+				"\nPlugin Mode: " + iPlugin.Mode +
+				"\nPlugin Desc: " + iPlugin.Description
+				);
 		}
 		internal class PluginInfos
 		{

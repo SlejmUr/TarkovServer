@@ -20,7 +20,7 @@ namespace ServerLib.Controllers
             Accounts.Clear();
             ActiveAccountIds = new();
             ActiveAccountIds.Clear();
-            Console.WriteLine("Init Done!");
+            Utils.PrintDebug("Initialization Done!", "debug","[ACCOUNT]");
         }
 
         public static void GetAccountList()

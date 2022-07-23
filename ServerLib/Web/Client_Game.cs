@@ -7,11 +7,11 @@ namespace ServerLib.Web
     public class Client_Game
     {
         [StaticRoute(HttpServerLite.HttpMethod.POST, "/client/game/start")]
-        public virtual async Task GameStart(HttpContext ctx)
+        public async Task GameStart(HttpContext ctx)
         {
             //REQ stuff
             string SessionID = Utils.GetSessionID(ctx.Request.Headers);
-            Console.WriteLine("SID : " + SessionID);
+            Utils.PrintRequest(ctx.Request);
             string resp;
             // RPS
             var TimeThingy = Utils.UnixTimeNow().ToString().Replace(",", ".");
@@ -25,7 +25,6 @@ namespace ServerLib.Web
                 resp = ResponseControl.GetBody("{\"utc_time\":" + TimeThingy + "}", 999, "Profile Not Found!!");
             }
             var rsp = ResponseControl.CompressRsp(resp);
-            Console.WriteLine(Utils.ByteArrayToString(rsp));
             ctx.Response.StatusCode = 200;
             ctx.Response.ContentType = "application/json";
             ctx.Response.ContentLength = rsp.Length;

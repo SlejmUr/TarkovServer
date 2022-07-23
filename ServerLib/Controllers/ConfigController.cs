@@ -1,16 +1,24 @@
-﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using System.Text;
+﻿using ServerLib.Utilities;
 
 namespace ServerLib.Controllers
 {
     public class ConfigController
     {
+        public static Dictionary<string, string> Configs = new(); //Config["server"] = all things in server.json.
+        /// <summary>
+        /// Initialize the configs. 
+        /// <br>Same as Controllers/ConfigController.js@func=Init()</br>
+        /// </summary>
         public static void Init()
         {
             RebuildFromBaseConfigs();
+            Utils.PrintDebug("Initialization Done!", "debug", "[CONFIG]");
         }
-        public static Dictionary<string,string> Configs = new(); //Config["server"] = all things in server.json.
+
+        /// <summary>
+        /// Rebuild Every config from the owns base Json.
+        /// <br>Same as Controllers/ConfigController.js@func=RebuildFromBaseConfigs()</br>
+        /// </summary>
         public static void RebuildFromBaseConfigs()
         {
             if (Configs == null)
@@ -37,6 +45,10 @@ namespace ServerLib.Controllers
             }
         }
 
+        /// <summary>
+        /// Rebuild Gameplay config from that base Json.
+        /// <br>Same as Controllers/ConfigController.js@func=RefreshGameplayConfigFromBase()</br>
+        /// </summary>
         public static void RefreshGameplayConfigFromBase()
         {
             string configbase = File.ReadAllText("Files/configs/gameplay_base.json");
@@ -57,6 +69,10 @@ namespace ServerLib.Controllers
             }
         }
 
+        /// <summary>
+        /// Rebuild Server config from that base Json.
+        /// <br>Same as Controllers/ConfigController.js@func=RefreshServerConfigFromBase()</br>
+        /// </summary>
         public static void RefreshServerConfigFromBase()
         {
             string configbase = File.ReadAllText("Files/configs/server_base.json");
@@ -76,8 +92,13 @@ namespace ServerLib.Controllers
                 }
             }
         }
-        // No idea how the old one worked, made easier
-        // WARNING !! : IT WILL REWRITE EVERY CHANGES!
+
+        /// <summary>
+        /// Check if the the target and Source is same
+        /// </summary>
+        /// <param name="target">Target String</param>
+        /// <param name="src">Source String</param>
+        /// <returns>True if Not, False is Same</returns>
         public static bool CheckIfSame(string target, string src)
         {
             bool changesMade = false;

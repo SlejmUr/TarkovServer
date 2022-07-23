@@ -60,8 +60,8 @@ namespace ServerLib.Utilities
             public string Globals { get; set; }
             public string Gameplay { get; set; }
             public string Items { get; set; }
-            public Dictionary<int, int> ItemPrices { get; set; }
-            public core Core { get; set; }
+            public Dictionary<int, int> ItemPrices { get; set; } = new();
+            public core Core { get; set; } = new();
             public class core
             {
                 public string BotBase { get; set; }
@@ -69,20 +69,20 @@ namespace ServerLib.Utilities
                 public string FleaOffer { get; set; }
                 public string MatchMetrics { get; set; }
             }
-            public Dictionary<string, bots> Bots { get; set; }
+            public Dictionary<string, bots> Bots { get; set; } = new();
             public class bots
             {
                 public string Profile { get; set; }
                 public string BotNames { get; set; }
                 public string Appearance { get; set; }
-                public appearance Appearances { get; set; }
+                public appearance Appearances { get; set; } = new();
                 public string Chances { get; set; }
                 public string Experience { get; set; }
-                public string Heneration { get; set; }
+                public string Generation { get; set; }
                 public string Health { get; set; }
                 public string Inventory { get; set; }
-                public Dictionary<string, string> Inventory_dict { get; set; }
-                public difficulty Difficulty { get; set; }
+                public Dictionary<string, string> Inventory_dict { get; set; } = new();
+                public difficulty Difficulty { get; set; } = new();
 
                 public class difficulty
                 {
@@ -90,6 +90,7 @@ namespace ServerLib.Utilities
                     public string Normal { get; set; }
                     public string Hard { get; set; }
                     public string Impossible { get; set; }
+                    public string Custom { get; set; }
                 }
                 public class appearance
                 {
@@ -101,32 +102,32 @@ namespace ServerLib.Utilities
                 }
 
             }
-            public templates Templates { get; set; }
+            public templates Templates { get; set; } = new();
             public class templates
             {
                 public string Categories { get; set; }
                 public string Items { get; set; }
             }
-            public hideout Hideout { get; set; }
+            public hideout Hideout { get; set; } = new();
             public class hideout
             {
                 public string Settings { get; set; }
                 public string Areas { get; set; } //DONT OFRGET TO PARSE IT TO JSON! (dynamic)
-                public Dictionary<string, string> Production { get; set; }
-                public Dictionary<string, string> Scavcase { get; set; }
+                public Dictionary<string, string> Production { get; set; } = new();
+                public Dictionary<string, string> Scavcase { get; set; } = new();
             }
-            public Dictionary<string, string> Quests { get; set; }
-            public Dictionary<string, string> Customization { get; set; }
+            public string Quests { get; set; }
+            public Dictionary<string, string> Customization { get; set; } = new();
             public string Languages { get; set; }
-            public static Dictionary<string, string> Locales { get; set; }
-            public locations Locations { get; set; }
+            public Dictionary<string, string> Locales { get; set; } = new();
+            public locations Locations { get; set; } = new();
             public class locations
             {
                 public string LocationBase { get; set; }
                 public string StaticLootTable { get; set; }
                 public string DynamicLootTable { get; set; }
-                public Dictionary<string, string> Base { get; set; }
-                public Dictionary<string, loot> Loot { get; set; }
+                public Dictionary<string, string> Base { get; set; } = new();
+                public Dictionary<string, loot> Loot { get; set; } = new();
                 public class loot
                 {
                     public string Forced { get; set; }
@@ -135,7 +136,7 @@ namespace ServerLib.Utilities
                     public string Dynamic { get; set; }
                 }
             }
-            public Dictionary<string, traders>  Traders { get; set; }
+            public Dictionary<string, traders>  Traders { get; set; } = new();
             public class traders
             {
                 public string Base  { get; set; }
@@ -144,16 +145,16 @@ namespace ServerLib.Utilities
                 public string Suits { get; set; }
                 public string QuestAssort { get; set; }
                 public string RepairPriceRate { get; set; }
-                public assort Assort { get; set; }
+                public assort Assort { get; set; } = new();
                 public class assort
                 {
                     public int NextResupply { get; set; }
-                    public Dictionary<string, string> Items { get; set; }
-                    public Dictionary<string, string> BarterScheme { get; set; }
-                    public Dictionary<string, string> LoyalLevelItems { get; set; }
+                    public Dictionary<string, string> Items { get; set; } = new();
+                    public Dictionary<string, string> BarterScheme { get; set; } = new();
+                    public Dictionary<string, string> LoyalLevelItems { get; set; } = new();
                 }
             }
-            public Dictionary<string, string> Weather { get; set; }
+            public Dictionary<string, string> Weather { get; set; } = new();
         }
     }
 }

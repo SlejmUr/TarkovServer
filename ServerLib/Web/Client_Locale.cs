@@ -7,11 +7,10 @@ namespace ServerLib.Web
     public class Client_Locale
     {
         [StaticRoute(HttpServerLite.HttpMethod.POST, "/client/languages")]
-        public virtual async Task GameLang(HttpContext ctx)
+        public async Task GameLang(HttpContext ctx)
         {
             //REQ stuff
-            string SessionID = Utils.GetSessionID(ctx.Request.Headers);
-            Console.WriteLine("SID : " + SessionID);
+            Utils.PrintRequest(ctx.Request);
             var resp = ResponseControl.GetBody(LocaleController.GetLanguages());
             var rsp = ResponseControl.CompressRsp(resp);
             ctx.Response.StatusCode = 200;
@@ -22,13 +21,12 @@ namespace ServerLib.Web
         }
 
         [ParameterRoute(HttpServerLite.HttpMethod.POST, "/client/menu/locale/{locale}")]
-        public virtual async Task GameMenuLang(HttpContext ctx)
+        public async Task GameMenuLang(HttpContext ctx)
         {
             string locale = ctx.Request.Url.Parameters["locale"];
             //REQ stuff
             string SessionID = Utils.GetSessionID(ctx.Request.Headers);
-            Console.WriteLine("SID : " + SessionID);
-
+            Utils.PrintRequest(ctx.Request);
             string account_lang = AccountController.FindAccount(SessionID).Lang;
             var resp = ResponseControl.GetBody(LocaleController.GetMenu(account_lang, locale, SessionID));
             var rsp = ResponseControl.CompressRsp(resp);
@@ -45,8 +43,7 @@ namespace ServerLib.Web
             string locale = ctx.Request.Url.Parameters["locale"];
             //REQ stuff
             string SessionID = Utils.GetSessionID(ctx.Request.Headers);
-            Console.WriteLine("SID : " + SessionID);
-
+            Utils.PrintRequest(ctx.Request);
             string account_lang = AccountController.FindAccount(SessionID).Lang;
             var resp = ResponseControl.GetBody(LocaleController.GetLocale(account_lang, locale, SessionID));
             var rsp = ResponseControl.CompressRsp(resp);

@@ -13,7 +13,7 @@ namespace ServerLib.Web
         }
         public static string NullResponse()
         {
-            return GetBody(null);
+            return GetBody("null");
         }
         public static string EmptyArrayResponse()
         {

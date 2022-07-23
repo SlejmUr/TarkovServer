@@ -1,4 +1,5 @@
 ﻿using HttpServerLite;
+using ServerLib.Utilities;
 
 namespace ServerLib
 {
@@ -11,6 +12,7 @@ namespace ServerLib
             //webserverSettings.Ssl.SslCertificate = CertHelper.GetCert();
             webserverSettings.Ssl.PfxCertificateFile = "cert/cert.pfx";
             webserverSettings.Ssl.Enable = true;
+            // Turn this off when Doing real one, not debug!
             webserverSettings.Debug.Responses = true;
             webserverSettings.Debug.Requests = true;
             webserverSettings.Debug.Routing = true;
@@ -30,6 +32,7 @@ namespace ServerLib
 
         async Task DefaultRoute(HttpContext ctx)
         {
+
             string resp = "Hello from WebServer!";
             ctx.Response.StatusCode = 200;
             ctx.Response.ContentLength = resp.Length;
@@ -38,9 +41,10 @@ namespace ServerLib
         }
 
         [StaticRoute(HttpServerLite.HttpMethod.GET, "/getBundleList")]
-        public virtual async Task GetBundeList(HttpContext ctx)
+        public async Task GetBundeList(HttpContext ctx)
         {
-            string resp = "[]";
+            Utils.PrintRequest(ctx.Request);
+            string resp = "[]"; //Need better handling on bundles
             var rsp = Web.ResponseControl.CompressRsp(resp);
             ctx.Response.StatusCode = 200;
             ctx.Response.ContentType = "application/json";
@@ -53,6 +57,12 @@ namespace ServerLib
         [StaticRoute(HttpServerLite.HttpMethod.GET, "/test")]
         public async Task Test(HttpContext ctx)
         {
+            string time = ctx.Request.TimestampUtc.ToString();
+            string fullip = ctx.Request.Url.Full;
+            string from_ip = ctx.Request.Source.IpAddress;
+            string SessionID = Utils.GetSessionID(ctx.Request.Headers);
+
+            Console.WriteLine();
             string resp = "TEST";
             ctx.Response.StatusCode = 200;
             ctx.Response.ContentType = "application/json";

@@ -8,7 +8,7 @@ namespace TestPlugin
     {
         public void This()
         {
-            Console.WriteLine("Function inside a class");
+            //Console.WriteLine("Function inside a class");
         }
 
         [StaticRoute(HttpServerLite.HttpMethod.GET, "/test")]
@@ -25,7 +25,7 @@ namespace TestPlugin
         [StaticRoute(HttpServerLite.HttpMethod.GET, "/test2")]
         public async Task Test2(HttpContext ctx)
         {
-            string resp = "test2 from a TestMod/Plugin!";
+            string resp = "test2 from a Plugin!";
             ctx.Response.StatusCode = 200;
             ctx.Response.ContentType = "application/json";
             ctx.Response.ContentLength = resp.Length;

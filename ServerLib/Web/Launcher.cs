@@ -1,20 +1,18 @@
 ﻿using HttpServerLite;
 using Ionic.Zlib;
 using ServerLib.Controllers;
+using ServerLib.Utilities;
 
 namespace ServerLib.Web
 {
     public class Launcher
     {
         [StaticRoute(HttpServerLite.HttpMethod.POST, "/launcher/profile/login")]
-        public virtual async Task LauncherLogin(HttpContext ctx)
+        public async Task LauncherLogin(HttpContext ctx)
         {
             //REQ stuff
-            Console.WriteLine(ctx.Request.ContentType);
+            Utils.PrintRequest(ctx.Request);
             string Uncompressed = ZlibStream.UncompressString(ctx.Request.DataAsBytes);
-            Console.WriteLine(Uncompressed);
-            Console.WriteLine("Headers:\n" + string.Join("\n", ctx.Request.Headers.Select(pair => $"{pair.Key} => {pair.Value}")));
-
             // RPS
             string resp = AccountController.Login(Uncompressed);
             var rsp = ZlibStream.CompressString(resp);
@@ -27,13 +25,11 @@ namespace ServerLib.Web
         }
 
         [StaticRoute(HttpServerLite.HttpMethod.POST, "/launcher/profile/register")]
-        public virtual async Task LauncherRegister(HttpContext ctx)
+        public async Task LauncherRegister(HttpContext ctx)
         {
             //REQ stuff
-            Console.WriteLine(ctx.Request.ContentType);
+            Utils.PrintRequest(ctx.Request);
             string Uncompressed = ZlibStream.UncompressString(ctx.Request.DataAsBytes);
-            Console.WriteLine(Uncompressed);
-            Console.WriteLine("Headers:\n" + string.Join("\n", ctx.Request.Headers.Select(pair => $"{pair.Key} => {pair.Value}")));
 
             // RPS
             string resp = AccountController.Register(Uncompressed);
