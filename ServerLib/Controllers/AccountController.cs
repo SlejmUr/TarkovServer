@@ -283,6 +283,17 @@ namespace ServerLib.Controllers
         /// <returns>Always False</returns>
         public static bool IsNicknameTaken(string JsonInfo)
         {
+            var nickname = JsonConvert.DeserializeObject<JsonD.NicknameValidate>(JsonInfo);
+            dynamic custom = JsonConvert.DeserializeObject<dynamic>(DatabaseController.DataBase.CustomSettings);
+            if (nickname==null) { return false; }
+            if (custom == null) { return false; }
+            if ((bool)custom.Account.checkTakenNickname)
+            {
+                foreach (var acc in Accounts)
+                {
+                    if (acc.Email.ToLower() == nickname.Nickname.ToLower()) return true;
+                }
+            }
             return false;
         }
 

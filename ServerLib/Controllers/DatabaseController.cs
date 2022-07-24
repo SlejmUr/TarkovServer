@@ -1,5 +1,6 @@
 ﻿using ServerLib.Utilities;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace ServerLib.Controllers
 {
@@ -20,6 +21,7 @@ namespace ServerLib.Controllers
             Utils.PrintDebug("LoadTraders");
             Utils.PrintDebug("LoadFleaMarket");
             LoadWeater();
+            LoadCustomConfig();
             Utils.PrintDebug("Initialization Done!", "debug", "[DATABASE]");
         }
 
@@ -196,6 +198,65 @@ namespace ServerLib.Controllers
                 DataBase.Weather.Add(filename, File.ReadAllText(file));
             }
             Utils.PrintDebug("Weather loaded");
+        }
+        static void LoadCustomConfig()
+        {
+            DataBase.CustomSettings = File.ReadAllText("Files/configs/customsettings.json");
+            dynamic custom = JsonConvert.DeserializeObject<dynamic>(DataBase.CustomSettings);
+            if (custom == null) { return; }
+            Console.WriteLine(custom);
+            if ((bool)custom.Locale.useCustomLocale)
+            {
+                JArray from = custom.Locale.customLocale.fromReplace;
+                JArray to = custom.Locale.customLocale.toReplace;
+                int counter = 0;
+                foreach (string fromstep in from)
+                {
+                    if (from.Count < counter) break;
+                    var LocaleString = DataBase.Locales[(string)custom.Locale.baseReplace + "_locale"];
+                    LocaleString = LocaleString.Replace("interface", "Interface");
+                    dynamic locale = JsonConvert.DeserializeObject<dynamic>(LocaleString);
+                    if (locale == null) { return; }
+                    foreach (var thing in locale.Interface)
+                    {
+                        var splitter = thing.ToString().Split(": ");
+                        string first = splitter[0];
+                        first = first.Replace("\"", "");
+                        if (first == from[counter].ToString())
+                        {
+                            locale.Interface[first] = to?[counter];
+                        }
+                    }
+                    string ser_locale = JsonConvert.SerializeObject(locale, Formatting.Indented);
+                    DataBase.Locales[(string)custom.Locale.baseReplace + "_locale"] = ser_locale.Replace("Interface", "interface");
+                    counter++;
+                }
+            }
+            if ((bool)custom.Locale.useCustomMenu)
+            {
+                JArray from = custom.Locale.customMenu.fromReplace;
+                JArray to = custom.Locale.customMenu.toReplace;
+                int counter = 0;
+                foreach (string fromstep in from)
+                {
+                    if (from.Count < counter) break;
+                    var LocaleString = DataBase.Locales[(string)custom.Locale.baseReplace + "_menu"];
+                    dynamic locale = JsonConvert.DeserializeObject<dynamic>(LocaleString);
+                    if (locale == null) { return; }
+                    foreach (var thing in locale.menu)
+                    {
+                        var splitter = thing.ToString().Split(": ");
+                        string first = splitter[0];
+                        first = first.Replace("\"", "");
+                        if (first == from[counter].ToString())
+                        {
+                            locale.menu[first] = to?[counter];
+                        }
+                    }
+                    DataBase.Locales[(string)custom.Locale.baseReplace + "_menu"] = JsonConvert.SerializeObject(locale, Formatting.Indented);
+                    counter++;
+                }
+            }
         }
     }
 }

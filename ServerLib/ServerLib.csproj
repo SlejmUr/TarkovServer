@@ -350,6 +350,7 @@
     <None Remove="Files\characters\character_usec.json" />
     <None Remove="Files\characters\defaultCustomization.json" />
     <None Remove="Files\characters\storage.json" />
+    <None Remove="Files\configs\customsettings.json" />
     <None Remove="Files\configs\gameplay.json" />
     <None Remove="Files\configs\gameplay_base.json" />
     <None Remove="Files\configs\mods.json" />
@@ -1640,6 +1641,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Files\characters\storage.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\configs\customsettings.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Files\configs\gameplay.json">

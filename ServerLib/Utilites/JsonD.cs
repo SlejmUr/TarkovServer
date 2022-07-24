@@ -56,6 +56,7 @@ namespace ServerLib.Utilities
 
         public class Database
         {
+            public string CustomSettings { get; set; }
             public string Server { get; set; }
             public string Globals { get; set; }
             public string Gameplay { get; set; }
@@ -155,6 +156,11 @@ namespace ServerLib.Utilities
                 }
             }
             public Dictionary<string, string> Weather { get; set; } = new();
+        }
+
+        public class NicknameValidate
+        {
+            public string Nickname { get; set; }
         }
     }
 }

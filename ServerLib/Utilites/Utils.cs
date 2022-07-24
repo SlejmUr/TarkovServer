@@ -8,6 +8,7 @@ namespace ServerLib.Utilities
 {
     public class Utils
     {
+        #region HttpStuff
         public static Func<HttpContext, Task> ToRouteMethod(MethodInfo method)
         {
             if (method.IsStatic)
@@ -27,6 +28,8 @@ namespace ServerLib.Utilities
                && method.GetParameters().Length == 1
                && method.GetParameters().First().ParameterType == typeof(HttpContext);
         }
+        #endregion
+        #region Debug Print
         public static void PrintDebug(string ToPrint, string type = "info",string prefix = "[DEBUG]")
         {
             if (ArgumentHandler.Debug)
@@ -36,14 +39,7 @@ namespace ServerLib.Utilities
                 Console.ResetColor();
             }      
         }
-        public static void PrintRequest(HttpRequest req)
-        {
-            string time = req.TimestampUtc.ToString();
-            string fullurl = req.Url.Full;
-            string from_ip = req.Source.IpAddress;
-            string SessionID = GetSessionID(req.Headers);
-            Console.WriteLine("[" + time + "] " + from_ip + " | " + SessionID + " = " + fullurl);
-        }
+
         static ConsoleColor GetColorByType(string type)
         {
             switch (type)
@@ -60,13 +56,16 @@ namespace ServerLib.Utilities
                     return ConsoleColor.White;
             }     
         }
-
-        public static double UnixTimeNow()
+        #endregion
+        #region Session Stuff
+        public static void PrintRequest(HttpRequest req)
         {
-            var timeSpan = (DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0));
-            return timeSpan.TotalSeconds;
+            string time = req.TimestampUtc.ToString();
+            string fullurl = req.Url.Full;
+            string from_ip = req.Source.IpAddress;
+            string SessionID = GetSessionID(req.Headers);
+            Console.WriteLine("[" + time + "] " + from_ip + " | " + SessionID + " = " + fullurl);
         }
-
         public static string GetSessionID(Dictionary<string,string> HttpHeaders)
         {
             if (HttpHeaders.ContainsKey("Cookie"))
@@ -77,7 +76,6 @@ namespace ServerLib.Utilities
             }
             return null;
         }
-
         public static string GetVersion(Dictionary<string, string> HttpHeaders)
         {
             if (HttpHeaders.ContainsKey("App-Version"))
@@ -88,36 +86,20 @@ namespace ServerLib.Utilities
             }
             return null;
         }
-        public static string ByteArrayToString(byte[] bytearray)
-        {
-            return BitConverter.ToString(bytearray).Replace("-", " ");
-        }
+        #endregion
 
-        public static string ToBase64(byte[] bytearray)
-        {
-            return Convert.ToBase64String(bytearray);
-        }
+        private static int _id = 100;
         public static string CreateNewProfileID(string prefix = "")
         {
-            Random rand = new Random();
-
-            // Choosing the size of string
-            // Using Next() string
+            Random rand = new();
             int stringlen = 24;
             int randValue;
             string str = "";
             char letter;
             for (int i = 0; i < stringlen; i++)
             {
-
-                // Generating a random number.
                 randValue = rand.Next(0, 26);
-
-                // Generating random character by converting
-                // the random number into character.
                 letter = Convert.ToChar(randValue + 65);
-
-                // Appending the letter to string.
                 str = str + letter;
             }
             string md5_str = ConvertStringtoMD5(str);
@@ -125,7 +107,9 @@ namespace ServerLib.Utilities
             {
                 md5_str = "AID" + md5_str;
             }
-            return md5_str;
+            string idhex = _id.ToString("X2");
+            _id++;
+            return md5_str  + "" + idhex;
         }
 
         public static string ConvertStringtoMD5(string strword)
@@ -139,6 +123,59 @@ namespace ServerLib.Utilities
                 sb.Append(hash[i].ToString("x2"));
             }
             return sb.ToString();
+        }
+
+        public static string ByteArrayToString(byte[] bytearray)
+        {
+            return BitConverter.ToString(bytearray).Replace("-", " ");
+        }
+        public static string ToBase64(byte[] bytearray)
+        {
+            return Convert.ToBase64String(bytearray);
+        }
+        public static double UnixTimeNow()
+        {
+            var timeSpan = (DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0));
+            return timeSpan.TotalSeconds;
+        }
+
+
+        public static int ValuesBetween(int value, int minInput,int maxInput,int minOutput,int maxOutput)
+        {
+            return (maxOutput - minOutput) * ((value - minInput) / (maxInput - minInput)) + minOutput;
+        }
+
+        public static int GetRandomInt(int min = 0,int max = 100)
+        {
+            Random random = new();
+            return random.Next(min,max);
+        }
+
+        public static int GetPrecentDifference(int num1, int num2)
+        {
+            return (num1 / num2) * 100;
+        }
+        public static int GetPrecentOf(int num1, int num2)
+        {
+            return (num1 / 100) * num2;
+        }
+        public static bool PrecentRandomBool(int percentage)
+        { 
+            return GetRandomInt() < percentage;
+        }
+        public static string GetRandomArray(string[] array)
+        {
+            return array[GetRandomInt(0,array.Length)];
+        }
+        public static string GetTime()
+        {
+            return FormatTime(DateTime.Now);
+        }
+        public static string FormatTime(DateTime time)
+        {
+            string timestring = time.ToString();
+            string[] timesplit = timestring.Split(". ");
+            return timesplit[0] + "-" + timesplit[1] + "-" + timesplit[2] + "_" + timesplit[3].Replace(":", "-");
         }
     }
 }

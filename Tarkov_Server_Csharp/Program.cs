@@ -64,6 +64,7 @@ namespace Tarkov_Server_Csharp
                 PluginLoader.UnloadPlugins();
                 
             }
+            Utils.GetTime();
             Console.ReadLine();
         }
     }
