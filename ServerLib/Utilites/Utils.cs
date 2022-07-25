@@ -3,6 +3,9 @@ using System.Security.Cryptography;
 using System.Text;
 using HttpServerLite;
 using ServerLib.Handlers;
+using ServerLib.Json;
+using ServerLib.Controllers;
+using Newtonsoft.Json;
 
 namespace ServerLib.Utilities
 {
@@ -39,7 +42,12 @@ namespace ServerLib.Utilities
                 Console.ResetColor();
             }      
         }
-
+        public static void PrintError(string ToPrint, string type = "error", string prefix = "[ERROR]")
+        {
+            Console.ForegroundColor = GetColorByType(type);
+            Console.WriteLine(prefix + " " + ToPrint);
+            Console.ResetColor();
+        }
         static ConsoleColor GetColorByType(string type)
         {
             switch (type)
@@ -109,7 +117,7 @@ namespace ServerLib.Utilities
             }
             string idhex = _id.ToString("X2");
             _id++;
-            return md5_str  + "" + idhex;
+            return md5_str  + "00" + idhex;
         }
 
         public static string ConvertStringtoMD5(string strword)
@@ -176,6 +184,108 @@ namespace ServerLib.Utilities
             string timestring = time.ToString();
             string[] timesplit = timestring.Split(". ");
             return timesplit[0] + "-" + timesplit[1] + "-" + timesplit[2] + "_" + timesplit[3].Replace(":", "-");
+        }
+
+        public static Bots.BotBase GenerateInventory(Bots.BotBase bot)
+        {
+            Dictionary<string, dynamic> inventoryItemHash = new();
+            Dictionary<string, dynamic> itemsByParentHash = new();
+            string InventoryID = "";
+
+
+            foreach (var item in bot.Inventory.Items)
+            {
+                dynamic itemdynamic = JsonConvert.DeserializeObject<dynamic>(item.ToString());
+                if (itemdynamic == null) continue;
+                inventoryItemHash.Add(itemdynamic._id, itemdynamic);
+
+                if (itemdynamic._tpl == "55d7217a4bdc2d86028b456d")
+                {
+                    InventoryID = itemdynamic._id;
+                    continue;
+                }
+
+                try
+                {
+                    if (!itemdynamic.ToString().Contains("parentId"))
+                    {
+                        continue;
+                    }
+                }
+                catch
+                {
+                    PrintError("Cannot TRY to get item parentID!\n " + itemdynamic.ToString(), "WARNING", "[GenerateInventory]");
+                }
+
+                try
+                {
+                    if (!itemsByParentHash.ContainsKey(itemdynamic.parentId))
+                    {
+                        itemsByParentHash.Add(itemdynamic.parentId, itemdynamic);
+                        continue;
+                    }
+                }
+                catch
+                {
+                    PrintError("Cannot TRY itemsByParentHash NOT has parentID!\n " + itemdynamic.ToString(), "WARNING", "[GenerateInventory]");
+                }
+                try
+                {
+                    itemsByParentHash.Add(itemdynamic.parentId, itemdynamic);
+                }
+                catch
+                {
+                    PrintError("Cannot TRY to add parentID, to itemsByParentHash!\n " + itemdynamic.ToString(), "WARNING", "[GenerateInventory]");
+                }
+            }
+            string newID = CreateNewProfileID();
+            inventoryItemHash[InventoryID]._id = newID;
+            bot.Inventory.Equipment = newID;
+
+            if (itemsByParentHash.ContainsKey(InventoryID))
+            {
+                foreach (dynamic item in itemsByParentHash[InventoryID])
+                {
+                    item.parentId = newID;
+                }
+            }
+            return bot;
+        }
+        public static List<Other.AmmoItems> SplitStack(Other.AmmoItems item)
+        {
+            List<Other.AmmoItems> listitem = new();
+            if (item.upd == null)
+            {
+                listitem.Add(item);
+                return listitem;
+            }
+            var maxStack = DatabaseController.DataBase.Items[item._tpl].Props.StackMaxSize;
+            var count = item.upd.StackObjectsCount;
+
+            if (count <= maxStack)
+            {
+                listitem.Add(item);
+                return listitem;
+            }
+
+            while (count != 0)
+            {
+                
+                long longcount = long.Parse(count.ToString());
+                long longmaxStack = long.Parse(maxStack.ToString());
+                long amount = Math.Min(longcount, longmaxStack);
+                var newStack = item;
+
+                newStack._id = CreateNewProfileID();
+                newStack.upd.StackObjectsCount = (int)amount;
+                count -= (int)amount;
+                listitem.Add(newStack);
+            }
+            return listitem;
+        }
+        public static int Clamp(int value, int min, int max)
+        { 
+            return Math.Min(Math.Max(value, min), max);
         }
     }
 }

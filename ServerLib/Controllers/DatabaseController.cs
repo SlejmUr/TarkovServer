@@ -1,12 +1,13 @@
 ﻿using ServerLib.Utilities;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using ServerLib.Json;
 
 namespace ServerLib.Controllers
 {
     public class DatabaseController
     {
-        public static JsonD.Database DataBase = new();
+        public static Database DataBase = new();
         public static void Init()
         {
             ConfigController.Init();
@@ -36,10 +37,10 @@ namespace ServerLib.Controllers
         }
         static void LoadBasics()
         {
-            DataBase.Server = File.ReadAllText("Files/configs/server_base.json");
+            DataBase.Server = JsonConvert.DeserializeObject<ServerConfig.Base>(File.ReadAllText("Files/configs/server_base.json"));
             DataBase.Globals = File.ReadAllText("Files/base/globals.json");
-            DataBase.Gameplay = File.ReadAllText("Files/configs/gameplay_base.json");
-            DataBase.Items = File.ReadAllText("Files/items/items.json");
+            DataBase.Gameplay = JsonConvert.DeserializeObject<GameplayConfig.Base>(File.ReadAllText("Files/configs/gameplay_base.json"));
+            DataBase.Items = ItemBase.FromJson(File.ReadAllText("Files/items/items.json"));
             DataBase.Languages = File.ReadAllText("Files/locales/languages.json");
             DataBase.Quests = File.ReadAllText("Files/quests/quests.json");
             Utils.PrintDebug("Basics loaded");
@@ -47,8 +48,8 @@ namespace ServerLib.Controllers
         static void LoadBots()
         {
             DataBase.Bots = new();
-            JsonD.Database.bots bots = new();
-            JsonD.Database.bots.difficulty difficulty = new();
+            Database.bots bots = new();
+            Database.bots.difficulty difficulty = new();
             string stuff = "Files/bots";
             var dirs = Directory.GetDirectories("Files/bots");
             foreach (var dir in dirs)
@@ -136,7 +137,7 @@ namespace ServerLib.Controllers
         static void LoadHideOut()
         {
             DataBase.Hideout = new();
-            JsonD.Database.hideout hideout = new();
+            Database.hideout hideout = new();
             hideout.Settings = File.ReadAllText("Files/hideout/settings.json");
             hideout.Areas = File.ReadAllText("Files/hideout/areas/_items.json");
             var prod_files = Directory.GetFiles("Files/hideout/production");
@@ -201,19 +202,16 @@ namespace ServerLib.Controllers
         }
         static void LoadCustomConfig()
         {
-            DataBase.CustomSettings = File.ReadAllText("Files/configs/customsettings.json");
-            dynamic custom = JsonConvert.DeserializeObject<dynamic>(DataBase.CustomSettings);
-            if (custom == null) { return; }
-            Console.WriteLine(custom);
-            if ((bool)custom.Locale.useCustomLocale)
+            DataBase.CustomSettings = JsonConvert.DeserializeObject<CustomConfig.Base>(File.ReadAllText("Files/configs/customsettings.json"));
+            if (DataBase.CustomSettings.Locale.UseCustomLocale)
             {
-                JArray from = custom.Locale.customLocale.fromReplace;
-                JArray to = custom.Locale.customLocale.toReplace;
+                var from = DataBase.CustomSettings.Locale.CustomLocale.FromReplace;
+                var to = DataBase.CustomSettings.Locale.CustomLocale.ToReplace;
                 int counter = 0;
                 foreach (string fromstep in from)
                 {
                     if (from.Count < counter) break;
-                    var LocaleString = DataBase.Locales[(string)custom.Locale.baseReplace + "_locale"];
+                    var LocaleString = DataBase.Locales[DataBase.CustomSettings.Locale.BaseReplace + "_locale"];
                     LocaleString = LocaleString.Replace("interface", "Interface");
                     dynamic locale = JsonConvert.DeserializeObject<dynamic>(LocaleString);
                     if (locale == null) { return; }
@@ -228,19 +226,19 @@ namespace ServerLib.Controllers
                         }
                     }
                     string ser_locale = JsonConvert.SerializeObject(locale, Formatting.Indented);
-                    DataBase.Locales[(string)custom.Locale.baseReplace + "_locale"] = ser_locale.Replace("Interface", "interface");
+                    DataBase.Locales[DataBase.CustomSettings.Locale.BaseReplace + "_locale"] = ser_locale.Replace("Interface", "interface");
                     counter++;
                 }
             }
-            if ((bool)custom.Locale.useCustomMenu)
+            if (DataBase.CustomSettings.Locale.UseCustomMenu)
             {
-                JArray from = custom.Locale.customMenu.fromReplace;
-                JArray to = custom.Locale.customMenu.toReplace;
+                var from = DataBase.CustomSettings.Locale.CustomMenu.FromReplace;
+                var to = DataBase.CustomSettings.Locale.CustomMenu.ToReplace;
                 int counter = 0;
                 foreach (string fromstep in from)
                 {
                     if (from.Count < counter) break;
-                    var LocaleString = DataBase.Locales[(string)custom.Locale.baseReplace + "_menu"];
+                    var LocaleString = DataBase.Locales[DataBase.CustomSettings.Locale.BaseReplace + "_menu"];
                     dynamic locale = JsonConvert.DeserializeObject<dynamic>(LocaleString);
                     if (locale == null) { return; }
                     foreach (var thing in locale.menu)
@@ -253,7 +251,7 @@ namespace ServerLib.Controllers
                             locale.menu[first] = to?[counter];
                         }
                     }
-                    DataBase.Locales[(string)custom.Locale.baseReplace + "_menu"] = JsonConvert.SerializeObject(locale, Formatting.Indented);
+                    DataBase.Locales[DataBase.CustomSettings.Locale.BaseReplace + "_menu"] = JsonConvert.SerializeObject(locale, Formatting.Indented);
                     counter++;
                 }
             }

@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using ServerLib.Controllers;
 using ServerLib.Utilities;
+using ServerLib.Json;
 
 namespace ServerLib.Web
 {
@@ -12,10 +13,9 @@ namespace ServerLib.Web
         {
             Utils.PrintRequest(ctx.Request);
             //REQ stuff
-            dynamic gameplayBase = JsonConvert.DeserializeObject(DatabaseController.DataBase.Gameplay);
+            GameplayConfig.Base gameplayBase = DatabaseController.DataBase.Gameplay;
             // RPS
-            string resp = gameplayBase.inRaid.showDeathMessage;
-            var rsp = ResponseControl.CompressRsp(resp);
+            var rsp = ResponseControl.CompressRsp(gameplayBase.InRaid.ShowDeathMessage.ToString());
             ctx.Response.StatusCode = 200;
             ctx.Response.ContentType = "text/plain";
             ctx.Response.ContentLength = rsp.Length;

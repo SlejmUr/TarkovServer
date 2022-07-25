@@ -13,21 +13,21 @@ namespace ServerLib.Web
             Utils.PrintRequest(ctx.Request);
             string resp;
             string version = Utils.GetVersion(ctx.Request.Headers);
-            dynamic server = JsonConvert.DeserializeObject<dynamic>(DatabaseController.DataBase.Server);
+            var server = DatabaseController.DataBase.Server;
 
-            if (string.IsNullOrWhiteSpace(server.version))
+            if (string.IsNullOrWhiteSpace(server.Version))
             {
                 resp = ResponseControl.GetBody("{ isvalid: true, latestVersion: \"\"}");
             }
             else
             {
-                if (server.version == version)
+                if (server.Version == version)
                 {
                     resp = ResponseControl.GetBody("{ isvalid: true, latestVersion: \"\"}");
                 }
                 else
                 {
-                    resp = ResponseControl.GetBody("{ isvalid: false, latestVersion: \""+ server.version + "\"}");
+                    resp = ResponseControl.GetBody("{ isvalid: false, latestVersion: \""+ server.Version + "\"}");
                 }         
             }
             var rsp = ResponseControl.CompressRsp(resp);

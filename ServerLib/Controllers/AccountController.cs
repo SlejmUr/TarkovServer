@@ -1,12 +1,13 @@
 ﻿using Newtonsoft.Json;
 using ServerLib.Utilities;
+using ServerLib.Json;
 
 namespace ServerLib.Controllers
 {
     public class AccountController
     {
-        public static List<JsonD.Profile> Profiles;
-        public static List<JsonD.Account> Accounts;
+        public static List<LoginProfile> Profiles;
+        public static List<Account> Accounts;
         public static List<string> ActiveAccountIds;
 
         #region Custom Made Functions
@@ -22,14 +23,13 @@ namespace ServerLib.Controllers
             ActiveAccountIds.Clear();
             Utils.PrintDebug("Initialization Done!", "debug","[ACCOUNT]");
         }
-
         public static void GetAccountList()
         {
             string[] dirs = Directory.GetDirectories("user/profiles");
             foreach (string dir in dirs)
             {
                 if (!File.Exists($"{dir}/account.json")) { continue; }
-                var account = JsonConvert.DeserializeObject<JsonD.Account>(File.ReadAllText($"{dir}/account.json"));
+                var account = JsonConvert.DeserializeObject<Account>(File.ReadAllText($"{dir}/account.json"));
                 if (!Accounts.Contains(account))
                 {
                     Accounts.Add(account);
@@ -46,7 +46,7 @@ namespace ServerLib.Controllers
         /// <returns>AccountId or FAILED</returns>
         public static string Login(string JsonInfo)
         {
-            var profile = JsonConvert.DeserializeObject<JsonD.Profile>(JsonInfo);
+            var profile = JsonConvert.DeserializeObject<LoginProfile>(JsonInfo);
             string ID = FindAccountIdByUsernameAndPassword(profile.UserName, profile.Password);
 
             if (ID == null)
@@ -73,7 +73,7 @@ namespace ServerLib.Controllers
         /// <returns>AccountId or ALREADY_IN_USE</returns>
         public static string Register(string JsonInfo)
         {
-            var profile = JsonConvert.DeserializeObject<JsonD.Profile>(JsonInfo);
+            var profile = JsonConvert.DeserializeObject<LoginProfile>(JsonInfo);
             string ID = FindAccountIdByUsernameAndPassword(profile.UserName, profile.Password);
 
             if (IsEmailAlreadyInUse(profile.UserName))
@@ -83,7 +83,7 @@ namespace ServerLib.Controllers
             if (ID == null)
             {
                 string AccountID = Utils.CreateNewProfileID("AID");
-                JsonD.Account account = new();
+                Account account = new();
                 account.Email = profile.Email;
                 account.Password = profile.Password;
                 account.Edition = profile.Edition;
@@ -120,7 +120,7 @@ namespace ServerLib.Controllers
             foreach (string dir in dirs)
             {
                 if (!File.Exists($"{dir}/account.json")) { continue; }
-                var account = JsonConvert.DeserializeObject<JsonD.Account>(File.ReadAllText($"{dir}/account.json"));
+                var account = JsonConvert.DeserializeObject<Account>(File.ReadAllText($"{dir}/account.json"));
                 if (account.Email == name && account.Password == passw)
                 {
                     Console.WriteLine(dir);
@@ -144,7 +144,7 @@ namespace ServerLib.Controllers
             foreach (string dir in dirs)
             {
                 if (!File.Exists($"{dir}/account.json")) { continue; }
-                var account = JsonConvert.DeserializeObject<JsonD.Account>(File.ReadAllText($"{dir}/account.json"));
+                var account = JsonConvert.DeserializeObject<Account>(File.ReadAllText($"{dir}/account.json"));
                 if (account.Email == name)
                 {
                     return true;
@@ -179,9 +179,9 @@ namespace ServerLib.Controllers
         /// <br>Same as Controllers/AccountController.js@func=getAllAccounts()</br>
         /// </summary>
         /// <returns>All the Account data neccessary to process accounts in the Server and Client</returns>
-        public static List<JsonD.CharacterOBJ> GetAccounts()
+        public static List<CharacterOBJ> GetAccounts()
         {
-            List<JsonD.CharacterOBJ> fullyLoadedAccounts = new();
+            List<CharacterOBJ> fullyLoadedAccounts = new();
             string[] dirs = Directory.GetDirectories("user/profiles");
             foreach (string dir in dirs)
             {
@@ -192,7 +192,7 @@ namespace ServerLib.Controllers
                 if (!File.Exists($"{dir}/character.json")) { continue; }
                 var character = JsonConvert.DeserializeObject<dynamic>(File.ReadAllText($"{dir}/character.json"));
                 Console.WriteLine(character.aid);
-                JsonD.CharacterOBJ obj = new();
+                CharacterOBJ obj = new();
                 obj.Id = character.aid;
                 obj._id = character.aid;
                 obj.Nickname = character.Info.Nickname;
@@ -225,7 +225,7 @@ namespace ServerLib.Controllers
                 if (Accounts.Where(x => x.Id == sessionID).Count() == 0)
                 {
                     Console.WriteLine("[WARN] Account isnt Cached, Load from disk. ID:" + sessionID);
-                    var account = JsonConvert.DeserializeObject<JsonD.Account>(File.ReadAllText($"user/profiles/{sessionID}/account.json"));
+                    var account = JsonConvert.DeserializeObject<Account>(File.ReadAllText($"user/profiles/{sessionID}/account.json"));
                     Accounts.Add(account);
                 }
             } 
@@ -237,7 +237,7 @@ namespace ServerLib.Controllers
         /// </summary>
         /// <param name="sessionID">SessionId/AccountId</param>
         /// <returns>Account Data</returns>
-        public static JsonD.Account FindAccount(string sessionID)
+        public static Account FindAccount(string sessionID)
         {
             ReloadAccountBySessionID(sessionID);
             foreach (var account in Accounts)
@@ -283,11 +283,11 @@ namespace ServerLib.Controllers
         /// <returns>Always False</returns>
         public static bool IsNicknameTaken(string JsonInfo)
         {
-            var nickname = JsonConvert.DeserializeObject<JsonD.NicknameValidate>(JsonInfo);
-            dynamic custom = JsonConvert.DeserializeObject<dynamic>(DatabaseController.DataBase.CustomSettings);
+            var nickname = JsonConvert.DeserializeObject<NicknameValidate>(JsonInfo);
+            var custom = DatabaseController.DataBase.CustomSettings;
             if (nickname==null) { return false; }
             if (custom == null) { return false; }
-            if ((bool)custom.Account.checkTakenNickname)
+            if (custom.Account.CheckTakenNickname)
             {
                 foreach (var acc in Accounts)
                 {
