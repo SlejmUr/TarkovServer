@@ -602,6 +602,46 @@
     <None Remove="Files\quests\quests.json" />
     <None Remove="Files\templates\categories.json" />
     <None Remove="Files\templates\items.json" />
+    <None Remove="Files\traders\54cb50c76803fa8b248b4571\assort.json" />
+    <None Remove="Files\traders\54cb50c76803fa8b248b4571\base.json" />
+    <None Remove="Files\traders\54cb50c76803fa8b248b4571\categories.json" />
+    <None Remove="Files\traders\54cb50c76803fa8b248b4571\dialogue.json" />
+    <None Remove="Files\traders\54cb50c76803fa8b248b4571\questassort.json" />
+    <None Remove="Files\traders\54cb50c76803fa8b248b4571\suits.json" />
+    <None Remove="Files\traders\54cb57776803fa99248b456e\assort.json" />
+    <None Remove="Files\traders\54cb57776803fa99248b456e\base.json" />
+    <None Remove="Files\traders\54cb57776803fa99248b456e\categories.json" />
+    <None Remove="Files\traders\54cb57776803fa99248b456e\dialogue.json" />
+    <None Remove="Files\traders\54cb57776803fa99248b456e\questassort.json" />
+    <None Remove="Files\traders\579dc571d53a0658a154fbec\assort.json" />
+    <None Remove="Files\traders\579dc571d53a0658a154fbec\base.json" />
+    <None Remove="Files\traders\579dc571d53a0658a154fbec\categories.json" />
+    <None Remove="Files\traders\579dc571d53a0658a154fbec\questassort.json" />
+    <None Remove="Files\traders\579dc571d53a0658a154fbec\suits.json" />
+    <None Remove="Files\traders\58330581ace78e27b8b10cee\assort.json" />
+    <None Remove="Files\traders\58330581ace78e27b8b10cee\base.json" />
+    <None Remove="Files\traders\58330581ace78e27b8b10cee\categories.json" />
+    <None Remove="Files\traders\58330581ace78e27b8b10cee\questassort.json" />
+    <None Remove="Files\traders\5935c25fb3acc3127c3d8cd9\assort.json" />
+    <None Remove="Files\traders\5935c25fb3acc3127c3d8cd9\base.json" />
+    <None Remove="Files\traders\5935c25fb3acc3127c3d8cd9\categories.json" />
+    <None Remove="Files\traders\5935c25fb3acc3127c3d8cd9\questassort.json" />
+    <None Remove="Files\traders\5935c25fb3acc3127c3d8cd9\suits.json" />
+    <None Remove="Files\traders\5a7c2eca46aef81a7ca2145d\assort.json" />
+    <None Remove="Files\traders\5a7c2eca46aef81a7ca2145d\base.json" />
+    <None Remove="Files\traders\5a7c2eca46aef81a7ca2145d\questassort.json" />
+    <None Remove="Files\traders\5ac3b934156ae10c4430e83c\assort.json" />
+    <None Remove="Files\traders\5ac3b934156ae10c4430e83c\base.json" />
+    <None Remove="Files\traders\5ac3b934156ae10c4430e83c\categories.json" />
+    <None Remove="Files\traders\5ac3b934156ae10c4430e83c\questassort.json" />
+    <None Remove="Files\traders\5ac3b934156ae10c4430e83c\suits.json" />
+    <None Remove="Files\traders\5c0647fdd443bc2504c2d371\assort.json" />
+    <None Remove="Files\traders\5c0647fdd443bc2504c2d371\base.json" />
+    <None Remove="Files\traders\5c0647fdd443bc2504c2d371\categories.json" />
+    <None Remove="Files\traders\5c0647fdd443bc2504c2d371\questassort.json" />
+    <None Remove="Files\traders\ragfair\assort.json" />
+    <None Remove="Files\traders\ragfair\base.json" />
+    <None Remove="Files\traders\ragfair\categories.json" />
     <None Remove="Files\weather\fog.json" />
     <None Remove="Files\weather\heavyclouds.json" />
     <None Remove="Files\weather\heavyrain.json" />
@@ -2397,6 +2437,126 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Files\templates\items.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\traders\54cb50c76803fa8b248b4571\assort.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\traders\54cb50c76803fa8b248b4571\base.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\traders\54cb50c76803fa8b248b4571\categories.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\traders\54cb50c76803fa8b248b4571\dialogue.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\traders\54cb50c76803fa8b248b4571\questassort.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\traders\54cb50c76803fa8b248b4571\suits.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\traders\54cb57776803fa99248b456e\assort.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\traders\54cb57776803fa99248b456e\base.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\traders\54cb57776803fa99248b456e\categories.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\traders\54cb57776803fa99248b456e\dialogue.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\traders\54cb57776803fa99248b456e\questassort.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\traders\579dc571d53a0658a154fbec\assort.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\traders\579dc571d53a0658a154fbec\base.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\traders\579dc571d53a0658a154fbec\categories.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\traders\579dc571d53a0658a154fbec\questassort.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\traders\579dc571d53a0658a154fbec\suits.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\traders\58330581ace78e27b8b10cee\assort.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\traders\58330581ace78e27b8b10cee\base.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\traders\58330581ace78e27b8b10cee\categories.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\traders\58330581ace78e27b8b10cee\questassort.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\traders\5935c25fb3acc3127c3d8cd9\assort.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\traders\5935c25fb3acc3127c3d8cd9\base.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\traders\5935c25fb3acc3127c3d8cd9\categories.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\traders\5935c25fb3acc3127c3d8cd9\questassort.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\traders\5935c25fb3acc3127c3d8cd9\suits.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\traders\5a7c2eca46aef81a7ca2145d\assort.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\traders\5a7c2eca46aef81a7ca2145d\base.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\traders\5a7c2eca46aef81a7ca2145d\questassort.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\traders\5ac3b934156ae10c4430e83c\assort.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\traders\5ac3b934156ae10c4430e83c\base.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\traders\5ac3b934156ae10c4430e83c\categories.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\traders\5ac3b934156ae10c4430e83c\questassort.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\traders\5ac3b934156ae10c4430e83c\suits.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\traders\5c0647fdd443bc2504c2d371\assort.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\traders\5c0647fdd443bc2504c2d371\base.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\traders\5c0647fdd443bc2504c2d371\categories.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\traders\5c0647fdd443bc2504c2d371\questassort.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\traders\ragfair\assort.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\traders\ragfair\base.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\traders\ragfair\categories.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Files\weather\fog.json">

@@ -5,7 +5,10 @@ namespace ServerLib.Web
 {
     public class ResponseControl
     {
-
+        public static string NoBody(string Data)
+        {
+            return Utilities.Utils.ClearString(Data);
+        }
         public static string GetBody(string Data, int errorcode = 0, string errormsg = "null")
         {
             var Stuff =  "{\"err\":"+ errorcode + ",\"errmsg\":"+ errormsg + ",\"data\":" + Data + "}";

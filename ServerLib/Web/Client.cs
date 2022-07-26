@@ -37,5 +37,48 @@ namespace ServerLib.Web
             await ctx.Response.TrySendAsync(rsp);
             return;
         }
+
+        [StaticRoute(HttpServerLite.HttpMethod.POST, "/client/repeatalbeQuests/activityPeriods")]
+        public async Task ClientRepeatableQuestsActivityPeriods(HttpContext ctx)
+        {
+            Utils.PrintRequest(ctx.Request);
+            string resp = ResponseControl.GetBody("[]");
+            var rsp = ResponseControl.CompressRsp(resp);
+            ctx.Response.StatusCode = 200;
+            ctx.Response.ContentType = "application/json";
+            ctx.Response.ContentLength = rsp.Length;
+            await ctx.Response.TrySendAsync(rsp);
+            return;
+        }
+
+        [StaticRoute(HttpServerLite.HttpMethod.POST, "/client/chatServer/list")]
+        public async Task ClientChatServerList(HttpContext ctx)
+        {
+            Utils.PrintRequest(ctx.Request);
+            Json.Other.ChatServerList chatServerList = new();
+            chatServerList.DateTime = (int)Utils.UnixTimeNow();
+            chatServerList.Regions.Add("EUR");
+            string resp = ResponseControl.GetBody(JsonConvert.SerializeObject(chatServerList));
+            var rsp = ResponseControl.CompressRsp(resp);
+            ctx.Response.StatusCode = 200;
+            ctx.Response.ContentType = "application/json";
+            ctx.Response.ContentLength = rsp.Length;
+            await ctx.Response.TrySendAsync(rsp);
+            return;
+        }
+
+
+        [StaticRoute(HttpServerLite.HttpMethod.POST, "/client/items")]
+        public async Task ClientItems(HttpContext ctx)
+        {
+            Utils.PrintRequest(ctx.Request);
+            string resp = ResponseControl.GetBody(File.ReadAllText("Files/items/items.json"));
+            var rsp = ResponseControl.CompressRsp(resp);
+            ctx.Response.StatusCode = 200;
+            ctx.Response.ContentType = "application/json";
+            ctx.Response.ContentLength = rsp.Length;
+            await ctx.Response.TrySendAsync(rsp);
+            return;
+        }
     }
 }

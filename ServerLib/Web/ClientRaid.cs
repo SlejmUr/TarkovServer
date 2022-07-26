@@ -6,7 +6,7 @@ using ServerLib.Json;
 
 namespace ServerLib.Web
 {
-    public class Client_Raid
+    public class ClientRaid
     {
         [StaticRoute(HttpServerLite.HttpMethod.POST, "/client/raid/person/killed/showMessage")]
         public async Task ShowMessage(HttpContext ctx)

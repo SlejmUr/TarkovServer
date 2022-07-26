@@ -4,7 +4,7 @@ using ServerLib.Utilities;
 
 namespace ServerLib.Web
 {
-    public class Client_Locale
+    public class ClientLocale
     {
         [StaticRoute(HttpServerLite.HttpMethod.POST, "/client/languages")]
         public async Task GameLang(HttpContext ctx)

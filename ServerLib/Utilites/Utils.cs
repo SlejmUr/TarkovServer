@@ -147,7 +147,10 @@ namespace ServerLib.Utilities
             return timeSpan.TotalSeconds;
         }
 
-
+        public static string ClearString(string data)
+        {
+            return data.Replace("\b","").Replace("\f", "").Replace("\n", "").Replace("\r", "").Replace("\t", "").Replace("\\", "");
+        }
         public static int ValuesBetween(int value, int minInput,int maxInput,int minOutput,int maxOutput)
         {
             return (maxOutput - minOutput) * ((value - minInput) / (maxInput - minInput)) + minOutput;
