@@ -39,6 +39,7 @@ namespace Tarkov_Server_Csharp
             CertHelper.Make(IPAddress.Parse(IP_Address), ip_port);
             Utils.PrintDebug(ip_port);
             DatabaseController.Init();
+            DialogController.Init();
             AccountController.Init();
             AccountController.GetAccountList();
 
@@ -65,7 +66,6 @@ namespace Tarkov_Server_Csharp
                 PluginLoader.UnloadPlugins();
                 
             }
-            Utils.GetTime();
             Console.ReadLine();
         }
     }

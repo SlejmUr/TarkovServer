@@ -9,6 +9,7 @@ namespace ServerLib.Controllers
         public static List<LoginProfile> Profiles;
         public static List<Account> Accounts;
         public static List<string> ActiveAccountIds;
+        //public static Dictionary<string,int> AccountActiveTime;
 
         #region Custom Made Functions
         public static void Init()
@@ -36,6 +37,7 @@ namespace ServerLib.Controllers
                 }
             }
         }
+
         #endregion
         #region Ported Functions
         /// <summary>

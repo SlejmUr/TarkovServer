@@ -13,6 +13,7 @@ namespace ServerLib
             string ip_port = $"https://{Ip}:{port}";
             CertHelper.Make(IPAddress.Parse(Ip), ip_port);
             DatabaseController.Init();
+            DialogController.Init();
             AccountController.Init();
             AccountController.GetAccountList();
             WebServer webServer = new WebServer();
@@ -23,6 +24,11 @@ namespace ServerLib
                 PluginLoader.LoadPlugins();
                 PluginLoader.PluginWebOverride(webServer);
             }
+        }
+        public void Stop(string reason)
+        {
+                PluginLoader.UnloadPlugins();
+                _webServer.StopServer(reason);
         }
         public void Stop()
         {

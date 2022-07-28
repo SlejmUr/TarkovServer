@@ -147,6 +147,12 @@ namespace ServerLib.Utilities
             return timeSpan.TotalSeconds;
         }
 
+        public static int UnixTimeNow_Int()
+        {
+            var timeSpan = (DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0));
+            return (int)(timeSpan.TotalSeconds);
+        }
+
         public static string ClearString(string data)
         {
             return data.Replace("\b","").Replace("\f", "").Replace("\n", "").Replace("\r", "").Replace("\t", "").Replace("\\", "");

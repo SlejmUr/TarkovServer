@@ -15,11 +15,11 @@ UnityEngine.dll\
 UnityEngine.CoreModule.dll
 
 ## Credits
-- TheMaoci for official Research and Dump Tutorials\
-- JET Team for making Tarkov Server\
-- Paulov for editing Existed Tarkov Server code\
-- Apofis for soon-to-be MultiPlayer code\
-- NBJF,Panther for Testing & Debugging\
+- TheMaoci for official Research and Dump Tutorials
+- JET Team for making Tarkov Server
+- Paulov for editing Existed Tarkov Server code & soon-to-be Multi Server
+- Apofis for soon-to-be MultiPlayer code
+- NBJF, Panther for Testing & Debugging
 - SlejmUr for the Original Idea
 
 ## Build
@@ -30,3 +30,11 @@ Build=>(Re-)Build Solution
 ## Linux Support
 I planning to add a linux support (If most of the stuff done) on this project, If you want to help me with this DM me on Discord!\
 SlejmUr#4007
+
+## Mod/Plugin support
+You can add your or anyone plugin, but be careful cus they can use any malicius code.
+Dont obfuscate plugin because it will not work! Need to get the Plugin.Plugin to load. More on Mod/Plugin Wiki! (In future)
+You can check TestPlugin for some of the changes.
+
+## Contributors & Devs
+You can add you own idea or anything, make a PR and I will check it. Feel free to import something you like.

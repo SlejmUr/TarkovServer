@@ -17,13 +17,13 @@ namespace ServerLib.Web
 
             if (string.IsNullOrWhiteSpace(server.Version))
             {
-                resp = ResponseControl.GetBody("{ isvalid: true, latestVersion: \"\"}");
+                resp = ResponseControl.GetBody("{ isvalid: true, latestVersion: \"" + server.Version + "\"}");
             }
             else
             {
                 if (server.Version == version)
                 {
-                    resp = ResponseControl.GetBody("{ isvalid: true, latestVersion: \"\"}");
+                    resp = ResponseControl.GetBody("{ isvalid: true, latestVersion: \"" + server.Version + "\"}");
                 }
                 else
                 {

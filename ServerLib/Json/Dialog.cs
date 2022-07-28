@@ -23,13 +23,13 @@ namespace ServerLib.Json
             public string? _id { get; set; }
             public string? uid { get; set; }
             public DialogController.messageTypes? type { get; set; }
-            public int? dt { get; set; }
+            public int dt { get; set; }
             public string? templateId { get; set; }
             public string? text { get; set; }
-            public bool? hasRewards { get; set; }
-            public bool? rewardCollected { get; set; }
-            public List<StashItems>? items { get; set; }
-            public int? maxStorageTime { get; set; }
+            public bool hasRewards { get; set; }
+            public bool rewardCollected { get; set; }
+            public StashItems? items { get; set; }
+            public int maxStorageTime { get; set; }
             public MessagesContent.SystemData? systemData { get; set; }
 
         }
@@ -38,8 +38,8 @@ namespace ServerLib.Json
         {
             public DialogController.messageTypes type { get; set; }
             public string? text { get; set; }
-            public int templateId { get; set; }
-            public int? maxStorageTime { get; set; }
+            public string? templateId { get; set; }
+            public int maxStorageTime { get; set; } = 0;
             public SystemData? systemData { get; set; }
 
             public class SystemData
@@ -53,7 +53,7 @@ namespace ServerLib.Json
         public class StashItems
         {
             public string stash { get; set; }
-            public StashData data { get; set; }
+            public List<StashData> data { get; set; }
             public string location { get; set; }
             public class StashData
             {

@@ -14,8 +14,7 @@ namespace ServerLib.Web
             Utils.PrintRequest(ctx.Request);
             string resp;
             // RPS
-            var TimeThingy = Utils.UnixTimeNow().ToString().Replace(",", ".");
-            TimeThingy = TimeThingy.Remove(TimeThingy.Length - 4);
+            var TimeThingy = Utils.UnixTimeNow_Int();
             if (AccountController.ClientHasProfile(SessionID))
             {
                 resp = ResponseControl.GetBody("{\"utc_time\":" + TimeThingy + "}");
@@ -39,8 +38,7 @@ namespace ServerLib.Web
             string resp;
             Utils.PrintRequest(ctx.Request);
             string SessionID = Utils.GetSessionID(ctx.Request.Headers);
-            var TimeThingy = Utils.UnixTimeNow().ToString().Replace(",", ".");
-            TimeThingy = TimeThingy.Remove(TimeThingy.Length - 4);
+            var TimeThingy = Utils.UnixTimeNow_Int();
             if (SessionID == null)
             {
                 resp = ResponseControl.GetBody("{\"msg\":\"No Session\", \"utc_time\":" + TimeThingy + "}");
