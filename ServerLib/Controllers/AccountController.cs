@@ -9,6 +9,7 @@ namespace ServerLib.Controllers
         public static List<LoginProfile> Profiles;
         public static List<Account> Accounts;
         public static List<string> ActiveAccountIds;
+
         //public static Dictionary<string,int> AccountActiveTime;
 
         #region Custom Made Functions
@@ -36,6 +37,12 @@ namespace ServerLib.Controllers
                     Accounts.Add(account);
                 }
             }
+        }
+
+        public static void SessionLogout(string sessionID)
+        {
+            Utils.PrintDebug($"User with ID {sessionID} has been logged out");
+            ActiveAccountIds.Remove(sessionID);
         }
 
         #endregion
@@ -299,18 +306,11 @@ namespace ServerLib.Controllers
             return false;
         }
 
-        public static string GetPMCPath(string sessionID)
-        {
-            if (!File.Exists($"user/profiles/{sessionID}/character.json"))
-            {
-                return $"user/profiles/{sessionID}/character.json";
-            }
-            else
-            {
-                throw new Exception("PMC Path is not exist!");
-            }
-        }
-
+        /// <summary>
+        /// Get the Lang from Account by SessionId
+        /// </summary>
+        /// <param name="sessionID">SessionId/AccountId</param>
+        /// <returns>"en" or Account Lang</returns>
         public static string GetAccountLang(string sessionID)
         {
             var Account = FindAccount(sessionID);
@@ -322,6 +322,65 @@ namespace ServerLib.Controllers
                 //save Account!!!
             }
             return Account.Lang;
+        }
+        #endregion
+        #region Edited but same functions
+        /// <summary>
+        /// Not fully done. DO NOT USE
+        /// </summary>
+        /// <param name="sessionID"></param>
+        public static void SaveAccount(string sessionID)
+        {
+            DatabaseController.FileAges[sessionID + "_Account"] = File.GetLastWriteTime(GetAccountPath(sessionID));
+            var path = GetAccountPath(sessionID);
+            if (File.Exists(path))
+            {
+                var time = File.GetLastWriteTime(path);
+                if (DatabaseController.FileAges[sessionID + "_Account"] == time)
+                {
+                    var fromMemory = JsonConvert.SerializeObject(FindAccount(sessionID));
+                    var saved = File.ReadAllText(GetAccountPath(sessionID));
+
+                    if (fromMemory != saved)
+                    {
+                        File.WriteAllText(path, JsonConvert.SerializeObject(FindAccount(sessionID)));
+                        time = File.GetLastWriteTime(path);
+                        DatabaseController.FileAges[sessionID + "_Account"] = time;
+                        Utils.PrintDebug($"Account file for account {sessionID} was saved to disk.");
+                    }
+                }
+                else
+                {
+                    DatabaseController.FileAges[sessionID + "_Account"] = time;
+                    Utils.PrintDebug($"Account file for account  {sessionID} was modified, reloaded.");
+                }
+            }
+            else //New account
+            {
+                File.WriteAllText(path, JsonConvert.SerializeObject(FindAccount(sessionID)));
+                var time = File.GetLastWriteTime(path);
+                DatabaseController.FileAges[sessionID + "_Account"] = time;
+                Utils.PrintDebug($"New account {sessionID} registered and was saved to disk.");
+            }
+
+        }
+        /// <summary>
+        /// Get the Character Path
+        /// </summary>
+        /// <param name="sessionID">SessionId/AccountId</param>
+        /// <returns>String as PATH</returns>
+        public static string GetCharacterPath(string sessionID)
+        {
+            return $"user/profiles/{sessionID}/character.json";
+        }
+        /// <summary>
+        /// Get the Account Path
+        /// </summary>
+        /// <param name="sessionID">SessionId/AccountId</param>
+        /// <returns>String as PATH</returns>
+        public static string GetAccountPath(string sessionID)
+        {
+            return $"user/profiles/{sessionID}/account.json";
         }
         #endregion
 

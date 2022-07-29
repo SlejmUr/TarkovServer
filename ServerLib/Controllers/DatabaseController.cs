@@ -7,9 +7,12 @@ namespace ServerLib.Controllers
 {
     public class DatabaseController
     {
+        public static Dictionary<string, DateTime> FileAges;
         public static Database DataBase = new();
         public static void Init()
         {
+            FileAges = new();
+            FileAges.Clear();
             ConfigController.Init();
             LoadCore();
             LoadBasics();

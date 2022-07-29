@@ -7,7 +7,6 @@ namespace ServerLib.Controllers
     public class DialogController
     {
         public static Dictionary<string, Dialog> Dialogs;
-        public static Dictionary<string, DateTime> DialogFileAge;
         public enum messageTypes 
         {
             npcTrader = 2,
@@ -21,8 +20,6 @@ namespace ServerLib.Controllers
         {
             Dialogs = new();
             Dialogs.Clear();
-            DialogFileAge = new();
-            DialogFileAge.Clear();
             Utils.PrintDebug("Initialization Done!", "debug", "[DIALOG]");
         }
         public static void InitializeDialogue(string sessionID)
@@ -37,7 +34,7 @@ namespace ServerLib.Controllers
                 Dialogs[sessionID] = JsonConvert.DeserializeObject<Dialog>(File.ReadAllText(GetDialoguePath(sessionID)));
             }
         }
-        public static void SaveToDisk(string sessionID)
+        public static void SaveDialog(string sessionID)
         {
             string path = GetDialoguePath(sessionID);
             if (Dialogs[sessionID] != null)
@@ -45,7 +42,7 @@ namespace ServerLib.Controllers
                 if (File.Exists(path))
                 {
                     var time = File.GetLastWriteTime(path);
-                    if (DialogFileAge[sessionID] == time)
+                    if (DatabaseController.FileAges[sessionID + "_Dialog"] == time)
                     {
                         var dialog = JsonConvert.SerializeObject(Dialogs[sessionID]);
                         var saved = File.ReadAllText(GetDialoguePath(sessionID));
@@ -54,14 +51,14 @@ namespace ServerLib.Controllers
                         {
                             File.WriteAllText(path, JsonConvert.SerializeObject(Dialogs[sessionID]));
                             time = File.GetLastWriteTime(path);
-                            DialogFileAge[sessionID] = time;
+                            DatabaseController.FileAges[sessionID + "_Dialog"] = time;
                             Utils.PrintDebug($"Dialogues for AID {sessionID} was saved.");
                         }
                     }
                     else
                     {
                         Dialogs[sessionID] = JsonConvert.DeserializeObject<Dialog>(File.ReadAllText(GetDialoguePath(sessionID)));
-                        DialogFileAge[sessionID] = time;
+                        DatabaseController.FileAges[sessionID + "_Dialog"] = time;
                         Utils.PrintDebug($"Dialogues for AID {sessionID} were modified elsewhere. Dialogue was reloaded successfully.");
                     }
                 }
@@ -69,7 +66,7 @@ namespace ServerLib.Controllers
                 {
                     File.WriteAllText(path, JsonConvert.SerializeObject(Dialogs[sessionID]));
                     var time = File.GetLastWriteTime(path);
-                    DialogFileAge[sessionID] = time;
+                    DatabaseController.FileAges[sessionID + "_Dialog"] = time;
                     Utils.PrintDebug($"Dialogues for AID {sessionID} was created and saved.");
                 }
             }

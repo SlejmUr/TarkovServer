@@ -45,7 +45,7 @@ namespace ServerLib.Web
             }
             else
             {
-                //KeepAlive(sessionID);
+                KeepAliveController.Main(SessionID);
                 resp = ResponseControl.GetBody("{\"msg\":\"OK\", \"utc_time\":" + TimeThingy + "}");
             }
             var rsp = ResponseControl.CompressRsp(resp);
@@ -72,6 +72,23 @@ namespace ServerLib.Web
                 Utils.PrintDebug($"Unknown User connected with client version {version}");
             }
             var rsp = ResponseControl.CompressRsp(ResponseControl.NullResponse());
+            ctx.Response.StatusCode = 200;
+            ctx.Response.ContentType = "application/json";
+            ctx.Response.ContentLength = rsp.Length;
+            await ctx.Response.TrySendAsync(rsp);
+            return;
+        }
+
+        [StaticRoute(HttpServerLite.HttpMethod.POST, "/client/game/logout")]
+        public async Task GameLogout(HttpContext ctx)
+        {
+            //REQ stuff
+            string resp;
+            Utils.PrintRequest(ctx.Request);
+            string SessionID = Utils.GetSessionID(ctx.Request.Headers);
+            string version = Utils.GetVersion(ctx.Request.Headers);
+            AccountController.SessionLogout(SessionID);
+            var rsp = ResponseControl.CompressRsp(ResponseControl.GetBody("{status: \"ok\"}"));
             ctx.Response.StatusCode = 200;
             ctx.Response.ContentType = "application/json";
             ctx.Response.ContentLength = rsp.Length;
