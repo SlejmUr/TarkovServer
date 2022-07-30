@@ -35,14 +35,7 @@ namespace ServerLib.Controllers
             }
             return list;
         }
-        public static string GetCustomizationStorage(string sessionID)
-        {
-            if (File.Exists($"users/profiles/{sessionID}/storage.json"))
-            {
-                File.WriteAllText($"users/profiles/{sessionID}/storage.json","{}");
-            }
-            return File.ReadAllText($"users/profiles/{sessionID}/storage.json");
-        }
+
 
         public static List<Traders.Suits> GetTraderCustomization()
         {

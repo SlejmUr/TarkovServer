@@ -1,6 +1,7 @@
 ﻿using ServerLib.Utilities;
 using ServerLib.Json;
 using Newtonsoft.Json;
+using ServerLib.Handlers;
 
 namespace ServerLib.Controllers
 {
@@ -22,72 +23,35 @@ namespace ServerLib.Controllers
             Dialogs.Clear();
             Utils.PrintDebug("Initialization Done!", "debug", "[DIALOG]");
         }
-        public static void InitializeDialogue(string sessionID)
+        public static void InitializeDialog(string sessionID)
         {
-            ReloadDialogue(sessionID);
+            ReloadDialog(sessionID);
             Utils.PrintDebug($"(Re)Loaded dialogues for AID: {sessionID} successfully.");
         }
-        public static void ReloadDialogue(string sessionID)
+        public static void ReloadDialog(string sessionID)
         {
-            if (File.Exists(GetDialoguePath(sessionID)))
+            if (File.Exists(SaveHandler.GetDialogPath(sessionID)))
             {
-                Dialogs[sessionID] = JsonConvert.DeserializeObject<Dialog>(File.ReadAllText(GetDialoguePath(sessionID)));
+                Dialogs[sessionID] = JsonConvert.DeserializeObject<Dialog>(File.ReadAllText(SaveHandler.GetDialogPath(sessionID)));
             }
         }
-        public static void SaveDialog(string sessionID)
+        public static void AddDialogMessage(string dialogID,Dialog.MessagesContent content, string sessionID, Dialog.StashItems rewards)
         {
-            string path = GetDialoguePath(sessionID);
-            if (Dialogs[sessionID] != null)
-            {
-                if (File.Exists(path))
-                {
-                    var time = File.GetLastWriteTime(path);
-                    if (DatabaseController.FileAges[sessionID + "_Dialog"] == time)
-                    {
-                        var dialog = JsonConvert.SerializeObject(Dialogs[sessionID]);
-                        var saved = File.ReadAllText(GetDialoguePath(sessionID));
-
-                        if (dialog != saved)
-                        {
-                            File.WriteAllText(path, JsonConvert.SerializeObject(Dialogs[sessionID]));
-                            time = File.GetLastWriteTime(path);
-                            DatabaseController.FileAges[sessionID + "_Dialog"] = time;
-                            Utils.PrintDebug($"Dialogues for AID {sessionID} was saved.");
-                        }
-                    }
-                    else
-                    {
-                        Dialogs[sessionID] = JsonConvert.DeserializeObject<Dialog>(File.ReadAllText(GetDialoguePath(sessionID)));
-                        DatabaseController.FileAges[sessionID + "_Dialog"] = time;
-                        Utils.PrintDebug($"Dialogues for AID {sessionID} were modified elsewhere. Dialogue was reloaded successfully.");
-                    }
-                }
-                else
-                {
-                    File.WriteAllText(path, JsonConvert.SerializeObject(Dialogs[sessionID]));
-                    var time = File.GetLastWriteTime(path);
-                    DatabaseController.FileAges[sessionID + "_Dialog"] = time;
-                    Utils.PrintDebug($"Dialogues for AID {sessionID} was created and saved.");
-                }
-            }
-        }
-        public static void AddDialogueMessage(string dialogueID,Dialog.MessagesContent content, string sessionID, Dialog.StashItems rewards)
-        {
-            ReloadDialogue(sessionID);
+            ReloadDialog(sessionID);
 
             if (Dialogs[sessionID] == null)
             {
-                InitializeDialogue(sessionID);
+                InitializeDialog(sessionID);
             }
 
             var dialogData = Dialogs[sessionID];
-            var isnewDialog = dialogData._id != dialogueID;
+            var isnewDialog = dialogData._id != dialogID;
 
             if (isnewDialog)
             { 
                 Dialog dialog = new()
                 { 
-                    _id = dialogueID,
+                    _id = dialogID,
                     messages = new(),
                     pinned = false,
                     New = 0,
@@ -127,7 +91,7 @@ namespace ServerLib.Controllers
             Dialog.Messages message = new()
             {
                 _id = Utils.CreateNewProfileID(),
-                uid = dialogueID,
+                uid = dialogID,
                 type = content.type,
                 dt = Utils.UnixTimeNow_Int(),
                 templateId = content.templateId,
@@ -141,25 +105,25 @@ namespace ServerLib.Controllers
 
             dialogData.messages.Add(message);
         }
-        public static void RemoveDialogue(string sessionID)
+        public static void RemoveDialog(string sessionID)
         {
-            ReloadDialogue(sessionID);
+            ReloadDialog(sessionID);
             Dialogs.Remove(sessionID);
         }
-        public static void SetDialoguePin(string sessionID, bool shouldPin)
+        public static void SetDialogPin(string sessionID, bool shouldPin)
         {
-            ReloadDialogue(sessionID);
+            ReloadDialog(sessionID);
             Dialogs[sessionID].pinned = shouldPin;
         }
         public static void SetRead(string sessionID)
         {
-            ReloadDialogue(sessionID);
+            ReloadDialog(sessionID);
             Dialogs[sessionID].New = 0;
             Dialogs[sessionID].attachmentsNew = 0;
         }
         public static void RemoveExpiredItems(string sessionID)
         {
-            ReloadDialogue(sessionID);
+            ReloadDialog(sessionID);
             int curDt = Utils.UnixTimeNow_Int();
 
             foreach (var msg in Dialogs[sessionID].messages)
@@ -170,25 +134,21 @@ namespace ServerLib.Controllers
                 }
             }
         }
-        public static string GenerateDialogueList(string sessionID)
+        public static string GenerateDialogList(string sessionID)
         {
             // Reload dialogues before continuing.
-            ReloadDialogue(sessionID);
+            ReloadDialog(sessionID);
 
             List<Dialog> data = new();
-            var dialogueId = Dialogs[sessionID]._id;
+            var dialogId = Dialogs[sessionID]._id;
 
-            data.Add(GetDialogueInfo(dialogueId, sessionID));
+            data.Add(GetDialogInfo(dialogId, sessionID));
 
             return JsonConvert.SerializeObject(data);
         }
-        public static string GetDialoguePath(string sessionID)
+        public static string GenerateDialogView(string dialogueId, string sessionID)
         {
-            return $"user/profiles/{sessionID}/dialogue.json";
-        }
-        public static string GenerateDialogueView(string dialogueId, string sessionID)
-        {
-            ReloadDialogue(sessionID);
+            ReloadDialog(sessionID);
 
             var dialog = Dialogs[sessionID];
 
@@ -215,7 +175,7 @@ namespace ServerLib.Controllers
         }
         public static string GetAllAttachments(string sessionID)
         {
-            ReloadDialogue(sessionID);
+            ReloadDialog(sessionID);
 
             List<Dialog.Messages> output = new();
             int curDt = Utils.UnixTimeNow_Int();
@@ -231,36 +191,36 @@ namespace ServerLib.Controllers
 
             return JsonConvert.SerializeObject(output);
         }
-        public static Dialog GetDialogueInfo(string dialogueId, string sessionID)
+        public static Dialog GetDialogInfo(string dialogueId, string sessionID)
         {
-            var dialogue = Dialogs[sessionID];
-            Dialog dialog = new()
+            var dialog = Dialogs[sessionID];
+            Dialog dialog_ret = new()
             {
                 _id = dialogueId,
                 type = (messageTypes)2,
-                messages = new() { GetMessagePreview(dialogue) },
-                New =  dialogue.New,
-                attachmentsNew = dialogue.attachmentsNew,
-                pinned = dialogue.pinned,
+                messages = new() { GetMessagePreview(dialog) },
+                New =  dialog.New,
+                attachmentsNew = dialog.attachmentsNew,
+                pinned = dialog.pinned,
             };
-            return dialog;
+            return dialog_ret;
         }
-        public static Dialog.Messages GetMessagePreview(Dialog dialogue)
+        public static Dialog.Messages GetMessagePreview(Dialog dialog)
         {
             // The last message of the dialogue should be shown on the preview.
-            var message = dialogue.messages[dialogue.messages.Count - 1];
+            var message = dialog.messages[dialog.messages.Count - 1];
             Dialog.Messages message_ret = new()
             {
                 dt = message.dt,
                 type = message.type,
                 templateId = message.templateId,
-                uid = dialogue._id
+                uid = dialog._id
             };
             return message_ret;
         }
         public static List<Dialog.StashItems.StashData> GetMessageItemContents(string sessionID,string messageId)
         {
-            ReloadDialogue(sessionID);
+            ReloadDialog(sessionID);
             foreach (var msg in Dialogs[sessionID].messages)
             {
                 if (msg._id == messageId)

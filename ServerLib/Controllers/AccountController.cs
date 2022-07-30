@@ -325,62 +325,15 @@ namespace ServerLib.Controllers
         }
         #endregion
         #region Edited but same functions
-        /// <summary>
-        /// Not fully done. DO NOT USE
-        /// </summary>
-        /// <param name="sessionID"></param>
-        public static void SaveAccount(string sessionID)
-        {
-            DatabaseController.FileAges[sessionID + "_Account"] = File.GetLastWriteTime(GetAccountPath(sessionID));
-            var path = GetAccountPath(sessionID);
-            if (File.Exists(path))
-            {
-                var time = File.GetLastWriteTime(path);
-                if (DatabaseController.FileAges[sessionID + "_Account"] == time)
-                {
-                    var fromMemory = JsonConvert.SerializeObject(FindAccount(sessionID));
-                    var saved = File.ReadAllText(GetAccountPath(sessionID));
 
-                    if (fromMemory != saved)
-                    {
-                        File.WriteAllText(path, JsonConvert.SerializeObject(FindAccount(sessionID)));
-                        time = File.GetLastWriteTime(path);
-                        DatabaseController.FileAges[sessionID + "_Account"] = time;
-                        Utils.PrintDebug($"Account file for account {sessionID} was saved to disk.");
-                    }
-                }
-                else
-                {
-                    DatabaseController.FileAges[sessionID + "_Account"] = time;
-                    Utils.PrintDebug($"Account file for account  {sessionID} was modified, reloaded.");
-                }
-            }
-            else //New account
-            {
-                File.WriteAllText(path, JsonConvert.SerializeObject(FindAccount(sessionID)));
-                var time = File.GetLastWriteTime(path);
-                DatabaseController.FileAges[sessionID + "_Account"] = time;
-                Utils.PrintDebug($"New account {sessionID} registered and was saved to disk.");
-            }
-
-        }
         /// <summary>
-        /// Get the Character Path
+        /// Get the Character template from side
         /// </summary>
-        /// <param name="sessionID">SessionId/AccountId</param>
-        /// <returns>String as PATH</returns>
-        public static string GetCharacterPath(string sessionID)
+        /// <param name="side">bear or usec</param>
+        /// <returns>Readed character json</returns>
+        public static string GetCharacterTemplateBySide(string side)
         {
-            return $"user/profiles/{sessionID}/character.json";
-        }
-        /// <summary>
-        /// Get the Account Path
-        /// </summary>
-        /// <param name="sessionID">SessionId/AccountId</param>
-        /// <returns>String as PATH</returns>
-        public static string GetAccountPath(string sessionID)
-        {
-            return $"user/profiles/{sessionID}/account.json";
+            return File.ReadAllText($"Files/characters/character_{side}.json");
         }
         #endregion
 
