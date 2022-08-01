@@ -24,6 +24,10 @@ namespace ServerLib.Controllers
                 //UpdatePlayerHideout(sessionID);
             }
         }
+        public static void DeleteKeepAlive(string sessionID)
+        {
+            KeepAliveCounter.Remove(sessionID);
+        }
 
     }
 }

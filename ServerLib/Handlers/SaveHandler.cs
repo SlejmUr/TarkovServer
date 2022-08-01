@@ -15,6 +15,8 @@ namespace ServerLib.Handlers
             Utils.PrintDebug("Saving started...", "info","[SAVE]");
             Save(sessionID, "Account", GetAccountPath(sessionID), JsonConvert.SerializeObject(AccountController.FindAccount(sessionID)));
             Save(sessionID, "Dialog", GetDialogPath(sessionID), JsonConvert.SerializeObject(DialogController.Dialogs[sessionID]));
+            Save(sessionID, "Character", GetCharacterPath(sessionID), "{}");
+            Save(sessionID, "Storage", GetStoragePath(sessionID), "{}");
             Utils.PrintDebug("Saving ended!", "info", "[SAVE]");
         }
 
@@ -98,6 +100,28 @@ namespace ServerLib.Handlers
         public static string GetDialogPath(string sessionID)
         {
             return $"user/profiles/{sessionID}/dialog.json";
+        }
+
+        /// <summary>
+        /// Delete everything FileAge related for Session
+        /// </summary>
+        /// <param name="sessionID">SessionId/AccountId</param>
+        public static void DeleteAll(string sessionID)
+        {
+            Delete(sessionID, "Account");
+            Delete(sessionID, "Dialog");
+            Delete(sessionID, "Character");
+            Delete(sessionID, "Storage");
+        }
+
+        /// <summary>
+        /// Delete FileAge by Parameters
+        /// </summary>
+        /// <param name="sessionID">SessionId/AccountId</param>
+        /// <param name="saveType">Account,Dialog,Storage(Customization),etc</param>
+        public static void Delete(string sessionID,string saveType)
+        {
+            DatabaseController.FileAges.Remove(sessionID + "_" + saveType);
         }
     }
 }

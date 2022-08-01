@@ -13,12 +13,18 @@ namespace ServerLib
             webserverSettings.Ssl.PfxCertificateFile = "cert/cert.pfx";
             webserverSettings.Ssl.Enable = true;
             // Turn this off when Doing real one, not debug!
-            webserverSettings.Debug.Responses = true;
-            webserverSettings.Debug.Requests = true;
-            webserverSettings.Debug.Routing = true;
+            if (Handlers.ArgumentHandler.Debug)
+            {
+                webserverSettings.Debug.Responses = true;
+                webserverSettings.Debug.Requests = true;
+                webserverSettings.Debug.Routing = true;
+            }
             _Server = new Webserver(webserverSettings);
             _Server.Settings.Headers.Host = $"https://{IP}:{Port}";
-            _Server.Events.Logger = Console.WriteLine;
+            if (Handlers.ArgumentHandler.Debug)
+            {
+                _Server.Events.Logger = Console.WriteLine;
+            }
             _Server.Routes.Default = DefaultRoute;
             _Server.Start();
             Console.WriteLine("Http Server listening on " + $"https://{IP}:{Port}");
@@ -57,12 +63,7 @@ namespace ServerLib
         [StaticRoute(HttpServerLite.HttpMethod.GET, "/test")]
         public async Task Test(HttpContext ctx)
         {
-            string time = ctx.Request.TimestampUtc.ToString();
-            string fullip = ctx.Request.Url.Full;
-            string from_ip = ctx.Request.Source.IpAddress;
-            string SessionID = Utils.GetSessionID(ctx.Request.Headers);
-
-            Console.WriteLine();
+            Console.WriteLine("TEST");
             string resp = "TEST";
             ctx.Response.StatusCode = 200;
             ctx.Response.ContentType = "application/json";

@@ -1,4 +1,6 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using System.Globalization;
 
 namespace ServerLib.Json
 {
@@ -94,15 +96,72 @@ namespace ServerLib.Json
             public string Suits { get; set; }
             public string QuestAssort { get; set; }
             public string RepairPriceRate { get; set; }
-            public assort Assort { get; set; } = new();
+            public assort Assort { get; set; }
             public class assort
             {
                 public int NextResupply { get; set; }
-                public Dictionary<string, string> Items { get; set; } = new();
-                public Dictionary<string, string> BarterScheme { get; set; } = new();
-                public Dictionary<string, string> LoyalLevelItems { get; set; } = new();
+                public List<Item> Items { get; set; }
+
+                [JsonProperty("barter_scheme")]
+                public Dictionary<string, List<List<Barter>>> BarterScheme { get; set; }
+
+                [JsonProperty("loyal_level_items")]
+                public object LoyalLevelItems { get; set; }
             }
         }
         public Dictionary<string, string> Weather { get; set; } = new();
+
+        public partial class Barter
+        {
+            [JsonProperty("count")]
+            public long Count { get; set; }
+
+            [JsonProperty("_tpl")]
+            public string Tpl { get; set; }
+        }
+        public class Item
+        {
+            [JsonProperty("_id")]
+            public string Id { get; set; }
+
+            [JsonProperty("_tpl")]
+            public string Tpl { get; set; }
+
+            [JsonProperty("parentId")]
+            public string ParentId { get; set; }
+
+            [JsonProperty("slotId")]
+            public string SlotId { get; set; }
+
+            [JsonProperty("upd")]
+            public UpdClass Upd { get; set; }
+        }
+        public class UpdClass
+        {
+            [JsonProperty("BuyRestrictionMax", NullValueHandling = NullValueHandling.Ignore)]
+            public long? BuyRestrictionMax { get; set; }
+
+            [JsonProperty("BuyRestrictionCurrent", NullValueHandling = NullValueHandling.Ignore)]
+            public long? BuyRestrictionCurrent { get; set; }
+
+            [JsonProperty("StackObjectsCount")]
+            public long StackObjectsCount { get; set; }
+
+            [JsonProperty("UnlimitedCount", NullValueHandling = NullValueHandling.Ignore)]
+            public bool? UnlimitedCount { get; set; }
+        }
+
+    }
+    public static class DatabaseConverter
+    {
+        public static readonly JsonSerializerSettings Settings = new JsonSerializerSettings
+        {
+            MetadataPropertyHandling = MetadataPropertyHandling.Ignore,
+            DateParseHandling = DateParseHandling.None,
+            Converters =
+            {
+                new IsoDateTimeConverter { DateTimeStyles = DateTimeStyles.AssumeUniversal }
+            },
+        };
     }
 }

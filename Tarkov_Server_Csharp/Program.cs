@@ -1,16 +1,12 @@
-﻿using ComponentAce.Compression.Libs.zlib;
-using Ionic.Zlib;
-using System.Net;
-using System.Text;
-using System.Linq;
-using Newtonsoft.Json.Linq;
-using Newtonsoft.Json;
-using ServerLib.Handlers;
-using ServerLib.Controllers;
-using ServerLib.Utilities;
-using ServerLib.Web;
+﻿using Newtonsoft.Json;
 using ServerLib;
+using ServerLib.Controllers;
+using ServerLib.Handlers;
+using ServerLib.Utilities;
 using ServerLib.Json;
+using System.Net;
+using System.Globalization;
+using Newtonsoft.Json.Converters;
 
 namespace Tarkov_Server_Csharp
 {
@@ -21,6 +17,11 @@ namespace Tarkov_Server_Csharp
         public static string ip_port = $"https://{IP_Address}:{Port}";
         static void Main(string[] args)
         {
+            var version = new CVersion();
+            Console.WriteLine("Welcome in Tarkov Server Console!");
+            Console.WriteLine();
+            Console.WriteLine("Versions: \n" + Versions.ServerVersion + "\n" + version.LoadVersion);
+            Console.WriteLine();
             ArgumentHandler.MainArg(args);
             if (ArgumentHandler.AskHelp)
             {
@@ -55,7 +56,7 @@ namespace Tarkov_Server_Csharp
 
 
             WebServer webServer = new WebServer();
-            webServer.MainStart(IP_Address,Port);
+            webServer.MainStart(IP_Address, Port);
 
             if (!ArgumentHandler.DontLoadPlugin)
             {
@@ -64,9 +65,8 @@ namespace Tarkov_Server_Csharp
                 PluginLoader.PluginWebOverride(webServer);
                 Console.ReadLine();
                 PluginLoader.UnloadPlugins();
-                
+
             }
-            Console.ReadLine();
         }
     }
 }

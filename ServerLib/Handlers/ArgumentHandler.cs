@@ -4,6 +4,7 @@ namespace ServerLib.Handlers
 {
     public class ArgumentHandler
     {
+        #region Handler
         public static string Ip { get; internal set; } = "172.0.0.1";
         public static int Port { get; internal set; } = 7777;
         public static bool Debug { get; internal set; } = false;
@@ -24,9 +25,20 @@ namespace ServerLib.Handlers
             Console.WriteLine();
             Console.WriteLine("\tHelp");
             Console.WriteLine();
+            Console.WriteLine("Command arguments to change server behavour:");
+            Console.WriteLine();
+            Console.WriteLine("-ip {168.192.1.50} \t\t Running the server under this IP. (Default: 172.0.0.1 AKA Localhost)");
+            Console.WriteLine("-port {7777} \t\t\t Running the server under this Port. (Default: 7777)");
+            Console.WriteLine("-loadplugin {pluginfile.dll} \t Running the server & load plugin before everything else. (Not default)");
+            Console.WriteLine("-noplugin \t\t\t Disable loading all plugins, override -loadplugin!");
+            Console.WriteLine("-debug \t\t\t\t Running the server with debug mode");
+            Console.WriteLine("-help \t\t\t\t Showing this text.");
+            Console.WriteLine();
             Console.ReadLine();
             Environment.Exit(1);
         }
+        #endregion
+        #region Functions
         static int IndexOfParam(string[] args, string param)
         {
             for (var x = 0; x < args.Length; ++x)
@@ -60,34 +72,6 @@ namespace ServerLib.Handlers
 
             return default(T);
         }
-
-        static List<T> GetParameterList<T>(string[] args, string param)
-        {
-            var list = new List<T>();
-            var index = IndexOfParam(args, param);
-
-            if (index == -1 || index == (args.Length - 1))
-                return list;
-
-            index++;
-
-            while (index < args.Length)
-            {
-                var strParam = args[index];
-
-                if (strParam[0] == '-') break;
-
-                var converter = TypeDescriptor.GetConverter(typeof(T));
-                if (converter != null)
-                {
-                    list.Add((T)converter.ConvertFromString(strParam));
-                }
-
-                index++;
-            }
-
-            return list;
-        }
-
+        #endregion
     }
 }

@@ -10,8 +10,6 @@ namespace ServerLib.Controllers
         public static List<Account> Accounts;
         public static List<string> ActiveAccountIds;
 
-        //public static Dictionary<string,int> AccountActiveTime;
-
         #region Custom Made Functions
         public static void Init()
         {
@@ -39,6 +37,10 @@ namespace ServerLib.Controllers
             }
         }
 
+        /// <summary>
+        /// Remove Session from ActiveAccounts
+        /// </summary>
+        /// <param name="sessionID">SessionId/AccountId</param>
         public static void SessionLogout(string sessionID)
         {
             Utils.PrintDebug($"User with ID {sessionID} has been logged out");
@@ -334,6 +336,48 @@ namespace ServerLib.Controllers
         public static string GetCharacterTemplateBySide(string side)
         {
             return File.ReadAllText($"Files/characters/character_{side}.json");
+        }
+
+        /// <summary>
+        /// Set session ready to WIPE
+        /// </summary>
+        /// <param name="sessionID">SessionId/AccountId</param>
+        public static void SetWipe(string sessionID)
+        {
+            var Account = FindAccount(sessionID);
+            if (Account == null) { new Exception("Account null!"); }
+            Account.Wipe = true;
+        }
+
+        /// <summary>
+        /// Delete everything that this account was used for.
+        /// </summary>
+        /// <param name="sessionID">SessionId/AccountId</param>
+        /// <param name="profile">Account/Profile Name</param>
+        /// <returns>OK or FAILED</returns>
+        public static string DeleteAccount(string sessionID,string profile)
+        {
+            if (Directory.Exists($"user/profiles/{sessionID}"))
+            {
+                if (Accounts.Where(x => x.Id == sessionID).Count() > 0)
+                {
+                    Accounts.Remove(Accounts.Where(x => x.Id == sessionID).FirstOrDefault());
+                }
+                if (Profiles.Where(x => x.UserName == profile).Count() > 0)
+                {
+                    Profiles.Remove(Profiles.Where(x => x.UserName == profile).FirstOrDefault());
+                }
+                if (ActiveAccountIds.Contains(sessionID))
+                {
+                    ActiveAccountIds.Remove(sessionID);
+                }
+                DialogController.RemoveDialog(sessionID);
+                Handlers.SaveHandler.DeleteAll(sessionID);
+                KeepAliveController.DeleteKeepAlive(sessionID);
+                Directory.Delete($"user/profiles/{sessionID}", true);
+                return "OK";
+            }
+            return "FAILED";
         }
         #endregion
 
