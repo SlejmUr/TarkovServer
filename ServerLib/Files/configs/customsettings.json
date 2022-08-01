@@ -1,0 +1,26 @@
+﻿{
+  "Account": {
+    "checkTakenNickname": false
+  },
+  "Locale": {
+    "baseReplace": "en",
+    "customLocale": {
+      "fromReplace": [
+        "Attention! This is a Beta version of Escape from Tarkov for testing purposes."
+      ],
+      "toReplace": [
+        "Welcome to an Escape from Tarkov emulator."
+      ]
+    },
+    "customMenu": {
+      "fromReplace": [
+        "{0} Beta version"
+      ],
+      "toReplace": [
+        "{0} Custom version"
+      ]
+    },
+    "useCustomLocale": false,
+    "useCustomMenu": false
+  }
+}

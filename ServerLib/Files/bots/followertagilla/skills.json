@@ -1,0 +1,38 @@
+[
+	{
+		"Id": "Strength",
+		"LastAccess": 0,
+		"PointsEarnedDuringSession": 0,
+		"Progress": 5100
+	},
+	{
+		"Id": "Endurance",
+		"LastAccess": 0,
+		"PointsEarnedDuringSession": 0,
+		"Progress": 5100
+	},
+	{
+		"Id": "Vitality",
+		"LastAccess": 0,
+		"PointsEarnedDuringSession": 0,
+		"Progress": 5100
+	},
+	{
+		"Id": "Health",
+		"LastAccess": 0,
+		"PointsEarnedDuringSession": 0,
+		"Progress": 5100
+	},
+	{
+		"Id": "BotReload",
+		"LastAccess": 0,
+		"PointsEarnedDuringSession": 0,
+		"Progress": 5100
+	},
+	{
+		"Id": "StressResistance",
+		"LastAccess": 0,
+		"PointsEarnedDuringSession": 0,
+		"Progress": 5100
+	}
+]

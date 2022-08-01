@@ -1,0 +1,44 @@
+{
+	"body": [
+		"5cde95d97d6c8b647a3769b0",
+		"5d1f56c686f7744bcd13459c",
+		"5d4da0cb86f77450fe0a6629",
+		"5d1f56e486f7744bce0ee9ed",
+		"5e9da17386f774054b6f79a3",
+		"5d1f56f186f7744bcb0acd1a",
+		"5d1f56ff86f7743f8362bcd7",
+		"5d1f56a686f7744bce0ee9eb",
+		"5e4bb35286f77406a511c9bc",
+		"5f5e4075df4f3100376a8138",
+		"5fd3e9f71b735718c25cd9f8",
+		"5fcf63da5c287f01f22bf245",
+		"6033a35f80ae5e2f970ba6bb"
+	],
+	"feet": [
+		"5cde95ef7d6c8b04713c4f2d",
+		"5e4bb3b586f77406812bd579",
+		"5e9dcadd86f7743e20652f23",
+		"5d1f591186f7744bcc048755",
+		"5d1f592286f7743f8362bcdb",
+		"5d1f590486f7744bcd13459e",
+		"5d1f58ed86f7744bcb0acd1c",
+		"5d1f593286f7743014162044",
+		"5df8a08886f7740bfe6df775",
+		"5f5e40a06760b4138443b341",
+		"5fcf940bce1ba36a513bb9cc",
+		"6033a3fee29c9f6c9b14e74e"
+	],
+	"hands": [
+		"5cde95fa7d6c8b04737c2d13"
+	],
+	"head": [
+		"5cde96047d6c8b20b577f016",
+		"5fdb5950f5264a66150d1c6e",
+		"5fdb4139e4ed5b5ea251e4ed"
+	],
+	"voice": [
+		"Usec_1",
+		"Usec_2",
+		"Usec_3"
+	]
+}

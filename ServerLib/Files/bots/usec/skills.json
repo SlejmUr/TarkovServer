@@ -1,0 +1,286 @@
+{
+    "Common": {
+        "Endurance": {
+            "min": 0,
+            "max": 5100
+        },
+        "Strength": {
+            "min": 0,
+            "max": 5100
+        },
+        "Vitality": {
+            "min": 0,
+            "max": 5100
+        },
+        "Health": {
+            "min": 0,
+            "max": 5100
+        },
+        "StressResistance": {
+            "min": 0,
+            "max": 5100
+        },
+        "Metabolism": {
+            "min": 0,
+            "max": 5100
+        },
+        "Immunity": {
+            "min": 0,
+            "max": 5100
+        },
+        "Pistol": {
+            "min": 0,
+            "max": 5100
+        },
+        "Assault": {
+            "min": 0,
+            "max": 5100
+        },
+        "SMG": {
+            "min": 0,
+            "max": 5100
+        },
+        "Shotgun": {
+            "min": 0,
+            "max": 5100
+        },
+        "Sniper": {
+            "min": 0,
+            "max": 5100
+        },
+        "LMG": {
+            "min": 0,
+            "max": 5100
+        },
+        "Throwing": {
+            "min": 0,
+            "max": 5100
+        },
+        "DMR": {
+            "min": 0,
+            "max": 5100
+        },
+        "RecoilControl": {
+            "min": 0,
+            "max": 5100
+        },
+        "AimDrills": {
+            "min": 0,
+            "max": 5100
+        },
+        "CovertMovement": {
+            "min": 0,
+            "max": 5100
+        },
+        "ProneMovement": {
+            "min": 0,
+            "max": 5100
+        }
+    },
+    "Mastering": {
+        "57": {
+            "min": 0,
+            "max": 5100
+        },
+        "M4": {
+            "min": 0,
+            "max": 5100
+        },
+        "AKM": {
+            "min": 0,
+            "max": 5100
+        },
+        "SKS": {
+            "min": 0,
+            "max": 5100
+        },
+        "AKSU": {
+            "min": 0,
+            "max": 5100
+        },
+        "AK74": {
+            "min": 0,
+            "max": 5100
+        },
+        "VSS": {
+            "min": 0,
+            "max": 5100
+        },
+        "MP443": {
+            "min": 0,
+            "max": 5100
+        },
+        "MP133": {
+            "min": 0,
+            "max": 5100
+        },
+        "MP153": {
+            "min": 0,
+            "max": 5100
+        },
+        "PM": {
+            "min": 0,
+            "max": 5100
+        },
+        "PB": {
+            "min": 0,
+            "max": 5100
+        },
+        "P226": {
+            "min": 0,
+            "max": 5100
+        },
+        "MP5": {
+            "min": 0,
+            "max": 5100
+        },
+        "TT": {
+            "min": 0,
+            "max": 5100
+        },
+        "SAIGA": {
+            "min": 0,
+            "max": 5100
+        },
+        "PP19": {
+            "min": 0,
+            "max": 5100
+        },
+        "MPX": {
+            "min": 0,
+            "max": 5100
+        },
+        "PP-91": {
+            "min": 0,
+            "max": 5100
+        },
+        "SV98": {
+            "min": 0,
+            "max": 5100
+        },
+        "DVL": {
+            "min": 0,
+            "max": 5100
+        },
+        "TOZ106": {
+            "min": 0,
+            "max": 5100
+        },
+        "R11SRASS": {
+            "min": 0,
+            "max": 5100
+        },
+        "GLOCK17": {
+            "min": 0,
+            "max": 5100
+        },
+        "APS": {
+            "min": 0,
+            "max": 5100
+        },
+        "M1A": {
+            "min": 0,
+            "max": 5100
+        },
+        "M870": {
+            "min": 0,
+            "max": 5100
+        },
+        "mosin": {
+            "min": 0,
+            "max": 5100
+        },
+        "SA-58": {
+            "min": 0,
+            "max": 5100
+        },
+        "sr1mp": {
+            "min": 0,
+            "max": 5100
+        },
+        "mp7": {
+            "min": 0,
+            "max": 5100
+        },
+        "r700": {
+            "min": 0,
+            "max": 5100
+        },
+        "VPO101": {
+            "min": 0,
+            "max": 5100
+        },
+        "SVD": {
+            "min": 0,
+            "max": 5100
+        },
+        "MDR": {
+            "min": 0,
+            "max": 5100
+        },
+        "ASH12": {
+            "min": 0,
+            "max": 5100
+        },
+        "P90": {
+            "min": 0,
+            "max": 5100
+        },
+        "m9": {
+            "min": 0,
+            "max": 5100
+        },
+        "KS23": {
+            "min": 0,
+            "max": 5100
+        },
+        "MP9": {
+            "min": 0,
+            "max": 5100
+        },
+        "VPO_215": {
+            "min": 0,
+            "max": 5100
+        },
+        "T5000": {
+            "min": 0,
+            "max": 5100
+        },
+        "SR25": {
+            "min": 0,
+            "max": 5100
+        },
+        "m1911": {
+            "min": 0,
+            "max": 5100
+        },
+        "PPSH": {
+            "min": 0,
+            "max": 5100
+        },
+        "RFB": {
+            "min": 0,
+            "max": 5100
+        },
+        "UMP45": {
+            "min": 0,
+            "max": 5100
+        },
+        "M590": {
+            "min": 0,
+            "max": 5100
+        },
+        "Mk18": {
+            "min": 0,
+            "max": 5100
+        },
+        "VECTOR": {
+            "min": 0,
+            "max": 5100
+        },
+        "MCX": {
+            "min": 0,
+            "max": 5100
+        }
+    }
+}

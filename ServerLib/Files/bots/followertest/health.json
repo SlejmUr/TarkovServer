@@ -1,0 +1,44 @@
+{
+	"Hydration": {
+		"min": 100,
+		"max": 100
+	},
+	"Energy": {
+		"min": 100,
+		"max": 100
+	},
+	"Temperature": {
+		"min": 36.6,
+		"max": 40
+	},
+	"BodyParts": {
+		"Head": {
+			"min": 50,
+			"max": 50
+		},
+		"Chest": {
+			"min": 110,
+			"max": 110
+		},
+		"Stomach": {
+			"min": 100,
+			"max": 100
+		},
+		"LeftArm": {
+			"min": 80,
+			"max": 80
+		},
+		"RightArm": {
+			"min": 80,
+			"max": 80
+		},
+		"LeftLeg": {
+			"min": 85,
+			"max": 85
+		},
+		"RightLeg": {
+			"min": 85,
+			"max": 85
+		}
+	}
+}

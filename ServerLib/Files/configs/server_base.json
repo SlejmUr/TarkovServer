@@ -1,0 +1,17 @@
+{
+	"ip": "127.0.0.1",
+	"port": 443,
+	"name": "SIT Server",
+	"discord": "",
+	"website": "",
+	"version": "",
+	"debug": true,
+	"lootDebug": true,
+  "serverIPs": {
+    "Enable": false,
+    "Trading": "https://127.0.0.1:443",
+    "Messaging": "https://127.0.0.1:443",
+    "Main": "https://127.0.0.1:443",
+    "RagFair": "https://127.0.0.1:443"
+  }
+}

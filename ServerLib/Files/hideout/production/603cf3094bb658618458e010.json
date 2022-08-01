@@ -1,0 +1,33 @@
+{
+	"_id": "603cf3094bb658618458e010",
+	"areaType": 10,
+	"requirements": [
+		{
+			"areaType": 10,
+			"requiredLevel": 1,
+			"type": "Area"
+		},
+		{
+			"templateId": "5c1265fc86f7743f896a21c2",
+			"count": 1,
+			"isFunctional": false,
+			"type": "Item"
+		},
+		{
+			"templateId": "5d1b309586f77425227d1676",
+			"count": 1,
+			"isFunctional": false,
+			"type": "Item"
+		},
+		{
+			"templateId": "5d4042a986f7743185265463",
+			"type": "Tool"
+		}
+	],
+	"productionTime": 6000,
+	"boosters": null,
+	"endProduct": "56742c324bdc2d150f8b456d",
+	"continuous": false,
+	"count": 1,
+	"productionLimitCount": 0
+}

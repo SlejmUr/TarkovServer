@@ -1,0 +1,24 @@
+{
+	"Common": {
+		"Endurance": {
+			"min": 5100,
+			"max": 5100
+		},
+		"Strength": {
+			"min": 5100,
+			"max": 5100
+		},
+		"BotReload": {
+			"min": 1000,
+			"max": 1000
+		},
+		"CovertMovement": {
+			"min": 5100,
+			"max": 5100
+		},
+		"Attention": {
+			"min": 5100,
+			"max": 5100
+		}
+	}
+}
