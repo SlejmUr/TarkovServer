@@ -19,6 +19,7 @@ UnityEngine.CoreModule.dll
 - JET Team for making Tarkov Server
 - Paulov for editing Existed Tarkov Server code & soon-to-be Multi Server
 - Apofis for soon-to-be MultiPlayer code
+- Altered Escape Team for MTGA and some of easier Server code
 - NBJF, Panther for Testing & Debugging
 - SlejmUr for the Original Idea
 
@@ -32,9 +33,12 @@ I planning to add a linux support (If most of the stuff done) on this project, I
 SlejmUr#4007
 
 ## Mod/Plugin support
-You can add your or anyone plugin, but be careful cus they can use any malicius code.
-Dont obfuscate plugin because it will not work! Need to get the Plugin.Plugin to load. More on Mod/Plugin Wiki! (In future)
+You can add your or anyone plugin, but be careful cus they can use any malicius code.\
+Dont obfuscate plugin because it will not work! Need to get the Plugin.Plugin to load. More on Mod/Plugin Wiki! (In future)\
 You can check TestPlugin for some of the changes.
 
 ## Contributors & Devs
 You can add you own idea or anything, make a PR and I will check it. Feel free to import something you like.
+
+## Releases
+Because I used 2 project to make server work (Lib + Console), Probably its gonna be hard to make a proper "Build/Release" for it, I still looking for a solution
