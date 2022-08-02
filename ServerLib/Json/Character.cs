@@ -2,8 +2,9 @@
 
 namespace ServerLib.Json
 {
-    internal class Character
+    public class Character
     {
+
         public class Base
         {
             [JsonProperty("_id")]
@@ -448,44 +449,6 @@ namespace ServerLib.Json
 
             [JsonProperty("StackObjectsCount")]
             public int? StackObjectsCount { get; set; }
-
-            [JsonProperty("Dogtag")]
-            public Dogtag? Dogtag { get; set; }
-        }
-        public class Dogtag
-        {
-            [JsonProperty("AccountId")]
-            public string AccountId { get; set; }
-
-            [JsonProperty("ProfileId")]
-            public string ProfileId { get; set; }
-
-            [JsonProperty("Nickname")]
-            public string Nickname { get; set; }
-
-            [JsonProperty("Side")]
-            public string Side { get; set; }
-
-            [JsonProperty("Level")]
-            public int Level { get; set; }
-
-            [JsonProperty("Time")]
-            public string Time { get; set; }
-
-            [JsonProperty("Status")]
-            public string Status { get; set; }
-
-            [JsonProperty("KillerAccountId")]
-            public string KillerAccountId { get; set; }
-
-            [JsonProperty("KillerProfileId")]
-            public string KillerProfileId { get; set; }
-
-            [JsonProperty("KillerName")]
-            public string KillerName { get; set; }
-
-            [JsonProperty("WeaponName")]
-            public string WeaponName { get; set; }
         }
         public class MedKit
         {

@@ -21,6 +21,7 @@ namespace ServerLib.Controllers
             LoadQuests();
             LoadCustomization();
             LoadLocale();
+            LoadTemplates();
             Utils.PrintDebug("LoadLocations");
             Utils.PrintDebug("LoadTraders");
             Utils.PrintDebug("LoadFleaMarket");
@@ -47,6 +48,16 @@ namespace ServerLib.Controllers
             DataBase.Languages = File.ReadAllText("Files/locales/languages.json");
             DataBase.Quests = File.ReadAllText("Files/quests/quests.json");
             Utils.PrintDebug("Basics loaded");
+        }
+        static void LoadTemplates()
+        {
+            DataBase.Templates.Items = JsonConvert.DeserializeObject<List<Templates.Items>>(File.ReadAllText("Files/templates/items.json"));
+            DataBase.Templates.Categories = JsonConvert.DeserializeObject<List<Templates.Categories>>(File.ReadAllText("Files/templates/categories.json"));
+            foreach (var item in DataBase.Templates.Items)
+            {
+                DataBase.ItemPrices.Add(item.Id,item.Price);
+            }
+            Utils.PrintDebug("Templates loaded");
         }
         static void LoadBots()
         {
@@ -89,7 +100,6 @@ namespace ServerLib.Controllers
                             //Do nothing
                             break;
                     }
-                    //Console.WriteLine(bot_test);
                 }
                 var dir2 = Directory.GetDirectories(dir);
                 foreach (var dir1 in dir2)
@@ -101,8 +111,7 @@ namespace ServerLib.Controllers
                         string normalfile = file1.Replace("\\","/");
                         if (dir1.Contains("profile"))
                         {
-                            //do profile things
-                            Console.WriteLine("Profile detected! This hasnt been handled fully YET!");
+                            bots.Profile = File.ReadAllText(normalfile);
                         }
                         else if (dir1.Contains("difficulty"))
                         {

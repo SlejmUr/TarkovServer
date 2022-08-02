@@ -493,7 +493,7 @@ namespace ServerLib.Json
             public List<object> InsuredItems { get; set; }
 
             [JsonProperty("Hideout")]
-            public Hideout Hideout { get; set; }
+            public object Hideout { get; set; }
 
             [JsonProperty("Bonuses")]
             public List<object> Bonuses { get; set; }
@@ -593,11 +593,31 @@ namespace ServerLib.Json
         }
         public class Health
         {
+            [JsonProperty("Hydration")]
+            public Hydration Hydration { get; set; }
+
+            [JsonProperty("Energy")]
+            public Energy Energy { get; set; }
+
+            [JsonProperty("Temperature")]
+            public Temperature Temperature { get; set; }
+
+            [JsonProperty("BodyParts")]
+            public BodyParts BodyParts { get; set; }
+
+            [JsonProperty("UpdateTime")]
+            public int UpdateTime { get; set; }
+
+            [JsonProperty("Current")]
+            public int Current { get; set; }
+
+            [JsonProperty("Maximum")]
+            public int Maximum { get; set; }
         }
         public class Inventory
         {
             [JsonProperty("items")]
-            public List<object> Items { get; set; }
+            public List<Item> Items { get; set; }
 
             [JsonProperty("equipment")]
             public string Equipment { get; set; }
@@ -638,6 +658,42 @@ namespace ServerLib.Json
 
             [JsonProperty("OverallCounters")]
             public OverallCounters OverallCounters { get; set; }
+
+            [JsonProperty("SessionExperienceMult")]
+            public int? SessionExperienceMult { get; set; }
+
+            [JsonProperty("ExperienceBonusMult")]
+            public int? ExperienceBonusMult { get; set; }
+
+            [JsonProperty("TotalSessionExperience")]
+            public int? TotalSessionExperience { get; set; }
+
+            [JsonProperty("LastSessionDate")]
+            public int? LastSessionDate { get; set; }
+
+            [JsonProperty("Aggressor")]
+            public object? Aggressor { get; set; }
+
+            [JsonProperty("DroppedItems")]
+            public List<object>? DroppedItems { get; set; }
+
+            [JsonProperty("FoundInRaidItems")]
+            public List<object>? FoundInRaidItems { get; set; }
+
+            [JsonProperty("Victims")]
+            public List<object>? Victims { get; set; }
+
+            [JsonProperty("CarriedQuestItems")]
+            public List<object>? CarriedQuestItems { get; set; }
+
+            [JsonProperty("LastPlayerState")]
+            public object? LastPlayerState { get; set; }
+
+            [JsonProperty("TotalInGameTime")]
+            public int? TotalInGameTime { get; set; }
+
+            [JsonProperty("SurvivorClass")]
+            public string? SurvivorClass { get; set; }
         }
         public class SessionCounters
         {
@@ -656,14 +712,6 @@ namespace ServerLib.Json
         }
         public class BackendCounters
         {
-        }
-        public class Hideout
-        {
-            [JsonProperty("Production")]
-            public Production Production { get; set; }
-
-            [JsonProperty("Areas")]
-            public List<Area> Areas { get; set; }
         }
         public class Production
         {
@@ -693,6 +741,107 @@ namespace ServerLib.Json
 
             [JsonProperty("lastRecipe")]
             public object LastRecipe { get; set; }
+        }
+        public class Item
+        {
+            [JsonProperty("_id")]
+            public string Id { get; set; }
+
+            [JsonProperty("_tpl")]
+            public string Tpl { get; set; }
+
+            [JsonProperty("parentId")]
+            public string ParentId { get; set; }
+
+            [JsonProperty("slotId")]
+            public string SlotId { get; set; }
+
+            [JsonProperty("upd")]
+            public Upd Upd { get; set; }
+
+            [JsonProperty("location")]
+            public Location Location { get; set; }
+        }
+        public class Upd
+        {
+            [JsonProperty("FireMode")]
+            public FireMode FireMode { get; set; }
+
+            [JsonProperty("Repairable")]
+            public Repairable Repairable { get; set; }
+
+            [JsonProperty("StackObjectsCount")]
+            public int? StackObjectsCount { get; set; }
+
+            [JsonProperty("MedKit")]
+            public MedKit MedKit { get; set; }
+
+            [JsonProperty("Dogtag")]
+            public Dogtag? Dogtag { get; set; }
+        }
+        public class Dogtag
+        {
+            [JsonProperty("AccountId")]
+            public string AccountId { get; set; }
+
+            [JsonProperty("ProfileId")]
+            public string ProfileId { get; set; }
+
+            [JsonProperty("Nickname")]
+            public string Nickname { get; set; }
+
+            [JsonProperty("Side")]
+            public string Side { get; set; }
+
+            [JsonProperty("Level")]
+            public int Level { get; set; }
+
+            [JsonProperty("Time")]
+            public string Time { get; set; }
+
+            [JsonProperty("Status")]
+            public string Status { get; set; }
+
+            [JsonProperty("KillerAccountId")]
+            public string KillerAccountId { get; set; }
+
+            [JsonProperty("KillerProfileId")]
+            public string KillerProfileId { get; set; }
+
+            [JsonProperty("KillerName")]
+            public string KillerName { get; set; }
+
+            [JsonProperty("WeaponName")]
+            public string WeaponName { get; set; }
+        }
+        public class Repairable
+        {
+            [JsonProperty("Durability")]
+            public int Durability { get; set; }
+
+            [JsonProperty("MaxDurability")]
+            public int MaxDurability { get; set; }
+        }
+        public class MedKit
+        {
+            [JsonProperty("HpResource")]
+            public int HpResource { get; set; }
+        }
+        public class Location
+        {
+            [JsonProperty("x")]
+            public int X { get; set; }
+
+            [JsonProperty("y")]
+            public int Y { get; set; }
+
+            [JsonProperty("r")]
+            public int R { get; set; }
+        }
+        public class FireMode
+        {
+            [JsonProperty("FireMode")]
+            public string Mode { get; set; }
         }
         #endregion
         #region BotAppearance
@@ -1033,6 +1182,12 @@ namespace ServerLib.Json
 
             [JsonProperty("max")]
             public int Max { get; set; }
+
+            [JsonProperty("Current")]
+            public int Current { get; set; }
+
+            [JsonProperty("Maximum")]
+            public int Maximum { get; set; }
         }
         public class Energy
         {
@@ -1041,6 +1196,12 @@ namespace ServerLib.Json
 
             [JsonProperty("max")]
             public int Max { get; set; }
+
+            [JsonProperty("Current")]
+            public int Current { get; set; }
+
+            [JsonProperty("Maximum")]
+            public int Maximum { get; set; }
         }
         public class Temperature
         {
@@ -1049,6 +1210,12 @@ namespace ServerLib.Json
 
             [JsonProperty("max")]
             public int Max { get; set; }
+
+            [JsonProperty("Current")]
+            public int Current { get; set; }
+
+            [JsonProperty("Maximum")]
+            public int Maximum { get; set; }
         }
         public class BodyParts
         {
@@ -1080,6 +1247,9 @@ namespace ServerLib.Json
 
             [JsonProperty("max")]
             public int Max { get; set; }
+
+            [JsonProperty("Health", NullValueHandling = NullValueHandling.Ignore)]
+            public Health? Health { get; set; }
         }
         public class Chest
         {
@@ -1088,6 +1258,9 @@ namespace ServerLib.Json
 
             [JsonProperty("max")]
             public int Max { get; set; }
+
+            [JsonProperty("Health", NullValueHandling = NullValueHandling.Ignore)]
+            public Health Health { get; set; }
         }
         public class Stomach
         {
@@ -1096,6 +1269,9 @@ namespace ServerLib.Json
 
             [JsonProperty("max")]
             public int Max { get; set; }
+
+            [JsonProperty("Health", NullValueHandling = NullValueHandling.Ignore)]
+            public Health Health { get; set; }
         }
         public class LeftArm
         {
@@ -1104,6 +1280,9 @@ namespace ServerLib.Json
 
             [JsonProperty("max")]
             public int Max { get; set; }
+
+            [JsonProperty("Health", NullValueHandling = NullValueHandling.Ignore)]
+            public Health Health { get; set; }
         }
         public class RightArm
         {
@@ -1112,6 +1291,9 @@ namespace ServerLib.Json
 
             [JsonProperty("max")]
             public int Max { get; set; }
+
+            [JsonProperty("Health", NullValueHandling = NullValueHandling.Ignore)]
+            public Health Health { get; set; }
         }
         public class LeftLeg
         {
@@ -1120,6 +1302,9 @@ namespace ServerLib.Json
 
             [JsonProperty("max")]
             public int Max { get; set; }
+
+            [JsonProperty("Health", NullValueHandling = NullValueHandling.Ignore)]
+            public Health Health { get; set; }
         }
         public class RightLeg
         {
@@ -1128,12 +1313,28 @@ namespace ServerLib.Json
 
             [JsonProperty("max")]
             public int Max { get; set; }
+
+            [JsonProperty("Health", NullValueHandling = NullValueHandling.Ignore)]
+            public Health Health { get; set; }
         }
         #endregion
         #region BotName
         public class BotName
         {
             public List<string> NameList { get; set; }
+        }
+        #endregion
+        #region BotProfile
+        public class BotProfile
+        {
+            [JsonProperty("err")]
+            public int Err { get; set; }
+
+            [JsonProperty("errmsg")]
+            public string Errmsg { get; set; }
+
+            [JsonProperty("data")]
+            public BotBase Data { get; set; }
         }
         #endregion
     }

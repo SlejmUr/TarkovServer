@@ -21,12 +21,12 @@ namespace ServerLib.Controllers
 
         public static Bots.BotBase GenerateDogtag(Bots.BotBase bot)
         {
-            Character.Item item = new();
+            Bots.Item item = new();
             item.Id = Utils.CreateNewProfileID();
             item.Tpl = bot.Info.Side == "Usec" ? "59f32c3b86f77472a31742f0" : "59f32bb586f774757e1e8442";
             item.ParentId = bot.Inventory.Equipment;
             item.SlotId = "Dogtag";
-            Character.Dogtag dogtag = new();
+            Bots.Dogtag dogtag = new();
             dogtag.AccountId = bot.Aid.ToString();
             dogtag.ProfileId = bot.Id;
             dogtag.Nickname = bot.Info.Nickname;

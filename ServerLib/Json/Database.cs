@@ -11,7 +11,7 @@ namespace ServerLib.Json
         public string Globals { get; set; }
         public GameplayConfig.Base Gameplay { get; set; }
         public Dictionary<string, ItemBase> Items { get; set; }
-        public Dictionary<int, int> ItemPrices { get; set; } = new();
+        public Dictionary<string, int> ItemPrices { get; set; } = new();
         public core Core { get; set; } = new();
         public class core
         {
@@ -56,8 +56,8 @@ namespace ServerLib.Json
         public templates Templates { get; set; } = new();
         public class templates
         {
-            public string Categories { get; set; }
-            public string Items { get; set; }
+            public List<Templates.Categories> Categories { get; set; }
+            public List<Templates.Items> Items { get; set; }
         }
         public hideout Hideout { get; set; } = new();
         public class hideout
