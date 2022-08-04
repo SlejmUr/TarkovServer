@@ -6,6 +6,7 @@ namespace ServerLib.Handlers
 {
     public class SaveHandler
     {
+        #region Save
         /// <summary>
         /// Save all Session related stuff at once
         /// </summary>
@@ -17,6 +18,19 @@ namespace ServerLib.Handlers
             Save(sessionID, "Dialog", GetDialogPath(sessionID), JsonConvert.SerializeObject(DialogController.Dialogs[sessionID]));
             Save(sessionID, "Character", GetCharacterPath(sessionID), "{}");
             Save(sessionID, "Storage", GetStoragePath(sessionID), "{}");
+            Utils.PrintDebug("Saving ended!", "info", "[SAVE]");
+        }
+
+        /// <summary>
+        /// A separate function for only saving account
+        /// <br>Soon will be removed?</br>
+        /// </summary>
+        /// <param name="sessionID">SessionId/AccountId</param>
+        /// <param name="account">Account</param>
+        public static void SaveAccount(string sessionID, Json.Account account)
+        {
+            Utils.PrintDebug("Saving started...", "info", "[SAVE]");
+            Save(sessionID, "Account", GetAccountPath(sessionID), JsonConvert.SerializeObject(account));
             Utils.PrintDebug("Saving ended!", "info", "[SAVE]");
         }
 
@@ -61,7 +75,8 @@ namespace ServerLib.Handlers
             }
 
         }
-
+        #endregion
+        #region Paths
         /// <summary>
         /// Get the Character Path
         /// </summary>
@@ -101,7 +116,8 @@ namespace ServerLib.Handlers
         {
             return $"user/profiles/{sessionID}/dialog.json";
         }
-
+        #endregion
+        #region Delete
         /// <summary>
         /// Delete everything FileAge related for Session
         /// </summary>
@@ -123,5 +139,6 @@ namespace ServerLib.Handlers
         {
             DatabaseController.FileAges.Remove(sessionID + "_" + saveType);
         }
+        #endregion
     }
 }

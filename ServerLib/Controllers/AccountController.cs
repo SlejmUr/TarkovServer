@@ -291,7 +291,7 @@ namespace ServerLib.Controllers
         /// <br>Same as Controllers/AccountController.js@func=nicknameTaken()</br>
         /// </summary>
         /// <param name="JsonInfo">Json Serialized Request</param>
-        /// <returns>Always False</returns>
+        /// <returns>False | True</returns>
         public static bool IsNicknameTaken(string JsonInfo)
         {
             var nickname = JsonConvert.DeserializeObject<NicknameValidate>(JsonInfo);
@@ -309,10 +309,31 @@ namespace ServerLib.Controllers
         }
 
         /// <summary>
+        /// Validate a Nickname
+        /// <br>Same as Controllers/AccountController.js@func=validateNickname()</br>
+        /// </summary>
+        /// <param name="JsonInfo">Json Serialized Request</param>
+        /// <returns>tooshort | taken | OK</returns>
+        public static string ValidateNickname(string JsonInfo)
+        {
+            var nickname = JsonConvert.DeserializeObject<NicknameValidate>(JsonInfo);
+            if (nickname == null) { return "taken"; }
+            if (nickname.Nickname.Length < 3)
+            {
+                return "tooshort";
+            }
+            if (IsNicknameTaken(JsonInfo))
+            {
+                return "taken";
+            }
+            return "OK";
+        }
+
+        /// <summary>
         /// Get the Lang from Account by SessionId
         /// </summary>
         /// <param name="sessionID">SessionId/AccountId</param>
-        /// <returns>"en" or Account Lang</returns>
+        /// <returns>"en" | Account Lang</returns>
         public static string GetAccountLang(string sessionID)
         {
             var Account = FindAccount(sessionID);
@@ -321,7 +342,7 @@ namespace ServerLib.Controllers
             if (Account.Lang == null)
             {
                 Account.Lang = "en";
-                //save Account!!!
+                Handlers.SaveHandler.SaveAccount(sessionID, Account);
             }
             return Account.Lang;
         }
