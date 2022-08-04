@@ -63,10 +63,7 @@ namespace ServerLib.Controllers
                         default:
                             return DatabaseController.DataBase.Bots[type].Difficulty.Normal;
                     }
-                    
-            
-            }
-        
+            }  
         }
 
         public static string GenerateBotName(string role)
@@ -74,6 +71,13 @@ namespace ServerLib.Controllers
             return Utils.GetRandomArray(JsonConvert.DeserializeObject<string[]>(DatabaseController.DataBase.Bots[role].BotNames));
         }
 
+        public static Bots.BotBase GenerateNewID(Bots.BotBase bot)
+        {
+            var ID = Utils.CreateNewProfileID();
+            bot.Id = ID;
+            bot.Aid = ID;
+            return bot;
+        }
 
     }
 }

@@ -21,18 +21,6 @@ namespace ServerLib.Controllers
             ScavCharacters.Clear();
             Utils.PrintDebug("Initialization Done!", "debug", "[CHARACTER]");
         }
-
-        public static string GetCompleteCharacter(string sessionID)
-        {
-            List<Json.Character> ouptut = new();
-            if (!AccountController.IsWiped(sessionID))
-            {
-                //ouptut.Add(JsonConvert.SerializeObject(Character[sessionID].ToString()));
-                //ouptut.Add(JsonConvert.SerializeObject(ScavCharacter[sessionID].ToString()));
-            }
-
-            return JsonConvert.SerializeObject(ouptut);
-        }
         public static Json.Character.Base GetCharacter(string sessionID)
         {
             foreach (Json.Character.Base character in Characters)
@@ -43,8 +31,31 @@ namespace ServerLib.Controllers
                 }
             }
             return null;
-
         }
+
+        public static Json.Character.Base GetScavCharacter(string sessionID)
+        {
+            foreach (Json.Character.Base character in ScavCharacters)
+            {
+                if (character.Aid == sessionID)
+                {
+                    return character;
+                }
+            }
+            return null;
+        }
+        public static string GetCompleteCharacter(string sessionID)
+        {
+            List<Json.Character.Base> ouptut = new();
+            if (!AccountController.IsWiped(sessionID))
+            {
+                ouptut.Add(GetCharacter(sessionID));
+                ouptut.Add(GetScavCharacter(sessionID));
+            }
+
+            return JsonConvert.SerializeObject(ouptut);
+        }
+
         public static string ChangeNickname(string json, string sessionID)
         { 
             var nick = JsonConvert.DeserializeObject<Json.NicknameValidate>(json);

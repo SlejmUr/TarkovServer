@@ -457,10 +457,10 @@ namespace ServerLib.Json
             public string Id { get; set; }
 
             [JsonProperty("aid")]
-            public int Aid { get; set; }
+            public string Aid { get; set; }
 
             [JsonProperty("savage")]
-            public object Savage { get; set; }
+            public string Savage { get; set; }
 
             [JsonProperty("Info")]
             public Info Info { get; set; }
