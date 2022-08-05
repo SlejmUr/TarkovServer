@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -37,6 +38,18 @@ namespace ServerLib.Json
             public string Ip { get; set; } = "";
             public int Port { get; set; } = 0;
             public List<Chat> Chats { get; set; } = new();
+        }
+
+        public class ExpTable
+        {
+            [JsonProperty("exp")]
+            public int Exp { get; set; }
+        }
+
+        public class ExpTableClass
+        {
+            [JsonProperty("exp_table")]
+            public List<ExpTable> ExpTable { get; set; }
         }
     }
 }

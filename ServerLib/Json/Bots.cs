@@ -1337,5 +1337,23 @@ namespace ServerLib.Json
             public BotBase Data { get; set; }
         }
         #endregion
+        #region BotGenerate
+        public class BotGenerate
+        {
+            [JsonProperty("conditions")]
+            public List<Condition> Conditions { get; set; }
+        }
+        public class Condition
+        {
+            [JsonProperty("Role")]
+            public string Role { get; set; }
+
+            [JsonProperty("Limit")]
+            public int Limit { get; set; }
+
+            [JsonProperty("Difficulty")]
+            public string Difficulty { get; set; }
+        }
+        #endregion
     }
 }

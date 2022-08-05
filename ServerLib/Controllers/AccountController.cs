@@ -23,6 +23,7 @@ namespace ServerLib.Controllers
             ActiveAccountIds.Clear();
             Utils.PrintDebug("Initialization Done!", "debug","[ACCOUNT]");
         }
+
         public static void GetAccountList()
         {
             string[] dirs = Directory.GetDirectories("user/profiles");
@@ -93,7 +94,7 @@ namespace ServerLib.Controllers
             }
             if (ID == null)
             {
-                string AccountID = Utils.CreateNewProfileID("AID");
+                string AccountID = Utils.CreateNewID("AID");
                 Account account = new();
                 account.Email = profile.Email;
                 account.Password = profile.Password;
@@ -346,6 +347,44 @@ namespace ServerLib.Controllers
             }
             return Account.Lang;
         }
+
+        /// <summary>
+        /// Tries to login and change the Account Password
+        /// <br>Same as Controllers/AccountController.js@func=changePassword()</br>
+        /// </summary>
+        /// <param name="JsonInfo">Json Serialized Profile & Changes</param>
+        /// <returns>AccountID | FAILED</returns>
+        public static string ChangePassword(string JsonInfo)
+        {
+            var AccountID = Login(JsonInfo);
+            var changes = JsonConvert.DeserializeObject<Changes>(JsonInfo);
+            if (AccountID != "FAILED")
+            { 
+                var acc = FindAccount(AccountID);
+                acc.Password = changes.Change;
+                Handlers.SaveHandler.SaveAccount(AccountID,acc);
+            }
+            return AccountID;
+        }
+
+        /// <summary>
+        /// Tries to login and change the Account Email
+        /// <br>Same as Controllers/AccountController.js@func=changeEmail()</br>
+        /// </summary>
+        /// <param name="JsonInfo">Json Serialized Profile & Changes</param>
+        /// <returns>AccountID | FAILED</returns>
+        public static string ChangeEmail(string JsonInfo)
+        {
+            var AccountID = Login(JsonInfo);
+            var changes = JsonConvert.DeserializeObject<Changes>(JsonInfo);
+            if (AccountID != "FAILED")
+            {
+                var acc = FindAccount(AccountID);
+                acc.Email = changes.Change;
+                Handlers.SaveHandler.SaveAccount(AccountID, acc);
+            }
+            return AccountID;
+        }
         #endregion
         #region Edited but same functions
 
@@ -363,11 +402,25 @@ namespace ServerLib.Controllers
         /// Set session ready to WIPE
         /// </summary>
         /// <param name="sessionID">SessionId/AccountId</param>
-        public static void SetWipe(string sessionID)
+        public static string SetWipe(string sessionID)
         {
             var Account = FindAccount(sessionID);
-            if (Account == null) { new Exception("Account null!"); }
+            if (Account == null) { return "FAILED"; }
             Account.Wipe = true;
+            return "OK";
+        }
+
+        /// <summary>
+        /// Remove a directory if account exist
+        /// </summary>
+        /// <param name="sessionID">SessionId/AccountId</param>
+        /// <returns>OK | FAILED</returns>
+        public static string RemoveAccount(string sessionID)
+        {
+            var Account = FindAccount(sessionID);
+            if (Account == null) { return "FAILED"; }
+            Directory.Delete($"user/profiles/{sessionID}", true);
+            return "OK";
         }
 
         /// <summary>

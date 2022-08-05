@@ -70,7 +70,7 @@ namespace ServerLib.Controllers
 
             if (rewards.ToString().Length > 0)
             {
-                string stashId = Utils.CreateNewProfileID();
+                string stashId = Utils.CreateNewID();
                 stashItems.stash = stashId;
                 stashItems.data = new();
                 foreach (var reward in rewards.data)
@@ -90,7 +90,7 @@ namespace ServerLib.Controllers
             }
             Dialog.Messages message = new()
             {
-                _id = Utils.CreateNewProfileID(),
+                _id = Utils.CreateNewID(),
                 uid = dialogID,
                 type = content.type,
                 dt = Utils.UnixTimeNow_Int(),

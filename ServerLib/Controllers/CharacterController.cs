@@ -1,17 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using ServerLib.Utilities;
+using ServerLib.Json;
 
 namespace ServerLib.Controllers
 {
     public class CharacterController 
     {
-        public static List<Json.Character.Base> Characters;
-        public static List<Json.Character.Base> ScavCharacters;
+        public static List<Character.Base> Characters;
+        public static List<Character.Base> ScavCharacters;
 
         public static void Init()
         {
@@ -21,9 +17,9 @@ namespace ServerLib.Controllers
             ScavCharacters.Clear();
             Utils.PrintDebug("Initialization Done!", "debug", "[CHARACTER]");
         }
-        public static Json.Character.Base GetCharacter(string sessionID)
+        public static Character.Base GetCharacter(string sessionID)
         {
-            foreach (Json.Character.Base character in Characters)
+            foreach (Character.Base character in Characters)
             {
                 if (character.Aid == sessionID)
                 {
@@ -33,9 +29,9 @@ namespace ServerLib.Controllers
             return null;
         }
 
-        public static Json.Character.Base GetScavCharacter(string sessionID)
+        public static Character.Base GetScavCharacter(string sessionID)
         {
-            foreach (Json.Character.Base character in ScavCharacters)
+            foreach (Character.Base character in ScavCharacters)
             {
                 if (character.Aid == sessionID)
                 {
@@ -46,7 +42,7 @@ namespace ServerLib.Controllers
         }
         public static string GetCompleteCharacter(string sessionID)
         {
-            List<Json.Character.Base> ouptut = new();
+            List<Character.Base> ouptut = new();
             if (!AccountController.IsWiped(sessionID))
             {
                 ouptut.Add(GetCharacter(sessionID));
@@ -58,7 +54,7 @@ namespace ServerLib.Controllers
 
         public static string ChangeNickname(string json, string sessionID)
         { 
-            var nick = JsonConvert.DeserializeObject<Json.NicknameValidate>(json);
+            var nick = JsonConvert.DeserializeObject<NicknameValidate>(json);
             if (nick == null) { return "taken"; }
             string output = AccountController.ValidateNickname(sessionID);
 
@@ -71,6 +67,31 @@ namespace ServerLib.Controllers
                 Handlers.SaveHandler.Save(sessionID, "Character", Handlers.SaveHandler.GetCharacterPath(sessionID), JsonConvert.SerializeObject(character));
             }
             return output;
+        }
+
+        public static void ChangeVoice(string json, string sessionID)
+        {
+            var voices = JsonConvert.DeserializeObject<Voices>(json);
+            if (voices == null) { return; }
+            var character = GetCharacter(sessionID);
+            character.Info.Voice = voices.Voice;
+            Handlers.SaveHandler.Save(sessionID, "Character", Handlers.SaveHandler.GetCharacterPath(sessionID), JsonConvert.SerializeObject(character));
+        }
+
+        public static string GetStashType(string sessionID)
+        {
+            var character = GetCharacter(sessionID);
+
+            foreach (var item in character.Inventory.Items)
+            {
+                if (item.Id == character.Inventory.Stash)
+                {
+                    return item.Tpl;
+                }
+            }
+
+            Utils.PrintError($"No stash found where stash ID is: {character.Inventory.Stash}");
+            return "";
         }
     }
 }

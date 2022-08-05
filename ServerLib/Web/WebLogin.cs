@@ -40,8 +40,7 @@ namespace ServerLib.Web
             Console.WriteLine(ctx.Request.ToJson(true));
             var WipeProfile  = JsonConvert.DeserializeObject<Json.WebProfile.WebWipe>(ctx.Request.DataAsString);
             // RPS
-            AccountController.SetWipe(WipeProfile.AccountId);
-            string resp = "OK";
+            string resp = AccountController.SetWipe(WipeProfile.AccountId);
             ctx.Response.StatusCode = 200;
             ctx.Response.ContentType = "text/plain";
             ctx.Response.ContentLength = resp.Length;

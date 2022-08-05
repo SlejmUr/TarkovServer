@@ -52,7 +52,7 @@ namespace ServerLib.Controllers
                 {
                     Traders.Suits newItem = new();
                     newItem.SuiteId = keyValue.Key;
-                    newItem.Id = Utilities.Utils.CreateNewProfileID();
+                    newItem.Id = Utilities.Utils.CreateNewID();
                     newItem.Tid = "5ac3b934156ae10c4430e83c";
                     newItem.IsActive = true;
                     newItem.Requirements = new()

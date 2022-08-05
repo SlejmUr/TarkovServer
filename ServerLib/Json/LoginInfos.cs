@@ -11,4 +11,12 @@
     {
         public string Nickname { get; set; }
     }
+    public class Changes
+    {
+        public string Change { get; set; }
+    }
+    public class Voices
+    {
+        public string Voice { get; set; }
+    }
 }
