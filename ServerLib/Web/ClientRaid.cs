@@ -1,5 +1,4 @@
 ﻿using HttpServerLite;
-using Newtonsoft.Json;
 using ServerLib.Controllers;
 using ServerLib.Utilities;
 using ServerLib.Json;
@@ -13,7 +12,7 @@ namespace ServerLib.Web
         {
             Utils.PrintRequest(ctx.Request);
             //REQ stuff
-            GameplayConfig.Base gameplayBase = DatabaseController.DataBase.Gameplay;
+            GameplayConfig.Base gameplayBase = ConfigController.Configs["gameplay"].Gameplay;
             // RPS
             var rsp = ResponseControl.CompressRsp(gameplayBase.InRaid.ShowDeathMessage.ToString());
             ctx.Response.StatusCode = 200;

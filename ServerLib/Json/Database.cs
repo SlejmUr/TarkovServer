@@ -6,10 +6,7 @@ namespace ServerLib.Json
 {
     public class Database
     {
-        public CustomConfig.Base CustomSettings { get; set; }
-        public ServerConfig.Base Server { get; set; }
         public string Globals { get; set; }
-        public GameplayConfig.Base Gameplay { get; set; }
         public Dictionary<string, ItemBase> Items { get; set; }
         public Dictionary<string, int> ItemPrices { get; set; } = new();
         public core Core { get; set; } = new();

@@ -41,9 +41,7 @@ namespace ServerLib.Controllers
         }
         static void LoadBasics()
         {
-            DataBase.Server = JsonConvert.DeserializeObject<ServerConfig.Base>(File.ReadAllText("Files/configs/server_base.json"));
             DataBase.Globals = File.ReadAllText("Files/base/globals.json");
-            DataBase.Gameplay = JsonConvert.DeserializeObject<GameplayConfig.Base>(File.ReadAllText("Files/configs/gameplay_base.json"));
             DataBase.Items = ItemBase.FromJson(File.ReadAllText("Files/items/items.json"));
             DataBase.Languages = File.ReadAllText("Files/locales/languages.json");
             DataBase.Quests = File.ReadAllText("Files/quests/quests.json");
@@ -214,16 +212,16 @@ namespace ServerLib.Controllers
         }
         static void LoadCustomConfig()
         {
-            DataBase.CustomSettings = JsonConvert.DeserializeObject<CustomConfig.Base>(File.ReadAllText("Files/configs/customsettings.json"));
-            if (DataBase.CustomSettings.Locale.UseCustomLocale)
+            var Custom = ConfigController.Configs["custom"].CustomSettings;
+            if (Custom.Locale.UseCustomLocale)
             {
-                var from = DataBase.CustomSettings.Locale.CustomLocale.FromReplace;
-                var to = DataBase.CustomSettings.Locale.CustomLocale.ToReplace;
+                var from = Custom.Locale.CustomLocale.FromReplace;
+                var to = Custom.Locale.CustomLocale.ToReplace;
                 int counter = 0;
                 foreach (string fromstep in from)
                 {
                     if (from.Count < counter) break;
-                    var LocaleString = DataBase.Locales[DataBase.CustomSettings.Locale.BaseReplace + "_locale"];
+                    var LocaleString = DataBase.Locales[Custom.Locale.BaseReplace + "_locale"];
                     LocaleString = LocaleString.Replace("interface", "Interface");
                     dynamic locale = JsonConvert.DeserializeObject<dynamic>(LocaleString);
                     if (locale == null) { return; }
@@ -238,19 +236,19 @@ namespace ServerLib.Controllers
                         }
                     }
                     string ser_locale = JsonConvert.SerializeObject(locale, Formatting.Indented);
-                    DataBase.Locales[DataBase.CustomSettings.Locale.BaseReplace + "_locale"] = ser_locale.Replace("Interface", "interface");
+                    DataBase.Locales[Custom.Locale.BaseReplace + "_locale"] = ser_locale.Replace("Interface", "interface");
                     counter++;
                 }
             }
-            if (DataBase.CustomSettings.Locale.UseCustomMenu)
+            if (Custom.Locale.UseCustomMenu)
             {
-                var from = DataBase.CustomSettings.Locale.CustomMenu.FromReplace;
-                var to = DataBase.CustomSettings.Locale.CustomMenu.ToReplace;
+                var from = Custom.Locale.CustomMenu.FromReplace;
+                var to = Custom.Locale.CustomMenu.ToReplace;
                 int counter = 0;
                 foreach (string fromstep in from)
                 {
                     if (from.Count < counter) break;
-                    var LocaleString = DataBase.Locales[DataBase.CustomSettings.Locale.BaseReplace + "_menu"];
+                    var LocaleString = DataBase.Locales[Custom.Locale.BaseReplace + "_menu"];
                     dynamic locale = JsonConvert.DeserializeObject<dynamic>(LocaleString);
                     if (locale == null) { return; }
                     foreach (var thing in locale.menu)
@@ -263,7 +261,7 @@ namespace ServerLib.Controllers
                             locale.menu[first] = to?[counter];
                         }
                     }
-                    DataBase.Locales[DataBase.CustomSettings.Locale.BaseReplace + "_menu"] = JsonConvert.SerializeObject(locale, Formatting.Indented);
+                    DataBase.Locales[Custom.Locale.BaseReplace + "_menu"] = JsonConvert.SerializeObject(locale, Formatting.Indented);
                     counter++;
                 }
             }

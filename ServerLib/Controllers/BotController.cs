@@ -39,7 +39,10 @@ namespace ServerLib.Controllers
             dogtag.KillerName = "Unknown";
             dogtag.WeaponName = "Unknown";
             item.Upd.Dogtag = dogtag;
-            bot.Inventory.Items.Add(item);
+
+            List<Bots.Item> items = new();
+            items.Add(item);
+            bot.Inventory.Items = items.ToArray();
             return bot;
         }
 
@@ -119,12 +122,7 @@ namespace ServerLib.Controllers
 
             if (itemsByParentHash.ContainsKey(InventoryID))
             {
-                /*
-                TODO, fix this in foreach!
-                foreach (Bots.Item item in itemsByParentHash[InventoryID])
-                {
-                    item.ParentId = newID;
-                }*/
+                itemsByParentHash[InventoryID].ParentId = newID;
             }
             return bot;
         }
@@ -161,6 +159,5 @@ namespace ServerLib.Controllers
             }
 
         }
-       
     }
 }

@@ -61,6 +61,24 @@ namespace ServerLib.Web
             return;
         }
 
+        [StaticRoute(HttpServerLite.HttpMethod.POST, "/launcher/server/connect")]
+        public async Task LauncherServerConnect(HttpContext ctx)
+        {
+            //REQ stuff
+            Utils.PrintRequest(ctx.Request);
+            string Uncompressed = ZlibStream.UncompressString(ctx.Request.DataAsBytes);
+            // RPS
+            var server = ConfigController.Configs["server"].Server;
+            string resp = "{backendUrl: https://" + server.Ip + ":" + server.Port + ",name:"+ server.Name + ",server:" + JsonConvert.SerializeObject(server) + "}";
+            var rsp = ZlibStream.CompressString(resp);
+            ctx.Response.StatusCode = 200;
+            ctx.Response.ContentType = "text/plain";
+            ctx.Response.ContentLength = rsp.Length;
+            ctx.Response.Headers.Add("Content-Encoding", "deflate");
+            await ctx.Response.SendWithoutCloseAsync(rsp);
+            return;
+        }
+
         [StaticRoute(HttpServerLite.HttpMethod.POST, "/launcher/profile/remove")]
         public async Task LauncherRemove(HttpContext ctx)
         {

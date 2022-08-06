@@ -52,9 +52,6 @@ namespace Tarkov_Server_Csharp
             acc.Friends = list.ToArray();
             Console.WriteLine(JsonConvert.SerializeObject(acc));      
              */
-
-
-
             WebServer webServer = new WebServer();
             webServer.MainStart(IP_Address, Port);
 
@@ -65,8 +62,10 @@ namespace Tarkov_Server_Csharp
                 PluginLoader.PluginWebOverride(webServer);
                 Console.ReadLine();
                 PluginLoader.UnloadPlugins();
-
             }
+
+            Console.WriteLine("END");
+            Console.ReadLine();
         }
     }
 }

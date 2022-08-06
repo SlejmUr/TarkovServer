@@ -1,4 +1,5 @@
 ﻿using HttpServerLite;
+using Newtonsoft.Json;
 using ServerLib.Utilities;
 
 namespace ServerLib
@@ -36,9 +37,8 @@ namespace ServerLib
             Console.WriteLine("Server Stopped, Reason: " + Reason);
         }
 
-        async Task DefaultRoute(HttpContext ctx)
+        public async Task DefaultRoute(HttpContext ctx)
         {
-
             string resp = "Hello from WebServer!";
             ctx.Response.StatusCode = 200;
             ctx.Response.ContentLength = resp.Length;

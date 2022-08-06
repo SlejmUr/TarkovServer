@@ -1,4 +1,6 @@
-﻿using Newtonsoft.Json;
+﻿using System;
+using System.Collections;
+using Newtonsoft.Json;
 
 namespace ServerLib.Json
 {
@@ -617,7 +619,7 @@ namespace ServerLib.Json
         public class Inventory
         {
             [JsonProperty("items")]
-            public List<Item> Items { get; set; }
+            public Item[] Items { get; set; }
 
             [JsonProperty("equipment")]
             public string Equipment { get; set; }
@@ -750,16 +752,16 @@ namespace ServerLib.Json
             [JsonProperty("_tpl")]
             public string Tpl { get; set; }
 
-            [JsonProperty("parentId")]
+            [JsonProperty("parentId", NullValueHandling = NullValueHandling.Ignore)]
             public string ParentId { get; set; }
 
-            [JsonProperty("slotId")]
+            [JsonProperty("slotId", NullValueHandling = NullValueHandling.Ignore)]
             public string SlotId { get; set; }
 
-            [JsonProperty("upd")]
+            [JsonProperty("upd", NullValueHandling = NullValueHandling.Ignore)]
             public Upd Upd { get; set; }
 
-            [JsonProperty("location")]
+            [JsonProperty("location", NullValueHandling = NullValueHandling.Ignore)]
             public Location Location { get; set; }
         }
         public class Upd
@@ -1184,10 +1186,10 @@ namespace ServerLib.Json
             public int Max { get; set; }
 
             [JsonProperty("Current")]
-            public int Current { get; set; }
+            public double Current { get; set; }
 
             [JsonProperty("Maximum")]
-            public int Maximum { get; set; }
+            public double Maximum { get; set; }
         }
         public class Energy
         {
@@ -1198,10 +1200,10 @@ namespace ServerLib.Json
             public int Max { get; set; }
 
             [JsonProperty("Current")]
-            public int Current { get; set; }
+            public double Current { get; set; }
 
             [JsonProperty("Maximum")]
-            public int Maximum { get; set; }
+            public double Maximum { get; set; }
         }
         public class Temperature
         {
@@ -1209,13 +1211,13 @@ namespace ServerLib.Json
             public double Min { get; set; }
 
             [JsonProperty("max")]
-            public int Max { get; set; }
+            public double Max { get; set; }
 
             [JsonProperty("Current")]
-            public int Current { get; set; }
+            public double Current { get; set; }
 
             [JsonProperty("Maximum")]
-            public int Maximum { get; set; }
+            public double Maximum { get; set; }
         }
         public class BodyParts
         {
