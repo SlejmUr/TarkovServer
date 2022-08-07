@@ -24,7 +24,7 @@ namespace ServerLib.Web
         public async Task SSRaidMenu(HttpContext ctx)
         {
             Utils.PrintRequest(ctx.Request);
-            var defaultraid = JsonConvert.SerializeObject(DatabaseController.DataBase.Gameplay.DefaultRaidSettings);
+            var defaultraid = JsonConvert.SerializeObject(ConfigController.Configs.Gameplay.DefaultRaidSettings);
             var rsp = ResponseControl.CompressRsp(ResponseControl.NoBody(defaultraid));
             ctx.Response.StatusCode = 200;
             ctx.Response.ContentType = "application/json";

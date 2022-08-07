@@ -11,6 +11,7 @@ namespace ServerLib.Handlers
         public static bool AskHelp { get; internal set; } = false;
         public static bool DontLoadPlugin { get; internal set; } = false;
         public static string LoadMyPlugin { get; internal set; } = "";
+        public static bool ReloadAllConfigs { get; internal set; } = false;
         public static void MainArg(string[] args)
         {
             Ip = GetParameter<string>(args, "-ip");
@@ -19,6 +20,7 @@ namespace ServerLib.Handlers
             AskHelp = HasParameter(args, "-help");
             DontLoadPlugin = HasParameter(args, "-noplugin");
             LoadMyPlugin = GetParameter<string>(args, "-loadplugin");
+            ReloadAllConfigs = HasParameter(args, "-reloadconfig");
         }
         public static void PrintHelp()
         {
@@ -31,6 +33,7 @@ namespace ServerLib.Handlers
             Console.WriteLine("-port {7777} \t\t\t Running the server under this Port. (Default: 7777)");
             Console.WriteLine("-loadplugin {pluginfile.dll} \t Running the server & load plugin before everything else. (Not default)");
             Console.WriteLine("-noplugin \t\t\t Disable loading all plugins, override -loadplugin!");
+            Console.WriteLine("-reloadconfig \t\t\t Reload all config");
             Console.WriteLine("-debug \t\t\t\t Running the server with debug mode");
             Console.WriteLine("-help \t\t\t\t Showing this text.");
             Console.WriteLine();

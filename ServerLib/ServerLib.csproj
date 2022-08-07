@@ -350,11 +350,9 @@
     <None Remove="Files\characters\character_usec.json" />
     <None Remove="Files\characters\defaultCustomization.json" />
     <None Remove="Files\characters\storage.json" />
-    <None Remove="Files\configs\customsettings.json" />
-    <None Remove="Files\configs\gameplay.json" />
+    <None Remove="Files\configs\custom_base.json" />
     <None Remove="Files\configs\gameplay_base.json" />
-    <None Remove="Files\configs\mods.json" />
-    <None Remove="Files\configs\server.json" />
+    <None Remove="Files\configs\plugin_base.json" />
     <None Remove="Files\configs\server_base.json" />
     <None Remove="Files\customization\items.json" />
     <None Remove="Files\dialogues\54cb50c76803fa8b248b4571.json" />
@@ -1683,19 +1681,13 @@
     <Content Include="Files\characters\storage.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Files\configs\customsettings.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Files\configs\gameplay.json">
+    <Content Include="Files\configs\custom_base.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Files\configs\gameplay_base.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Files\configs\mods.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Files\configs\server.json">
+    <Content Include="Files\configs\plugin_base.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Files\configs\server_base.json">

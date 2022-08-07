@@ -97,7 +97,7 @@ namespace ServerLib.Utilities
         #endregion
 
         private static int _id = 100;
-        public static string CreateNewProfileID(string prefix = "")
+        public static string CreateNewID(string prefix = "")
         {
             Random rand = new();
             int stringlen = 24;
@@ -195,71 +195,6 @@ namespace ServerLib.Utilities
             return timesplit[0] + "-" + timesplit[1] + "-" + timesplit[2] + "_" + timesplit[3].Replace(":", "-");
         }
 
-        public static Bots.BotBase GenerateInventory(Bots.BotBase bot)
-        {
-            Dictionary<string, dynamic> inventoryItemHash = new();
-            Dictionary<string, dynamic> itemsByParentHash = new();
-            string InventoryID = "";
-
-
-            foreach (var item in bot.Inventory.Items)
-            {
-                dynamic itemdynamic = JsonConvert.DeserializeObject<dynamic>(item.ToString());
-                if (itemdynamic == null) continue;
-                inventoryItemHash.Add(itemdynamic._id, itemdynamic);
-
-                if (itemdynamic._tpl == "55d7217a4bdc2d86028b456d")
-                {
-                    InventoryID = itemdynamic._id;
-                    continue;
-                }
-
-                try
-                {
-                    if (!itemdynamic.ToString().Contains("parentId"))
-                    {
-                        continue;
-                    }
-                }
-                catch
-                {
-                    PrintError("Cannot TRY to get item parentID!\n " + itemdynamic.ToString(), "WARNING", "[GenerateInventory]");
-                }
-
-                try
-                {
-                    if (!itemsByParentHash.ContainsKey(itemdynamic.parentId))
-                    {
-                        itemsByParentHash.Add(itemdynamic.parentId, itemdynamic);
-                        continue;
-                    }
-                }
-                catch
-                {
-                    PrintError("Cannot TRY itemsByParentHash NOT has parentID!\n " + itemdynamic.ToString(), "WARNING", "[GenerateInventory]");
-                }
-                try
-                {
-                    itemsByParentHash.Add(itemdynamic.parentId, itemdynamic);
-                }
-                catch
-                {
-                    PrintError("Cannot TRY to add parentID, to itemsByParentHash!\n " + itemdynamic.ToString(), "WARNING", "[GenerateInventory]");
-                }
-            }
-            string newID = CreateNewProfileID();
-            inventoryItemHash[InventoryID]._id = newID;
-            bot.Inventory.Equipment = newID;
-
-            if (itemsByParentHash.ContainsKey(InventoryID))
-            {
-                foreach (dynamic item in itemsByParentHash[InventoryID])
-                {
-                    item.parentId = newID;
-                }
-            }
-            return bot;
-        }
         public static List<Other.AmmoItems> SplitStack(Other.AmmoItems item)
         {
             List<Other.AmmoItems> listitem = new();
@@ -285,7 +220,7 @@ namespace ServerLib.Utilities
                 long amount = Math.Min(longcount, longmaxStack);
                 var newStack = item;
 
-                newStack._id = CreateNewProfileID();
+                newStack._id = CreateNewID();
                 newStack.upd.StackObjectsCount = (int)amount;
                 count -= (int)amount;
                 listitem.Add(newStack);

@@ -7,7 +7,7 @@ namespace ServerLib.Web
     public class WebLogin
     {
         [StaticRoute(HttpServerLite.HttpMethod.POST, "/webprofile/login")]
-        public virtual async Task GameStart(HttpContext ctx)
+        public async Task GameStart(HttpContext ctx)
         {
             Console.WriteLine(ctx.Request.ToJson(true));
             // RPS
@@ -20,7 +20,7 @@ namespace ServerLib.Web
         }
 
         [StaticRoute(HttpServerLite.HttpMethod.POST, "/webprofile/register")]
-        public virtual async Task LauncherRegister(HttpContext ctx)
+        public async Task LauncherRegister(HttpContext ctx)
         {
             //REQ stuff
             Console.WriteLine(ctx.Request.ToJson(true));
@@ -34,14 +34,13 @@ namespace ServerLib.Web
         }
 
         [StaticRoute(HttpServerLite.HttpMethod.POST, "/webprofile/wipe")]
-        public virtual async Task LauncherWipe(HttpContext ctx)
+        public async Task LauncherWipe(HttpContext ctx)
         {
             //REQ stuff
             Console.WriteLine(ctx.Request.ToJson(true));
             var WipeProfile  = JsonConvert.DeserializeObject<Json.WebProfile.WebWipe>(ctx.Request.DataAsString);
             // RPS
-            AccountController.SetWipe(WipeProfile.AccountId);
-            string resp = "OK";
+            string resp = AccountController.SetWipe(WipeProfile.AccountId);
             ctx.Response.StatusCode = 200;
             ctx.Response.ContentType = "text/plain";
             ctx.Response.ContentLength = resp.Length;
@@ -50,7 +49,7 @@ namespace ServerLib.Web
         }
 
         [StaticRoute(HttpServerLite.HttpMethod.POST, "/webprofile/delete")]
-        public virtual async Task LauncherDelete(HttpContext ctx)
+        public async Task LauncherDelete(HttpContext ctx)
         {
             //REQ stuff
             Console.WriteLine(ctx.Request.ToJson(true));

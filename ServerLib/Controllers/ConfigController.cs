@@ -1,10 +1,12 @@
-﻿using ServerLib.Utilities;
+﻿using Newtonsoft.Json;
+using ServerLib.Utilities;
 
 namespace ServerLib.Controllers
 {
     public class ConfigController
     {
-        public static Dictionary<string, string> Configs = new(); //Config["server"] = all things in server.json.
+        public static Json.Configs Configs = new();
+
         /// <summary>
         /// Initialize the configs. 
         /// <br>Same as Controllers/ConfigController.js@func=Init()</br>
@@ -21,92 +23,64 @@ namespace ServerLib.Controllers
         /// </summary>
         public static void RebuildFromBaseConfigs()
         {
-            if (Configs == null)
-            {
-                Configs = new();
-            }
-
-            RefreshGameplayConfigFromBase();
-            RefreshServerConfigFromBase();
-
-            string[] dirs = Directory.GetDirectories("Files/configs");
+            RefreshConfigFromBase("server");
+            RefreshConfigFromBase("gameplay");
+            RefreshConfigFromBase("custom");
+            RefreshConfigFromBase("plugin");
+            string[] dirs = Directory.GetFiles("configs");
             foreach (string dir in dirs)
             {
+                
                 if (File.Exists(dir))
                 {
                     string dataraw = File.ReadAllText(dir);
                     if (dataraw != null && dataraw != "")
                     {
-                        dir.Replace("Files/configs\\", "");
-                        dir.Replace(".json","");
-                        Configs.Add(dir, dataraw);
+                        var dir_1 = dir.Replace("configs\\", "");
+                        dir_1 = dir_1.Replace(".json","");
+                        switch (dir_1)
+                        {
+                            case "server":
+                                Configs.Server = JsonConvert.DeserializeObject<Json.ServerConfig.Base>(dataraw);
+                                break;
+                            case "gameplay":
+                                Configs.Gameplay = JsonConvert.DeserializeObject<Json.GameplayConfig.Base>(dataraw);
+                                break;
+                            case "custom":
+                                Configs.CustomSettings = JsonConvert.DeserializeObject<Json.CustomConfig.Base>(dataraw);
+                                break;
+                            case "plugin":
+                                Configs.Plugins = dataraw;
+                                break;
+                            default:
+                                break;
+                        }
+                        
                     }
                 }
             }
         }
 
         /// <summary>
-        /// Rebuild Gameplay config from that base Json.
-        /// <br>Same as Controllers/ConfigController.js@func=RefreshGameplayConfigFromBase()</br>
+        /// Rebuild a Config from base
         /// </summary>
-        public static void RefreshGameplayConfigFromBase()
+        /// <param name="configname">server|plugin|gameplay</param>
+        public static void RefreshConfigFromBase(string configname)
         {
-            string configbase = File.ReadAllText("Files/configs/gameplay_base.json");
+            string configbase = File.ReadAllText($"Files/configs/{configname}_base.json");
 
-            if (!File.Exists("Files/configs/gameplay.json"))
+            if (!File.Exists($"configs/{configname}.json"))
             {
-                File.WriteAllText("Files/configs/gameplay.json", configbase);
+                File.WriteAllText($"configs/{configname}.json", configbase);
             }
 
-            if (File.Exists("Files/configs/gameplay.json"))
+            if (File.Exists($"configs/{configname}.json"))
             {
-                string gameplay = File.ReadAllText("Files/configs/gameplay.json");
-                bool changesMade = CheckIfSame(gameplay, configbase);
-                if (changesMade)
+                if (Handlers.ArgumentHandler.ReloadAllConfigs)
                 {
-                    File.WriteAllText("Files/configs/gameplay.json", configbase);
+                    File.WriteAllText($"configs/{configname}.json", configbase);
                 }
             }
-        }
-
-        /// <summary>
-        /// Rebuild Server config from that base Json.
-        /// <br>Same as Controllers/ConfigController.js@func=RefreshServerConfigFromBase()</br>
-        /// </summary>
-        public static void RefreshServerConfigFromBase()
-        {
-            string configbase = File.ReadAllText("Files/configs/server_base.json");
-
-            if (!File.Exists("Files/configs/server.json"))
-            {
-                File.WriteAllText("Files/configs/server.json", configbase);
-            }
-
-            if (File.Exists("Files/configs/server.json"))
-            {
-                string server = File.ReadAllText("Files/configs/server.json");
-                bool changesMade = CheckIfSame(server, configbase);
-                if (changesMade)
-                {
-                    File.WriteAllText("Files/configs/server.json", configbase);
-                }
-            }
-        }
-
-        /// <summary>
-        /// Check if the the target and Source is same
-        /// </summary>
-        /// <param name="target">Target String</param>
-        /// <param name="src">Source String</param>
-        /// <returns>True if Not, False is Same</returns>
-        public static bool CheckIfSame(string target, string src)
-        {
-            bool changesMade = false;
-            if (target != src)
-            {
-                changesMade = true;
-            }
-            return changesMade;
         }
     }
 }

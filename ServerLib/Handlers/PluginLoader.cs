@@ -14,6 +14,8 @@ namespace ServerLib.Handlers
 
 			foreach (string file in Directory.GetFiles(Path.Combine(currdir, "Plugins"), "*.dll"))
 			{
+				if (file.Contains("ignore")) { continue; }
+
 				IPlugin iPlugin = (IPlugin)Activator.CreateInstance(Assembly.LoadFile(file).GetType("Plugin.Plugin"));
 				if (pluginsList.ContainsKey(iPlugin.Name))
 				{
@@ -29,6 +31,9 @@ namespace ServerLib.Handlers
 						PluginPath = file,
 						Plugin = iPlugin
 					});
+
+					
+
 				}
 			}
 		}

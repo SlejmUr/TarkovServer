@@ -13,7 +13,7 @@ namespace ServerLib.Web
             Utils.PrintRequest(ctx.Request);
             string resp;
             string version = Utils.GetVersion(ctx.Request.Headers);
-            var server = DatabaseController.DataBase.Server;
+            var server = ConfigController.Configs.Server;
 
             if (string.IsNullOrWhiteSpace(server.Version))
             {
