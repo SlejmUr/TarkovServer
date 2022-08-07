@@ -295,7 +295,7 @@ namespace ServerLib.Controllers
         public static bool IsNicknameTaken(string JsonInfo)
         {
             var nickname = JsonConvert.DeserializeObject<NicknameValidate>(JsonInfo);
-            var custom = ConfigController.Configs["custom"].CustomSettings;
+            var custom = ConfigController.Configs.CustomSettings;
             if (nickname==null) { return false; }
             if (custom == null) { return false; }
             if (custom.Account.CheckTakenNickname)

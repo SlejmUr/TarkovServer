@@ -212,7 +212,7 @@ namespace ServerLib.Controllers
         }
         static void LoadCustomConfig()
         {
-            var Custom = ConfigController.Configs["custom"].CustomSettings;
+            var Custom = ConfigController.Configs.CustomSettings;
             if (Custom.Locale.UseCustomLocale)
             {
                 var from = Custom.Locale.CustomLocale.FromReplace;

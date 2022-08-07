@@ -51,5 +51,22 @@ namespace ServerLib.Json
             [JsonProperty("exp_table")]
             public List<ExpTable> ExpTable { get; set; }
         }
+        public class FriendRequester
+        {
+            [JsonProperty("_id")]
+            public string Id { get; set; }
+
+            [JsonProperty("from")]
+            public string From { get; set; }
+
+            [JsonProperty("to")]
+            public string To { get; set; }
+
+            [JsonProperty("date")]
+            public int Date { get; set; }
+
+            [JsonProperty("profile")]
+            public string Profile { get; set; }
+        }
     }
 }

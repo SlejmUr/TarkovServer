@@ -5,7 +5,7 @@ namespace ServerLib.Controllers
 {
     public class ConfigController
     {
-        public static Dictionary<string, Json.Configs> Configs = new(); //Config["server"] = all things in server.json.
+        public static Json.Configs Configs = new();
 
         /// <summary>
         /// Initialize the configs. 
@@ -23,37 +23,34 @@ namespace ServerLib.Controllers
         /// </summary>
         public static void RebuildFromBaseConfigs()
         {
-            if (Configs == null)
-            {
-                Configs = new();
-            }
             RefreshConfigFromBase("server");
             RefreshConfigFromBase("gameplay");
             RefreshConfigFromBase("custom");
             RefreshConfigFromBase("plugin");
-            string[] dirs = Directory.GetDirectories("configs");
+            string[] dirs = Directory.GetFiles("configs");
             foreach (string dir in dirs)
             {
+                
                 if (File.Exists(dir))
                 {
                     string dataraw = File.ReadAllText(dir);
                     if (dataraw != null && dataraw != "")
                     {
-                        dir.Replace("configs\\", "");
-                        dir.Replace(".json","");
-                        switch (dir)
+                        var dir_1 = dir.Replace("configs\\", "");
+                        dir_1 = dir_1.Replace(".json","");
+                        switch (dir_1)
                         {
                             case "server":
-                                Configs[dir].Server = JsonConvert.DeserializeObject<Json.ServerConfig.Base>(dataraw);
+                                Configs.Server = JsonConvert.DeserializeObject<Json.ServerConfig.Base>(dataraw);
                                 break;
                             case "gameplay":
-                                Configs[dir].Gameplay = JsonConvert.DeserializeObject<Json.GameplayConfig.Base>(dataraw);
+                                Configs.Gameplay = JsonConvert.DeserializeObject<Json.GameplayConfig.Base>(dataraw);
                                 break;
                             case "custom":
-                                Configs[dir].CustomSettings = JsonConvert.DeserializeObject<Json.CustomConfig.Base>(dataraw);
+                                Configs.CustomSettings = JsonConvert.DeserializeObject<Json.CustomConfig.Base>(dataraw);
                                 break;
                             case "plugin":
-                                Configs[dir].Plugins = dataraw;
+                                Configs.Plugins = dataraw;
                                 break;
                             default:
                                 break;

@@ -63,7 +63,7 @@ namespace Tarkov_Server_Csharp
                 Console.ReadLine();
                 PluginLoader.UnloadPlugins();
             }
-
+            FriendsController._Test("AID0f70e9b4c288de524afcfade7a9d346b", "AID4af2452028e9c7f8b0b74ca63e384923");
             Console.WriteLine("END");
             Console.ReadLine();
         }

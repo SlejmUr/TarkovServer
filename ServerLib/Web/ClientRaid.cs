@@ -12,7 +12,7 @@ namespace ServerLib.Web
         {
             Utils.PrintRequest(ctx.Request);
             //REQ stuff
-            GameplayConfig.Base gameplayBase = ConfigController.Configs["gameplay"].Gameplay;
+            GameplayConfig.Base gameplayBase = ConfigController.Configs.Gameplay;
             // RPS
             var rsp = ResponseControl.CompressRsp(gameplayBase.InRaid.ShowDeathMessage.ToString());
             ctx.Response.StatusCode = 200;
