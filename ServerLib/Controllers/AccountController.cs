@@ -243,11 +243,11 @@ namespace ServerLib.Controllers
         }
 
         /// <summary>
-        /// Tries to find account data in loaded account list if not present returns null
+        /// Find account data in loaded account list
         /// <br>Same as Controllers/AccountController.js@func=find()</br>
         /// </summary>
         /// <param name="sessionID">SessionId/AccountId</param>
-        /// <returns>Account Data</returns>
+        /// <returns>Account Data | null</returns>
         public static Account FindAccount(string sessionID)
         {
             ReloadAccountBySessionID(sessionID);

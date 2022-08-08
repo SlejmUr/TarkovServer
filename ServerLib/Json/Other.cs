@@ -68,5 +68,41 @@ namespace ServerLib.Json
             [JsonProperty("profile")]
             public string Profile { get; set; }
         }
+
+        public class FriendsList
+        {
+            [JsonProperty("Friends")]
+            public List<object> Friends { get; set; } = new();
+
+            [JsonProperty("Ignore")]
+            public List<object> Ignore { get; set; } = new();
+
+            [JsonProperty("InIgnoreList")]
+            public List<object> InIgnoreList { get; set; } = new();
+        }
+
+        public class FriendsReq
+        {
+            [JsonProperty("request_id")]
+            public string? req_Id { get; set; }
+
+            [JsonProperty("to")]
+            public string? toId { get; set; }
+
+            [JsonProperty("requestId")]
+            public string? reqId { get; set; }
+        }
+
+        public class AddFriendRsp
+        {
+            [JsonProperty("requestId")]
+            public string RequestId { get; set; }
+
+            [JsonProperty("retryAfter")]
+            public int RetryAfter { get; set; } = 30;
+
+            [JsonProperty("status")]
+            public int Status { get; set; } = 0;
+        }
     }
 }

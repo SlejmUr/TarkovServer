@@ -12,7 +12,10 @@ namespace ServerLib.Web
             //REQ stuff
             string SessionID = Utils.GetSessionID(ctx.Request.Headers);
             Utils.PrintRequest(ctx.Request);
-            string resp = "";
+
+            //HealOverTime!!
+
+            string resp = CharacterController.GetCompleteCharacter(SessionID);
             // RPS
             var rsp = ResponseControl.CompressRsp(resp);
             ctx.Response.StatusCode = 200;
@@ -45,7 +48,9 @@ namespace ServerLib.Web
             //REQ stuff
             string SessionID = Utils.GetSessionID(ctx.Request.Headers);
             Utils.PrintRequest(ctx.Request);
-            string resp = "";
+
+
+            string resp = "{ uid: \"pmc" + SessionID + "\"}";
             // RPS
             var rsp = ResponseControl.CompressRsp(resp);
             ctx.Response.StatusCode = 200;
@@ -75,9 +80,21 @@ namespace ServerLib.Web
         public async Task ProfileNicknameValidate(HttpContext ctx)
         {
             //REQ stuff
-            string SessionID = Utils.GetSessionID(ctx.Request.Headers);
             Utils.PrintRequest(ctx.Request);
-            string resp = "";
+            string Uncompressed = ResponseControl.DeCompressReq(ctx.Request.DataAsBytes);
+
+            var nickname = AccountController.ValidateNickname(Uncompressed);
+            var resp = ResponseControl.GetBody("{status: \"ok\"}");
+            if (nickname == "taken")
+            {
+                resp = ResponseControl.GetBody("null" ,255, "The nickname is already in use");
+            }
+
+            if (nickname == "tooshort")
+            {
+                resp = ResponseControl.GetBody("null", 256, "The nickname is too short");
+            }
+
             // RPS
             var rsp = ResponseControl.CompressRsp(resp);
             ctx.Response.StatusCode = 200;
@@ -93,7 +110,19 @@ namespace ServerLib.Web
             //REQ stuff
             string SessionID = Utils.GetSessionID(ctx.Request.Headers);
             Utils.PrintRequest(ctx.Request);
-            string resp = "";
+            string Uncompressed = ResponseControl.DeCompressReq(ctx.Request.DataAsBytes);
+
+            var nickname = CharacterController.ChangeNickname(Uncompressed, SessionID);
+            var resp = ResponseControl.GetBody("{status: 0, nicknamechangedate: " + Utils.UnixTimeNow_Int() +"}");
+            if (nickname == "taken")
+            {
+                resp = ResponseControl.GetBody("null", 255, "The nickname is already in use");
+            }
+
+            if (nickname == "tooshort")
+            {
+                resp = ResponseControl.GetBody("null", 256, "The nickname is too short");
+            }
             // RPS
             var rsp = ResponseControl.CompressRsp(resp);
             ctx.Response.StatusCode = 200;
@@ -109,9 +138,11 @@ namespace ServerLib.Web
             //REQ stuff
             string SessionID = Utils.GetSessionID(ctx.Request.Headers);
             Utils.PrintRequest(ctx.Request);
-            string resp = "";
+            string Uncompressed = ResponseControl.DeCompressReq(ctx.Request.DataAsBytes);
+
+            CharacterController.ChangeVoice(Uncompressed,SessionID);
             // RPS
-            var rsp = ResponseControl.CompressRsp(resp);
+            var rsp = ResponseControl.CompressRsp(ResponseControl.NullResponse());
             ctx.Response.StatusCode = 200;
             ctx.Response.ContentType = "application/json";
             ctx.Response.ContentLength = rsp.Length;
