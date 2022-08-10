@@ -22,9 +22,9 @@ namespace ServerLib.Controllers
             LoadCustomization();
             LoadLocale();
             LoadTemplates();
-            Utils.PrintDebug("LoadLocations");
-            Utils.PrintDebug("LoadTraders");
-            Utils.PrintDebug("LoadFleaMarket");
+            LoadLocations();
+            LoadTraders();
+            Utils.PrintDebug("LoadFleaMarket / Ragfair");
             LoadWeater();
             LoadCustomConfig();
             Utils.PrintDebug("Initialization Done!", "debug", "[DATABASE]");
@@ -198,7 +198,64 @@ namespace ServerLib.Controllers
             }
             Utils.PrintDebug("Locales loaded");
         }
-
+        static void LoadLocations()
+        {
+            DataBase.AllLocations = File.ReadAllText("Files/locations/all_locations.json");
+            var dirs = Directory.GetDirectories("Files/locations");
+            foreach (var dir in dirs)
+            {
+                var dirname = dir.Replace("Files/locations\\", "");
+                var files = Directory.GetFiles(dir);
+                foreach (var file in files)
+                {
+                    string filename = file.Replace("Files/locations\\" + dirname + "\\", "").Replace(".json", "");
+                    DataBase.Locations.Add(dirname + "_" + filename, File.ReadAllText(file));
+                }
+            }
+            Utils.PrintDebug("Locations loaded");
+        }
+        static void LoadTraders()
+        {
+            DataBase.Traders = new();
+            Database.traders traders = new();
+            var dirs = Directory.GetDirectories("Files/traders");
+            foreach (var dir in dirs)
+            {
+                var dirname = dir.Replace("Files/traders\\", "");
+                var files = Directory.GetFiles(dir);
+                foreach (var file in files)
+                {
+                    string filename = file.Replace("Files/traders\\" + dirname + "\\", "").Replace(".json", "");
+                    //DataBase.Locations.Add(dirname + "_" + filename, File.ReadAllText(file));
+                    switch (filename)
+                    {
+                        default:
+                            break;
+                        case "assort":
+                            traders.Assort = JsonConvert.DeserializeObject<Database.traders.assort>(File.ReadAllText(file));
+                            break;
+                        case "base":
+                            traders.Base = File.ReadAllText(file);
+                            break;
+                        case "categories":
+                            traders.Categories = JsonConvert.DeserializeObject<List<string>>(File.ReadAllText(file));
+                            break;
+                        case "dialogue":
+                            traders.Dialog = JsonConvert.DeserializeObject<Traders.Dialog>(File.ReadAllText(file));
+                            break;
+                        case "questassort":
+                            traders.QuestAssort = File.ReadAllText(file);
+                            break;
+                        case "suits":
+                            traders.Suits = JsonConvert.DeserializeObject<Traders.Suits>(File.ReadAllText(file));
+                            break;
+                    }
+                    DataBase.Traders.Add(dirname,traders);
+                    traders = new();
+                }
+            }
+            Utils.PrintDebug("Traders loaded");
+        }
         static void LoadWeater()
         {
             DataBase.Weather = new();

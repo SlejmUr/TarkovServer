@@ -7,6 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Files\locations\base\**" />
+    <Compile Remove="Files\locations\loot\**" />
+    <EmbeddedResource Remove="Files\locations\base\**" />
+    <EmbeddedResource Remove="Files\locations\loot\**" />
+    <None Remove="Files\locations\base\**" />
+    <None Remove="Files\locations\loot\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="Files\base\botBase.json" />
     <None Remove="Files\base\botCore.json" />
     <None Remove="Files\base\botNames.json" />
@@ -568,35 +577,63 @@
     <None Remove="Files\locales\sk\menu.json" />
     <None Remove="Files\locales\tu\locale.json" />
     <None Remove="Files\locales\tu\menu.json" />
-    <None Remove="Files\locations\base\bigmap.json" />
-    <None Remove="Files\locations\base\develop.json" />
-    <None Remove="Files\locations\base\factory4_day.json" />
-    <None Remove="Files\locations\base\factory4_night.json" />
-    <None Remove="Files\locations\base\hideout.json" />
-    <None Remove="Files\locations\base\interchange.json" />
-    <None Remove="Files\locations\base\laboratory.json" />
-    <None Remove="Files\locations\base\lighthouse.json" />
-    <None Remove="Files\locations\base\lighthouse2.json" />
-    <None Remove="Files\locations\base\privatearea.json" />
-    <None Remove="Files\locations\base\rezervbase.json" />
-    <None Remove="Files\locations\base\shoreline.json" />
-    <None Remove="Files\locations\base\suburbs.json" />
-    <None Remove="Files\locations\base\tarkovstreets.json" />
-    <None Remove="Files\locations\base\terminal.json" />
-    <None Remove="Files\locations\base\town.json" />
-    <None Remove="Files\locations\base\woods.json" />
+    <None Remove="Files\locations\all_locations.json" />
+    <None Remove="Files\locations\bigmap\1.json" />
+    <None Remove="Files\locations\bigmap\2.json" />
+    <None Remove="Files\locations\bigmap\3.json" />
+    <None Remove="Files\locations\bigmap\4.json" />
+    <None Remove="Files\locations\bigmap\5.json" />
+    <None Remove="Files\locations\bigmap\6.json" />
     <None Remove="Files\locations\DynamicLootTable.json" />
-    <None Remove="Files\locations\loot\bigmap.json" />
-    <None Remove="Files\locations\loot\develop.json" />
-    <None Remove="Files\locations\loot\factory4_day.json" />
-    <None Remove="Files\locations\loot\factory4_night.json" />
-    <None Remove="Files\locations\loot\interchange.json" />
-    <None Remove="Files\locations\loot\laboratory.json" />
-    <None Remove="Files\locations\loot\lighthouse.json" />
-    <None Remove="Files\locations\loot\rezervbase.json" />
-    <None Remove="Files\locations\loot\shoreline.json" />
-    <None Remove="Files\locations\loot\woods.json" />
+    <None Remove="Files\locations\factory4_day\1.json" />
+    <None Remove="Files\locations\factory4_day\2.json" />
+    <None Remove="Files\locations\factory4_day\3.json" />
+    <None Remove="Files\locations\factory4_day\4.json" />
+    <None Remove="Files\locations\factory4_day\5.json" />
+    <None Remove="Files\locations\factory4_day\6.json" />
+    <None Remove="Files\locations\factory4_night\1.json" />
+    <None Remove="Files\locations\factory4_night\2.json" />
+    <None Remove="Files\locations\factory4_night\3.json" />
+    <None Remove="Files\locations\factory4_night\4.json" />
+    <None Remove="Files\locations\factory4_night\5.json" />
+    <None Remove="Files\locations\factory4_night\6.json" />
+    <None Remove="Files\locations\interchange\1.json" />
+    <None Remove="Files\locations\interchange\2.json" />
+    <None Remove="Files\locations\interchange\3.json" />
+    <None Remove="Files\locations\interchange\4.json" />
+    <None Remove="Files\locations\interchange\5.json" />
+    <None Remove="Files\locations\interchange\6.json" />
+    <None Remove="Files\locations\laboratory\1.json" />
+    <None Remove="Files\locations\laboratory\2.json" />
+    <None Remove="Files\locations\laboratory\3.json" />
+    <None Remove="Files\locations\laboratory\4.json" />
+    <None Remove="Files\locations\laboratory\5.json" />
+    <None Remove="Files\locations\laboratory\6.json" />
+    <None Remove="Files\locations\lighthouse\1.json" />
+    <None Remove="Files\locations\lighthouse\2.json" />
+    <None Remove="Files\locations\lighthouse\3.json" />
+    <None Remove="Files\locations\lighthouse\4.json" />
+    <None Remove="Files\locations\lighthouse\5.json" />
+    <None Remove="Files\locations\lighthouse\6.json" />
+    <None Remove="Files\locations\rezervbase\1.json" />
+    <None Remove="Files\locations\rezervbase\2.json" />
+    <None Remove="Files\locations\rezervbase\3.json" />
+    <None Remove="Files\locations\rezervbase\4.json" />
+    <None Remove="Files\locations\rezervbase\5.json" />
+    <None Remove="Files\locations\rezervbase\6.json" />
+    <None Remove="Files\locations\shoreline\1.json" />
+    <None Remove="Files\locations\shoreline\2.json" />
+    <None Remove="Files\locations\shoreline\3.json" />
+    <None Remove="Files\locations\shoreline\4.json" />
+    <None Remove="Files\locations\shoreline\5.json" />
+    <None Remove="Files\locations\shoreline\6.json" />
     <None Remove="Files\locations\StaticLootTable.json" />
+    <None Remove="Files\locations\woods\1.json" />
+    <None Remove="Files\locations\woods\2.json" />
+    <None Remove="Files\locations\woods\3.json" />
+    <None Remove="Files\locations\woods\4.json" />
+    <None Remove="Files\locations\woods\5.json" />
+    <None Remove="Files\locations\woods\6.json" />
     <None Remove="Files\quests\quests.json" />
     <None Remove="Files\templates\categories.json" />
     <None Remove="Files\templates\items.json" />
@@ -2335,91 +2372,169 @@
     <Content Include="Files\locales\tu\menu.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Files\locations\base\bigmap.json">
+    <Content Include="Files\locations\all_locations.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Files\locations\base\develop.json">
+    <Content Include="Files\locations\bigmap\1.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Files\locations\base\factory4_day.json">
+    <Content Include="Files\locations\bigmap\2.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Files\locations\base\factory4_night.json">
+    <Content Include="Files\locations\bigmap\3.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Files\locations\base\hideout.json">
+    <Content Include="Files\locations\bigmap\4.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Files\locations\base\interchange.json">
+    <Content Include="Files\locations\bigmap\5.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Files\locations\base\laboratory.json">
+    <Content Include="Files\locations\bigmap\6.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Files\locations\base\lighthouse.json">
+    <Content Include="Files\locations\factory4_day\1.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Files\locations\base\lighthouse2.json">
+    <Content Include="Files\locations\factory4_day\2.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Files\locations\base\privatearea.json">
+    <Content Include="Files\locations\factory4_day\3.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Files\locations\base\rezervbase.json">
+    <Content Include="Files\locations\factory4_day\4.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Files\locations\base\shoreline.json">
+    <Content Include="Files\locations\factory4_day\5.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Files\locations\base\suburbs.json">
+    <Content Include="Files\locations\factory4_day\6.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Files\locations\base\tarkovstreets.json">
+    <Content Include="Files\locations\factory4_night\1.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Files\locations\base\terminal.json">
+    <Content Include="Files\locations\factory4_night\2.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Files\locations\base\town.json">
+    <Content Include="Files\locations\factory4_night\3.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Files\locations\base\woods.json">
+    <Content Include="Files\locations\factory4_night\4.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Files\locations\DynamicLootTable.json">
+    <Content Include="Files\locations\factory4_night\5.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Files\locations\loot\bigmap.json">
+    <Content Include="Files\locations\factory4_night\6.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Files\locations\loot\develop.json">
+    <Content Include="Files\locations\interchange\1.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Files\locations\loot\factory4_day.json">
+    <Content Include="Files\locations\interchange\2.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Files\locations\loot\factory4_night.json">
+    <Content Include="Files\locations\interchange\3.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Files\locations\loot\interchange.json">
+    <Content Include="Files\locations\interchange\4.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Files\locations\loot\laboratory.json">
+    <Content Include="Files\locations\interchange\5.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Files\locations\loot\lighthouse.json">
+    <Content Include="Files\locations\interchange\6.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Files\locations\loot\rezervbase.json">
+    <Content Include="Files\locations\laboratory\1.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Files\locations\loot\shoreline.json">
+    <Content Include="Files\locations\laboratory\2.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Files\locations\loot\woods.json">
+    <Content Include="Files\locations\laboratory\3.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Files\locations\StaticLootTable.json">
+    <Content Include="Files\locations\laboratory\4.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\locations\laboratory\5.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\locations\laboratory\6.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\locations\lighthouse\1.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\locations\lighthouse\2.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\locations\lighthouse\3.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\locations\lighthouse\4.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\locations\lighthouse\5.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\locations\lighthouse\6.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\locations\rezervbase\1.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\locations\rezervbase\2.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\locations\rezervbase\3.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\locations\rezervbase\4.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\locations\rezervbase\5.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\locations\rezervbase\6.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\locations\shoreline\1.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\locations\shoreline\2.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\locations\shoreline\3.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\locations\shoreline\4.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\locations\shoreline\5.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\locations\shoreline\6.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\locations\woods\1.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\locations\woods\2.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\locations\woods\3.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\locations\woods\4.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\locations\woods\5.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\locations\woods\6.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Files\quests\quests.json">

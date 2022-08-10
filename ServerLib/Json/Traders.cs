@@ -59,6 +59,22 @@ namespace ServerLib.Json
             public List<ItemRequirement> ItemRequirements { get; set; }
         }
 
+        public class Dialog
+        {
+            [JsonProperty("insuranceStart")]
+            public List<string> InsuranceStart { get; set; }
 
+            [JsonProperty("insuranceFound")]
+            public List<string> InsuranceFound { get; set; }
+
+            [JsonProperty("insuranceExpired")]
+            public List<string> InsuranceExpired { get; set; }
+
+            [JsonProperty("insuranceComplete")]
+            public List<string> InsuranceComplete { get; set; }
+
+            [JsonProperty("insuranceFailed")]
+            public List<string> InsuranceFailed { get; set; }
+        }
     }
 }

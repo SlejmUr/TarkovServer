@@ -201,11 +201,11 @@ namespace ServerLib.Controllers
                 //InitializeProfile(ID);
 
                 if (!File.Exists($"{dir}/character.json")) { continue; }
-                var character = JsonConvert.DeserializeObject<dynamic>(File.ReadAllText($"{dir}/character.json"));
-                Console.WriteLine(character.aid);
+                var character = JsonConvert.DeserializeObject<Character.Base>(File.ReadAllText($"{dir}/character.json"));
+                Console.WriteLine(character.Aid);
                 CharacterOBJ obj = new();
-                obj.Id = character.aid;
-                obj._id = character.aid;
+                obj.Id = character.Aid;
+                obj._id = character.Aid;
                 obj.Nickname = character.Info.Nickname;
                 obj.Level = character.Info.Level;
                 obj.PlayerVisualRepresentation = new();
@@ -282,8 +282,9 @@ namespace ServerLib.Controllers
         public static string GetReservedNickname(string sessionID)
         {
             ReloadAccountBySessionID(sessionID);
-            var acc = FindAccount(sessionID);
-            return acc.Email;
+            var Account = FindAccount(sessionID);
+            if (Account == null) { new Exception("Account null!"); }
+            return Account.Email;
         }
 
         /// <summary>
@@ -296,8 +297,7 @@ namespace ServerLib.Controllers
         {
             var nickname = JsonConvert.DeserializeObject<NicknameValidate>(JsonInfo);
             var custom = ConfigController.Configs.CustomSettings;
-            if (nickname==null) { return false; }
-            if (custom == null) { return false; }
+            if (nickname == null) { return false; }
             if (custom.Account.CheckTakenNickname)
             {
                 foreach (var acc in Accounts)
@@ -338,12 +338,6 @@ namespace ServerLib.Controllers
         {
             var Account = FindAccount(sessionID);
             if (Account == null) { new Exception("Account null!"); }
-
-            if (Account.Lang == null)
-            {
-                Account.Lang = "en";
-                Handlers.SaveHandler.SaveAccount(sessionID, Account);
-            }
             return Account.Lang;
         }
 
@@ -359,9 +353,9 @@ namespace ServerLib.Controllers
             var changes = JsonConvert.DeserializeObject<Changes>(JsonInfo);
             if (AccountID != "FAILED")
             { 
-                var acc = FindAccount(AccountID);
-                acc.Password = changes.Change;
-                Handlers.SaveHandler.SaveAccount(AccountID,acc);
+                var Account = FindAccount(AccountID);
+                Account.Password = changes.Change;
+                Handlers.SaveHandler.SaveAccount(AccountID,Account);
             }
             return AccountID;
         }
@@ -378,9 +372,9 @@ namespace ServerLib.Controllers
             var changes = JsonConvert.DeserializeObject<Changes>(JsonInfo);
             if (AccountID != "FAILED")
             {
-                var acc = FindAccount(AccountID);
-                acc.Email = changes.Change;
-                Handlers.SaveHandler.SaveAccount(AccountID, acc);
+                var Account = FindAccount(AccountID);
+                Account.Email = changes.Change;
+                Handlers.SaveHandler.SaveAccount(AccountID, Account);
             }
             return AccountID;
         }

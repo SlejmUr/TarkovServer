@@ -43,9 +43,9 @@ namespace Tarkov_Server_Csharp
             DialogController.Init();
             AccountController.Init();
             AccountController.GetAccountList();
+            Console.WriteLine("Initialization Done!");
             WebServer webServer = new WebServer();
-            webServer.MainStart(IP_Address, Port);
-
+            webServer.MainStart(IP_Address, Port);     
             if (!ArgumentHandler.DontLoadPlugin)
             {
                 PluginLoader.LoadPlugins();

@@ -21,5 +21,21 @@ namespace ServerLib.Web
             await ctx.Response.SendAsync(rsp);
             return;
         }
+
+        [StaticRoute(HttpServerLite.HttpMethod.POST, "/raid/profile/save")]
+        public async Task RaidSave(HttpContext ctx)
+        {
+            Utils.PrintRequest(ctx.Request);
+            //REQ stuff
+            var decomp = ResponseControl.DeCompressReq(ctx.Request.DataAsBytes);
+            File.AppendAllText("saveAccount.json",decomp);
+            // RPS
+            var rsp = ResponseControl.CompressRsp(ResponseControl.NullResponse());
+            ctx.Response.StatusCode = 200;
+            ctx.Response.ContentType = "text/plain";
+            ctx.Response.ContentLength = rsp.Length;
+            await ctx.Response.SendAsync(rsp);
+            return;
+        }
     }
 }

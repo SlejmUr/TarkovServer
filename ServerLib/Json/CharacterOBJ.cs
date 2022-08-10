@@ -13,7 +13,7 @@ namespace ServerLib.Json
         public class PlayerVisualRepresentationClass
         {
             public Info Info { get; set; } = new();
-            public JObject Customization { get; set; }
+            public Character.Customization Customization { get; set; }
         }
 
         public class Info
