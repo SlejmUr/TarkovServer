@@ -79,6 +79,41 @@ namespace ServerLib.Web
             return;
         }
 
+        [StaticRoute(HttpServerLite.HttpMethod.POST, "/client/game/config")]
+        public async Task GameConfig(HttpContext ctx)
+        {
+            //REQ stuff
+            string resp;
+            Utils.PrintRequest(ctx.Request);
+            string SessionID = Utils.GetSessionID(ctx.Request.Headers);
+            /*
+            {
+            aid: sessionID,
+            lang: "en",
+            languages: await Language.getAllWithoutKeys(),
+            ndaFree: false,
+            taxonomy: 6,
+            activeProfileId: "pmc" + SessionID,
+            backend: {
+                Trading: FastifyResponse.getBackendUrl(),
+                Messaging: FastifyResponse.getBackendUrl(),
+                Main: FastifyResponse.getBackendUrl(),
+                RagFair: FastifyResponse.getBackendUrl()
+            },
+            utc_time: getCurrentTimestamp(),
+            totalInGame: 0,
+            reportAvailable: true,
+            twitchEventMember: false
+            }
+            */
+            var rsp = ResponseControl.CompressRsp(ResponseControl.GetBody("{status: \"ok\"}"));
+            ctx.Response.StatusCode = 200;
+            ctx.Response.ContentType = "application/json";
+            ctx.Response.ContentLength = rsp.Length;
+            await ctx.Response.TrySendAsync(rsp);
+            return;
+        }
+
         [StaticRoute(HttpServerLite.HttpMethod.POST, "/client/game/logout")]
         public async Task GameLogout(HttpContext ctx)
         {

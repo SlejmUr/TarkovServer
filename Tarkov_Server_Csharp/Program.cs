@@ -43,18 +43,9 @@ namespace Tarkov_Server_Csharp
             DialogController.Init();
             AccountController.Init();
             AccountController.GetAccountList();
-
-            /*
-            HOW TO Add to an array outside
-            var acc = Controllers.AccountController.FindAccount("AID9b38399c1e9c5bc056387382");
-            var list = acc.Friends.ToList(); 
-            list.Add("yeehaw");
-            acc.Friends = list.ToArray();
-            Console.WriteLine(JsonConvert.SerializeObject(acc));      
-             */
+            Console.WriteLine("Initialization Done!");
             WebServer webServer = new WebServer();
-            webServer.MainStart(IP_Address, Port);
-
+            webServer.MainStart(IP_Address, Port);     
             if (!ArgumentHandler.DontLoadPlugin)
             {
                 PluginLoader.LoadPlugins();
@@ -63,7 +54,6 @@ namespace Tarkov_Server_Csharp
                 Console.ReadLine();
                 PluginLoader.UnloadPlugins();
             }
-            FriendsController._Test("AID0f70e9b4c288de524afcfade7a9d346b", "AID4af2452028e9c7f8b0b74ca63e384923");
             Console.WriteLine("END");
             Console.ReadLine();
         }

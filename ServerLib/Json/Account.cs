@@ -14,7 +14,7 @@
         {
             public bool LookingForGroup { get; set; } = false;
         }
-        public string[] FriendRequestInbox { get; set; } = Array.Empty<string>();
-        public string[] FriendRequestOutbox { get; set; } = Array.Empty<string>();
+        public Other.FriendRequester[] FriendRequestInbox { get; set; } = Array.Empty<Other.FriendRequester>();
+        public Other.FriendRequester[] FriendRequestOutbox { get; set; } = Array.Empty<Other.FriendRequester>();
     }
 }

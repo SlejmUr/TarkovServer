@@ -68,31 +68,16 @@ namespace ServerLib.Json
         public Dictionary<string, string> Customization { get; set; } = new();
         public string Languages { get; set; }
         public Dictionary<string, string> Locales { get; set; } = new();
-        public locations Locations { get; set; } = new();
-        public class locations
-        {
-            public string LocationBase { get; set; }
-            public string StaticLootTable { get; set; }
-            public string DynamicLootTable { get; set; }
-            public Dictionary<string, string> Base { get; set; } = new();
-            public Dictionary<string, loot> Loot { get; set; } = new();
-            public class loot
-            {
-                public string Forced { get; set; }
-                public string Mounted { get; set; }
-                public string Static { get; set; }
-                public string Dynamic { get; set; }
-            }
-        }
+        public string AllLocations { get; set; }
+        public Dictionary<string, string> Locations { get; set; } = new();
         public Dictionary<string, traders> Traders { get; set; } = new();
         public class traders
         {
             public string Base { get; set; }
-            public string Categories { get; set; }
-            public string SellCategory { get; set; }
-            public string Suits { get; set; }
+            public List<string> Categories { get; set; }
+            public Traders.Suits Suits { get; set; }
+            public Traders.Dialog Dialog { get; set; }
             public string QuestAssort { get; set; }
-            public string RepairPriceRate { get; set; }
             public assort Assort { get; set; }
             public class assort
             {
