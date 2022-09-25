@@ -11,10 +11,8 @@ namespace ServerLib
         public void MainStart(string IP, int Port)
         {
             WebserverSettings webserverSettings = new WebserverSettings(IP, Port);
-            //webserverSettings.Ssl.SslCertificate = CertHelper.GetCert();
             webserverSettings.Ssl.PfxCertificateFile = "cert/cert.pfx";
             webserverSettings.Ssl.Enable = true;
-            // Turn this off when Doing real one, not debug!
             if (Handlers.ArgumentHandler.Debug)
             {
                 webserverSettings.Debug.Responses = true;

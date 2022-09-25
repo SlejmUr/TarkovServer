@@ -1,5 +1,4 @@
-﻿using Newtonsoft.Json;
-using ServerLib;
+﻿using ServerLib;
 using ServerLib.Controllers;
 using ServerLib.Handlers;
 using ServerLib.Utilities;
@@ -48,7 +47,7 @@ namespace Tarkov_Server_Csharp
             WebServer webServer = new WebServer();
             webServer.MainStart(IP_Address, Port);
 
-            WebSocket.Start(IP_Address, Port+1);
+            WebSocket.Start(IP_Address, Port + 1);
 
             if (!ArgumentHandler.DontLoadPlugin)
             {

@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using Newtonsoft.Json;
+using System.Text;
 using WatsonWebsocket;
 
 namespace ServerLib.Web
@@ -11,7 +12,7 @@ namespace ServerLib.Web
         public static Dictionary<string, string> ConnectedSessions = new();
         public static void Start(string ip, int port)
         {
-            IpPort = $"ws://{ip}:{port}";
+            IpPort = $"ws://{ip}:{port}/socket/";
             Console.WriteLine("WebSocket Server started on ws://" + ip + ":" + port);
             wsServer = new WatsonWsServer(ip, port, false);
             wsServer.ClientConnected += ClientConnected;
@@ -51,6 +52,9 @@ namespace ServerLib.Web
             string SessionId = args.HttpRequest.Url.OriginalString.Split("socket/")[1];
             ConnectedSessions.Add(SessionId, args.IpPort);
             Console.WriteLine("Client connected: " + args.IpPort + " " + SessionId);
+
+            SendToClient(args.IpPort, JsonConvert.SerializeObject("{type: \"ping\",eventId: \"ping\"}"));
+            Console.WriteLine("Pinged Player " + SessionId);
         }
 
         static void ClientDisconnected(object sender, ClientDisconnectedEventArgs args)

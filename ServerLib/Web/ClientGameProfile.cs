@@ -17,7 +17,7 @@ namespace ServerLib.Web
 
             string resp = CharacterController.GetCompleteCharacter(SessionID);
             // RPS
-            var rsp = ResponseControl.CompressRsp(resp);
+            var rsp = ResponseControl.CompressRsp(ResponseControl.GetBody(resp));
             ctx.Response.StatusCode = 200;
             ctx.Response.ContentType = "application/json";
             ctx.Response.ContentLength = rsp.Length;
@@ -31,10 +31,16 @@ namespace ServerLib.Web
             //REQ stuff
             string SessionID = Utils.GetSessionID(ctx.Request.Headers);
             Utils.PrintRequest(ctx.Request);
-            //
+            /*
+            {
+                "status": "ok",
+                "notifier": Response.getNotifier(await Response.getSessionID(request)),
+                "notifierServer": ""
+            }
+            */
             string resp = "{\"status\": \"ok\"}";
             // RPS
-            var rsp = ResponseControl.CompressRsp(resp);
+            var rsp = ResponseControl.CompressRsp(ResponseControl.GetBody(resp));
             ctx.Response.StatusCode = 200;
             ctx.Response.ContentType = "application/json";
             ctx.Response.ContentLength = rsp.Length;
@@ -52,7 +58,7 @@ namespace ServerLib.Web
 
             string resp = "{ uid: \"pmc" + SessionID + "\"}";
             // RPS
-            var rsp = ResponseControl.CompressRsp(resp);
+            var rsp = ResponseControl.CompressRsp(ResponseControl.GetBody(resp));
             ctx.Response.StatusCode = 200;
             ctx.Response.ContentType = "application/json";
             ctx.Response.ContentLength = rsp.Length;

@@ -1,6 +1,4 @@
 ﻿using HttpServerLite;
-using ServerLib;
-using ServerLib.Controllers;
 
 namespace TestPlugin
 {

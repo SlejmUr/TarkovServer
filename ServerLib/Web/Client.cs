@@ -51,6 +51,42 @@ namespace ServerLib.Web
             return;
         }
 
+        [StaticRoute(HttpServerLite.HttpMethod.POST, "/client/WebSocketAddress")]
+        public async Task ClientWebSocketAddress(HttpContext ctx)
+        {
+            Utils.PrintRequest(ctx.Request);
+            string SessionID = Utils.GetSessionID(ctx.Request.Headers);
+            string resp = ResponseControl.GetBody(WebSocket.IpPort + SessionID);
+            var rsp = ResponseControl.CompressRsp(resp);
+            ctx.Response.StatusCode = 200;
+            ctx.Response.ContentType = "application/json";
+            ctx.Response.ContentLength = rsp.Length;
+            await ctx.Response.TrySendAsync(rsp);
+            return;
+        }
+
+        [StaticRoute(HttpServerLite.HttpMethod.POST, "/client/notifier/channel/create")]
+        public async Task ClientNotifier(HttpContext ctx)
+        {
+            Utils.PrintRequest(ctx.Request);
+            string SessionID = Utils.GetSessionID(ctx.Request.Headers);
+            string resp = ResponseControl.GetBody("");
+            /*
+            {
+                "server": ServerLib.IP,
+                "channel_id": sessionID,
+                "ws": "127.0.0.1:443",
+                "url": "https:://127.0.0.1:443"
+            }
+            */
+            var rsp = ResponseControl.CompressRsp(resp);
+            ctx.Response.StatusCode = 200;
+            ctx.Response.ContentType = "application/json";
+            ctx.Response.ContentLength = rsp.Length;
+            await ctx.Response.TrySendAsync(rsp);
+            return;
+        }
+
         [StaticRoute(HttpServerLite.HttpMethod.POST, "/client/chatServer/list")]
         public async Task ClientChatServerList(HttpContext ctx)
         {
