@@ -104,5 +104,70 @@ namespace ServerLib.Json
             [JsonProperty("status")]
             public int Status { get; set; } = 0;
         }
+
+        public class LangData
+        {
+            public string ShortName { get; set; }
+            public string Name { get; set; }
+        }
+
+        public class Lang
+        {
+            public int err { get; set; }
+            public string errmsg { get; set; }
+            public List<LangData> data { get; set; }
+            public int crc { get; set; }
+        }
+
+        public class GameConfigBackend
+        {
+            [JsonProperty("Trading")]
+            public string Trading { get; set; }
+
+            [JsonProperty("Messaging")]
+            public string Messaging { get; set; }
+
+            [JsonProperty("Main")]
+            public string Main { get; set; }
+
+            [JsonProperty("RagFair")]
+            public string RagFair { get; set; }
+        }
+
+        public class GameConfig
+        {
+            [JsonProperty("aid")]
+            public string Aid { get; set; }
+
+            [JsonProperty("lang")]
+            public string Lang { get; set; }
+
+            [JsonProperty("languages")]
+            public object Languages { get; set; }
+
+            [JsonProperty("ndaFree")]
+            public bool NdaFree { get; set; }
+
+            [JsonProperty("taxonomy")]
+            public int Taxonomy { get; set; }
+
+            [JsonProperty("activeProfileId")]
+            public string ActiveProfileId { get; set; }
+
+            [JsonProperty("backend")]
+            public GameConfigBackend Backend { get; set; }
+
+            [JsonProperty("utc_time")]
+            public double UtcTime { get; set; }
+
+            [JsonProperty("totalInGame")]
+            public int TotalInGame { get; set; }
+
+            [JsonProperty("reportAvailable")]
+            public bool ReportAvailable { get; set; }
+
+            [JsonProperty("twitchEventMember")]
+            public bool TwitchEventMember { get; set; }
+        }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using HttpServerLite;
 using Newtonsoft.Json;
+using ServerLib.Controllers;
 using ServerLib.Utilities;
 
 namespace ServerLib
@@ -7,6 +8,7 @@ namespace ServerLib
     public class WebServer
     {
         public Webserver _Server;
+
         public void MainStart(string IP, int Port)
         {
             WebserverSettings webserverSettings = new WebserverSettings(IP,Port);
@@ -65,6 +67,28 @@ namespace ServerLib
         {
             Console.WriteLine("TEST");
             string resp = "TEST";
+            ctx.Response.StatusCode = 200;
+            ctx.Response.ContentType = "application/json";
+            ctx.Response.ContentLength = resp.Length;
+            await ctx.Response.SendWithoutCloseAsync(resp);
+            return;
+        }
+
+        [StaticRoute(HttpServerLite.HttpMethod.GET, "/ServerInternalIPAddress")]
+        public async Task ServerInternalIPAddress(HttpContext ctx)
+        {
+            string resp = ConfigController.Configs.Server.Ip;
+            ctx.Response.StatusCode = 200;
+            ctx.Response.ContentType = "application/json";
+            ctx.Response.ContentLength = resp.Length;
+            await ctx.Response.SendWithoutCloseAsync(resp);
+            return;
+        }
+
+        [StaticRoute(HttpServerLite.HttpMethod.GET, "/ServerExternalIPAddress")]
+        public async Task ServerExternalIPAddress(HttpContext ctx)
+        {
+            string resp = ConfigController.Configs.Server.Ip;
             ctx.Response.StatusCode = 200;
             ctx.Response.ContentType = "application/json";
             ctx.Response.ContentLength = resp.Length;

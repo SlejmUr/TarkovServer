@@ -22,5 +22,8 @@
     },
     "useCustomLocale": false,
     "useCustomMenu": false
+  },
+  "Server": {
+    "PublicConfigEnabled": true
   }
 }

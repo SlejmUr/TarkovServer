@@ -14,6 +14,11 @@ namespace ServerLib.Web
             var Stuff =  "{\"err\":"+ errorcode + ",\"errmsg\":"+ errormsg + ",\"data\":" + Data + "}";
             return Stuff;
         }
+        public static string GetBodyCRC(string Data, int errorcode = 0, string errormsg = "null",int crc = 0)
+        {
+            var Stuff = "{\"err\":" + errorcode + ",\"errmsg\":" + errormsg + ",\"data\":" + Data + ",\"crc\":" + crc + "}";
+            return Stuff;
+        }
         public static string NullResponse()
         {
             return GetBody("null");

@@ -2,6 +2,7 @@
 using ServerLib.Controllers;
 using ServerLib.Utilities;
 using Newtonsoft.Json;
+using ServerLib.Json;
 
 namespace ServerLib.Web
 {
@@ -73,6 +74,45 @@ namespace ServerLib.Web
         {
             Utils.PrintRequest(ctx.Request);
             string resp = ResponseControl.GetBody(File.ReadAllText("Files/items/items.json"));
+            var rsp = ResponseControl.CompressRsp(resp);
+            ctx.Response.StatusCode = 200;
+            ctx.Response.ContentType = "application/json";
+            ctx.Response.ContentLength = rsp.Length;
+            await ctx.Response.TrySendAsync(rsp);
+            return;
+        }
+
+        [StaticRoute(HttpServerLite.HttpMethod.POST, "/client/customization")]
+        public async Task ClientCustomization(HttpContext ctx)
+        {
+            Utils.PrintRequest(ctx.Request);
+            string resp = ResponseControl.GetBody(File.ReadAllText("Files/customization/items.json"));
+            var rsp = ResponseControl.CompressRsp(resp);
+            ctx.Response.StatusCode = 200;
+            ctx.Response.ContentType = "application/json";
+            ctx.Response.ContentLength = rsp.Length;
+            await ctx.Response.TrySendAsync(rsp);
+            return;
+        }
+
+        [StaticRoute(HttpServerLite.HttpMethod.POST, "/client/globals")]
+        public async Task ClientGlobals(HttpContext ctx)
+        {
+            Utils.PrintRequest(ctx.Request);
+            string resp = ResponseControl.GetBody(DatabaseController.DataBase.Globals);
+            var rsp = ResponseControl.CompressRsp(resp);
+            ctx.Response.StatusCode = 200;
+            ctx.Response.ContentType = "application/json";
+            ctx.Response.ContentLength = rsp.Length;
+            await ctx.Response.TrySendAsync(rsp);
+            return;
+        }
+
+        [StaticRoute(HttpServerLite.HttpMethod.POST, "/client/settings")]
+        public async Task ClientSettings(HttpContext ctx)
+        {
+            Utils.PrintRequest(ctx.Request);
+            string resp = ResponseControl.GetBody(File.ReadAllText("Files/base/client.settings.json"));
             var rsp = ResponseControl.CompressRsp(resp);
             ctx.Response.StatusCode = 200;
             ctx.Response.ContentType = "application/json";

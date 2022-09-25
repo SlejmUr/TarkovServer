@@ -75,7 +75,8 @@ namespace ServerLib.Json
         {
             public string Base { get; set; }
             public List<string> Categories { get; set; }
-            public Traders.Suits Suits { get; set; }
+            public string RagfairCategories { get; set; }
+            public List<Traders.Suits> Suits { get; set; }
             public Traders.Dialog Dialog { get; set; }
             public string QuestAssort { get; set; }
             public assort Assort { get; set; }

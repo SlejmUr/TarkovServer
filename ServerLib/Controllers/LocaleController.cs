@@ -1,4 +1,8 @@
-﻿namespace ServerLib.Controllers
+﻿using Newtonsoft.Json;
+using ServerLib.Json;
+using System.Text;
+
+namespace ServerLib.Controllers
 {
     public class LocaleController
     {
@@ -37,6 +41,26 @@
         public static string GetGlobal(string lang, string sessionId)
         {
             return GetLocale(lang, lang,sessionId);
+        }
+
+        public static string GetConfigLanguages()
+        {
+            var langs = DatabaseController.DataBase.Languages;
+            Other.Lang lang = JsonConvert.DeserializeObject<Other.Lang>(langs);
+            string output = "";
+            foreach (var langpart in lang.data)
+            {
+                if (langpart.ShortName.Contains("ru"))
+                {
+                    output += $"\"{langpart.ShortName}\":\"{langpart.Name}\"";
+                }
+                else
+                {
+                    output += $"\"{langpart.ShortName}\":\"{langpart.Name}\",";
+                }
+
+            }
+            return "{"+ output + "}";
         }
     }
 }

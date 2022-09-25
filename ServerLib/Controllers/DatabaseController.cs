@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using ServerLib.Json;
+using System.Text;
 
 namespace ServerLib.Controllers
 {
@@ -238,7 +239,14 @@ namespace ServerLib.Controllers
                             traders.Base = File.ReadAllText(file);
                             break;
                         case "categories":
-                            traders.Categories = JsonConvert.DeserializeObject<List<string>>(File.ReadAllText(file));
+                            if (!dirname.Contains("ragfair"))
+                            {
+                                traders.Categories = JsonConvert.DeserializeObject<List<string>>(File.ReadAllText(file));
+                            }
+                            else
+                            {
+                                traders.RagfairCategories = File.ReadAllText(file);
+                            }
                             break;
                         case "dialogue":
                             traders.Dialog = JsonConvert.DeserializeObject<Traders.Dialog>(File.ReadAllText(file));
@@ -247,10 +255,10 @@ namespace ServerLib.Controllers
                             traders.QuestAssort = File.ReadAllText(file);
                             break;
                         case "suits":
-                            traders.Suits = JsonConvert.DeserializeObject<Traders.Suits>(File.ReadAllText(file));
+                            traders.Suits = JsonConvert.DeserializeObject<List<Traders.Suits>>(File.ReadAllText(file));
                             break;
                     }
-                    DataBase.Traders.Add(dirname,traders);
+                    DataBase.Traders.Add(filename + "_" + dirname, traders);
                     traders = new();
                 }
             }

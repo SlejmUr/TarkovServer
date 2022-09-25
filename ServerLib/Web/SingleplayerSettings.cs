@@ -47,5 +47,18 @@ namespace ServerLib.Web
             await ctx.Response.TrySendAsync(rsp);
             return;
         }
+
+        [StaticRoute(HttpServerLite.HttpMethod.GET, "/singleplayer/airdrop/config")]
+        public async Task SSAirdropConfig(HttpContext ctx)
+        {
+            Utils.PrintRequest(ctx.Request);
+            var defaultraid = JsonConvert.SerializeObject(ConfigController.Configs.Gameplay.InRaid.AirdropSettings);
+            var rsp = ResponseControl.CompressRsp(ResponseControl.NoBody(defaultraid));
+            ctx.Response.StatusCode = 200;
+            ctx.Response.ContentType = "application/json";
+            ctx.Response.ContentLength = rsp.Length;
+            await ctx.Response.TrySendAsync(rsp);
+            return;
+        }
     }
 }

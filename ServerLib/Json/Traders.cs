@@ -1,9 +1,4 @@
 ﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ServerLib.Json
 {
@@ -24,7 +19,7 @@ namespace ServerLib.Json
             public bool IsActive { get; set; }
 
             [JsonProperty("requirements")]
-            public Requirements Requirements { get; set; }
+            public Requirements Requirements { get; set; } = new();
         }
         public class ItemRequirement
         {
@@ -50,13 +45,13 @@ namespace ServerLib.Json
             public int Standing { get; set; }
 
             [JsonProperty("skillRequirements")]
-            public List<object> SkillRequirements { get; set; }
+            public List<string> SkillRequirements { get; set; } = new();
 
             [JsonProperty("questRequirements")]
-            public List<string> QuestRequirements { get; set; }
+            public List<string> QuestRequirements { get; set; } = new();
 
             [JsonProperty("itemRequirements")]
-            public List<ItemRequirement> ItemRequirements { get; set; }
+            public List<ItemRequirement> ItemRequirements { get; set; } = new();
         }
 
         public class Dialog

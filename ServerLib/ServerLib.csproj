@@ -635,6 +635,252 @@
     <None Remove="Files\locations\woods\5.json" />
     <None Remove="Files\locations\woods\6.json" />
     <None Remove="Files\quests\quests.json" />
+    <None Remove="Files\res\banners\banner_bear.png" />
+    <None Remove="Files\res\banners\banner_scav.png" />
+    <None Remove="Files\res\banners\banner_scavraider.png" />
+    <None Remove="Files\res\banners\banner_tarkov.png" />
+    <None Remove="Files\res\banners\banner_terragroup.png" />
+    <None Remove="Files\res\banners\banner_usec.png" />
+    <None Remove="Files\res\banners\norvinskzone.png" />
+    <None Remove="Files\res\banners\tglabs.png" />
+    <None Remove="Files\res\bender.light.otf" />
+    <None Remove="Files\res\handbook\icon_ammo.png" />
+    <None Remove="Files\res\handbook\icon_ammo_boxes.png" />
+    <None Remove="Files\res\handbook\icon_ammo_rounds.png" />
+    <None Remove="Files\res\handbook\icon_barter.png" />
+    <None Remove="Files\res\handbook\icon_barter_building.png" />
+    <None Remove="Files\res\handbook\icon_barter_electronics.png" />
+    <None Remove="Files\res\handbook\icon_barter_energy.png" />
+    <None Remove="Files\res\handbook\icon_barter_flammable.png" />
+    <None Remove="Files\res\handbook\icon_barter_household.png" />
+    <None Remove="Files\res\handbook\icon_barter_medical.png" />
+    <None Remove="Files\res\handbook\icon_barter_others.png" />
+    <None Remove="Files\res\handbook\icon_barter_tools.png" />
+    <None Remove="Files\res\handbook\icon_barter_valuables.png" />
+    <None Remove="Files\res\handbook\icon_gear.png" />
+    <None Remove="Files\res\handbook\icon_gear_armor.png" />
+    <None Remove="Files\res\handbook\icon_gear_backpacks.png" />
+    <None Remove="Files\res\handbook\icon_gear_cases.png" />
+    <None Remove="Files\res\handbook\icon_gear_components.png" />
+    <None Remove="Files\res\handbook\icon_gear_facecovers.png" />
+    <None Remove="Files\res\handbook\icon_gear_headsets.png" />
+    <None Remove="Files\res\handbook\icon_gear_headwear.png" />
+    <None Remove="Files\res\handbook\icon_gear_rigs.png" />
+    <None Remove="Files\res\handbook\icon_gear_secured.png" />
+    <None Remove="Files\res\handbook\icon_gear_visors.png" />
+    <None Remove="Files\res\handbook\icon_info.png" />
+    <None Remove="Files\res\handbook\icon_keys.png" />
+    <None Remove="Files\res\handbook\icon_keys_electronic.png" />
+    <None Remove="Files\res\handbook\icon_keys_mechanic.png" />
+    <None Remove="Files\res\handbook\icon_maps.png" />
+    <None Remove="Files\res\handbook\icon_medical.png" />
+    <None Remove="Files\res\handbook\icon_medical_injectors.png" />
+    <None Remove="Files\res\handbook\icon_medical_injury.png" />
+    <None Remove="Files\res\handbook\icon_medical_medkits.png" />
+    <None Remove="Files\res\handbook\icon_medical_pills.png" />
+    <None Remove="Files\res\handbook\icon_mods.png" />
+    <None Remove="Files\res\handbook\icon_mods_functional.png" />
+    <None Remove="Files\res\handbook\icon_mods_gear.png" />
+    <None Remove="Files\res\handbook\icon_mods_vital.png" />
+    <None Remove="Files\res\handbook\icon_mod_aux.png" />
+    <None Remove="Files\res\handbook\icon_mod_barrel.png" />
+    <None Remove="Files\res\handbook\icon_mod_bipod.png" />
+    <None Remove="Files\res\handbook\icon_mod_charge.png" />
+    <None Remove="Files\res\handbook\icon_mod_gasblock.png" />
+    <None Remove="Files\res\handbook\icon_mod_handguard.png" />
+    <None Remove="Files\res\handbook\icon_mod_launcher.png" />
+    <None Remove="Files\res\handbook\icon_mod_lightlaser.png" />
+    <None Remove="Files\res\handbook\icon_mod_magazine.png" />
+    <None Remove="Files\res\handbook\icon_mod_mount.png" />
+    <None Remove="Files\res\handbook\icon_mod_muzzle.png" />
+    <None Remove="Files\res\handbook\icon_mod_pistolgrip.png" />
+    <None Remove="Files\res\handbook\icon_mod_reciever.png" />
+    <None Remove="Files\res\handbook\icon_mod_sight.png" />
+    <None Remove="Files\res\handbook\icon_mod_stock.png" />
+    <None Remove="Files\res\handbook\icon_mod_tactical.png" />
+    <None Remove="Files\res\handbook\icon_money.png" />
+    <None Remove="Files\res\handbook\icon_provisions.png" />
+    <None Remove="Files\res\handbook\icon_provisions_drinks.png" />
+    <None Remove="Files\res\handbook\icon_provisions_food.png" />
+    <None Remove="Files\res\handbook\icon_quest.png" />
+    <None Remove="Files\res\handbook\icon_spec.png" />
+    <None Remove="Files\res\handbook\icon_weapons.png" />
+    <None Remove="Files\res\handbook\icon_weapons_assaultrifles.png" />
+    <None Remove="Files\res\handbook\icon_weapons_botaction.png" />
+    <None Remove="Files\res\handbook\icon_weapons_carbines.png" />
+    <None Remove="Files\res\handbook\icon_weapons_dmr.png" />
+    <None Remove="Files\res\handbook\icon_weapons_gl.png" />
+    <None Remove="Files\res\handbook\icon_weapons_melee.png" />
+    <None Remove="Files\res\handbook\icon_weapons_mg.png" />
+    <None Remove="Files\res\handbook\icon_weapons_pistols.png" />
+    <None Remove="Files\res\handbook\icon_weapons_shotguns.png" />
+    <None Remove="Files\res\handbook\icon_weapons_smg.png" />
+    <None Remove="Files\res\handbook\icon_weapons_special.png" />
+    <None Remove="Files\res\handbook\icon_weapons_throw.png" />
+    <None Remove="Files\res\hideout\icon_hideout_createitem_bitcoin.png" />
+    <None Remove="Files\res\hideout\icon_hideout_createitem_generic.png" />
+    <None Remove="Files\res\hideout\icon_hideout_createitem_meds.png" />
+    <None Remove="Files\res\hideout\icon_hideout_fuelslots.png" />
+    <None Remove="Files\res\hideout\icon_hideout_scavitem.png" />
+    <None Remove="Files\res\hideout\icon_hideout_shootingrangeunlock.png" />
+    <None Remove="Files\res\hideout\icon_hideout_unlocked.png" />
+    <None Remove="Files\res\hideout\icon_hideout_videocardslots.png" />
+    <None Remove="Files\res\icon.ico" />
+    <None Remove="Files\res\launcher\bg.png" />
+    <None Remove="Files\res\launcher\side_bear.png" />
+    <None Remove="Files\res\launcher\side_scav.png" />
+    <None Remove="Files\res\launcher\side_usec.png" />
+    <None Remove="Files\res\noimage\avatar.png" />
+    <None Remove="Files\res\noimage\banners.png" />
+    <None Remove="Files\res\noimage\handbook.png" />
+    <None Remove="Files\res\noimage\hideout.png" />
+    <None Remove="Files\res\noimage\quest.png" />
+    <None Remove="Files\res\quest\57e4f1852459772a15635633.png" />
+    <None Remove="Files\res\quest\594d241f86f7740d8246218d.png" />
+    <None Remove="Files\res\quest\594d246986f77427fc3b2fb4.png" />
+    <None Remove="Files\res\quest\594d247486f77426ad2fd20b.png" />
+    <None Remove="Files\res\quest\594d248186f7740e670685db.png" />
+    <None Remove="Files\res\quest\5967505886f774590730dadc.png" />
+    <None Remove="Files\res\quest\5967532b86f77461fb2f333a.png" />
+    <None Remove="Files\res\quest\59675e7b86f77414b25fb049.png" />
+    <None Remove="Files\res\quest\59675f5486f77414b07f13d0.png" />
+    <None Remove="Files\res\quest\5967611386f7741dfe4f46fb.png" />
+    <None Remove="Files\res\quest\59689e1c86f7740d14064725.png" />
+    <None Remove="Files\res\quest\59689f8f86f7740d121082d7.png" />
+    <None Remove="Files\res\quest\5968a09a86f7740d137ebfc5.png" />
+    <None Remove="Files\res\quest\5968ec2986f7741ddf17db83.png" />
+    <None Remove="Files\res\quest\5969f96786f7741dde183a4f.png" />
+    <None Remove="Files\res\quest\596a108786f7741ddc2d31b1.png" />
+    <None Remove="Files\res\quest\596a20d286f7741ddb4815d5.png" />
+    <None Remove="Files\res\quest\596b453b86f77457c827bf44.png" />
+    <None Remove="Files\res\quest\596b465486f77457ca186188.png" />
+    <None Remove="Files\res\quest\5979d36d86f7746d093ddd7a.png" />
+    <None Remove="Files\res\quest\5979d37886f7746d0b3e3fdb.png" />
+    <None Remove="Files\res\quest\5979d3da86f774719f309082.png" />
+    <None Remove="Files\res\quest\5979d3ea86f7746d0b3e3fdc.png" />
+    <None Remove="Files\res\quest\5979d3f986f7746d08051ce0.png" />
+    <None Remove="Files\res\quest\5979e80986f77437584fb8b2.png" />
+    <None Remove="Files\res\quest\5979ed4c86f7742f55674442.png" />
+    <None Remove="Files\res\quest\5979ef2a86f77431185415c3.png" />
+    <None Remove="Files\res\quest\5979f91c86f77402996bf9c2.png" />
+    <None Remove="Files\res\quest\597a0fad86f77426d464f995.png" />
+    <None Remove="Files\res\quest\597a172486f774799e5cd153.png" />
+    <None Remove="Files\res\quest\5981c96e86f77477920d1a04.png" />
+    <None Remove="Files\res\quest\5998365786f7745cb22fea42.png" />
+    <None Remove="Files\res\quest\59bfebe686f7745ba3403da3.png" />
+    <None Remove="Files\res\quest\59c1285d86f77415042983dd.png" />
+    <None Remove="Files\res\quest\59c133eb86f7740e7b544c71.png" />
+    <None Remove="Files\res\quest\59c26dd986f77427033c3e83.png" />
+    <None Remove="Files\res\quest\59c26f2b86f7744a351903d3.png" />
+    <None Remove="Files\res\quest\59c2729d86f77459c105de4d.png" />
+    <None Remove="Files\res\quest\59c273da86f77459b8017e7b.png" />
+    <None Remove="Files\res\quest\59c2742286f77475ec568d92.png" />
+    <None Remove="Files\res\quest\59c274ae86f77475060a9341.png" />
+    <None Remove="Files\res\quest\59ca2e4186f77445e4732b22.png" />
+    <None Remove="Files\res\quest\5a27c44386f7744237421af0.png" />
+    <None Remove="Files\res\quest\5a27c50f86f7740b3d65e16a.png" />
+    <None Remove="Files\res\quest\5a27cafa86f77424e20615d6.png" />
+    <None Remove="Files\res\quest\5a29221d86f77457303da9fa.png" />
+    <None Remove="Files\res\quest\5a29222486f77456f50d09e7.png" />
+    <None Remove="Files\res\quest\5ac4d8f186f774422237860d.png" />
+    <None Remove="Files\res\quest\5ac4d9aa86f7744784484abf.png" />
+    <None Remove="Files\res\quest\5ac4da0486f7744cc7701bdc.png" />
+    <None Remove="Files\res\quest\5ac4db0986f77442000164dd.png" />
+    <None Remove="Files\res\quest\5ac4dbb086f7743e7c61ca09.png" />
+    <None Remove="Files\res\quest\5ac4dc0486f77442000164e5.png" />
+    <None Remove="Files\res\quest\5ac4e02986f774617a185ef2.png" />
+    <None Remove="Files\res\quest\5ac4e06086f774623122ae42.png" />
+    <None Remove="Files\res\quest\5ac4e08086f774623122ae44.png" />
+    <None Remove="Files\res\quest\5ae325c586f77444fa45d0de.png" />
+    <None Remove="Files\res\quest\5ae3260986f7745b3e3bf2a7.png" />
+    <None Remove="Files\res\quest\5ae326a086f77444fd36f5d8.png" />
+    <None Remove="Files\res\quest\5ae3274386f7745b4246b387.png" />
+    <None Remove="Files\res\quest\5ae327a086f7745c7b3f2f38.png" />
+    <None Remove="Files\res\quest\5ae327e086f7742a4135935e.png" />
+    <None Remove="Files\res\quest\5ae3281c86f7745b3e3bf2d1.png" />
+    <None Remove="Files\res\quest\5ae4a74386f7744748710d72.png" />
+    <None Remove="Files\res\quest\5ae4a76086f774455f7d62d2.png" />
+    <None Remove="Files\res\quest\5ae4a7d286f7744748710d74.png" />
+    <None Remove="Files\res\quest\5ae4a7d986f7743fee0a75b2.png" />
+    <None Remove="Files\res\quest\5ae4a7dd86f77448464ed2b2.png" />
+    <None Remove="Files\res\quest\5b47859886f7744d1b23c4f5.png" />
+    <None Remove="Files\res\quest\5b4785f586f77470315db7ed.png" />
+    <None Remove="Files\res\quest\5b47863b86f7744d1c353203.png" />
+    <None Remove="Files\res\quest\5b47867286f7744d1a393de9.png" />
+    <None Remove="Files\res\quest\5b4786c586f7744d184ecabd.png" />
+    <None Remove="Files\res\quest\5b4787d086f7744d184ecb35.png" />
+    <None Remove="Files\res\quest\5b478d1b86f7744d1b23c60b.png" />
+    <None Remove="Files\res\quest\5b478eda86f77470315db899.png" />
+    <None Remove="Files\res\quest\5bc481ec86f7740c8649a4f1.png" />
+    <None Remove="Files\res\quest\5bc9fab686f7742a90020769.png" />
+    <None Remove="Files\res\quest\5c1e358f86f77408017f539f.png" />
+    <None Remove="Files\res\quest\5c1e35cf86f7743b6242fe05.png" />
+    <None Remove="Files\res\quest\5c7eb06188a4504aae56deb7.png" />
+    <None Remove="Files\res\quest\5d66701986f7744a2e70f025.png" />
+    <None Remove="Files\res\quest\5d67b2a086f774131e206c05.png" />
+    <None Remove="Files\res\quest\5d67b3ed86f7744a2e70f15c.png" />
+    <None Remove="Files\res\quest\5d67b41686f774368e1b78df.png" />
+    <None Remove="Files\res\quest\5d67b49186f774266f0867b3.png" />
+    <None Remove="Files\res\quest\5d67b5ca86f7744dcc5e2f88.png" />
+    <None Remove="Files\res\quest\5d67b66186f774266f0867b5.png" />
+    <None Remove="Files\res\quest\5d67b7ba86f774131e206c0c.png" />
+    <None Remove="Files\res\quest\5d67bb8486f7744dcc5e2fb1.png" />
+    <None Remove="Files\res\quest\5d67c1e486f774131e206c3a.png" />
+    <None Remove="Files\res\quest\5d69468a86f77452aa51d79d.png" />
+    <None Remove="Files\res\quest\5d6946c486f77452a8292cb2.png" />
+    <None Remove="Files\res\quest\5d69470786f774238a38d844.png" />
+    <None Remove="Files\res\quest\5d69474486f77414077d1cc8.png" />
+    <None Remove="Files\res\quest\5d6947c686f77452ac614b4b.png" />
+    <None Remove="Files\res\quest\5d69483686f77414077d1cca.png" />
+    <None Remove="Files\res\quest\5d6948e186f774238a38d8a7.png" />
+    <None Remove="Files\res\quest\5d694a6b86f77452a94debdf.png" />
+    <None Remove="Files\res\quest\5d694c9086f77468c86a6ada.png" />
+    <None Remove="Files\res\quest\5d694cd886f77468c86a6adc.png" />
+    <None Remove="Files\res\quest\5d6e860186f774460f1f0602.png" />
+    <None Remove="Files\res\quest\5d6faf8f86f7743598553dd4.png" />
+    <None Remove="Files\res\quest\5d763d4886f774454e50d06d.png" />
+    <None Remove="Files\res\quest\5d77a10586f7745041358b41.png" />
+    <None Remove="Files\res\quest\5e383a6386f77465910ce1f3.png" />
+    <None Remove="Files\res\quest\5e4d3a5186f77464185227f3.png" />
+    <None Remove="Files\res\quest\5e4d3a5886f77438b1632d82.png" />
+    <None Remove="Files\res\quest\5eda19f0edce541157209cee.png" />
+    <None Remove="Files\res\quest\5ee234c386f77447ee650e32.png" />
+    <None Remove="Files\res\quest\5f0f1f6c8f7810259b5fede0.png" />
+    <None Remove="Files\res\quest\5f0f202de269d61a4b5cf6ec.png" />
+    <None Remove="Files\res\quest\5fd9fad9c1ce6b1a3b486d00.png" />
+    <None Remove="Files\res\quest\60896b7bfa70fc097863b8f5.png" />
+    <None Remove="Files\res\quest\6089736efa70fc097863b8f6.png" />
+    <None Remove="Files\res\quest\6089743983426423753cd58a.png" />
+    <None Remove="Files\res\quest\608974af4b05530f55550c21.png" />
+    <None Remove="Files\res\quest\60c373b71d348838124696ea.png" />
+    <None Remove="Files\res\quest\60c373e753bc0f18316351fe.png" />
+    <None Remove="Files\res\quest\60c37416898b57521260e12a.png" />
+    <None Remove="Files\res\quest\60c37450de6b0b44cc320e9a.png" />
+    <None Remove="Files\res\quest\60c37481c2d86b57700e3169.png" />
+    <None Remove="Files\res\quest\60c3752d78280c17952e1e69.png" />
+    <None Remove="Files\res\quest\60c375a0c2d86b57700e316b.png" />
+    <None Remove="Files\res\quest\60cb3814f09d61072d6cf211.png" />
+    <None Remove="Files\res\quest\616d993bc8c5ad2ab30ff6ba.png" />
+    <None Remove="Files\res\quest\61ab383d3b7a0b53f515c515.png" />
+    <None Remove="Files\res\quest\61ab38781b7da753125cfaa5.png" />
+    <None Remove="Files\res\quest\61ab40a7edd0787ea26a69a6.png" />
+    <None Remove="Files\res\quest\61ab421079c3a477d0121e46.png" />
+    <None Remove="Files\res\quest\61ab4381e4bbb01db226bce5.png" />
+    <None Remove="Files\res\quest\61ab48bc5c890e40ca1a30f8.png" />
+    <None Remove="Files\res\quest\61ab4ce156152b140448cf95.png" />
+    <None Remove="Files\res\quest\61ab4f090330382cea7bad57.png" />
+    <None Remove="Files\res\quest\61abc9240b56a53df32c6865.png" />
+    <None Remove="Files\res\quest\61abcd4c3b7a0b53f515c5e6.png" />
+    <None Remove="Files\res\style.css" />
+    <None Remove="Files\res\trader\579dc571d53a0658a154fbec.png" />
+    <None Remove="Files\res\trader\59b91ca086f77469a81232e4.png" />
+    <None Remove="Files\res\trader\59b91cab86f77469aa5343ca.png" />
+    <None Remove="Files\res\trader\59b91cb486f77469a81232e5.png" />
+    <None Remove="Files\res\trader\59b91cbd86f77469aa5343cb.png" />
+    <None Remove="Files\res\trader\5a7c2ebb86f7746e324a06ab.png" />
+    <None Remove="Files\res\trader\5ac3b86a86f77461491d1ad8.png" />
+    <None Remove="Files\res\trader\5c06531a86f7746319710e1b.png" />
+    <None Remove="Files\res\trader\unknown.png" />
     <None Remove="Files\templates\categories.json" />
     <None Remove="Files\templates\items.json" />
     <None Remove="Files\traders\54cb50c76803fa8b248b4571\assort.json" />
@@ -2540,6 +2786,738 @@
     <Content Include="Files\quests\quests.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Files\res\banners\banner_bear.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\banners\banner_scav.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\banners\banner_scavraider.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\banners\banner_tarkov.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\banners\banner_terragroup.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\banners\banner_usec.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\banners\norvinskzone.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\banners\tglabs.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\bender.light.otf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\handbook\icon_ammo.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\handbook\icon_ammo_boxes.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\handbook\icon_ammo_rounds.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\handbook\icon_barter.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\handbook\icon_barter_building.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\handbook\icon_barter_electronics.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\handbook\icon_barter_energy.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\handbook\icon_barter_flammable.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\handbook\icon_barter_household.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\handbook\icon_barter_medical.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\handbook\icon_barter_others.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\handbook\icon_barter_tools.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\handbook\icon_barter_valuables.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\handbook\icon_gear.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\handbook\icon_gear_armor.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\handbook\icon_gear_backpacks.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\handbook\icon_gear_cases.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\handbook\icon_gear_components.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\handbook\icon_gear_facecovers.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\handbook\icon_gear_headsets.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\handbook\icon_gear_headwear.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\handbook\icon_gear_rigs.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\handbook\icon_gear_secured.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\handbook\icon_gear_visors.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\handbook\icon_info.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\handbook\icon_keys.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\handbook\icon_keys_electronic.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\handbook\icon_keys_mechanic.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\handbook\icon_maps.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\handbook\icon_medical.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\handbook\icon_medical_injectors.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\handbook\icon_medical_injury.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\handbook\icon_medical_medkits.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\handbook\icon_medical_pills.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\handbook\icon_mods.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\handbook\icon_mods_functional.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\handbook\icon_mods_gear.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\handbook\icon_mods_vital.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\handbook\icon_mod_aux.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\handbook\icon_mod_barrel.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\handbook\icon_mod_bipod.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\handbook\icon_mod_charge.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\handbook\icon_mod_gasblock.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\handbook\icon_mod_handguard.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\handbook\icon_mod_launcher.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\handbook\icon_mod_lightlaser.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\handbook\icon_mod_magazine.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\handbook\icon_mod_mount.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\handbook\icon_mod_muzzle.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\handbook\icon_mod_pistolgrip.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\handbook\icon_mod_reciever.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\handbook\icon_mod_sight.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\handbook\icon_mod_stock.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\handbook\icon_mod_tactical.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\handbook\icon_money.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\handbook\icon_provisions.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\handbook\icon_provisions_drinks.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\handbook\icon_provisions_food.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\handbook\icon_quest.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\handbook\icon_spec.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\handbook\icon_weapons.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\handbook\icon_weapons_assaultrifles.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\handbook\icon_weapons_botaction.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\handbook\icon_weapons_carbines.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\handbook\icon_weapons_dmr.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\handbook\icon_weapons_gl.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\handbook\icon_weapons_melee.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\handbook\icon_weapons_mg.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\handbook\icon_weapons_pistols.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\handbook\icon_weapons_shotguns.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\handbook\icon_weapons_smg.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\handbook\icon_weapons_special.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\handbook\icon_weapons_throw.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\hideout\icon_hideout_createitem_bitcoin.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\hideout\icon_hideout_createitem_generic.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\hideout\icon_hideout_createitem_meds.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\hideout\icon_hideout_fuelslots.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\hideout\icon_hideout_scavitem.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\hideout\icon_hideout_shootingrangeunlock.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\hideout\icon_hideout_unlocked.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\hideout\icon_hideout_videocardslots.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\launcher\bg.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\launcher\side_bear.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\launcher\side_scav.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\launcher\side_usec.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\noimage\avatar.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\noimage\banners.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\noimage\handbook.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\noimage\hideout.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\noimage\quest.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\57e4f1852459772a15635633.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\594d241f86f7740d8246218d.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\594d246986f77427fc3b2fb4.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\594d247486f77426ad2fd20b.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\594d248186f7740e670685db.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\5967505886f774590730dadc.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\5967532b86f77461fb2f333a.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\59675e7b86f77414b25fb049.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\59675f5486f77414b07f13d0.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\5967611386f7741dfe4f46fb.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\59689e1c86f7740d14064725.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\59689f8f86f7740d121082d7.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\5968a09a86f7740d137ebfc5.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\5968ec2986f7741ddf17db83.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\5969f96786f7741dde183a4f.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\596a108786f7741ddc2d31b1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\596a20d286f7741ddb4815d5.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\596b453b86f77457c827bf44.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\596b465486f77457ca186188.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\5979d36d86f7746d093ddd7a.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\5979d37886f7746d0b3e3fdb.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\5979d3da86f774719f309082.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\5979d3ea86f7746d0b3e3fdc.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\5979d3f986f7746d08051ce0.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\5979e80986f77437584fb8b2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\5979ed4c86f7742f55674442.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\5979ef2a86f77431185415c3.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\5979f91c86f77402996bf9c2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\597a0fad86f77426d464f995.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\597a172486f774799e5cd153.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\5981c96e86f77477920d1a04.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\5998365786f7745cb22fea42.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\59bfebe686f7745ba3403da3.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\59c1285d86f77415042983dd.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\59c133eb86f7740e7b544c71.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\59c26dd986f77427033c3e83.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\59c26f2b86f7744a351903d3.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\59c2729d86f77459c105de4d.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\59c273da86f77459b8017e7b.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\59c2742286f77475ec568d92.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\59c274ae86f77475060a9341.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\59ca2e4186f77445e4732b22.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\5a27c44386f7744237421af0.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\5a27c50f86f7740b3d65e16a.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\5a27cafa86f77424e20615d6.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\5a29221d86f77457303da9fa.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\5a29222486f77456f50d09e7.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\5ac4d8f186f774422237860d.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\5ac4d9aa86f7744784484abf.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\5ac4da0486f7744cc7701bdc.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\5ac4db0986f77442000164dd.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\5ac4dbb086f7743e7c61ca09.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\5ac4dc0486f77442000164e5.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\5ac4e02986f774617a185ef2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\5ac4e06086f774623122ae42.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\5ac4e08086f774623122ae44.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\5ae325c586f77444fa45d0de.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\5ae3260986f7745b3e3bf2a7.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\5ae326a086f77444fd36f5d8.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\5ae3274386f7745b4246b387.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\5ae327a086f7745c7b3f2f38.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\5ae327e086f7742a4135935e.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\5ae3281c86f7745b3e3bf2d1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\5ae4a74386f7744748710d72.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\5ae4a76086f774455f7d62d2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\5ae4a7d286f7744748710d74.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\5ae4a7d986f7743fee0a75b2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\5ae4a7dd86f77448464ed2b2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\5b47859886f7744d1b23c4f5.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\5b4785f586f77470315db7ed.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\5b47863b86f7744d1c353203.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\5b47867286f7744d1a393de9.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\5b4786c586f7744d184ecabd.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\5b4787d086f7744d184ecb35.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\5b478d1b86f7744d1b23c60b.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\5b478eda86f77470315db899.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\5bc481ec86f7740c8649a4f1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\5bc9fab686f7742a90020769.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\5c1e358f86f77408017f539f.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\5c1e35cf86f7743b6242fe05.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\5c7eb06188a4504aae56deb7.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\5d66701986f7744a2e70f025.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\5d67b2a086f774131e206c05.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\5d67b3ed86f7744a2e70f15c.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\5d67b41686f774368e1b78df.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\5d67b49186f774266f0867b3.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\5d67b5ca86f7744dcc5e2f88.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\5d67b66186f774266f0867b5.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\5d67b7ba86f774131e206c0c.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\5d67bb8486f7744dcc5e2fb1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\5d67c1e486f774131e206c3a.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\5d69468a86f77452aa51d79d.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\5d6946c486f77452a8292cb2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\5d69470786f774238a38d844.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\5d69474486f77414077d1cc8.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\5d6947c686f77452ac614b4b.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\5d69483686f77414077d1cca.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\5d6948e186f774238a38d8a7.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\5d694a6b86f77452a94debdf.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\5d694c9086f77468c86a6ada.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\5d694cd886f77468c86a6adc.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\5d6e860186f774460f1f0602.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\5d6faf8f86f7743598553dd4.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\5d763d4886f774454e50d06d.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\5d77a10586f7745041358b41.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\5e383a6386f77465910ce1f3.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\5e4d3a5186f77464185227f3.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\5e4d3a5886f77438b1632d82.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\5eda19f0edce541157209cee.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\5ee234c386f77447ee650e32.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\5f0f1f6c8f7810259b5fede0.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\5f0f202de269d61a4b5cf6ec.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\5fd9fad9c1ce6b1a3b486d00.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\60896b7bfa70fc097863b8f5.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\6089736efa70fc097863b8f6.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\6089743983426423753cd58a.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\608974af4b05530f55550c21.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\60c373b71d348838124696ea.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\60c373e753bc0f18316351fe.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\60c37416898b57521260e12a.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\60c37450de6b0b44cc320e9a.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\60c37481c2d86b57700e3169.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\60c3752d78280c17952e1e69.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\60c375a0c2d86b57700e316b.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\60cb3814f09d61072d6cf211.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\616d993bc8c5ad2ab30ff6ba.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\61ab383d3b7a0b53f515c515.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\61ab38781b7da753125cfaa5.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\61ab40a7edd0787ea26a69a6.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\61ab421079c3a477d0121e46.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\61ab4381e4bbb01db226bce5.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\61ab48bc5c890e40ca1a30f8.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\61ab4ce156152b140448cf95.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\61ab4f090330382cea7bad57.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\61abc9240b56a53df32c6865.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\quest\61abcd4c3b7a0b53f515c5e6.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\trader\579dc571d53a0658a154fbec.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\trader\59b91ca086f77469a81232e4.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\trader\59b91cab86f77469aa5343ca.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\trader\59b91cb486f77469a81232e5.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\trader\59b91cbd86f77469aa5343cb.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\trader\5a7c2ebb86f7746e324a06ab.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\trader\5ac3b86a86f77461491d1ad8.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\trader\5c06531a86f7746319710e1b.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\res\trader\unknown.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Files\templates\categories.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -2698,6 +3676,7 @@
 		<PackageReference Include="HttpServerLite" Version="1.2.4" />
 		<PackageReference Include="Iconic.Zlib.Netstandard" Version="1.0.0" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+		<PackageReference Include="WatsonWebsocket" Version="3.0.1" />
 	</ItemGroup>
 
 	<ItemGroup>

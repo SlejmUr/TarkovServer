@@ -3,10 +3,9 @@ using ServerLib;
 using ServerLib.Controllers;
 using ServerLib.Handlers;
 using ServerLib.Utilities;
-using ServerLib.Json;
+using ServerLib.Web;
 using System.Net;
-using System.Globalization;
-using Newtonsoft.Json.Converters;
+using System.Text;
 
 namespace Tarkov_Server_Csharp
 {
@@ -17,6 +16,7 @@ namespace Tarkov_Server_Csharp
         public static string ip_port = $"https://{IP_Address}:{Port}";
         static void Main(string[] args)
         {
+            Console.OutputEncoding = Encoding.UTF8;
             var version = new CVersion();
             Console.WriteLine("Welcome in Tarkov Server Console!");
             Console.WriteLine();
@@ -44,8 +44,12 @@ namespace Tarkov_Server_Csharp
             AccountController.Init();
             AccountController.GetAccountList();
             Console.WriteLine("Initialization Done!");
+
             WebServer webServer = new WebServer();
-            webServer.MainStart(IP_Address, Port);     
+            webServer.MainStart(IP_Address, Port);
+
+            WebSocket.Start(IP_Address, Port+1);
+
             if (!ArgumentHandler.DontLoadPlugin)
             {
                 PluginLoader.LoadPlugins();
