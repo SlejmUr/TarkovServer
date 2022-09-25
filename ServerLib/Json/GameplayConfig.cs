@@ -8,7 +8,7 @@ namespace ServerLib.Json
         {
             [JsonProperty("inRaid")]
             public InRaid InRaid { get; set; }
-            
+
             [JsonProperty("fence")]
             public Fence Fence { get; set; }
 

@@ -11,7 +11,7 @@ namespace ServerLib.Controllers
             return File.ReadAllText("Files/customization/items.json");
         }
 
-        public static Dictionary<string,string> GetAllCustomization()
+        public static Dictionary<string, string> GetAllCustomization()
         {
             return DatabaseController.DataBase.Customization;
         }
@@ -56,7 +56,7 @@ namespace ServerLib.Controllers
                     newItem.Tid = "5ac3b934156ae10c4430e83c";
                     newItem.IsActive = true;
                     newItem.Requirements = new()
-                    { 
+                    {
                         LoyaltyLevel = 0,
                         ProfileLevel = 0,
                         Standing = 0,

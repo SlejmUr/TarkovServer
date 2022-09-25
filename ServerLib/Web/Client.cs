@@ -1,8 +1,7 @@
 ﻿using HttpServerLite;
+using Newtonsoft.Json;
 using ServerLib.Controllers;
 using ServerLib.Utilities;
-using Newtonsoft.Json;
-using ServerLib.Json;
 
 namespace ServerLib.Web
 {
@@ -28,8 +27,8 @@ namespace ServerLib.Web
                 }
                 else
                 {
-                    resp = ResponseControl.GetBody("{ isvalid: false, latestVersion: \""+ server.Version + "\"}");
-                }         
+                    resp = ResponseControl.GetBody("{ isvalid: false, latestVersion: \"" + server.Version + "\"}");
+                }
             }
             var rsp = ResponseControl.CompressRsp(resp);
             ctx.Response.StatusCode = 200;

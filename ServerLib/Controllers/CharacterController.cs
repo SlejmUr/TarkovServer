@@ -1,10 +1,10 @@
 ﻿using Newtonsoft.Json;
-using ServerLib.Utilities;
 using ServerLib.Json;
+using ServerLib.Utilities;
 
 namespace ServerLib.Controllers
 {
-    public class CharacterController 
+    public class CharacterController
     {
         public static List<Character.Base> Characters;
         public static List<Character.Base> ScavCharacters;
@@ -53,7 +53,7 @@ namespace ServerLib.Controllers
         }
 
         public static string ChangeNickname(string json, string sessionID)
-        { 
+        {
             var nick = JsonConvert.DeserializeObject<NicknameValidate>(json);
             if (nick == null) { return "taken"; }
             string output = AccountController.ValidateNickname(sessionID);

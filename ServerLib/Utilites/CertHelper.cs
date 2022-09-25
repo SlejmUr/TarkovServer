@@ -5,7 +5,7 @@ namespace ServerLib.Utilities
 {
     public class CertHelper
     {
-        public static void Make(System.Net.IPAddress serveraddress,string ip_port)
+        public static void Make(System.Net.IPAddress serveraddress, string ip_port)
         {
             if (serveraddress == null)
             {

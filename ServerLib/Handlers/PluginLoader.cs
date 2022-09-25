@@ -1,13 +1,13 @@
-﻿using System.Reflection;
-using ServerLib.Utilities;
+﻿using ServerLib.Utilities;
+using System.Reflection;
 
 namespace ServerLib.Handlers
 {
-    public class PluginLoader
-    {
+	public class PluginLoader
+	{
 		private static Dictionary<string, PluginInfos> pluginsList = new Dictionary<string, PluginInfos>();
 		public static void LoadPlugins()
-        {
+		{
 			string currdir = Directory.GetCurrentDirectory();
 
 			if (!Directory.Exists(Path.Combine(currdir, "Plugins"))) { Directory.CreateDirectory(Path.Combine(currdir, "Plugins")); }
@@ -32,7 +32,7 @@ namespace ServerLib.Handlers
 						Plugin = iPlugin
 					});
 
-					
+
 
 				}
 			}

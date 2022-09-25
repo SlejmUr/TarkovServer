@@ -1,6 +1,5 @@
 ﻿using Newtonsoft.Json;
 using ServerLib.Json;
-using System.Text;
 
 namespace ServerLib.Controllers
 {
@@ -10,7 +9,7 @@ namespace ServerLib.Controllers
         {
             return DatabaseController.DataBase.Languages;
         }
-        public static string GetMenu(string lang, string url_lang,string sessionId)
+        public static string GetMenu(string lang, string url_lang, string sessionId)
         {
             var Account = AccountController.FindAccount(sessionId);
             lang = url_lang;
@@ -40,7 +39,7 @@ namespace ServerLib.Controllers
         }
         public static string GetGlobal(string lang, string sessionId)
         {
-            return GetLocale(lang, lang,sessionId);
+            return GetLocale(lang, lang, sessionId);
         }
 
         public static string GetConfigLanguages()
@@ -60,7 +59,7 @@ namespace ServerLib.Controllers
                 }
 
             }
-            return "{"+ output + "}";
+            return "{" + output + "}";
         }
     }
 }

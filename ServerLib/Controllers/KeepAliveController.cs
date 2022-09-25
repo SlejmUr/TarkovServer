@@ -1,6 +1,4 @@
-﻿using ServerLib.Utilities;
-
-namespace ServerLib.Controllers
+﻿namespace ServerLib.Controllers
 {
     public class KeepAliveController
     {

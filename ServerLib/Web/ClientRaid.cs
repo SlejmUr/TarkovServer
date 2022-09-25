@@ -1,7 +1,7 @@
 ﻿using HttpServerLite;
 using ServerLib.Controllers;
-using ServerLib.Utilities;
 using ServerLib.Json;
+using ServerLib.Utilities;
 
 namespace ServerLib.Web
 {
@@ -28,7 +28,7 @@ namespace ServerLib.Web
             Utils.PrintRequest(ctx.Request);
             //REQ stuff
             var decomp = ResponseControl.DeCompressReq(ctx.Request.DataAsBytes);
-            File.AppendAllText("saveAccount.json",decomp);
+            File.AppendAllText("saveAccount.json", decomp);
             // RPS
             var rsp = ResponseControl.CompressRsp(ResponseControl.NullResponse());
             ctx.Response.StatusCode = 200;

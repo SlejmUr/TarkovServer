@@ -1,8 +1,8 @@
 ﻿using HttpServerLite;
-using ServerLib.Controllers;
-using ServerLib.Utilities;
-using ServerLib.Json;
 using Newtonsoft.Json;
+using ServerLib.Controllers;
+using ServerLib.Json;
+using ServerLib.Utilities;
 
 
 namespace ServerLib.Web
@@ -145,7 +145,7 @@ namespace ServerLib.Web
         {
             Utils.PrintRequest(ctx.Request);
             string SessionID = Utils.GetSessionID(ctx.Request.Headers);
-            
+
             var inbox = FriendsController.GetFriendsInbox(SessionID);
             string resp = ResponseControl.GetBody(JsonConvert.SerializeObject(inbox));
 

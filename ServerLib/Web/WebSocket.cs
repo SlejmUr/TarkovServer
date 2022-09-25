@@ -8,8 +8,8 @@ namespace ServerLib.Web
         static WatsonWsServer wsServer;
         public static string IpPort = "ws://127.0.0.1:444/";
         public static List<string> ConnectedIps = new();
-        public static Dictionary<string,string> ConnectedSessions = new();
-        public static void Start(string ip,int port)
+        public static Dictionary<string, string> ConnectedSessions = new();
+        public static void Start(string ip, int port)
         {
             IpPort = $"ws://{ip}:{port}";
             Console.WriteLine("WebSocket Server started on ws://" + ip + ":" + port);
@@ -21,16 +21,16 @@ namespace ServerLib.Web
         }
 
         public static void Stop()
-        { 
+        {
             wsServer.Stop();
             wsServer.Dispose();
         }
 
-        public static bool SendToClient(string ipPort,string text)
+        public static bool SendToClient(string ipPort, string text)
         {
             if (wsServer.IsClientConnected(ipPort))
             {
-                bool isSuccess = wsServer.SendAsync(ipPort,text).Result;
+                bool isSuccess = wsServer.SendAsync(ipPort, text).Result;
                 return isSuccess;
             }
             return false;
@@ -49,7 +49,7 @@ namespace ServerLib.Web
         {
             ConnectedIps.Add(args.IpPort);
             string SessionId = args.HttpRequest.Url.OriginalString.Split("socket/")[1];
-            ConnectedSessions.Add(SessionId,args.IpPort);
+            ConnectedSessions.Add(SessionId, args.IpPort);
             Console.WriteLine("Client connected: " + args.IpPort + " " + SessionId);
         }
 

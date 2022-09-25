@@ -1,11 +1,10 @@
-﻿using System.Reflection;
-using System.Security.Cryptography;
-using System.Text;
-using HttpServerLite;
+﻿using HttpServerLite;
+using ServerLib.Controllers;
 using ServerLib.Handlers;
 using ServerLib.Json;
-using ServerLib.Controllers;
-using Newtonsoft.Json;
+using System.Reflection;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace ServerLib.Utilities
 {
@@ -33,14 +32,14 @@ namespace ServerLib.Utilities
         }
         #endregion
         #region Debug Print
-        public static void PrintDebug(string ToPrint, string type = "info",string prefix = "[DEBUG]")
+        public static void PrintDebug(string ToPrint, string type = "info", string prefix = "[DEBUG]")
         {
             if (ArgumentHandler.Debug)
-            { 
+            {
                 Console.ForegroundColor = GetColorByType(type);
                 Console.WriteLine(prefix + " " + ToPrint);
                 Console.ResetColor();
-            }      
+            }
         }
         public static void PrintError(string ToPrint, string type = "error", string prefix = "[ERROR]")
         {
@@ -62,7 +61,7 @@ namespace ServerLib.Utilities
                     return ConsoleColor.Blue;
                 default:
                     return ConsoleColor.White;
-            }     
+            }
         }
         #endregion
         #region Session Stuff
@@ -74,7 +73,7 @@ namespace ServerLib.Utilities
             string SessionID = GetSessionID(req.Headers);
             Console.WriteLine("[" + time + "] " + from_ip + " | " + SessionID + " = " + fullurl);
         }
-        public static string GetSessionID(Dictionary<string,string> HttpHeaders)
+        public static string GetSessionID(Dictionary<string, string> HttpHeaders)
         {
             if (HttpHeaders.ContainsKey("Cookie"))
             {
@@ -117,7 +116,7 @@ namespace ServerLib.Utilities
             }
             string idhex = _id.ToString("X2");
             _id++;
-            return md5_str  + "00" + idhex;
+            return md5_str + "00" + idhex;
         }
 
         public static string ConvertStringtoMD5(string strword)
@@ -155,17 +154,17 @@ namespace ServerLib.Utilities
 
         public static string ClearString(string data)
         {
-            return data.Replace("\b","").Replace("\f", "").Replace("\n", "").Replace("\r", "").Replace("\t", "").Replace("\\", "");
+            return data.Replace("\b", "").Replace("\f", "").Replace("\n", "").Replace("\r", "").Replace("\t", "").Replace("\\", "");
         }
-        public static int ValuesBetween(int value, int minInput,int maxInput,int minOutput,int maxOutput)
+        public static int ValuesBetween(int value, int minInput, int maxInput, int minOutput, int maxOutput)
         {
             return (maxOutput - minOutput) * ((value - minInput) / (maxInput - minInput)) + minOutput;
         }
 
-        public static int GetRandomInt(int min = 0,int max = 100)
+        public static int GetRandomInt(int min = 0, int max = 100)
         {
             Random random = new();
-            return random.Next(min,max);
+            return random.Next(min, max);
         }
 
         public static int GetPrecentDifference(int num1, int num2)
@@ -177,12 +176,12 @@ namespace ServerLib.Utilities
             return (num1 / 100) * num2;
         }
         public static bool PrecentRandomBool(int percentage)
-        { 
+        {
             return GetRandomInt() < percentage;
         }
         public static string GetRandomArray(string[] array)
         {
-            return array[GetRandomInt(0,array.Length)];
+            return array[GetRandomInt(0, array.Length)];
         }
         public static string GetTime()
         {
@@ -214,7 +213,7 @@ namespace ServerLib.Utilities
 
             while (count != 0)
             {
-                
+
                 long longcount = long.Parse(count.ToString());
                 long longmaxStack = long.Parse(maxStack.ToString());
                 long amount = Math.Min(longcount, longmaxStack);
@@ -228,7 +227,7 @@ namespace ServerLib.Utilities
             return listitem;
         }
         public static int Clamp(int value, int min, int max)
-        { 
+        {
             return Math.Min(Math.Max(value, min), max);
         }
     }

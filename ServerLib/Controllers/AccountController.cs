@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
-using ServerLib.Utilities;
 using ServerLib.Json;
+using ServerLib.Utilities;
 
 namespace ServerLib.Controllers
 {
@@ -21,7 +21,7 @@ namespace ServerLib.Controllers
             Accounts.Clear();
             ActiveAccountIds = new();
             ActiveAccountIds.Clear();
-            Utils.PrintDebug("Initialization Done!", "debug","[ACCOUNT]");
+            Utils.PrintDebug("Initialization Done!", "debug", "[ACCOUNT]");
         }
 
         public static void GetAccountList()
@@ -63,10 +63,10 @@ namespace ServerLib.Controllers
 
             if (ID == null)
             {
-                Console.WriteLine("Login FAILED! " + ID);           
+                Console.WriteLine("Login FAILED! " + ID);
                 return "FAILED";
             }
-            else 
+            else
             {
                 Console.WriteLine("Login Success! " + ID);
                 if (!ActiveAccountIds.Contains(ID))
@@ -172,7 +172,7 @@ namespace ServerLib.Controllers
         /// <returns>True | False</returns>
         public static bool ClientHasProfile(string sessionID)
         {
-            if (sessionID==null) { Console.WriteLine("SessionID null?"); return false; }
+            if (sessionID == null) { Console.WriteLine("SessionID null?"); return false; }
             var account = FindAccount(sessionID);
             if (account != null)
             {
@@ -224,7 +224,7 @@ namespace ServerLib.Controllers
         /// <br>Same as Controllers/AccountController.js@func=reloadAccountBySessionID()</br>
         /// </summary>
         /// <param name="sessionID">SessionId/AccountId</param>
-        public static void ReloadAccountBySessionID(string sessionID) 
+        public static void ReloadAccountBySessionID(string sessionID)
         {
             if (sessionID == null) { new Exception("SessionID Null!"); }
             if (!File.Exists($"user/profiles/{sessionID}/account.json"))
@@ -239,7 +239,7 @@ namespace ServerLib.Controllers
                     var account = JsonConvert.DeserializeObject<Account>(File.ReadAllText($"user/profiles/{sessionID}/account.json"));
                     Accounts.Add(account);
                 }
-            } 
+            }
         }
 
         /// <summary>
@@ -254,7 +254,7 @@ namespace ServerLib.Controllers
             foreach (var account in Accounts)
             {
                 if (account.Id == sessionID)
-                { 
+                {
                     return account;
                 }
             }
@@ -352,10 +352,10 @@ namespace ServerLib.Controllers
             var AccountID = Login(JsonInfo);
             var changes = JsonConvert.DeserializeObject<Changes>(JsonInfo);
             if (AccountID != "FAILED")
-            { 
+            {
                 var Account = FindAccount(AccountID);
                 Account.Password = changes.Change;
-                Handlers.SaveHandler.SaveAccount(AccountID,Account);
+                Handlers.SaveHandler.SaveAccount(AccountID, Account);
             }
             return AccountID;
         }
@@ -423,7 +423,7 @@ namespace ServerLib.Controllers
         /// <param name="sessionID">SessionId/AccountId</param>
         /// <param name="profile">Account/Profile Name</param>
         /// <returns>OK | FAILED</returns>
-        public static string DeleteAccount(string sessionID,string profile)
+        public static string DeleteAccount(string sessionID, string profile)
         {
             if (Directory.Exists($"user/profiles/{sessionID}"))
             {

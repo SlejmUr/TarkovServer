@@ -1,14 +1,14 @@
-﻿using ServerLib.Utilities;
-using ServerLib.Json;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using ServerLib.Handlers;
+using ServerLib.Json;
+using ServerLib.Utilities;
 
 namespace ServerLib.Controllers
 {
     public class DialogController
     {
         public static Dictionary<string, Dialog> Dialogs;
-        public enum messageTypes 
+        public enum messageTypes
         {
             npcTrader = 2,
             auctionMessage = 3,
@@ -55,7 +55,7 @@ namespace ServerLib.Controllers
         /// <param name="content">MessageContent</param>
         /// <param name="sessionID">SessionId/AccountId</param>
         /// <param name="rewards">StashItem</param>
-        public static void AddDialogMessage(string dialogID,Dialog.MessagesContent content, string sessionID, Dialog.StashItems rewards)
+        public static void AddDialogMessage(string dialogID, Dialog.MessagesContent content, string sessionID, Dialog.StashItems rewards)
         {
             ReloadDialog(sessionID);
 
@@ -68,9 +68,9 @@ namespace ServerLib.Controllers
             var isnewDialog = dialogData._id != dialogID;
 
             if (isnewDialog)
-            { 
+            {
                 Dialog dialog = new()
-                { 
+                {
                     _id = dialogID,
                     messages = new(),
                     pinned = false,
@@ -262,7 +262,7 @@ namespace ServerLib.Controllers
                 _id = dialogueId,
                 type = (messageTypes)2,
                 messages = new() { GetMessagePreview(dialog) },
-                New =  dialog.New,
+                New = dialog.New,
                 attachmentsNew = dialog.attachmentsNew,
                 pinned = dialog.pinned,
             };
@@ -294,7 +294,7 @@ namespace ServerLib.Controllers
         /// <param name="sessionID">SessionId/AccountId</param>
         /// <param name="messageId">MessageID</param>
         /// <returns>StashItem Data List | null</returns>
-        public static List<Dialog.StashItems.StashData> GetMessageItemContents(string sessionID,string messageId)
+        public static List<Dialog.StashItems.StashData> GetMessageItemContents(string sessionID, string messageId)
         {
             ReloadDialog(sessionID);
             foreach (var msg in Dialogs[sessionID].messages)

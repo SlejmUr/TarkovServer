@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json;
 using ServerLib.Json;
 using ServerLib.Utilities;
 
@@ -46,7 +40,7 @@ namespace ServerLib.Controllers
             return bot;
         }
 
-        public static string GetBotDifficulty(string type,string difficulty)
+        public static string GetBotDifficulty(string type, string difficulty)
         {
             switch (type)
             {
@@ -66,7 +60,7 @@ namespace ServerLib.Controllers
                         default:
                             return DatabaseController.DataBase.Bots[type].Difficulty.Normal;
                     }
-            }  
+            }
         }
 
         public static string GenerateBotName(string role)
@@ -127,13 +121,13 @@ namespace ServerLib.Controllers
             return bot;
         }
 
-        public static void GenerateLevel(int min,int max, int playerlevel, out int lvl, out int xp)
+        public static void GenerateLevel(int min, int max, int playerlevel, out int lvl, out int xp)
         {
             dynamic global = JsonConvert.DeserializeObject<dynamic>(DatabaseController.DataBase.Globals);
             var exptable = global.config.exp.level.exp_table;
             Other.ExpTableClass expTableClass = exptable;
 
-            int maxlvl = Math.Max(max,expTableClass.ExpTable.Count);
+            int maxlvl = Math.Max(max, expTableClass.ExpTable.Count);
             int limit_max = playerlevel + 10;
             int limit_min = playerlevel - 5;
             if (limit_max > maxlvl)
@@ -146,7 +140,7 @@ namespace ServerLib.Controllers
             }
             xp = 0;
 
-            lvl = Utils.GetRandomInt(limit_min,limit_max);
+            lvl = Utils.GetRandomInt(limit_min, limit_max);
 
             for (int i = 0; i < lvl; i++)
             {

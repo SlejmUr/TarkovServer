@@ -1,5 +1,4 @@
 ﻿using HttpServerLite;
-using Newtonsoft.Json;
 using ServerLib.Controllers;
 using ServerLib.Utilities;
 
@@ -11,7 +10,7 @@ namespace ServerLib
 
         public void MainStart(string IP, int Port)
         {
-            WebserverSettings webserverSettings = new WebserverSettings(IP,Port);
+            WebserverSettings webserverSettings = new WebserverSettings(IP, Port);
             //webserverSettings.Ssl.SslCertificate = CertHelper.GetCert();
             webserverSettings.Ssl.PfxCertificateFile = "cert/cert.pfx";
             webserverSettings.Ssl.Enable = true;

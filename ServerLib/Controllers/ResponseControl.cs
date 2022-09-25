@@ -11,10 +11,10 @@ namespace ServerLib.Web
         }
         public static string GetBody(string Data, int errorcode = 0, string errormsg = "null")
         {
-            var Stuff =  "{\"err\":"+ errorcode + ",\"errmsg\":"+ errormsg + ",\"data\":" + Data + "}";
+            var Stuff = "{\"err\":" + errorcode + ",\"errmsg\":" + errormsg + ",\"data\":" + Data + "}";
             return Stuff;
         }
-        public static string GetBodyCRC(string Data, int errorcode = 0, string errormsg = "null",int crc = 0)
+        public static string GetBodyCRC(string Data, int errorcode = 0, string errormsg = "null", int crc = 0)
         {
             var Stuff = "{\"err\":" + errorcode + ",\"errmsg\":" + errormsg + ",\"data\":" + Data + ",\"crc\":" + crc + "}";
             return Stuff;

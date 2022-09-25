@@ -1,6 +1,4 @@
-﻿using Newtonsoft.Json.Linq;
-
-namespace ServerLib.Json
+﻿namespace ServerLib.Json
 {
     public class CharacterOBJ
     {

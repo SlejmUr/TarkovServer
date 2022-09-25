@@ -2,7 +2,6 @@
 using ServerLib.Handlers;
 using ServerLib.Utilities;
 using System.Net;
-using System.Net.WebSockets;
 
 namespace ServerLib
 {
@@ -10,7 +9,7 @@ namespace ServerLib
     {
         WebServer _webServer;
         public static string IP = "https://localhost:7777";
-        public void InitAll(string Ip,int port,bool LoadPlugin = true)
+        public void InitAll(string Ip, int port, bool LoadPlugin = true)
         {
             string ip_port = $"https://{Ip}:{port}";
             IP = ip_port;
@@ -22,7 +21,7 @@ namespace ServerLib
             WebServer webServer = new WebServer();
             webServer.MainStart(Ip, port);
             _webServer = webServer;
-            Web.WebSocket.Start(Ip, port+1);
+            Web.WebSocket.Start(Ip, port + 1);
             if (LoadPlugin)
             {
                 PluginLoader.LoadPlugins();

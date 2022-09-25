@@ -30,14 +30,14 @@ namespace ServerLib.Controllers
             string[] dirs = Directory.GetFiles("configs");
             foreach (string dir in dirs)
             {
-                
+
                 if (File.Exists(dir))
                 {
                     string dataraw = File.ReadAllText(dir);
                     if (dataraw != null && dataraw != "")
                     {
                         var dir_1 = dir.Replace("configs\\", "");
-                        dir_1 = dir_1.Replace(".json","");
+                        dir_1 = dir_1.Replace(".json", "");
                         switch (dir_1)
                         {
                             case "server":
@@ -55,7 +55,7 @@ namespace ServerLib.Controllers
                             default:
                                 break;
                         }
-                        
+
                     }
                 }
             }

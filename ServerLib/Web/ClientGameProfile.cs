@@ -87,7 +87,7 @@ namespace ServerLib.Web
             var resp = ResponseControl.GetBody("{status: \"ok\"}");
             if (nickname == "taken")
             {
-                resp = ResponseControl.GetBody("null" ,255, "The nickname is already in use");
+                resp = ResponseControl.GetBody("null", 255, "The nickname is already in use");
             }
 
             if (nickname == "tooshort")
@@ -113,7 +113,7 @@ namespace ServerLib.Web
             string Uncompressed = ResponseControl.DeCompressReq(ctx.Request.DataAsBytes);
 
             var nickname = CharacterController.ChangeNickname(Uncompressed, SessionID);
-            var resp = ResponseControl.GetBody("{status: 0, nicknamechangedate: " + Utils.UnixTimeNow_Int() +"}");
+            var resp = ResponseControl.GetBody("{status: 0, nicknamechangedate: " + Utils.UnixTimeNow_Int() + "}");
             if (nickname == "taken")
             {
                 resp = ResponseControl.GetBody("null", 255, "The nickname is already in use");
@@ -140,7 +140,7 @@ namespace ServerLib.Web
             Utils.PrintRequest(ctx.Request);
             string Uncompressed = ResponseControl.DeCompressReq(ctx.Request.DataAsBytes);
 
-            CharacterController.ChangeVoice(Uncompressed,SessionID);
+            CharacterController.ChangeVoice(Uncompressed, SessionID);
             // RPS
             var rsp = ResponseControl.CompressRsp(ResponseControl.NullResponse());
             ctx.Response.StatusCode = 200;

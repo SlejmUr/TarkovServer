@@ -1,8 +1,6 @@
-﻿using ServerLib.Utilities;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json;
 using ServerLib.Json;
-using System.Text;
+using ServerLib.Utilities;
 
 namespace ServerLib.Controllers
 {
@@ -54,7 +52,7 @@ namespace ServerLib.Controllers
             DataBase.Templates.Categories = JsonConvert.DeserializeObject<List<Templates.Categories>>(File.ReadAllText("Files/templates/categories.json"));
             foreach (var item in DataBase.Templates.Items)
             {
-                DataBase.ItemPrices.Add(item.Id,item.Price);
+                DataBase.ItemPrices.Add(item.Id, item.Price);
             }
             Utils.PrintDebug("Templates loaded");
         }
@@ -107,7 +105,7 @@ namespace ServerLib.Controllers
                     foreach (var file1 in files2)
                     {
                         string bot_test = file1.Replace(dir1 + "\\", "").Replace(".json", "");
-                        string normalfile = file1.Replace("\\","/");
+                        string normalfile = file1.Replace("\\", "/");
                         if (dir1.Contains("profile"))
                         {
                             bots.Profile = File.ReadAllText(normalfile);
@@ -134,7 +132,7 @@ namespace ServerLib.Controllers
                             }
                         }
                         else //inventory
-                        { 
+                        {
                             bots.Inventory_dict.Add(bot_test, File.ReadAllText(normalfile));
                         }
                     }
@@ -172,12 +170,12 @@ namespace ServerLib.Controllers
             Utils.PrintDebug("AKI quests loaded");
         }
         static void LoadCustomization()
-        { 
+        {
             DataBase.Customization = new();
             dynamic customs = JsonConvert.DeserializeObject<dynamic>(File.ReadAllText("Files/customization/items.json"));
             foreach (var item in customs)
             {
-                var fsf = item.ToString().Split(":")[0].Replace("\"","");
+                var fsf = item.ToString().Split(":")[0].Replace("\"", "");
                 DataBase.Customization.Add(fsf.ToString(), customs[fsf].ToString());
             }
             Utils.PrintDebug("Customization loaded");

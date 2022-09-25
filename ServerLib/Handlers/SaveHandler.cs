@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
-using ServerLib.Utilities;
 using ServerLib.Controllers;
+using ServerLib.Utilities;
 
 namespace ServerLib.Handlers
 {
@@ -13,7 +13,7 @@ namespace ServerLib.Handlers
         /// <param name="sessionID">SessionId/AccountId</param>
         public static void SaveAll(string sessionID)
         {
-            Utils.PrintDebug("Saving started...", "info","[SAVE]");
+            Utils.PrintDebug("Saving started...", "info", "[SAVE]");
             Save(sessionID, "Account", GetAccountPath(sessionID), JsonConvert.SerializeObject(AccountController.FindAccount(sessionID)));
             Save(sessionID, "Dialog", GetDialogPath(sessionID), JsonConvert.SerializeObject(DialogController.Dialogs[sessionID]));
             Save(sessionID, "Character", GetCharacterPath(sessionID), "{}");
@@ -135,7 +135,7 @@ namespace ServerLib.Handlers
         /// </summary>
         /// <param name="sessionID">SessionId/AccountId</param>
         /// <param name="saveType">Account,Dialog,Storage(Customization),etc</param>
-        public static void Delete(string sessionID,string saveType)
+        public static void Delete(string sessionID, string saveType)
         {
             DatabaseController.FileAges.Remove(sessionID + "_" + saveType);
         }
