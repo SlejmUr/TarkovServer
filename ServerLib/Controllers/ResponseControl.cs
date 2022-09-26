@@ -1,5 +1,7 @@
 ﻿using ComponentAce.Compression.Libs.zlib;
 using Ionic.Zlib;
+using Newtonsoft.Json;
+using ServerLib.Json;
 
 namespace ServerLib.Web
 {
@@ -34,6 +36,18 @@ namespace ServerLib.Web
         public static string DeCompressReq(byte[] data)
         {
             return ZlibStream.UncompressString(data);
+        }
+
+        public static string GetNotifier(string SessionId)
+        {
+            Other.Notifier notifier = new()
+            {
+                server = ServerLib.ip_port,
+                channel_id = SessionId,
+                ws = WebSocket.IpPort
+            };
+
+            return JsonConvert.SerializeObject(notifier);
         }
     }
 }

@@ -31,14 +31,7 @@ namespace ServerLib.Web
             //REQ stuff
             string SessionID = Utils.GetSessionID(ctx.Request.Headers);
             Utils.PrintRequest(ctx.Request);
-            /*
-            {
-                "status": "ok",
-                "notifier": Response.getNotifier(await Response.getSessionID(request)),
-                "notifierServer": ""
-            }
-            */
-            string resp = "{\"status\": \"ok\"}";
+            string resp = "{\"status\": \"ok\",\"notifier\":\"" + ResponseControl.GetNotifier(SessionID) + "\",\"notifierServer\":\"\"}";
             // RPS
             var rsp = ResponseControl.CompressRsp(ResponseControl.GetBody(resp));
             ctx.Response.StatusCode = 200;

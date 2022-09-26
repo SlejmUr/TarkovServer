@@ -9,10 +9,12 @@ namespace ServerLib
     {
         WebServer _webServer;
         public static string IP = "https://127.0.0.1:7777";
+        public static string ip_port = "127.0.0.1:7777";
         public void InitAll(string Ip, int port, bool LoadPlugin = true)
         {
             string ip_port = $"https://{Ip}:{port}";
             IP = ip_port;
+            ip_port = $"{Ip}:{port}";
             CertHelper.Make(IPAddress.Parse(Ip), ip_port);
             DatabaseController.Init();
             DialogController.Init();

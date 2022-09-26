@@ -164,5 +164,19 @@ namespace ServerLib.Json
             [JsonProperty("twitchEventMember")]
             public bool TwitchEventMember { get; set; }
         }
+
+        public class Notifier
+        {
+            public string server { get; set; }
+            public string channel_id { get; set; }
+            public string ws { get; set; }
+            public string url { get; set; }
+        }
+
+        public class RaidKilled
+        {
+            public string killedByAID { get; set; }
+            public string diedFaction { get; set; }
+        }
     }
 }

@@ -1,6 +1,5 @@
 ﻿using HttpServerLite;
 using ServerLib.Controllers;
-using ServerLib.Json;
 using ServerLib.Utilities;
 
 namespace ServerLib.Web
@@ -11,10 +10,8 @@ namespace ServerLib.Web
         public async Task ShowMessage(HttpContext ctx)
         {
             Utils.PrintRequest(ctx.Request);
-            //REQ stuff
-            GameplayConfig.Base gameplayBase = ConfigController.Configs.Gameplay;
             // RPS
-            var rsp = ResponseControl.CompressRsp(gameplayBase.InRaid.ShowDeathMessage.ToString());
+            var rsp = ResponseControl.CompressRsp(ConfigController.Configs.Gameplay.InRaid.ShowDeathMessage.ToString());
             ctx.Response.StatusCode = 200;
             ctx.Response.ContentType = "text/plain";
             ctx.Response.ContentLength = rsp.Length;
@@ -22,7 +19,7 @@ namespace ServerLib.Web
             return;
         }
 
-        [StaticRoute(HttpServerLite.HttpMethod.POST, "/raid/profile/save")]
+        [StaticRoute(HttpServerLite.HttpMethod.POST, "/raid/profile/save")] //todo Client: replace to client/raid/person/save!
         public async Task RaidSave(HttpContext ctx)
         {
             Utils.PrintRequest(ctx.Request);
@@ -31,6 +28,51 @@ namespace ServerLib.Web
             File.AppendAllText("saveAccount.json", decomp);
             // RPS
             var rsp = ResponseControl.CompressRsp(ResponseControl.NullResponse());
+            ctx.Response.StatusCode = 200;
+            ctx.Response.ContentType = "text/plain";
+            ctx.Response.ContentLength = rsp.Length;
+            await ctx.Response.SendAsync(rsp);
+            return;
+        }
+
+        [StaticRoute(HttpServerLite.HttpMethod.POST, "/client/raid/person/lootingContainer")]
+        public async Task RaidLootingContainer(HttpContext ctx)
+        {
+            Utils.PrintRequest(ctx.Request);
+            //REQ stuff
+            var decomp = ResponseControl.DeCompressReq(ctx.Request.DataAsBytes);
+            File.AppendAllText("lootingContainer.json", decomp);
+            // RPS
+            var rsp = ResponseControl.CompressRsp(ResponseControl.NullResponse());
+            ctx.Response.StatusCode = 200;
+            ctx.Response.ContentType = "text/plain";
+            ctx.Response.ContentLength = rsp.Length;
+            await ctx.Response.SendAsync(rsp);
+            return;
+        }
+
+        [StaticRoute(HttpServerLite.HttpMethod.POST, "/client/raid/createFriendlyAI")]
+        public async Task RaidCreateFriendlyAI(HttpContext ctx)
+        {
+            Utils.PrintRequest(ctx.Request);
+            // RPS
+            var rsp = ResponseControl.CompressRsp(ConfigController.Configs.Gameplay.InRaid.CreateFriendlyAI.ToString());
+            ctx.Response.StatusCode = 200;
+            ctx.Response.ContentType = "text/plain";
+            ctx.Response.ContentLength = rsp.Length;
+            await ctx.Response.SendAsync(rsp);
+            return;
+        }
+
+        [StaticRoute(HttpServerLite.HttpMethod.POST, "/client/raid/person/killed")]
+        public async Task RaidKilled(HttpContext ctx)
+        {
+            Utils.PrintRequest(ctx.Request);
+            string SessionID = Utils.GetSessionID(ctx.Request.Headers);
+            string Uncompressed = ResponseControl.DeCompressReq(ctx.Request.DataAsBytes);
+            CharacterController.RaidKilled(Uncompressed, SessionID);
+            // RPS
+            var rsp = ResponseControl.CompressRsp("{}");
             ctx.Response.StatusCode = 200;
             ctx.Response.ContentType = "text/plain";
             ctx.Response.ContentLength = rsp.Length;

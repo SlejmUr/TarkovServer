@@ -70,15 +70,7 @@ namespace ServerLib.Web
         {
             Utils.PrintRequest(ctx.Request);
             string SessionID = Utils.GetSessionID(ctx.Request.Headers);
-            string resp = ResponseControl.GetBody("");
-            /*
-            {
-                "server": ServerLib.IP,
-                "channel_id": sessionID,
-                "ws": "127.0.0.1:443",
-                "url": "https:://127.0.0.1:443"
-            }
-            */
+            string resp = ResponseControl.GetBody(ResponseControl.GetNotifier(SessionID));
             var rsp = ResponseControl.CompressRsp(resp);
             ctx.Response.StatusCode = 200;
             ctx.Response.ContentType = "application/json";
@@ -148,6 +140,33 @@ namespace ServerLib.Web
         {
             Utils.PrintRequest(ctx.Request);
             string resp = ResponseControl.GetBody(File.ReadAllText("Files/base/client.settings.json"));
+            var rsp = ResponseControl.CompressRsp(resp);
+            ctx.Response.StatusCode = 200;
+            ctx.Response.ContentType = "application/json";
+            ctx.Response.ContentLength = rsp.Length;
+            await ctx.Response.TrySendAsync(rsp);
+            return;
+        }
+
+        [StaticRoute(HttpServerLite.HttpMethod.POST, "/client/weather")]
+        public async Task ClientWeather(HttpContext ctx)
+        {
+            Utils.PrintRequest(ctx.Request);
+
+            string resp = ResponseControl.GetBody(DatabaseController.DataBase.Weather["sun"]);
+            var rsp = ResponseControl.CompressRsp(resp);
+            ctx.Response.StatusCode = 200;
+            ctx.Response.ContentType = "application/json";
+            ctx.Response.ContentLength = rsp.Length;
+            await ctx.Response.TrySendAsync(rsp);
+            return;
+        }
+
+        [StaticRoute(HttpServerLite.HttpMethod.POST, "/client/locations")]
+        public async Task ClientLocations(HttpContext ctx)
+        {
+            Utils.PrintRequest(ctx.Request);
+            string resp = ResponseControl.GetBody(DatabaseController.DataBase.AllLocations);
             var rsp = ResponseControl.CompressRsp(resp);
             ctx.Response.StatusCode = 200;
             ctx.Response.ContentType = "application/json";

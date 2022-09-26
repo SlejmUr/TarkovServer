@@ -93,5 +93,28 @@ namespace ServerLib.Controllers
             Utils.PrintError($"No stash found where stash ID is: {character.Inventory.Stash}");
             return "";
         }
+
+        public static void RaidKilled(string json, string sessionID)
+        {
+            Other.RaidKilled raidKilled = JsonConvert.DeserializeObject<Other.RaidKilled>(json);
+            if (raidKilled == null) { return; }
+
+            if (raidKilled.killedByAID == sessionID)
+            {
+                var character = GetCharacter(sessionID);
+
+                if (raidKilled.diedFaction == "Savage" || raidKilled.diedFaction == "Scav")
+                {
+                    character.TradersInfo._579dc571d53a0658a154fbec.Standing += ConfigController.Configs.Gameplay.Fence.KillingScavsFenceLevelChange;
+
+                }
+                else if (raidKilled.diedFaction == "Usec" || raidKilled.diedFaction == "Bear")
+                {
+                    character.TradersInfo._579dc571d53a0658a154fbec.Standing += ConfigController.Configs.Gameplay.Fence.KillingPMCsFenceLevelChange;
+
+                }
+                Handlers.SaveHandler.Save(sessionID, "Character", Handlers.SaveHandler.GetCharacterPath(sessionID), JsonConvert.SerializeObject(character));
+            }
+        }
     }
 }
