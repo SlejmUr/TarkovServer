@@ -24,13 +24,16 @@ namespace ServerLib.Controllers
                 string custom = DatabaseController.DataBase.Customization[keyValue.Key];
                 var customization = JsonConvert.DeserializeObject<Customization.Base>(custom);
 
-                if (customization.Props.Side.Count == 0)
+                if (customization != null)
                 {
-                    continue;
-                }
-                else
-                {
-                    list.Add(customization.Id);
+                    if (customization.Props.Side == null || customization.Props.Side.Count == 0)
+                    {
+                        continue;
+                    }
+                    else
+                    {
+                        list.Add(customization.Id);
+                    }
                 }
             }
             return list;

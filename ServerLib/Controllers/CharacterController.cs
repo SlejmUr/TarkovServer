@@ -1,6 +1,8 @@
 ﻿using Newtonsoft.Json;
+using ServerLib.Handlers;
 using ServerLib.Json;
 using ServerLib.Utilities;
+using static ServerLib.Json.CharacterOBJ;
 
 namespace ServerLib.Controllers
 {
@@ -92,6 +94,26 @@ namespace ServerLib.Controllers
 
             Utils.PrintError($"No stash found where stash ID is: {character.Inventory.Stash}");
             return "";
+        }
+
+        public static void ProcessStorage(string sessionID, List<string> suites, bool LoadFromFile = false)
+        {
+            Storage storage = new();
+            if (LoadFromFile)
+            {
+                var oldstore = JsonConvert.DeserializeObject<Storage>(File.ReadAllText(SaveHandler.GetStoragePath(sessionID)));
+
+                storage._id = oldstore._id;
+                storage.suites = storage.suites;
+                storage.suites.AddRange(suites);
+            }
+            else
+            {
+                storage._id = sessionID;
+                storage.suites = suites;
+            }
+
+            SaveHandler.Save(sessionID, "Storage", SaveHandler.GetStoragePath(sessionID), JsonConvert.SerializeObject(storage));
         }
 
         public static void RaidKilled(string json, string sessionID)

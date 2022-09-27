@@ -23,5 +23,11 @@
             public bool Ignored { get; set; } = false;
             public bool Banned { get; set; } = false;
         }
+
+        public class Storage
+        {
+            public string _id { get; set; }
+            public List<string> suites { get; set; } = new();
+        }
     }
 }

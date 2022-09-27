@@ -174,5 +174,18 @@ namespace ServerLib.Web
             await ctx.Response.TrySendAsync(rsp);
             return;
         }
+
+        [StaticRoute(HttpServerLite.HttpMethod.POST, "/client/account/customization")]
+        public async Task ClientAccountCustomization(HttpContext ctx)
+        {
+            Utils.PrintRequest(ctx.Request);
+            string resp = ResponseControl.GetBody(JsonConvert.SerializeObject(CustomizationController.GetAccountCustomization()));
+            var rsp = ResponseControl.CompressRsp(resp);
+            ctx.Response.StatusCode = 200;
+            ctx.Response.ContentType = "application/json";
+            ctx.Response.ContentLength = rsp.Length;
+            await ctx.Response.TrySendAsync(rsp);
+            return;
+        }
     }
 }
