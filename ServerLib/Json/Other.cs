@@ -4,6 +4,14 @@ namespace ServerLib.Json
 {
     public class Other
     {
+        public class TPLCOUNT
+        {
+            [JsonProperty("_tpl")]
+            public string Tpl { get; set; }
+
+            [JsonProperty("count")]
+            public int Count { get; set; }
+        }
         public class AmmoItems
         {
             public string _id { get; set; }

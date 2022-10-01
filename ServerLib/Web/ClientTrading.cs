@@ -34,6 +34,38 @@ namespace ServerLib.Web
             return;
         }
 
+        [ParameterRoute(HttpServerLite.HttpMethod.POST, "/client/trading/api/getTraderAssort/{traderId}")]
+        public async Task ClientTradingApiGetTraderAssort(HttpContext ctx)
+        {
+            Utils.PrintRequest(ctx.Request);
+            string traderId = ctx.Request.Url.Parameters["traderId"];
+            string SessionID = Utils.GetSessionID(ctx.Request.Headers);
+            var assort = JsonConvert.SerializeObject(TraderController.GenerateAssort(SessionID, traderId));
+            string resp = ResponseControl.GetBody(assort);
+            var rsp = ResponseControl.CompressRsp(resp);
+            ctx.Response.StatusCode = 200;
+            ctx.Response.ContentType = "application/json";
+            ctx.Response.ContentLength = rsp.Length;
+            await ctx.Response.TrySendAsync(rsp);
+            return;
+        }
+
+        [ParameterRoute(HttpServerLite.HttpMethod.POST, "/client/trading/api/getUserAssortPrice/trader/{traderId}")]
+        public async Task ClientTradingApiGetUserAssortPriceTrader(HttpContext ctx)
+        {
+            Utils.PrintRequest(ctx.Request);
+            string traderId = ctx.Request.Url.Parameters["traderId"];
+            string SessionID = Utils.GetSessionID(ctx.Request.Headers);
+            var assort = JsonConvert.SerializeObject(TraderController.GenerateAssort(SessionID, traderId));
+            string resp = ResponseControl.GetBody(assort);
+            var rsp = ResponseControl.CompressRsp(resp);
+            ctx.Response.StatusCode = 200;
+            ctx.Response.ContentType = "application/json";
+            ctx.Response.ContentLength = rsp.Length;
+            await ctx.Response.TrySendAsync(rsp);
+            return;
+        }
+
         [StaticRoute(HttpServerLite.HttpMethod.POST, "/client/trading/customization/storage")]
         public async Task ClientTradingCustomizationStorage(HttpContext ctx)
         {
@@ -48,8 +80,8 @@ namespace ServerLib.Web
             return;
         }
 
-        [ParameterRoute(HttpServerLite.HttpMethod.GET, "/client/trading/customization/{id}/offers")]
-        public async Task x(HttpContext ctx)
+        [ParameterRoute(HttpServerLite.HttpMethod.POST, "/client/trading/customization/{id}/offers")]
+        public async Task ClientTradingCustomizationOffers(HttpContext ctx)
         {
             Utils.PrintRequest(ctx.Request);
             string id = ctx.Request.Url.Parameters["id"];
@@ -63,5 +95,7 @@ namespace ServerLib.Web
             await ctx.Response.TrySendAsync(rsp);
             return;
         }
+
+
     }
 }

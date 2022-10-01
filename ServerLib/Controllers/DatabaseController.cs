@@ -234,7 +234,7 @@ namespace ServerLib.Controllers
                             traders.Assort = JsonConvert.DeserializeObject<Database.traders.assort>(File.ReadAllText(file));
                             break;
                         case "base":
-                            traders.Base = File.ReadAllText(file);
+                            traders.Base = JsonConvert.DeserializeObject<Traders.Base>(File.ReadAllText(file));
                             break;
                         case "categories":
                             if (!dirname.Contains("ragfair"))

@@ -44,6 +44,10 @@ namespace Tarkov_Server_Csharp
             AccountController.GetAccountList();
             Console.WriteLine("Initialization Done!");
 
+            TraderController.Test();
+            Console.ReadLine();
+
+            TraderController.Test();
             WebServer webServer = new WebServer();
             webServer.MainStart(IP_Address, Port);
 

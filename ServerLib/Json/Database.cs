@@ -73,7 +73,7 @@ namespace ServerLib.Json
         public Dictionary<string, traders> Traders { get; set; } = new();
         public class traders
         {
-            public string Base { get; set; }
+            public Traders.Base Base { get; set; }
             public List<string> Categories { get; set; }
             public string RagfairCategories { get; set; }
             public List<Traders.Suits> Suits { get; set; }
@@ -89,7 +89,7 @@ namespace ServerLib.Json
                 public Dictionary<string, List<List<Barter>>> BarterScheme { get; set; }
 
                 [JsonProperty("loyal_level_items")]
-                public object LoyalLevelItems { get; set; }
+                public Dictionary<string, long> LoyalLevelItems { get; set; }
             }
         }
         public Dictionary<string, string> Weather { get; set; } = new();

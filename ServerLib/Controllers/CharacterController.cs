@@ -135,8 +135,82 @@ namespace ServerLib.Controllers
                     character.TradersInfo._579dc571d53a0658a154fbec.Standing += ConfigController.Configs.Gameplay.Fence.KillingPMCsFenceLevelChange;
 
                 }
-                Handlers.SaveHandler.Save(sessionID, "Character", Handlers.SaveHandler.GetCharacterPath(sessionID), JsonConvert.SerializeObject(character));
+                SaveHandler.Save(sessionID, "Character", SaveHandler.GetCharacterPath(sessionID), JsonConvert.SerializeObject(character));
             }
+        }
+
+        public static int GetLoyality(string SessionId, string TraderId)
+        {
+            var TraderLoyalityLevels = DatabaseController.DataBase.Traders[TraderId].Base.LoyaltyLevels;
+            var character = GetCharacter(SessionId);
+
+            int playerSaleSum = 0, calculatedLoyalty = 0, playerLevel = 0;
+            double playerStanding = 0;
+
+            playerLevel = character.Info.Level;
+            switch (TraderId)
+            {
+                case "54cb50c76803fa8b248b4571":
+                    playerSaleSum = character.TradersInfo._54cb50c76803fa8b248b4571.SalesSum;
+                    playerStanding = character.TradersInfo._54cb50c76803fa8b248b4571.Standing;
+                    break;
+                case "54cb57776803fa99248b456e":
+                    playerSaleSum = character.TradersInfo._54cb57776803fa99248b456e.SalesSum;
+                    playerStanding = character.TradersInfo._54cb57776803fa99248b456e.Standing;
+                    break;
+                case "579dc571d53a0658a154fbec":
+                    playerSaleSum = character.TradersInfo._579dc571d53a0658a154fbec.SalesSum;
+                    playerStanding = character.TradersInfo._579dc571d53a0658a154fbec.Standing;
+                    break;
+                case "58330581ace78e27b8b10cee":
+                    playerSaleSum = character.TradersInfo._58330581ace78e27b8b10cee.SalesSum;
+                    playerStanding = character.TradersInfo._58330581ace78e27b8b10cee.Standing;
+                    break;
+                case "5935c25fb3acc3127c3d8cd9":
+                    playerSaleSum = character.TradersInfo._5935c25fb3acc3127c3d8cd9.SalesSum;
+                    playerStanding = character.TradersInfo._5935c25fb3acc3127c3d8cd9.Standing;
+                    break;
+                case "5a7c2eca46aef81a7ca2145d":
+                    playerSaleSum = character.TradersInfo._5a7c2eca46aef81a7ca2145d.SalesSum;
+                    playerStanding = character.TradersInfo._5a7c2eca46aef81a7ca2145d.Standing;
+                    break;
+                case "5ac3b934156ae10c4430e83c":
+                    playerSaleSum = character.TradersInfo._5ac3b934156ae10c4430e83c.SalesSum;
+                    playerStanding = character.TradersInfo._5ac3b934156ae10c4430e83c.Standing;
+                    break;
+                case "5c0647fdd443bc2504c2d371":
+                    playerSaleSum = character.TradersInfo._5c0647fdd443bc2504c2d371.SalesSum;
+                    playerStanding = character.TradersInfo._5c0647fdd443bc2504c2d371.Standing;
+                    break;
+                default:
+                    break;
+            }
+
+            if (TraderId != "ragfair")
+            {
+                foreach (var loyaltyLevel in TraderLoyalityLevels)
+                {
+                    if (playerSaleSum >= loyaltyLevel.MinSalesSum &&
+                        playerStanding >= loyaltyLevel.MinStanding &&
+                        playerLevel >= (int)loyaltyLevel.MinLevel)
+                    {
+                        calculatedLoyalty++;
+                    }
+                    else
+                    {
+                        if (calculatedLoyalty == 0)
+                        {
+                            calculatedLoyalty = 1;
+                        }
+                        break;
+                    }
+                }
+            }
+            else
+            {
+                return 0;
+            }
+            return (calculatedLoyalty - 1);
         }
     }
 }
