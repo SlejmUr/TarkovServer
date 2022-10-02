@@ -96,7 +96,7 @@ namespace ServerLib.Json
         public class LoyaltyLevel
         {
             [JsonProperty("minLevel")]
-            public object MinLevel { get; set; }
+            public int MinLevel { get; set; }
 
             [JsonProperty("minSalesSum")]
             public int MinSalesSum { get; set; }

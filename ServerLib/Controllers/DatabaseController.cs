@@ -15,6 +15,7 @@ namespace ServerLib.Controllers
             ConfigController.Init();
             LoadCore();
             LoadBasics();
+            LoadCharacters();
             LoadBots();
             LoadHideOut();
             LoadQuests();
@@ -55,6 +56,13 @@ namespace ServerLib.Controllers
                 DataBase.ItemPrices.Add(item.Id, item.Price);
             }
             Utils.PrintDebug("Templates loaded");
+        }
+        static void LoadCharacters()
+        {
+            DataBase.Characters.CharacterBase["bear"] = JsonConvert.DeserializeObject<Character.Base>(File.ReadAllText("Files/characters/character_bear.json"));
+            DataBase.Characters.CharacterBase["usec"] = JsonConvert.DeserializeObject<Character.Base>(File.ReadAllText("Files/characters/character_usec.json"));
+            DataBase.Characters.CharacterStorage = JsonConvert.DeserializeObject<CharacterOBJ.CharacterStorage>(File.ReadAllText("Files/characters/storage.json"));
+            Utils.PrintDebug("Characters loaded");
         }
         static void LoadBots()
         {

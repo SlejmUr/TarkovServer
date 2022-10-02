@@ -47,7 +47,8 @@ namespace ServerLib.Web
             //REQ stuff
             string SessionID = Utils.GetSessionID(ctx.Request.Headers);
             Utils.PrintRequest(ctx.Request);
-            CharacterController.ProcessStorage(SessionID, new() { "5cd946231388ce000d572fe3", "5cd945d71388ce000a659dfb" }, false);
+            string Uncompressed = ResponseControl.DeCompressReq(ctx.Request.DataAsBytes);
+            CharacterController.CreateCharacter(SessionID, Uncompressed);
             string resp = "{ uid: \"pmc" + SessionID + "\"}";
             // RPS
             var rsp = ResponseControl.CompressRsp(ResponseControl.GetBody(resp));

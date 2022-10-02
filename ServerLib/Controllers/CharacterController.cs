@@ -19,6 +19,65 @@ namespace ServerLib.Controllers
             ScavCharacters.Clear();
             Utils.PrintDebug("Initialization Done!", "debug", "[CHARACTER]");
         }
+
+        public static void LoadCharacter(string sessionID)
+        {
+            if (!File.Exists(SaveHandler.GetCharacterPath(sessionID))) { return; }
+            var character = JsonConvert.DeserializeObject<Character.Base>(File.ReadAllText(SaveHandler.GetCharacterPath(sessionID)));
+            if (!Characters.Contains(character))
+            {
+                Characters.Add(character);
+            }
+        }
+
+        public static void LoadScavCharacters(string sessionID)
+        {
+            if (!File.Exists(SaveHandler.GetCharacterPath(sessionID))) { return; }
+            var character = JsonConvert.DeserializeObject<Character.Base>(File.ReadAllText(SaveHandler.GetCharacterPath(sessionID)));
+            if (!ScavCharacters.Contains(character))
+            {
+                ScavCharacters.Add(character);
+            }
+
+        }
+
+        public static void CreateCharacter(string sessionID,string JSON)
+        {
+            var createReq = JsonConvert.DeserializeObject<Create>(JSON);
+            var account = AccountController.FindAccount(sessionID);
+            account.Wipe = false;
+            SaveHandler.SaveAccount(sessionID,account);
+
+            var character = DatabaseController.DataBase.Characters.CharacterBase[createReq.Side];
+            var ID = Utils.CreateNewID();
+            var Time = Utils.UnixTimeNow_Int();
+
+            character.Id = "pmc"+ ID;
+            character.Aid = account.Id;
+            character.Savage = "scav" + ID;
+            character.Info.Side = createReq.Side.ToUpperInvariant();
+            character.Info.Nickname = createReq.Nickname;
+            character.Info.LowerNickname = createReq.Nickname.ToLower();
+            character.Info.Voice = CustomizationController.GetCustomizationName(createReq.VoiceId);
+            character.Info.RegistrationDate = Time;
+            character.Health.UpdateTime = Time;
+            character.Customization.Head = createReq.HeadId;
+
+            SaveHandler.Save(sessionID, "Character", SaveHandler.GetCharacterPath(sessionID), JsonConvert.SerializeObject(character));
+            List<string> storeSave = new();
+            var storage = DatabaseController.DataBase.Characters.CharacterStorage;
+            switch (createReq.Side.ToLower())
+            {
+                case "usec":
+                    storeSave = storage.usec;
+                    break;
+                case "bear":
+                    storeSave = storage.bear;
+                    break;
+            }
+            SaveStorage(sessionID, storeSave, false);
+        }
+
         public static Character.Base GetCharacter(string sessionID)
         {
             foreach (Character.Base character in Characters)
@@ -42,6 +101,7 @@ namespace ServerLib.Controllers
             }
             return null;
         }
+
         public static string GetCompleteCharacter(string sessionID)
         {
             List<Character.Base> ouptut = new();
@@ -66,7 +126,7 @@ namespace ServerLib.Controllers
                 character.Info.Nickname = nick.Nickname;
                 character.Info.LowerNickname = nick.Nickname.ToLower();
                 character.Info.NicknameChangeDate = Utils.UnixTimeNow_Int();
-                Handlers.SaveHandler.Save(sessionID, "Character", Handlers.SaveHandler.GetCharacterPath(sessionID), JsonConvert.SerializeObject(character));
+                SaveHandler.Save(sessionID, "Character", SaveHandler.GetCharacterPath(sessionID), JsonConvert.SerializeObject(character));
             }
             return output;
         }
@@ -77,7 +137,7 @@ namespace ServerLib.Controllers
             if (voices == null) { return; }
             var character = GetCharacter(sessionID);
             character.Info.Voice = voices.Voice;
-            Handlers.SaveHandler.Save(sessionID, "Character", Handlers.SaveHandler.GetCharacterPath(sessionID), JsonConvert.SerializeObject(character));
+            SaveHandler.Save(sessionID, "Character", SaveHandler.GetCharacterPath(sessionID), JsonConvert.SerializeObject(character));
         }
 
         public static string GetStashType(string sessionID)
@@ -96,7 +156,7 @@ namespace ServerLib.Controllers
             return "";
         }
 
-        public static void ProcessStorage(string sessionID, List<string> suites, bool LoadFromFile = false)
+        public static void SaveStorage(string sessionID, List<string> suites, bool LoadFromFile = false)
         {
             Storage storage = new();
             if (LoadFromFile)
@@ -141,7 +201,7 @@ namespace ServerLib.Controllers
 
         public static int GetLoyality(string SessionId, string TraderId)
         {
-            var TraderLoyalityLevels = DatabaseController.DataBase.Traders[TraderId].Base.LoyaltyLevels;
+            var TraderLoyalityLevels = TraderController.GetBaseByTrader(TraderId).LoyaltyLevels;
             var character = GetCharacter(SessionId);
 
             int playerSaleSum = 0, calculatedLoyalty = 0, playerLevel = 0;

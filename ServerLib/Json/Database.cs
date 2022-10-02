@@ -94,6 +94,14 @@ namespace ServerLib.Json
         }
         public Dictionary<string, string> Weather { get; set; } = new();
 
+        public characters Characters { get; set; } = new();
+
+        public class characters
+        {
+            public Dictionary<string, Character.Base> CharacterBase = new();
+            public CharacterOBJ.CharacterStorage CharacterStorage = new();
+        }
+
         public partial class Barter
         {
             [JsonProperty("count")]

@@ -19,4 +19,11 @@
     {
         public string Voice { get; set; }
     }
+    public class Create
+    {
+        public string Side { get; set; }
+        public string VoiceId { get; set; }
+        public string HeadId { get; set; }
+        public string Nickname { get; set; }
+    }
 }

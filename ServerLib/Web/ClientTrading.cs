@@ -56,7 +56,7 @@ namespace ServerLib.Web
             Utils.PrintRequest(ctx.Request);
             string traderId = ctx.Request.Url.Parameters["traderId"];
             string SessionID = Utils.GetSessionID(ctx.Request.Headers);
-            var assort = JsonConvert.SerializeObject(TraderController.GenerateAssort(SessionID, traderId));
+            var assort = JsonConvert.SerializeObject(TraderController.GetPurchasesData(SessionID, traderId));
             string resp = ResponseControl.GetBody(assort);
             var rsp = ResponseControl.CompressRsp(resp);
             ctx.Response.StatusCode = 200;

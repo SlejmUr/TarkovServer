@@ -22,6 +22,7 @@ namespace ServerLib.Controllers
             ActiveAccountIds = new();
             ActiveAccountIds.Clear();
             Utils.PrintDebug("Initialization Done!", "debug", "[ACCOUNT]");
+            GetAccountList();
         }
 
         public static void GetAccountList()
@@ -380,17 +381,6 @@ namespace ServerLib.Controllers
         }
         #endregion
         #region Edited but same functions
-
-        /// <summary>
-        /// Get the Character template from side
-        /// </summary>
-        /// <param name="side">bear or usec</param>
-        /// <returns>Readed character json</returns>
-        public static string GetCharacterTemplateBySide(string side)
-        {
-            return File.ReadAllText($"Files/characters/character_{side}.json");
-        }
-
         /// <summary>
         /// Set session ready to WIPE
         /// </summary>

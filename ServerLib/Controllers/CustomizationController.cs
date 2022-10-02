@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using ServerLib.Json;
+using System.Collections.Generic;
 
 namespace ServerLib.Controllers
 {
@@ -39,6 +40,34 @@ namespace ServerLib.Controllers
             return list;
         }
 
+        public static string GetCustomizationName(string Id)
+        {
+            foreach (var keyValue in DatabaseController.DataBase.Customization)
+            {
+                string custom = DatabaseController.DataBase.Customization[keyValue.Key];
+                var customization = JsonConvert.DeserializeObject<Customization.Base>(custom);
+
+                if (customization.Id == Id)
+                {
+                    return customization.Name;
+                }
+            }
+            return "";
+        }
+
+        public static Customization.Base GetCustomization(string Id)
+        {
+            foreach (var keyValue in DatabaseController.DataBase.Customization)
+            {
+                string custom = DatabaseController.DataBase.Customization[keyValue.Key];
+                var customization = JsonConvert.DeserializeObject<Customization.Base>(custom);
+                if (customization.Id == Id)
+                {
+                    return customization;
+                }
+            }
+            return new();
+        }
 
         public static List<Traders.Suits> GetTraderCustomization()
         {

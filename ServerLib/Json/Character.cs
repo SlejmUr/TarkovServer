@@ -218,166 +218,189 @@ namespace ServerLib.Json
             [JsonProperty("RightLeg")]
             public RightLeg RightLeg { get; set; }
         }
+        public class BodyPartsDamage
+        {
+            [JsonProperty("Head", NullValueHandling = NullValueHandling.Ignore)]
+            public List<Head>? Head { get; set; }
+
+            [JsonProperty("Chest", NullValueHandling = NullValueHandling.Ignore)]
+            public List<Chest>? Chest { get; set; }
+
+            [JsonProperty("Stomach", NullValueHandling = NullValueHandling.Ignore)]
+            public List<Stomach>? Stomach { get; set; }
+
+            [JsonProperty("LeftArm", NullValueHandling = NullValueHandling.Ignore)]
+            public List<LeftArm>? LeftArm { get; set; }
+
+            [JsonProperty("RightArm", NullValueHandling = NullValueHandling.Ignore)]
+            public List<RightArm>? RightArm { get; set; }
+
+            [JsonProperty("LeftLeg", NullValueHandling = NullValueHandling.Ignore)]
+            public List<LeftLeg>? LeftLeg { get; set; }
+
+            [JsonProperty("RightLeg", NullValueHandling = NullValueHandling.Ignore)]
+            public List<RightLeg>? RightLeg { get; set; }
+        }
         public class Head
         {
             [JsonProperty("Health")]
-            public Health Health { get; set; }
+            public Health? Health { get; set; }
 
             [JsonProperty("Amount")]
-            public double Amount { get; set; }
+            public double? Amount { get; set; }
 
             [JsonProperty("Type")]
-            public string Type { get; set; }
+            public string? Type { get; set; }
 
             [JsonProperty("SourceId")]
-            public object SourceId { get; set; }
+            public object? SourceId { get; set; }
 
             [JsonProperty("OverDamageFrom")]
-            public string OverDamageFrom { get; set; }
+            public string? OverDamageFrom { get; set; }
 
             [JsonProperty("Blunt")]
-            public bool Blunt { get; set; }
+            public bool? Blunt { get; set; }
 
             [JsonProperty("ImpactsCount")]
-            public int ImpactsCount { get; set; }
+            public int? ImpactsCount { get; set; }
         }
         public class Chest
         {
             [JsonProperty("Health")]
-            public Health Health { get; set; }
+            public Health? Health { get; set; }
 
             [JsonProperty("Amount")]
-            public double Amount { get; set; }
+            public double? Amount { get; set; }
 
             [JsonProperty("Type")]
-            public string Type { get; set; }
+            public string? Type { get; set; }
 
             [JsonProperty("SourceId")]
-            public object SourceId { get; set; }
+            public object? SourceId { get; set; }
 
             [JsonProperty("OverDamageFrom")]
-            public string OverDamageFrom { get; set; }
+            public string? OverDamageFrom { get; set; }
 
             [JsonProperty("Blunt")]
-            public bool Blunt { get; set; }
+            public bool? Blunt { get; set; }
 
             [JsonProperty("ImpactsCount")]
-            public int ImpactsCount { get; set; }
+            public int? ImpactsCount { get; set; }
         }
         public class Stomach
         {
             [JsonProperty("Health")]
-            public Health Health { get; set; }
+            public Health? Health { get; set; }
 
             [JsonProperty("Amount")]
-            public double Amount { get; set; }
+            public double? Amount { get; set; }
 
             [JsonProperty("Type")]
-            public string Type { get; set; }
+            public string? Type { get; set; }
 
             [JsonProperty("SourceId")]
-            public object SourceId { get; set; }
+            public object? SourceId { get; set; }
 
             [JsonProperty("OverDamageFrom")]
-            public string OverDamageFrom { get; set; }
+            public string? OverDamageFrom { get; set; }
 
             [JsonProperty("Blunt")]
-            public bool Blunt { get; set; }
+            public bool? Blunt { get; set; }
 
             [JsonProperty("ImpactsCount")]
-            public int ImpactsCount { get; set; }
+            public int? ImpactsCount { get; set; }
         }
         public class LeftArm
         {
             [JsonProperty("Health")]
-            public Health Health { get; set; }
+            public Health? Health { get; set; }
 
             [JsonProperty("Amount")]
-            public double Amount { get; set; }
+            public double? Amount { get; set; }
 
             [JsonProperty("Type")]
-            public string Type { get; set; }
+            public string? Type { get; set; }
 
             [JsonProperty("SourceId")]
-            public object SourceId { get; set; }
+            public object? SourceId { get; set; }
 
             [JsonProperty("OverDamageFrom")]
-            public string OverDamageFrom { get; set; }
+            public string? OverDamageFrom { get; set; }
 
             [JsonProperty("Blunt")]
-            public bool Blunt { get; set; }
+            public bool? Blunt { get; set; }
 
             [JsonProperty("ImpactsCount")]
-            public int ImpactsCount { get; set; }
+            public int? ImpactsCount { get; set; }
         }
         public class RightArm
         {
             [JsonProperty("Health")]
-            public Health Health { get; set; }
+            public Health? Health { get; set; }
 
             [JsonProperty("Amount")]
-            public double Amount { get; set; }
+            public double? Amount { get; set; }
 
             [JsonProperty("Type")]
-            public string Type { get; set; }
+            public string? Type { get; set; }
 
             [JsonProperty("SourceId")]
-            public object SourceId { get; set; }
+            public object? SourceId { get; set; }
 
             [JsonProperty("OverDamageFrom")]
-            public string OverDamageFrom { get; set; }
+            public string? OverDamageFrom { get; set; }
 
             [JsonProperty("Blunt")]
-            public bool Blunt { get; set; }
+            public bool? Blunt { get; set; }
 
             [JsonProperty("ImpactsCount")]
-            public int ImpactsCount { get; set; }
+            public int? ImpactsCount { get; set; }
         }
         public class LeftLeg
         {
             [JsonProperty("Health")]
-            public Health Health { get; set; }
+            public Health? Health { get; set; }
 
             [JsonProperty("Amount")]
-            public int Amount { get; set; }
+            public int? Amount { get; set; }
 
             [JsonProperty("Type")]
-            public string Type { get; set; }
+            public string? Type { get; set; }
 
             [JsonProperty("SourceId")]
-            public object SourceId { get; set; }
+            public object? SourceId { get; set; }
 
             [JsonProperty("OverDamageFrom")]
-            public object OverDamageFrom { get; set; }
+            public object? OverDamageFrom { get; set; }
 
             [JsonProperty("Blunt")]
-            public bool Blunt { get; set; }
+            public bool? Blunt { get; set; }
 
             [JsonProperty("ImpactsCount")]
-            public int ImpactsCount { get; set; }
+            public int? ImpactsCount { get; set; }
         }
         public class RightLeg
         {
             [JsonProperty("Health")]
-            public Health Health { get; set; }
+            public Health? Health { get; set; }
 
             [JsonProperty("Amount")]
-            public double Amount { get; set; }
+            public double? Amount { get; set; }
 
             [JsonProperty("Type")]
-            public string Type { get; set; }
+            public string? Type { get; set; }
 
             [JsonProperty("SourceId")]
-            public object SourceId { get; set; }
+            public object? SourceId { get; set; }
 
             [JsonProperty("OverDamageFrom")]
-            public string OverDamageFrom { get; set; }
+            public string? OverDamageFrom { get; set; }
 
             [JsonProperty("Blunt")]
-            public bool Blunt { get; set; }
+            public bool? Blunt { get; set; }
 
             [JsonProperty("ImpactsCount")]
-            public int ImpactsCount { get; set; }
+            public int? ImpactsCount { get; set; }
         }
         public class Inventory
         {
@@ -585,7 +608,7 @@ namespace ServerLib.Json
             public object LethalDamage { get; set; }
 
             [JsonProperty("BodyParts")]
-            public BodyParts BodyParts { get; set; }
+            public BodyPartsDamage BodyParts { get; set; }
         }
         public class DeathCause
         {

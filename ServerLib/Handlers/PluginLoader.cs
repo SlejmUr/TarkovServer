@@ -84,7 +84,7 @@ namespace ServerLib.Handlers
                 "\nPlugin Author: " + iPlugin.Author +
                 "\nPlugin Mode: " + iPlugin.Mode +
                 "\nPlugin Desc: " + iPlugin.Description
-                );
+                ,"info","[PLUGIN]");
         }
         internal class PluginInfos
         {

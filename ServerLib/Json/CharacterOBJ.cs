@@ -29,5 +29,11 @@
             public string _id { get; set; }
             public List<string> suites { get; set; } = new();
         }
+
+        public class CharacterStorage
+        {
+            public List<string> bear { get; set; } = new();
+            public List<string> usec { get; set; } = new();
+        }
     }
 }

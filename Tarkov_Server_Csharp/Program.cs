@@ -1,4 +1,5 @@
-﻿using ServerLib;
+﻿using Newtonsoft.Json;
+using ServerLib;
 using ServerLib.Controllers;
 using ServerLib.Handlers;
 using ServerLib.Utilities;
@@ -37,17 +38,12 @@ namespace Tarkov_Server_Csharp
             }
 
             CertHelper.Make(IPAddress.Parse(IP_Address), ip_port);
-            Utils.PrintDebug(ip_port);
             DatabaseController.Init();
             DialogController.Init();
             AccountController.Init();
             AccountController.GetAccountList();
+            CharacterController.Init();
             Console.WriteLine("Initialization Done!");
-
-            TraderController.Test();
-            Console.ReadLine();
-
-            TraderController.Test();
             WebServer webServer = new WebServer();
             webServer.MainStart(IP_Address, Port);
 
