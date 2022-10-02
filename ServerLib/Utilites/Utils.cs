@@ -34,7 +34,7 @@ namespace ServerLib.Utilities
         #region Debug Print
         public static void PrintDebug(string ToPrint, string type = "info", string prefix = "[INFO]")
         {
-            if (ArgumentHandler.Debug || type != "debug" )
+            if (ArgumentHandler.Debug || type != "debug")
             {
                 Console.ForegroundColor = GetColorByType(type);
                 Console.WriteLine(prefix + " " + ToPrint);

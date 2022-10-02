@@ -77,7 +77,7 @@ namespace ServerLib.Controllers
         }
 
 
-        public static traders.assort GenerateAssort(string SessionId,string TraderId)
+        public static traders.assort GenerateAssort(string SessionId, string TraderId)
         {
             traders.assort traderassort = GetAssortByTrader(TraderId);
             traders.assort output = new();
@@ -90,8 +90,9 @@ namespace ServerLib.Controllers
             }
 
 
-            var loyalty  = CharacterController.GetLoyality(SessionId, TraderId) + 1;
-            foreach (var item in traderassort.Items) {
+            var loyalty = CharacterController.GetLoyality(SessionId, TraderId) + 1;
+            foreach (var item in traderassort.Items)
+            {
                 if (traderassort.LoyalLevelItems[item.Id] <= loyalty)
                 {
                     output.Items.Add(item);
@@ -115,7 +116,7 @@ namespace ServerLib.Controllers
             Dictionary<string, List<List<Other.TPLCOUNT>>> output = new();
 
 
-            var character = CharacterController.GetCharacter(SessionId); 
+            var character = CharacterController.GetCharacter(SessionId);
             var traderBase = GetBaseByTrader(TraderId);
             var currency = GetCurrency(traderBase.Currency);
             var loyality = CharacterController.GetLoyality(SessionId, TraderId);

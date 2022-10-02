@@ -9,17 +9,18 @@ namespace ServerLib.Controllers
     public class CharacterController
     {
         public static List<Character.Base> Characters;
-        public static List<Character.Base> ScavCharacters;
 
         public static void Init()
         {
             Characters = new();
             Characters.Clear();
-            ScavCharacters = new();
-            ScavCharacters.Clear();
             Utils.PrintDebug("Initialization Done!", "debug", "[CHARACTER]");
         }
 
+        /// <summary>
+        /// Load Character to List
+        /// </summary>
+        /// <param name="sessionID">SessionId/AccountId</param>
         public static void LoadCharacter(string sessionID)
         {
             if (!File.Exists(SaveHandler.GetCharacterPath(sessionID))) { return; }
@@ -30,29 +31,18 @@ namespace ServerLib.Controllers
             }
         }
 
-        public static void LoadScavCharacters(string sessionID)
-        {
-            if (!File.Exists(SaveHandler.GetCharacterPath(sessionID))) { return; }
-            var character = JsonConvert.DeserializeObject<Character.Base>(File.ReadAllText(SaveHandler.GetCharacterPath(sessionID)));
-            if (!ScavCharacters.Contains(character))
-            {
-                ScavCharacters.Add(character);
-            }
-
-        }
-
-        public static void CreateCharacter(string sessionID,string JSON)
+        public static void CreateCharacter(string sessionID, string JSON)
         {
             var createReq = JsonConvert.DeserializeObject<Create>(JSON);
             var account = AccountController.FindAccount(sessionID);
             account.Wipe = false;
-            SaveHandler.SaveAccount(sessionID,account);
+            SaveHandler.SaveAccount(sessionID, account);
 
             var character = DatabaseController.DataBase.Characters.CharacterBase[createReq.Side];
             var ID = Utils.CreateNewID();
             var Time = Utils.UnixTimeNow_Int();
 
-            character.Id = "pmc"+ ID;
+            character.Id = "pmc" + ID;
             character.Aid = account.Id;
             character.Savage = "scav" + ID;
             character.Info.Side = createReq.Side.ToUpperInvariant();
@@ -90,25 +80,12 @@ namespace ServerLib.Controllers
             return null;
         }
 
-        public static Character.Base GetScavCharacter(string sessionID)
-        {
-            foreach (Character.Base character in ScavCharacters)
-            {
-                if (character.Aid == sessionID)
-                {
-                    return character;
-                }
-            }
-            return null;
-        }
-
         public static string GetCompleteCharacter(string sessionID)
         {
             List<Character.Base> ouptut = new();
             if (!AccountController.IsWiped(sessionID))
             {
                 ouptut.Add(GetCharacter(sessionID));
-                ouptut.Add(GetScavCharacter(sessionID));
             }
 
             return JsonConvert.SerializeObject(ouptut);

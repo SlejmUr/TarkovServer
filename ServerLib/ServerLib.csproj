@@ -5,16 +5,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
-
-  <ItemGroup>
-    <Compile Remove="Files\locations\base\**" />
-    <Compile Remove="Files\locations\loot\**" />
-    <EmbeddedResource Remove="Files\locations\base\**" />
-    <EmbeddedResource Remove="Files\locations\loot\**" />
-    <None Remove="Files\locations\base\**" />
-    <None Remove="Files\locations\loot\**" />
-  </ItemGroup>
-
+	
   <ItemGroup>
     <None Remove="Files\base\botBase.json" />
     <None Remove="Files\base\botCore.json" />
