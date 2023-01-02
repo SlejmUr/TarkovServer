@@ -94,6 +94,9 @@ namespace ServerLib.Json
 
             [JsonProperty("requestId")]
             public string? reqId { get; set; }
+
+            [JsonProperty("uid")]
+            public string? uid { get; set; }
         }
 
         public class AddFriendRsp

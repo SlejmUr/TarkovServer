@@ -12,6 +12,7 @@
     <Product>Tarkov Server</Product>
     <Description>Tarkov Server in C#</Description>
     <Authors>SlejmUr</Authors>
+    <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
 
   <ItemGroup>
@@ -29,6 +30,9 @@
   </ItemGroup>
 
   <ItemGroup>
+	<Reference Include="Assembly-CSharp">
+      <HintPath>..\Ref\Assembly-CSharp.dll</HintPath>
+    </Reference>
     <Reference Include="bsg.componentace.compression.libs.zlib">
       <HintPath>..\Ref\bsg.componentace.compression.libs.zlib.dll</HintPath>
     </Reference>

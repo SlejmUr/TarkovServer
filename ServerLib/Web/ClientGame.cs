@@ -130,5 +130,23 @@ namespace ServerLib.Web
             await ctx.Response.TrySendAsync(rsp);
             return;
         }
+
+        [StaticRoute(HttpServerLite.HttpMethod.POST, "/client/game/bot/generate")]
+        public async Task BotGenerate(HttpContext ctx)
+        {
+            Utils.PrintRequest(ctx.Request);
+            string SessionID = Utils.GetSessionID(ctx.Request.Headers);
+            string Uncompressed = ResponseControl.DeCompressReq(ctx.Request.DataAsBytes);
+            var conditions = JsonConvert.DeserializeObject<List<ACS.WaveInfo>>(Uncompressed);
+
+            CharacterController.RaidKilled(Uncompressed, SessionID);
+            // RPS
+            var rsp = ResponseControl.CompressRsp("{}");
+            ctx.Response.StatusCode = 200;
+            ctx.Response.ContentType = "text/plain";
+            ctx.Response.ContentLength = rsp.Length;
+            await ctx.Response.SendAsync(rsp);
+            return;
+        }
     }
 }

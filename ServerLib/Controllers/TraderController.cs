@@ -18,7 +18,7 @@ namespace ServerLib.Controllers
         {
             return DatabaseController.DataBase.Traders["base_" + TraderId].Base;
         }
-        public static List<Traders.Suits> GetSuitsByTrader(string TraderId)
+        public static List<ACS.TraderSuits> GetSuitsByTrader(string TraderId)
         {
             return DatabaseController.DataBase.Traders["suits_" + TraderId].Suits;
         }
@@ -95,14 +95,14 @@ namespace ServerLib.Controllers
             {
                 if (traderassort.LoyalLevelItems[item.Id] <= loyalty)
                 {
-                    output.Items.Add(item);
+                    output.Items.ToList().Add(item);
                     if (traderassort.BarterScheme[item.Id] != null)
                     {
                         output.BarterScheme[item.Id] = traderassort.BarterScheme[item.Id];
                     }
-                    if (traderassort.LoyalLevelItems[item.Id] != null)
+                    if (traderassort.LoyalLevelItems.TryGetValue(item.Id, out var id))
                     {
-                        output.LoyalLevelItems[item.Id] = traderassort.LoyalLevelItems[item.Id];
+                        output.LoyalLevelItems[item.Id] = id;
                     }
                 }
             }

@@ -45,7 +45,7 @@ namespace ServerLib.Controllers
             switch (type)
             {
                 case "core":
-                    return DatabaseController.DataBase.Core.BotCore;
+                    return DatabaseController.DataBase.Core.BotSettings;
                 default:
                     switch (difficulty)
                     {

@@ -40,7 +40,7 @@ namespace ServerLib.Web
 
         public static string GetNotifier(string SessionId)
         {
-            Other.Notifier notifier = new()
+            ACS.NotifierJson notifier = new()
             {
                 server = ServerLib.ip_port,
                 channel_id = SessionId,

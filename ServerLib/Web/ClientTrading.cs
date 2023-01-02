@@ -85,7 +85,7 @@ namespace ServerLib.Web
         {
             Utils.PrintRequest(ctx.Request);
             string id = ctx.Request.Url.Parameters["id"];
-            var suits = JsonConvert.SerializeObject(DatabaseController.DataBase.Traders[id].Suits);
+            var suits = JsonConvert.SerializeObject(TraderController.GetSuitsByTrader(id));
 
             string resp = ResponseControl.GetBody(suits);
             var rsp = ResponseControl.CompressRsp(resp);

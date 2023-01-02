@@ -7,29 +7,31 @@ namespace ServerLib.Json
     public class Database
     {
         public string Globals { get; set; }
+        public List<string> BlacklistedIds { get; set; }
         public Dictionary<string, ItemBase> Items { get; set; }
         public Dictionary<string, int> ItemPrices { get; set; } = new();
         public core Core { get; set; } = new();
         public class core
         {
-            public string BotBase { get; set; }
-            public string BotCore { get; set; }
+            public class bot
+            {
+                public string Base { get; set; }
+                public string Settings { get; set; }
+                public string Names { get; set; }
+                public string Appearance { get; set; }
+                public Dictionary<string, string> WeaponCache { get; set; }
+            }
+            public bot Bot { get; set; } = new();
             public string FleaOffer { get; set; }
+            public string PlayerScav { get; set; }
             public string MatchMetrics { get; set; }
         }
         public Dictionary<string, bots> Bots { get; set; } = new();
         public class bots
         {
             public string Profile { get; set; }
-            public string BotNames { get; set; }
-            public string Appearance { get; set; }
-            public appearance Appearances { get; set; } = new();
-            public string Chances { get; set; }
-            public string Experience { get; set; }
-            public string Generation { get; set; }
             public string Health { get; set; }
-            public string Inventory { get; set; }
-            public Dictionary<string, string> Inventory_dict { get; set; } = new();
+            public string Loadout { get; set; }
             public difficulty Difficulty { get; set; } = new();
 
             public class difficulty
@@ -40,16 +42,8 @@ namespace ServerLib.Json
                 public string Impossible { get; set; }
                 public string Custom { get; set; }
             }
-            public class appearance
-            {
-                public string[] Body { get; set; } = Array.Empty<string>();
-                public string[] Feet { get; set; } = Array.Empty<string>();
-                public string[] Hands { get; set; } = Array.Empty<string>();
-                public string[] Head { get; set; } = Array.Empty<string>();
-                public string[] Voice { get; set; } = Array.Empty<string>();
-            }
-
         }
+
         public templates Templates { get; set; } = new();
         public class templates
         {
@@ -76,7 +70,7 @@ namespace ServerLib.Json
             public Traders.Base Base { get; set; }
             public List<string> Categories { get; set; }
             public string RagfairCategories { get; set; }
-            public List<Traders.Suits> Suits { get; set; }
+            public List<ACS.TraderSuits> Suits { get; set; }
             public Traders.Dialog Dialog { get; set; }
             public string QuestAssort { get; set; }
             public assort Assort { get; set; }

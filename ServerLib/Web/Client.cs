@@ -95,6 +95,25 @@ namespace ServerLib.Web
             return;
         }
 
+        [StaticRoute(HttpServerLite.HttpMethod.POST, "/client/server/list")]
+        public async Task ClientServerList(HttpContext ctx)
+        {
+            
+            Utils.PrintRequest(ctx.Request);
+            var server = ConfigController.Configs.Server;
+            List<ACS.Server> servers = new();
+            ACS.Server acsserver = new();
+            acsserver.Address = server.Ip;
+            acsserver.Port = $"{server.Port}";
+            servers.Add(acsserver);
+            string resp = ResponseControl.GetBody(JsonConvert.SerializeObject(servers));
+            var rsp = ResponseControl.CompressRsp(resp);
+            ctx.Response.StatusCode = 200;
+            ctx.Response.ContentType = "application/json";
+            ctx.Response.ContentLength = rsp.Length;
+            await ctx.Response.TrySendAsync(rsp);
+            return;
+        }
 
         [StaticRoute(HttpServerLite.HttpMethod.POST, "/client/items")]
         public async Task ClientItems(HttpContext ctx)
@@ -187,5 +206,18 @@ namespace ServerLib.Web
             await ctx.Response.TrySendAsync(rsp);
             return;
         }
+        /*
+        [ParameterRoute(HttpServerLite.HttpMethod.POST, "/client/items/price/{traderId}")]
+        public async Task ClientItemsPriceTrader(HttpContext ctx)
+        {
+            Utils.PrintRequest(ctx.Request);
+            string resp = ResponseControl.GetBody(File.ReadAllText("Files/items/items.json"));
+            var rsp = ResponseControl.CompressRsp(resp);
+            ctx.Response.StatusCode = 200;
+            ctx.Response.ContentType = "application/json";
+            ctx.Response.ContentLength = rsp.Length;
+            await ctx.Response.TrySendAsync(rsp);
+            return;
+        }*/
     }
 }

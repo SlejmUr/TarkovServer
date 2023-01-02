@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using ServerLib.Json;
 using ServerLib.Utilities;
+using static ServerLib.Json.Traders;
 
 namespace ServerLib.Controllers
 {
@@ -33,8 +34,8 @@ namespace ServerLib.Controllers
         static void LoadCore()
         {
             DataBase.Core = new();
-            DataBase.Core.BotBase = File.ReadAllText("Files/base/botBase.json");
-            DataBase.Core.BotCore = File.ReadAllText("Files/base/botCore.json");
+            DataBase.Core.BotBase = File.ReadAllText("Files/bot/botBase.json");
+            DataBase.Core.BotSettings = File.ReadAllText("Files/base/botCore.json");
             DataBase.Core.FleaOffer = File.ReadAllText("Files/base/fleaOffer.json");
             DataBase.Core.MatchMetrics = File.ReadAllText("Files/base/matchMetrics.json");
             Utils.PrintDebug("Core Data loaded");
@@ -261,7 +262,7 @@ namespace ServerLib.Controllers
                             traders.QuestAssort = File.ReadAllText(file);
                             break;
                         case "suits":
-                            traders.Suits = JsonConvert.DeserializeObject<List<Traders.Suits>>(File.ReadAllText(file));
+                            traders.Suits = JsonConvert.DeserializeObject<List<ACS.TraderSuits>>(File.ReadAllText(file));
                             break;
                     }
                     DataBase.Traders.Add(filename + "_" + dirname, traders);
