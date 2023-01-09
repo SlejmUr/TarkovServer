@@ -1,5 +1,5 @@
 # Tarkov Server
-(SIT) Tarkov Server on C#
+Tarkov Server on C#
 
 This is my attempt to port existing JavaScript(nodejs) code to C#.\
 Because I am not want and familiar with JS and his funny stuffs.
@@ -13,6 +13,8 @@ bsg.microsoft.extensions.objectpool.dll\
 bsg.system.buffers.dll\
 UnityEngine.dll\
 UnityEngine.CoreModule.dll
+
+(Just put all in there you didn't miss much)
 
 ## Credits
 - TheMaoci for official Research and Dump Tutorials
