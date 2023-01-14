@@ -45,27 +45,27 @@ namespace ServerLib.Controllers
             switch (type)
             {
                 case "core":
-                    return DatabaseController.DataBase.Core.BotSettings;
+                    return DatabaseController.DataBase.Bot.Settings;
                 default:
                     switch (difficulty)
                     {
                         case "Custom":
-                            return DatabaseController.DataBase.Bots[type].Difficulty.Custom;
+                            return DatabaseController.DataBase.Bot.Bots[type].Difficulty.Custom;
                         case "Easy":
-                            return DatabaseController.DataBase.Bots[type].Difficulty.Easy;
+                            return DatabaseController.DataBase.Bot.Bots[type].Difficulty.Easy;
                         case "Hard":
-                            return DatabaseController.DataBase.Bots[type].Difficulty.Hard;
+                            return DatabaseController.DataBase.Bot.Bots[type].Difficulty.Hard;
                         case "Impossible":
-                            return DatabaseController.DataBase.Bots[type].Difficulty.Impossible;
+                            return DatabaseController.DataBase.Bot.Bots[type].Difficulty.Impossible;
                         default:
-                            return DatabaseController.DataBase.Bots[type].Difficulty.Normal;
+                            return DatabaseController.DataBase.Bot.Bots[type].Difficulty.Normal;
                     }
             }
         }
 
         public static string GenerateBotName(string role)
         {
-            return Utils.GetRandomArray(JsonConvert.DeserializeObject<string[]>(DatabaseController.DataBase.Bots[role].BotNames));
+            return Utils.GetRandomArray(DatabaseController.DataBase.Bot.NamesDict[role].ToArray());
         }
 
         public static Bots.BotBase GenerateNewID(Bots.BotBase bot)
@@ -123,7 +123,7 @@ namespace ServerLib.Controllers
 
         public static void GenerateLevel(int min, int max, int playerlevel, out int lvl, out int xp)
         {
-            dynamic global = JsonConvert.DeserializeObject<dynamic>(DatabaseController.DataBase.Globals);
+            dynamic global = JsonConvert.DeserializeObject<dynamic>(DatabaseController.DataBase.Basic.Globals);
             var exptable = global.config.exp.level.exp_table;
             Other.ExpTableClass expTableClass = exptable;
 

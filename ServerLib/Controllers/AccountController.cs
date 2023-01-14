@@ -124,7 +124,7 @@ namespace ServerLib.Controllers
         /// </summary>
         /// <param name="name">UserName</param>
         /// <param name="passw">Password</param>
-        /// <returns>AccountId | null</returns>
+        /// <returns>AccountId | ""</returns>
         public static string FindAccountIdByUsernameAndPassword(string name, string passw)
         {
             if (!Directory.Exists("user/profiles")) { Directory.CreateDirectory("user/profiles"); }
@@ -139,7 +139,7 @@ namespace ServerLib.Controllers
                     return dir.Replace("user/profiles\\", "");
                 }
             }
-            return null;
+            return "";
         }
 
         /// <summary>
@@ -249,7 +249,7 @@ namespace ServerLib.Controllers
         /// </summary>
         /// <param name="sessionID">SessionId/AccountId</param>
         /// <returns>Account Data | null</returns>
-        public static Account FindAccount(string sessionID)
+        public static Account? FindAccount(string sessionID)
         {
             ReloadAccountBySessionID(sessionID);
             foreach (var account in Accounts)

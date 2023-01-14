@@ -61,7 +61,6 @@ namespace ServerLib.Web
         public async Task GameVersionValidate(HttpContext ctx)
         {
             //REQ stuff
-            string resp;
             Utils.PrintRequest(ctx.Request);
             string SessionID = Utils.GetSessionID(ctx.Request.Headers);
             string version = Utils.GetVersion(ctx.Request.Headers);
@@ -85,7 +84,6 @@ namespace ServerLib.Web
         public async Task GameConfig(HttpContext ctx)
         {
             //REQ stuff
-            string resp;
             Utils.PrintRequest(ctx.Request);
             string SessionID = Utils.GetSessionID(ctx.Request.Headers);
 
@@ -119,7 +117,6 @@ namespace ServerLib.Web
         public async Task GameLogout(HttpContext ctx)
         {
             //REQ stuff
-            string resp;
             Utils.PrintRequest(ctx.Request);
             string SessionID = Utils.GetSessionID(ctx.Request.Headers);
             AccountController.SessionLogout(SessionID);

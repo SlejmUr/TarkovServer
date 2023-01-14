@@ -145,7 +145,7 @@ namespace ServerLib.Web
         public async Task ClientGlobals(HttpContext ctx)
         {
             Utils.PrintRequest(ctx.Request);
-            string resp = ResponseControl.GetBody(DatabaseController.DataBase.Globals);
+            string resp = ResponseControl.GetBody(DatabaseController.DataBase.Basic.Globals);
             var rsp = ResponseControl.CompressRsp(resp);
             ctx.Response.StatusCode = 200;
             ctx.Response.ContentType = "application/json";
@@ -185,7 +185,7 @@ namespace ServerLib.Web
         public async Task ClientLocations(HttpContext ctx)
         {
             Utils.PrintRequest(ctx.Request);
-            string resp = ResponseControl.GetBody(DatabaseController.DataBase.AllLocations);
+            string resp = ResponseControl.GetBody(DatabaseController.DataBase.Location.AllLocations);
             var rsp = ResponseControl.CompressRsp(resp);
             ctx.Response.StatusCode = 200;
             ctx.Response.ContentType = "application/json";

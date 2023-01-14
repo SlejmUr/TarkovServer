@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using ServerLib.Json;
 using ServerLib.Web;
-using static ServerLib.Json.Database;
+using static ServerLib.Json.Database.trader;
 
 namespace ServerLib.Controllers
 {
@@ -12,24 +12,24 @@ namespace ServerLib.Controllers
                 "5811ce772459770e9e5f9532", "5963866b86f7747bfa1c4462", "5963866286f7747bf429b572" , "557ffd194bdc2d28148b457f" };
         public static traders.assort GetAssortByTrader(string TraderId)
         {
-            return DatabaseController.DataBase.Traders["assort_" + TraderId].Assort;
+            return DatabaseController.DataBase.Trader.Traders["assort_" + TraderId].Assort;
         }
         public static Traders.Base GetBaseByTrader(string TraderId)
         {
-            return DatabaseController.DataBase.Traders["base_" + TraderId].Base;
+            return DatabaseController.DataBase.Trader.Traders["base_" + TraderId].Base;
         }
         public static List<ACS.TraderSuits> GetSuitsByTrader(string TraderId)
         {
-            return DatabaseController.DataBase.Traders["suits_" + TraderId].Suits;
+            return DatabaseController.DataBase.Trader.Traders["suits_" + TraderId].Suits;
         }
         public static List<string> GetCategoriesByTrader(string TraderId)
         {
-            return DatabaseController.DataBase.Traders["categories_" + TraderId].Categories;
+            return DatabaseController.DataBase.Trader.Traders["categories_" + TraderId].Categories;
         }
         public static List<string> GetTradersKey()
         {
             List<string> output = new();
-            foreach (var trader in DatabaseController.DataBase.Traders)
+            foreach (var trader in DatabaseController.DataBase.Trader.Traders)
             {
                 output.Add(trader.Key);
             }
@@ -65,7 +65,7 @@ namespace ServerLib.Controllers
         {
             List<string> TraderBase = new List<string>();
 
-            foreach (var trader in DatabaseController.DataBase.Traders)
+            foreach (var trader in DatabaseController.DataBase.Trader.Traders)
             {
                 if (!trader.Key.ToLower().Contains("ragfair"))
                 {
@@ -127,7 +127,7 @@ namespace ServerLib.Controllers
                 if (!NotSellable.Contains(item.Tpl))
                 {
 
-                    var Itemprice = DatabaseController.DataBase.ItemPrices[item.Tpl];
+                    var Itemprice = DatabaseController.DataBase.Others.ItemPrices[item.Tpl];
                     var itemStackCount = 1;
                     if (item.Upd != null && item.Upd.StackObjectsCount != null)
                     {
@@ -139,7 +139,7 @@ namespace ServerLib.Controllers
                     {
                         if (item.Upd.MedKit != null && item.Upd.MedKit.HpResource > 0)
                         {
-                            Itemprice *= (int)(item.Upd.MedKit.HpResource / DatabaseController.DataBase.Items[item.Tpl].Props.MaxHpResource);
+                            Itemprice *= (int)(item.Upd.MedKit.HpResource / DatabaseController.DataBase.Others.Items[item.Tpl].Props.MaxHpResource);
                         }
                         if (item.Upd.Repairable != null)
                         {
@@ -148,7 +148,7 @@ namespace ServerLib.Controllers
                     }
                     if (currency != "5449016a4bdc2d6f028b456f")
                     {
-                        Itemprice = (int)(Itemprice / DatabaseController.DataBase.ItemPrices[currency]);
+                        Itemprice = (int)(Itemprice / DatabaseController.DataBase.Others.ItemPrices[currency]);
                     }
 
 

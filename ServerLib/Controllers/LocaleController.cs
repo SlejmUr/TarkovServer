@@ -7,7 +7,7 @@ namespace ServerLib.Controllers
     {
         public static string GetLanguages()
         {
-            return DatabaseController.DataBase.Languages;
+            return DatabaseController.DataBase.Locale.Languages;
         }
         public static string GetMenu(string lang, string url_lang, string sessionId)
         {
@@ -17,11 +17,11 @@ namespace ServerLib.Controllers
             {
                 Account.Lang = lang;
             }
-            if (!DatabaseController.DataBase.Locales.TryGetValue(lang + "_locale", out var global))
+            if (!DatabaseController.DataBase.Locale.Locales.TryGetValue(lang + "_locale", out var global))
             {
-                return DatabaseController.DataBase.Locales["en_locale"];
+                return DatabaseController.DataBase.Locale.Locales["en_locale"];
             }
-            return DatabaseController.DataBase.Locales[lang + "_menu"];
+            return DatabaseController.DataBase.Locale.Locales[lang + "_menu"];
         }
         public static string GetLocale(string lang, string url_lang, string sessionId)
         {
@@ -31,11 +31,11 @@ namespace ServerLib.Controllers
             {
                 Account.Lang = lang;
             }
-            if (!DatabaseController.DataBase.Locales.TryGetValue(lang + "_locale", out var global))
+            if (!DatabaseController.DataBase.Locale.Locales.TryGetValue(lang + "_locale", out var global))
             {
-                return DatabaseController.DataBase.Locales["en_locale"];
+                return DatabaseController.DataBase.Locale.Locales["en_locale"];
             }
-            return DatabaseController.DataBase.Locales[lang + "_locale"];
+            return DatabaseController.DataBase.Locale.Locales[lang + "_locale"];
         }
         public static string GetGlobal(string lang, string sessionId)
         {
@@ -44,7 +44,7 @@ namespace ServerLib.Controllers
 
         public static string GetConfigLanguages()
         {
-            var langs = DatabaseController.DataBase.Languages;
+            var langs = DatabaseController.DataBase.Locale.Languages;
             Other.Lang lang = JsonConvert.DeserializeObject<Other.Lang>(langs);
             string output = "";
             foreach (var langpart in lang.data)

@@ -68,7 +68,7 @@ namespace ServerLib.Controllers
             SaveStorage(sessionID, storeSave, false);
         }
 
-        public static Character.Base GetCharacter(string sessionID)
+        public static Character.Base? GetCharacter(string sessionID)
         {
             foreach (Character.Base character in Characters)
             {

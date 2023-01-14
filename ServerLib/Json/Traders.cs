@@ -209,5 +209,45 @@ namespace ServerLib.Json
             [JsonProperty("sell_category")]
             public List<object> SellCategory { get; set; }
         }
+
+        public partial class Barter
+        {
+            [JsonProperty("count")]
+            public long Count { get; set; }
+
+            [JsonProperty("_tpl")]
+            public string Tpl { get; set; }
+        }
+        public class Item
+        {
+            [JsonProperty("_id")]
+            public string Id { get; set; }
+
+            [JsonProperty("_tpl")]
+            public string Tpl { get; set; }
+
+            [JsonProperty("parentId")]
+            public string ParentId { get; set; }
+
+            [JsonProperty("slotId")]
+            public string SlotId { get; set; }
+
+            [JsonProperty("upd")]
+            public UpdClass Upd { get; set; }
+        }
+        public class UpdClass
+        {
+            [JsonProperty("BuyRestrictionMax", NullValueHandling = NullValueHandling.Ignore)]
+            public long? BuyRestrictionMax { get; set; }
+
+            [JsonProperty("BuyRestrictionCurrent", NullValueHandling = NullValueHandling.Ignore)]
+            public long? BuyRestrictionCurrent { get; set; }
+
+            [JsonProperty("StackObjectsCount")]
+            public long StackObjectsCount { get; set; }
+
+            [JsonProperty("UnlimitedCount", NullValueHandling = NullValueHandling.Ignore)]
+            public bool? UnlimitedCount { get; set; }
+        }
     }
 }

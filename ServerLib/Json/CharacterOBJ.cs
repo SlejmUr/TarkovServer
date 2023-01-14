@@ -1,4 +1,6 @@
-﻿namespace ServerLib.Json
+﻿using Newtonsoft.Json;
+
+namespace ServerLib.Json
 {
     public class CharacterOBJ
     {
@@ -35,5 +37,37 @@
             public List<string> bear { get; set; } = new();
             public List<string> usec { get; set; } = new();
         }
+        public class DefaultCustomization
+        {
+            [JsonProperty("Usec")]
+            public Usec Usec;
+
+            [JsonProperty("Bear")]
+            public Bear Bear;
+        }
+        public class Bear
+        {
+            [JsonProperty("Body")]
+            public string Body;
+
+            [JsonProperty("Feet")]
+            public string Feet;
+
+            [JsonProperty("Hands")]
+            public string Hands;
+        }
+
+        public class Usec
+        {
+            [JsonProperty("Body")]
+            public string Body;
+
+            [JsonProperty("Feet")]
+            public string Feet;
+
+            [JsonProperty("Hands")]
+            public string Hands;
+        }
+
     }
 }

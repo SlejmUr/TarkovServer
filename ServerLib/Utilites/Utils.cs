@@ -81,7 +81,7 @@ namespace ServerLib.Utilities
                 var SessionID = Cookie.Split("=")[1];
                 return SessionID;
             }
-            return null;
+            return "";
         }
         public static string GetVersion(Dictionary<string, string> HttpHeaders)
         {
@@ -91,7 +91,7 @@ namespace ServerLib.Utilities
                 var Version = AppVersion.Replace("EFT Client ", "");
                 return Version;
             }
-            return null;
+            return "";
         }
         #endregion
 
@@ -202,7 +202,7 @@ namespace ServerLib.Utilities
                 listitem.Add(item);
                 return listitem;
             }
-            var maxStack = DatabaseController.DataBase.Items[item._tpl].Props.StackMaxSize;
+            var maxStack = DatabaseController.DataBase.Others.Items[item._tpl].Props.StackMaxSize;
             var count = item.upd.StackObjectsCount;
 
             if (count <= maxStack)
