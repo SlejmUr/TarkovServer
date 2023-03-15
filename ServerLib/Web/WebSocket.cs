@@ -7,18 +7,59 @@ namespace ServerLib.Web
     public class WebSocket
     {
         static WatsonWsServer wsServer;
-        public static string IpPort = "ws://127.0.0.1:444/";
+        public static string IpPort = "wss://127.0.0.1:444/";
+        public static string IP = "127.0.0.1:444";
         public static List<string> ConnectedIps = new();
+        public static Dictionary<Guid,string> GuidIP = new();
+        public static Dictionary<string, Guid> IPToGuid = new();
         public static Dictionary<string, string> ConnectedSessions = new();
+        public static EventHandler<MessageReceivedEventArgs> MessageReceivedEvent = null;
         public static void Start(string ip, int port)
         {
-            IpPort = $"ws://{ip}:{port}/socket/";
-            Console.WriteLine("WebSocket Server started on ws://" + ip + ":" + port);
-            wsServer = new WatsonWsServer(ip, port, false);
+            IpPort = $"wss://{ip}:{port}/socket/";
+            IP = $"{ip}:{port}";
+            Console.WriteLine("WebSocket Server started on " + IpPort);
+            wsServer = new WatsonWsServer(ip, port, true);
+            wsServer.AcceptInvalidCertificates = true;
             wsServer.ClientConnected += ClientConnected;
             wsServer.ClientDisconnected += ClientDisconnected;
             wsServer.MessageReceived += MessageReceived;
             wsServer.Start();
+        }
+
+        private static void MessageReceived(object? sender, MessageReceivedEventArgs args)
+        {
+            Console.WriteLine(args.MessageType);
+            Console.WriteLine($"Message received from {args.Client.Guid} ({args.Client.Ip}) : " + Encoding.UTF8.GetString(args.Data));
+            MessageReceivedEvent?.Invoke(sender, args);
+        }
+
+        private static void ClientDisconnected(object? sender, DisconnectionEventArgs args)
+        {
+            if (ConnectedSessions.ContainsValue(args.Client.IpPort))
+            {
+                var Session = ConnectedSessions.Where(x => x.Value == args.Client.IpPort).FirstOrDefault().Key;
+                ConnectedSessions.Remove(Session);
+            }
+            ConnectedIps.Remove(args.Client.IpPort);
+            GuidIP.Remove(args.Client.Guid);
+            IPToGuid.Remove(args.Client.IpPort);
+            Console.WriteLine("Client disconnected: " + args.Client.IpPort);
+        }
+
+        private static void ClientConnected(object? sender, ConnectionEventArgs args)
+        {
+            ConnectedIps.Add(args.Client.IpPort);
+            GuidIP.Add(args.Client.Guid, args.Client.IpPort);
+            IPToGuid.Add(args.Client.IpPort, args.Client.Guid);
+            Console.WriteLine("Client Cookies: " + JsonConvert.SerializeObject(args.HttpRequest.Cookies));
+            string SessionId = args.HttpRequest.Url.OriginalString.Split("socket/")[1];
+            ConnectedSessions.Add(SessionId, args.Client.IpPort);
+
+            Console.WriteLine("Client connected: " + args.Client.IpPort + " " + SessionId);
+
+            SendToClient(args.Client.IpPort, JsonConvert.SerializeObject("{type: \"ping\",eventId: \"ping\"}"));
+            Console.WriteLine("Pinged Player " + SessionId);
         }
 
         public static void Stop()
@@ -29,49 +70,29 @@ namespace ServerLib.Web
 
         public static bool SendToClient(string ipPort, string text)
         {
-            if (wsServer.IsClientConnected(ipPort))
+            if (IPToGuid.TryGetValue(ipPort, out var guid))
             {
-                bool isSuccess = wsServer.SendAsync(ipPort, text).Result;
-                return isSuccess;
+                if (wsServer.IsClientConnected(guid))
+                {
+                    bool isSuccess = wsServer.SendAsync(guid, text).Result;
+                    return isSuccess;
+                }
             }
             return false;
         }
+
+        
         public static bool SendToClient(string ipPort, byte[] bytes)
         {
-            if (wsServer.IsClientConnected(ipPort))
+            if (IPToGuid.TryGetValue(ipPort, out var guid))
             {
-                bool isSuccess = wsServer.SendAsync(ipPort, bytes).Result;
-                return isSuccess;
+                if (wsServer.IsClientConnected(guid))
+                {
+                    bool isSuccess = wsServer.SendAsync(guid, bytes).Result;
+                    return isSuccess;
+                }
             }
             return false;
-        }
-
-        static void ClientConnected(object sender, ClientConnectedEventArgs args)
-        {
-            ConnectedIps.Add(args.IpPort);
-            string SessionId = args.HttpRequest.Url.OriginalString.Split("socket/")[1];
-            ConnectedSessions.Add(SessionId, args.IpPort);
-            Console.WriteLine("Client connected: " + args.IpPort + " " + SessionId);
-
-            SendToClient(args.IpPort, JsonConvert.SerializeObject("{type: \"ping\",eventId: \"ping\"}"));
-            Console.WriteLine("Pinged Player " + SessionId);
-        }
-
-        static void ClientDisconnected(object sender, ClientDisconnectedEventArgs args)
-        {
-            if (ConnectedSessions.ContainsValue(args.IpPort))
-            {
-                var Session = ConnectedSessions.Where(x => x.Value == args.IpPort).FirstOrDefault().Key;
-                ConnectedSessions.Remove(Session);
-            }
-            ConnectedIps.Remove(args.IpPort);
-            Console.WriteLine("Client disconnected: " + args.IpPort);
-        }
-
-        static void MessageReceived(object sender, MessageReceivedEventArgs args)
-        {
-            Console.WriteLine(args.MessageType);
-            Console.WriteLine("Message received from " + args.IpPort + ": " + Encoding.UTF8.GetString(args.Data));
         }
     }
 }

@@ -21,7 +21,7 @@ namespace ServerLib.Controllers
             Accounts.Clear();
             ActiveAccountIds = new();
             ActiveAccountIds.Clear();
-            Utils.PrintDebug("Initialization Done!", "debug", "[ACCOUNT]");
+            Debug.PrintDebug("Initialization Done!", "debug", "[ACCOUNT]");
             GetAccountList();
         }
 
@@ -42,11 +42,11 @@ namespace ServerLib.Controllers
         /// <summary>
         /// Remove Session from ActiveAccounts
         /// </summary>
-        /// <param name="sessionID">SessionId/AccountId</param>
-        public static void SessionLogout(string sessionID)
+        /// <param name="SessionId">SessionId/AccountId</param>
+        public static void SessionLogout(string SessionId)
         {
-            Utils.PrintDebug($"User with ID {sessionID} has been logged out");
-            ActiveAccountIds.Remove(sessionID);
+            Debug.PrintDebug($"User with ID {SessionId} has been logged out");
+            ActiveAccountIds.Remove(SessionId);
         }
 
         #endregion
@@ -139,7 +139,7 @@ namespace ServerLib.Controllers
                     return dir.Replace("user/profiles\\", "");
                 }
             }
-            return "";
+            return null;
         }
 
         /// <summary>
@@ -169,17 +169,17 @@ namespace ServerLib.Controllers
         /// Check the Client character exist.
         /// <br>Same as Controllers/AccountController.js@func=clientHasProfile()</br>
         /// </summary>
-        /// <param name="sessionID">SessionId/AccountId</param>
+        /// <param name="SessionId">SessionId/AccountId</param>
         /// <returns>True | False</returns>
-        public static bool ClientHasProfile(string sessionID)
+        public static bool ClientHasProfile(string SessionId)
         {
-            if (sessionID == null) { Console.WriteLine("SessionID null?"); return false; }
-            var account = FindAccount(sessionID);
+            if (SessionId == null) { Console.WriteLine("SessionId null?"); return false; }
+            var account = FindAccount(SessionId);
             if (account != null)
             {
-                if (!File.Exists("user/profiles/" + sessionID + "/character.json"))
+                if (!File.Exists("user/profiles/" + SessionId + "/character.json"))
                 {
-                    Console.WriteLine($"New account {sessionID} logged in!");
+                    Console.WriteLine($"New account {SessionId} logged in!");
                 }
                 return true;
             }
@@ -198,7 +198,7 @@ namespace ServerLib.Controllers
             foreach (string dir in dirs)
             {
                 string ID = dir.Replace("user/profiles\\", "");
-                ReloadAccountBySessionID(ID);
+                ReloadAccountBySessionId(ID);
                 //InitializeProfile(ID);
 
                 if (!File.Exists($"{dir}/character.json")) { continue; }
@@ -222,22 +222,22 @@ namespace ServerLib.Controllers
 
         /// <summary>
         /// Reload that account you provide by in SessonID
-        /// <br>Same as Controllers/AccountController.js@func=reloadAccountBySessionID()</br>
+        /// <br>Same as Controllers/AccountController.js@func=reloadAccountBySessionId()</br>
         /// </summary>
-        /// <param name="sessionID">SessionId/AccountId</param>
-        public static void ReloadAccountBySessionID(string sessionID)
+        /// <param name="SessionId">SessionId/AccountId</param>
+        public static void ReloadAccountBySessionId(string SessionId)
         {
-            if (sessionID == null) { new Exception("SessionID Null!"); }
-            if (!File.Exists($"user/profiles/{sessionID}/account.json"))
+            if (SessionId == null) { new Exception("SessionId Null!"); }
+            if (!File.Exists($"user/profiles/{SessionId}/account.json"))
             {
-                Console.WriteLine("[WARN] Account file not exist. ID: " + sessionID);
+                Console.WriteLine("[WARN] Account file not exist. ID: " + SessionId);
             }
             else
             {
-                if (Accounts.Where(x => x.Id == sessionID).Count() == 0)
+                if (Accounts.Where(x => x.Id == SessionId).Count() == 0)
                 {
-                    Console.WriteLine("[WARN] Account isnt Cached, Load from disk. ID:" + sessionID);
-                    var account = JsonConvert.DeserializeObject<Account>(File.ReadAllText($"user/profiles/{sessionID}/account.json"));
+                    Console.WriteLine("[WARN] Account isnt Cached, Load from disk. ID:" + SessionId);
+                    var account = JsonConvert.DeserializeObject<Account>(File.ReadAllText($"user/profiles/{SessionId}/account.json"));
                     Accounts.Add(account);
                 }
             }
@@ -247,14 +247,14 @@ namespace ServerLib.Controllers
         /// Find account data in loaded account list
         /// <br>Same as Controllers/AccountController.js@func=find()</br>
         /// </summary>
-        /// <param name="sessionID">SessionId/AccountId</param>
+        /// <param name="SessionId">SessionId/AccountId</param>
         /// <returns>Account Data | null</returns>
-        public static Account? FindAccount(string sessionID)
+        public static Account? FindAccount(string SessionId)
         {
-            ReloadAccountBySessionID(sessionID);
+            ReloadAccountBySessionId(SessionId);
             foreach (var account in Accounts)
             {
-                if (account.Id == sessionID)
+                if (account.Id == SessionId)
                 {
                     return account;
                 }
@@ -266,11 +266,11 @@ namespace ServerLib.Controllers
         /// Get if the Account is Wiped or not
         /// <br>Same as Controllers/AccountController.js@func=IsWiped()</br>
         /// </summary>
-        /// <param name="sessionID">SessionId/AccountId</param>
+        /// <param name="SessionId">SessionId/AccountId</param>
         /// <returns>True | False</returns>
-        public static bool IsWiped(string sessionID)
+        public static bool IsWiped(string SessionId)
         {
-            var Account = FindAccount(sessionID);
+            var Account = FindAccount(SessionId);
             if (Account == null) { new Exception("Account null!"); }
             return Account.Wipe;
         }
@@ -278,12 +278,12 @@ namespace ServerLib.Controllers
         /// <summary>
         /// Get the Reserved Nickname for the session/account.
         /// </summary>
-        /// <param name="sessionID">SessionId/AccountId</param>
+        /// <param name="SessionId">SessionId/AccountId</param>
         /// <returns>Account Email</returns>
-        public static string GetReservedNickname(string sessionID)
+        public static string GetReservedNickname(string SessionId)
         {
-            ReloadAccountBySessionID(sessionID);
-            var Account = FindAccount(sessionID);
+            ReloadAccountBySessionId(SessionId);
+            var Account = FindAccount(SessionId);
             if (Account == null) { new Exception("Account null!"); }
             return Account.Email;
         }
@@ -333,11 +333,11 @@ namespace ServerLib.Controllers
         /// <summary>
         /// Get the Lang from Account by SessionId
         /// </summary>
-        /// <param name="sessionID">SessionId/AccountId</param>
+        /// <param name="SessionId">SessionId/AccountId</param>
         /// <returns>"en" | Account Lang</returns>
-        public static string GetAccountLang(string sessionID)
+        public static string GetAccountLang(string SessionId)
         {
-            var Account = FindAccount(sessionID);
+            var Account = FindAccount(SessionId);
             if (Account == null) { new Exception("Account null!"); }
             return Account.Lang;
         }
@@ -351,7 +351,7 @@ namespace ServerLib.Controllers
         public static string ChangePassword(string JsonInfo)
         {
             var AccountID = Login(JsonInfo);
-            var changes = JsonConvert.DeserializeObject<Changes>(JsonInfo);
+            var changes = JsonConvert.DeserializeObject<Json.Changes>(JsonInfo);
             if (AccountID != "FAILED")
             {
                 var Account = FindAccount(AccountID);
@@ -370,7 +370,7 @@ namespace ServerLib.Controllers
         public static string ChangeEmail(string JsonInfo)
         {
             var AccountID = Login(JsonInfo);
-            var changes = JsonConvert.DeserializeObject<Changes>(JsonInfo);
+            var changes = JsonConvert.DeserializeObject<Json.Changes>(JsonInfo);
             if (AccountID != "FAILED")
             {
                 var Account = FindAccount(AccountID);
@@ -384,11 +384,11 @@ namespace ServerLib.Controllers
         /// <summary>
         /// Set session ready to WIPE
         /// </summary>
-        /// <param name="sessionID">SessionId/AccountId</param>
+        /// <param name="SessionId">SessionId/AccountId</param>
         /// <returns>OK | FAILED</returns>
-        public static string SetWipe(string sessionID)
+        public static string SetWipe(string SessionId)
         {
-            var Account = FindAccount(sessionID);
+            var Account = FindAccount(SessionId);
             if (Account == null) { return "FAILED"; }
             Account.Wipe = true;
             return "OK";
@@ -397,42 +397,42 @@ namespace ServerLib.Controllers
         /// <summary>
         /// Remove a directory if account exist
         /// </summary>
-        /// <param name="sessionID">SessionId/AccountId</param>
+        /// <param name="SessionId">SessionId/AccountId</param>
         /// <returns>OK | FAILED</returns>
-        public static string RemoveAccount(string sessionID)
+        public static string RemoveAccount(string SessionId)
         {
-            var Account = FindAccount(sessionID);
+            var Account = FindAccount(SessionId);
             if (Account == null) { return "FAILED"; }
-            Directory.Delete($"user/profiles/{sessionID}", true);
+            Directory.Delete($"user/profiles/{SessionId}", true);
             return "OK";
         }
 
         /// <summary>
         /// Delete everything that this account was used for.
         /// </summary>
-        /// <param name="sessionID">SessionId/AccountId</param>
+        /// <param name="SessionId">SessionId/AccountId</param>
         /// <param name="profile">Account/Profile Name</param>
         /// <returns>OK | FAILED</returns>
-        public static string DeleteAccount(string sessionID, string profile)
+        public static string DeleteAccount(string SessionId, string profile)
         {
-            if (Directory.Exists($"user/profiles/{sessionID}"))
+            if (Directory.Exists($"user/profiles/{SessionId}"))
             {
-                if (Accounts.Where(x => x.Id == sessionID).Count() > 0)
+                if (Accounts.Where(x => x.Id == SessionId).Count() > 0)
                 {
-                    Accounts.Remove(Accounts.Where(x => x.Id == sessionID).FirstOrDefault());
+                    Accounts.Remove(Accounts.Where(x => x.Id == SessionId).FirstOrDefault());
                 }
                 if (Profiles.Where(x => x.UserName == profile).Count() > 0)
                 {
                     Profiles.Remove(Profiles.Where(x => x.UserName == profile).FirstOrDefault());
                 }
-                if (ActiveAccountIds.Contains(sessionID))
+                if (ActiveAccountIds.Contains(SessionId))
                 {
-                    ActiveAccountIds.Remove(sessionID);
+                    ActiveAccountIds.Remove(SessionId);
                 }
-                DialogController.RemoveDialog(sessionID);
-                Handlers.SaveHandler.DeleteAll(sessionID);
-                KeepAliveController.DeleteKeepAlive(sessionID);
-                Directory.Delete($"user/profiles/{sessionID}", true);
+                DialogController.RemoveDialog(SessionId);
+                Handlers.SaveHandler.DeleteAll(SessionId);
+                KeepAliveController.DeleteKeepAlive(SessionId);
+                Directory.Delete($"user/profiles/{SessionId}", true);
                 return "OK";
             }
             return "FAILED";

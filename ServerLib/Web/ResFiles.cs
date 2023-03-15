@@ -1,16 +1,17 @@
-﻿using HttpServerLite;
+﻿using NetCoreServer;
 using ServerLib.Utilities;
+using static ServerLib.Web.HTTPServer;
 
 namespace ServerLib.Web
 {
     public class ResFiles
     {
 
-        [ParameterRoute(HttpServerLite.HttpMethod.GET, "/files/trader/avatar/{avatar}")]
-        public async Task GetFilesAvatar(HttpContext ctx)
+        [HTTP("GET", "/files/trader/avatar/{avatar}")]
+        public static bool GetFilesAvatar(HttpRequest request, HttpsBackendSession session)
         {
-            Utils.PrintRequest(ctx.Request);
-            string avatar = ctx.Request.Url.Parameters["avatar"].Replace("jpg", "png");
+            Utils.PrintRequest(request, session);
+            string avatar = session.HttpParam["avatar"].Replace("jpg", "png");
             byte[] rsp;
             if (!File.Exists($"Files/res/trader/{avatar}"))
             {
@@ -20,18 +21,15 @@ namespace ServerLib.Web
             {
                 rsp = File.ReadAllBytes($"Files/res/trader/{avatar}");
             }
-            ctx.Response.StatusCode = 200;
-            ctx.Response.ContentType = "image/png";
-            ctx.Response.ContentLength = rsp.Length;
-            await ctx.Response.SendWithoutCloseAsync(rsp);
-            return;
+            session.SendResponse(session.Response.MakeGetResponse(rsp).SetHeader("Content-Type", "image/png"));
+            return true;
         }
 
-        [ParameterRoute(HttpServerLite.HttpMethod.GET, "/files/handbook/{handbook}")]
-        public async Task GetFilesHandbook(HttpContext ctx)
+        [HTTP("GET", "/files/handbook/{handbook}")]
+        public static bool GetFilesHandbook(HttpRequest request, HttpsBackendSession session)
         {
-            Utils.PrintRequest(ctx.Request);
-            string handbook = ctx.Request.Url.Parameters["handbook"].Replace("jpg", "png");
+            Utils.PrintRequest(request, session);
+            string handbook = session.HttpParam["handbook"].Replace("jpg", "png");
             byte[] rsp;
             if (!File.Exists($"Files/res/handbook/{handbook}"))
             {
@@ -41,18 +39,15 @@ namespace ServerLib.Web
             {
                 rsp = File.ReadAllBytes($"Files/res/handbook/{handbook}");
             }
-            ctx.Response.StatusCode = 200;
-            ctx.Response.ContentType = "image/png";
-            ctx.Response.ContentLength = rsp.Length;
-            await ctx.Response.SendWithoutCloseAsync(rsp);
-            return;
+            session.SendResponse(session.Response.MakeGetResponse(rsp).SetHeader("Content-Type", "image/png"));
+            return true;
         }
 
-        [ParameterRoute(HttpServerLite.HttpMethod.GET, "/files/Hideout/{Hideout}")]
-        public async Task GetFilesHideout(HttpContext ctx)
+        [HTTP("GET", "/files/Hideout/{Hideout}")]
+        public static bool GetFilesHideout(HttpRequest request, HttpsBackendSession session)
         {
-            Utils.PrintRequest(ctx.Request);
-            string Hideout = ctx.Request.Url.Parameters["Hideout"].Replace("jpg", "png");
+            Utils.PrintRequest(request, session);
+            string Hideout = session.HttpParam["Hideout"].Replace("jpg", "png");
             byte[] rsp;
             if (!File.Exists($"Files/res/hideout/{Hideout}"))
             {
@@ -62,18 +57,15 @@ namespace ServerLib.Web
             {
                 rsp = File.ReadAllBytes($"Files/res/hideout/{Hideout}");
             }
-            ctx.Response.StatusCode = 200;
-            ctx.Response.ContentType = "image/png";
-            ctx.Response.ContentLength = rsp.Length;
-            await ctx.Response.SendWithoutCloseAsync(rsp);
-            return;
+            session.SendResponse(session.Response.MakeGetResponse(rsp).SetHeader("Content-Type", "image/png"));
+            return true;
         }
 
-        [ParameterRoute(HttpServerLite.HttpMethod.GET, "/files/quest/icon/{quest}")]
-        public async Task GetFilesQuestIcon(HttpContext ctx)
+        [HTTP("GET", "/files/quest/icon/{quest}")]
+        public static bool GetFilesQuestIcon(HttpRequest request, HttpsBackendSession session)
         {
-            Utils.PrintRequest(ctx.Request);
-            string quest = ctx.Request.Url.Parameters["quest"].Replace("jpg", "png");
+            Utils.PrintRequest(request, session);
+            string quest = session.HttpParam["quest"].Replace("jpg", "png");
             byte[] rsp;
             if (!File.Exists($"Files/res/quest/{quest}"))
             {
@@ -83,11 +75,8 @@ namespace ServerLib.Web
             {
                 rsp = File.ReadAllBytes($"Files/res/quest/{quest}");
             }
-            ctx.Response.StatusCode = 200;
-            ctx.Response.ContentType = "image/png";
-            ctx.Response.ContentLength = rsp.Length;
-            await ctx.Response.SendWithoutCloseAsync(rsp);
-            return;
+            session.SendResponse(session.Response.MakeGetResponse(rsp).SetHeader("Content-Type", "image/png"));
+            return true;
         }
 
     }

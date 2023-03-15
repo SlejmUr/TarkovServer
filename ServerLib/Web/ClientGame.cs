@@ -1,23 +1,23 @@
-﻿using HttpServerLite;
+﻿using NetCoreServer;
 using Newtonsoft.Json;
 using ServerLib.Controllers;
-using ServerLib.Json;
 using ServerLib.Utilities;
+using static ServerLib.Web.HTTPServer;
 
 namespace ServerLib.Web
 {
     public class ClientGame
     {
-        [StaticRoute(HttpServerLite.HttpMethod.POST, "/client/game/start")]
-        public async Task GameStart(HttpContext ctx)
+        [HTTP("POST", "/client/game/start")]
+        public static bool GameStart(HttpRequest request, HttpsBackendSession session)
         {
             //REQ stuff
-            string SessionID = Utils.GetSessionID(ctx.Request.Headers);
-            Utils.PrintRequest(ctx.Request);
+            string SessionId = Utils.GetSessionId(session.Headers);
+            Utils.PrintRequest(request, session);
             string resp;
             // RPS
             var TimeThingy = Utils.UnixTimeNow_Int();
-            if (AccountController.ClientHasProfile(SessionID))
+            if (AccountController.ClientHasProfile(SessionId))
             {
                 resp = ResponseControl.GetBody("{\"utc_time\":" + TimeThingy + "}");
             }
@@ -26,124 +26,112 @@ namespace ServerLib.Web
                 resp = ResponseControl.GetBody("{\"utc_time\":" + TimeThingy + "}", 999, "Profile Not Found!!");
             }
             var rsp = ResponseControl.CompressRsp(resp);
-            ctx.Response.StatusCode = 200;
-            ctx.Response.ContentType = "application/json";
-            ctx.Response.ContentLength = rsp.Length;
-            await ctx.Response.TrySendAsync(rsp);
-            return;
+            Utils.SendUnityResponse(session, rsp);
+            return true;
         }
 
-        [StaticRoute(HttpServerLite.HttpMethod.POST, "/client/game/keepalive")]
-        public async Task GameKeepalive(HttpContext ctx)
+        [HTTP("POST", "/client/game/keepalive")]
+        public static bool GameKeepalive(HttpRequest request, HttpsBackendSession session)
         {
             //REQ stuff
             string resp;
-            Utils.PrintRequest(ctx.Request);
-            string SessionID = Utils.GetSessionID(ctx.Request.Headers);
+            Utils.PrintRequest(request, session);
+            string SessionId = Utils.GetSessionId(session.Headers);
             var TimeThingy = Utils.UnixTimeNow_Int();
-            if (SessionID == null)
+            if (SessionId == null)
             {
                 resp = ResponseControl.GetBody("{\"msg\":\"No Session\", \"utc_time\":" + TimeThingy + "}");
             }
             else
             {
-                KeepAliveController.Main(SessionID);
+                KeepAliveController.Main(SessionId);
                 resp = ResponseControl.GetBody("{\"msg\":\"OK\", \"utc_time\":" + TimeThingy + "}");
             }
             var rsp = ResponseControl.CompressRsp(resp);
-            ctx.Response.StatusCode = 200;
-            ctx.Response.ContentType = "application/json";
-            ctx.Response.ContentLength = rsp.Length;
-            await ctx.Response.TrySendAsync(rsp);
-            return;
+            Utils.SendUnityResponse(session, rsp);
+            return true;
         }
-        [StaticRoute(HttpServerLite.HttpMethod.POST, "/client/game/version/validate")]
-        public async Task GameVersionValidate(HttpContext ctx)
+        [HTTP("POST", "/client/game/version/validate")]
+        public static bool GameVersionValidate(HttpRequest request, HttpsBackendSession session)
         {
             //REQ stuff
-            Utils.PrintRequest(ctx.Request);
-            string SessionID = Utils.GetSessionID(ctx.Request.Headers);
-            string version = Utils.GetVersion(ctx.Request.Headers);
-            if (AccountController.FindAccount(SessionID) != null)
+            string resp;
+            Utils.PrintRequest(request, session);
+            string SessionId = Utils.GetSessionId(session.Headers);
+            string version = Utils.GetVersion(session.Headers);
+            if (AccountController.FindAccount(SessionId) != null)
             {
-                Utils.PrintDebug($"User ({SessionID}) connected with client version {version}");
+                Debug.PrintDebug($"User ({SessionId}) connected with client version {version}");
             }
             else
             {
-                Utils.PrintDebug($"Unknown User connected with client version {version}");
+                Debug.PrintDebug($"Unknown User connected with client version {version}");
             }
             var rsp = ResponseControl.CompressRsp(ResponseControl.NullResponse());
-            ctx.Response.StatusCode = 200;
-            ctx.Response.ContentType = "application/json";
-            ctx.Response.ContentLength = rsp.Length;
-            await ctx.Response.TrySendAsync(rsp);
-            return;
+            Utils.SendUnityResponse(session, rsp);
+            return true;
         }
 
-        [StaticRoute(HttpServerLite.HttpMethod.POST, "/client/game/config")]
-        public async Task GameConfig(HttpContext ctx)
+        [HTTP("POST", "/client/game/config")]
+        public static bool GameConfig(HttpRequest request, HttpsBackendSession session)
         {
             //REQ stuff
-            Utils.PrintRequest(ctx.Request);
-            string SessionID = Utils.GetSessionID(ctx.Request.Headers);
+            string resp;
+            Utils.PrintRequest(request, session);
+            string SessionId = Utils.GetSessionId(session.Headers);
 
-            Other.GameConfig game = new();
-            game.Aid = SessionID;
-            game.Lang = AccountController.GetAccountLang(SessionID);
-            game.Languages = LocaleController.GetConfigLanguages();
-            game.NdaFree = false;
-            game.Taxonomy = 6;
-            game.ActiveProfileId = "pmc" + SessionID;
-            game.Backend = new()
+            Json.Other.GameConfig game = new()
             {
-                Trading = ServerLib.IP,
-                Messaging = ServerLib.IP,
-                Main = ServerLib.IP,
-                RagFair = ServerLib.IP
+                Aid = SessionId,
+                Lang = AccountController.GetAccountLang(SessionId),
+                Languages = AccountController.GetAccountLang(SessionId),
+                NdaFree = false,
+                Taxonomy = 6,
+                ActiveProfileId = "pmc" + SessionId,
+                Backend = new()
+                {
+                    Main = ServerLib.IP,
+                    Messaging = ServerLib.IP,
+                    Trading = ServerLib.IP,
+                    RagFair = ServerLib.IP,
+                    Lobby = ServerLib.IP,
+                },
+                UtcTime = Utils.UnixTimeNow(),
+                TotalInGame = AccountController.ActiveAccountIds.Count,
+                ReportAvailable = true,
+                TwitchEventMember = false
             };
-            game.UtcTime = Utils.UnixTimeNow();
-            game.TotalInGame = AccountController.ActiveAccountIds.Count;
-            game.ReportAvailable = true;
-            game.TwitchEventMember = false;
-            var rsp = ResponseControl.CompressRsp(ResponseControl.GetBody(JsonConvert.SerializeObject(game)).Replace("\\", ""));
-            ctx.Response.StatusCode = 200;
-            ctx.Response.ContentType = "application/json";
-            ctx.Response.ContentLength = rsp.Length;
-            await ctx.Response.TrySendAsync(rsp);
-            return;
+
+            var rsp = ResponseControl.CompressRsp(ResponseControl.GetBody(JsonConvert.SerializeObject(game)));
+            Utils.SendUnityResponse(session, rsp);
+            return true;
         }
 
-        [StaticRoute(HttpServerLite.HttpMethod.POST, "/client/game/logout")]
-        public async Task GameLogout(HttpContext ctx)
+        [HTTP("POST", "/client/game/logout")]
+        public static bool GameLogout(HttpRequest request, HttpsBackendSession session)
         {
             //REQ stuff
-            Utils.PrintRequest(ctx.Request);
-            string SessionID = Utils.GetSessionID(ctx.Request.Headers);
-            AccountController.SessionLogout(SessionID);
+            Utils.PrintRequest(request, session);
+            string SessionId = Utils.GetSessionId(session.Headers);
+            AccountController.SessionLogout(SessionId);
             var rsp = ResponseControl.CompressRsp(ResponseControl.GetBody("{status: \"ok\"}"));
-            ctx.Response.StatusCode = 200;
-            ctx.Response.ContentType = "application/json";
-            ctx.Response.ContentLength = rsp.Length;
-            await ctx.Response.TrySendAsync(rsp);
-            return;
+            Utils.SendUnityResponse(session, rsp);
+            return true;
         }
 
-        [StaticRoute(HttpServerLite.HttpMethod.POST, "/client/game/bot/generate")]
-        public async Task BotGenerate(HttpContext ctx)
+        [HTTP("POST", "/client/game/bot/generate")]
+        public static bool BotGenerate(HttpRequest request, HttpsBackendSession session)
         {
-            Utils.PrintRequest(ctx.Request);
-            string SessionID = Utils.GetSessionID(ctx.Request.Headers);
-            string Uncompressed = ResponseControl.DeCompressReq(ctx.Request.DataAsBytes);
-            var conditions = JsonConvert.DeserializeObject<List<ACS.WaveInfo>>(Uncompressed);
+            Utils.PrintRequest(request, session);
+            string SessionId = Utils.GetSessionId(session.Headers);
+            string Uncompressed = ResponseControl.DeCompressReq(request.BodyBytes);
+            var conditions = JsonConvert.DeserializeObject<List<WaveInfo>>(Uncompressed);
 
-            CharacterController.RaidKilled(Uncompressed, SessionID);
+            CharacterController.RaidKilled(Uncompressed, SessionId);
             // RPS
             var rsp = ResponseControl.CompressRsp("{}");
-            ctx.Response.StatusCode = 200;
-            ctx.Response.ContentType = "text/plain";
-            ctx.Response.ContentLength = rsp.Length;
-            await ctx.Response.SendAsync(rsp);
-            return;
+            Utils.SendUnityResponse(session, rsp);
+            return true;
         }
     }
 }

@@ -1,18 +1,19 @@
-﻿using HttpServerLite;
+﻿using NetCoreServer;
 using Newtonsoft.Json;
 using ServerLib.Controllers;
 using ServerLib.Utilities;
+using static ServerLib.Web.HTTPServer;
 
 namespace ServerLib.Web
 {
     public class Client
     {
-        [StaticRoute(HttpServerLite.HttpMethod.POST, "/client/checkVersion")]
-        public async Task ClientCheckVersion(HttpContext ctx)
+        [HTTP("POST", "/client/checkVersion")]
+        public static bool ClientCheckVersion(HttpRequest request, HttpsBackendSession session)
         {
-            Utils.PrintRequest(ctx.Request);
+            Utils.PrintRequest(request, session);
             string resp;
-            string version = Utils.GetVersion(ctx.Request.Headers);
+            string version = Utils.GetVersion(session.Headers);
             var server = ConfigController.Configs.Server;
 
             if (string.IsNullOrWhiteSpace(server.Version))
@@ -31,193 +32,149 @@ namespace ServerLib.Web
                 }
             }
             var rsp = ResponseControl.CompressRsp(resp);
-            ctx.Response.StatusCode = 200;
-            ctx.Response.ContentType = "application/json";
-            ctx.Response.ContentLength = rsp.Length;
-            await ctx.Response.TrySendAsync(rsp);
-            return;
+            Utils.SendUnityResponse(session, rsp);
+            return true;
         }
 
-        [StaticRoute(HttpServerLite.HttpMethod.POST, "/client/repeatalbeQuests/activityPeriods")]
-        public async Task ClientRepeatableQuestsActivityPeriods(HttpContext ctx)
+        [HTTP("POST", "/client/repeatalbeQuests/activityPeriods")]
+        public static bool ClientRepeatableQuestsActivityPeriods(HttpRequest request, HttpsBackendSession session)
         {
-            Utils.PrintRequest(ctx.Request);
+            Utils.PrintRequest(request, session);
             string resp = ResponseControl.GetBody("[]");
             var rsp = ResponseControl.CompressRsp(resp);
-            ctx.Response.StatusCode = 200;
-            ctx.Response.ContentType = "application/json";
-            ctx.Response.ContentLength = rsp.Length;
-            await ctx.Response.TrySendAsync(rsp);
-            return;
+            Utils.SendUnityResponse(session, rsp);
+            return true;
         }
 
-        [StaticRoute(HttpServerLite.HttpMethod.POST, "/client/WebSocketAddress")]
-        public async Task ClientWebSocketAddress(HttpContext ctx)
+        [HTTP("POST", "/client/WebSocketAddress")]
+        public static bool ClientWebSocketAddress(HttpRequest request, HttpsBackendSession session)
         {
-            Utils.PrintRequest(ctx.Request);
-            string SessionID = Utils.GetSessionID(ctx.Request.Headers);
-            string resp = ResponseControl.GetBody(WebSocket.IpPort + SessionID);
+            Console.WriteLine("WebSocketAddress!!!!!!!");
+            Utils.PrintRequest(request, session);
+            string SessionId = Utils.GetSessionId(session.Headers);
+            var rsp = ResponseControl.CompressRsp(WebSocket.IpPort + SessionId);
+            Utils.SendUnityResponse(session, rsp);
+            return true;
+        }
+
+        [HTTP("POST", "/client/notifier/channel/create")]
+        public static bool ClientNotifier(HttpRequest request, HttpsBackendSession session)
+        {
+            Utils.PrintRequest(request, session);
+            string SessionId = Utils.GetSessionId(session.Headers);
+            string resp = ResponseControl.GetBody(ResponseControl.GetNotifier(SessionId));
             var rsp = ResponseControl.CompressRsp(resp);
-            ctx.Response.StatusCode = 200;
-            ctx.Response.ContentType = "application/json";
-            ctx.Response.ContentLength = rsp.Length;
-            await ctx.Response.TrySendAsync(rsp);
-            return;
+            Utils.SendUnityResponse(session, rsp);
+            return true;
         }
 
-        [StaticRoute(HttpServerLite.HttpMethod.POST, "/client/notifier/channel/create")]
-        public async Task ClientNotifier(HttpContext ctx)
+        [HTTP("POST", "/client/chatServer/list")]
+        public static bool ClientChatServerList(HttpRequest request, HttpsBackendSession session)
         {
-            Utils.PrintRequest(ctx.Request);
-            string SessionID = Utils.GetSessionID(ctx.Request.Headers);
-            string resp = ResponseControl.GetBody(ResponseControl.GetNotifier(SessionID));
-            var rsp = ResponseControl.CompressRsp(resp);
-            ctx.Response.StatusCode = 200;
-            ctx.Response.ContentType = "application/json";
-            ctx.Response.ContentLength = rsp.Length;
-            await ctx.Response.TrySendAsync(rsp);
-            return;
-        }
-
-        [StaticRoute(HttpServerLite.HttpMethod.POST, "/client/chatServer/list")]
-        public async Task ClientChatServerList(HttpContext ctx)
-        {
-            Utils.PrintRequest(ctx.Request);
+            Utils.PrintRequest(request, session);
             Json.Other.ChatServerList chatServerList = new();
             chatServerList.DateTime = (int)Utils.UnixTimeNow();
             chatServerList.Regions.Add("EUR");
             string resp = ResponseControl.GetBody(JsonConvert.SerializeObject(chatServerList));
             var rsp = ResponseControl.CompressRsp(resp);
-            ctx.Response.StatusCode = 200;
-            ctx.Response.ContentType = "application/json";
-            ctx.Response.ContentLength = rsp.Length;
-            await ctx.Response.TrySendAsync(rsp);
-            return;
+            Utils.SendUnityResponse(session, rsp);
+            return true;
         }
 
-        [StaticRoute(HttpServerLite.HttpMethod.POST, "/client/server/list")]
-        public async Task ClientServerList(HttpContext ctx)
+        [HTTP("POST", "/client/server/list")]
+        public static bool ClientServerList(HttpRequest request, HttpsBackendSession session)
         {
-            
-            Utils.PrintRequest(ctx.Request);
+
+            Utils.PrintRequest(request, session);
             var server = ConfigController.Configs.Server;
-            List<ACS.Server> servers = new();
-            ACS.Server acsserver = new();
+            List<Server> servers = new();
+            Server acsserver = new();
             acsserver.Address = server.Ip;
             acsserver.Port = $"{server.Port}";
             servers.Add(acsserver);
             string resp = ResponseControl.GetBody(JsonConvert.SerializeObject(servers));
             var rsp = ResponseControl.CompressRsp(resp);
-            ctx.Response.StatusCode = 200;
-            ctx.Response.ContentType = "application/json";
-            ctx.Response.ContentLength = rsp.Length;
-            await ctx.Response.TrySendAsync(rsp);
-            return;
+            Utils.SendUnityResponse(session, rsp);
+            return true;
         }
 
-        [StaticRoute(HttpServerLite.HttpMethod.POST, "/client/items")]
-        public async Task ClientItems(HttpContext ctx)
+        [HTTP("POST", "/client/items")]
+        public static bool ClientItems(HttpRequest request, HttpsBackendSession session)
         {
-            Utils.PrintRequest(ctx.Request);
-            string resp = ResponseControl.GetBody(File.ReadAllText("Files/items/items.json"));
+            Utils.PrintRequest(request, session);
+            string resp = ResponseControl.GetBody(File.ReadAllText("Files/others/items.json"));
             var rsp = ResponseControl.CompressRsp(resp);
-            ctx.Response.StatusCode = 200;
-            ctx.Response.ContentType = "application/json";
-            ctx.Response.ContentLength = rsp.Length;
-            await ctx.Response.TrySendAsync(rsp);
-            return;
+            Utils.SendUnityResponse(session, rsp);
+            return true;
         }
 
-        [StaticRoute(HttpServerLite.HttpMethod.POST, "/client/customization")]
-        public async Task ClientCustomization(HttpContext ctx)
+        [HTTP("POST", "/client/customization")]
+        public static bool ClientCustomization(HttpRequest request, HttpsBackendSession session)
         {
-            Utils.PrintRequest(ctx.Request);
-            string resp = ResponseControl.GetBody(File.ReadAllText("Files/customization/items.json"));
+            Utils.PrintRequest(request, session);
+            string resp = ResponseControl.GetBody(File.ReadAllText("Files/others/customization.json"));
             var rsp = ResponseControl.CompressRsp(resp);
-            ctx.Response.StatusCode = 200;
-            ctx.Response.ContentType = "application/json";
-            ctx.Response.ContentLength = rsp.Length;
-            await ctx.Response.TrySendAsync(rsp);
-            return;
+            Utils.SendUnityResponse(session, rsp);
+            return true;
         }
 
-        [StaticRoute(HttpServerLite.HttpMethod.POST, "/client/globals")]
-        public async Task ClientGlobals(HttpContext ctx)
+        [HTTP("POST", "/client/globals")]
+        public static bool ClientGlobals(HttpRequest request, HttpsBackendSession session)
         {
-            Utils.PrintRequest(ctx.Request);
-            string resp = ResponseControl.GetBody(DatabaseController.DataBase.Basic.Globals);
-            var rsp = ResponseControl.CompressRsp(resp);
-            ctx.Response.StatusCode = 200;
-            ctx.Response.ContentType = "application/json";
-            ctx.Response.ContentLength = rsp.Length;
-            await ctx.Response.TrySendAsync(rsp);
-            return;
+            Utils.PrintRequest(request, session);
+            var rsp = ResponseControl.CompressRsp(File.ReadAllText("Files/base/globals.json"));
+            Utils.SendUnityResponse(session, rsp);
+            return true;
         }
 
-        [StaticRoute(HttpServerLite.HttpMethod.POST, "/client/settings")]
-        public async Task ClientSettings(HttpContext ctx)
+        [HTTP("POST", "/client/settings")]
+        public static bool ClientSettings(HttpRequest request, HttpsBackendSession session)
         {
-            Utils.PrintRequest(ctx.Request);
-            string resp = ResponseControl.GetBody(File.ReadAllText("Files/base/client.settings.json"));
-            var rsp = ResponseControl.CompressRsp(resp);
-            ctx.Response.StatusCode = 200;
-            ctx.Response.ContentType = "application/json";
-            ctx.Response.ContentLength = rsp.Length;
-            await ctx.Response.TrySendAsync(rsp);
-            return;
+            Utils.PrintRequest(request, session);
+            var rsp = ResponseControl.CompressRsp(File.ReadAllText("Files/others/client.settings.json"));
+            Utils.SendUnityResponse(session, rsp);
+            return true;
         }
 
-        [StaticRoute(HttpServerLite.HttpMethod.POST, "/client/weather")]
-        public async Task ClientWeather(HttpContext ctx)
+        [HTTP("POST", "/client/weather")]
+        public static bool ClientWeather(HttpRequest request, HttpsBackendSession session)
         {
-            Utils.PrintRequest(ctx.Request);
+            Utils.PrintRequest(request, session);
 
             string resp = ResponseControl.GetBody(DatabaseController.DataBase.Weather["sun"]);
             var rsp = ResponseControl.CompressRsp(resp);
-            ctx.Response.StatusCode = 200;
-            ctx.Response.ContentType = "application/json";
-            ctx.Response.ContentLength = rsp.Length;
-            await ctx.Response.TrySendAsync(rsp);
-            return;
+            Utils.SendUnityResponse(session, rsp);
+            return true;
         }
 
-        [StaticRoute(HttpServerLite.HttpMethod.POST, "/client/locations")]
-        public async Task ClientLocations(HttpContext ctx)
+        [HTTP("POST", "/client/locations")]
+        public static bool ClientLocations(HttpRequest request, HttpsBackendSession session)
         {
-            Utils.PrintRequest(ctx.Request);
+            Utils.PrintRequest(request, session);
             string resp = ResponseControl.GetBody(DatabaseController.DataBase.Location.AllLocations);
             var rsp = ResponseControl.CompressRsp(resp);
-            ctx.Response.StatusCode = 200;
-            ctx.Response.ContentType = "application/json";
-            ctx.Response.ContentLength = rsp.Length;
-            await ctx.Response.TrySendAsync(rsp);
-            return;
+            Utils.SendUnityResponse(session, rsp);
+            return true;
         }
 
-        [StaticRoute(HttpServerLite.HttpMethod.POST, "/client/account/customization")]
-        public async Task ClientAccountCustomization(HttpContext ctx)
+        [HTTP("POST", "/client/account/customization")]
+        public static bool ClientAccountCustomization(HttpRequest request, HttpsBackendSession session)
         {
-            Utils.PrintRequest(ctx.Request);
+            Utils.PrintRequest(request, session);
             string resp = ResponseControl.GetBody(JsonConvert.SerializeObject(CustomizationController.GetAccountCustomization()));
             var rsp = ResponseControl.CompressRsp(resp);
-            ctx.Response.StatusCode = 200;
-            ctx.Response.ContentType = "application/json";
-            ctx.Response.ContentLength = rsp.Length;
-            await ctx.Response.TrySendAsync(rsp);
-            return;
+            Utils.SendUnityResponse(session, rsp);
+            return true;
         }
         /*
-        [ParameterRoute(HttpServerLite.HttpMethod.POST, "/client/items/price/{traderId}")]
-        public async Task ClientItemsPriceTrader(HttpContext ctx)
+        [HTTP("POST", "/client/items/price/{traderId}")]
+        public static bool ClientItemsPriceTrader(HttpRequest request, HttpsBackendSession session)
         {
-            Utils.PrintRequest(ctx.Request);
+            Utils.PrintRequest(request,session);
             string resp = ResponseControl.GetBody(File.ReadAllText("Files/items/items.json"));
             var rsp = ResponseControl.CompressRsp(resp);
-            ctx.Response.StatusCode = 200;
-            ctx.Response.ContentType = "application/json";
-            ctx.Response.ContentLength = rsp.Length;
-            await ctx.Response.TrySendAsync(rsp);
-            return;
+            Utils.SendUnityResponse(session,rsp);
+            return true;
         }*/
     }
 }

@@ -1208,16 +1208,6 @@
 		"useGravity": true
 	},
 	{
-		"worldId": "loot_trash_mix1738024",
-		"Position": [
-			17.986,
-			1.023,
-			-29.379
-		],
-		"randomRotation": true,
-		"useGravity": true
-	},
-	{
 		"worldId": "loot_shelter_electr (9)1738122",
 		"Position": [
 			1.903,
@@ -1777,767 +1767,299 @@
 		]
 	},
 	{
-		"worldId": "loot_mix_food_med_ammo (46)1288238",
+		"worldId": "Loot_armor_low (4)47306",
 		"Position": [
-			23.458,
-			1.81,
-			35.05
-		],
-		"randomRotation": true,
-		"useGravity": true
-	},
-	{
-		"worldId": "lootpoint1288278",
-		"Position": [
-			-24.091,
-			8.971,
-			52.265
-		],
-		"useGravity": true
-	},
-	{
-		"worldId": "food_drink1 (8)1288354",
-		"Position": [
-			30.775,
-			1.906,
-			43.995
-		],
-		"randomRotation": true,
-		"useGravity": true
-	},
-	{
-		"worldId": "lootpoint (84)1288362",
-		"Position": [
-			6.023,
-			1.498,
-			0.539
-		],
-		"useGravity": true
-	},
-	{
-		"worldId": "lootpoint (113)1288378",
-		"Position": [
-			27.872,
-			5.293,
-			42.138
-		],
-		"useGravity": true
-	},
-	{
-		"worldId": "lootpoint (57)1288444",
-		"Position": [
-			40.902,
-			0.463,
-			-15.204
-		],
-		"useGravity": true
-	},
-	{
-		"worldId": "lootpoint (93)1288452",
-		"Position": [
-			42.933,
-			0.704,
-			30.049
-		],
-		"useGravity": true
-	},
-	{
-		"worldId": "tools1 (7)1288492",
-		"Position": [
-			35.98,
-			0.204,
-			-13.619
-		],
-		"randomRotation": true,
-		"useGravity": true
-	},
-	{
-		"worldId": "lootpoint (82)1288518",
-		"Position": [
-			14.893,
-			1.135,
-			8.672
-		],
-		"useGravity": true
-	},
-	{
-		"worldId": "lootpoint (96)1288582",
-		"Position": [
-			26.351,
-			8.933,
-			36.911
-		],
-		"useGravity": true
-	},
-	{
-		"worldId": "lootpoint (78)1288608",
-		"Position": [
-			23.496,
-			8.955,
-			36.062
-		],
-		"useGravity": true
-	},
-	{
-		"worldId": "lootpoint (16)1288616",
-		"Position": [
-			12.028,
-			8.483,
-			39.751
-		],
-		"useGravity": true
-	},
-	{
-		"worldId": "loot_mix_food_med_ammo (48)1288640",
-		"Position": [
-			15.971,
-			0.268,
-			-20.553
-		],
-		"randomRotation": true,
-		"useGravity": true
-	},
-	{
-		"worldId": "lootpoint (18)1288664",
-		"Position": [
-			33.142,
-			2.674,
-			15.958
-		],
-		"useGravity": true
-	},
-	{
-		"worldId": "Loot_armor_low (2)1288712",
-		"Position": [
-			39.55223,
-			0.0659999847,
-			21.4058228
+			36.3960266,
+			6.41600037,
+			15.6418457
 		],
 		"Rotation": [
-			272.174561,
-			0.0000449982181,
-			35.8448563
+			283.784119,
+			90.89244,
+			180
 		]
 	},
 	{
-		"worldId": "lootpoint (86)1288720",
+		"worldId": "Loot_backpack (7)46462",
 		"Position": [
-			-22.368,
-			1.318,
-			18.294
-		],
-		"useGravity": true
-	},
-	{
-		"worldId": "lootpoint (108)1288856",
-		"Position": [
-			31.243,
-			4.845,
-			38.986
-		],
-		"useGravity": true
-	},
-	{
-		"worldId": "lootpoint (88)1288960",
-		"Position": [
-			-8.161,
-			1.847,
-			30.663
-		],
-		"useGravity": true
-	},
-	{
-		"worldId": "lootpoint (111)1288976",
-		"Position": [
-			28.241,
-			6.133,
-			42.191
-		],
-		"useGravity": true
-	},
-	{
-		"worldId": "loot_mix_food_med_ammo (49)1289052",
-		"Position": [
-			22.662,
-			1.81,
-			34.975
-		],
-		"randomRotation": true,
-		"useGravity": true
-	},
-	{
-		"worldId": "food_drink1 (2)1289108",
-		"Position": [
-			36.069,
-			0.91,
-			-9.636
-		],
-		"randomRotation": true,
-		"useGravity": true
-	},
-	{
-		"worldId": "lootpoint (45)1289208",
-		"Position": [
-			-23.099,
-			2.262,
-			53.573
-		],
-		"useGravity": true
-	},
-	{
-		"worldId": "lootpoint (76)1289240",
-		"Position": [
-			23.161,
-			9.186,
-			36.063
-		],
-		"useGravity": true
-	},
-	{
-		"worldId": "meds (3)1289306",
-		"Position": [
-			-19.969,
-			0.834,
-			-27.01
-		],
-		"randomRotation": true,
-		"useGravity": true
-	},
-	{
-		"worldId": "loot_mix_food_med_ammo (55)1289338",
-		"Position": [
-			25.303,
-			2.171,
-			42.772
-		],
-		"randomRotation": true,
-		"useGravity": true
-	},
-	{
-		"worldId": "meds1289354",
-		"Position": [
-			-15.802,
-			0.535,
-			-30.51
-		],
-		"randomRotation": true,
-		"useGravity": true
-	},
-	{
-		"worldId": "lootpoint (103)1289548",
-		"Position": [
-			19.343,
-			0.871,
-			-0.728
-		],
-		"useGravity": true
-	},
-	{
-		"worldId": "lootpoint (50)1289660",
-		"Position": [
-			68.555,
-			1.412,
-			-20.887
-		],
-		"useGravity": true
-	},
-	{
-		"worldId": "lootpoint (106)1289678",
-		"Position": [
-			40.179,
-			1.065,
-			-15.429
-		],
-		"useGravity": true
-	},
-	{
-		"worldId": "loot_shelter_electr (9)1289686",
-		"Position": [
-			1.903,
-			-3.656,
-			-15.176
-		],
-		"randomRotation": true,
-		"useGravity": true
-	},
-	{
-		"worldId": "lootpoint (100)1289718",
-		"Position": [
-			27.634,
-			9.948,
-			38.171
-		],
-		"useGravity": true
-	},
-	{
-		"worldId": "loot_mix_food_med_ammo (60)1289742",
-		"Position": [
-			17.642,
-			0.981,
-			-22.879
-		],
-		"randomRotation": true,
-		"useGravity": true
-	},
-	{
-		"worldId": "tools1 (5)1289782",
-		"Position": [
-			36.431,
-			1.003,
-			-11.971
-		],
-		"randomRotation": true,
-		"useGravity": true
-	},
-	{
-		"worldId": "lootpoint (29)1288246",
-		"Position": [
-			30.27,
-			0.689,
-			17.468
-		],
-		"useGravity": true
-	},
-	{
-		"worldId": "ammo1 (2)1288270",
-		"Position": [
-			16.989,
-			1.023,
-			-29.601
-		],
-		"randomRotation": true,
-		"useGravity": true
-	},
-	{
-		"worldId": "lootpoint (102)1288402",
-		"Position": [
-			27.655,
-			9.405,
-			37.498
-		],
-		"useGravity": true
-	},
-	{
-		"worldId": "Loot_armor (3)1288418",
-		"Position": [
-			19.5349274,
-			9.238,
-			2.17129517
+			-10.9727325,
+			8.36199951,
+			33.2433319
 		],
 		"Rotation": [
-			271.8961,
-			0.000309610681,
-			257.851746
+			284.2526,
+			0.00001703193,
+			-0.0000218992027
 		]
 	},
 	{
-		"worldId": "lootpoint (101)1288558",
+		"worldId": "Loot_backpack47076",
 		"Position": [
-			28.449,
-			8.664,
-			40.32
-		],
-		"useGravity": true
-	},
-	{
-		"worldId": "lootpoint (97)1288566",
-		"Position": [
-			-22.484,
-			0.459,
-			23.212
-		],
-		"useGravity": true
-	},
-	{
-		"worldId": "electr1 (1)1288574",
-		"Position": [
-			26.762,
-			1.843,
-			42.622
-		],
-		"randomRotation": true,
-		"useGravity": true
-	},
-	{
-		"worldId": "ammo1 (3)1288672",
-		"Position": [
-			2.242,
-			-3.557,
-			-23.013
-		],
-		"randomRotation": true,
-		"useGravity": true
-	},
-	{
-		"worldId": "tools1 (3)1288728",
-		"Position": [
-			28.716,
-			-1.214,
-			-11.982
-		],
-		"randomRotation": true,
-		"useGravity": true
-	},
-	{
-		"worldId": "lootpoint (83)1288848",
-		"Position": [
-			11.53,
-			5.401,
-			37.289
-		],
-		"useGravity": true
-	},
-	{
-		"worldId": "tools1 (1)1288904",
-		"Position": [
-			27.848,
-			-1.214,
-			-11.977
-		],
-		"randomRotation": true,
-		"useGravity": true
-	},
-	{
-		"worldId": "meds (7)1288936",
-		"Position": [
-			-15.815,
-			0.517,
-			-24.691
-		],
-		"randomRotation": true,
-		"useGravity": true
-	},
-	{
-		"worldId": "tools1 (9)1289140",
-		"Position": [
-			36.702,
-			0.73,
-			-14.923
-		],
-		"randomRotation": true,
-		"useGravity": true
-	},
-	{
-		"worldId": "lootpoint (49)1289264",
-		"Position": [
-			21.717,
-			9.106,
-			39.973
-		],
-		"useGravity": true
-	},
-	{
-		"worldId": "loot_mix_food_med_ammo (51)1289288",
-		"Position": [
-			25.318,
-			2.16,
-			35.148
-		],
-		"randomRotation": true,
-		"useGravity": true
-	},
-	{
-		"worldId": "lootpoint (46)1289296",
-		"Position": [
-			66.15,
-			1.4,
-			25.31
-		],
-		"useGravity": true
-	},
-	{
-		"worldId": "lootpoint (39)1289362",
-		"Position": [
-			58.738,
-			5.504,
-			13.705
-		],
-		"useGravity": true
-	},
-	{
-		"worldId": "fuel1 (3)1289580",
-		"Position": [
-			10.783,
-			0.226,
-			-16.75
-		],
-		"randomRotation": true,
-		"useGravity": true
-	},
-	{
-		"worldId": "ammo1 (6)1289612",
-		"Position": [
-			1.968,
-			-3.717,
-			-25.995
-		],
-		"randomRotation": true,
-		"useGravity": true
-	},
-	{
-		"worldId": "lootpoint (73)1289750",
-		"Position": [
-			27.952,
-			8.439,
-			38.367
-		],
-		"useGravity": true
-	},
-	{
-		"worldId": "tools1 (8)12955542",
-		"Position": [
-			36.033,
-			0.204,
-			-14.442
-		],
-		"randomRotation": true,
-		"useGravity": true
-	},
-	{
-		"worldId": "lootpoint (29)12955566",
-		"Position": [
-			30.27,
-			0.689,
-			17.468
-		],
-		"useGravity": true
-	},
-	{
-		"worldId": "Loot_armor_low (5)12955622",
-		"Position": [
-			12.32283,
-			8.427,
-			36.9212646
+			63.3469543,
+			0.8770001,
+			-15.0997314
 		],
 		"Rotation": [
-			271.255371,
-			0.000194819455,
-			22.6169052
+			276.859863,
+			281.3141,
+			352.4355
 		]
 	},
 	{
-		"worldId": "lootpoint (5)12955642",
+		"worldId": "fuel1 (14)47338",
 		"Position": [
-			-24.248,
-			1.494,
-			57.119
+			-7.985,
+			-3.536,
+			-10.19
 		],
-		"useGravity": true
+		"useGravity": true,
+		"randomRotation": true
 	},
 	{
-		"worldId": "lootpoint (93)12955772",
+		"worldId": "fuel1 (16)46100",
 		"Position": [
-			42.933,
-			0.704,
-			30.049
+			-14.129,
+			-3.384,
+			-28.355
 		],
-		"useGravity": true
+		"useGravity": true,
+		"randomRotation": true
 	},
 	{
-		"worldId": "lootpoint (44)12955804",
+		"worldId": "fuel1 (4)47764",
 		"Position": [
-			5.73,
-			2.378,
-			55.629
+			-21.52,
+			0.617,
+			-0.661
 		],
-		"useGravity": true
+		"useGravity": true,
+		"randomRotation": true
 	},
 	{
-		"worldId": "lootpoint (70)12955862",
+		"worldId": "fuel1 (6)47370",
 		"Position": [
-			35.877,
-			7.82,
-			17.191
+			11.566,
+			1.476,
+			37.987
 		],
-		"useGravity": true
+		"useGravity": true,
+		"randomRotation": true
 	},
 	{
-		"worldId": "lootpoint (16)12955936",
+		"worldId": "fuel1 (7)47620",
 		"Position": [
-			12.028,
-			8.483,
-			39.751
+			11.628,
+			1.307,
+			40.392
 		],
-		"useGravity": true
+		"useGravity": true,
+		"randomRotation": true
 	},
 	{
-		"worldId": "lootpoint (59)12955968",
+		"worldId": "fuel12617226",
 		"Position": [
-			39.544,
-			0.332,
-			-14.472
+			30.341,
+			0.274,
+			-2.344
 		],
-		"useGravity": true
+		"useGravity": true,
+		"randomRotation": true
 	},
 	{
-		"worldId": "tools1 (3)12956048",
+		"worldId": "loot_pumpkey47426",
 		"Position": [
-			28.716,
-			-1.214,
-			-11.982
+			18.7938,
+			4.9454,
+			40.1928
 		],
-		"randomRotation": true,
-		"useGravity": true
+		"Rotation": [
+			90,
+			325.2019,
+			0
+		]
 	},
 	{
-		"worldId": "lootpoint (108)12956176",
+		"worldId": "lootpoint (114)47676",
 		"Position": [
-			31.243,
-			4.845,
-			38.986
+			18.88,
+			4.899,
+			41.96
 		],
-		"useGravity": true
+		"useGravity": true,
+		"Rotation": [
+			0,
+			0,
+			0
+		]
 	},
 	{
-		"worldId": "household12956240",
+		"worldId": "lootpoint (52)2617234",
 		"Position": [
-			28.206,
-			1.73,
-			40.09
+			39.926,
+			0.645,
+			-14.67
 		],
-		"randomRotation": true,
-		"useGravity": true
+		"useGravity": true,
+		"Rotation": [
+			0,
+			0,
+			0
+		]
 	},
 	{
-		"worldId": "meds (7)12956256",
+		"worldId": "lootpoint (53)47514",
 		"Position": [
-			-15.815,
-			0.517,
-			-24.691
+			41.412,
+			0.317,
+			-12.737
 		],
-		"randomRotation": true,
-		"useGravity": true
+		"useGravity": true,
+		"Rotation": [
+			0,
+			0,
+			0
+		]
 	},
 	{
-		"worldId": "lootpoint (88)12956280",
+		"worldId": "lootpoint (54)46870",
 		"Position": [
-			-8.161,
-			1.847,
-			30.663
+			39.5662,
+			1.036,
+			-15.4275
 		],
-		"useGravity": true
+		"useGravity": true,
+		"Rotation": [
+			0,
+			0,
+			0
+		]
 	},
 	{
-		"worldId": "lootpoint (30)12956404",
+		"worldId": "repair_kit_armor (1)2617698",
 		"Position": [
-			39.137,
-			1.446,
-			19.145
+			22.465,
+			9.253,
+			2.829
 		],
-		"useGravity": true
+		"useGravity": true,
+		"randomRotation": true
 	},
 	{
-		"worldId": "tools1 (9)12956460",
+		"worldId": "repair_kit_armor (2)47506",
 		"Position": [
-			36.702,
-			0.73,
-			-14.923
+			17.518,
+			5.151,
+			47.554
 		],
-		"randomRotation": true,
-		"useGravity": true
+		"useGravity": true,
+		"Rotation": [
+			-0.00000341509462,
+			125,
+			90
+		]
 	},
 	{
-		"worldId": "loot_shelter_building_items (85)12956520",
+		"worldId": "repair_kit_armor (3)2617090",
 		"Position": [
-			21.086,
-			1.171,
-			43.441
+			2.169,
+			-3.76,
+			-28.464
 		],
-		"randomRotation": true,
-		"useGravity": true
+		"useGravity": true,
+		"Rotation": [
+			0.0000153679266,
+			320.8794,
+			90
+		]
 	},
 	{
-		"worldId": "lootpoint (80)12956592",
+		"worldId": "repair_kit_armor46232",
 		"Position": [
-			14.529,
-			9.391,
-			34.633
+			38.624,
+			0.379,
+			-9.369
 		],
-		"useGravity": true
+		"useGravity": true,
+		"Rotation": [
+			-8.53773656e-7,
+			54.9999962,
+			28
+		]
 	},
 	{
-		"worldId": "lootpoint (87)12956642",
+		"worldId": "repair_kit_item (1)46774",
 		"Position": [
-			-4.858,
-			1.057,
-			28.1
+			36.687,
+			1.302,
+			9.949
 		],
-		"useGravity": true
+		"useGravity": true,
+		"randomRotation": true
 	},
 	{
-		"worldId": "lootpoint (36)12956916",
+		"worldId": "repair_kit_item2616846",
 		"Position": [
-			38.698,
-			5.425,
-			40.349
+			59.652,
+			4.973,
+			1.533
 		],
-		"useGravity": true
+		"useGravity": true,
+		"randomRotation": true
 	},
 	{
-		"worldId": "food_drink112956964",
+		"worldId": "repair_kit_weapon (1)47580",
 		"Position": [
-			36.321,
-			0.882,
-			-10.084
+			-3.323,
+			2.078,
+			43.962
 		],
-		"randomRotation": true,
-		"useGravity": true
+		"useGravity": true,
+		"Rotation": [
+			270,
+			239.999985,
+			0
+		]
 	},
 	{
-		"worldId": "loot_mix_food_med_ammo (61)12956990",
+		"worldId": "repair_kit_weapon (2)2617058",
 		"Position": [
-			18.568,
-			1.075,
-			-24.138
+			-18.697,
+			3.687,
+			27.541
 		],
-		"randomRotation": true,
-		"useGravity": true
+		"useGravity": true,
+		"Rotation": [
+			270,
+			195,
+			0
+		]
 	},
 	{
-		"worldId": "lootpoint (106)12956998",
+		"worldId": "repair_kit_weapon (3)47458",
 		"Position": [
-			40.179,
-			1.065,
-			-15.429
+			69.917,
+			1.168,
+			-42.968
 		],
-		"useGravity": true
+		"useGravity": true,
+		"Rotation": [
+			270,
+			284,
+			0
+		]
 	},
 	{
-		"worldId": "lootpoint (100)12957038",
+		"worldId": "repair_kit_weapon46338",
 		"Position": [
-			27.634,
-			9.948,
-			38.171
+			36.043,
+			1.1282,
+			20.1677
 		],
-		"useGravity": true
-	},
-	{
-		"worldId": "loot_mix_food_med_ammo (63)12957046",
-		"Position": [
-			64.961,
-			1.028,
-			-36.884
-		],
-		"randomRotation": true,
-		"useGravity": true
-	},
-	{
-		"worldId": "loot_mix_food_med_ammo (60)12957062",
-		"Position": [
-			17.642,
-			0.981,
-			-22.879
-		],
-		"randomRotation": true,
-		"useGravity": true
-	},
-	{
-		"worldId": "lootpoint (90)12957110",
-		"Position": [
-			-2.689,
-			1.209,
-			38.978
-		],
-		"useGravity": true
+		"useGravity": true,
+		"Rotation": [
+			273.999451,
+			179.999924,
+			219.000046
+		]
 	}
 ]

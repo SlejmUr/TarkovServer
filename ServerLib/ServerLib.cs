@@ -1,13 +1,14 @@
 ﻿using ServerLib.Controllers;
 using ServerLib.Handlers;
 using ServerLib.Utilities;
+using ServerLib.Web;
 using System.Net;
+using static ServerLib.Web.HTTPServer;
 
 namespace ServerLib
 {
     public class ServerLib
     {
-        WebServer _webServer;
         public static string IP = "https://127.0.0.1:7777";
         public static string ip_port = "127.0.0.1:7777";
 
@@ -24,18 +25,15 @@ namespace ServerLib
             ip_port = $"{Ip}:{port}";
             CertHelper.Make(IPAddress.Parse(Ip), ip_port);
             DatabaseController.Init();
-            DialogController.Init();
+            Controllers.DialogController.Init();
             AccountController.Init();
             AccountController.GetAccountList();
             CharacterController.Init();
-            WebServer webServer = new WebServer();
-            webServer.MainStart(Ip, port);
-            _webServer = webServer;
+            HTTPServer.Start(Ip, port);
             Web.WebSocket.Start(Ip, port + 1);
             if (LoadPlugin)
             {
                 PluginLoader.LoadPlugins();
-                PluginLoader.PluginWebOverride(webServer);
             }
         }
 
@@ -52,19 +50,25 @@ namespace ServerLib
             IP = ip_port;
             ip_port = $"{Ip}:{port}";
             CertHelper.Make(IPAddress.Parse(Ip), ip_port);
-            DialogController.Init();
+            Controllers.DialogController.Init();
             AccountController.Init();
             AccountController.GetAccountList();
             CharacterController.Init();
-            WebServer webServer = new WebServer();
-            webServer.MainStart(Ip, port);
-            _webServer = webServer;
+            HTTPServer.Start(Ip, port);
             Web.WebSocket.Start(Ip, port + 1);
             if (LoadPlugin)
             {
                 PluginLoader.LoadPlugins();
-                PluginLoader.PluginWebOverride(webServer);
             }
+        }
+
+        /// <summary>
+        /// Get the running Webserver
+        /// </summary>
+        /// <returns>Webserver</returns>
+        public HttpsBackendServer? GetWebServer()
+        {
+            return HTTPServer.GetServer();
         }
 
         /// <summary>
@@ -74,7 +78,7 @@ namespace ServerLib
         public void Stop(string reason)
         {
             PluginLoader.UnloadPlugins();
-            _webServer.StopServer(reason);
+            HTTPServer.Stop();
             Web.WebSocket.Stop();
         }
 
@@ -84,7 +88,7 @@ namespace ServerLib
         public void Stop()
         {
             PluginLoader.UnloadPlugins();
-            _webServer.StopServer();
+            HTTPServer.Stop();
             Web.WebSocket.Stop();
         }
     }

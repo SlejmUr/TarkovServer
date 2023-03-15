@@ -1,102 +1,85 @@
-﻿using HttpServerLite;
+﻿using NetCoreServer;
 using ServerLib.Controllers;
 using ServerLib.Utilities;
+using static ServerLib.Web.HTTPServer;
 
 namespace ServerLib.Web
 {
     public class ClientRaid
     {
-        [StaticRoute(HttpServerLite.HttpMethod.POST, "/client/raid/person/killed/showMessage")]
-        public async Task ShowMessage(HttpContext ctx)
+        [HTTP("POST", "/client/raid/person/killed/showMessage")]
+        public static bool ShowMessage(HttpRequest request, HttpsBackendSession session)
         {
-            Utils.PrintRequest(ctx.Request);
+            Utils.PrintRequest(request, session);
             // RPS
-            var rsp = ResponseControl.CompressRsp(ConfigController.Configs.Gameplay.InRaid.ShowDeathMessage.ToString());
-            ctx.Response.StatusCode = 200;
-            ctx.Response.ContentType = "text/plain";
-            ctx.Response.ContentLength = rsp.Length;
-            await ctx.Response.SendAsync(rsp);
-            return;
+            var rsp = ResponseControl.CompressRsp(ConfigController.Configs.Gameplay.Raid.InRaid.ShowDeathMessage.ToString());
+            Utils.SendUnityResponse(session, rsp);
+            return true;
         }
 
-        [StaticRoute(HttpServerLite.HttpMethod.POST, "/client/raid/person/killed")]
-        public async Task RaidKilled(HttpContext ctx)
+        [HTTP("POST", "/client/raid/person/killed")]
+        public static bool RaidKilled(HttpRequest request, HttpsBackendSession session)
         {
-            Utils.PrintRequest(ctx.Request);
-            string SessionID = Utils.GetSessionID(ctx.Request.Headers);
-            string Uncompressed = ResponseControl.DeCompressReq(ctx.Request.DataAsBytes);
-            CharacterController.RaidKilled(Uncompressed, SessionID);
+            Utils.PrintRequest(request, session);
+            string SessionId = Utils.GetSessionId(session.Headers);
+            string Uncompressed = ResponseControl.DeCompressReq(request.BodyBytes);
+            CharacterController.RaidKilled(Uncompressed, SessionId);
             // RPS
             var rsp = ResponseControl.CompressRsp("{}");
-            ctx.Response.StatusCode = 200;
-            ctx.Response.ContentType = "text/plain";
-            ctx.Response.ContentLength = rsp.Length;
-            await ctx.Response.SendAsync(rsp);
-            return;
+            Utils.SendUnityResponse(session, rsp);
+            return true;
         }
 
-        [StaticRoute(HttpServerLite.HttpMethod.POST, "/client/raid/profile/save")]
-        public async Task RaidSave(HttpContext ctx)
+        [HTTP("POST", "/client/raid/profile/save")]
+        public static bool RaidSave(HttpRequest request, HttpsBackendSession session)
         {
-            Utils.PrintRequest(ctx.Request);
+            Utils.PrintRequest(request, session);
             //REQ stuff
-            var decomp = ResponseControl.DeCompressReq(ctx.Request.DataAsBytes);
+            var decomp = ResponseControl.DeCompressReq(request.BodyBytes);
             File.AppendAllText("saveAccount.json", decomp);
             // RPS
             var rsp = ResponseControl.CompressRsp(ResponseControl.NullResponse());
-            ctx.Response.StatusCode = 200;
-            ctx.Response.ContentType = "text/plain";
-            ctx.Response.ContentLength = rsp.Length;
-            await ctx.Response.SendAsync(rsp);
-            return;
+            Utils.SendUnityResponse(session, rsp);
+            return true;
         }
 
-        [StaticRoute(HttpServerLite.HttpMethod.POST, "/client/raid/person/lootingContainer")]
-        public async Task RaidLootingContainer(HttpContext ctx)
+        [HTTP("POST", "/client/raid/person/lootingContainer")]
+        public static bool RaidLootingContainer(HttpRequest request, HttpsBackendSession session)
         {
-            Utils.PrintRequest(ctx.Request);
+            Utils.PrintRequest(request, session);
             //REQ stuff
-            var decomp = ResponseControl.DeCompressReq(ctx.Request.DataAsBytes);
+            var decomp = ResponseControl.DeCompressReq(request.BodyBytes);
             File.AppendAllText("lootingContainer.json", decomp);
             // RPS
             var rsp = ResponseControl.CompressRsp(ResponseControl.NullResponse());
-            ctx.Response.StatusCode = 200;
-            ctx.Response.ContentType = "text/plain";
-            ctx.Response.ContentLength = rsp.Length;
-            await ctx.Response.SendAsync(rsp);
-            return;
+            Utils.SendUnityResponse(session, rsp);
+            return true;
         }
 
-        [StaticRoute(HttpServerLite.HttpMethod.POST, "/client/raid/configuration")]
-        public async Task RaidConfig(HttpContext ctx)
+        [HTTP("POST", "/client/raid/configuration")]
+        public static bool RaidConfig(HttpRequest request, HttpsBackendSession session)
         {
-            Utils.PrintRequest(ctx.Request);
+            Utils.PrintRequest(request, session);
             //REQ stuff
-            var decomp = ResponseControl.DeCompressReq(ctx.Request.DataAsBytes);
+            var decomp = ResponseControl.DeCompressReq(request.BodyBytes);
             File.AppendAllText("saveAccount.json", decomp);
             // RPS
             var rsp = ResponseControl.CompressRsp(ResponseControl.NullResponse());
-            ctx.Response.StatusCode = 200;
-            ctx.Response.ContentType = "text/plain";
-            ctx.Response.ContentLength = rsp.Length;
-            await ctx.Response.SendAsync(rsp);
-            return;
+            Utils.SendUnityResponse(session, rsp);
+            return true;
         }
 
-        [StaticRoute(HttpServerLite.HttpMethod.POST, "/client/raid/configuration-by-profile")]
-        public async Task RaidConfigByProfile(HttpContext ctx)
+        [HTTP("POST", "/client/raid/configuration-by-profile")]
+        public static bool RaidConfigByProfile(HttpRequest request, HttpsBackendSession session)
         {
-            Utils.PrintRequest(ctx.Request);
+            Utils.PrintRequest(request, session);
             //REQ stuff
-            var decomp = ResponseControl.DeCompressReq(ctx.Request.DataAsBytes);
+            var decomp = ResponseControl.DeCompressReq(request.BodyBytes);
             File.AppendAllText("saveAccount.json", decomp);
             // RPS
             var rsp = ResponseControl.CompressRsp(ResponseControl.NullResponse());
-            ctx.Response.StatusCode = 200;
-            ctx.Response.ContentType = "text/plain";
-            ctx.Response.ContentLength = rsp.Length;
-            await ctx.Response.SendAsync(rsp);
-            return;
+            Utils.SendUnityResponse(session, rsp);
+            return true;
         }
 
     }

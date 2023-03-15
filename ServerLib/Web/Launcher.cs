@@ -1,157 +1,125 @@
-﻿using HttpServerLite;
-using Ionic.Zlib;
+﻿using NetCoreServer;
 using Newtonsoft.Json;
 using ServerLib.Controllers;
 using ServerLib.Utilities;
+using static ServerLib.Web.HTTPServer;
 
 namespace ServerLib.Web
 {
     public class Launcher
     {
-        [StaticRoute(HttpServerLite.HttpMethod.POST, "/launcher/profile/login")]
-        public async Task LauncherLogin(HttpContext ctx)
+        [HTTP("POST", "/launcher/profile/login")]
+        public static bool LauncherLogin(HttpRequest request, HttpsBackendSession session)
         {
             //REQ stuff
-            Utils.PrintRequest(ctx.Request);
-            string Uncompressed = ZlibStream.UncompressString(ctx.Request.DataAsBytes);
+            Utils.PrintRequest(request, session);
+            string Uncompressed = ResponseControl.DeCompressReq(request.BodyBytes);
             // RPS
             string resp = AccountController.Login(Uncompressed);
-            var rsp = ZlibStream.CompressString(resp);
-            ctx.Response.StatusCode = 200;
-            ctx.Response.ContentType = "text/plain";
-            ctx.Response.ContentLength = rsp.Length;
-            ctx.Response.Headers.Add("Content-Encoding", "deflate");
-            await ctx.Response.SendWithoutCloseAsync(rsp);
-            return;
+            var rsp = ResponseControl.CompressRsp(resp);
+            session.SendResponse(session.Response.MakeGetResponse(rsp).SetHeader("Content-Encoding", "deflate"));
+            return true;
         }
 
-        [StaticRoute(HttpServerLite.HttpMethod.POST, "/launcher/profile/register")]
-        public async Task LauncherRegister(HttpContext ctx)
+        [HTTP("POST", "/launcher/profile/register")]
+        public static bool LauncherRegister(HttpRequest request, HttpsBackendSession session)
         {
             //REQ stuff
-            Utils.PrintRequest(ctx.Request);
-            string Uncompressed = ZlibStream.UncompressString(ctx.Request.DataAsBytes);
+            Utils.PrintRequest(request, session);
+            string Uncompressed = ResponseControl.DeCompressReq(request.BodyBytes);
 
             // RPS
             string resp = AccountController.Register(Uncompressed);
-            var rsp = ZlibStream.CompressString(resp);
-            ctx.Response.StatusCode = 200;
-            ctx.Response.ContentType = "text/plain";
-            ctx.Response.ContentLength = rsp.Length;
-            ctx.Response.Headers.Add("Content-Encoding", "deflate");
-            await ctx.Response.SendWithoutCloseAsync(rsp);
-            return;
+            var rsp = ResponseControl.CompressRsp(resp);
+            session.SendResponse(session.Response.MakeGetResponse(rsp).SetHeader("Content-Encoding", "deflate"));
+            return true;
         }
 
-        [StaticRoute(HttpServerLite.HttpMethod.POST, "/launcher/profile/get")]
-        public async Task LauncherGet(HttpContext ctx)
+        [HTTP("POST", "/launcher/profile/get")]
+        public static bool LauncherGet(HttpRequest request, HttpsBackendSession session)
         {
             //REQ stuff
-            Utils.PrintRequest(ctx.Request);
-            string Uncompressed = ZlibStream.UncompressString(ctx.Request.DataAsBytes);
+            Utils.PrintRequest(request, session);
+            string Uncompressed = ResponseControl.DeCompressReq(request.BodyBytes);
 
             // RPS
             string resp = JsonConvert.SerializeObject(AccountController.FindAccount(Uncompressed));
-            var rsp = ZlibStream.CompressString(resp);
-            ctx.Response.StatusCode = 200;
-            ctx.Response.ContentType = "text/plain";
-            ctx.Response.ContentLength = rsp.Length;
-            ctx.Response.Headers.Add("Content-Encoding", "deflate");
-            await ctx.Response.SendWithoutCloseAsync(rsp);
-            return;
+            var rsp = ResponseControl.CompressRsp(resp);
+            session.SendResponse(session.Response.MakeGetResponse(rsp).SetHeader("Content-Encoding", "deflate"));
+            return true;
         }
 
-        [StaticRoute(HttpServerLite.HttpMethod.POST, "/launcher/server/connect")]
-        public async Task LauncherServerConnect(HttpContext ctx)
+        [HTTP("POST", "/launcher/server/connect")]
+        public static bool LauncherServerConnect(HttpRequest request, HttpsBackendSession session)
         {
             //REQ stuff
-            Utils.PrintRequest(ctx.Request);
-            string Uncompressed = ZlibStream.UncompressString(ctx.Request.DataAsBytes);
+            Utils.PrintRequest(request, session);
+            string Uncompressed = ResponseControl.DeCompressReq(request.BodyBytes);
             // RPS
             var server = ConfigController.Configs.Server;
             string resp = "{backendUrl: https://" + server.Ip + ":" + server.Port + ",name:" + server.Name + ",server:" + JsonConvert.SerializeObject(server) + "}";
-            var rsp = ZlibStream.CompressString(resp);
-            ctx.Response.StatusCode = 200;
-            ctx.Response.ContentType = "text/plain";
-            ctx.Response.ContentLength = rsp.Length;
-            ctx.Response.Headers.Add("Content-Encoding", "deflate");
-            await ctx.Response.SendWithoutCloseAsync(rsp);
-            return;
+            var rsp = ResponseControl.CompressRsp(resp);
+            session.SendResponse(session.Response.MakeGetResponse(rsp).SetHeader("Content-Encoding", "deflate"));
+            return true;
         }
 
-        [StaticRoute(HttpServerLite.HttpMethod.POST, "/launcher/profile/remove")]
-        public async Task LauncherRemove(HttpContext ctx)
+        [HTTP("POST", "/launcher/profile/remove")]
+        public static bool LauncherRemove(HttpRequest request, HttpsBackendSession session)
         {
             //REQ stuff
-            Utils.PrintRequest(ctx.Request);
-            string Uncompressed = ZlibStream.UncompressString(ctx.Request.DataAsBytes);
+            Utils.PrintRequest(request, session);
+            string Uncompressed = ResponseControl.DeCompressReq(request.BodyBytes);
 
             // RPS
             Console.WriteLine(Uncompressed);
             string resp = AccountController.RemoveAccount(Uncompressed);
-            var rsp = ZlibStream.CompressString(resp);
-            ctx.Response.StatusCode = 200;
-            ctx.Response.ContentType = "text/plain";
-            ctx.Response.ContentLength = rsp.Length;
-            ctx.Response.Headers.Add("Content-Encoding", "deflate");
-            await ctx.Response.SendWithoutCloseAsync(rsp);
-            return;
+            var rsp = ResponseControl.CompressRsp(resp);
+            session.SendResponse(session.Response.MakeGetResponse(rsp).SetHeader("Content-Encoding", "deflate"));
+            return true;
         }
 
-        [StaticRoute(HttpServerLite.HttpMethod.POST, "/launcher/profile/change/email")]
-        public async Task LauncherChangeEmail(HttpContext ctx)
+        [HTTP("POST", "/launcher/profile/change/email")]
+        public static bool LauncherChangeEmail(HttpRequest request, HttpsBackendSession session)
         {
             //REQ stuff
-            Utils.PrintRequest(ctx.Request);
-            string Uncompressed = ZlibStream.UncompressString(ctx.Request.DataAsBytes);
+            Utils.PrintRequest(request, session);
+            string Uncompressed = ResponseControl.DeCompressReq(request.BodyBytes);
 
             // RPS
             string resp = AccountController.ChangeEmail(Uncompressed);
-            var rsp = ZlibStream.CompressString(resp);
-            ctx.Response.StatusCode = 200;
-            ctx.Response.ContentType = "text/plain";
-            ctx.Response.ContentLength = rsp.Length;
-            ctx.Response.Headers.Add("Content-Encoding", "deflate");
-            await ctx.Response.SendWithoutCloseAsync(rsp);
-            return;
+            var rsp = ResponseControl.CompressRsp(resp);
+            session.SendResponse(session.Response.MakeGetResponse(rsp).SetHeader("Content-Encoding", "deflate"));
+            return true;
         }
 
-        [StaticRoute(HttpServerLite.HttpMethod.POST, "/launcher/profile/change/password")]
-        public async Task LauncherChangePassword(HttpContext ctx)
+        [HTTP("POST", "/launcher/profile/change/password")]
+        public static bool LauncherChangePassword(HttpRequest request, HttpsBackendSession session)
         {
             //REQ stuff
-            Utils.PrintRequest(ctx.Request);
-            string Uncompressed = ZlibStream.UncompressString(ctx.Request.DataAsBytes);
+            Utils.PrintRequest(request, session);
+            string Uncompressed = ResponseControl.DeCompressReq(request.BodyBytes);
 
             // RPS
             string resp = AccountController.ChangePassword(Uncompressed);
-            var rsp = ZlibStream.CompressString(resp);
-            ctx.Response.StatusCode = 200;
-            ctx.Response.ContentType = "text/plain";
-            ctx.Response.ContentLength = rsp.Length;
-            ctx.Response.Headers.Add("Content-Encoding", "deflate");
-            await ctx.Response.SendWithoutCloseAsync(rsp);
-            return;
+            var rsp = ResponseControl.CompressRsp(resp);
+            session.SendResponse(session.Response.MakeGetResponse(rsp).SetHeader("Content-Encoding", "deflate"));
+            return true;
         }
 
 
-        [StaticRoute(HttpServerLite.HttpMethod.POST, "/launcher/profile/change/wipe")]
-        public async Task LauncherChangeWipe(HttpContext ctx)
+        [HTTP("POST", "/launcher/profile/change/wipe")]
+        public static bool LauncherChangeWipe(HttpRequest request, HttpsBackendSession session)
         {
             //REQ stuff
-            Utils.PrintRequest(ctx.Request);
-            string Uncompressed = ZlibStream.UncompressString(ctx.Request.DataAsBytes);
+            Utils.PrintRequest(request, session);
+            string Uncompressed = ResponseControl.DeCompressReq(request.BodyBytes);
 
             // RPS
             Console.WriteLine(Uncompressed);
             var resp = AccountController.SetWipe(Uncompressed);
-            var rsp = ZlibStream.CompressString(resp);
-            ctx.Response.StatusCode = 200;
-            ctx.Response.ContentType = "text/plain";
-            ctx.Response.ContentLength = rsp.Length;
-            ctx.Response.Headers.Add("Content-Encoding", "deflate");
-            await ctx.Response.SendWithoutCloseAsync(rsp);
-            return;
+            var rsp = ResponseControl.CompressRsp(resp);
+            session.SendResponse(session.Response.MakeGetResponse(rsp).SetHeader("Content-Encoding", "deflate"));
+            return true;
         }
     }
 }

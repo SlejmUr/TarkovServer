@@ -4,27 +4,27 @@
     {
         // Zero will give you when sent the first KeepAlive request.
         public static Dictionary<string, int> KeepAliveCounter = new();
-        public static void Main(string sessionID)
+        public static void Main(string SessionId)
         {
-            if (KeepAliveCounter.ContainsKey(sessionID))
+            if (KeepAliveCounter.ContainsKey(SessionId))
             {
-                KeepAliveCounter[sessionID] += 1;
+                KeepAliveCounter[SessionId] += 1;
             }
             else
             {
-                KeepAliveCounter.Add(sessionID, 0);
+                KeepAliveCounter.Add(SessionId, 0);
             }
 
 
-            if (!AccountController.IsWiped(sessionID))
+            if (!AccountController.IsWiped(SessionId))
             {
-                //UpdateTraders(sessionID);
-                //UpdatePlayerHideout(sessionID);
+                //UpdateTraders(SessionId);
+                //UpdatePlayerHideout(SessionId);
             }
         }
-        public static void DeleteKeepAlive(string sessionID)
+        public static void DeleteKeepAlive(string SessionId)
         {
-            KeepAliveCounter.Remove(sessionID);
+            KeepAliveCounter.Remove(SessionId);
         }
 
     }

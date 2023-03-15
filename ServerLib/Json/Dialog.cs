@@ -1,12 +1,11 @@
 ﻿using Newtonsoft.Json;
-using ServerLib.Controllers;
 
 namespace ServerLib.Json
 {
     public class Dialog
     {
         public string? _id { get; set; }
-        public DialogController.messageTypes? type { get; set; }
+        public Controllers.DialogController.messageTypes? type { get; set; }
         public List<Messages>? messages { get; set; }
         public bool? pinned { get; set; }
 
@@ -17,7 +16,7 @@ namespace ServerLib.Json
         {
             public string? _id { get; set; }
             public string? uid { get; set; }
-            public DialogController.messageTypes? type { get; set; }
+            public Controllers.DialogController.messageTypes? type { get; set; }
             public int dt { get; set; }
             public string? templateId { get; set; }
             public string? text { get; set; }
@@ -31,7 +30,7 @@ namespace ServerLib.Json
 
         public class MessagesContent
         {
-            public DialogController.messageTypes type { get; set; }
+            public Controllers.DialogController.messageTypes type { get; set; }
             public string? text { get; set; }
             public string? templateId { get; set; }
             public int maxStorageTime { get; set; } = 0;
@@ -56,5 +55,13 @@ namespace ServerLib.Json
                 public string slotId { get; set; }
             }
         }
+    }
+
+    public class Notification
+    {
+        public string type { get; set; }
+        public string EventId { get; set; }
+        public string DialogId { get; set; }
+        public Dialog.Messages Message { get; set; }
     }
 }

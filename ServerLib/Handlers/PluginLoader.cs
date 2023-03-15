@@ -1,5 +1,7 @@
-﻿using ServerLib.Utilities;
+﻿using NetCoreServer;
+using ServerLib.Utilities;
 using System.Reflection;
+using static ServerLib.Web.HTTPServer;
 
 namespace ServerLib.Handlers
 {
@@ -37,14 +39,17 @@ namespace ServerLib.Handlers
                 }
             }
         }
-        public static void PluginWebOverride(WebServer webServer)
+
+        public static List<bool> PluginHttpRequest(HttpRequest request, HttpsBackendSession session)
         {
+            List<bool> boolret = new();
             foreach (var plugin in pluginsList)
             {
-                plugin.Value.Plugin.WebOverride(webServer);
+                boolret.Add(plugin.Value.Plugin.HttpRequest(request, session));
             }
-
+            return boolret;
         }
+
         public static void UnloadPlugins()
         {
             foreach (var plugin in pluginsList)
@@ -78,7 +83,7 @@ namespace ServerLib.Handlers
         private static void EmulatorInit(IPlugin iPlugin)
         {
             iPlugin.Initialize();
-            Utils.PrintDebug("New Plugin Loaded" +
+            Debug.PrintDebug("New Plugin Loaded" +
                 "\nPlugin Name: " + iPlugin.Name +
                 "\nPlugin Version: " + iPlugin.Version +
                 "\nPlugin Author: " + iPlugin.Author +

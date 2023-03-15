@@ -14,7 +14,7 @@ namespace ServerLib.Controllers
         public static void Init()
         {
             RebuildFromBaseConfigs();
-            Utils.PrintDebug("Initialization Done!", "debug", "[CONFIG]");
+            Debug.PrintDebug("Initialization Done!", "debug", "[CONFIG]");
         }
 
         /// <summary>
@@ -27,7 +27,7 @@ namespace ServerLib.Controllers
             RefreshConfigFromBase("gameplay");
             RefreshConfigFromBase("custom");
             RefreshConfigFromBase("plugin");
-            string[] dirs = Directory.GetFiles("configs");
+            string[] dirs = Directory.GetFiles("Files/configs");
             foreach (string dir in dirs)
             {
 
@@ -36,7 +36,7 @@ namespace ServerLib.Controllers
                     string dataraw = File.ReadAllText(dir);
                     if (dataraw != null && dataraw != "")
                     {
-                        var dir_1 = dir.Replace("configs\\", "");
+                        var dir_1 = dir.Replace("Files/configs\\", "");
                         dir_1 = dir_1.Replace(".json", "");
                         switch (dir_1)
                         {
@@ -69,16 +69,16 @@ namespace ServerLib.Controllers
         {
             string configbase = File.ReadAllText($"Files/configs/{configname}_base.json");
 
-            if (!File.Exists($"configs/{configname}.json"))
+            if (!File.Exists($"Files/configs/{configname}.json"))
             {
-                File.WriteAllText($"configs/{configname}.json", configbase);
+                File.WriteAllText($"Files/configs/{configname}.json", configbase);
             }
 
-            if (File.Exists($"configs/{configname}.json"))
+            if (File.Exists($"Files/configs/{configname}.json"))
             {
                 if (Handlers.ArgumentHandler.ReloadAllConfigs)
                 {
-                    File.WriteAllText($"configs/{configname}.json", configbase);
+                    File.WriteAllText($"Files/configs/{configname}.json", configbase);
                 }
             }
         }

@@ -1,7 +1,10 @@
-﻿using Newtonsoft.Json;
+﻿using EFT.UI.Ragfair;
+using Newtonsoft.Json;
 using ServerLib.Json;
-using ServerLib.Web;
+using ServerLib.Utilities;
+using static ServerLib.Json.Database;
 using static ServerLib.Json.Database.trader;
+using static ServerLib.Json.Traders;
 
 namespace ServerLib.Controllers
 {
@@ -14,17 +17,27 @@ namespace ServerLib.Controllers
         {
             return DatabaseController.DataBase.Trader.Traders["assort_" + TraderId].Assort;
         }
+
+        public static void SetAssortByTrader(string TraderId, traders.assort assort)
+        {
+            DatabaseController.DataBase.Trader.Traders["assort_" + TraderId].Assort = assort;
+        }
+
         public static Traders.Base GetBaseByTrader(string TraderId)
         {
             return DatabaseController.DataBase.Trader.Traders["base_" + TraderId].Base;
         }
-        public static List<ACS.TraderSuits> GetSuitsByTrader(string TraderId)
+        public static List<TraderSuits> GetSuitsByTrader(string TraderId)
         {
             return DatabaseController.DataBase.Trader.Traders["suits_" + TraderId].Suits;
         }
         public static List<string> GetCategoriesByTrader(string TraderId)
         {
             return DatabaseController.DataBase.Trader.Traders["categories_" + TraderId].Categories;
+        }
+        public static Traders.Item? GetAssortItemByID(string TraderId, string ItemId)
+        {
+            return GetAssortByTrader(TraderId).Items.Find(item => item.Id == ItemId);
         }
         public static List<string> GetTradersKey()
         {
@@ -61,23 +74,60 @@ namespace ServerLib.Controllers
             }
         }
 
-        public static List<string> GetTradersInfo()
+        public static List<Base> GetTradersInfo()
         {
-            List<string> TraderBase = new List<string>();
+            List<Base> TraderBase = new List<Base>();
 
             foreach (var trader in DatabaseController.DataBase.Trader.Traders)
             {
                 if (!trader.Key.ToLower().Contains("ragfair"))
                 {
-                    TraderBase.Add(JsonConvert.SerializeObject(trader.Value.Base));
+                    if (trader.Value.Base.Avatar.Contains("jpg"))
+                    {
+                        trader.Value.Base.Avatar.Replace("jpg", "png");
+                    }
+                    TraderBase.Add(trader.Value.Base);
                 }
             }
-            string resp = ResponseControl.GetBody(JsonConvert.SerializeObject(TraderBase));
             return TraderBase;
         }
 
+        public static traders.assort GenerateAssort(string TraderId, int currentTime)
+        {
+            traders.assort traderassort = GetAssortByTrader(TraderId);
+            traders.assort output = traderassort;
+            if (traderassort.NextResupply <= currentTime)
+            {
+                var refl = ConfigController.Configs.Gameplay.Trading.RefreshTimeInMinutes;
+                output.NextResupply = currentTime + refl * 60;
+                SetAssortByTrader(TraderId, output);
+            }
+            return output;
+        }
 
-        public static traders.assort GenerateAssort(string SessionId, string TraderId)
+        public static void RemoveItemFromAssortAfterBuy(string TraderId, Json.Other.ItemMove item)
+        {
+            var assort = GetAssortByTrader(TraderId);
+            var foundItem = GetAssortItemByID(TraderId, item.ItemId);
+            if (foundItem != null)
+            {
+                if (foundItem.Upd.BuyRestrictionMax != null)
+                {
+                    foundItem.Upd.BuyRestrictionCurrent += item.Count;
+                }
+                if (foundItem.Upd.StackObjectsCount - item.Count > 0)
+                {
+                    foundItem.Upd.StackObjectsCount -= item.Count;
+                }
+                else
+                {
+                    assort.Items.Remove(foundItem);
+                    SetAssortByTrader(TraderId, assort);
+                }
+            }
+        }
+
+        public static traders.assort GenerateFilteredAssort(string SessionId, string TraderId)
         {
             traders.assort traderassort = GetAssortByTrader(TraderId);
             traders.assort output = new();
@@ -88,21 +138,22 @@ namespace ServerLib.Controllers
                 output.BarterScheme = traderassort.BarterScheme;
                 output.LoyalLevelItems = traderassort.LoyalLevelItems;
             }
-
-
-            var loyalty = CharacterController.GetLoyality(SessionId, TraderId) + 1;
-            foreach (var item in traderassort.Items)
+            else
             {
-                if (traderassort.LoyalLevelItems[item.Id] <= loyalty)
+                var loyalty = CharacterController.GetLoyality(SessionId, TraderId) + 1;
+                foreach (var item in traderassort.Items)
                 {
-                    output.Items.ToList().Add(item);
-                    if (traderassort.BarterScheme[item.Id] != null)
+                    if (traderassort.LoyalLevelItems[item.Id] <= loyalty)
                     {
-                        output.BarterScheme[item.Id] = traderassort.BarterScheme[item.Id];
-                    }
-                    if (traderassort.LoyalLevelItems.TryGetValue(item.Id, out var id))
-                    {
-                        output.LoyalLevelItems[item.Id] = id;
+                        output.Items.ToList().Add(item);
+                        if (traderassort.BarterScheme.TryGetValue(item.Id, out var barter_id))
+                        {
+                            output.BarterScheme[item.Id] = barter_id;
+                        }
+                        if (traderassort.LoyalLevelItems.TryGetValue(item.Id, out var loyal_id))
+                        {
+                            output.LoyalLevelItems[item.Id] = loyal_id;
+                        }
                     }
                 }
             }
@@ -112,8 +163,8 @@ namespace ServerLib.Controllers
 
         public static string GetPurchasesData(string SessionId, string TraderId)
         {
-            Other.TPLCOUNT tplCount = new();
-            Dictionary<string, List<List<Other.TPLCOUNT>>> output = new();
+            Json.Other.TPLCOUNT tplCount = new();
+            Dictionary<string, List<List<Json.Other.TPLCOUNT>>> output = new();
 
 
             var character = CharacterController.GetCharacter(SessionId);
@@ -166,5 +217,99 @@ namespace ServerLib.Controllers
             return JsonConvert.SerializeObject(output);
         }
 
+        public static bool ItemInPurchaseCategories(string TraderId, Traders.Item item)
+        {
+            var categories = DatabaseController.DataBase.Templates.Categories;
+            var items = DatabaseController.DataBase.Templates.Items;
+
+            var traderbase = GetBaseByTrader(TraderId);
+
+            foreach (var purchaseCategorie in traderbase.SellCategory)
+            {
+                var traderCategories = categories.Where(x => x.Id == purchaseCategorie).ToList();
+
+                foreach (var traderCategorie in traderCategories)
+                {
+                    if (!string.IsNullOrEmpty(traderCategorie.ParentId))
+                    {
+                        var subCategories = categories.Where(categorie => categorie.ParentId == traderCategorie.Id).ToList();
+                        foreach (var subCategorie in subCategories)
+                        {
+                            // Retrieve the item from the templates database since it contains the parentId (category)
+                            var itemData = items.Where(dbItem => dbItem.Id == item.Tpl).ToList()[0];
+                            if (itemData != null)
+                            {
+                                if (subCategorie.Id == itemData.ParentId)
+                                {
+                                    return true;
+                                }
+                            }
+                        }
+                    }
+                    else
+                    {
+                        var itemData = items.Where(dbItem => dbItem.Id == item.Tpl).ToList()[0];
+                        if (itemData != null)
+                        {
+                            if (traderCategorie.Id == itemData.ParentId)
+                            {
+                                return true;
+                            }
+                        }
+                    }
+                }
+            }
+            return false;
+        }
+
+        public static List<RagfairOffer> GetRagfairOffers(string TraderId)
+        {
+            List<RagfairOffer> convertedOffers = new();
+            var offerIntID = 1;
+            var assort = GetAssortByTrader(TraderId);
+            foreach (var item in assort.Items)
+            {
+                if (item.SlotId == "hideout")
+                {
+                    Offer.Merchant merchant = new()
+                    {
+                        Id = TraderId,
+                        MemberType = EMemberCategory.Trader
+                    };
+                    RagfairOffer offer = new();
+                    if (DatabaseController.DataBase.Others.ChildlessList.Contains(item.Id))
+                    {
+                        offer.Item = item;
+                    }
+                    var itembarter = assort.BarterScheme[item.Id][0];
+                    offer.Id = Utils.CreateNewID();
+                    offer.IntId = offerIntID;
+                    offer.ItemsCost = (int)itembarter[0].Count;
+                    offer.RequirementsCost = (int)itembarter[0].Count;
+                    offer.SummaryCost = (int)itembarter[0].Count;
+                    offer.User = merchant;
+                    offer.SellInOnePiece = false;
+                    offer.Locked = false;
+                    offer.Requirements = itembarter;
+                    offer.LoyaltyLevel = (int)assort.LoyalLevelItems[item.Id];
+                    offer.StartTime = DateTime.MinValue;
+                    offer.EndTime = DateTime.MaxValue;
+                    offer.UnlimitedCount = item.Upd.UnlimitedCount;
+
+                    if (item.Upd.BuyRestrictionMax != null)
+                    {
+                        offer.BuyRestrictionMax = (int)item.Upd.BuyRestrictionMax;
+                        offer.BuyRestrictionCurrent = (int)item.Upd.BuyRestrictionCurrent;
+                    }
+                    else
+                    {
+
+                    }
+                    convertedOffers.Add(offer);
+                    offerIntID++;
+                }
+            }
+            return convertedOffers;
+        }
     }
 }

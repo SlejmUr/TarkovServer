@@ -42,7 +42,11 @@ namespace ServerLib.Json
             public int Port { get; set; } = 0;
             public List<Chat> Chats { get; set; } = new();
         }
-
+        public class ItemMove
+        {
+            public string ItemId { get; set; }
+            public int Count { get; set; }
+        }
         public class ExpTable
         {
             [JsonProperty("exp")]
@@ -111,17 +115,11 @@ namespace ServerLib.Json
             public int Status { get; set; } = 0;
         }
 
-        public class LangData
-        {
-            public string ShortName { get; set; }
-            public string Name { get; set; }
-        }
-
         public class Lang
         {
             public int err { get; set; }
             public string errmsg { get; set; }
-            public List<LangData> data { get; set; }
+            public object data { get; set; }
             public int crc { get; set; }
         }
 
@@ -138,6 +136,9 @@ namespace ServerLib.Json
 
             [JsonProperty("RagFair")]
             public string RagFair { get; set; }
+
+            [JsonProperty("Lobby")]
+            public string Lobby { get; set; }
         }
 
         public class GameConfig
@@ -176,18 +177,28 @@ namespace ServerLib.Json
             public bool TwitchEventMember { get; set; }
         }
 
-        public class Notifier
-        {
-            public string server { get; set; }
-            public string channel_id { get; set; }
-            public string ws { get; set; }
-            public string url { get; set; }
-        }
-
         public class RaidKilled
         {
             public string killedByAID { get; set; }
             public string diedFaction { get; set; }
+        }
+
+        public class Notifier
+        {
+            [JsonProperty("server", NullValueHandling = NullValueHandling.Ignore)]
+            public string Server { get; set; }
+
+            [JsonProperty("channel_id", NullValueHandling = NullValueHandling.Ignore)]
+            public string ChannelId { get; set; }
+
+            [JsonProperty("url", NullValueHandling = NullValueHandling.Ignore)]
+            public string Url { get; set; }
+
+            [JsonProperty("notifierServer", NullValueHandling = NullValueHandling.Ignore)]
+            public string NotifierServer { get; set; }
+
+            [JsonProperty("ws", NullValueHandling = NullValueHandling.Ignore)]
+            public string Ws { get; set; }
         }
     }
 }

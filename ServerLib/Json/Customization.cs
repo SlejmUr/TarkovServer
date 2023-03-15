@@ -2,7 +2,7 @@
 
 namespace ServerLib.Json
 {
-    public class Customization
+    public class JsonCustomization
     {
         public class Base
         {

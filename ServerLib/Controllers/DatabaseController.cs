@@ -1,7 +1,6 @@
 ﻿using Newtonsoft.Json;
 using ServerLib.Json;
 using ServerLib.Utilities;
-using static ServerLib.Json.Traders;
 
 namespace ServerLib.Controllers
 {
@@ -26,14 +25,14 @@ namespace ServerLib.Controllers
             LoadTraders();
             LoadWeater();
             LoadCustomConfig();
-            Utils.PrintDebug("Initialization Done!", "debug", "[DATABASE]");
+            Debug.PrintDebug("Initialization Done!", "debug", "[DATABASE]");
         }
 
         static void LoadBasics()
         {
             DataBase.Basic.Globals = File.ReadAllText("Files/base/globals.json");
             DataBase.Basic.BlacklistedIds = JsonConvert.DeserializeObject<List<string>>(File.ReadAllText("Files/base/blacklist.json"));
-            Utils.PrintDebug("Basics loaded");
+            Debug.PrintDebug("Basics loaded");
         }
         static void LoadTemplates()
         {
@@ -43,16 +42,17 @@ namespace ServerLib.Controllers
             {
                 DataBase.Others.ItemPrices.Add(item.Id, item.Price);
             }
-            Utils.PrintDebug("Templates loaded");
+            DataBase.Others.Items = ItemBase.FromJson(File.ReadAllText("Files/others/items.json")); 
+            Debug.PrintDebug("Templates loaded");
         }
         static void LoadCharacters()
         {
             DataBase.Characters.CharacterBase["bear"] = JsonConvert.DeserializeObject<Character.Base>(File.ReadAllText("Files/characters/character_bear.json"));
-            DataBase.Characters.CharacterBase["usec"] = JsonConvert.DeserializeObject<Character.Base>(File.ReadAllText("Files/characters/character_usec.json"));            
+            DataBase.Characters.CharacterBase["usec"] = JsonConvert.DeserializeObject<Character.Base>(File.ReadAllText("Files/characters/character_usec.json"));
             DataBase.Characters.CharacterBase["scav"] = JsonConvert.DeserializeObject<Character.Base>(File.ReadAllText("Files/characters/playerScav.json"));
             DataBase.Characters.CharacterStorage = JsonConvert.DeserializeObject<CharacterOBJ.CharacterStorage>(File.ReadAllText("Files/characters/storage.json"));
             DataBase.Characters.DefaultCustomization = JsonConvert.DeserializeObject<CharacterOBJ.DefaultCustomization>(File.ReadAllText("Files/characters/defaultCustomization.json"));
-            Utils.PrintDebug("Characters loaded");
+            Debug.PrintDebug("Characters loaded");
         }
         static void LoadBots()
         {
@@ -90,7 +90,7 @@ namespace ServerLib.Controllers
                     {
                         string bot_test = file1.Replace(dir1 + "\\", "").Replace(".json", "");
                         string normalfile = file1.Replace("\\", "/");
-                        if (dir1.Contains("difficulty"))
+                        if (dir1.Contains("difficulties"))
                         {
                             switch (bot_test)
                             {
@@ -140,7 +140,7 @@ namespace ServerLib.Controllers
             DataBase.Bot.NamesDict.Add("Sectantpriest", DataBase.Bot.Names.Sectantpriest);
             DataBase.Bot.NamesDict.Add("Sectantwarrior", DataBase.Bot.Names.Sectantwarrior);
 
-            Utils.PrintDebug("Bots loaded");
+            Debug.PrintDebug("Bots loaded");
         }
         static void LoadHideOut()
         {
@@ -152,12 +152,12 @@ namespace ServerLib.Controllers
             hideout.Scavcase = File.ReadAllText("Files/hideout/scavcase.json");
             hideout.Settings = File.ReadAllText("Files/hideout/settings.json");
             DataBase.Hideout = hideout;
-            Utils.PrintDebug("Hideout loaded");
+            Debug.PrintDebug("Hideout loaded");
         }
         static void LoadQuests()
         {
             DataBase.Others.Quests = File.ReadAllText("Files/others/quests.json");
-            Utils.PrintDebug("Quests loaded");
+            Debug.PrintDebug("Quests loaded");
         }
         static void LoadCustomization()
         {
@@ -168,7 +168,7 @@ namespace ServerLib.Controllers
                 var fsf = item.ToString().Split(":")[0].Replace("\"", "");
                 DataBase.Others.Customization.Add(fsf.ToString(), customs[fsf].ToString());
             }
-            Utils.PrintDebug("Customization loaded");
+            Debug.PrintDebug("Customization loaded");
         }
         static void LoadLocale()
         {
@@ -186,7 +186,7 @@ namespace ServerLib.Controllers
                     DataBase.Locale.Locales.Add(localename + "_" + localename_add, File.ReadAllText(file));
                 }
             }
-            Utils.PrintDebug("Locales loaded");
+            Debug.PrintDebug("Locales loaded");
         }
         static void LoadLocations()
         {
@@ -202,7 +202,7 @@ namespace ServerLib.Controllers
                     DataBase.Location.Locations.Add(dirname + "_" + filename, File.ReadAllText(file));
                 }
             }
-            Utils.PrintDebug("Locations loaded");
+            Debug.PrintDebug("Locations loaded");
         }
         static void LoadTraders()
         {
@@ -244,14 +244,14 @@ namespace ServerLib.Controllers
                             traders.QuestAssort = File.ReadAllText(file);
                             break;
                         case "suits":
-                            traders.Suits = JsonConvert.DeserializeObject<List<ACS.TraderSuits>>(File.ReadAllText(file));
+                            traders.Suits = JsonConvert.DeserializeObject<List<TraderSuits>>(File.ReadAllText(file));
                             break;
                     }
                     DataBase.Trader.Traders.Add(filename + "_" + dirname, traders);
-                    traders = new();
                 }
+                traders = new();
             }
-            Utils.PrintDebug("Traders loaded");
+            Debug.PrintDebug("Traders loaded");
         }
         static void LoadWeater()
         {
@@ -262,7 +262,7 @@ namespace ServerLib.Controllers
                 string filename = file.Replace("Files/weather\\", "").Replace(".json", "");
                 DataBase.Weather.Add(filename, File.ReadAllText(file));
             }
-            Utils.PrintDebug("Weather loaded");
+            Debug.PrintDebug("Weather loaded");
         }
         static void LoadCustomConfig()
         {
@@ -289,7 +289,7 @@ namespace ServerLib.Controllers
                             locale.Interface[first] = to?[counter];
                         }
                     }
-                    string ser_locale = JsonConvert.SerializeObject(locale, Formatting.Indented);
+                    string ser_locale = JsonConvert.SerializeObject(locale);
                     DataBase.Locale.Locales[Custom.Locale.BaseReplace + "_locale"] = ser_locale.Replace("Interface", "interface");
                     counter++;
                 }
@@ -315,7 +315,7 @@ namespace ServerLib.Controllers
                             locale.menu[first] = to?[counter];
                         }
                     }
-                    DataBase.Locale.Locales[Custom.Locale.BaseReplace + "_menu"] = JsonConvert.SerializeObject(locale, Formatting.Indented);
+                    DataBase.Locale.Locales[Custom.Locale.BaseReplace + "_menu"] = JsonConvert.SerializeObject(locale);
                     counter++;
                 }
             }

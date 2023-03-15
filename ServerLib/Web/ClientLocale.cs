@@ -1,56 +1,47 @@
-﻿using HttpServerLite;
+﻿using NetCoreServer;
 using ServerLib.Controllers;
 using ServerLib.Utilities;
+using static ServerLib.Web.HTTPServer;
 
 namespace ServerLib.Web
 {
     public class ClientLocale
     {
-        [StaticRoute(HttpServerLite.HttpMethod.POST, "/client/languages")]
-        public async Task GameLang(HttpContext ctx)
+        [HTTP("POST", "/client/languages")]
+        public static bool GameLang(HttpRequest request, HttpsBackendSession session)
         {
             //REQ stuff
-            Utils.PrintRequest(ctx.Request);
+            Utils.PrintRequest(request, session);
             var rsp = ResponseControl.CompressRsp(LocaleController.GetLanguages());
-            ctx.Response.StatusCode = 200;
-            ctx.Response.ContentType = "application/json";
-            ctx.Response.ContentLength = rsp.Length;
-            await ctx.Response.SendWithoutCloseAsync(rsp);
-            return;
+            Utils.SendUnityResponse(session, rsp);
+            return true;
         }
 
-        [ParameterRoute(HttpServerLite.HttpMethod.POST, "/client/menu/locale/{locale}")]
-        public async Task GameMenuLang(HttpContext ctx)
+        [HTTP("POST", "/client/menu/locale/{locale}")]
+        public static bool GameMenuLang(HttpRequest request, HttpsBackendSession session)
         {
-            string locale = ctx.Request.Url.Parameters["locale"];
+            string locale = session.HttpParam["locale"];
             //REQ stuff
-            string SessionID = Utils.GetSessionID(ctx.Request.Headers);
-            Utils.PrintRequest(ctx.Request);
-            string account_lang = AccountController.FindAccount(SessionID).Lang;
-            var resp = ResponseControl.GetBody(LocaleController.GetMenu(account_lang, locale, SessionID));
+            string SessionId = Utils.GetSessionId(session.Headers);
+            Utils.PrintRequest(request, session);
+            var resp = ResponseControl.GetBody(LocaleController.GetMenu(locale, SessionId));
             var rsp = ResponseControl.CompressRsp(resp);
-            ctx.Response.StatusCode = 200;
-            ctx.Response.ContentType = "application/json";
-            ctx.Response.ContentLength = rsp.Length;
-            await ctx.Response.SendWithoutCloseAsync(rsp);
-            return;
+            Utils.SendUnityResponse(session, rsp);
+            return true;
         }
 
-        [ParameterRoute(HttpServerLite.HttpMethod.POST, "/client/locale/{locale}")]
-        public virtual async Task GameLocaleLang(HttpContext ctx)
+        [HTTP("POST", "/client/locale/{locale}")]
+        public static bool GameLocaleLang(HttpRequest request, HttpsBackendSession session)
         {
-            string locale = ctx.Request.Url.Parameters["locale"];
+            string locale = session.HttpParam["locale"];
             //REQ stuff
-            string SessionID = Utils.GetSessionID(ctx.Request.Headers);
-            Utils.PrintRequest(ctx.Request);
-            string account_lang = AccountController.FindAccount(SessionID).Lang;
-            var resp = ResponseControl.GetBody(LocaleController.GetLocale(account_lang, locale, SessionID));
+            string SessionId = Utils.GetSessionId(session.Headers);
+            Utils.PrintRequest(request, session);
+            var resp = ResponseControl.GetBody(LocaleController.GetLocale(locale, SessionId));
             var rsp = ResponseControl.CompressRsp(resp);
-            ctx.Response.StatusCode = 200;
-            ctx.Response.ContentType = "application/json";
-            ctx.Response.ContentLength = rsp.Length;
-            await ctx.Response.SendWithoutCloseAsync(rsp);
-            return;
+            Utils.SendUnityResponse(session, rsp);
+            return true;
+
         }
     }
 }

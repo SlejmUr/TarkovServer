@@ -22,7 +22,7 @@ namespace ServerLib.Controllers
             foreach (var keyValue in DatabaseController.DataBase.Others.Customization)
             {
                 string custom = DatabaseController.DataBase.Others.Customization[keyValue.Key];
-                var customization = JsonConvert.DeserializeObject<Customization.Base>(custom);
+                var customization = JsonConvert.DeserializeObject<Json.JsonCustomization.Base>(custom);
 
                 if (customization != null)
                 {
@@ -44,7 +44,7 @@ namespace ServerLib.Controllers
             foreach (var keyValue in DatabaseController.DataBase.Others.Customization)
             {
                 string custom = DatabaseController.DataBase.Others.Customization[keyValue.Key];
-                var customization = JsonConvert.DeserializeObject<Customization.Base>(custom);
+                var customization = JsonConvert.DeserializeObject<Json.JsonCustomization.Base>(custom);
 
                 if (customization.Id == Id)
                 {
@@ -54,12 +54,12 @@ namespace ServerLib.Controllers
             return "";
         }
 
-        public static Customization.Base GetCustomization(string Id)
+        public static Json.JsonCustomization.Base GetCustomization(string Id)
         {
             foreach (var keyValue in DatabaseController.DataBase.Others.Customization)
             {
                 string custom = DatabaseController.DataBase.Others.Customization[keyValue.Key];
-                var customization = JsonConvert.DeserializeObject<Customization.Base>(custom);
+                var customization = JsonConvert.DeserializeObject<Json.JsonCustomization.Base>(custom);
                 if (customization.Id == Id)
                 {
                     return customization;
@@ -77,7 +77,7 @@ namespace ServerLib.Controllers
             foreach (var keyValue in allCustomization)
             {
                 string custom = DatabaseController.DataBase.Others.Customization[keyValue.Key];
-                Customization.Base customization = JsonConvert.DeserializeObject<Customization.Base>(custom);
+                Json.JsonCustomization.Base customization = JsonConvert.DeserializeObject<Json.JsonCustomization.Base>(custom);
 
                 if (customization.Parent != "" && customizationSuits.FindIndex(x => x.SuiteId == keyValue.Key || x.Id == keyValue.Key) == -1)
                 {

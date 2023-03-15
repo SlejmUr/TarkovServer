@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using EFT.UI.Ragfair;
+using Newtonsoft.Json;
 
 namespace ServerLib.Json
 {
@@ -247,7 +248,27 @@ namespace ServerLib.Json
             public long StackObjectsCount { get; set; }
 
             [JsonProperty("UnlimitedCount", NullValueHandling = NullValueHandling.Ignore)]
-            public bool? UnlimitedCount { get; set; }
+            public bool UnlimitedCount { get; set; } = false;
+        }
+
+        public class RagfairOffer
+        {
+            public string Id { get; set; }
+            public Item Item { get; set; }
+            public DateTime EndTime { get; set; }
+            public int BuyRestrictionMax { get; set; }
+            public int BuyRestrictionCurrent { get; set; }
+            public List<Barter> Requirements { get; set; }
+            public Offer.Merchant User { get; set; }
+            public long IntId { get; set; }
+            public int ItemsCost { get; set; }
+            public int RequirementsCost { get; set; }
+            public DateTime StartTime { get; set; }
+            public int LoyaltyLevel { get; set; }
+            public bool Locked { get; set; }
+            public bool UnlimitedCount { get; set; }
+            public int SummaryCost { get; set; }
+            public bool SellInOnePiece { get; set; }
         }
     }
 }

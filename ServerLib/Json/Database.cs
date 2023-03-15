@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using EFT.InventoryLogic;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System.Globalization;
 
@@ -103,7 +104,7 @@ namespace ServerLib.Json
                 public Traders.Base Base { get; set; }
                 public List<string> Categories { get; set; }
                 public string RagfairCategories { get; set; }
-                public List<ACS.TraderSuits> Suits { get; set; }
+                public List<TraderSuits> Suits { get; set; }
                 public Traders.Dialog Dialog { get; set; }
                 public string QuestAssort { get; set; }
                 public assort Assort { get; set; }

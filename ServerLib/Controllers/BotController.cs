@@ -49,13 +49,13 @@ namespace ServerLib.Controllers
                 default:
                     switch (difficulty)
                     {
-                        case "Custom":
+                        case "custom":
                             return DatabaseController.DataBase.Bot.Bots[type].Difficulty.Custom;
-                        case "Easy":
+                        case "easy":
                             return DatabaseController.DataBase.Bot.Bots[type].Difficulty.Easy;
-                        case "Hard":
+                        case "hard":
                             return DatabaseController.DataBase.Bot.Bots[type].Difficulty.Hard;
-                        case "Impossible":
+                        case "impossible":
                             return DatabaseController.DataBase.Bot.Bots[type].Difficulty.Impossible;
                         default:
                             return DatabaseController.DataBase.Bot.Bots[type].Difficulty.Normal;
@@ -76,7 +76,7 @@ namespace ServerLib.Controllers
             return bot;
         }
 
-        public static List<Bots.BotBase> GenerateBot(Bots.BotGenerate generate, string sessionID)
+        public static List<Bots.BotBase> GenerateBot(Bots.BotGenerate generate, string SessionId)
         {
             //DO botgen
             return new();
@@ -124,8 +124,8 @@ namespace ServerLib.Controllers
         public static void GenerateLevel(int min, int max, int playerlevel, out int lvl, out int xp)
         {
             dynamic global = JsonConvert.DeserializeObject<dynamic>(DatabaseController.DataBase.Basic.Globals);
-            var exptable = global.config.exp.level.exp_table;
-            Other.ExpTableClass expTableClass = exptable;
+            var exptable = global.data.config.exp.level.exp_table;
+            Json.Other.ExpTableClass expTableClass = exptable;
 
             int maxlvl = Math.Max(max, expTableClass.ExpTable.Count);
             int limit_max = playerlevel + 10;

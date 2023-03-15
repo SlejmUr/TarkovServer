@@ -9,8 +9,10 @@ Still in early phase, in development!
 
 ## References
 bsg.componentace.compression.libs.zlib.dll\
+bsg.console.core\
 bsg.microsoft.extensions.objectpool.dll\
 bsg.system.buffers.dll\
+Newtonsoft.Json\
 UnityEngine.dll\
 UnityEngine.CoreModule.dll
 
@@ -31,8 +33,8 @@ Open SLN in Visual Studio.\
 Build=>(Re-)Build Solution
 
 ## Linux Support
-I planning to add a linux support (If most of the stuff done) on this project, If you want to help me with this DM me on Discord!\
-SlejmUr#4007
+I planning to add a linux support (If most of the stuff done) on this project, If you want to help me with this DM me on Discord!
+(I'm on Altered Escape,JET, MTGA Discord)
 
 ## Mod/Plugin support
 You can add your or anyone plugin, but be careful cus they can use any malicius code.\

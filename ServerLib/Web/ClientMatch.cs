@@ -1,91 +1,73 @@
-﻿using HttpServerLite;
+﻿using NetCoreServer;
 using Newtonsoft.Json;
-using ServerLib.Controllers;
 using ServerLib.Utilities;
+using static ServerLib.Web.HTTPServer;
 
 
 namespace ServerLib.Web
 {
     public class ClientMatch
     {
-        [StaticRoute(HttpServerLite.HttpMethod.POST, "/client/match/available")]
-        public async Task ClientMatchAvailable(HttpContext ctx)
+        [HTTP("POST", "/client/match/available")]
+        public static bool ClientMatchAvailable(HttpRequest request, HttpsBackendSession session)
         {
-            Utils.PrintRequest(ctx.Request);
+            Utils.PrintRequest(request, session);
             var rsp = ResponseControl.CompressRsp(ResponseControl.GetBody("true"));
-            ctx.Response.StatusCode = 200;
-            ctx.Response.ContentType = "application/json";
-            ctx.Response.ContentLength = rsp.Length;
-            await ctx.Response.TrySendAsync(rsp);
-            return;
+            Utils.SendUnityResponse(session, rsp);
+            return true;
         }
 
-        [StaticRoute(HttpServerLite.HttpMethod.POST, "/client/match/offline/end")]
-        public async Task ClientMatchOfflineEnd(HttpContext ctx)
+        [HTTP("POST", "/client/match/offline/end")]
+        public static bool ClientMatchOfflineEnd(HttpRequest request, HttpsBackendSession session)
         {
-            Utils.PrintRequest(ctx.Request);
-            string Uncompressed = ResponseControl.DeCompressReq(ctx.Request.DataAsBytes);
+            Utils.PrintRequest(request, session);
+            string Uncompressed = ResponseControl.DeCompressReq(request.BodyBytes);
             //Class73<T, U, V> | (exitStatus, exitName, raidSeconds)
 
             var rsp = ResponseControl.CompressRsp(ResponseControl.NullResponse());
-            ctx.Response.StatusCode = 200;
-            ctx.Response.ContentType = "application/json";
-            ctx.Response.ContentLength = rsp.Length;
-            await ctx.Response.TrySendAsync(rsp);
-            return;
+            Utils.SendUnityResponse(session, rsp);
+            return true;
         }
 
-        [StaticRoute(HttpServerLite.HttpMethod.POST, "/client/match/join")]
-        public async Task ClientMatchJoin(HttpContext ctx)
+        [HTTP("POST", "/client/match/join")]
+        public static bool ClientMatchJoin(HttpRequest request, HttpsBackendSession session)
         {
-            Utils.PrintRequest(ctx.Request);
+            Utils.PrintRequest(request, session);
             var rsp = ResponseControl.CompressRsp(ResponseControl.NullResponse());
-            ctx.Response.StatusCode = 200;
-            ctx.Response.ContentType = "application/json";
-            ctx.Response.ContentLength = rsp.Length;
-            await ctx.Response.TrySendAsync(rsp);
-            return;
+            Utils.SendUnityResponse(session, rsp);
+            return true;
         }
 
-        [StaticRoute(HttpServerLite.HttpMethod.POST, "/client/match/group/start_game")]
-        public async Task ClientMatchStartGame(HttpContext ctx)
+        [HTTP("POST", "/client/match/group/start_game")]
+        public static bool ClientMatchStartGame(HttpRequest request, HttpsBackendSession session)
         {
-            Utils.PrintRequest(ctx.Request);
+            Utils.PrintRequest(request, session);
             var rsp = ResponseControl.CompressRsp(ResponseControl.NullResponse());
-            ctx.Response.StatusCode = 200;
-            ctx.Response.ContentType = "application/json";
-            ctx.Response.ContentLength = rsp.Length;
-            await ctx.Response.TrySendAsync(rsp);
-            return;
+            Utils.SendUnityResponse(session, rsp);
+            return true;
         }
 
-        [StaticRoute(HttpServerLite.HttpMethod.POST, "/client/match/group/status")]
-        public async Task ClientMatchGroupStatus(HttpContext ctx)
+        [HTTP("POST", "/client/match/group/status")]
+        public static bool ClientMatchGroupStatus(HttpRequest request, HttpsBackendSession session)
         {
-            Utils.PrintRequest(ctx.Request);
+            Utils.PrintRequest(request, session);
             var rsp = ResponseControl.CompressRsp(ResponseControl.NullResponse());
-            ctx.Response.StatusCode = 200;
-            ctx.Response.ContentType = "application/json";
-            ctx.Response.ContentLength = rsp.Length;
-            await ctx.Response.TrySendAsync(rsp);
-            return;
+            Utils.SendUnityResponse(session, rsp);
+            return true;
         }
 
-        [StaticRoute(HttpServerLite.HttpMethod.POST, "/client/match/group/status")]
-        public async Task ClientMatchGroupCreate(HttpContext ctx)
+        [HTTP("POST", "/client/match/group/create")]
+        public static bool ClientMatchGroupCreate(HttpRequest request, HttpsBackendSession session)
         {
-            Utils.PrintRequest(ctx.Request);
+            Utils.PrintRequest(request, session);
 
-            ACS.ClientGroupStatusJson clientGroupStatus = new();
-            List<ACS.FromProfile> fromProfile = new();
+            ClientGroupStatusJson clientGroupStatus = new();
+            List<Members> fromProfile = new();
             clientGroupStatus.Players = fromProfile.ToArray();
 
             var rsp = ResponseControl.CompressRsp(ResponseControl.GetBody(JsonConvert.SerializeObject(clientGroupStatus)));
-            ctx.Response.StatusCode = 200;
-            ctx.Response.ContentType = "application/json";
-            ctx.Response.ContentLength = rsp.Length;
-            await ctx.Response.TrySendAsync(rsp);
-            return;
+            Utils.SendUnityResponse(session, rsp);
+            return true;
         }
     }
 }
