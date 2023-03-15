@@ -1,7 +1,7 @@
 ﻿using HttpServerLite;
+using Newtonsoft.Json;
 using ServerLib.Controllers;
 using ServerLib.Utilities;
-using Newtonsoft.Json;
 
 namespace ServerLib.Web
 {
@@ -27,8 +27,8 @@ namespace ServerLib.Web
                 }
                 else
                 {
-                    resp = ResponseControl.GetBody("{ isvalid: false, latestVersion: \""+ server.Version + "\"}");
-                }         
+                    resp = ResponseControl.GetBody("{ isvalid: false, latestVersion: \"" + server.Version + "\"}");
+                }
             }
             var rsp = ResponseControl.CompressRsp(resp);
             ctx.Response.StatusCode = 200;
@@ -43,6 +43,34 @@ namespace ServerLib.Web
         {
             Utils.PrintRequest(ctx.Request);
             string resp = ResponseControl.GetBody("[]");
+            var rsp = ResponseControl.CompressRsp(resp);
+            ctx.Response.StatusCode = 200;
+            ctx.Response.ContentType = "application/json";
+            ctx.Response.ContentLength = rsp.Length;
+            await ctx.Response.TrySendAsync(rsp);
+            return;
+        }
+
+        [StaticRoute(HttpServerLite.HttpMethod.POST, "/client/WebSocketAddress")]
+        public async Task ClientWebSocketAddress(HttpContext ctx)
+        {
+            Utils.PrintRequest(ctx.Request);
+            string SessionID = Utils.GetSessionID(ctx.Request.Headers);
+            string resp = ResponseControl.GetBody(WebSocket.IpPort + SessionID);
+            var rsp = ResponseControl.CompressRsp(resp);
+            ctx.Response.StatusCode = 200;
+            ctx.Response.ContentType = "application/json";
+            ctx.Response.ContentLength = rsp.Length;
+            await ctx.Response.TrySendAsync(rsp);
+            return;
+        }
+
+        [StaticRoute(HttpServerLite.HttpMethod.POST, "/client/notifier/channel/create")]
+        public async Task ClientNotifier(HttpContext ctx)
+        {
+            Utils.PrintRequest(ctx.Request);
+            string SessionID = Utils.GetSessionID(ctx.Request.Headers);
+            string resp = ResponseControl.GetBody(ResponseControl.GetNotifier(SessionID));
             var rsp = ResponseControl.CompressRsp(resp);
             ctx.Response.StatusCode = 200;
             ctx.Response.ContentType = "application/json";
@@ -67,6 +95,25 @@ namespace ServerLib.Web
             return;
         }
 
+        [StaticRoute(HttpServerLite.HttpMethod.POST, "/client/server/list")]
+        public async Task ClientServerList(HttpContext ctx)
+        {
+            
+            Utils.PrintRequest(ctx.Request);
+            var server = ConfigController.Configs.Server;
+            List<ACS.Server> servers = new();
+            ACS.Server acsserver = new();
+            acsserver.Address = server.Ip;
+            acsserver.Port = $"{server.Port}";
+            servers.Add(acsserver);
+            string resp = ResponseControl.GetBody(JsonConvert.SerializeObject(servers));
+            var rsp = ResponseControl.CompressRsp(resp);
+            ctx.Response.StatusCode = 200;
+            ctx.Response.ContentType = "application/json";
+            ctx.Response.ContentLength = rsp.Length;
+            await ctx.Response.TrySendAsync(rsp);
+            return;
+        }
 
         [StaticRoute(HttpServerLite.HttpMethod.POST, "/client/items")]
         public async Task ClientItems(HttpContext ctx)
@@ -80,5 +127,97 @@ namespace ServerLib.Web
             await ctx.Response.TrySendAsync(rsp);
             return;
         }
+
+        [StaticRoute(HttpServerLite.HttpMethod.POST, "/client/customization")]
+        public async Task ClientCustomization(HttpContext ctx)
+        {
+            Utils.PrintRequest(ctx.Request);
+            string resp = ResponseControl.GetBody(File.ReadAllText("Files/customization/items.json"));
+            var rsp = ResponseControl.CompressRsp(resp);
+            ctx.Response.StatusCode = 200;
+            ctx.Response.ContentType = "application/json";
+            ctx.Response.ContentLength = rsp.Length;
+            await ctx.Response.TrySendAsync(rsp);
+            return;
+        }
+
+        [StaticRoute(HttpServerLite.HttpMethod.POST, "/client/globals")]
+        public async Task ClientGlobals(HttpContext ctx)
+        {
+            Utils.PrintRequest(ctx.Request);
+            string resp = ResponseControl.GetBody(DatabaseController.DataBase.Basic.Globals);
+            var rsp = ResponseControl.CompressRsp(resp);
+            ctx.Response.StatusCode = 200;
+            ctx.Response.ContentType = "application/json";
+            ctx.Response.ContentLength = rsp.Length;
+            await ctx.Response.TrySendAsync(rsp);
+            return;
+        }
+
+        [StaticRoute(HttpServerLite.HttpMethod.POST, "/client/settings")]
+        public async Task ClientSettings(HttpContext ctx)
+        {
+            Utils.PrintRequest(ctx.Request);
+            string resp = ResponseControl.GetBody(File.ReadAllText("Files/base/client.settings.json"));
+            var rsp = ResponseControl.CompressRsp(resp);
+            ctx.Response.StatusCode = 200;
+            ctx.Response.ContentType = "application/json";
+            ctx.Response.ContentLength = rsp.Length;
+            await ctx.Response.TrySendAsync(rsp);
+            return;
+        }
+
+        [StaticRoute(HttpServerLite.HttpMethod.POST, "/client/weather")]
+        public async Task ClientWeather(HttpContext ctx)
+        {
+            Utils.PrintRequest(ctx.Request);
+
+            string resp = ResponseControl.GetBody(DatabaseController.DataBase.Weather["sun"]);
+            var rsp = ResponseControl.CompressRsp(resp);
+            ctx.Response.StatusCode = 200;
+            ctx.Response.ContentType = "application/json";
+            ctx.Response.ContentLength = rsp.Length;
+            await ctx.Response.TrySendAsync(rsp);
+            return;
+        }
+
+        [StaticRoute(HttpServerLite.HttpMethod.POST, "/client/locations")]
+        public async Task ClientLocations(HttpContext ctx)
+        {
+            Utils.PrintRequest(ctx.Request);
+            string resp = ResponseControl.GetBody(DatabaseController.DataBase.Location.AllLocations);
+            var rsp = ResponseControl.CompressRsp(resp);
+            ctx.Response.StatusCode = 200;
+            ctx.Response.ContentType = "application/json";
+            ctx.Response.ContentLength = rsp.Length;
+            await ctx.Response.TrySendAsync(rsp);
+            return;
+        }
+
+        [StaticRoute(HttpServerLite.HttpMethod.POST, "/client/account/customization")]
+        public async Task ClientAccountCustomization(HttpContext ctx)
+        {
+            Utils.PrintRequest(ctx.Request);
+            string resp = ResponseControl.GetBody(JsonConvert.SerializeObject(CustomizationController.GetAccountCustomization()));
+            var rsp = ResponseControl.CompressRsp(resp);
+            ctx.Response.StatusCode = 200;
+            ctx.Response.ContentType = "application/json";
+            ctx.Response.ContentLength = rsp.Length;
+            await ctx.Response.TrySendAsync(rsp);
+            return;
+        }
+        /*
+        [ParameterRoute(HttpServerLite.HttpMethod.POST, "/client/items/price/{traderId}")]
+        public async Task ClientItemsPriceTrader(HttpContext ctx)
+        {
+            Utils.PrintRequest(ctx.Request);
+            string resp = ResponseControl.GetBody(File.ReadAllText("Files/items/items.json"));
+            var rsp = ResponseControl.CompressRsp(resp);
+            ctx.Response.StatusCode = 200;
+            ctx.Response.ContentType = "application/json";
+            ctx.Response.ContentLength = rsp.Length;
+            await ctx.Response.TrySendAsync(rsp);
+            return;
+        }*/
     }
 }

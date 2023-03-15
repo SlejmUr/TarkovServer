@@ -1,14 +1,17 @@
 ﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ServerLib.Json
 {
     public class Other
     {
+        public class TPLCOUNT
+        {
+            [JsonProperty("_tpl")]
+            public string Tpl { get; set; }
+
+            [JsonProperty("count")]
+            public int Count { get; set; }
+        }
         public class AmmoItems
         {
             public string _id { get; set; }
@@ -91,6 +94,9 @@ namespace ServerLib.Json
 
             [JsonProperty("requestId")]
             public string? reqId { get; set; }
+
+            [JsonProperty("uid")]
+            public string? uid { get; set; }
         }
 
         public class AddFriendRsp
@@ -103,6 +109,85 @@ namespace ServerLib.Json
 
             [JsonProperty("status")]
             public int Status { get; set; } = 0;
+        }
+
+        public class LangData
+        {
+            public string ShortName { get; set; }
+            public string Name { get; set; }
+        }
+
+        public class Lang
+        {
+            public int err { get; set; }
+            public string errmsg { get; set; }
+            public List<LangData> data { get; set; }
+            public int crc { get; set; }
+        }
+
+        public class GameConfigBackend
+        {
+            [JsonProperty("Trading")]
+            public string Trading { get; set; }
+
+            [JsonProperty("Messaging")]
+            public string Messaging { get; set; }
+
+            [JsonProperty("Main")]
+            public string Main { get; set; }
+
+            [JsonProperty("RagFair")]
+            public string RagFair { get; set; }
+        }
+
+        public class GameConfig
+        {
+            [JsonProperty("aid")]
+            public string Aid { get; set; }
+
+            [JsonProperty("lang")]
+            public string Lang { get; set; }
+
+            [JsonProperty("languages")]
+            public object Languages { get; set; }
+
+            [JsonProperty("ndaFree")]
+            public bool NdaFree { get; set; }
+
+            [JsonProperty("taxonomy")]
+            public int Taxonomy { get; set; }
+
+            [JsonProperty("activeProfileId")]
+            public string ActiveProfileId { get; set; }
+
+            [JsonProperty("backend")]
+            public GameConfigBackend Backend { get; set; }
+
+            [JsonProperty("utc_time")]
+            public double UtcTime { get; set; }
+
+            [JsonProperty("totalInGame")]
+            public int TotalInGame { get; set; }
+
+            [JsonProperty("reportAvailable")]
+            public bool ReportAvailable { get; set; }
+
+            [JsonProperty("twitchEventMember")]
+            public bool TwitchEventMember { get; set; }
+        }
+
+        public class Notifier
+        {
+            public string server { get; set; }
+            public string channel_id { get; set; }
+            public string ws { get; set; }
+            public string url { get; set; }
+        }
+
+        public class RaidKilled
+        {
+            public string killedByAID { get; set; }
+            public string diedFaction { get; set; }
         }
     }
 }

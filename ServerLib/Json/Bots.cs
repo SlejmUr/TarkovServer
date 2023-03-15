@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
 namespace ServerLib.Json
 {
@@ -406,50 +404,68 @@ namespace ServerLib.Json
         #region BotNames
         public class BotNames
         {
-            [JsonProperty("bossgluhar")]
-            public List<string> Bossgluhar { get; set; }
+            [JsonProperty("bossGluhar")]
+            public List<string> BossGluhar;
 
-            [JsonProperty("bosskilla")]
-            public List<string> Bosskilla { get; set; }
+            [JsonProperty("bossZryachiy")]
+            public List<string> BossZryachiy;
 
-            [JsonProperty("bossbully")]
-            public List<string> Bossbully { get; set; }
+            [JsonProperty("followerZryachiy")]
+            public List<string> FollowerZryachiy;
 
-            [JsonProperty("followerbully")]
-            public List<string> Followerbully { get; set; }
+            [JsonProperty("generalFollower")]
+            public List<string> GeneralFollower;
 
-            [JsonProperty("followergluhar")]
-            public List<string> Followergluhar { get; set; }
+            [JsonProperty("bossKilla")]
+            public List<string> BossKilla;
 
-            [JsonProperty("bosskojany")]
-            public List<string> Bosskojany { get; set; }
+            [JsonProperty("bossBully")]
+            public List<string> BossBully;
 
-            [JsonProperty("followerkojany")]
-            public List<string> Followerkojany { get; set; }
+            [JsonProperty("followerBully")]
+            public List<string> FollowerBully;
 
-            [JsonProperty("bosssanitar")]
-            public List<string> Bosssanitar { get; set; }
+            [JsonProperty("bossKojaniy")]
+            public List<string> BossKojaniy;
 
-            [JsonProperty("followersanitar")]
-            public List<string> Followersanitar { get; set; }
+            [JsonProperty("followerKojaniy")]
+            public List<string> FollowerKojaniy;
 
-            [JsonProperty("tagilla")]
-            public List<string> Tagilla { get; set; }
+            [JsonProperty("bossSanitar")]
+            public List<string> BossSanitar;
+
+            [JsonProperty("followerSanitar")]
+            public List<string> FollowerSanitar;
+
+            [JsonProperty("bossTagilla")]
+            public List<string> BossTagilla;
+
+            [JsonProperty("followerTagilla")]
+            public List<string> FollowerTagilla;
+
+            [JsonProperty("followerBigPipe")]
+            public List<string> FollowerBigPipe;
+
+            [JsonProperty("followerBirdEye")]
+            public List<string> FollowerBirdEye;
+
+            [JsonProperty("bossKnight")]
+            public List<string> BossKnight;
 
             [JsonProperty("gifter")]
-            public List<string> Gifter { get; set; }
+            public List<string> Gifter;
 
             [JsonProperty("sectantpriest")]
-            public List<string> Sectantpriest { get; set; }
+            public List<string> Sectantpriest;
 
             [JsonProperty("sectantwarrior")]
-            public List<string> Sectantwarrior { get; set; }
+            public List<string> Sectantwarrior;
 
             [JsonProperty("normal")]
-            public List<string> Normal { get; set; }
+            public List<string> Normal;
 
             [JsonProperty("scav")]
-            public List<string> Scav { get; set; }
+            public List<string> Scav;
         }
         #endregion
         #region BotBase
@@ -1318,12 +1334,6 @@ namespace ServerLib.Json
 
             [JsonProperty("Health", NullValueHandling = NullValueHandling.Ignore)]
             public Health Health { get; set; }
-        }
-        #endregion
-        #region BotName
-        public class BotName
-        {
-            public List<string> NameList { get; set; }
         }
         #endregion
         #region BotProfile

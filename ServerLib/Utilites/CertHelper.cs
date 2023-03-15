@@ -5,7 +5,7 @@ namespace ServerLib.Utilities
 {
     public class CertHelper
     {
-        public static void Make(System.Net.IPAddress serveraddress,string ip_port)
+        public static void Make(System.Net.IPAddress serveraddress, string ip_port)
         {
             if (serveraddress == null)
             {
@@ -39,9 +39,12 @@ namespace ServerLib.Utilities
 
             // Adding SubjectAlternativeNames (SAN)
             var subjectAlternativeNames = new SubjectAlternativeNameBuilder();
+            //System.Security.Cryptography.X509Certificates.
+            var x500DistinguishedName = new X500DistinguishedName("");
             subjectAlternativeNames.AddIpAddress(serveraddress);
+            subjectAlternativeNames.AddDnsName("localhost");
             certRequest.CertificateExtensions.Add(subjectAlternativeNames.Build());
-
+            //certRequest.CertificateExtensions.Add();
             // We're just going to create a temporary certificate, that won't be valid for long
             var certificate = certRequest.CreateSelfSigned(DateTimeOffset.Now, DateTimeOffset.Now.AddYears(1));
             // export the private key

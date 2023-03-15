@@ -1,5 +1,5 @@
-﻿using ServerLib.Utilities;
-using ServerLib.Json;
+﻿using ServerLib.Json;
+using ServerLib.Utilities;
 
 namespace ServerLib.Controllers
 {
@@ -25,14 +25,14 @@ namespace ServerLib.Controllers
             {
                 foreach (var friend_id in account.Friends)
                 {
-                    var acc = all_account.Find(x=>x._id == friend_id);
+                    var acc = all_account.Find(x => x._id == friend_id);
                     if (acc != null)
                     {
                         friends.Add(acc);
                     }
                     else
                     {
-                        Utils.PrintError("Unable to find friend's account by its Id"+ friend_id);
+                        Utils.PrintError("Unable to find friend's account by its Id" + friend_id);
                     }
                 }
             }
@@ -122,13 +122,13 @@ namespace ServerLib.Controllers
         /// <param name="sessionId">SessionId/AccountId</param>
         /// <param name="removeId">RequestId</param>
         /// <returns>RequestId</returns>
-        public static string RemoveRequest(string sessionId,string removeId)
-        { 
+        public static string RemoveRequest(string sessionId, string removeId)
+        {
             var acc = AccountController.FindAccount(sessionId);
             var InBox = GetFriendsInbox(sessionId);
             var OutBox = GetFriendsOutbox(sessionId);
 
-            var InRequest = InBox.Where(x=>x.Id == removeId).FirstOrDefault();
+            var InRequest = InBox.Where(x => x.Id == removeId).FirstOrDefault();
             InBox.Remove(InRequest);
             var OutRequest = OutBox.Where(x => x.Id == removeId).FirstOrDefault();
             OutBox.Remove(OutRequest);
@@ -149,7 +149,7 @@ namespace ServerLib.Controllers
         {
             List<Other.FriendRequester> empty = new();
             List<string> addedAccounts = new();
-            
+
             var acc = AccountController.FindAccount(sessionId);
 
             foreach (var friends in acc.FriendRequestInbox)
@@ -169,7 +169,7 @@ namespace ServerLib.Controllers
         /// <param name="FromID">From SessionId/AccountId</param>
         /// <param name="ToID">To SessionId/AccountId</param>
         /// <returns>New Friend Request</returns>
-        public static Other.FriendRequester MakeRequest(string ID ,string FromID,string ToID)
+        public static Other.FriendRequester MakeRequest(string ID, string FromID, string ToID)
         {
             Other.FriendRequester requester = new();
             requester.Id = ID;

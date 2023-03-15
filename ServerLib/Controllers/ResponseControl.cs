@@ -1,5 +1,7 @@
 ﻿using ComponentAce.Compression.Libs.zlib;
 using Ionic.Zlib;
+using Newtonsoft.Json;
+using ServerLib.Json;
 
 namespace ServerLib.Web
 {
@@ -11,7 +13,12 @@ namespace ServerLib.Web
         }
         public static string GetBody(string Data, int errorcode = 0, string errormsg = "null")
         {
-            var Stuff =  "{\"err\":"+ errorcode + ",\"errmsg\":"+ errormsg + ",\"data\":" + Data + "}";
+            var Stuff = "{\"err\":" + errorcode + ",\"errmsg\":" + errormsg + ",\"data\":" + Data + "}";
+            return Stuff;
+        }
+        public static string GetBodyCRC(string Data, int errorcode = 0, string errormsg = "null", int crc = 0)
+        {
+            var Stuff = "{\"err\":" + errorcode + ",\"errmsg\":" + errormsg + ",\"data\":" + Data + ",\"crc\":" + crc + "}";
             return Stuff;
         }
         public static string NullResponse()
@@ -29,6 +36,18 @@ namespace ServerLib.Web
         public static string DeCompressReq(byte[] data)
         {
             return ZlibStream.UncompressString(data);
+        }
+
+        public static string GetNotifier(string SessionId)
+        {
+            ACS.NotifierJson notifier = new()
+            {
+                server = ServerLib.ip_port,
+                channel_id = SessionId,
+                ws = WebSocket.IpPort
+            };
+
+            return JsonConvert.SerializeObject(notifier);
         }
     }
 }

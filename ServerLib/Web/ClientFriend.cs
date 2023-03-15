@@ -1,8 +1,8 @@
 ﻿using HttpServerLite;
-using ServerLib.Controllers;
-using ServerLib.Utilities;
-using ServerLib.Json;
 using Newtonsoft.Json;
+using ServerLib.Controllers;
+using ServerLib.Json;
+using ServerLib.Utilities;
 
 
 namespace ServerLib.Web
@@ -37,9 +37,12 @@ namespace ServerLib.Web
             var req = JsonConvert.DeserializeObject<Other.FriendsReq>(Uncompressed);
 
             var reqID = FriendsController.AddRequest(SessionID, req.toId);
-            Other.AddFriendRsp friendRsp = new Other.AddFriendRsp();
-            friendRsp.RequestId = reqID;
-
+            ACS.FriendSendJson friendRsp = new()
+            { 
+                RequestId = reqID,
+                RetryAfter = 30,
+                Error = 0
+            };
             string resp = ResponseControl.GetBody(JsonConvert.SerializeObject(friendRsp));
             var rsp = ResponseControl.CompressRsp(resp);
             ctx.Response.StatusCode = 200;
@@ -145,10 +148,51 @@ namespace ServerLib.Web
         {
             Utils.PrintRequest(ctx.Request);
             string SessionID = Utils.GetSessionID(ctx.Request.Headers);
-            
+
             var inbox = FriendsController.GetFriendsInbox(SessionID);
             string resp = ResponseControl.GetBody(JsonConvert.SerializeObject(inbox));
 
+            var rsp = ResponseControl.CompressRsp(resp);
+            ctx.Response.StatusCode = 200;
+            ctx.Response.ContentType = "application/json";
+            ctx.Response.ContentLength = rsp.Length;
+            await ctx.Response.TrySendAsync(rsp);
+            return;
+        }
+
+
+        [StaticRoute(HttpServerLite.HttpMethod.POST, "/client/friend/ignore/set")]
+        public async Task FriendIgnoreSet(HttpContext ctx)
+        {
+            Utils.PrintRequest(ctx.Request);
+            string SessionID = Utils.GetSessionID(ctx.Request.Headers);
+
+            string Uncompressed = ResponseControl.DeCompressReq(ctx.Request.DataAsBytes);
+            var req = JsonConvert.DeserializeObject<Other.FriendsReq>(Uncompressed);
+
+            //req.uid;
+
+            string resp = ResponseControl.GetBody("OK");
+            var rsp = ResponseControl.CompressRsp(resp);
+            ctx.Response.StatusCode = 200;
+            ctx.Response.ContentType = "application/json";
+            ctx.Response.ContentLength = rsp.Length;
+            await ctx.Response.TrySendAsync(rsp);
+            return;
+        }
+
+        [StaticRoute(HttpServerLite.HttpMethod.POST, "/client/friend/ignore/remove")]
+        public async Task FriendIgnoreRemove(HttpContext ctx)
+        {
+            Utils.PrintRequest(ctx.Request);
+            string SessionID = Utils.GetSessionID(ctx.Request.Headers);
+
+            string Uncompressed = ResponseControl.DeCompressReq(ctx.Request.DataAsBytes);
+            var req = JsonConvert.DeserializeObject<Other.FriendsReq>(Uncompressed);
+
+            //req.uid;
+
+            string resp = ResponseControl.GetBody("OK");
             var rsp = ResponseControl.CompressRsp(resp);
             ctx.Response.StatusCode = 200;
             ctx.Response.ContentType = "application/json";

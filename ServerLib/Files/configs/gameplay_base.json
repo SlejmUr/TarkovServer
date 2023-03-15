@@ -1,131 +1,468 @@
 {
-  "inRaid":
-  {
-      "showDeathMessage": true,
-      "createFriendlyAI": true,
-      "airdropSettings": {
-        "airdropChancePercent": {
-            "bigmap": 100,
-            "woods": 100,
-            "lighthouse": 100,
-            "shoreline": 100,
-            "interchange": 100,
-            "reserve": 100
-        },
-        "airdropMinStartTimeSeconds": 90,
-        "airdropMaxStartTimeSeconds": 120,
-        "airdropMinOpenHeight": 100,
-        "airdropMaxOpenHeight": 150,
-        "planeMinFlyHeight": 400,
-        "planeMaxFlyHeight": 500,
-        "planeVolume": 0.5,
-        "maximumAirdopsPerRaid": 1
-    }
-  },
-  "fence":
-  {
-      "killingScavsFenceLevelChange": -0.01,
-      "killingPMCsFenceLevelChange": 0.02,
-      "fenceLevelAssortModifier": 1.05
-  },
-  "other":
-  {
-      "RedeemTime": 72
-  },
-  "defaultRaidSettings":
-  {
-      "aiAmount": "High",
-      "aiDifficulty": "Medium",
-      "bossEnabled": true,
-      "scavWars": false,
-      "taggedAndCursed": false
-  },
-  "hideout":
-  {
-      "productionTimeDivide_Areas": 10000,
-      "hideoutConstructionUpgradeFixedTime": 0,
-      "productionTimeDivide_ScavCase": 20,
-      "productionTimeDivide_Bitcoin": 6,
-      "productionTimeDivide_Production": 100
-  },
-  "trading":
-  {
-    "fleaMarket": {
-        "ragfairMultiplierDesc": "How much to multiply the base price by when creating the offer in Flea Market",
-        "ragfairMultiplier": 3.0,
-        "minItemsInOffer": 0,
-        "maxItemsInOffer": 8,
-        "filtersByRarityDesc": "PLANNED: CURRENTLY NOT USED",
-        "filtersByRarity": false,
-        "UseFleaMarketTradingBlacklist": true,
-        "UseFleaMarketLevelLock": true
+    "seasonalEvents": {
+        "enable": true,
+        "events": [
+            {
+                "name": "Halloween",
+                "startDay": "24",
+                "startMonth": "10",
+                "endDay": "4",
+                "endMonth": "11"
+            },
+            {
+                "name": "Christmas",
+                "startDay": "16",
+                "startMonth": "12",
+                "endDay": "31",
+                "endMonth": "12"
+            }
+        ],
+        "loot": {
+            "634959225289190e5e773b3b": {
+                "max": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6
+                ],
+                "prizes": [
+                    "57514643245977207f2c2d09",
+                    "544fb62a4bdc2dfb738b4568",
+                    "57513f07245977207e26a311",
+                    "57513f9324597720a7128161",
+                    "57513fcc24597720a31c09a6",
+                    "5e8f3423fd7471236e6e3b64",
+                    "60b0f93284c20f0feb453da7",
+                    "5734773724597737fd047c14",
+                    "59e3577886f774176a362503",
+                    "57505f6224597709a92585a9",
+                    "544fb6cc4bdc2d34748b456e"
+                ]
+            }
+        }
     },
-      "repairMultiplier": 1,
-      "insureMultiplier": 0.1,
-      "insurerMultiplier":
-      {
-          "5a7c2eca46aef81a7ca2145d":
-          {
-              "0": 0.3,
-              "1": 0.25,
-              "2": 0.19,
-              "3": 0.13
-          }
-      },
-      "insureReturnChance": 100,
-      "fenceAssortSize": 5,
-      "buyItemsMarkedFound": true,
-      "traderSupply":
-      {
-          "5a7c2eca46aef81a7ca2145d": 3600,
-          "5ac3b934156ae10c4430e83c": 3600,
-          "5c0647fdd443bc2504c2d371": 3600,
-          "54cb50c76803fa8b248b4571": 3600,
-          "54cb57776803fa99248b456e": 3600,
-          "579dc571d53a0658a154fbec": 600,
-          "5935c25fb3acc3127c3d8cd9": 3600,
-          "58330581ace78e27b8b10cee": 3600
-      }
-  },
-  "location":
-  {
-      "realTimeEnabled": true,
-      "forceWeatherEnabled": false,
-      "forceWeatherId": false
-  },
-  "locationloot":
-  {
-      "containers":
-      {
-          "ChanceForEmpty": 10,
-          "ChanceToSpawnNextItem": 10,
-          "AttemptsToPlaceLoot": 1
-      },
-      "RarityMultipliers":
-      {
-          "Not_exist": 0,
-          "Common": 0.9,
-          "Uncommon": 0.7,
-          "Rare": 0.25,
-          "Superrare": 0.05
-      },
-      "noDuplicatesTill": 2,
-      "useDynamicLootFromItemsArray": false,
-      "useDynamicLootMultiplier": true,
-      "DynamicLooseLootMultiplier": 2.0
-
-  },
-  "match":
-  {
-      "enabled": true
-  },
-  "weapons":
-  {
-      "cameraRecoilDesc": "Adjust Camera Recoil by (%) percentage - 0 = no recoil, 100 = vanilla recoil, 200 = double recoil",
-      "cameraRecoil": 100,
-      "verticalRecoilDesc": "Adjust Vertical Recoil by (%) percentage - 0 = no recoil, 100 = vanilla recoil, 200 = double recoil",
-      "verticalRecoil": 100,
-      "horizontalRecoilDesc": "Adjust Horizontal Recoil by (%) percentage - 0 = no recoil, 100 = vanilla recoil, 200 = double recoil",
-      "horizontalRecoil": 100
-  }
+    "bots": {
+        "_preload": "Creates a cache on server start of generated bots, so that it is not done as the deploy timer starts; bots are also regenerated after each raid if their minThreshold is met. If all bots in cache are used, will generate normally then regenerate after raid",
+        "preload": {
+            "enabled": false,
+            "maxBossPreload": 3,
+            "minBossPreload": 1,
+            "maxFollowerPreload": 20,
+            "minFollowerPreload": 5,
+            "maxScavPreload": 50,
+            "minScavPreload": 10,
+            "limiter": 75
+        },
+        "_randomAmmos": "Adds some realism to the spare ammunition the standard bots carry",
+        "randomAmmos": {
+            "looseEnabled": true,
+            "magazineEnabled": "i don't work because bsg is shit",
+            "chance": 65,
+            "maxTypes": 5
+        }
+    },
+    "development": {
+        "_development": "Debugging modifiers for development",
+        "openWebLauncher": false,
+        "debugBots": false,
+        "devInsuranceTimers": false,
+        "devInsuranceTimes": {
+            "min": 0.01,
+            "max": 0.01
+        }
+    },
+    "bot": {
+        "backpackChance": 30,
+        "headwearChance": 40,
+        "facecoverChance": 50,
+        "earpieceChance": 20,
+        "primaryWeaponChance": 40,
+        "secondaryWeaponChance": 15,
+        "holsterWeaponChance": 30
+    },
+    "customization": {
+        "allHeadsOnCharacterCreation": true,
+        "allVoicesOnCharacterCreation": true,
+        "allPocketsHaveSpecialSlots": true
+    },
+    "items": {
+        "quickExamine": true,
+        "allExamined": {
+            "enabled": true,
+            "exceptTheseParents": [
+                "5c99f98d86f7745c314214b3",
+                "5c164d2286f774194c5e69fa"
+            ]
+        },
+        "stackSize": {
+            "ammo": 120,
+            "money": 1000000
+        },
+        "stimMaxUses": 3,
+        "noArmorRestrictions": true,
+        "Weight": {
+            "enabled": true,
+            "modifier": 0.3
+        }
+    },
+    "raid": {
+        "allowSelectEntryPoint": true,
+        "maxBotsAliveOnMap": 20,
+        "waveCoef": {
+            "low": 1,
+            "mid": 1.4,
+            "high": 1.8,
+            "horde": 10
+        },
+        "timeBeforeDeploy": 5,
+        "inRaidModding": true,
+        "insuranceEnabled": true,
+        "inRaid": {
+            "showDeathMessage": true,
+            "createFriendlyAI": true
+        },
+        "defaultRaidSettings": {
+            "aiAmount": "AsOnline",
+            "aiDifficulty": "AsOnline",
+            "bossEnabled": true,
+            "scavWars": false,
+            "taggedAndCursed": false
+        },
+        "airdropSettings": {
+            "airdropChancePercent": {
+                "bigmap": 20,
+                "woods": 25,
+                "lighthouse": 20,
+                "shoreline": 20,
+                "interchange": 20,
+                "reserve": 10,
+                "tarkovStreets": 12
+            },
+            "airdropMinStartTimeSeconds": 60,
+            "airdropMaxStartTimeSeconds": 300,
+            "planeMinFlyHeight": 400,
+            "planeMaxFlyHeight": 500,
+            "planeVolume": 0.5,
+            "planeSpeed": 65,
+            "crateFallSpeed": 3
+        }
+    },
+    "trading": {
+        "redeemTimeInHours": 72,
+        "refreshTimeInMinutes": 2,
+        "tradePurchasedIsFoundInRaid": true,
+        "fence": {
+            "killingScavsFenceLevelChange": -0.01,
+            "killingPMCsFenceLevelChange": 0.02,
+            "fenceLevelAssortModifier": 1.05
+        },
+        "ragman": {
+            "sellAllDrip": true
+        },
+        "flea": {
+            "enabled": true,
+            "minUserLevel": 15,
+            "removeBlacklist": true,
+            "liveFleaPrices": true
+        }
+    },
+    "hideout": {
+        "fastScavcase": true,
+        "fastProduction": true
+    },
+    "location": {
+        "realTimeEnabled": true,
+        "forceWeatherEnabled": false,
+        "forceWeatherId": false,
+        "changeRaidTime": true,
+        "raidTimerMultiplier": 1,
+        "changeExfiltrationTime": true,
+        "exfiltrationTime": 1
+    },
+    "quests": {
+        "repeatable": {
+            "Daily": {
+                "requiredLevel": 5,
+                "maxQuests": 3,
+                "resetTime": 86400,
+                "config": {
+                    "Exploration": {
+                        "maxExtracts": 10,
+                        "specificExits": {
+                            "probability": 0.5,
+                            "passageRequirementWhitelist": [
+                                "None",
+                                "TransferItem",
+                                "WorldEvent",
+                                "Train",
+                                "Reference",
+                                "Empty"
+                            ]
+                        }
+                    },
+                    "Completion": {
+                        "minRequestedAmount": 2,
+                        "maxRequestedAmount": 10,
+                        "minRequestedBulletAmount": 20,
+                        "maxRequestedBulletAmount": 60,
+                        "useWhitelist": true,
+                        "useBlacklist": false
+                    },
+                    "Elimination": {
+                        "targets": [
+                            {
+                                "key": [
+                                    "bossBully",
+                                    "bossGluhar",
+                                    "bossKilla",
+                                    "bossSanitar",
+                                    "bossTagilla",
+                                    "bossKojaniy",
+                                    "bossKnight"
+                                ],
+                                "relativeProbability": 0.5,
+                                "data": {
+                                    "isBoss": true
+                                }
+                            },
+                            {
+                                "key": "Savage",
+                                "relativeProbability": 7,
+                                "data": {
+                                    "isBoss": false
+                                }
+                            }
+                        ],
+                        "bodyPartProb": 0.4,
+                        "bodyParts": [
+                            {
+                                "key": "Head",
+                                "relativeProbability": 1,
+                                "data": [
+                                    "Head"
+                                ]
+                            },
+                            {
+                                "key": "Stomach",
+                                "relativeProbability": 3,
+                                "data": [
+                                    "Stomach"
+                                ]
+                            },
+                            {
+                                "key": "Chest",
+                                "relativeProbability": 5,
+                                "data": [
+                                    "Chest"
+                                ]
+                            },
+                            {
+                                "key": "Arms",
+                                "relativeProbability": 0.5,
+                                "data": [
+                                    "LeftArm",
+                                    "RightArm"
+                                ]
+                            },
+                            {
+                                "key": "Legs",
+                                "relativeProbability": 1,
+                                "data": [
+                                    "LeftLeg",
+                                    "RightLeg"
+                                ]
+                            }
+                        ],
+                        "specificLocationProb": 0.25,
+                        "distLocationBlacklist": [
+                            "laboratory",
+                            "factory4_day",
+                            "factory4_night"
+                        ],
+                        "distProb": 0.25,
+                        "maxDist": 200,
+                        "minDist": 10,
+                        "maxKills": 15,
+                        "minKills": 5
+                    }
+                }
+            },
+            "Weekly": {
+                "requiredLevel": 15,
+                "maxQuests": 1,
+                "resetTime": 604800,
+                "config": {
+                    "Exploration": {
+                        "maxExtracts": 10,
+                        "specificExits": {
+                            "probability": 0.5,
+                            "passageRequirementWhitelist": [
+                                "None",
+                                "TransferItem",
+                                "WorldEvent",
+                                "Train",
+                                "Reference",
+                                "Empty"
+                            ]
+                        }
+                    },
+                    "Completion": {
+                        "minRequestedAmount": 2,
+                        "maxRequestedAmount": 10,
+                        "minRequestedBulletAmount": 20,
+                        "maxRequestedBulletAmount": 60,
+                        "useWhitelist": true,
+                        "useBlacklist": false
+                    },
+                    "Elimination": {
+                        "targets": [
+                            {
+                                "key": [
+                                    "bossBully",
+                                    "bossGluhar",
+                                    "bossKilla",
+                                    "bossSanitar",
+                                    "bossTagilla",
+                                    "bossKojaniy",
+                                    "bossKnight"
+                                ],
+                                "relativeProbability": 0.5,
+                                "data": {
+                                    "isBoss": true
+                                }
+                            },
+                            {
+                                "key": "Savage",
+                                "relativeProbability": 7,
+                                "data": {
+                                    "isBoss": false
+                                }
+                            }
+                        ],
+                        "bodyPartProb": 0.4,
+                        "bodyParts": [
+                            {
+                                "key": "Head",
+                                "relativeProbability": 1,
+                                "data": [
+                                    "Head"
+                                ]
+                            },
+                            {
+                                "key": "Stomach",
+                                "relativeProbability": 3,
+                                "data": [
+                                    "Stomach"
+                                ]
+                            },
+                            {
+                                "key": "Chest",
+                                "relativeProbability": 5,
+                                "data": [
+                                    "Chest"
+                                ]
+                            },
+                            {
+                                "key": "Arms",
+                                "relativeProbability": 0.5,
+                                "data": [
+                                    "LeftArm",
+                                    "RightArm"
+                                ]
+                            },
+                            {
+                                "key": "Legs",
+                                "relativeProbability": 1,
+                                "data": [
+                                    "LeftLeg",
+                                    "RightLeg"
+                                ]
+                            }
+                        ],
+                        "specificLocationProb": 0.25,
+                        "distLocationBlacklist": [
+                            "laboratory",
+                            "factory4_day",
+                            "factory4_night"
+                        ],
+                        "distProb": 0.25,
+                        "maxDist": 200,
+                        "minDist": 10,
+                        "maxKills": 15,
+                        "minKills": 5
+                    }
+                }
+            },
+            "locations": {
+                "any": [
+                    "any"
+                ],
+                "factory4_day": [
+                    "factory4_day",
+                    "factory4_night"
+                ],
+                "bigmap": [
+                    "bigmap"
+                ],
+                "Woods": [
+                    "Woods"
+                ],
+                "Shoreline": [
+                    "Shoreline"
+                ],
+                "Interchange": [
+                    "Interchange"
+                ],
+                "Lighthouse": [
+                    "Lighthouse"
+                ],
+                "laboratory": [
+                    "laboratory"
+                ],
+                "RezervBase": [
+                    "RezervBase"
+                ]
+            },
+            "quests": {
+                "Elimination": [
+                    "54cb50c76803fa8b248b4571",
+                    "54cb57776803fa99248b456e",
+                    "58330581ace78e27b8b10cee",
+                    "5935c25fb3acc3127c3d8cd9",
+                    "5ac3b934156ae10c4430e83c",
+                    "5c0647fdd443bc2504c2d371"
+                ],
+                "Exploration": [
+                    "54cb50c76803fa8b248b4571",
+                    "54cb57776803fa99248b456e",
+                    "58330581ace78e27b8b10cee",
+                    "5935c25fb3acc3127c3d8cd9",
+                    "5ac3b934156ae10c4430e83c",
+                    "5c0647fdd443bc2504c2d371",
+                    "5a7c2eca46aef81a7ca2145d"
+                ],
+                "Completion": [
+                    "54cb50c76803fa8b248b4571",
+                    "54cb57776803fa99248b456e",
+                    "58330581ace78e27b8b10cee",
+                    "5935c25fb3acc3127c3d8cd9",
+                    "5ac3b934156ae10c4430e83c",
+                    "5c0647fdd443bc2504c2d371",
+                    "5a7c2eca46aef81a7ca2145d"
+                ]
+            },
+            "rewardBaseTypeBlacklist": [
+                "543be5e94bdc2df1348b4568",
+                "5b3f15d486f77432d0509248"
+            ],
+            "rewardBlacklist": []
+        }
+    },
+    "loot": {},
+    "match": {
+        "enabled": true
+    },
+    "weapons": {}
 }

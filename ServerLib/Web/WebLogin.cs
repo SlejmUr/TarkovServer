@@ -38,7 +38,7 @@ namespace ServerLib.Web
         {
             //REQ stuff
             Console.WriteLine(ctx.Request.ToJson(true));
-            var WipeProfile  = JsonConvert.DeserializeObject<Json.WebProfile.WebWipe>(ctx.Request.DataAsString);
+            var WipeProfile = JsonConvert.DeserializeObject<Json.WebProfile.WebWipe>(ctx.Request.DataAsString);
             // RPS
             string resp = AccountController.SetWipe(WipeProfile.AccountId);
             ctx.Response.StatusCode = 200;

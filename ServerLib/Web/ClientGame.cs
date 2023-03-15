@@ -1,5 +1,7 @@
 ﻿using HttpServerLite;
+using Newtonsoft.Json;
 using ServerLib.Controllers;
+using ServerLib.Json;
 using ServerLib.Utilities;
 
 namespace ServerLib.Web
@@ -59,7 +61,6 @@ namespace ServerLib.Web
         public async Task GameVersionValidate(HttpContext ctx)
         {
             //REQ stuff
-            string resp;
             Utils.PrintRequest(ctx.Request);
             string SessionID = Utils.GetSessionID(ctx.Request.Headers);
             string version = Utils.GetVersion(ctx.Request.Headers);
@@ -83,30 +84,28 @@ namespace ServerLib.Web
         public async Task GameConfig(HttpContext ctx)
         {
             //REQ stuff
-            string resp;
             Utils.PrintRequest(ctx.Request);
             string SessionID = Utils.GetSessionID(ctx.Request.Headers);
-            /*
+
+            Other.GameConfig game = new();
+            game.Aid = SessionID;
+            game.Lang = AccountController.GetAccountLang(SessionID);
+            game.Languages = LocaleController.GetConfigLanguages();
+            game.NdaFree = false;
+            game.Taxonomy = 6;
+            game.ActiveProfileId = "pmc" + SessionID;
+            game.Backend = new()
             {
-            aid: sessionID,
-            lang: "en",
-            languages: await Language.getAllWithoutKeys(),
-            ndaFree: false,
-            taxonomy: 6,
-            activeProfileId: "pmc" + SessionID,
-            backend: {
-                Trading: FastifyResponse.getBackendUrl(),
-                Messaging: FastifyResponse.getBackendUrl(),
-                Main: FastifyResponse.getBackendUrl(),
-                RagFair: FastifyResponse.getBackendUrl()
-            },
-            utc_time: getCurrentTimestamp(),
-            totalInGame: 0,
-            reportAvailable: true,
-            twitchEventMember: false
-            }
-            */
-            var rsp = ResponseControl.CompressRsp(ResponseControl.GetBody("{status: \"ok\"}"));
+                Trading = ServerLib.IP,
+                Messaging = ServerLib.IP,
+                Main = ServerLib.IP,
+                RagFair = ServerLib.IP
+            };
+            game.UtcTime = Utils.UnixTimeNow();
+            game.TotalInGame = AccountController.ActiveAccountIds.Count;
+            game.ReportAvailable = true;
+            game.TwitchEventMember = false;
+            var rsp = ResponseControl.CompressRsp(ResponseControl.GetBody(JsonConvert.SerializeObject(game)).Replace("\\", ""));
             ctx.Response.StatusCode = 200;
             ctx.Response.ContentType = "application/json";
             ctx.Response.ContentLength = rsp.Length;
@@ -118,16 +117,32 @@ namespace ServerLib.Web
         public async Task GameLogout(HttpContext ctx)
         {
             //REQ stuff
-            string resp;
             Utils.PrintRequest(ctx.Request);
             string SessionID = Utils.GetSessionID(ctx.Request.Headers);
-            string version = Utils.GetVersion(ctx.Request.Headers);
             AccountController.SessionLogout(SessionID);
             var rsp = ResponseControl.CompressRsp(ResponseControl.GetBody("{status: \"ok\"}"));
             ctx.Response.StatusCode = 200;
             ctx.Response.ContentType = "application/json";
             ctx.Response.ContentLength = rsp.Length;
             await ctx.Response.TrySendAsync(rsp);
+            return;
+        }
+
+        [StaticRoute(HttpServerLite.HttpMethod.POST, "/client/game/bot/generate")]
+        public async Task BotGenerate(HttpContext ctx)
+        {
+            Utils.PrintRequest(ctx.Request);
+            string SessionID = Utils.GetSessionID(ctx.Request.Headers);
+            string Uncompressed = ResponseControl.DeCompressReq(ctx.Request.DataAsBytes);
+            var conditions = JsonConvert.DeserializeObject<List<ACS.WaveInfo>>(Uncompressed);
+
+            CharacterController.RaidKilled(Uncompressed, SessionID);
+            // RPS
+            var rsp = ResponseControl.CompressRsp("{}");
+            ctx.Response.StatusCode = 200;
+            ctx.Response.ContentType = "text/plain";
+            ctx.Response.ContentLength = rsp.Length;
+            await ctx.Response.SendAsync(rsp);
             return;
         }
     }

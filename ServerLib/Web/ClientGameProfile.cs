@@ -17,7 +17,29 @@ namespace ServerLib.Web
 
             string resp = CharacterController.GetCompleteCharacter(SessionID);
             // RPS
-            var rsp = ResponseControl.CompressRsp(resp);
+            var rsp = ResponseControl.CompressRsp(ResponseControl.GetBody(resp));
+            ctx.Response.StatusCode = 200;
+            ctx.Response.ContentType = "application/json";
+            ctx.Response.ContentLength = rsp.Length;
+            await ctx.Response.TrySendAsync(rsp);
+            return;
+        }
+
+        [StaticRoute(HttpServerLite.HttpMethod.POST, "/client/game/profile/search")]
+        public async Task ProfileSearch(HttpContext ctx)
+        {
+            //REQ stuff
+            string SessionID = Utils.GetSessionID(ctx.Request.Headers);
+            Utils.PrintRequest(ctx.Request);
+            string Uncompressed = ResponseControl.DeCompressReq(ctx.Request.DataAsBytes);
+            //HealOverTime!!
+
+            // {"nickname": ""}
+
+
+            string resp = CharacterController.GetCompleteCharacter(SessionID);
+            // RPS
+            var rsp = ResponseControl.CompressRsp(ResponseControl.GetBody(resp));
             ctx.Response.StatusCode = 200;
             ctx.Response.ContentType = "application/json";
             ctx.Response.ContentLength = rsp.Length;
@@ -31,10 +53,9 @@ namespace ServerLib.Web
             //REQ stuff
             string SessionID = Utils.GetSessionID(ctx.Request.Headers);
             Utils.PrintRequest(ctx.Request);
-            //
-            string resp = "{\"status\": \"ok\"}";
+            string resp = "{\"status\": \"ok\",\"notifier\":\"" + ResponseControl.GetNotifier(SessionID) + "\",\"notifierServer\":\"\"}";
             // RPS
-            var rsp = ResponseControl.CompressRsp(resp);
+            var rsp = ResponseControl.CompressRsp(ResponseControl.GetBody(resp));
             ctx.Response.StatusCode = 200;
             ctx.Response.ContentType = "application/json";
             ctx.Response.ContentLength = rsp.Length;
@@ -48,11 +69,11 @@ namespace ServerLib.Web
             //REQ stuff
             string SessionID = Utils.GetSessionID(ctx.Request.Headers);
             Utils.PrintRequest(ctx.Request);
-
-
+            string Uncompressed = ResponseControl.DeCompressReq(ctx.Request.DataAsBytes);
+            CharacterController.CreateCharacter(SessionID, Uncompressed);
             string resp = "{ uid: \"pmc" + SessionID + "\"}";
             // RPS
-            var rsp = ResponseControl.CompressRsp(resp);
+            var rsp = ResponseControl.CompressRsp(ResponseControl.GetBody(resp));
             ctx.Response.StatusCode = 200;
             ctx.Response.ContentType = "application/json";
             ctx.Response.ContentLength = rsp.Length;
@@ -87,7 +108,7 @@ namespace ServerLib.Web
             var resp = ResponseControl.GetBody("{status: \"ok\"}");
             if (nickname == "taken")
             {
-                resp = ResponseControl.GetBody("null" ,255, "The nickname is already in use");
+                resp = ResponseControl.GetBody("null", 255, "The nickname is already in use");
             }
 
             if (nickname == "tooshort")
@@ -113,7 +134,7 @@ namespace ServerLib.Web
             string Uncompressed = ResponseControl.DeCompressReq(ctx.Request.DataAsBytes);
 
             var nickname = CharacterController.ChangeNickname(Uncompressed, SessionID);
-            var resp = ResponseControl.GetBody("{status: 0, nicknamechangedate: " + Utils.UnixTimeNow_Int() +"}");
+            var resp = ResponseControl.GetBody("{status: 0, nicknamechangedate: " + Utils.UnixTimeNow_Int() + "}");
             if (nickname == "taken")
             {
                 resp = ResponseControl.GetBody("null", 255, "The nickname is already in use");
@@ -140,7 +161,7 @@ namespace ServerLib.Web
             Utils.PrintRequest(ctx.Request);
             string Uncompressed = ResponseControl.DeCompressReq(ctx.Request.DataAsBytes);
 
-            CharacterController.ChangeVoice(Uncompressed,SessionID);
+            CharacterController.ChangeVoice(Uncompressed, SessionID);
             // RPS
             var rsp = ResponseControl.CompressRsp(ResponseControl.NullResponse());
             ctx.Response.StatusCode = 200;
@@ -152,6 +173,22 @@ namespace ServerLib.Web
 
         [StaticRoute(HttpServerLite.HttpMethod.POST, "/client/game/profile/items/moving")]
         public async Task ProfileItemsMoving(HttpContext ctx)
+        {
+            //REQ stuff
+            string SessionID = Utils.GetSessionID(ctx.Request.Headers);
+            Utils.PrintRequest(ctx.Request);
+            string resp = "";
+            // RPS
+            var rsp = ResponseControl.CompressRsp(resp);
+            ctx.Response.StatusCode = 200;
+            ctx.Response.ContentType = "application/json";
+            ctx.Response.ContentLength = rsp.Length;
+            await ctx.Response.TrySendAsync(rsp);
+            return;
+        }
+
+        [StaticRoute(HttpServerLite.HttpMethod.POST, "/client/profile/status")]
+        public async Task ProfileStatus(HttpContext ctx)
         {
             //REQ stuff
             string SessionID = Utils.GetSessionID(ctx.Request.Headers);

@@ -1,8 +1,7 @@
-﻿using ServerLib;
+﻿using HttpServerLite;
+using ServerLib;
 using ServerLib.Utilities;
 using System.Composition;
-using TestPlugin;
-using HttpServerLite;
 using System.Reflection;
 
 namespace Plugin
@@ -16,7 +15,7 @@ namespace Plugin
         public Plugin() //This will be called First!
         {
             Console.WriteLine("Welcome from " + Name + " !");
-		}
+        }
 
         public string Name { get; } = "TestPlugin";
 

@@ -11,8 +11,7 @@ namespace ServerLib.Web
         {
             //REQ stuff
             Utils.PrintRequest(ctx.Request);
-            var resp = ResponseControl.GetBody(LocaleController.GetLanguages());
-            var rsp = ResponseControl.CompressRsp(resp);
+            var rsp = ResponseControl.CompressRsp(LocaleController.GetLanguages());
             ctx.Response.StatusCode = 200;
             ctx.Response.ContentType = "application/json";
             ctx.Response.ContentLength = rsp.Length;

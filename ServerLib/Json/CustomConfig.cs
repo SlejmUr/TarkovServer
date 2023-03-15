@@ -11,6 +11,9 @@ namespace ServerLib.Json
 
             [JsonProperty("Locale")]
             public Locale Locale { get; set; }
+
+            [JsonProperty("Server")]
+            public Server Server { get; set; }
         }
         public class Account
         {
@@ -49,6 +52,11 @@ namespace ServerLib.Json
 
             [JsonProperty("toReplace")]
             public List<string> ToReplace { get; set; }
+        }
+        public class Server
+        {
+            [JsonProperty("PublicConfigEnabled")]
+            public bool PublicConfigEnabled { get; set; }
         }
     }
 }

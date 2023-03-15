@@ -1,7 +1,7 @@
 ﻿using HttpServerLite;
+using Newtonsoft.Json;
 using ServerLib.Controllers;
 using ServerLib.Utilities;
-using Newtonsoft.Json;
 
 namespace ServerLib.Web
 {
@@ -41,6 +41,19 @@ namespace ServerLib.Web
             Utils.PrintRequest(ctx.Request);
             var difff = BotController.GetBotDifficulty(botname, difficulty);
             var rsp = ResponseControl.CompressRsp(ResponseControl.NoBody(difff));
+            ctx.Response.StatusCode = 200;
+            ctx.Response.ContentType = "application/json";
+            ctx.Response.ContentLength = rsp.Length;
+            await ctx.Response.TrySendAsync(rsp);
+            return;
+        }
+
+        [StaticRoute(HttpServerLite.HttpMethod.GET, "/singleplayer/airdrop/config")]
+        public async Task SSAirdropConfig(HttpContext ctx)
+        {
+            Utils.PrintRequest(ctx.Request);
+            var defaultraid = JsonConvert.SerializeObject(ConfigController.Configs.Gameplay.InRaid.AirdropSettings);
+            var rsp = ResponseControl.CompressRsp(ResponseControl.NoBody(defaultraid));
             ctx.Response.StatusCode = 200;
             ctx.Response.ContentType = "application/json";
             ctx.Response.ContentLength = rsp.Length;

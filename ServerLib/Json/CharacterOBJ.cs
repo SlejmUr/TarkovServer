@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json;
 
 namespace ServerLib.Json
 {
@@ -25,5 +25,49 @@ namespace ServerLib.Json
             public bool Ignored { get; set; } = false;
             public bool Banned { get; set; } = false;
         }
+
+        public class Storage
+        {
+            public string _id { get; set; }
+            public List<string> suites { get; set; } = new();
+        }
+
+        public class CharacterStorage
+        {
+            public List<string> bear { get; set; } = new();
+            public List<string> usec { get; set; } = new();
+        }
+        public class DefaultCustomization
+        {
+            [JsonProperty("Usec")]
+            public Usec Usec;
+
+            [JsonProperty("Bear")]
+            public Bear Bear;
+        }
+        public class Bear
+        {
+            [JsonProperty("Body")]
+            public string Body;
+
+            [JsonProperty("Feet")]
+            public string Feet;
+
+            [JsonProperty("Hands")]
+            public string Hands;
+        }
+
+        public class Usec
+        {
+            [JsonProperty("Body")]
+            public string Body;
+
+            [JsonProperty("Feet")]
+            public string Feet;
+
+            [JsonProperty("Hands")]
+            public string Hands;
+        }
+
     }
 }

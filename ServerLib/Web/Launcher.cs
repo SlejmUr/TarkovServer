@@ -69,7 +69,7 @@ namespace ServerLib.Web
             string Uncompressed = ZlibStream.UncompressString(ctx.Request.DataAsBytes);
             // RPS
             var server = ConfigController.Configs.Server;
-            string resp = "{backendUrl: https://" + server.Ip + ":" + server.Port + ",name:"+ server.Name + ",server:" + JsonConvert.SerializeObject(server) + "}";
+            string resp = "{backendUrl: https://" + server.Ip + ":" + server.Port + ",name:" + server.Name + ",server:" + JsonConvert.SerializeObject(server) + "}";
             var rsp = ZlibStream.CompressString(resp);
             ctx.Response.StatusCode = 200;
             ctx.Response.ContentType = "text/plain";

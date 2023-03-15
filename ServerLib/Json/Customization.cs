@@ -53,7 +53,7 @@ namespace ServerLib.Json
             [JsonProperty("WatchRotation", NullValueHandling = NullValueHandling.Ignore)]
             public WatchTion? WatchRotation { get; set; }
 
-            [JsonProperty("AvailableAsDefault", NullValueHandling= NullValueHandling.Ignore)]
+            [JsonProperty("AvailableAsDefault", NullValueHandling = NullValueHandling.Ignore)]
             public bool? AvailableAsDefault { get; set; }
 
             [JsonProperty("Body", NullValueHandling = NullValueHandling.Ignore)]
