@@ -1,7 +1,7 @@
 # Tarkov Server
-Tarkov Server on C#
+Tarkov Server on C# (.NET 6)
 
-This is my attempt to port existing JavaScript(nodejs) code to C#.\
+This is my attempt to port existing JavaScript code to C#.\
 Because I am not want and familiar with JS and his funny stuffs.
 
 And possibly easier to make a nice Server UI with this (Xaml, or just Winform).\
@@ -21,14 +21,14 @@ UnityEngine.CoreModule.dll
 ## Credits
 - TheMaoci for official Research and Dump Tutorials
 - JET Team for making Tarkov Server
-- Paulov for editing Existed Tarkov Server code & soon-to-be Multi Server
-- Apofis for soon-to-be MultiPlayer code
+- Paulov for editing Existed Tarkov Server code
 - Altered Escape Team for MTGA and some of easier Server code
+- SPT-AKI Team for some of the newest Jsons
 - NBJF, Panther for Testing & Debugging
 - SlejmUr for the Original Idea
 
 ## Build
-Make a Ref folder next to Tarkov_Server_Csharp.sln and paste the References.\
+Make a Ref folder next to TarkovServer.sln and paste the References.\
 Open SLN in Visual Studio.\
 Build=>(Re-)Build Solution
 
@@ -45,4 +45,8 @@ You can check TestPlugin for some of the changes.
 You can add you own idea or anything, make a PR and I will check it. Feel free to import something you like.
 
 ## Releases
-Because I used 2 project to make server work (Lib + Console), Probably its gonna be hard to make a proper "Build/Release" for it, I still looking for a solution
+Release will come if everything works as intended it should work.\
+It need most of the Managed dll's and the two dll you find in the _Ref folder!\
+When using the ConsoleApp it will create a path.txt\
+Edit that to a directory where the managed dlls are + the two dll from _Ref folder\
+I suggest copy all dll's from the Managed folder and paste into a folder that says in the path.txt [Ref folder]
