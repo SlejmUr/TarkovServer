@@ -1,4 +1,4 @@
-﻿namespace Tarkov_Server_Console
+﻿namespace ConsoleApp
 {
     internal class CVersion : ServerLib.Utilities.Versions
     {

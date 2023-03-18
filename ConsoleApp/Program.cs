@@ -8,7 +8,7 @@ using SLU = ServerLib.Utilities;
 using SLC = ServerLib.Controllers;
 using SLW = ServerLib.Web;
 
-namespace Tarkov_Server_Console
+namespace ConsoleApp
 {
     internal class Program
     {
