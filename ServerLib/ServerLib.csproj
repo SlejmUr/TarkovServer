@@ -13,7 +13,7 @@
     </Content>
   </ItemGroup>
 	<ItemGroup>
-		<PackageReference Include="NetCoreServer" Version="6.7.0" />
+		<PackageReference Include="NetCoreServer" Version="7.0.0" />
 		<PackageReference Include="WatsonWebsocket" Version="4.0.8" />
 	</ItemGroup>
 
