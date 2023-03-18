@@ -26,7 +26,7 @@ namespace ServerLib.Controllers
             dogtag.Nickname = bot.Info.Nickname;
             dogtag.Side = bot.Info.Side;
             dogtag.Level = bot.Info.Level;
-            dogtag.Time = Utils.GetTime();
+            dogtag.Time = Time.GetTime();
             dogtag.Status = "Killed by ";
             dogtag.KillerAccountId = "Unknown";
             dogtag.KillerProfileId = "Unknown";
@@ -65,7 +65,7 @@ namespace ServerLib.Controllers
 
         public static string GenerateBotName(string role)
         {
-            return Utils.GetRandomArray(DatabaseController.DataBase.Bot.NamesDict[role].ToArray());
+            return MathHelper.GetRandomArray(DatabaseController.DataBase.Bot.NamesDict[role].ToArray());
         }
 
         public static Bots.BotBase GenerateNewID(Bots.BotBase bot)
@@ -140,7 +140,7 @@ namespace ServerLib.Controllers
             }
             xp = 0;
 
-            lvl = Utils.GetRandomInt(limit_min, limit_max);
+            lvl = MathHelper.GetRandomInt(limit_min, limit_max);
 
             for (int i = 0; i < lvl; i++)
             {
@@ -149,7 +149,7 @@ namespace ServerLib.Controllers
 
             if (lvl < expTableClass.ExpTable.Count - 1)
             {
-                xp += Utils.GetRandomInt(0, expTableClass.ExpTable[lvl].Exp - 1);
+                xp += MathHelper.GetRandomInt(0, expTableClass.ExpTable[lvl].Exp - 1);
             }
 
         }

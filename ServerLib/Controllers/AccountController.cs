@@ -6,12 +6,7 @@ namespace ServerLib.Controllers
 {
     public class AccountController
     {
-        public static List<LoginProfile> Profiles;
-        public static List<Account> Accounts;
-        public static List<string> ActiveAccountIds;
-
-        #region Custom Made Functions
-        public static void Init()
+        static AccountController()
         {
             if (!Directory.Exists("user/profiles")) { Directory.CreateDirectory("user/profiles"); }
 
@@ -21,8 +16,17 @@ namespace ServerLib.Controllers
             Accounts.Clear();
             ActiveAccountIds = new();
             ActiveAccountIds.Clear();
-            Debug.PrintDebug("Initialization Done!", "debug", "[ACCOUNT]");
+        }
+
+        public static List<LoginProfile> Profiles;
+        public static List<Account> Accounts;
+        public static List<string> ActiveAccountIds;
+
+        #region Custom Made Functions
+        public static void Init()
+        {
             GetAccountList();
+            Debug.PrintInfo("Initialization Done!", "[ACCOUNT]");
         }
 
         public static void GetAccountList()
@@ -34,6 +38,7 @@ namespace ServerLib.Controllers
                 var account = JsonConvert.DeserializeObject<Account>(File.ReadAllText($"{dir}/account.json"));
                 if (!Accounts.Contains(account))
                 {
+                    Debug.PrintInfo("Loaded account data for profile: " + account.Id, "[ACCOUNT]");
                     Accounts.Add(account);
                 }
             }
@@ -64,12 +69,12 @@ namespace ServerLib.Controllers
 
             if (ID == null)
             {
-                Console.WriteLine("Login FAILED! " + ID);
+                Debug.PrintInfo("Login FAILED! " + ID);
                 return "FAILED";
             }
             else
             {
-                Console.WriteLine("Login Success! " + ID);
+                Debug.PrintInfo("Login Success! " + ID);
                 if (!ActiveAccountIds.Contains(ID))
                 {
                     ActiveAccountIds.Add(ID);
@@ -105,7 +110,7 @@ namespace ServerLib.Controllers
                 string serjson = JsonConvert.SerializeObject(account, Formatting.Indented);
                 if (!Directory.Exists($"user/profiles/{AccountID}")) { Directory.CreateDirectory($"user/profiles/{AccountID}"); }
                 File.WriteAllText($"user/profiles/{AccountID}/account.json", serjson);
-                Console.WriteLine("Register Success! " + AccountID);
+                Debug.PrintInfo("Register Success! " + AccountID);
                 if (!ActiveAccountIds.Contains(AccountID))
                 {
                     ActiveAccountIds.Add(AccountID);
@@ -135,7 +140,6 @@ namespace ServerLib.Controllers
                 var account = JsonConvert.DeserializeObject<Account>(File.ReadAllText($"{dir}/account.json"));
                 if (account.Email == name && account.Password == passw)
                 {
-                    Console.WriteLine(dir);
                     return dir.Replace("user/profiles\\", "");
                 }
             }
@@ -173,13 +177,13 @@ namespace ServerLib.Controllers
         /// <returns>True | False</returns>
         public static bool ClientHasProfile(string SessionId)
         {
-            if (SessionId == null) { Console.WriteLine("SessionId null?"); return false; }
+            if (SessionId == null) { Debug.PrintError("SessionId null?"); return false; }
             var account = FindAccount(SessionId);
             if (account != null)
             {
                 if (!File.Exists("user/profiles/" + SessionId + "/character.json"))
                 {
-                    Console.WriteLine($"New account {SessionId} logged in!");
+                    Debug.PrintInfo($"New account {SessionId} logged in!");
                 }
                 return true;
             }
@@ -210,6 +214,7 @@ namespace ServerLib.Controllers
                 obj.Nickname = character.Info.Nickname;
                 obj.Level = character.Info.Level;
                 obj.PlayerVisualRepresentation = new();
+                obj.PlayerVisualRepresentation.Info = new();
                 obj.PlayerVisualRepresentation.Info.Nickname = character.Info.Nickname;
                 obj.PlayerVisualRepresentation.Info.Side = character.Info.Side;
                 obj.PlayerVisualRepresentation.Info.Level = character.Info.Level;
@@ -230,13 +235,13 @@ namespace ServerLib.Controllers
             if (SessionId == null) { new Exception("SessionId Null!"); }
             if (!File.Exists($"user/profiles/{SessionId}/account.json"))
             {
-                Console.WriteLine("[WARN] Account file not exist. ID: " + SessionId);
+                Debug.PrintWarn("Account file not exist. ID: " + SessionId);
             }
             else
             {
                 if (Accounts.Where(x => x.Id == SessionId).Count() == 0)
                 {
-                    Console.WriteLine("[WARN] Account isnt Cached, Load from disk. ID:" + SessionId);
+                    Debug.PrintInfo("[WARN] Account isnt Cached, Load from disk. ID:" + SessionId);
                     var account = JsonConvert.DeserializeObject<Account>(File.ReadAllText($"user/profiles/{SessionId}/account.json"));
                     Accounts.Add(account);
                 }

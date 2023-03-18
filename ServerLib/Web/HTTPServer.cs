@@ -28,7 +28,7 @@ namespace ServerLib.Web
                 if (method == null)
                     continue;
                 var url = method.GetCustomAttribute<HTTPAttribute>().url;
-                Debug.PrintDebug(method.Name + $" ({url}) is added as an URL", "debug", "[HTTPServer]");
+                Debug.PrintDebug(method.Name + $" ({url}) is added as an URL", "[HTTPServer]");
                 HttpServerThingy.Add(url, method);
             }
             methods = basemethods.Where(x => x.GetCustomAttribute<HTTPAttribute>().method.Contains("POST")).ToArray();
@@ -37,7 +37,7 @@ namespace ServerLib.Web
                 if (method == null)
                     continue;
                 var url = method.GetCustomAttribute<HTTPAttribute>().url;
-                Debug.PrintDebug(method.Name + $" ({url}) is added as an URL", "debug", "[HTTPServer]");
+                Debug.PrintDebug(method.Name + $" ({url}) is added as an URL", "[HTTPServer]");
                 HttpServerThingy.Add(url, method);
             }
         }
@@ -153,7 +153,7 @@ namespace ServerLib.Web
 
                 foreach (var item in HttpServerThingy)
                 {
-                    if (Utils.Match(url, item.Key, out HttpParam) || item.Key == url)
+                    if (UrlHelper.Match(url, item.Key, out HttpParam) || item.Key == url)
                     {
                         Debug.PrintDebug("Url Called function: " + item.Value.Name);
                         item.Value.Invoke(this, new object[] { request, this });

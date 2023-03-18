@@ -17,15 +17,14 @@ namespace ServerLib.Controllers
             LoadCharacters();
             LoadBots();
             LoadHideOut();
-            LoadQuests();
-            LoadCustomization();
             LoadLocale();
             LoadTemplates();
+            LoadOthers();
             LoadLocations();
             LoadTraders();
             LoadWeater();
             LoadCustomConfig();
-            Debug.PrintDebug("Initialization Done!", "debug", "[DATABASE]");
+            Debug.PrintInfo("Initialization Done!", "[DATABASE]");
         }
 
         static void LoadBasics()
@@ -38,13 +37,33 @@ namespace ServerLib.Controllers
         {
             DataBase.Templates.Items = JsonConvert.DeserializeObject<List<Templates.Items>>(File.ReadAllText("Files/templates/items.json"));
             DataBase.Templates.Categories = JsonConvert.DeserializeObject<List<Templates.Categories>>(File.ReadAllText("Files/templates/categories.json"));
+            Debug.PrintDebug("Templates loaded");
+        }
+
+        static void LoadOthers()
+        {
             foreach (var item in DataBase.Templates.Items)
             {
                 DataBase.Others.ItemPrices.Add(item.Id, item.Price);
             }
-            DataBase.Others.Items = ItemBase.FromJson(File.ReadAllText("Files/others/items.json")); 
-            Debug.PrintDebug("Templates loaded");
+            DataBase.Others.ChildlessList = JsonConvert.DeserializeObject<List<string>>(File.ReadAllText("Files/others/childlessList.json"));
+            DataBase.Others.Items = ItemBase.FromJson(File.ReadAllText("Files/others/items.json"));
+            DataBase.Others.Quests = File.ReadAllText("Files/others/quests.json");
+            if (File.Exists("Files/others/resupply.json"))
+            {
+                DataBase.Others.Resupply = JsonConvert.DeserializeObject<Dictionary<string, int>>(File.ReadAllText("Files/others/resupply.json"));
+            }
+            DataBase.Others.Resupply = new();
+            DataBase.Others.Customization = new();
+            dynamic customs = JsonConvert.DeserializeObject<dynamic>(File.ReadAllText("Files/others/customization.json"));
+            foreach (var item in customs)
+            {
+                var customItem = item.ToString().Split(":")[0].Replace("\"", "");
+                DataBase.Others.Customization.Add(customItem.ToString(), customs[customItem].ToString());
+            }
+            Debug.PrintDebug("Others loaded");
         }
+
         static void LoadCharacters()
         {
             DataBase.Characters.CharacterBase["bear"] = JsonConvert.DeserializeObject<Character.Base>(File.ReadAllText("Files/characters/character_bear.json"));
@@ -154,22 +173,6 @@ namespace ServerLib.Controllers
             DataBase.Hideout = hideout;
             Debug.PrintDebug("Hideout loaded");
         }
-        static void LoadQuests()
-        {
-            DataBase.Others.Quests = File.ReadAllText("Files/others/quests.json");
-            Debug.PrintDebug("Quests loaded");
-        }
-        static void LoadCustomization()
-        {
-            DataBase.Others.Customization = new();
-            dynamic customs = JsonConvert.DeserializeObject<dynamic>(File.ReadAllText("Files/others/customization.json"));
-            foreach (var item in customs)
-            {
-                var fsf = item.ToString().Split(":")[0].Replace("\"", "");
-                DataBase.Others.Customization.Add(fsf.ToString(), customs[fsf].ToString());
-            }
-            Debug.PrintDebug("Customization loaded");
-        }
         static void LoadLocale()
         {
             DataBase.Locale.Languages = File.ReadAllText("Files/locales/languages.json");
@@ -184,6 +187,8 @@ namespace ServerLib.Controllers
                     string localename = dir.Replace(stuff + "\\", "");
                     string localename_add = file.Replace(dir + "\\", "").Replace(".json", "");
                     DataBase.Locale.Locales.Add(localename + "_" + localename_add, File.ReadAllText(file));
+                    if (localename_add != "menu")
+                        DataBase.Locale.LocalesDict.Add(localename + "_" + localename_add, JsonConvert.DeserializeObject<Dictionary<string, string>>(File.ReadAllText(file)));
                 }
             }
             Debug.PrintDebug("Locales loaded");

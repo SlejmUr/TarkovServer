@@ -6,36 +6,4 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
-
-	<ItemGroup>
-		<PackageReference Include="HttpServerLite" Version="1.2.4" />
-		<PackageReference Include="Iconic.Zlib.Netstandard" Version="1.0.0" />
-		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-	</ItemGroup>
-	<ItemGroup>
-		<Reference Include="Assembly-CSharp">
-			<HintPath>..\_References\Assembly-CSharp.dll</HintPath>
-			<Private>True</Private>
-		</Reference>
-		<Reference Include="bsg.componentace.compression.libs.zlib">
-			<HintPath>..\_References\bsg.componentace.compression.libs.zlib.dll</HintPath>
-			<Private>False</Private>
-		</Reference>
-		<Reference Include="bsg.microsoft.extensions.objectpool">
-			<HintPath>..\_References\bsg.microsoft.extensions.objectpool.dll</HintPath>
-			<Private>False</Private>
-		</Reference>
-		<Reference Include="bsg.system.buffers">
-			<HintPath>..\_References\bsg.system.buffers.dll</HintPath>
-			<Private>False</Private>
-		</Reference>
-		<Reference Include="UnityEngine">
-			<HintPath>..\_References\UnityEngine Dlls\UnityEngine.dll</HintPath>
-			<Private>False</Private>
-		</Reference>
-		<Reference Include="UnityEngine.CoreModule">
-			<HintPath>..\_References\UnityEngine Dlls\UnityEngine.CoreModule.dll</HintPath>
-			<Private>True</Private>
-		</Reference>
-	</ItemGroup>
 </Project>

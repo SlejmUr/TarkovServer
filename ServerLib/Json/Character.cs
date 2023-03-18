@@ -172,7 +172,7 @@ namespace ServerLib.Json
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public float Current { get; set; }
 
-            [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore ,NullValueHandling = NullValueHandling.Ignore)]
+            [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public float Minimum { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
@@ -238,6 +238,9 @@ namespace ServerLib.Json
             [JsonProperty("slotId", NullValueHandling = NullValueHandling.Ignore)]
             public string SlotId { get; set; }
 
+            [JsonProperty("children", DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
+            public List<Item> Children { get; set; }
+
             [JsonProperty("location", DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public Location Location { get; set; }
 
@@ -277,6 +280,15 @@ namespace ServerLib.Json
             [JsonProperty("StackObjectsCount", DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public int? StackObjectsCount { get; set; }
 
+            [JsonProperty("BuyRestrictionMax", DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
+            public long BuyRestrictionMax { get; set; }
+
+            [JsonProperty("BuyRestrictionCurrent", DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
+            public long BuyRestrictionCurrent { get; set; }
+
+            [JsonProperty("UnlimitedCount", DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
+            public bool UnlimitedCount { get; set; } = false;
+
             [JsonProperty("SpawnedInSession", DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public bool SpawnedInSession { get; set; }
 
@@ -288,18 +300,39 @@ namespace ServerLib.Json
 
             [JsonProperty("Resource", DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public Resource Resource { get; set; }
+
+            [JsonProperty("RepairKit", DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
+            public RepairKit RepairKit { get; set; }
+
+            [JsonProperty("Light", DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
+            public Light Light { get; set; }
         }
 
         public class Skills
         {
             [JsonProperty("Common", NullValueHandling = NullValueHandling.Ignore)]
-            public List<GClass1690.SkillInfo> Common { get; set; }
+            public List<Common> Common { get; set; }
 
             [JsonProperty("Mastering", NullValueHandling = NullValueHandling.Ignore)]
             public List<object> Mastering { get; set; }
 
             [JsonProperty("Points", NullValueHandling = NullValueHandling.Ignore)]
             public int Points { get; set; }
+        }
+
+        public class Common
+        {
+            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
+            public ESkillId Id { get; set; }
+
+            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
+            public float Progress { get; set; }
+
+            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
+            public float PointsEarnedDuringSession { get; set; }
+
+            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
+            public int LastAccess { get; set; }
         }
 
         public class Stats
@@ -565,11 +598,26 @@ namespace ServerLib.Json
             [JsonProperty("HpPercent", NullValueHandling = NullValueHandling.Ignore)]
             public int HpPercent { get; set; }
         }
- 
+
         public class Resource
         {
             [JsonProperty("Value", NullValueHandling = NullValueHandling.Ignore)]
             public int Value { get; set; }
+        }
+
+        public class RepairKit
+        {
+            [JsonProperty("Resource", NullValueHandling = NullValueHandling.Ignore)]
+            public int Resource { get; set; }
+        }
+
+        public class Light
+        {
+            [JsonProperty("IsActive", NullValueHandling = NullValueHandling.Ignore)]
+            public bool IsActive { get; set; }
+
+            [JsonProperty("SelectedMode", NullValueHandling = NullValueHandling.Ignore)]
+            public int SelectedMode { get; set; }
         }
     }
 }

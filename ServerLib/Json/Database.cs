@@ -1,5 +1,4 @@
-﻿using EFT.InventoryLogic;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System.Globalization;
 
@@ -61,6 +60,7 @@ namespace ServerLib.Json
             public string Languages { get; set; }
             public string Extras { get; set; }
             public Dictionary<string, string> Locales { get; set; } = new();
+            public Dictionary<string, Dictionary<string, string>> LocalesDict { get; set; } = new();
         }
         public location Location { get; set; } = new();
         public class location
@@ -81,6 +81,7 @@ namespace ServerLib.Json
             public Dictionary<string, string> Customization { get; set; } = new();
             public Dictionary<string, ItemBase> Items { get; set; }
             public Dictionary<string, int> ItemPrices { get; set; } = new();
+            public Dictionary<string, int> Resupply { get; set; } = new();
 
             // Not Loaded:  client.settings.json,  raidConfig.json, seasonalevents.json, staticWeaponsData.json
         }
@@ -111,7 +112,7 @@ namespace ServerLib.Json
                 public class assort
                 {
                     public int NextResupply { get; set; }
-                    public List<Traders.Item> Items { get; set; }
+                    public List<Character.Item> Items { get; set; }
 
                     [JsonProperty("barter_scheme")]
                     public Dictionary<string, List<List<Traders.Barter>>> BarterScheme { get; set; }

@@ -15,7 +15,7 @@ namespace ConsoleApp
         static CVersion Version = new CVersion();
         static void LogDetailed(string text) 
         {
-            Console.WriteLine(text);
+            SLU.Debug.PrintInfo(text);
         }
         static void ConsoleSpacer()
         {
@@ -69,6 +69,10 @@ namespace ConsoleApp
             while (endCheck.ToLower() != "exit")
             {
                 endCheck = Console.ReadLine();
+                if (endCheck.ToLower() == "id")
+                {
+                    Console.WriteLine(SLU.Utils.CreateNewID());
+                }
             }
 
             server.Stop();

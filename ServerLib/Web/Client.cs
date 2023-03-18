@@ -73,7 +73,7 @@ namespace ServerLib.Web
         {
             Utils.PrintRequest(request, session);
             Json.Other.ChatServerList chatServerList = new();
-            chatServerList.DateTime = (int)Utils.UnixTimeNow();
+            chatServerList.DateTime = (int)Time.UnixTimeNow();
             chatServerList.Regions.Add("EUR");
             string resp = ResponseControl.GetBody(JsonConvert.SerializeObject(chatServerList));
             var rsp = ResponseControl.CompressRsp(resp);

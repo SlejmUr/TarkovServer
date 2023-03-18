@@ -18,20 +18,19 @@ namespace ServerLib
         /// <param name="Ip">Server IP</param>
         /// <param name="port">Server Port</param>
         /// <param name="LoadPlugin">Can Load Plugins</param>
-        public void InitAll(string Ip, int port, bool LoadPlugin = true)
+        public void InitAll(string Ip, int port)
         {
-            string ip_port = $"https://{Ip}:{port}";
-            IP = ip_port;
+            string _ip_port = $"https://{Ip}:{port}";
+            IP = _ip_port;
             ip_port = $"{Ip}:{port}";
-            CertHelper.Make(IPAddress.Parse(Ip), ip_port);
+            CertHelper.Make(IPAddress.Parse(Ip), _ip_port);
             DatabaseController.Init();
             Controllers.DialogController.Init();
             AccountController.Init();
-            AccountController.GetAccountList();
             CharacterController.Init();
-            HTTPServer.Start(Ip, port);
-            Web.WebSocket.Start(Ip, port + 1);
-            if (LoadPlugin)
+            Start(Ip, port);
+            WebSocket.Start(Ip, port + 1);
+            if (!ArgumentHandler.DontLoadPlugin)
             {
                 PluginLoader.LoadPlugins();
             }
@@ -41,22 +40,21 @@ namespace ServerLib
         /// Init The Server from Config file
         /// </summary>
         /// <param name="LoadPlugin">Can Load Plugins</param>
-        public void Init(bool LoadPlugin = true)
+        public void Init()
         {
             DatabaseController.Init();
             var Ip = ConfigController.Configs.Server.Ip;
             var port = ConfigController.Configs.Server.Port;
-            string ip_port = $"https://{Ip}:{port}";
-            IP = ip_port;
+            string _ip_port = $"https://{Ip}:{port}";
+            IP = _ip_port;
             ip_port = $"{Ip}:{port}";
-            CertHelper.Make(IPAddress.Parse(Ip), ip_port);
+            CertHelper.Make(IPAddress.Parse(Ip), _ip_port);
             Controllers.DialogController.Init();
             AccountController.Init();
-            AccountController.GetAccountList();
             CharacterController.Init();
-            HTTPServer.Start(Ip, port);
-            Web.WebSocket.Start(Ip, port + 1);
-            if (LoadPlugin)
+            Start(Ip, port);
+            WebSocket.Start(Ip, port + 1);
+            if (!ArgumentHandler.DontLoadPlugin)
             {
                 PluginLoader.LoadPlugins();
             }
@@ -68,18 +66,7 @@ namespace ServerLib
         /// <returns>Webserver</returns>
         public HttpsBackendServer? GetWebServer()
         {
-            return HTTPServer.GetServer();
-        }
-
-        /// <summary>
-        /// Stopping the Server
-        /// </summary>
-        /// <param name="reason">Reason Why stopped</param>
-        public void Stop(string reason)
-        {
-            PluginLoader.UnloadPlugins();
-            HTTPServer.Stop();
-            Web.WebSocket.Stop();
+            return GetServer();
         }
 
         /// <summary>
@@ -89,7 +76,7 @@ namespace ServerLib
         {
             PluginLoader.UnloadPlugins();
             HTTPServer.Stop();
-            Web.WebSocket.Stop();
+            WebSocket.Stop();
         }
     }
 }

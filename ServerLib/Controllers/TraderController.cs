@@ -2,7 +2,6 @@
 using Newtonsoft.Json;
 using ServerLib.Json;
 using ServerLib.Utilities;
-using static ServerLib.Json.Database;
 using static ServerLib.Json.Database.trader;
 using static ServerLib.Json.Traders;
 
@@ -17,12 +16,6 @@ namespace ServerLib.Controllers
         {
             return DatabaseController.DataBase.Trader.Traders["assort_" + TraderId].Assort;
         }
-
-        public static void SetAssortByTrader(string TraderId, traders.assort assort)
-        {
-            DatabaseController.DataBase.Trader.Traders["assort_" + TraderId].Assort = assort;
-        }
-
         public static Traders.Base GetBaseByTrader(string TraderId)
         {
             return DatabaseController.DataBase.Trader.Traders["base_" + TraderId].Base;
@@ -35,7 +28,11 @@ namespace ServerLib.Controllers
         {
             return DatabaseController.DataBase.Trader.Traders["categories_" + TraderId].Categories;
         }
-        public static Traders.Item? GetAssortItemByID(string TraderId, string ItemId)
+        public static void SetAssortByTrader(string TraderId, traders.assort assort)
+        {
+            DatabaseController.DataBase.Trader.Traders["assort_" + TraderId].Assort = assort;
+        }
+        public static Character.Item? GetAssortItemByID(string TraderId, string ItemId)
         {
             return GetAssortByTrader(TraderId).Items.Find(item => item.Id == ItemId);
         }
@@ -62,18 +59,24 @@ namespace ServerLib.Controllers
         }
         public static string GetCurrencyFromTrader(string TraderId)
         {
-            string Currency = GetBaseByTrader(TraderId).Currency;
-            switch (Currency)
-            {
-                case "EUR":
-                    return "569668774bdc2da2298b4568";
-                case "USD":
-                    return "5696686a4bdc2da3298b456a";
-                default:
-                    return "5449016a4bdc2d6f028b456f";
-            }
+            return GetCurrency(GetBaseByTrader(TraderId).Currency);
         }
+        public static string GetTraderName(string TraderId)
+        {
+            Dictionary<string, string> names = new()
+            {
+                { "54cb50c76803fa8b248b4571","Prapor" },
+                { "54cb57776803fa99248b456e","Therapist" },
+                { "579dc571d53a0658a154fbec","Fence" },
+                { "58330581ace78e27b8b10cee","Skier" },
+                { "5935c25fb3acc3127c3d8cd9","Peacekeeper" },
+                { "5a7c2eca46aef81a7ca2145d","Mechanic" },
+                { "5ac3b934156ae10c4430e83c","Ragman" },
+                { "5c0647fdd443bc2504c2d371","Jaeger" }
 
+            };
+            return names[TraderId];
+        }
         public static List<Base> GetTradersInfo()
         {
             List<Base> TraderBase = new List<Base>();
@@ -160,7 +163,6 @@ namespace ServerLib.Controllers
             return output;
         }
 
-
         public static string GetPurchasesData(string SessionId, string TraderId)
         {
             Json.Other.TPLCOUNT tplCount = new();
@@ -217,7 +219,7 @@ namespace ServerLib.Controllers
             return JsonConvert.SerializeObject(output);
         }
 
-        public static bool ItemInPurchaseCategories(string TraderId, Traders.Item item)
+        public static bool ItemInPurchaseCategories(string TraderId, Character.Item item)
         {
             var categories = DatabaseController.DataBase.Templates.Categories;
             var items = DatabaseController.DataBase.Templates.Items;
@@ -310,6 +312,87 @@ namespace ServerLib.Controllers
                 }
             }
             return convertedOffers;
+        }
+
+        public static int GetResupply(string TraderId)
+        {
+            var currentTime = Time.UnixTimeNow_Int();
+            if (DatabaseController.DataBase.Others.Resupply.TryGetValue(TraderId, out var supplyTime) || supplyTime <= currentTime)
+            {
+                return supplyTime;
+            }
+            else
+            {
+                var time = ConfigController.Configs.Gameplay.Trading.RefreshTimeInMinutes * 60;
+                currentTime += time;
+                DatabaseController.DataBase.Others.Resupply.Add(TraderId, currentTime);
+                return currentTime;
+            }
+        }
+
+        public static int UpdateResupply(string TraderId)
+        {
+            var resuptime = GetResupply(TraderId);
+            File.WriteAllText("Files/others/resupply.json", JsonConvert.SerializeObject(DatabaseController.DataBase.Others.Resupply));
+            return resuptime;
+        }
+
+        public static bool CheckResupply(string TraderId)
+        {
+            var currentTime = Time.UnixTimeNow_Int();
+            if (!DatabaseController.DataBase.Others.Resupply.TryGetValue(TraderId, out var supplyTime))
+            {
+                return UpdateResupply(TraderId) <= currentTime;
+            }
+            return supplyTime <= currentTime;
+        }
+
+        public static Traders.Customization? GetCustomizationByTraderOfferId(string offerId)
+        {
+            foreach (var trader in GetTradersKey())
+            {
+                foreach (var suits in GetSuitsByTrader(trader))
+                {
+                    if (suits._id == offerId)
+                    {
+                        var item = CustomizationController.GetCustomization(suits.suiteId);
+                        return new()
+                        {
+                            TraderID = trader,
+                            Suite = item
+                        };
+                    }
+                }
+            }
+            return null;
+        }
+
+        public static List<Barter>? GetBarterSchemeById(string ItemId, traders.assort traderAssort)
+        {
+            if (traderAssort.BarterScheme != null)
+            {
+                return traderAssort.BarterScheme[ItemId][0];
+            }
+            return null;
+        }
+
+        public static long GetItemLoyalLevelById(string ItemId, traders.assort traderAssort)
+        {
+            if (traderAssort.LoyalLevelItems != null)
+            {
+                return traderAssort.LoyalLevelItems[ItemId];
+            }
+            return 0;
+        }
+
+        public static bool IsFence(string TraderId)
+        {
+            return GetBaseByTrader(TraderId).Id == "579dc571d53a0658a154fbec";
+        }
+
+        public static bool IsRagfair(string TraderId)
+        {
+            return GetBaseByTrader(TraderId).Id == "ragfair";
         }
     }
 }

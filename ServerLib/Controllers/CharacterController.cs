@@ -9,13 +9,33 @@ namespace ServerLib.Controllers
 {
     public class CharacterController
     {
+        static CharacterController()
+        {
+            Characters = new();
+            Characters.Clear();
+        }
+
         public static List<Character.Base> Characters;
 
         public static void Init()
         {
-            Characters = new();
-            Characters.Clear();
-            Debug.PrintDebug("Initialization Done!", "debug", "[CHARACTER]");
+            GetCharacterList();
+            Debug.PrintInfo("Initialization Done!", "[CHARACTER]");
+        }
+
+        public static void GetCharacterList()
+        {
+            string[] dirs = Directory.GetDirectories("user/profiles");
+            foreach (string dir in dirs)
+            {
+                if (!File.Exists($"{dir}/character.json")) { continue; }
+                var account = JsonConvert.DeserializeObject<Character.Base>(File.ReadAllText($"{dir}/character.json"));
+                if (!Characters.Contains(account))
+                {
+                    Debug.PrintInfo("Loaded character data for profile: " + account.Id, "[CHARACTER]");
+                    Characters.Add(account);
+                }
+            }
         }
 
         /// <summary>
@@ -37,6 +57,7 @@ namespace ServerLib.Controllers
 
             if (!Characters.Contains(character))
             {
+                Debug.PrintInfo("Loaded character data for profile: " + SessionId, "[Character]");
                 Characters.Add(character);
             }
         }
@@ -59,10 +80,10 @@ namespace ServerLib.Controllers
 
             account.Wipe = false;
             SaveHandler.SaveAccount(SessionId, account);
-            
+
             var character = DatabaseController.DataBase.Characters.CharacterBase[createReq.Side.ToLower()];
             var ID = Utils.CreateNewID();
-            var Time = Utils.UnixTimeNow_Int();
+            var time = Time.UnixTimeNow_Int();
 
             character.Id = "pmc" + ID;
             character.Aid = account.Id;
@@ -71,10 +92,10 @@ namespace ServerLib.Controllers
             character.Info.Nickname = createReq.Nickname;
             character.Info.LowerNickname = createReq.Nickname.ToLower();
             character.Info.Voice = CustomizationController.GetCustomizationName(createReq.VoiceId);
-            character.Info.RegistrationDate = Time;
-            character.Health.UpdateTime = Time;
+            character.Info.RegistrationDate = time;
+            character.Health.UpdateTime = time;
             character.Customization[EBodyModelPart.Head] = createReq.HeadId;
-            
+
             SaveHandler.Save(SessionId, "Character", SaveHandler.GetCharacterPath(SessionId), JsonConvert.SerializeObject(character));
             List<string> storeSave = new();
             var storage = DatabaseController.DataBase.Characters.CharacterStorage;
@@ -92,7 +113,7 @@ namespace ServerLib.Controllers
             {
                 Characters.Add(character);
             }
-            Debug.PrintDebug("Character Created!");
+            Debug.PrintInfo($"Character Created with Id {SessionId}!", "[CHARACTER]");
         }
 
         public static Character.Base? GetCharacter(string SessionId)
@@ -116,7 +137,7 @@ namespace ServerLib.Controllers
                 var character = GetCharacter(SessionId);
                 if (character == null)
                 {
-                    Debug.PrintError($"[GetCompleteCharacter] Character not found, check if {SessionId} is correct");
+                    Debug.PrintWarn($"Character not found, check if {SessionId} is correct", "[GetCompleteCharacter]");
                     return JsonConvert.SerializeObject(ouptut);
                 }
 
@@ -137,13 +158,13 @@ namespace ServerLib.Controllers
                 var character = GetCharacter(SessionId);
                 if (character == null)
                 {
-                    Debug.PrintError($"[ChangeNickname] Character not found, check if {SessionId} is correct");
+                    Debug.PrintWarn($"Character not found, check if {SessionId} is correct", "[ChangeNickname]");
                     return "";
                 }
 
                 character.Info.Nickname = nick.Nickname;
                 character.Info.LowerNickname = nick.Nickname.ToLower();
-                character.Info.NicknameChangeDate = Utils.UnixTimeNow_Int();
+                character.Info.NicknameChangeDate = Time.UnixTimeNow_Int();
 
                 SaveHandler.Save(SessionId, "Character", SaveHandler.GetCharacterPath(SessionId), JsonConvert.SerializeObject(character));
             }
@@ -155,7 +176,7 @@ namespace ServerLib.Controllers
             var character = GetCharacter(SessionId);
             if (character == null)
             {
-                Debug.PrintError($"[ChangeVoice] Character not found, check if {SessionId} is correct");
+                Debug.PrintWarn($"Character not found, check if {SessionId} is correct", "[ChangeVoice]");
                 return;
             }
 
@@ -171,7 +192,7 @@ namespace ServerLib.Controllers
             var character = GetCharacter(SessionId);
             if (character == null)
             {
-                Debug.PrintError($"[GetStashType] Character not found, check if {SessionId} is correct");
+                Debug.PrintWarn($"Character not found, check if {SessionId} is correct", "[GetStashType]");
                 return "";
             }
 
@@ -224,7 +245,7 @@ namespace ServerLib.Controllers
                 var character = GetCharacter(SessionId);
                 if (character == null)
                 {
-                    Debug.PrintError($"[GetStashType] Character not found, check if {SessionId} is correct");
+                    Debug.PrintWarn($"Character not found, check if {SessionId} is correct", "[RaidKilled]");
                     return;
                 }
 
@@ -248,7 +269,7 @@ namespace ServerLib.Controllers
             var character = GetCharacter(SessionId);
             if (character == null)
             {
-                Debug.PrintError($"[GetStashType] Character not found, check if {SessionId} is correct");
+                Debug.PrintWarn($"Character not found, check if {SessionId} is correct", "[GetLoyality]");
                 return 0;
             }
 

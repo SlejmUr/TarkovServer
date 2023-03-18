@@ -13,12 +13,12 @@ namespace ServerLib.Handlers
         /// <param name="SessionId">SessionId/AccountId</param>
         public static void SaveAll(string SessionId)
         {
-            Debug.PrintDebug("Saving started...", "info", "[SAVE]");
+            Debug.PrintInfo("Saving started...", "[SAVE]");
             Save(SessionId, "Account", GetAccountPath(SessionId), JsonConvert.SerializeObject(AccountController.FindAccount(SessionId)));
             Save(SessionId, "Dialog", GetDialogPath(SessionId), JsonConvert.SerializeObject(Controllers.DialogController.Dialogs[SessionId]));
-            Save(SessionId, "Character", GetCharacterPath(SessionId), "{}");
+            Save(SessionId, "Character", GetCharacterPath(SessionId), JsonConvert.SerializeObject(CharacterController.GetCharacter(SessionId)));
             Save(SessionId, "Storage", GetStoragePath(SessionId), "{}");
-            Debug.PrintDebug("Saving ended!", "info", "[SAVE]");
+            Debug.PrintInfo("Saving ended!", "[SAVE]");
         }
 
         /// <summary>
@@ -29,9 +29,9 @@ namespace ServerLib.Handlers
         /// <param name="account">Account</param>
         public static void SaveAccount(string SessionId, Json.Account account)
         {
-            Debug.PrintDebug("Saving started...", "info", "[SAVE]");
+            Debug.PrintInfo("Saving started...", "[SAVE]");
             Save(SessionId, "Account", GetAccountPath(SessionId), JsonConvert.SerializeObject(account));
-            Debug.PrintDebug("Saving ended!", "info", "[SAVE]");
+            Debug.PrintInfo("Saving ended!", "[SAVE]");
         }
 
         /// <summary>

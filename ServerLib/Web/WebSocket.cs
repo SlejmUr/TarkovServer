@@ -10,7 +10,7 @@ namespace ServerLib.Web
         public static string IpPort = "wss://127.0.0.1:444/";
         public static string IP = "127.0.0.1:444";
         public static List<string> ConnectedIps = new();
-        public static Dictionary<Guid,string> GuidIP = new();
+        public static Dictionary<Guid, string> GuidIP = new();
         public static Dictionary<string, Guid> IPToGuid = new();
         public static Dictionary<string, string> ConnectedSessions = new();
         public static EventHandler<MessageReceivedEventArgs> MessageReceivedEvent = null;
@@ -81,7 +81,7 @@ namespace ServerLib.Web
             return false;
         }
 
-        
+
         public static bool SendToClient(string ipPort, byte[] bytes)
         {
             if (IPToGuid.TryGetValue(ipPort, out var guid))

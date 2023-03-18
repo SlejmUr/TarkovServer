@@ -5,22 +5,13 @@ namespace ServerLib.Json
 {
     public class Traders
     {
-        public class Suits
+        public class Customization
         {
-            [JsonProperty("_id")]
-            public string Id { get; set; }
+            [JsonProperty("traderID")]
+            public string TraderID { get; set; }
 
-            [JsonProperty("tid")]
-            public string Tid { get; set; }
-
-            [JsonProperty("suiteId")]
-            public string SuiteId { get; set; }
-
-            [JsonProperty("isActive")]
-            public bool IsActive { get; set; }
-
-            [JsonProperty("requirements")]
-            public Requirements Requirements { get; set; } = new();
+            [JsonProperty("suite")]
+            public JsonCustomization.Base Suite { get; set; }
         }
         public class ItemRequirement
         {
@@ -219,55 +210,25 @@ namespace ServerLib.Json
             [JsonProperty("_tpl")]
             public string Tpl { get; set; }
         }
-        public class Item
-        {
-            [JsonProperty("_id")]
-            public string Id { get; set; }
-
-            [JsonProperty("_tpl")]
-            public string Tpl { get; set; }
-
-            [JsonProperty("parentId")]
-            public string ParentId { get; set; }
-
-            [JsonProperty("slotId")]
-            public string SlotId { get; set; }
-
-            [JsonProperty("upd")]
-            public UpdClass Upd { get; set; }
-        }
-        public class UpdClass
-        {
-            [JsonProperty("BuyRestrictionMax", NullValueHandling = NullValueHandling.Ignore)]
-            public long? BuyRestrictionMax { get; set; }
-
-            [JsonProperty("BuyRestrictionCurrent", NullValueHandling = NullValueHandling.Ignore)]
-            public long? BuyRestrictionCurrent { get; set; }
-
-            [JsonProperty("StackObjectsCount")]
-            public long StackObjectsCount { get; set; }
-
-            [JsonProperty("UnlimitedCount", NullValueHandling = NullValueHandling.Ignore)]
-            public bool UnlimitedCount { get; set; } = false;
-        }
 
         public class RagfairOffer
         {
+            [JsonProperty("_id")]
             public string Id { get; set; }
-            public Item Item { get; set; }
-            public DateTime EndTime { get; set; }
-            public int BuyRestrictionMax { get; set; }
-            public int BuyRestrictionCurrent { get; set; }
+            public long IntId { get; set; }
+            public Character.Item Item { get; set; }
             public List<Barter> Requirements { get; set; }
             public Offer.Merchant User { get; set; }
-            public long IntId { get; set; }
+            public int BuyRestrictionMax { get; set; }
+            public int BuyRestrictionCurrent { get; set; }
+            public int LoyaltyLevel { get; set; }
+            public int SummaryCost { get; set; }
             public int ItemsCost { get; set; }
             public int RequirementsCost { get; set; }
             public DateTime StartTime { get; set; }
-            public int LoyaltyLevel { get; set; }
+            public DateTime EndTime { get; set; }
             public bool Locked { get; set; }
             public bool UnlimitedCount { get; set; }
-            public int SummaryCost { get; set; }
             public bool SellInOnePiece { get; set; }
         }
     }

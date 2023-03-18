@@ -1,5 +1,4 @@
 ﻿using Newtonsoft.Json;
-using ServerLib.Json;
 
 namespace ServerLib.Controllers
 {
@@ -8,7 +7,7 @@ namespace ServerLib.Controllers
 
         public static string GetAllCustomizationString()
         {
-            return File.ReadAllText("Files/customization/items.json");
+            return File.ReadAllText("Files/others/customization.json");
         }
 
         public static Dictionary<string, string> GetAllCustomization()
@@ -66,39 +65,6 @@ namespace ServerLib.Controllers
                 }
             }
             return new();
-        }
-
-        public static List<Traders.Suits>? GetTraderCustomization()
-        {
-            var customizationSuits = JsonConvert.DeserializeObject<List<Traders.Suits>>(File.ReadAllText("Files/traders/5ac3b934156ae10c4430e83c/suits.json"));
-
-            var allCustomization = DatabaseController.DataBase.Others.Customization;
-
-            foreach (var keyValue in allCustomization)
-            {
-                string custom = DatabaseController.DataBase.Others.Customization[keyValue.Key];
-                Json.JsonCustomization.Base customization = JsonConvert.DeserializeObject<Json.JsonCustomization.Base>(custom);
-
-                if (customization.Parent != "" && customizationSuits.FindIndex(x => x.SuiteId == keyValue.Key || x.Id == keyValue.Key) == -1)
-                {
-                    Traders.Suits newItem = new();
-                    newItem.SuiteId = keyValue.Key;
-                    newItem.Id = Utilities.Utils.CreateNewID();
-                    newItem.Tid = "5ac3b934156ae10c4430e83c";
-                    newItem.IsActive = true;
-                    newItem.Requirements = new()
-                    {
-                        LoyaltyLevel = 0,
-                        ProfileLevel = 0,
-                        Standing = 0,
-                        SkillRequirements = new(),
-                        QuestRequirements = new(),
-                        ItemRequirements = new()
-                    };
-                    customizationSuits.Add(newItem);
-                }
-            }
-            return customizationSuits;
         }
     }
 }

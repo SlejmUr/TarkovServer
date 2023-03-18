@@ -22,7 +22,7 @@ namespace ServerLib.Controllers
         {
             if (WebSocket.ConnectedSessions.TryGetValue(SessionId, out var ip))
             {
-                Debug.PrintDebug("Notification Sent!", "info", "[Notification]");
+                Debug.PrintInfo("Notification Sent!", "[Notification]");
                 return WebSocket.SendToClient(ip, JsonConvert.SerializeObject(notification, Formatting.Indented));
 
             }

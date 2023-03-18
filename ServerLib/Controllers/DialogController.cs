@@ -22,7 +22,7 @@ namespace ServerLib.Controllers
         {
             Dialogs = new();
             Dialogs.Clear();
-            Debug.PrintDebug("Initialization Done!", "debug", "[DIALOG]");
+            Debug.PrintInfo("Initialization Done!", "[DIALOG]");
         }
 
         /// <summary>
@@ -112,7 +112,7 @@ namespace ServerLib.Controllers
                 _id = Utils.CreateNewID(),
                 uid = dialogID,
                 type = content.type,
-                dt = Utils.UnixTimeNow_Int(),
+                dt = Time.UnixTimeNow_Int(),
                 templateId = content.templateId,
                 text = content.text,
                 hasRewards = stashItems.ToString().Length > 0,
@@ -164,7 +164,7 @@ namespace ServerLib.Controllers
         public static void RemoveExpiredItems(string SessionId)
         {
             ReloadDialog(SessionId);
-            int curDt = Utils.UnixTimeNow_Int();
+            int curDt = Time.UnixTimeNow_Int();
 
             foreach (var msg in Dialogs[SessionId].messages)
             {
@@ -211,7 +211,7 @@ namespace ServerLib.Controllers
 
             dialog.New = 0;
             int _attachmentsNew = 0;
-            int curDt = Utils.UnixTimeNow_Int();
+            int curDt = Time.UnixTimeNow_Int();
 
             foreach (var msg in dialog.messages)
             {
@@ -234,7 +234,7 @@ namespace ServerLib.Controllers
         {
             ReloadDialog(SessionId);
             List<Json.Dialog.Messages> output = new();
-            int curDt = Utils.UnixTimeNow_Int();
+            int curDt = Time.UnixTimeNow_Int();
 
             foreach (var msg in Dialogs[SessionId].messages)
             {

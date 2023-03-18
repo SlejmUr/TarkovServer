@@ -21,9 +21,9 @@ namespace ServerLib.Handlers
                 IPlugin iPlugin = (IPlugin)Activator.CreateInstance(Assembly.LoadFile(file).GetType("Plugin.Plugin"));
                 if (pluginsList.ContainsKey(iPlugin.Name))
                 {
-                    Console.WriteLine("Plugin already loaded?");
-                    iPlugin.ShutDown();
-                    iPlugin.Dispose();
+                    Debug.PrintWarn("Plugin already loaded!");
+                    //iPlugin.ShutDown();
+                    //iPlugin.Dispose();
                 }
                 else
                 {
@@ -89,7 +89,7 @@ namespace ServerLib.Handlers
                 "\nPlugin Author: " + iPlugin.Author +
                 "\nPlugin Mode: " + iPlugin.Mode +
                 "\nPlugin Desc: " + iPlugin.Description
-                , "info", "[PLUGIN]");
+                , "[PLUGIN]");
         }
         internal class PluginInfos
         {

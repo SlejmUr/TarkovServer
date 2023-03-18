@@ -43,5 +43,20 @@ namespace ServerLib.Controllers
             Json.Other.Lang lang = JsonConvert.DeserializeObject<Json.Other.Lang>(langs);
             return lang.data.ToString().Replace("\r\n", "").Replace("\\", "").Replace(" ", "");
         }
+
+        public static string GetQuestLocales(string lang, string questId)
+        {
+            var localeDict = DatabaseController.DataBase.Locale.LocalesDict[lang + "_locale"];
+            Json.Other.QuestBase questBase = new()
+            {
+                name = localeDict[$"{questId} name"],
+                description = localeDict[$"{questId} description"],
+                failMessageText = localeDict[$"{questId} failMessageText"],
+                successMessageText = localeDict[$"{questId} successMessageText"]
+            };
+            return JsonConvert.SerializeObject(questBase);
+        }
+
+
     }
 }

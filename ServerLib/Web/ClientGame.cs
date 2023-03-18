@@ -16,7 +16,7 @@ namespace ServerLib.Web
             Utils.PrintRequest(request, session);
             string resp;
             // RPS
-            var TimeThingy = Utils.UnixTimeNow_Int();
+            var TimeThingy = Time.UnixTimeNow_Int();
             if (AccountController.ClientHasProfile(SessionId))
             {
                 resp = ResponseControl.GetBody("{\"utc_time\":" + TimeThingy + "}");
@@ -37,7 +37,7 @@ namespace ServerLib.Web
             string resp;
             Utils.PrintRequest(request, session);
             string SessionId = Utils.GetSessionId(session.Headers);
-            var TimeThingy = Utils.UnixTimeNow_Int();
+            var TimeThingy = Time.UnixTimeNow_Int();
             if (SessionId == null)
             {
                 resp = ResponseControl.GetBody("{\"msg\":\"No Session\", \"utc_time\":" + TimeThingy + "}");
@@ -96,7 +96,7 @@ namespace ServerLib.Web
                     RagFair = ServerLib.IP,
                     Lobby = ServerLib.IP,
                 },
-                UtcTime = Utils.UnixTimeNow(),
+                UtcTime = Time.UnixTimeNow(),
                 TotalInGame = AccountController.ActiveAccountIds.Count,
                 ReportAvailable = true,
                 TwitchEventMember = false

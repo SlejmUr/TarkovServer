@@ -25,30 +25,30 @@
 
   <ItemGroup>
 	<Reference Include="Assembly-CSharp">
-      <HintPath>..\_References\Assembly-CSharp.dll</HintPath>
+      <HintPath>..\Ref\Assembly-CSharp.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="bsg.componentace.compression.libs.zlib">
-      <HintPath>..\_References\bsg.componentace.compression.libs.zlib.dll</HintPath>
+      <HintPath>..\Ref\bsg.componentace.compression.libs.zlib.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="bsg.microsoft.extensions.objectpool">
-      <HintPath>..\_References\bsg.microsoft.extensions.objectpool.dll</HintPath>
+      <HintPath>..\Ref\bsg.microsoft.extensions.objectpool.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="bsg.system.buffers">
-      <HintPath>..\_References\bsg.system.buffers.dll</HintPath>
+      <HintPath>..\Ref\bsg.system.buffers.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Newtonsoft.Json">
-      <HintPath>..\_References\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\Ref\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine">
-      <HintPath>..\_References\UnityEngine Dlls\UnityEngine.dll</HintPath>
+      <HintPath>..\Ref\UnityEngine Dlls\UnityEngine.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEngine.CoreModule">
-      <HintPath>..\_References\UnityEngine Dlls\UnityEngine.CoreModule.dll</HintPath>
+      <HintPath>..\Ref\UnityEngine Dlls\UnityEngine.CoreModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
   </ItemGroup>

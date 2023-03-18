@@ -1,9 +1,6 @@
-﻿using EFT.Hideout;
-using NetCoreServer;
-using Newtonsoft.Json;
+﻿using NetCoreServer;
 using ServerLib.Controllers;
 using ServerLib.Utilities;
-using System.Security.Cryptography;
 using static ServerLib.Web.HTTPServer;
 
 namespace ServerLib.Web
@@ -119,7 +116,7 @@ namespace ServerLib.Web
             string Uncompressed = ResponseControl.DeCompressReq(request.BodyBytes);
 
             var nickname = CharacterController.ChangeNickname(Uncompressed, SessionId);
-            var resp = ResponseControl.GetBody("{\"status\": 0, \"nicknamechangedate\": " + Utils.UnixTimeNow_Int() + "}");
+            var resp = ResponseControl.GetBody("{\"status\": 0, \"nicknamechangedate\": " + Time.UnixTimeNow_Int() + "}");
             if (nickname == "taken")
             {
                 resp = ResponseControl.GetBody("null", 255, "The nickname is already in use");

@@ -173,7 +173,7 @@ namespace ServerLib.Controllers
         {
             Json.Other.FriendRequester requester = new();
             requester.Id = ID;
-            requester.Date = Utils.UnixTimeNow_Int();
+            requester.Date = Time.UnixTimeNow_Int();
             requester.From = FromID;
             requester.To = ToID;
             requester.Profile = FromID;

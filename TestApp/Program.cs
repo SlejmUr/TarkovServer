@@ -1,21 +1,5 @@
-﻿using ChatShared;
-using EFT;
-using EFT.Communications;
-using EFT.Game.Spawning;
-using EFT.Hideout;
-using EFT.InputSystem;
-using EFT.Interactive;
-using EFT.InventoryLogic;
-using EFT.Quests;
-using EFT.Settings.Graphics;
-using EFT.UI.Ragfair;
-using EFT.UI;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using System;
+﻿using System;
 using System.Reflection;
-using UnityEngine;
-using EFT.Ballistics;
 
 namespace MyApp 
 {
@@ -26,18 +10,6 @@ namespace MyApp
             AppDomain.CurrentDomain.AssemblyResolve += AssemblyResolveEvent;
             Console.WriteLine("Hello World!");
             Console.WriteLine("yeet!");
-            var char_ = "";//ItemBase.FromJson(File.ReadAllText("items.json"));
-
-
-            if (char_ == null)
-            {
-                Console.WriteLine("sad");
-            }
-            else
-            {
-                File.WriteAllText("items_reparesed.json", (char_.ToPrettyJson()));
-
-            }
 
         }
 

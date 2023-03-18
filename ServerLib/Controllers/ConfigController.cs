@@ -14,7 +14,7 @@ namespace ServerLib.Controllers
         public static void Init()
         {
             RebuildFromBaseConfigs();
-            Debug.PrintDebug("Initialization Done!", "debug", "[CONFIG]");
+            Debug.PrintInfo("Initialization Done!", "[CONFIG]");
         }
 
         /// <summary>
