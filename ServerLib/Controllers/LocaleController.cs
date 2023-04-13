@@ -1,5 +1,5 @@
 ﻿using Newtonsoft.Json;
-using ServerLib.Json;
+using ServerLib.Json.Classes;
 
 namespace ServerLib.Controllers
 {
@@ -9,6 +9,12 @@ namespace ServerLib.Controllers
         {
             return DatabaseController.DataBase.Locale.Languages;
         }
+
+        public static Dictionary<string, string> GetDictLanguages()
+        {
+            return JsonConvert.DeserializeObject<Dictionary<string,string>>(DatabaseController.DataBase.Locale.Languages);
+        }
+
         public static string GetMenu(string url_lang, string sessionId)
         {
             var Account = AccountController.FindAccount(sessionId);
@@ -37,17 +43,10 @@ namespace ServerLib.Controllers
             return DatabaseController.DataBase.Locale.Locales[url_lang + "_locale"];
         }
 
-        public static string GetConfigLanguages()
-        {
-            var langs = DatabaseController.DataBase.Locale.Languages;
-            Json.Other.Lang lang = JsonConvert.DeserializeObject<Json.Other.Lang>(langs);
-            return lang.data.ToString().Replace("\r\n", "").Replace("\\", "").Replace(" ", "");
-        }
-
         public static string GetQuestLocales(string lang, string questId)
         {
             var localeDict = DatabaseController.DataBase.Locale.LocalesDict[lang + "_locale"];
-            Json.Other.QuestBase questBase = new()
+            RepeatableQuests.SampleQuests questBase = new()
             {
                 name = localeDict[$"{questId} name"],
                 description = localeDict[$"{questId} description"],

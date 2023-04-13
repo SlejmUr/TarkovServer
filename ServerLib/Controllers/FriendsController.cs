@@ -1,59 +1,66 @@
-﻿using ServerLib.Json;
+﻿using ServerLib.Json.Classes;
 using ServerLib.Utilities;
+using ServerLib.Utilities.Helpers;
 
 namespace ServerLib.Controllers
 {
     public class FriendsController
     {
+
+        static FriendsController()
+        {
+            ProfileAddons = new();
+            ProfileAddonsDict = new();
+            GetAddonList();
+            Debug.PrintInfo("Initialization Done!", "[Friends]");
+        }
+
+        public static Dictionary<string, ProfileAddon> ProfileAddonsDict;
+        public static List<ProfileAddon> ProfileAddons;
+        public static void GetAddonList()
+        {
+            ProfileController.ReloadProfiles();
+            foreach (var profile in ProfileController.Profiles)
+            {
+                ProfileAddonsDict.TryAdd(profile.Info.Id,profile.ProfileAddon);
+                ProfileAddons.Add(profile.ProfileAddon);
+            }
+        }
+
+
+
         /// <summary>
         /// Get Friends CharacterOBJ
         /// </summary>
         /// <param name="SessionId">SessionId/AccountId</param>
         /// <returns>List of CharactherOBJ</returns>
-        public static List<CharacterOBJ> GetFriends(string SessionId)
+        public static List<Character.Base> GetFriends(string SessionId)
         {
-            List<CharacterOBJ> friends = new();
+            List<Character.Base> friends = new();
 
-            var account = AccountController.FindAccount(SessionId);
-            var all_account = AccountController.GetAccounts();
+            var account = ProfileAddonsDict[SessionId];
+            var all_account = CharacterController.Characters.Values.ToList();
+            //var all_account = AccountController.GetAccounts();
 
-            if (account.Friends.Length == 0)
+            if (account.Friends.Friends.Count == 0)
             {
                 return friends;
             }
             else
             {
-                foreach (var friend_id in account.Friends)
+                foreach (var friend in account.Friends.Friends)
                 {
-                    var acc = all_account.Find(x => x._id == friend_id);
+                    var acc = all_account.Find(x => x.Id == friend.Aid || x.Id == friend.Aid);
                     if (acc != null)
                     {
                         friends.Add(acc);
                     }
                     else
                     {
-                        Debug.PrintError("Unable to find friend's account by its Id" + friend_id);
+                        Debug.PrintError("Unable to find friend's account by its Id" + friend.Id);
                     }
                 }
             }
-            return friends;
-        }
-
-        /// <summary>
-        /// Get Friends IDs
-        /// </summary>
-        /// <param name="SessionId">SessionId/AccountId</param>
-        /// <returns>List of IDs</returns>
-        public static List<string> GetFriendsID(string SessionId)
-        {
-            List<string> friends = new();
-            var account = AccountController.FindAccount(SessionId);
-
-            if (account.Friends.Length != 0)
-            {
-                friends = account.Friends.ToList();
-            }
-
             return friends;
         }
 
@@ -64,14 +71,16 @@ namespace ServerLib.Controllers
         /// <param name="FriendId">Friend SessionId/AccountId</param>
         public static void AddFriend(string SessionId, string FriendId)
         {
-            var account = AccountController.FindAccount(SessionId);
-            var friend = AccountController.FindAccount(FriendId);
+            var account = ProfileAddonsDict[SessionId];
+            var friend = ProfileAddonsDict[FriendId];
+            var account_pmc = CharacterController.GetPmcCharacter(SessionId);
+            var friend_pmc = CharacterController.GetPmcCharacter(FriendId);
 
-            account.Friends.ToList().Add(FriendId);
-            friend.Friends.ToList().Add(SessionId);
+            account.Friends.Friends.Add(friend_pmc);
+            friend.Friends.Friends.Add(account_pmc);
 
-            Handlers.SaveHandler.SaveAccount(SessionId, account);
-            Handlers.SaveHandler.SaveAccount(FriendId, friend);
+            Handlers.SaveHandler.SaveAddon(SessionId, account);
+            Handlers.SaveHandler.SaveAddon(FriendId, friend);
         }
 
         /// <summary>
@@ -81,14 +90,14 @@ namespace ServerLib.Controllers
         /// <param name="FriendId">Friend SessionId/AccountId</param>
         public static void RemoveFriend(string SessionId, string FriendId)
         {
-            var account = AccountController.FindAccount(SessionId);
-            var friend = AccountController.FindAccount(FriendId);
+            var account = ProfileAddonsDict[SessionId];
+            var friend = ProfileAddonsDict[FriendId];
 
-            account.Friends.ToList().Remove(FriendId);
-            friend.Friends.ToList().Remove(SessionId);
+            account.Friends.Friends.RemoveAll(x => x.Id == FriendId);
+            friend.Friends.Friends.RemoveAll(x => x.Id == SessionId);
 
-            Handlers.SaveHandler.SaveAccount(SessionId, account);
-            Handlers.SaveHandler.SaveAccount(FriendId, friend);
+            Handlers.SaveHandler.SaveAddon(SessionId, account);
+            Handlers.SaveHandler.SaveAddon(FriendId, friend);
         }
 
         /// <summary>
@@ -99,8 +108,10 @@ namespace ServerLib.Controllers
         /// <returns>RequestId</returns>
         public static string AddRequest(string SessionId, string addId)
         {
-            var account = AccountController.FindAccount(SessionId);
-            var friend = AccountController.FindAccount(addId);
+            var account = ProfileAddonsDict[SessionId];
+            var friend = ProfileAddonsDict[addId];
+            var account_pmc = CharacterController.GetPmcCharacter(SessionId);
+            var friend_pmc = CharacterController.GetPmcCharacter(addId);
 
             var rId = Utils.CreateNewID();
 
@@ -110,8 +121,8 @@ namespace ServerLib.Controllers
             account.FriendRequestOutbox.ToList().Add(reqFrom);
             friend.FriendRequestInbox.ToList().Add(reqTo);
 
-            Handlers.SaveHandler.SaveAccount(SessionId, account);
-            Handlers.SaveHandler.SaveAccount(addId, friend);
+            Handlers.SaveHandler.SaveAddon(SessionId, account);
+            Handlers.SaveHandler.SaveAddon(addId, friend);
 
             return rId;
         }
@@ -124,7 +135,7 @@ namespace ServerLib.Controllers
         /// <returns>RequestId</returns>
         public static string RemoveRequest(string SessionId, string removeId)
         {
-            var acc = AccountController.FindAccount(SessionId);
+            var acc = ProfileAddonsDict[SessionId];
             var InBox = GetFriendsInbox(SessionId);
             var OutBox = GetFriendsOutbox(SessionId);
 
@@ -133,10 +144,10 @@ namespace ServerLib.Controllers
             var OutRequest = OutBox.Where(x => x.Id == removeId).FirstOrDefault();
             OutBox.Remove(OutRequest);
 
-            acc.FriendRequestInbox = InBox.ToArray();
-            acc.FriendRequestInbox = OutBox.ToArray();
+            acc.FriendRequestInbox = InBox;
+            acc.FriendRequestInbox = OutBox;
 
-            Handlers.SaveHandler.SaveAccount(SessionId, acc);
+            Handlers.SaveHandler.SaveAddon(SessionId, acc);
 
             return removeId;
         }
@@ -147,10 +158,10 @@ namespace ServerLib.Controllers
         /// <param name="SessionId">SessionId/AccountId</param>
         public static void AcceptAll(string SessionId)
         {
-            List<Json.Other.FriendRequester> empty = new();
+            List<FriendRequester> empty = new();
             List<string> addedAccounts = new();
 
-            var acc = AccountController.FindAccount(SessionId);
+            var acc = ProfileAddonsDict[SessionId];
 
             foreach (var friends in acc.FriendRequestInbox)
             {
@@ -158,8 +169,8 @@ namespace ServerLib.Controllers
                 addedAccounts.Add(friends.To);
             }
 
-            acc.FriendRequestInbox = empty.ToArray();
-            Handlers.SaveHandler.SaveAccount(SessionId, acc);
+            acc.FriendRequestInbox = empty;
+            Handlers.SaveHandler.SaveAddon(SessionId, acc);
         }
 
         /// <summary>
@@ -169,11 +180,11 @@ namespace ServerLib.Controllers
         /// <param name="FromID">From SessionId/AccountId</param>
         /// <param name="ToID">To SessionId/AccountId</param>
         /// <returns>New Friend Request</returns>
-        public static Json.Other.FriendRequester MakeRequest(string ID, string FromID, string ToID)
+        public static FriendRequester MakeRequest(string ID, string FromID, string ToID)
         {
-            Json.Other.FriendRequester requester = new();
+            FriendRequester requester = new();
             requester.Id = ID;
-            requester.Date = Time.UnixTimeNow_Int();
+            requester.Date = TimeHelper.UnixTimeNow_Int();
             requester.From = FromID;
             requester.To = ToID;
             requester.Profile = FromID;
@@ -185,9 +196,9 @@ namespace ServerLib.Controllers
         /// </summary>
         /// <param name="SessionId">SessionId/AccountId</param>
         /// <returns>List of Friend Request</returns>
-        public static List<Json.Other.FriendRequester> GetFriendsInbox(string SessionId)
+        public static List<FriendRequester> GetFriendsInbox(string SessionId)
         {
-            var account = AccountController.FindAccount(SessionId);
+            var account = ProfileAddonsDict[SessionId];
             var ouput = account.FriendRequestInbox.ToList();
             return ouput;
         }
@@ -197,9 +208,9 @@ namespace ServerLib.Controllers
         /// </summary>
         /// <param name="SessionId">SessionId/AccountId</param>
         /// <returns>List of Friend Request</returns>
-        public static List<Json.Other.FriendRequester> GetFriendsOutbox(string SessionId)
+        public static List<FriendRequester> GetFriendsOutbox(string SessionId)
         {
-            var account = AccountController.FindAccount(SessionId);
+            var account = ProfileAddonsDict[SessionId];
             var ouput = account.FriendRequestOutbox.ToList();
             return ouput;
         }
@@ -212,12 +223,11 @@ namespace ServerLib.Controllers
         /// <returns>True | False</returns>
         public static bool IsBothFriend(string SessionId, string FriendId)
         {
-            var account = AccountController.FindAccount(SessionId);
-            var friend = AccountController.FindAccount(FriendId);
-
-            if (account.Friends.Contains(FriendId))
+            var account = ProfileAddonsDict[SessionId];
+            var friend = ProfileAddonsDict[FriendId];
+            if (account.Friends.Friends.Where(x => x.Id == FriendId || x.Aid == FriendId).Any())
             {
-                if (friend.Friends.Contains(SessionId))
+                if (friend.Friends.Friends.Where(x => x.Id == SessionId || x.Aid == SessionId).Any())
                 {
                     return true;
                 }
@@ -233,9 +243,9 @@ namespace ServerLib.Controllers
         /// <returns>True | False</returns>
         public static bool IsFriend(string SessionId, string FriendId)
         {
-            var account = AccountController.FindAccount(SessionId);
+            var account = ProfileAddonsDict[SessionId];
 
-            if (account.Friends.Contains(FriendId))
+            if (account.Friends.Friends.Where(x => x.Id == FriendId || x.Aid == FriendId).Any())
             {
                 return true;
             }

@@ -1,6 +1,6 @@
 ﻿using ServerLib.Controllers;
 using ServerLib.Handlers;
-using ServerLib.Utilities;
+using ServerLib.Utilities.Helpers;
 using ServerLib.Web;
 using System.Net;
 using static ServerLib.Web.HTTPServer;
@@ -25,6 +25,7 @@ namespace ServerLib
             ip_port = $"{Ip}:{port}";
             CertHelper.Make(IPAddress.Parse(Ip), _ip_port);
             DatabaseController.Init();
+            ProfileController.Init();
             Controllers.DialogController.Init();
             AccountController.Init();
             CharacterController.Init();
@@ -49,6 +50,7 @@ namespace ServerLib
             IP = _ip_port;
             ip_port = $"{Ip}:{port}";
             CertHelper.Make(IPAddress.Parse(Ip), _ip_port);
+            ProfileController.Init();
             Controllers.DialogController.Init();
             AccountController.Init();
             CharacterController.Init();

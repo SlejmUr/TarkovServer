@@ -1,42 +1,35 @@
 ﻿using Newtonsoft.Json;
 using ServerLib.Json;
+using ServerLib.Json.Classes;
 using ServerLib.Utilities;
+using ServerLib.Utilities.Helpers;
 
 namespace ServerLib.Controllers
 {
     public class BotController
     {
 
-        public static string GetNewBotProfile(string JsonInfo, string SessionId)
+        public static Character.Base GenerateDogtag(Character.Base bot)
         {
-            Console.WriteLine(JsonInfo + "\n" + SessionId);
-            return "{}";
-        }
-
-        public static Bots.BotBase GenerateDogtag(Bots.BotBase bot)
-        {
-            Bots.Item item = new();
+            Item.Base item = new();
             item.Id = Utils.CreateNewID();
             item.Tpl = bot.Info.Side == "Usec" ? "59f32c3b86f77472a31742f0" : "59f32bb586f774757e1e8442";
             item.ParentId = bot.Inventory.Equipment;
             item.SlotId = "Dogtag";
-            Bots.Dogtag dogtag = new();
+            Item._Dogtag dogtag = new();
             dogtag.AccountId = bot.Aid.ToString();
             dogtag.ProfileId = bot.Id;
             dogtag.Nickname = bot.Info.Nickname;
             dogtag.Side = bot.Info.Side;
             dogtag.Level = bot.Info.Level;
-            dogtag.Time = Time.GetTime();
+            dogtag.Time = TimeHelper.GetTime();
             dogtag.Status = "Killed by ";
             dogtag.KillerAccountId = "Unknown";
             dogtag.KillerProfileId = "Unknown";
             dogtag.KillerName = "Unknown";
             dogtag.WeaponName = "Unknown";
             item.Upd.Dogtag = dogtag;
-
-            List<Bots.Item> items = new();
-            items.Add(item);
-            bot.Inventory.Items = items.ToArray();
+            bot.Inventory.Items.Add(item);
             return bot;
         }
 
@@ -68,7 +61,7 @@ namespace ServerLib.Controllers
             return MathHelper.GetRandomArray(DatabaseController.DataBase.Bot.NamesDict[role].ToArray());
         }
 
-        public static Bots.BotBase GenerateNewID(Bots.BotBase bot)
+        public static Character.Base GenerateNewID(Character.Base bot)
         {
             var ID = Utils.CreateNewID();
             bot.Id = ID;
@@ -76,16 +69,16 @@ namespace ServerLib.Controllers
             return bot;
         }
 
-        public static List<Bots.BotBase> GenerateBot(Bots.BotGenerate generate, string SessionId)
+        public static List<Character.Base> GenerateBot(Bots.BotGeneration generate, string SessionId)
         {
             //DO botgen
             return new();
         }
 
-        public static Bots.BotBase GenerateInventory(Bots.BotBase bot)
+        public static Character.Base GenerateInventory(Character.Base bot)
         {
-            Dictionary<string, Bots.Item> inventoryItemHash = new();
-            Dictionary<string, Bots.Item> itemsByParentHash = new();
+            Dictionary<string, Item.Base> inventoryItemHash = new();
+            Dictionary<string, Item.Base> itemsByParentHash = new();
             string InventoryID = "";
 
 
@@ -119,39 +112,6 @@ namespace ServerLib.Controllers
                 itemsByParentHash[InventoryID].ParentId = newID;
             }
             return bot;
-        }
-
-        public static void GenerateLevel(int min, int max, int playerlevel, out int lvl, out int xp)
-        {
-            dynamic global = JsonConvert.DeserializeObject<dynamic>(DatabaseController.DataBase.Basic.Globals);
-            var exptable = global.data.config.exp.level.exp_table;
-            Json.Other.ExpTableClass expTableClass = exptable;
-
-            int maxlvl = Math.Max(max, expTableClass.ExpTable.Count);
-            int limit_max = playerlevel + 10;
-            int limit_min = playerlevel - 5;
-            if (limit_max > maxlvl)
-            {
-                limit_max = maxlvl;
-            }
-            if (playerlevel <= 5)
-            {
-                limit_min = 1;
-            }
-            xp = 0;
-
-            lvl = MathHelper.GetRandomInt(limit_min, limit_max);
-
-            for (int i = 0; i < lvl; i++)
-            {
-                xp += expTableClass.ExpTable[i].Exp;
-            }
-
-            if (lvl < expTableClass.ExpTable.Count - 1)
-            {
-                xp += MathHelper.GetRandomInt(0, expTableClass.ExpTable[lvl].Exp - 1);
-            }
-
         }
     }
 }

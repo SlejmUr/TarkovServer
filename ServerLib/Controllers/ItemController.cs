@@ -1,8 +1,5 @@
-﻿using Newtonsoft.Json;
-using ServerLib.Json;
-using ServerLib.Utilities;
-using System.Text;
-using static ServerLib.Json.Other;
+﻿using ServerLib.Utilities;
+using ServerLib.Json.Classes;
 
 namespace ServerLib.Controllers
 {
@@ -13,7 +10,7 @@ namespace ServerLib.Controllers
         /// </summary>
         /// <param name="ItemId">ItemId</param>
         /// <returns>The item from DataBase</returns>
-        public static ItemBase Get(string ItemId)
+        public static TemplateItem.Base Get(string ItemId)
         {
             return DatabaseController.DataBase.Others.Items[ItemId];
         }
@@ -22,7 +19,7 @@ namespace ServerLib.Controllers
         /// Get All Items from Database
         /// </summary>
         /// <returns>All Items from Database</returns>
-        public static Dictionary<string, ItemBase> GetAll()
+        public static Dictionary<string, TemplateItem.Base> GetAll()
         {
             return DatabaseController.DataBase.Others.Items;
         }
@@ -43,18 +40,18 @@ namespace ServerLib.Controllers
             return moneytpl.Contains(tpl);
         }
 
-        public static Character.Item CreateNewWithParent(string ItemId)
+        public static Item.Base CreateNew(string ItemId)
         {
-            return new Character.Item()
+            return new Item.Base()
             {
                 Id = Utils.CreateNewID(),
                 Tpl = ItemId
             };
         }
 
-        public static Character.Item CreateNewWithParent(string ItemId, string ParentId)
+        public static Item.Base CreateNew(string ItemId, string ParentId)
         {
-            return new Character.Item()
+            return new Item.Base()
             {
                 Id = Utils.CreateNewID(),
                 Tpl = ItemId,
@@ -62,9 +59,9 @@ namespace ServerLib.Controllers
             };
         }
 
-        public static List<Character.Item> GetParentAndChildren(string ItemId, List<Character.Item> items)
+        public static List<Item.Base> GetParentAndChildren(string ItemId, List<Item.Base> items)
         {
-            List<Character.Item> childrens = new();
+            List<Item.Base> childrens = new();
             foreach (var child in items)
             {
                 if (child.Id == ItemId)
@@ -81,9 +78,9 @@ namespace ServerLib.Controllers
             return childrens;
         }
 
-        public static List<Character.Item> GetAllChildItemsInInventory(Character.Item Item, List<Character.Item> items)
+        public static List<Item.Base> GetAllChildItemsInInventory(Item.Base Item, List<Item.Base> items)
         {
-            Dictionary<string, List<Character.Item>> parentReference = new();
+            Dictionary<string, List<Item.Base>> parentReference = new();
 
             foreach (var item in items)
             {
@@ -106,7 +103,7 @@ namespace ServerLib.Controllers
             }
             else
             {
-                List<Character.Item> ret = new();
+                List<Item.Base> ret = new();
 
                 ret.AddRange(parentReference[Item.Id]);
 
@@ -122,9 +119,12 @@ namespace ServerLib.Controllers
             }
         }
 
-        public static List<Character.Item> PrepareChildrenForAddItem(string parentId, List<Character.Item> items)
+        public static List<Item.Base> PrepareChildrenForAddItem(string parentId, List<Item.Base>? items)
         {
-            List<Character.Item> ret = new();
+            List<Item.Base> ret = new();
+
+            if (items == null)
+                return ret;
 
             foreach (var item in items)
             {
@@ -132,7 +132,7 @@ namespace ServerLib.Controllers
                 {
                     var grandchilds = PrepareChildrenForAddItem(item.Id, items);
 
-                    Character.Item newChild = new()
+                    Item.Base newChild = new()
                     {
                         Tpl = item.Tpl,
                         SlotId = item.SlotId
@@ -148,18 +148,18 @@ namespace ServerLib.Controllers
             return ret;
         }
 
-        public static List<Character.Item> HandleAmmoBoxes(string parentId, ItemBase item)
+        public static List<Item.Base> HandleAmmoBoxes(string parentId, TemplateItem.Base item)
         {
-            List<Character.Item> ret = new();
+            List<Item.Base> ret = new();
 
-            var stack = item.Props.StackSlots[0];
-            var remainder = (int)stack.MaxCount;
-            var ammoId = stack.Props.Filters[0].Filter[0];
+            var stack = item._props.StackSlots[0];
+            var remainder = (int)stack._max_count;
+            var ammoId = stack._props.filters[0].Filter[0];
 
             while (remainder > 0)
             {
-                var cartridges = CreateNewWithParent(ammoId, parentId);
-                cartridges.SlotId = stack.Name.ToString();
+                var cartridges = CreateNew(ammoId, parentId);
+                cartridges.SlotId = stack._name.ToString();
                 cartridges.Upd = CreateFreshBaseItemUpd(ammoId);
 
                 if (cartridges.Upd.StackObjectsCount != null && cartridges.Upd.StackObjectsCount < remainder)
@@ -177,17 +177,17 @@ namespace ServerLib.Controllers
             return ret;
         }
 
-        public static Character.Upd CreateFreshBaseItemUpd(string itemId)
+        public static Item._Upd CreateFreshBaseItemUpd(string itemId)
         {
             var _base = Get(itemId);
-            switch (_base.Parent)
+            switch (_base._parent)
             {
                 case "590c745b86f7743cc433c5f2": // "Other"
                     return new()
                     {
                         Resource = new()
                         {
-                            Value = (int)_base.Props.Resource
+                            Value = (int)_base._props.Resource
                         }
                     };
                 case "5448f3ac4bdc2dce718b4569": // Medical
@@ -195,7 +195,7 @@ namespace ServerLib.Controllers
                     {
                         MedKit = new()
                         {
-                            HpResource = (int)_base.Props.MaxHpResource
+                            HpResource = (int)_base._props.MaxHpResource
                         }
                     };
                 case "5448e8d04bdc2ddf718b4569": // Food
@@ -204,7 +204,7 @@ namespace ServerLib.Controllers
                     {
                         FoodDrink = new()
                         {
-                            HpPercent = (int)_base.Props.MaxResource
+                            HpPercent = (int)_base._props.MaxResource
                         }
                     };
                 case "5a341c4086f77401f2541505": // Headwear
@@ -218,8 +218,8 @@ namespace ServerLib.Controllers
                     {
                         Repairable = new()
                         {
-                            MaxDurability = (int)_base.Props.MaxDurability,
-                            Durability = (int)_base.Props.Durability
+                            MaxDurability = (int)_base._props.MaxDurability,
+                            Durability = (int)_base._props.Durability
                         }
                     };
                 case "55818ae44bdc2dde698b456c": // OpticScope
@@ -257,8 +257,8 @@ namespace ServerLib.Controllers
                     {
                         Repairable = new()
                         {
-                            MaxDurability = (int)_base.Props.MaxDurability,
-                            Durability = (int)_base.Props.Durability,
+                            MaxDurability = (int)_base._props.MaxDurability,
+                            Durability = (int)_base._props.Durability,
                         },
                         Foldable =
                         {
@@ -274,8 +274,8 @@ namespace ServerLib.Controllers
                     {
                         Repairable = new()
                         {
-                            MaxDurability = (int)_base.Props.MaxDurability,
-                            Durability = (int)_base.Props.Durability,
+                            MaxDurability = (int)_base._props.MaxDurability,
+                            Durability = (int)_base._props.Durability,
                         },
                         FireMode =
                         {
@@ -287,13 +287,13 @@ namespace ServerLib.Controllers
                     {
                         RepairKit = new()
                         {
-                            Resource = (int)_base.Props.MaxRepairResource
+                            Resource = (int)_base._props.MaxRepairResource
                         }
                     };
                 case "5485a8684bdc2da71d8b4567": // Ammo
                     return new()
                     {
-                        StackObjectsCount = (int)_base.Props.StackMaxSize
+                        StackObjectsCount = (int)_base._props.StackMaxSize
                     };
 
                 case "55818b084bdc2d5b648b4571": // Flashlight
@@ -329,33 +329,33 @@ namespace ServerLib.Controllers
                 case "5447e0e74bdc2d3c308b4567": // SpecItem
                 case "543be6564bdc2df4348b4568": // ThrowWeap
                 default:
-                    Debug.PrintError($"Unable to create fresh UPD from parent [{_base.Parent}] for item [{_base.Id}]");
+                    Debug.PrintError($"Unable to create fresh UPD from parent [{_base._parent}] for item [{_base._id}]");
                     return new();
             }
 
         }
 
-        public static bool IsFolded(Character.Item item)
+        public static bool IsFolded(Item.Base item)
         {
             return item.Upd.Foldable.Folded == false;
         }
 
-        public static bool IsSearchableItem(ItemBase item)
+        public static bool IsSearchableItem(TemplateItem.Base item)
         {
-            if (item.Parent == "566168634bdc2d144c8b456c")
+            if (item._parent == "566168634bdc2d144c8b456c")
                 return true;
             else
-                return Get(item.Parent).Parent == "566168634bdc2d144c8b456c";
+                return Get(item._parent)._parent == "566168634bdc2d144c8b456c";
         }
 
-        public static int GetStackSize(ItemBase item)
+        public static int GetStackSize(TemplateItem.Base item)
         {
-            return item.Props.StackMaxSize > 1 ? (int)item.Props.StackMaxSize : 1;
+            return item._props.StackMaxSize > 1 ? (int)item._props.StackMaxSize : 1;
         }
 
-        public static List<Character.Item> GetSizeableItems(Character.Item item, ItemBase itemTemplate, List<Character.Item> items)
+        public static List<Item.Base> GetSizeableItems(Item.Base item, TemplateItem.Base itemTemplate, List<Item.Base> items)
         {
-            List<Character.Item> ret = new();
+            List<Item.Base> ret = new();
             foreach (var child in items)
             {
                 if (child.SlotId.IndexOf("mod_") < 0)
@@ -363,10 +363,10 @@ namespace ServerLib.Controllers
 
                 var childItem = Get(child.Tpl);
 
-                if ((itemTemplate.Props.Foldable.Value
-                    && itemTemplate.Props.FoldedSlot.Value.ToString() == child.SlotId
+                if ((itemTemplate._props.Foldable
+                    && itemTemplate._props.FoldedSlot.ToString() == child.SlotId
                     && (IsFolded(item) || IsFolded(child)))
-                    || (childItem.Props.Foldable.Value && IsFolded(item)
+                    || (childItem._props.Foldable && IsFolded(item)
                     && IsFolded(child)))
                 {
                     continue;
@@ -377,38 +377,38 @@ namespace ServerLib.Controllers
             return ret;
         }
 
-        public static (Json.Other.Size Size, Forced Forced) GetSizesOfChildItems(List<Character.Item> items, Json.Other.Size size, Forced forced)
+        public static (Others.Size Size, Others.Forced Forced) GetSizesOfChildItems(List<Item.Base> items, Others.Size size, Others.Forced forced)
         {
             foreach (var child in items)
             {
                 var childItem = Get(child.Tpl);
 
-                if (childItem.Props.ExtraSizeForceAdd.Value)
+                if (childItem._props.ExtraSizeForceAdd)
                 {
-                    forced.ForcedUp += (int)childItem.Props.ExtraSizeUp;
-                    forced.ForcedDown += (int)childItem.Props.ExtraSizeDown;
-                    forced.ForcedLeft += (int)childItem.Props.ExtraSizeLeft;
-                    forced.ForcedRight += (int)childItem.Props.ExtraSizeRight;
+                    forced.ForcedUp += (int)childItem._props.ExtraSizeUp;
+                    forced.ForcedDown += (int)childItem._props.ExtraSizeDown;
+                    forced.ForcedLeft += (int)childItem._props.ExtraSizeLeft;
+                    forced.ForcedRight += (int)childItem._props.ExtraSizeRight;
                     continue;
                 }
 
-                size.SizeUp = size.SizeUp < childItem.Props.ExtraSizeUp ? (int)childItem.Props.ExtraSizeUp : size.SizeUp;
-                size.SizeDown = size.SizeDown < childItem.Props.ExtraSizeDown ? (int)childItem.Props.ExtraSizeDown : size.SizeDown;
-                size.SizeLeft = size.SizeLeft < childItem.Props.ExtraSizeLeft ? (int)childItem.Props.ExtraSizeLeft : size.SizeLeft;
-                size.SizeRight = size.SizeRight < childItem.Props.ExtraSizeRight ? (int)childItem.Props.ExtraSizeRight : size.SizeRight;
+                size.SizeUp = size.SizeUp < childItem._props.ExtraSizeUp ? (int)childItem._props.ExtraSizeUp : size.SizeUp;
+                size.SizeDown = size.SizeDown < childItem._props.ExtraSizeDown ? (int)childItem._props.ExtraSizeDown : size.SizeDown;
+                size.SizeLeft = size.SizeLeft < childItem._props.ExtraSizeLeft ? (int)childItem._props.ExtraSizeLeft : size.SizeLeft;
+                size.SizeRight = size.SizeRight < childItem._props.ExtraSizeRight ? (int)childItem._props.ExtraSizeRight : size.SizeRight;
             }
             return (size, forced);
         }
 
-        public static WidthHeight GetSize(Character.Item item, List<Character.Item>? items)
+        public static Others.WidthHeight GetSize(Item.Base item, List<Item.Base>? items)
         {
             var ItemTemplate = Get(item.Tpl);
-            var itemWidth = (int)ItemTemplate.Props.Width;
-            var itemHeight = (int)ItemTemplate.Props.Height;
+            var itemWidth = (int)ItemTemplate._props.Width;
+            var itemHeight = (int)ItemTemplate._props.Height;
 
             if (items != null && items.Count > 0)
             {
-                Json.Other.Size size = new()
+                Others.Size size = new()
                 {
                     SizeUp = 0,
                     SizeDown = 0,
@@ -416,7 +416,7 @@ namespace ServerLib.Controllers
                     SizeRight = 0
                 };
 
-                Json.Other.Forced forced = new()
+                Others.Forced forced = new()
                 {
                     ForcedUp = 0,
                     ForcedDown = 0,
@@ -441,7 +441,7 @@ namespace ServerLib.Controllers
                 return new() { Height = itemWidth, Width = itemHeight };
         }
 
-        public static ContainerMap? CreateContainerMap(Character.Item container)
+        public static Others.ContainerMap? CreateContainerMap(Item.Base container)
         {
             var containerTemplate = Get(container.Tpl);
             if (containerTemplate == null)
@@ -450,40 +450,35 @@ namespace ServerLib.Controllers
                 return null;
             }
 
-            ContainerMap root = new ContainerMap()
+            Others.ContainerMap root = new()
             {
                 Id = container.Id,
                 Map = new(),
             };
 
-            foreach (var gird in containerTemplate.Props.Grids)
+            foreach (var gird in containerTemplate._props.Grids)
             {
-                var y = Json.NameUnionConverter.Singleton;
-                StringBuilder sb = new StringBuilder();
-                y.WriteJson(new JsonTextWriter(new StringWriter(sb)), gird.Name, new JsonSerializer() { Converters = { Json.NameUnionConverter.Singleton } });
-                var gridname = sb.ToString();
-                gridname = gridname.Replace("\"", "");
-                root.Map.Add(gridname,
+                root.Map.Add(gird._name,
                     new()
                     {
-                        Height = (int)gird.Props.CellsH,
-                        Width = (int)gird.Props.CellsV,
+                        Height = (int)gird._props.cellsH,
+                        Width = (int)gird._props.cellsV,
                         Grid = new()
                     }
                 );
-                for (int row = 0; row < root.Map[gridname].Height; row++)
+                for (int row = 0; row < root.Map[gird._name].Height; row++)
                 {
-                    root.Map[gridname].Grid.Add(new());
-                    for (int column = 0; column < root.Map[gridname].Width; column++)
+                    root.Map[gird._name].Grid.Add(new());
+                    for (int column = 0; column < root.Map[gird._name].Width; column++)
                     {
-                        root.Map[gridname].Grid[row].Add("");
+                        root.Map[gird._name].Grid[row].Add("");
                     }
                 }
             }
             return root;
         }
 
-        public static ContainerMap? PositionItemsInMap(ContainerMap? container, List<Character.Item> containerItems)
+        public static Others.ContainerMap? PositionItemsInMap(Others.ContainerMap? container, List<Item.Base> containerItems)
         {
             if (container == null)
             {
@@ -520,15 +515,15 @@ namespace ServerLib.Controllers
             return container;
         }
 
-        public static ContainerMap? GenerateContainerMap(Character.Item container, List<Character.Item> containerItems)
+        public static Others.ContainerMap? GenerateContainerMap(Item.Base container, List<Item.Base> containerItems)
         {
             var containerMap = CreateContainerMap(container);
             return PositionItemsInMap(containerMap, containerItems);
         }
 
-        public static FreeSlot GetFreeSlot(ContainerMap container, WidthHeight dimensions)
+        public static Others.FreeSlot GetFreeSlot(Others.ContainerMap container, Others.WidthHeight dimensions)
         {
-            FreeSlot freeSlot = new();
+            Others.FreeSlot freeSlot = new();
 
             foreach (var item in container.Map.Keys)
             {
@@ -630,5 +625,7 @@ namespace ServerLib.Controllers
             }
             return freeSlot;
         }
+
+
     }
 }

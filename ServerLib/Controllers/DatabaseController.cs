@@ -1,17 +1,15 @@
 ﻿using Newtonsoft.Json;
-using ServerLib.Json;
+using ServerLib.Json.Classes;
 using ServerLib.Utilities;
 
 namespace ServerLib.Controllers
 {
     public class DatabaseController
     {
-        public static Dictionary<string, DateTime> FileAges;
         public static Database DataBase = new();
         public static void Init()
         {
-            FileAges = new();
-            FileAges.Clear();
+            if (!Directory.Exists("user/profiles")) { Directory.CreateDirectory("user/profiles"); }
             ConfigController.Init();
             LoadBasics();
             LoadCharacters();
@@ -29,25 +27,28 @@ namespace ServerLib.Controllers
 
         static void LoadBasics()
         {
+            DataBase.Basic = new();
             DataBase.Basic.Globals = File.ReadAllText("Files/base/globals.json");
             DataBase.Basic.BlacklistedIds = JsonConvert.DeserializeObject<List<string>>(File.ReadAllText("Files/base/blacklist.json"));
             Debug.PrintDebug("Basics loaded");
         }
         static void LoadTemplates()
         {
-            DataBase.Templates.Items = JsonConvert.DeserializeObject<List<Templates.Items>>(File.ReadAllText("Files/templates/items.json"));
-            DataBase.Templates.Categories = JsonConvert.DeserializeObject<List<Templates.Categories>>(File.ReadAllText("Files/templates/categories.json"));
+            DataBase.Templates = new();
+            DataBase.Templates.Items = JsonConvert.DeserializeObject<List<Json.Classes.Handbook.HandbookItem>>(File.ReadAllText("Files/templates/items.json"));
+            DataBase.Templates.Categories = JsonConvert.DeserializeObject<List<Json.Classes.Handbook.Category>>(File.ReadAllText("Files/templates/categories.json"));
             Debug.PrintDebug("Templates loaded");
         }
 
         static void LoadOthers()
         {
+            DataBase.Others = new();
             foreach (var item in DataBase.Templates.Items)
             {
                 DataBase.Others.ItemPrices.Add(item.Id, item.Price);
             }
             DataBase.Others.ChildlessList = JsonConvert.DeserializeObject<List<string>>(File.ReadAllText("Files/others/childlessList.json"));
-            DataBase.Others.Items = ItemBase.FromJson(File.ReadAllText("Files/others/items.json"));
+            DataBase.Others.Items = JsonConvert.DeserializeObject<Dictionary<string, TemplateItem.Base>>(File.ReadAllText("Files/others/items.json"));
             DataBase.Others.Quests = File.ReadAllText("Files/others/quests.json");
             if (File.Exists("Files/others/resupply.json"))
             {
@@ -66,15 +67,17 @@ namespace ServerLib.Controllers
 
         static void LoadCharacters()
         {
+            DataBase.Characters = new();
             DataBase.Characters.CharacterBase["bear"] = JsonConvert.DeserializeObject<Character.Base>(File.ReadAllText("Files/characters/character_bear.json"));
             DataBase.Characters.CharacterBase["usec"] = JsonConvert.DeserializeObject<Character.Base>(File.ReadAllText("Files/characters/character_usec.json"));
             DataBase.Characters.CharacterBase["scav"] = JsonConvert.DeserializeObject<Character.Base>(File.ReadAllText("Files/characters/playerScav.json"));
-            DataBase.Characters.CharacterStorage = JsonConvert.DeserializeObject<CharacterOBJ.CharacterStorage>(File.ReadAllText("Files/characters/storage.json"));
-            DataBase.Characters.DefaultCustomization = JsonConvert.DeserializeObject<CharacterOBJ.DefaultCustomization>(File.ReadAllText("Files/characters/defaultCustomization.json"));
+            DataBase.Characters.CharacterStorage = JsonConvert.DeserializeObject<Dictionary<string, List<string>>>(File.ReadAllText("Files/characters/storage.json"));
+            DataBase.Characters.DefaultCustomization = JsonConvert.DeserializeObject<Dictionary<string, Character.Customization>>(File.ReadAllText("Files/characters/defaultCustomization.json"));
             Debug.PrintDebug("Characters loaded");
         }
         static void LoadBots()
         {
+            DataBase.Bot = new();
             DataBase.Bot.Base = File.ReadAllText("Files/bot/botBase.json");
             DataBase.Bot.Appearance = File.ReadAllText("Files/bot/appearance.json");
             DataBase.Bot.Settings = File.ReadAllText("Files/bot/botSettings.json");
@@ -175,6 +178,7 @@ namespace ServerLib.Controllers
         }
         static void LoadLocale()
         {
+            DataBase.Locale = new();
             DataBase.Locale.Languages = File.ReadAllText("Files/locales/languages.json");
             DataBase.Locale.Extras = File.ReadAllText("Files/locales/extras.json");
             string stuff = "Files/locales";
@@ -195,6 +199,7 @@ namespace ServerLib.Controllers
         }
         static void LoadLocations()
         {
+            DataBase.Location = new();
             DataBase.Location.AllLocations = File.ReadAllText("Files/locations/all_locations.json");
             var dirs = Directory.GetDirectories("Files/locations");
             foreach (var dir in dirs)
@@ -211,8 +216,9 @@ namespace ServerLib.Controllers
         }
         static void LoadTraders()
         {
+            DataBase.Trader = new();
             DataBase.Trader.LiveFlea = File.ReadAllText("Files/traders/liveflea.json");
-            Database.trader.traders traders = new();
+            Trader.Base trader = new();
             var dirs = Directory.GetDirectories("Files/traders");
             foreach (var dir in dirs)
             {
@@ -227,34 +233,24 @@ namespace ServerLib.Controllers
                         default:
                             break;
                         case "assort":
-                            traders.Assort = JsonConvert.DeserializeObject<Database.trader.traders.assort>(File.ReadAllText(file));
+                            trader.assort = JsonConvert.DeserializeObject<Trader.TraderAssort>(File.ReadAllText(file));
                             break;
                         case "base":
-                            traders.Base = JsonConvert.DeserializeObject<Traders.Base>(File.ReadAllText(file));
-                            break;
-                        case "categories":
-                            if (!dirname.Contains("ragfair"))
-                            {
-                                traders.Categories = JsonConvert.DeserializeObject<List<string>>(File.ReadAllText(file));
-                            }
-                            else
-                            {
-                                traders.RagfairCategories = File.ReadAllText(file);
-                            }
+                            trader.traderbase = JsonConvert.DeserializeObject<Trader.TraderBase>(File.ReadAllText(file));
                             break;
                         case "dialogue":
-                            traders.Dialog = JsonConvert.DeserializeObject<Traders.Dialog>(File.ReadAllText(file));
+                            trader.dialogue = JsonConvert.DeserializeObject<Dictionary<string,List<string>>>(File.ReadAllText(file));
                             break;
                         case "questassort":
-                            traders.QuestAssort = File.ReadAllText(file);
+                            trader.questassort = JsonConvert.DeserializeObject<Dictionary<string,Dictionary<string, string>>>(File.ReadAllText(file));
                             break;
                         case "suits":
-                            traders.Suits = JsonConvert.DeserializeObject<List<TraderSuits>>(File.ReadAllText(file));
+                            trader.suits = JsonConvert.DeserializeObject<List<Trader.Suit>>(File.ReadAllText(file));
                             break;
                     }
-                    DataBase.Trader.Traders.Add(filename + "_" + dirname, traders);
                 }
-                traders = new();
+                DataBase.Trader.Traders.Add(dirname, trader);
+                trader = new();
             }
             Debug.PrintDebug("Traders loaded");
         }

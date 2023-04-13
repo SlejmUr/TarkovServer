@@ -57065,133 +57065,114 @@
         {
             "_id": "4935b2599bebb56b5bfc1b59",
             "_tpl": "5d6e68c4a4b9361b93413f79",
-            "location": 1,
             "parentId": "7d79951818e6b8e7f9ccc7b4",
             "slotId": "cartridges"
         },
         {
             "_id": "55ed139f7286255e38b09e4e",
             "_tpl": "5d6e6891a4b9361bd473feea",
-            "location": 2,
             "parentId": "7d79951818e6b8e7f9ccc7b4",
             "slotId": "cartridges"
         },
         {
             "_id": "3d6da3a95c9680e5a36a63da",
             "_tpl": "5d6e68c4a4b9361b93413f79",
-            "location": 3,
             "parentId": "7d79951818e6b8e7f9ccc7b4",
             "slotId": "cartridges"
         },
         {
             "_id": "39fc56325305deeba93b5752",
             "_tpl": "5d6e6891a4b9361bd473feea",
-            "location": 4,
             "parentId": "7d79951818e6b8e7f9ccc7b4",
             "slotId": "cartridges"
         },
         {
             "_id": "a6512208c57f34a61f50b962",
             "_tpl": "5d6e68c4a4b9361b93413f79",
-            "location": 5,
             "parentId": "7d79951818e6b8e7f9ccc7b4",
             "slotId": "cartridges"
         },
         {
             "_id": "b68b68675e7ea4abb89f04f5",
             "_tpl": "5d6e6891a4b9361bd473feea",
-            "location": 6,
             "parentId": "7d79951818e6b8e7f9ccc7b4",
             "slotId": "cartridges"
         },
         {
             "_id": "06da04bf2964d3a4f0aba446",
             "_tpl": "5d6e68c4a4b9361b93413f79",
-            "location": 7,
             "parentId": "7d79951818e6b8e7f9ccc7b4",
             "slotId": "cartridges"
         },
         {
             "_id": "3c82380fccac595fd12f9be7",
             "_tpl": "5d6e6891a4b9361bd473feea",
-            "location": 8,
             "parentId": "7d79951818e6b8e7f9ccc7b4",
             "slotId": "cartridges"
         },
         {
             "_id": "1002cef557fb4251b1e6115d",
             "_tpl": "5d6e68c4a4b9361b93413f79",
-            "location": 9,
             "parentId": "7d79951818e6b8e7f9ccc7b4",
             "slotId": "cartridges"
         },
         {
             "_id": "d94aa4130ac76aac8016ff2d",
             "_tpl": "5d6e6891a4b9361bd473feea",
-            "location": 10,
             "parentId": "7d79951818e6b8e7f9ccc7b4",
             "slotId": "cartridges"
         },
         {
             "_id": "f6727a043ba13a95a30e9917",
             "_tpl": "5d6e68c4a4b9361b93413f79",
-            "location": 11,
             "parentId": "7d79951818e6b8e7f9ccc7b4",
             "slotId": "cartridges"
         },
         {
             "_id": "862ec5a4e8f64281a47b5879",
             "_tpl": "5d6e6891a4b9361bd473feea",
-            "location": 12,
             "parentId": "7d79951818e6b8e7f9ccc7b4",
             "slotId": "cartridges"
         },
         {
             "_id": "33e04638cdbeecd828bf6daa",
             "_tpl": "5d6e68c4a4b9361b93413f79",
-            "location": 13,
             "parentId": "7d79951818e6b8e7f9ccc7b4",
             "slotId": "cartridges"
         },
         {
             "_id": "00c5b8a5364e746780f701d5",
             "_tpl": "5d6e6891a4b9361bd473feea",
-            "location": 14,
             "parentId": "7d79951818e6b8e7f9ccc7b4",
             "slotId": "cartridges"
         },
         {
             "_id": "3cbc93ec49ba7fef47893e09",
             "_tpl": "5d6e68c4a4b9361b93413f79",
-            "location": 15,
             "parentId": "7d79951818e6b8e7f9ccc7b4",
             "slotId": "cartridges"
         },
         {
             "_id": "d1ab1ce54900fff3c1bcd5da",
             "_tpl": "5d6e6891a4b9361bd473feea",
-            "location": 16,
             "parentId": "7d79951818e6b8e7f9ccc7b4",
             "slotId": "cartridges"
         },
         {
             "_id": "968e2e4cd512364413bcb240",
             "_tpl": "5d6e68c4a4b9361b93413f79",
-            "location": 17,
             "parentId": "7d79951818e6b8e7f9ccc7b4",
             "slotId": "cartridges"
         },
         {
             "_id": "7cf5db2e660a9b5f659c4f76",
             "_tpl": "5d6e6891a4b9361bd473feea",
-            "location": 18,
             "parentId": "7d79951818e6b8e7f9ccc7b4",
             "slotId": "cartridges"
         },
         {
             "_id": "b04cc8b88c9a550d50f543c7",
             "_tpl": "5d6e68c4a4b9361b93413f79",
-            "location": 19,
             "parentId": "7d79951818e6b8e7f9ccc7b4",
             "slotId": "cartridges"
         },

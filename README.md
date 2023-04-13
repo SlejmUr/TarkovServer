@@ -8,6 +8,7 @@ And possibly easier to make a nice Server UI with this (Xaml, or just Winform).\
 Still in early phase, in development!
 
 ## References
+Assembly-CSharp.dll\
 bsg.componentace.compression.libs.zlib.dll\
 bsg.console.core\
 bsg.microsoft.extensions.objectpool.dll\

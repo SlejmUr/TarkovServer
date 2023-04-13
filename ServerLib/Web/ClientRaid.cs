@@ -62,7 +62,7 @@ namespace ServerLib.Web
             Utils.PrintRequest(request, session);
             //REQ stuff
             var decomp = ResponseControl.DeCompressReq(request.BodyBytes);
-            File.AppendAllText("saveAccount.json", decomp);
+            File.AppendAllText("RaidSettings.json", decomp);
             // RPS
             var rsp = ResponseControl.CompressRsp(ResponseControl.NullResponse());
             Utils.SendUnityResponse(session, rsp);
@@ -75,7 +75,7 @@ namespace ServerLib.Web
             Utils.PrintRequest(request, session);
             //REQ stuff
             var decomp = ResponseControl.DeCompressReq(request.BodyBytes);
-            File.AppendAllText("saveAccount.json", decomp);
+            File.AppendAllText("CoopRaidSettings.json", decomp);
             // RPS
             var rsp = ResponseControl.CompressRsp(ResponseControl.NullResponse());
             Utils.SendUnityResponse(session, rsp);

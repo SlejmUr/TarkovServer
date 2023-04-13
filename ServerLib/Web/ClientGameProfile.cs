@@ -1,6 +1,8 @@
 ﻿using NetCoreServer;
+using Newtonsoft.Json;
 using ServerLib.Controllers;
 using ServerLib.Utilities;
+using ServerLib.Utilities.Helpers;
 using static ServerLib.Web.HTTPServer;
 
 namespace ServerLib.Web
@@ -89,7 +91,7 @@ namespace ServerLib.Web
             Utils.PrintRequest(request, session);
             string Uncompressed = ResponseControl.DeCompressReq(request.BodyBytes);
 
-            var nickname = AccountController.ValidateNickname(Uncompressed);
+            var nickname = AccountController.ValidateNickname(JsonConvert.DeserializeObject<Json.Classes.Nickname>(Uncompressed));
             var resp = ResponseControl.GetBody("{status: \"ok\"}");
             if (nickname == "taken")
             {
@@ -116,7 +118,7 @@ namespace ServerLib.Web
             string Uncompressed = ResponseControl.DeCompressReq(request.BodyBytes);
 
             var nickname = CharacterController.ChangeNickname(Uncompressed, SessionId);
-            var resp = ResponseControl.GetBody("{\"status\": 0, \"nicknamechangedate\": " + Time.UnixTimeNow_Int() + "}");
+            var resp = ResponseControl.GetBody("{\"status\": 0, \"nicknamechangedate\": " + TimeHelper.UnixTimeNow_Int() + "}");
             if (nickname == "taken")
             {
                 resp = ResponseControl.GetBody("null", 255, "The nickname is already in use");
@@ -166,7 +168,7 @@ namespace ServerLib.Web
             //REQ stuff
             string SessionId = Utils.GetSessionId(session.Headers);
             Utils.PrintRequest(request, session);
-            var character = CharacterController.GetCharacter(SessionId);
+            var character = CharacterController.GetPmcCharacter(SessionId);
             if (character == null)
             {
                 Debug.PrintError("[ProfileStatus] Character not found!");

@@ -1,0 +1,52 @@
+Messaging urls:
+client/mail/dialog/list
+client/mail/dialog/view
+client/mail/dialog/pin
+client/mail/dialog/unpin
+client/mail/dialog/getAllAttachments
+client/mail/dialog/info
+client/friend/ignore/set
+client/friend/ignore/remove
+client/mail/dialog/group/users/add
+client/mail/dialog/group/users/remove
+client/mail/dialog/group/leave
+client/mail/dialog/read
+client/friend/list
+client/friend/delete
+client/friend/request/list/inbox
+client/friend/request/list/outbox
+client/friend/request/send
+client/friend/request/cancel
+client/friend/request/accept
+client/friend/request/accept-all
+client/friend/request/decline
+client/mail/dialog/group/owner/change
+client/mail/dialog/group/create
+client/mail/msg/send
+client/mail/dialog/clear
+client/mail/dialog/remove
+
+
+Ragfair urls:
+client/ragfair/offer/findbyid
+client/ragfair/itemMarketPrice
+client/ragfair/find
+
+
+Trading urls:
+client/trading/customization/storage
+client/trading/api/traderSettings
+client/trading/customization/{TraderId}/offers
+client/trading/api/getTraderAssort/{TraderId}
+loading traders avatar
+
+Lobby Function:
+EstablishWSConnection	0x0600807A
+
+Main urls:
+Everything else (will be a list but nyeh)
+
+
+
+
+

@@ -1,9 +1,8 @@
-﻿using EFT;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using ServerLib.Handlers;
-using ServerLib.Json;
+using ServerLib.Json.Classes;
 using ServerLib.Utilities;
-using static ServerLib.Json.CharacterOBJ;
+using ServerLib.Utilities.Helpers;
 
 namespace ServerLib.Controllers
 {
@@ -14,27 +13,22 @@ namespace ServerLib.Controllers
             Characters = new();
             Characters.Clear();
         }
-
-        public static List<Character.Base> Characters;
+        public static Dictionary<string, Character.Base> Characters;
 
         public static void Init()
         {
-            GetCharacterList();
+            GetCharacters();
             Debug.PrintInfo("Initialization Done!", "[CHARACTER]");
         }
 
-        public static void GetCharacterList()
+        public static void GetCharacters()
         {
-            string[] dirs = Directory.GetDirectories("user/profiles");
-            foreach (string dir in dirs)
+            ProfileController.ReloadProfiles();
+            foreach (var prof in ProfileController.ProfilesDict)
             {
-                if (!File.Exists($"{dir}/character.json")) { continue; }
-                var account = JsonConvert.DeserializeObject<Character.Base>(File.ReadAllText($"{dir}/character.json"));
-                if (!Characters.Contains(account))
-                {
-                    Debug.PrintInfo("Loaded character data for profile: " + account.Id, "[CHARACTER]");
-                    Characters.Add(account);
-                }
+                var characters = prof.Value.Characters;
+                Characters.TryAdd(prof.Key + "_pmc", characters.Pmc);
+                Characters.TryAdd(prof.Key + "_scav", characters.Scav);
             }
         }
 
@@ -44,22 +38,10 @@ namespace ServerLib.Controllers
         /// <param name="SessionId">SessionId/AccountId</param>
         public static void LoadCharacter(string SessionId)
         {
-            string CHARACTER_PATH = SaveHandler.GetCharacterPath(SessionId);
-
-            if (!File.Exists(CHARACTER_PATH)) { return; }
-
-            var character = JsonConvert.DeserializeObject<Character.Base>(File.ReadAllText(CHARACTER_PATH));
-            if (character == null)
-            {
-                Debug.PrintError($"[LoadCharacter] Character not found, check if {CHARACTER_PATH} is correct");
-                return;
-            }
-
-            if (!Characters.Contains(character))
-            {
-                Debug.PrintInfo("Loaded character data for profile: " + SessionId, "[Character]");
-                Characters.Add(character);
-            }
+            ProfileController.ReloadProfiles();
+            var profile = ProfileController.ProfilesDict[SessionId];
+            Characters.TryAdd(SessionId + "_pmc", profile.Characters.Pmc);
+            Characters.TryAdd(SessionId + "_scav", profile.Characters.Scav);
         }
 
         public static void CreateCharacter(string SessionId, string JSON)
@@ -83,49 +65,56 @@ namespace ServerLib.Controllers
 
             var character = DatabaseController.DataBase.Characters.CharacterBase[createReq.Side.ToLower()];
             var ID = Utils.CreateNewID();
-            var time = Time.UnixTimeNow_Int();
+            var time = TimeHelper.UnixTimeNow_Int();
 
             character.Id = "pmc" + ID;
-            character.Aid = account.Id;
+            character.Aid = SessionId;
             character.Savage = "scav" + ID;
-            character.Info.Side = createReq.Side.ToLower().Contains("bear") ? EPlayerSide.Bear : EPlayerSide.Usec;
+            character.Info.Side = createReq.Side;
             character.Info.Nickname = createReq.Nickname;
             character.Info.LowerNickname = createReq.Nickname.ToLower();
             character.Info.Voice = CustomizationController.GetCustomizationName(createReq.VoiceId);
             character.Info.RegistrationDate = time;
             character.Health.UpdateTime = time;
-            character.Customization[EBodyModelPart.Head] = createReq.HeadId;
-
+            character.Customization.Head = createReq.HeadId;
+            character.Quests = new();
+            character.RepeatableQuests = new();
             SaveHandler.Save(SessionId, "Character", SaveHandler.GetCharacterPath(SessionId), JsonConvert.SerializeObject(character));
-            List<string> storeSave = new();
-            var storage = DatabaseController.DataBase.Characters.CharacterStorage;
-            switch (createReq.Side.ToLower())
+            var storage = DatabaseController.DataBase.Characters.CharacterStorage[createReq.Side];
+            SaveHandler.Save(SessionId, "Storage", SaveHandler.GetStoragePath(SessionId), JsonConvert.SerializeObject(storage));
+            if (!Characters.ContainsKey(SessionId))
             {
-                case "usec":
-                    storeSave = storage.usec;
-                    break;
-                case "bear":
-                    storeSave = storage.bear;
-                    break;
+                Characters.Add(SessionId + "_pmc", character);
             }
-            SaveStorage(SessionId, storeSave, false);
-            if (!Characters.Contains(character))
+            else
             {
-                Characters.Add(character);
+                Characters.Remove(SessionId + "_pmc");
+                Characters.Add(SessionId + "_pmc", character);
             }
+            //Generate scav
+            //Item ReID
             Debug.PrintInfo($"Character Created with Id {SessionId}!", "[CHARACTER]");
         }
 
-        public static Character.Base? GetCharacter(string SessionId)
+        public static Character.Base? GetPmcCharacter(string SessionId)
         {
             LoadCharacter(SessionId);
-            foreach (Character.Base character in Characters)
+            if (Characters.TryGetValue(SessionId + "_pmc", out var character))
             {
-                if (character.Aid == SessionId)
-                {
-                    return character;
-                }
+                return character;
             }
+            Debug.PrintWarn($"Character isnt made for {SessionId}!", "[GetPmcCharacter]");
+            return null;
+        }
+
+        public static Character.Base? GetScavCharacter(string SessionId)
+        {
+            LoadCharacter(SessionId);
+            if (Characters.TryGetValue(SessionId + "_scav", out var character))
+            {
+                return character;
+            }
+            Debug.PrintWarn($"Character isnt made for {SessionId}!", "[GetScavCharacter]");
             return null;
         }
 
@@ -134,14 +123,16 @@ namespace ServerLib.Controllers
             List<Character.Base> ouptut = new();
             if (!AccountController.IsWiped(SessionId))
             {
-                var character = GetCharacter(SessionId);
-                if (character == null)
+                var scav = GetScavCharacter(SessionId);
+                if (scav != null) 
                 {
-                    Debug.PrintWarn($"Character not found, check if {SessionId} is correct", "[GetCompleteCharacter]");
-                    return JsonConvert.SerializeObject(ouptut);
+                    ouptut.Add(scav);
                 }
-
-                ouptut.Add(character);
+                var character = GetPmcCharacter(SessionId);
+                if (character != null)
+                {
+                    ouptut.Add(character);
+                }              
             }
 
             return JsonConvert.SerializeObject(ouptut);
@@ -149,22 +140,22 @@ namespace ServerLib.Controllers
 
         public static string ChangeNickname(string json, string SessionId)
         {
-            var nick = JsonConvert.DeserializeObject<NicknameValidate>(json);
+            var nick = JsonConvert.DeserializeObject<Nickname>(json);
             if (nick == null) { return "taken"; }
-            string output = AccountController.ValidateNickname(SessionId);
+            string output = AccountController.ValidateNickname(nick);
 
             if (output == "OK")
             {
-                var character = GetCharacter(SessionId);
+                var character = GetPmcCharacter(SessionId);
                 if (character == null)
                 {
                     Debug.PrintWarn($"Character not found, check if {SessionId} is correct", "[ChangeNickname]");
-                    return "";
+                    return "taken";
                 }
 
-                character.Info.Nickname = nick.Nickname;
-                character.Info.LowerNickname = nick.Nickname.ToLower();
-                character.Info.NicknameChangeDate = Time.UnixTimeNow_Int();
+                character.Info.Nickname = nick.nickname;
+                character.Info.LowerNickname = nick.nickname.ToLower();
+                character.Info.NicknameChangeDate = TimeHelper.UnixTimeNow_Int();
 
                 SaveHandler.Save(SessionId, "Character", SaveHandler.GetCharacterPath(SessionId), JsonConvert.SerializeObject(character));
             }
@@ -173,23 +164,23 @@ namespace ServerLib.Controllers
 
         public static void ChangeVoice(string json, string SessionId)
         {
-            var character = GetCharacter(SessionId);
+            var character = GetPmcCharacter(SessionId);
             if (character == null)
             {
                 Debug.PrintWarn($"Character not found, check if {SessionId} is correct", "[ChangeVoice]");
                 return;
             }
 
-            var voices = JsonConvert.DeserializeObject<Voices>(json);
+            var voices = JsonConvert.DeserializeObject<Json.Classes.Voice>(json);
             if (voices == null) { return; }
 
-            character.Info.Voice = voices.Voice;
+            character.Info.Voice = voices.voice;
             SaveHandler.Save(SessionId, "Character", SaveHandler.GetCharacterPath(SessionId), JsonConvert.SerializeObject(character));
         }
 
         public static string GetStashType(string SessionId)
         {
-            var character = GetCharacter(SessionId);
+            var character = GetPmcCharacter(SessionId);
             if (character == null)
             {
                 Debug.PrintWarn($"Character not found, check if {SessionId} is correct", "[GetStashType]");
@@ -208,65 +199,39 @@ namespace ServerLib.Controllers
             return "";
         }
 
-        public static void SaveStorage(string SessionId, List<string> suites, bool LoadFromFile = false)
-        {
-            Storage storage = new();
-            string STORAGE_PATH = SaveHandler.GetStoragePath(SessionId);
-
-            if (LoadFromFile)
-            {
-                var oldstore = JsonConvert.DeserializeObject<Storage>(File.ReadAllText(STORAGE_PATH));
-                if (oldstore == null)
-                {
-                    Debug.PrintError($"Storage unable to be read at path: {STORAGE_PATH}");
-                    return;
-                }
-
-                storage._id = oldstore._id;
-                storage.suites = storage.suites;
-                storage.suites.AddRange(suites);
-            }
-            else
-            {
-                storage._id = SessionId;
-                storage.suites = suites;
-            }
-
-            SaveHandler.Save(SessionId, "Storage", STORAGE_PATH, JsonConvert.SerializeObject(storage));
-        }
-
         public static void RaidKilled(string json, string SessionId)
         {
-            Json.Other.RaidKilled raidKilled = JsonConvert.DeserializeObject<Json.Other.RaidKilled>(json);
+            var raidKilled = JsonConvert.DeserializeObject<Dictionary<string, object>>(json);
             if (raidKilled == null) { return; }
 
-            if (raidKilled.killedByAID == SessionId)
+            if (raidKilled["killedByAID"] != null && raidKilled["killedByAID"] == SessionId)
             {
-                var character = GetCharacter(SessionId);
+                var character = GetPmcCharacter(SessionId);
                 if (character == null)
                 {
                     Debug.PrintWarn($"Character not found, check if {SessionId} is correct", "[RaidKilled]");
                     return;
                 }
 
-                if (raidKilled.diedFaction == "Savage" || raidKilled.diedFaction == "Scav")
+                if (raidKilled["diedFaction"] == "Savage" || raidKilled["diedFaction"] == "Scav")
                 {
-                    character.TradersInfo["_579dc571d53a0658a154fbec"].Standing += (double)ConfigController.Configs.Gameplay.Trading.Fence.KillingScavsFenceLevelChange;
+                    character.TradersInfo["_579dc571d53a0658a154fbec"].standing += (int)ConfigController.Configs.Gameplay.Trading.Fence.KillingScavsFenceLevelChange;
 
                 }
-                else if (raidKilled.diedFaction == "Usec" || raidKilled.diedFaction == "Bear")
+                else if (raidKilled["diedFaction"] == "Usec" || raidKilled["diedFaction"] == "Bear")
                 {
-                    character.TradersInfo["_579dc571d53a0658a154fbec"].Standing += (double)ConfigController.Configs.Gameplay.Trading.Fence.KillingPMCsFenceLevelChange;
+                    character.TradersInfo["_579dc571d53a0658a154fbec"].standing += (int)ConfigController.Configs.Gameplay.Trading.Fence.KillingPMCsFenceLevelChange;
 
                 }
                 SaveHandler.Save(SessionId, "Character", SaveHandler.GetCharacterPath(SessionId), JsonConvert.SerializeObject(character));
             }
         }
 
+        //Move it to raid
         public static int GetLoyality(string SessionId, string TraderId)
         {
-            var TraderLoyalityLevels = TraderController.GetBaseByTrader(TraderId).LoyaltyLevels;
-            var character = GetCharacter(SessionId);
+            var TraderLoyalityLevels = TraderController.GetBaseByTrader(TraderId).loyaltyLevels;
+            var character = GetPmcCharacter(SessionId);
             if (character == null)
             {
                 Debug.PrintWarn($"Character not found, check if {SessionId} is correct", "[GetLoyality]");
@@ -277,16 +242,16 @@ namespace ServerLib.Controllers
             double playerStanding = 0;
 
             playerLevel = character.Info.Level;
-            playerSaleSum = (int)character.TradersInfo[TraderId].SalesSum;
-            playerStanding = character.TradersInfo[TraderId].Standing;
+            playerSaleSum = character.TradersInfo[TraderId].salesSum;
+            playerStanding = character.TradersInfo[TraderId].standing;
 
             if (TraderId != "ragfair")
             {
                 foreach (var loyaltyLevel in TraderLoyalityLevels)
                 {
-                    if (playerSaleSum >= loyaltyLevel.MinSalesSum &&
-                        playerStanding >= loyaltyLevel.MinStanding &&
-                        playerLevel >= (int)loyaltyLevel.MinLevel)
+                    if (playerSaleSum >= loyaltyLevel.minSalesSum &&
+                        playerStanding >= loyaltyLevel.minStanding &&
+                        playerLevel >= (int)loyaltyLevel.minLevel)
                     {
                         calculatedLoyalty++;
                     }
@@ -310,20 +275,21 @@ namespace ServerLib.Controllers
 
         public static void UpdateBackendCounters(string SessionId, string conditionId, string qid, int counter)
         {
-            var backend = GetCharacter(SessionId).BackendCounters[conditionId];
+            var character = GetPmcCharacter(SessionId);
+            var backend = character.BackendCounters[conditionId];
             if (backend != null)
             {
                 backend.value += counter;
                 return;
             }
 
-            GetCharacter(SessionId).BackendCounters[conditionId] = new()
+            character.BackendCounters[conditionId] = new()
             {
                 id = conditionId,
                 qid = qid,
                 value = counter,
             };
-            SaveHandler.SaveAll(SessionId);
+            SaveHandler.SaveCharacter(SessionId, character);
         }
     }
 }

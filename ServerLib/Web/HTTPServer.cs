@@ -2,6 +2,7 @@
 using ServerLib.Controllers;
 using ServerLib.Handlers;
 using ServerLib.Utilities;
+using ServerLib.Utilities.Helpers;
 using System.Net;
 using System.Net.Sockets;
 using System.Reflection;
@@ -150,16 +151,23 @@ namespace ServerLib.Web
                     return;
 
                 _request = request;
-
+                bool Sent = false;
                 foreach (var item in HttpServerThingy)
                 {
                     if (UrlHelper.Match(url, item.Key, out HttpParam) || item.Key == url)
                     {
                         Debug.PrintDebug("Url Called function: " + item.Value.Name);
                         item.Value.Invoke(this, new object[] { request, this });
+                        Sent = true;
                     }
 
                 }
+
+                if (!Sent)
+                {
+                    File.AppendAllText("REQUESTED", request.Body + "\n");
+                }
+
                 SendResponse(Response.MakeOkResponse());
             }
 

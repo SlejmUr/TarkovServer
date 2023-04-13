@@ -12,7 +12,7 @@ namespace ServerLib.Web
         {
             //REQ stuff
             Utils.PrintRequest(request, session);
-            var rsp = ResponseControl.CompressRsp(LocaleController.GetLanguages());
+            var rsp = ResponseControl.CompressRsp(ResponseControl.GetBody(LocaleController.GetLanguages()));
             Utils.SendUnityResponse(session, rsp);
             return true;
         }

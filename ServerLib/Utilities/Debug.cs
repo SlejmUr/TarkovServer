@@ -1,4 +1,5 @@
 ﻿using ServerLib.Handlers;
+using ServerLib.Utilities.Helpers;
 
 namespace ServerLib.Utilities
 {
@@ -61,12 +62,12 @@ namespace ServerLib.Utilities
         {
             Console.WriteLine(print);
             if (!Directory.Exists("logs")) { Directory.CreateDirectory("logs"); }
-            File.AppendAllText($"logs/{Time.GetTimeWrite()}.log", $"[{DateTime.Now.ToString()}] {print}\n");
+            File.AppendAllText($"logs/{TimeHelper.GetTimeWrite()}.log", $"[{DateTime.Now.ToString()}] {print}\n");
         }
         static void PWOnly(string print)
         {
             if (!Directory.Exists("logs")) { Directory.CreateDirectory("logs"); }
-            File.AppendAllText($"logs/{Time.GetTimeWrite()}.log", $"[{DateTime.Now.ToString()}] {print}\n");
+            File.AppendAllText($"logs/{TimeHelper.GetTimeWrite()}.log", $"[{DateTime.Now.ToString()}] {print}\n");
         }
 
         #endregion

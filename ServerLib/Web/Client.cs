@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using ServerLib.Controllers;
 using ServerLib.Utilities;
+using ServerLib.Utilities.Helpers;
 using static ServerLib.Web.HTTPServer;
 
 namespace ServerLib.Web
@@ -72,9 +73,25 @@ namespace ServerLib.Web
         public static bool ClientChatServerList(HttpRequest request, HttpsBackendSession session)
         {
             Utils.PrintRequest(request, session);
-            Json.Other.ChatServerList chatServerList = new();
-            chatServerList.DateTime = (int)Time.UnixTimeNow();
-            chatServerList.Regions.Add("EUR");
+            Json.Classes.ChatServer.Base chatServerList = new()
+            { 
+                _id = Utils.CreateNewID(),
+                RegistrationId = 20,
+                DateTime = (int)TimeHelper.UnixTimeNow(),
+                IsDeveloper = true,
+                Regions = new() { "EUR" },
+                VersionId = "bgkidft87ddd",
+                Ip = "",
+                Port = 0,
+                Chats = new()
+                { 
+                    new()
+                    { 
+                        _id = "0",
+                        Members = 0
+                    }
+                }
+            };
             string resp = ResponseControl.GetBody(JsonConvert.SerializeObject(chatServerList));
             var rsp = ResponseControl.CompressRsp(resp);
             Utils.SendUnityResponse(session, rsp);
@@ -87,11 +104,14 @@ namespace ServerLib.Web
 
             Utils.PrintRequest(request, session);
             var server = ConfigController.Configs.Server;
-            List<Server> servers = new();
-            Server acsserver = new();
-            acsserver.Address = server.Ip;
-            acsserver.Port = $"{server.Port}";
-            servers.Add(acsserver);
+            List<Server> servers = new()
+            { 
+                new()
+                { 
+                    Address = server.Ip,
+                    Port = $"{server.Port}"
+                }
+            };
             string resp = ResponseControl.GetBody(JsonConvert.SerializeObject(servers));
             var rsp = ResponseControl.CompressRsp(resp);
             Utils.SendUnityResponse(session, rsp);
@@ -166,15 +186,5 @@ namespace ServerLib.Web
             Utils.SendUnityResponse(session, rsp);
             return true;
         }
-        /*
-        [HTTP("POST", "/client/items/price/{traderId}")]
-        public static bool ClientItemsPriceTrader(HttpRequest request, HttpsBackendSession session)
-        {
-            Utils.PrintRequest(request,session);
-            string resp = ResponseControl.GetBody(File.ReadAllText("Files/items/items.json"));
-            var rsp = ResponseControl.CompressRsp(resp);
-            Utils.SendUnityResponse(session,rsp);
-            return true;
-        }*/
     }
 }

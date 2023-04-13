@@ -1,6 +1,7 @@
 ﻿{
   "Account": {
-    "checkTakenNickname": false
+    "checkTakenNickname": false,
+    "useSha1" :  false
   },
   "Locale": {
     "baseReplace": "en",

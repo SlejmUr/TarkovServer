@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using ServerLib.Json.Classes;
 
 namespace ServerLib.Controllers
 {
@@ -21,17 +22,17 @@ namespace ServerLib.Controllers
             foreach (var keyValue in DatabaseController.DataBase.Others.Customization)
             {
                 string custom = DatabaseController.DataBase.Others.Customization[keyValue.Key];
-                var customization = JsonConvert.DeserializeObject<Json.JsonCustomization.Base>(custom);
+                var customization = JsonConvert.DeserializeObject<CustomizationItem.Base>(custom);
 
                 if (customization != null)
                 {
-                    if (customization.Props.Side == null || customization.Props.Side.Count == 0)
+                    if (customization._props.Side == null || customization._props.Side.Count == 0)
                     {
                         continue;
                     }
                     else
                     {
-                        list.Add(customization.Id);
+                        list.Add(customization._id);
                     }
                 }
             }
@@ -43,23 +44,23 @@ namespace ServerLib.Controllers
             foreach (var keyValue in DatabaseController.DataBase.Others.Customization)
             {
                 string custom = DatabaseController.DataBase.Others.Customization[keyValue.Key];
-                var customization = JsonConvert.DeserializeObject<Json.JsonCustomization.Base>(custom);
+                var customization = JsonConvert.DeserializeObject<CustomizationItem.Base>(custom);
 
-                if (customization.Id == Id)
+                if (customization._id == Id)
                 {
-                    return customization.Name;
+                    return customization._name;
                 }
             }
             return "";
         }
 
-        public static Json.JsonCustomization.Base GetCustomization(string Id)
+        public static CustomizationItem.Base GetCustomization(string Id)
         {
             foreach (var keyValue in DatabaseController.DataBase.Others.Customization)
             {
                 string custom = DatabaseController.DataBase.Others.Customization[keyValue.Key];
-                var customization = JsonConvert.DeserializeObject<Json.JsonCustomization.Base>(custom);
-                if (customization.Id == Id)
+                var customization = JsonConvert.DeserializeObject<CustomizationItem.Base>(custom);
+                if (customization._id == Id)
                 {
                     return customization;
                 }

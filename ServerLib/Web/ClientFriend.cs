@@ -15,8 +15,8 @@ namespace ServerLib.Web
             Utils.PrintRequest(request, session);
             string SessionId = Utils.GetSessionId(session.Headers);
 
-            Json.Other.FriendsList friendsList = new Json.Other.FriendsList();
-            friendsList.Friends.Add(FriendsController.GetFriends(SessionId));
+            Json.Classes.FriendList friendsList = new Json.Classes.FriendList();
+            friendsList.Friends.AddRange(FriendsController.GetFriends(SessionId));
 
             string resp = ResponseControl.GetBody(JsonConvert.SerializeObject(friendsList));
             var rsp = ResponseControl.CompressRsp(resp);
@@ -31,7 +31,7 @@ namespace ServerLib.Web
             string SessionId = Utils.GetSessionId(session.Headers);
 
             string Uncompressed = ResponseControl.DeCompressReq(request.BodyBytes);
-            var req = JsonConvert.DeserializeObject<Json.Other.FriendsReq>(Uncompressed);
+            var req = JsonConvert.DeserializeObject<Json.Classes.FriendsReq>(Uncompressed);
 
             var reqID = FriendsController.AddRequest(SessionId, req.toId);
             FriendSendJson friendRsp = new()
@@ -53,7 +53,7 @@ namespace ServerLib.Web
             string SessionId = Utils.GetSessionId(session.Headers);
 
             string Uncompressed = ResponseControl.DeCompressReq(request.BodyBytes);
-            var req = JsonConvert.DeserializeObject<Json.Other.FriendsReq>(Uncompressed);
+            var req = JsonConvert.DeserializeObject<Json.Classes.FriendsReq>(Uncompressed);
 
             FriendsController.RemoveFriend(SessionId, req.req_Id);
 
@@ -70,7 +70,7 @@ namespace ServerLib.Web
             string SessionId = Utils.GetSessionId(session.Headers);
 
             string Uncompressed = ResponseControl.DeCompressReq(request.BodyBytes);
-            var req = JsonConvert.DeserializeObject<Json.Other.FriendsReq>(Uncompressed);
+            var req = JsonConvert.DeserializeObject<Json.Classes.FriendsReq>(Uncompressed);
 
             var reqID = FriendsController.RemoveRequest(SessionId, req.reqId);
 
@@ -144,7 +144,7 @@ namespace ServerLib.Web
             string SessionId = Utils.GetSessionId(session.Headers);
 
             string Uncompressed = ResponseControl.DeCompressReq(request.BodyBytes);
-            var req = JsonConvert.DeserializeObject<Json.Other.FriendsReq>(Uncompressed);
+            var req = JsonConvert.DeserializeObject<Json.Classes.FriendsReq>(Uncompressed);
 
             //req.uid;
 
@@ -161,7 +161,7 @@ namespace ServerLib.Web
             string SessionId = Utils.GetSessionId(session.Headers);
 
             string Uncompressed = ResponseControl.DeCompressReq(request.BodyBytes);
-            var req = JsonConvert.DeserializeObject<Json.Other.FriendsReq>(Uncompressed);
+            var req = JsonConvert.DeserializeObject<Json.Classes.FriendsReq>(Uncompressed);
 
             //req.uid;
 

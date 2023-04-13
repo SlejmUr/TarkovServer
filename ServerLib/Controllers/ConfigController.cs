@@ -5,7 +5,7 @@ namespace ServerLib.Controllers
 {
     public class ConfigController
     {
-        public static Json.Configs Configs = new();
+        public static Json.Classes.Configs Configs = new();
 
         /// <summary>
         /// Initialize the configs. 
@@ -44,10 +44,10 @@ namespace ServerLib.Controllers
                                 Configs.Server = JsonConvert.DeserializeObject<Json.ServerConfig.Base>(dataraw);
                                 break;
                             case "gameplay":
-                                Configs.Gameplay = JsonConvert.DeserializeObject<Json.GameplayConfig.Base>(dataraw);
+                                Configs.Gameplay = JsonConvert.DeserializeObject<Json.Classes.GameplayConfig.Base>(dataraw);
                                 break;
                             case "custom":
-                                Configs.CustomSettings = JsonConvert.DeserializeObject<Json.CustomConfig.Base>(dataraw);
+                                Configs.CustomSettings = JsonConvert.DeserializeObject<Json.Classes.CustomConfig.Base>(dataraw);
                                 break;
                             case "plugin":
                                 Configs.Plugins = dataraw;

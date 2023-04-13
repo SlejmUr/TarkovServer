@@ -42,19 +42,6 @@ namespace ServerLib.Web
             return true;
         }
 
-        [HTTP("POST", "/client/trading/api/getUserAssortPrice/trader/{traderId}")]
-        public static bool ClientTradingApiGetUserAssortPriceTrader(HttpRequest request, HttpsBackendSession session)
-        {
-            Utils.PrintRequest(request, session);
-            string traderId = session.HttpParam["traderId"];
-            string SessionId = Utils.GetSessionId(session.Headers);
-            var assort = JsonConvert.SerializeObject(TraderController.GetPurchasesData(SessionId, traderId));
-            string resp = ResponseControl.GetBody(assort);
-            var rsp = ResponseControl.CompressRsp(resp);
-            Utils.SendUnityResponse(session, rsp);
-            return true;
-        }
-
         [HTTP("POST", "/client/trading/customization/storage")]
         public static bool ClientTradingCustomizationStorage(HttpRequest request, HttpsBackendSession session)
         {

@@ -12,7 +12,6 @@
     <Product>Tarkov Server</Product>
     <Description>Tarkov Server in C#</Description>
     <Authors>SlejmUr</Authors>
-    <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
 
   <ItemGroup>
@@ -44,11 +43,11 @@
       <HintPath>..\Ref\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine">
-      <HintPath>..\Ref\UnityEngine Dlls\UnityEngine.dll</HintPath>
+      <HintPath>..\Ref\UnityEngine.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEngine.CoreModule">
-      <HintPath>..\Ref\UnityEngine Dlls\UnityEngine.CoreModule.dll</HintPath>
+      <HintPath>..\Ref\UnityEngine.CoreModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
   </ItemGroup>

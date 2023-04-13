@@ -15,7 +15,7 @@ namespace ServerLib.Web
             Utils.PrintRequest(request, session);
             string Uncompressed = ResponseControl.DeCompressReq(request.BodyBytes);
             // RPS
-            string resp = AccountController.Login(Uncompressed);
+            string resp = AccountController.Login(JsonConvert.DeserializeObject<Json.Classes.Profile.Info>(Uncompressed));
             var rsp = ResponseControl.CompressRsp(resp);
             session.SendResponse(session.Response.MakeGetResponse(rsp).SetHeader("Content-Encoding", "deflate"));
             return true;
@@ -29,7 +29,7 @@ namespace ServerLib.Web
             string Uncompressed = ResponseControl.DeCompressReq(request.BodyBytes);
 
             // RPS
-            string resp = AccountController.Register(Uncompressed);
+            string resp = AccountController.Register(JsonConvert.DeserializeObject<Json.Classes.Profile.Info>(Uncompressed));
             var rsp = ResponseControl.CompressRsp(resp);
             session.SendResponse(session.Response.MakeGetResponse(rsp).SetHeader("Content-Encoding", "deflate"));
             return true;
@@ -78,20 +78,6 @@ namespace ServerLib.Web
             return true;
         }
 
-        [HTTP("POST", "/launcher/profile/change/email")]
-        public static bool LauncherChangeEmail(HttpRequest request, HttpsBackendSession session)
-        {
-            //REQ stuff
-            Utils.PrintRequest(request, session);
-            string Uncompressed = ResponseControl.DeCompressReq(request.BodyBytes);
-
-            // RPS
-            string resp = AccountController.ChangeEmail(Uncompressed);
-            var rsp = ResponseControl.CompressRsp(resp);
-            session.SendResponse(session.Response.MakeGetResponse(rsp).SetHeader("Content-Encoding", "deflate"));
-            return true;
-        }
-
         [HTTP("POST", "/launcher/profile/change/password")]
         public static bool LauncherChangePassword(HttpRequest request, HttpsBackendSession session)
         {
@@ -100,7 +86,7 @@ namespace ServerLib.Web
             string Uncompressed = ResponseControl.DeCompressReq(request.BodyBytes);
 
             // RPS
-            string resp = AccountController.ChangePassword(Uncompressed);
+            string resp = AccountController.ChangePassword(JsonConvert.DeserializeObject<Json.Classes.Change>(Uncompressed));
             var rsp = ResponseControl.CompressRsp(resp);
             session.SendResponse(session.Response.MakeGetResponse(rsp).SetHeader("Content-Encoding", "deflate"));
             return true;

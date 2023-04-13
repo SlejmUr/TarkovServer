@@ -14,12 +14,12 @@ namespace ServerLib.Web
         public static Dictionary<string, Guid> IPToGuid = new();
         public static Dictionary<string, string> ConnectedSessions = new();
         public static EventHandler<MessageReceivedEventArgs> MessageReceivedEvent = null;
-        public static void Start(string ip, int port)
+        public static void Start(string ip, int port, bool ssl = true)
         {
-            IpPort = $"wss://{ip}:{port}/socket/";
+            IpPort = ssl ? $"wss://{ip}:{port}/socket/" : $"ws://{ip}:{port}/socket/";
             IP = $"{ip}:{port}";
             Console.WriteLine("WebSocket Server started on " + IpPort);
-            wsServer = new WatsonWsServer(ip, port, true);
+            wsServer = new WatsonWsServer(ip, port, ssl);
             wsServer.AcceptInvalidCertificates = true;
             wsServer.ClientConnected += ClientConnected;
             wsServer.ClientDisconnected += ClientDisconnected;

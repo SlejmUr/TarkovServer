@@ -1,6 +1,5 @@
 ﻿using ComponentAce.Compression.Libs.zlib;
 using Newtonsoft.Json;
-using static ServerLib.Json.Other;
 
 namespace ServerLib.Web
 {
@@ -39,13 +38,13 @@ namespace ServerLib.Web
 
         public static string GetNotifier(string SessionId)
         {
-            Notifier notifier = new()
+            Json.Classes.NotifierChannel notifier = new()
             {
-                Server = ServerLib.ip_port,
-                ChannelId = SessionId,
-                Url = ServerLib.IP,
-                NotifierServer = ServerLib.IP,
-                Ws = WebSocket.IP
+                server = ServerLib.ip_port,
+                channel_id = SessionId,
+                url = ServerLib.IP,
+                notifierServer = ServerLib.IP,
+                ws = WebSocket.IP
             };
 
             return JsonConvert.SerializeObject(notifier);
