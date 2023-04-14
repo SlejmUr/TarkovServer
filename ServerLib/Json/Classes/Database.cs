@@ -10,7 +10,6 @@ namespace ServerLib.Json.Classes
         public class basic
         {
             public List<string> BlacklistedIds { get; set; }
-            public string Globals { get; set; }
         }
         public bot Bot { get; set; } = new();
         public class bot
@@ -75,15 +74,11 @@ namespace ServerLib.Json.Classes
         public class others
         {
             public List<string> ChildlessList { get; set; }
-            public string FleaOffer { get; set; }
-            public string MatchMetrics { get; set; }
             public string Quests { get; set; }
             public Dictionary<string, string> Customization { get; set; } = new();
             public Dictionary<string, TemplateItem.Base> Items { get; set; }
             public Dictionary<string, int> ItemPrices { get; set; } = new();
             public Dictionary<string, int> Resupply { get; set; } = new();
-
-            // Not Loaded:  client.settings.json,  raidConfig.json, seasonalevents.json, staticWeaponsData.json
         }
 
         public Handbook.Base Templates { get; set; }
@@ -95,17 +90,5 @@ namespace ServerLib.Json.Classes
             public Dictionary<string, Trader.Base> Traders { get; set; } = new();
         }
         public Dictionary<string, string> Weather { get; set; } = new();
-    }
-    public static class DatabaseConverter
-    {
-        public static readonly JsonSerializerSettings Settings = new JsonSerializerSettings
-        {
-            MetadataPropertyHandling = MetadataPropertyHandling.Ignore,
-            DateParseHandling = DateParseHandling.None,
-            Converters =
-            {
-                new IsoDateTimeConverter { DateTimeStyles = DateTimeStyles.AssumeUniversal }
-            },
-        };
     }
 }

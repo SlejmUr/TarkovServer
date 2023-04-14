@@ -107,6 +107,27 @@ namespace ServerLib.Controllers
             return null;
         }
 
+        public static Character.Base? GetMiniCharacter(string SessionId)
+        {
+            LoadCharacter(SessionId);
+            if (Characters.TryGetValue(SessionId + "_pmc", out var character))
+            {
+                return new()
+                { 
+                   Id = character.Aid,
+                   Info = new()
+                   { 
+                        Nickname = character.Info.Nickname,
+                        Side = character.Info.Side,
+                        Level = character.Info.Level,
+                        MemberCategory = character.Info.MemberCategory
+                   }               
+                };
+            }
+            Debug.PrintWarn($"Character isnt made for {SessionId}!", "[GetPmcCharacter]");
+            return null;
+        }
+
         public static Character.Base? GetScavCharacter(string SessionId)
         {
             LoadCharacter(SessionId);

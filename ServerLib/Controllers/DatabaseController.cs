@@ -28,7 +28,6 @@ namespace ServerLib.Controllers
         static void LoadBasics()
         {
             DataBase.Basic = new();
-            DataBase.Basic.Globals = File.ReadAllText("Files/base/globals.json");
             DataBase.Basic.BlacklistedIds = JsonConvert.DeserializeObject<List<string>>(File.ReadAllText("Files/base/blacklist.json"));
             Debug.PrintDebug("Basics loaded");
         }

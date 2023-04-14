@@ -78,7 +78,7 @@ namespace ServerLib.Json.Classes
         public int Date { get; set; }
 
         [JsonProperty("profile")]
-        public string Profile { get; set; }
+        public Character.Base Profile { get; set; }
     }
 
     public class UID

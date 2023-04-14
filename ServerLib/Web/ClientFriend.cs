@@ -1,6 +1,5 @@
 ﻿using NetCoreServer;
-using Newtonsoft.Json;
-using ServerLib.Controllers;
+using ServerLib.Responders;
 using ServerLib.Utilities;
 using static ServerLib.Web.HTTPServer;
 
@@ -15,11 +14,19 @@ namespace ServerLib.Web
             Utils.PrintRequest(request, session);
             string SessionId = Utils.GetSessionId(session.Headers);
 
-            Json.Classes.FriendList friendsList = new Json.Classes.FriendList();
-            friendsList.Friends.AddRange(FriendsController.GetFriends(SessionId));
+            var rsp = Friend.FriendList(SessionId);
+            Utils.SendUnityResponse(session, rsp);
+            return true;
+        }
 
-            string resp = ResponseControl.GetBody(JsonConvert.SerializeObject(friendsList));
-            var rsp = ResponseControl.CompressRsp(resp);
+        [HTTP("POST", "/client/friend/delete")]
+        public static bool FriendDelete(HttpRequest request, HttpsBackendSession session)
+        {
+            Utils.PrintRequest(request, session);
+            string SessionId = Utils.GetSessionId(session.Headers);
+            string Uncompressed = ResponseControl.DeCompressReq(request.BodyBytes);
+
+            var rsp = Friend.FriendDelete(SessionId, Uncompressed);
             Utils.SendUnityResponse(session, rsp);
             return true;
         }
@@ -29,19 +36,9 @@ namespace ServerLib.Web
         {
             Utils.PrintRequest(request, session);
             string SessionId = Utils.GetSessionId(session.Headers);
-
             string Uncompressed = ResponseControl.DeCompressReq(request.BodyBytes);
-            var req = JsonConvert.DeserializeObject<Json.Classes.FriendsReq>(Uncompressed);
 
-            var reqID = FriendsController.AddRequest(SessionId, req.toId);
-            FriendSendJson friendRsp = new()
-            {
-                RequestId = reqID,
-                RetryAfter = 30,
-                Error = 0
-            };
-            string resp = ResponseControl.GetBody(JsonConvert.SerializeObject(friendRsp));
-            var rsp = ResponseControl.CompressRsp(resp);
+            var rsp = Friend.FriendReqSend(SessionId, Uncompressed);
             Utils.SendUnityResponse(session, rsp);
             return true;
         }
@@ -51,14 +48,9 @@ namespace ServerLib.Web
         {
             Utils.PrintRequest(request, session);
             string SessionId = Utils.GetSessionId(session.Headers);
-
             string Uncompressed = ResponseControl.DeCompressReq(request.BodyBytes);
-            var req = JsonConvert.DeserializeObject<Json.Classes.FriendsReq>(Uncompressed);
 
-            FriendsController.RemoveFriend(SessionId, req.req_Id);
-
-            string resp = ResponseControl.NullResponse();
-            var rsp = ResponseControl.CompressRsp(resp);
+            var rsp = Friend.FriendReqDecline(SessionId, Uncompressed);
             Utils.SendUnityResponse(session, rsp);
             return true;
         }
@@ -68,14 +60,9 @@ namespace ServerLib.Web
         {
             Utils.PrintRequest(request, session);
             string SessionId = Utils.GetSessionId(session.Headers);
-
             string Uncompressed = ResponseControl.DeCompressReq(request.BodyBytes);
-            var req = JsonConvert.DeserializeObject<Json.Classes.FriendsReq>(Uncompressed);
 
-            var reqID = FriendsController.RemoveRequest(SessionId, req.reqId);
-
-            string resp = ResponseControl.GetBody(reqID);
-            var rsp = ResponseControl.CompressRsp(resp);
+            var rsp = Friend.FriendReqCancel(SessionId,Uncompressed);
             Utils.SendUnityResponse(session, rsp);
             return true;
         }
@@ -86,10 +73,7 @@ namespace ServerLib.Web
             Utils.PrintRequest(request, session);
             string SessionId = Utils.GetSessionId(session.Headers);
 
-            FriendsController.AcceptAll(SessionId);
-
-            string resp = ResponseControl.GetBody("OK");
-            var rsp = ResponseControl.CompressRsp(resp);
+            var rsp = Friend.FriendReqAccept(SessionId);
             Utils.SendUnityResponse(session, rsp);
             return true;
         }
@@ -100,10 +84,7 @@ namespace ServerLib.Web
             Utils.PrintRequest(request, session);
             string SessionId = Utils.GetSessionId(session.Headers);
 
-            FriendsController.AcceptAll(SessionId);
-
-            string resp = ResponseControl.GetBody("OK");
-            var rsp = ResponseControl.CompressRsp(resp);
+            var rsp = Friend.FriendReqAccept(SessionId);
             Utils.SendUnityResponse(session, rsp);
             return true;
         }
@@ -114,10 +95,7 @@ namespace ServerLib.Web
             Utils.PrintRequest(request, session);
             string SessionId = Utils.GetSessionId(session.Headers);
 
-            var inbox = FriendsController.GetFriendsOutbox(SessionId);
-            string resp = ResponseControl.GetBody(JsonConvert.SerializeObject(inbox));
-
-            var rsp = ResponseControl.CompressRsp(resp);
+            var rsp = Friend.FriendListOutBox(SessionId);
             Utils.SendUnityResponse(session, rsp);
             return true;
         }
@@ -128,10 +106,7 @@ namespace ServerLib.Web
             Utils.PrintRequest(request, session);
             string SessionId = Utils.GetSessionId(session.Headers);
 
-            var inbox = FriendsController.GetFriendsInbox(SessionId);
-            string resp = ResponseControl.GetBody(JsonConvert.SerializeObject(inbox));
-
-            var rsp = ResponseControl.CompressRsp(resp);
+            var rsp = Friend.FriendListInBox(SessionId);
             Utils.SendUnityResponse(session, rsp);
             return true;
         }
@@ -142,14 +117,9 @@ namespace ServerLib.Web
         {
             Utils.PrintRequest(request, session);
             string SessionId = Utils.GetSessionId(session.Headers);
-
             string Uncompressed = ResponseControl.DeCompressReq(request.BodyBytes);
-            var req = JsonConvert.DeserializeObject<Json.Classes.FriendsReq>(Uncompressed);
 
-            //req.uid;
-
-            string resp = ResponseControl.GetBody("OK");
-            var rsp = ResponseControl.CompressRsp(resp);
+            var rsp = Friend.FriendMute(SessionId,Uncompressed);
             Utils.SendUnityResponse(session, rsp);
             return true;
         }
@@ -159,14 +129,9 @@ namespace ServerLib.Web
         {
             Utils.PrintRequest(request, session);
             string SessionId = Utils.GetSessionId(session.Headers);
-
             string Uncompressed = ResponseControl.DeCompressReq(request.BodyBytes);
-            var req = JsonConvert.DeserializeObject<Json.Classes.FriendsReq>(Uncompressed);
 
-            //req.uid;
-
-            string resp = ResponseControl.GetBody("OK");
-            var rsp = ResponseControl.CompressRsp(resp);
+            var rsp = Friend.FriendUnMute(SessionId, Uncompressed);
             Utils.SendUnityResponse(session, rsp);
             return true;
         }

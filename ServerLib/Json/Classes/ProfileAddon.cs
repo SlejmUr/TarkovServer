@@ -1,15 +1,10 @@
 ﻿using Newtonsoft.Json;
+using ServerLib.Json.Enums;
 
 namespace ServerLib.Json.Classes
 {
     public class ProfileAddon
     {
-        [JsonProperty("Id", DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-        public string Id { get; set; }
-
-        [JsonProperty("FriendIds", DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-        public List<string> FriendIds { get; set; }
-
         [JsonProperty("Friends", DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
         public FriendList Friends { get; set; }
 
@@ -18,5 +13,8 @@ namespace ServerLib.Json.Classes
 
         [JsonProperty("FriendRequestOutbox", DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
         public List<FriendRequester> FriendRequestOutbox { get; set; } = new();
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
+        public EPerms Permission { get; set; }
     }
 }
