@@ -26,9 +26,15 @@ namespace ServerLib.Controllers
             ProfileController.ReloadProfiles();
             foreach (var prof in ProfileController.ProfilesDict)
             {
-                var characters = prof.Value.Characters;
+                var val = prof.Value;
+                if (val == null)
+                    continue;
+                var characters = val.Characters;
+                if (characters == null)
+                    continue;
                 Characters.TryAdd(prof.Key + "_pmc", characters.Pmc);
                 Characters.TryAdd(prof.Key + "_scav", characters.Scav);
+
             }
         }
 

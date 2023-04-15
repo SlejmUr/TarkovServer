@@ -18,7 +18,7 @@ namespace ServerLib
         /// <param name="Ip">Server IP</param>
         /// <param name="port">Server Port</param>
         /// <param name="LoadPlugin">Can Load Plugins</param>
-        public void InitAll(string Ip, int port)
+        public static void InitAll(string Ip, int port)
         {
             string _ip_port = $"https://{Ip}:{port}";
             IP = _ip_port;
@@ -41,7 +41,7 @@ namespace ServerLib
         /// Init The Server from Config file
         /// </summary>
         /// <param name="LoadPlugin">Can Load Plugins</param>
-        public void Init()
+        public static void Init()
         {
             DatabaseController.Init();
             var Ip = ConfigController.Configs.Server.Ip;
@@ -50,6 +50,7 @@ namespace ServerLib
             IP = _ip_port;
             ip_port = $"{Ip}:{port}";
             CertHelper.Make(IPAddress.Parse(Ip), _ip_port);
+            JWTHandler.CreateRSA();
             ProfileController.Init();
             Controllers.DialogController.Init();
             AccountController.Init();
@@ -66,7 +67,7 @@ namespace ServerLib
         /// Get the running Webserver
         /// </summary>
         /// <returns>Webserver</returns>
-        public HttpsBackendServer? GetWebServer()
+        public static HttpsBackendServer? GetWebServer()
         {
             return GetServer();
         }
@@ -74,7 +75,7 @@ namespace ServerLib
         /// <summary>
         /// Stopping the Server
         /// </summary>
-        public void Stop()
+        public static void Stop()
         {
             PluginLoader.UnloadPlugins();
             HTTPServer.Stop();

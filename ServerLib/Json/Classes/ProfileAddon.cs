@@ -14,7 +14,7 @@ namespace ServerLib.Json.Classes
         [JsonProperty("FriendRequestOutbox", DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
         public List<FriendRequester> FriendRequestOutbox { get; set; } = new();
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
         public EPerms Permission { get; set; }
     }
 }

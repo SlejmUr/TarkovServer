@@ -2,7 +2,7 @@
 {
     public class Versions
     {
-        public static string ServerVersion = "v20230311.0";
+        public static string ServerVersion = "v20230415.0";
         public virtual string LoadVersion { get; set; } = ServerVersion;
     }
 }

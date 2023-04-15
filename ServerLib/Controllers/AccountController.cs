@@ -66,9 +66,9 @@ namespace ServerLib.Controllers
         /// </summary>
         /// <param name="JsonInfo">Json Serialized Profile</param>
         /// <returns>AccountId | FAILED</returns>
-        public static string Login(Profile.Info profile)
+        public static string Login(Login profile)
         {
-            string ID = FindAccountIdByUsernameAndPassword(profile.Username, profile.Password);
+            string ID = FindAccountIdByUsernameAndPassword(profile.username, profile.password);
 
             if (ID == null)
             {
@@ -92,11 +92,11 @@ namespace ServerLib.Controllers
         /// </summary>
         /// <param name="JsonInfo">Json Serialized Profile</param>
         /// <returns>AccountId | ALREADY_IN_USE</returns>
-        public static string Register(Profile.Info profile)
+        public static string Register(Login profile)
         {
-            string ID = FindAccountIdByUsernameAndPassword(profile.Username, profile.Password);
+            string ID = FindAccountIdByUsernameAndPassword(profile.username, profile.password);
 
-            if (IsEmailAlreadyInUse(profile.Username))
+            if (IsEmailAlreadyInUse(profile.username))
             {
                 return "ALREADY_IN_USE";
             }
@@ -106,15 +106,15 @@ namespace ServerLib.Controllers
                 Profile.Info account = new()
                 {
                     Id = AccountID,
-                    Username = profile.Username,
-                    Edition = profile.Edition,
+                    Username = profile.username,
                     Wipe = false
                 };
                 if (ConfigController.Configs.CustomSettings.Account.UseSha1)
-                    account.Password = CryptoHelper.Hash(profile.Password);
+                    account.Password = CryptoHelper.Hash(profile.password);
                 else
-                    account.Password = profile.Password;
+                    account.Password = profile.password;
                 SaveHandler.SaveAccount(AccountID, account);
+                SaveHandler.SaveAddon(AccountID, new());
                 Debug.PrintInfo("Register Success! " + AccountID);
                 if (!ActiveAccountIds.Contains(AccountID))
                 {
@@ -324,7 +324,7 @@ namespace ServerLib.Controllers
         /// <returns>AccountID | FAILED</returns>
         public static string ChangePassword(Change changes)
         {
-            var AccountID = Login(JsonHelper.FromLogin(changes));
+            var AccountID = Login(changes);
             if (AccountID != "FAILED")
             {
                 var Account = FindAccount(AccountID);

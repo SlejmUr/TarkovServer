@@ -7,6 +7,7 @@ using SLH = ServerLib.Handlers;
 using SLU = ServerLib.Utilities;
 using SLC = ServerLib.Controllers;
 using SLW = ServerLib.Web;
+using ServerLib.Controllers;
 
 namespace ConsoleApp
 {
@@ -32,6 +33,7 @@ namespace ConsoleApp
 
         static void Main(string[] args)
         {
+            Console.Clear();
             if (!File.Exists("path.txt"))
             {
                 File.WriteAllText("path.txt", "_References");
@@ -60,22 +62,23 @@ namespace ConsoleApp
                 SLH.PluginLoader.ManualLoadPlugin(SLH.ArgumentHandler.LoadMyPlugin);
             }
 
-            var server = new SL.ServerLib();
-            server.Init();
+            SL.ServerLib.Init();
             LogDetailed("Initialization Done!");
-
-            Console.WriteLine("Type 'exit' to end application");
+            Console.WriteLine("Commands are starting with !. Like !help");
+            Console.WriteLine("Type 'exit' or 'q' to end application");
             string endCheck = "not";
             while (endCheck.ToLower() != "exit")
             {
                 endCheck = Console.ReadLine();
-                if (endCheck.ToLower() == "id")
+                if (endCheck.StartsWith("!"))
                 {
-                    Console.WriteLine(SLU.Utils.CreateNewID());
+                    CommandsController.Run(endCheck);
                 }
+                if (endCheck.ToLower() == "q")
+                    break;
             }
 
-            server.Stop();
+            SL.ServerLib.Stop();
         }
 
         internal static Assembly AssemblyResolveEvent(object sender, ResolveEventArgs args)

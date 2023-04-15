@@ -4,6 +4,7 @@ using ServerLib.Controllers;
 using ServerLib.Utilities;
 using ServerLib.Utilities.Helpers;
 using static ServerLib.Web.HTTPServer;
+using ServerLib.Responders;
 
 namespace ServerLib.Web
 {
@@ -90,21 +91,8 @@ namespace ServerLib.Web
             //REQ stuff
             Utils.PrintRequest(request, session);
             string Uncompressed = ResponseControl.DeCompressReq(request.BodyBytes);
-
-            var nickname = AccountController.ValidateNickname(JsonConvert.DeserializeObject<Json.Classes.Nickname>(Uncompressed));
-            var resp = ResponseControl.GetBody("{status: \"ok\"}");
-            if (nickname == "taken")
-            {
-                resp = ResponseControl.GetBody("null", 255, "The nickname is already in use");
-            }
-
-            if (nickname == "tooshort")
-            {
-                resp = ResponseControl.GetBody("null", 256, "The nickname is too short");
-            }
-
             // RPS
-            var rsp = ResponseControl.CompressRsp(resp);
+            var rsp = GameProfile.ProfileNicknameValidate(Uncompressed);
             Utils.SendUnityResponse(session, rsp);
             return true;
         }
@@ -168,53 +156,8 @@ namespace ServerLib.Web
             //REQ stuff
             string SessionId = Utils.GetSessionId(session.Headers);
             Utils.PrintRequest(request, session);
-            var character = CharacterController.GetPmcCharacter(SessionId);
-            if (character == null)
-            {
-                Debug.PrintError("[ProfileStatus] Character not found!");
-            }
-            string resp = "{\"maxPveCountExceeded\":false,\"profiles\":[{" +
-                "\"profileid\":\"" + character.Savage + "\"," +
-                "\"profileToken\":null," +
-                "\"status\":\"Free\"," +
-                "\"sid\":\"\"," +
-                "\"ip\":\"\"," +
-                "\"port\":0" +
-                "},{" +
-                "\"profileid\":\"" + character.Aid + "\"," +
-                "\"profileToken\":null," +
-                "\"status\":\"Free\"," +
-                "\"sid\":\"\"," +
-                "\"ip\":\"\"," +
-                "\"port\":0" +
-                "}]}";
-            /*
-             {
-                maxPveCountExceeded: false,
-                profiles: [
-                    {
-                        profileid: savage,
-                        profileToken: null,
-                        status: "Free",
-                        sid: "",
-                        ip: "",
-                        port: 0
-                    },
-                    {
-                        profileid: _id,
-                        profileToken: null,
-                        status: "Free",
-                        sid: "",
-                        ip: "",
-                        port: 0
-                    }
-                ]
-            }
-             */
 
-            // RPS
-            Console.WriteLine(resp);
-            var rsp = ResponseControl.CompressRsp(resp);
+            var rsp = GameProfile.ProfileStatus(SessionId);
             Utils.SendUnityResponse(session, rsp);
             return true;
         }

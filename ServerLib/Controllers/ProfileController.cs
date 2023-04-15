@@ -117,6 +117,7 @@ namespace ServerLib.Controllers
                     ret.Add(account);
                     if (!ProfilesDict.ContainsKey(account.Info.Id))
                     {
+                        Debug.PrintInfo("ConvertFromAkiProfile!");
                         ProfilesDict.Add(account.Info.Id, account);
                     }
                 }
@@ -138,6 +139,8 @@ namespace ServerLib.Controllers
                 if (File.Exists($"{dir}/account.json"))
                 {
                     var account = JsonConvert.DeserializeObject<Profile.Info>(File.ReadAllText($"{dir}/account.json"));
+                    if (account.Edition == null | string.IsNullOrEmpty(account.Edition))
+                        continue;
                     @base.Info = account;
                 }
                 if (File.Exists($"{dir}/character.json"))
@@ -171,7 +174,8 @@ namespace ServerLib.Controllers
 
         public static Profile.Base? GetProfile(string SessionId)
         {
-            if (ProfilesDict.TryGetValue(SessionId, out Profile.Base ret))
+            ReloadProfiles();
+            if (ProfilesDict.TryGetValue(SessionId, out Profile.Base? ret))
             {
                 return ret;
             }

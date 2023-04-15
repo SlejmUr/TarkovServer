@@ -17,6 +17,7 @@ namespace ServerLib.Web
         static HttpsBackendServer? server = null;
         public static void Start(string IP, int Port)
         {
+            HttpServerThingy.Clear();
             var context = new SslContext(SslProtocols.Tls12, CertHelper.GetCert());
             server = new HttpsBackendServer(context, IPAddress.Parse(IP), Port);
             Console.WriteLine("[HTTPS] Server Started on https://" + IP + ":" + Port);

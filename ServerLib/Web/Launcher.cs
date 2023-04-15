@@ -15,7 +15,7 @@ namespace ServerLib.Web
             Utils.PrintRequest(request, session);
             string Uncompressed = ResponseControl.DeCompressReq(request.BodyBytes);
             // RPS
-            string resp = AccountController.Login(JsonConvert.DeserializeObject<Json.Classes.Profile.Info>(Uncompressed));
+            string resp = AccountController.Login(JsonConvert.DeserializeObject<Json.Classes.Login>(Uncompressed));
             var rsp = ResponseControl.CompressRsp(resp);
             session.SendResponse(session.Response.MakeGetResponse(rsp).SetHeader("Content-Encoding", "deflate"));
             return true;
@@ -29,7 +29,7 @@ namespace ServerLib.Web
             string Uncompressed = ResponseControl.DeCompressReq(request.BodyBytes);
 
             // RPS
-            string resp = AccountController.Register(JsonConvert.DeserializeObject<Json.Classes.Profile.Info>(Uncompressed));
+            string resp = AccountController.Register(JsonConvert.DeserializeObject<Json.Classes.Login>(Uncompressed));
             var rsp = ResponseControl.CompressRsp(resp);
             session.SendResponse(session.Response.MakeGetResponse(rsp).SetHeader("Content-Encoding", "deflate"));
             return true;

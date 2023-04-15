@@ -13,7 +13,7 @@ namespace ServerLib.Web
         {
             Console.WriteLine(request.Body);
             // RPS
-            string resp = AccountController.Login(JsonConvert.DeserializeObject<Json.Classes.Profile.Info>(request.Body));
+            string resp = AccountController.Login(JsonConvert.DeserializeObject<Json.Classes.Login>(request.Body));
             Console.WriteLine(resp);
             var rsp = session.Response.MakeGetResponse(resp);
             session.SendResponse(rsp);
@@ -25,7 +25,7 @@ namespace ServerLib.Web
         {
             Console.WriteLine(request.Body);
             // RPS
-            string resp = AccountController.Register(JsonConvert.DeserializeObject<Json.Classes.Profile.Info>(request.Body));
+            string resp = AccountController.Register(JsonConvert.DeserializeObject<Json.Classes.Login>(request.Body));
             var rsp = session.Response.MakeGetResponse(resp);
             session.SendResponse(rsp);
             return true;

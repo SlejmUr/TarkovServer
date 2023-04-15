@@ -15,10 +15,12 @@ namespace ServerLib.Json.Classes
         public string HeadId { get; set; }
         public string Nickname { get; set; }
     }
+    /*
+     * We Do not need Edition because only one available at the time!
     public class Register : Login
     {
         public string edition { get; set; }
-    }
+    }*/
 
     public class Change : Login
     {
