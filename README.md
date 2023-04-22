@@ -35,7 +35,7 @@ Build=>(Re-)Build Solution
 
 ## Linux Support
 I planning to add a linux support (If most of the stuff done) on this project, If you want to help me with this DM me on Discord!
-(I'm on Altered Escape,JET, MTGA Discord)
+(I'm on many Tarkov related Discord servers)
 
 ## Mod/Plugin support
 You can add your or anyone plugin, but be careful cus they can use any malicius code.\
