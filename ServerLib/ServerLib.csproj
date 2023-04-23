@@ -12,7 +12,6 @@
     </Content>
   </ItemGroup>
 	<ItemGroup>
-		<PackageReference Include="JWT" Version="10.0.2" />
 		<PackageReference Include="NetCoreServer" Version="6.7.0" />
 		<PackageReference Include="WatsonWebsocket" Version="4.0.8" />
 	</ItemGroup>

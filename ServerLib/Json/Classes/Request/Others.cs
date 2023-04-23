@@ -291,7 +291,7 @@ namespace ServerLib.Json.Classes
         }
     }
 
-    public class GetRaidConfiguration
+    public class RaidSettings
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
         public string keyId { get; set; }

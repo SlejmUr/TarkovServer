@@ -1,5 +1,4 @@
 ﻿using NetCoreServer;
-using Newtonsoft.Json;
 using ServerLib.Controllers;
 using ServerLib.Utilities;
 using ServerLib.Utilities.Helpers;
@@ -17,9 +16,7 @@ namespace ServerLib.Web
             string SessionId = Utils.GetSessionId(session.Headers);
             Utils.PrintRequest(request, session);
 
-            string resp = CharacterController.GetCompleteCharacter(SessionId);
-            // RPS
-            var rsp = ResponseControl.CompressRsp(ResponseControl.GetBody(resp));
+            var rsp = GameProfile.ProfileList(SessionId);
             Utils.SendUnityResponse(session, rsp);
             return true;
         }
@@ -31,14 +28,7 @@ namespace ServerLib.Web
             string SessionId = Utils.GetSessionId(session.Headers);
             Utils.PrintRequest(request, session);
             string Uncompressed = ResponseControl.DeCompressReq(request.BodyBytes);
-            //HealOverTime!!
-
-            // {"nickname": ""}
-
-
-            string resp = CharacterController.GetCompleteCharacter(SessionId);
-            // RPS
-            var rsp = ResponseControl.CompressRsp(ResponseControl.GetBody(resp));
+            var rsp = GameProfile.ProfileSearch(Uncompressed);
             Utils.SendUnityResponse(session, rsp);
             return true;
         }
@@ -49,10 +39,8 @@ namespace ServerLib.Web
             //REQ stuff
             string SessionId = Utils.GetSessionId(session.Headers);
             Utils.PrintRequest(request, session);
-            string resp = "{\"status\": \"ok\",\"notifier\":" + ResponseControl.GetNotifier(SessionId) + ",\"notifierServer\":\"\"}";
-            // RPS
-            Console.WriteLine(resp);
-            var rsp = ResponseControl.CompressRsp(ResponseControl.GetBody(resp));
+
+            var rsp = GameProfile.ProfileSelect(SessionId);
             Utils.SendUnityResponse(session, rsp);
             return true;
         }
@@ -64,10 +52,8 @@ namespace ServerLib.Web
             string SessionId = Utils.GetSessionId(session.Headers);
             Utils.PrintRequest(request, session);
             string Uncompressed = ResponseControl.DeCompressReq(request.BodyBytes);
-            CharacterController.CreateCharacter(SessionId, Uncompressed);
-            string resp = "{\"uid\":\"" + SessionId + "\"}";
-            // RPS
-            var rsp = ResponseControl.CompressRsp(ResponseControl.GetBody(resp));
+
+            var rsp = GameProfile.ProfileCreate(SessionId, Uncompressed);
             Utils.SendUnityResponse(session, rsp);
             return true;
         }

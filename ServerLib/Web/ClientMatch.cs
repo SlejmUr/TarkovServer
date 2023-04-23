@@ -9,7 +9,7 @@ namespace ServerLib.Web
     public class ClientMatch
     {
         [HTTP("POST", "/client/match/available")]
-        public static bool ClientMatchAvailable(HttpRequest request, HttpsBackendSession session)
+        public static bool Available(HttpRequest request, HttpsBackendSession session)
         {
             Utils.PrintRequest(request, session);
             var rsp = ResponseControl.CompressRsp(ResponseControl.GetBody("true"));
@@ -18,11 +18,11 @@ namespace ServerLib.Web
         }
 
         [HTTP("POST", "/client/match/offline/end")]
-        public static bool ClientMatchOfflineEnd(HttpRequest request, HttpsBackendSession session)
+        public static bool OfflineEnd(HttpRequest request, HttpsBackendSession session)
         {
             Utils.PrintRequest(request, session);
             string Uncompressed = ResponseControl.DeCompressReq(request.BodyBytes);
-            //Class73<T, U, V> | (exitStatus, exitName, raidSeconds)
+            //(exitStatus, exitName, raidSeconds)
 
             var rsp = ResponseControl.CompressRsp(ResponseControl.NullResponse());
             Utils.SendUnityResponse(session, rsp);
@@ -30,7 +30,7 @@ namespace ServerLib.Web
         }
 
         [HTTP("POST", "/client/match/join")]
-        public static bool ClientMatchJoin(HttpRequest request, HttpsBackendSession session)
+        public static bool Join(HttpRequest request, HttpsBackendSession session)
         {
             Utils.PrintRequest(request, session);
             var rsp = ResponseControl.CompressRsp(ResponseControl.NullResponse());
@@ -39,7 +39,7 @@ namespace ServerLib.Web
         }
 
         [HTTP("POST", "/client/match/group/start_game")]
-        public static bool ClientMatchStartGame(HttpRequest request, HttpsBackendSession session)
+        public static bool StartGame(HttpRequest request, HttpsBackendSession session)
         {
             Utils.PrintRequest(request, session);
             var rsp = ResponseControl.CompressRsp(ResponseControl.NullResponse());
@@ -48,7 +48,16 @@ namespace ServerLib.Web
         }
 
         [HTTP("POST", "/client/match/group/status")]
-        public static bool ClientMatchGroupStatus(HttpRequest request, HttpsBackendSession session)
+        public static bool GroupStatus(HttpRequest request, HttpsBackendSession session)
+        {
+            Utils.PrintRequest(request, session);
+            var rsp = ResponseControl.CompressRsp(ResponseControl.NullResponse());
+            Utils.SendUnityResponse(session, rsp);
+            return true;
+        }
+
+        [HTTP("POST", "/client/match/group/current")]
+        public static bool GroupCurrent(HttpRequest request, HttpsBackendSession session)
         {
             Utils.PrintRequest(request, session);
             var rsp = ResponseControl.CompressRsp(ResponseControl.NullResponse());
@@ -57,7 +66,7 @@ namespace ServerLib.Web
         }
 
         [HTTP("POST", "/client/match/group/create")]
-        public static bool ClientMatchGroupCreate(HttpRequest request, HttpsBackendSession session)
+        public static bool GroupCreate(HttpRequest request, HttpsBackendSession session)
         {
             Utils.PrintRequest(request, session);
 

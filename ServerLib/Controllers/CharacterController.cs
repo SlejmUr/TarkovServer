@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using EFT;
+using Newtonsoft.Json;
 using ServerLib.Handlers;
 using ServerLib.Json.Classes;
 using ServerLib.Utilities;
@@ -164,6 +165,24 @@ namespace ServerLib.Controllers
 
             return JsonConvert.SerializeObject(ouptut);
         }
+
+        public static List<Character.Base> SearchNickname(string Nickname)
+        {
+            List<Character.Base> ret = new();
+            foreach (var profile in Characters.Values)
+            {
+                if (profile != null)
+                {
+                    if (profile.Info.Nickname.ToLower() == Nickname.ToLower())
+                    {
+                        ret.Add(profile);
+                    }
+                }
+            }
+            return ret;
+        
+        }
+
 
         public static string ChangeNickname(string json, string SessionId)
         {

@@ -1,8 +1,10 @@
 ﻿using NetCoreServer;
 using Newtonsoft.Json;
 using ServerLib.Controllers;
+using ServerLib.Json;
 using ServerLib.Utilities;
 using ServerLib.Utilities.Helpers;
+using static ServerLib.Json.Classes.Profile;
 using static ServerLib.Web.HTTPServer;
 
 namespace ServerLib.Web
@@ -63,7 +65,7 @@ namespace ServerLib.Web
         {
             Utils.PrintRequest(request, session);
             string SessionId = Utils.GetSessionId(session.Headers);
-            string resp = ResponseControl.GetBody(ResponseControl.GetNotifier(SessionId));
+            string resp = ResponseControl.GetBody(JsonConvert.SerializeObject(ResponseControl.GetNotifier(SessionId)));
             var rsp = ResponseControl.CompressRsp(resp);
             Utils.SendUnityResponse(session, rsp);
             return true;
@@ -182,6 +184,36 @@ namespace ServerLib.Web
         {
             Utils.PrintRequest(request, session);
             string resp = ResponseControl.GetBody(JsonConvert.SerializeObject(CustomizationController.GetAccountCustomization()));
+            var rsp = ResponseControl.CompressRsp(resp);
+            Utils.SendUnityResponse(session, rsp);
+            return true;
+        }
+
+        [HTTP("POST", "/client/handbook/templates")]
+        public static bool ClientHandbookTemplates(HttpRequest request, HttpsBackendSession session)
+        {
+            Utils.PrintRequest(request, session);
+            string SessionId = Utils.GetSessionId(session.Headers);
+            string resp = ResponseControl.GetBody(JsonConvert.SerializeObject(DatabaseController.DataBase.Templates));
+            var rsp = ResponseControl.CompressRsp(resp);
+            Utils.SendUnityResponse(session, rsp);
+            return true;
+        }
+
+        [HTTP("POST", "/client/handbook/builds/my/list")]
+        public static bool ClientHandbookBuildsMyList(HttpRequest request, HttpsBackendSession session)
+        {
+            Utils.PrintRequest(request, session);
+            string SessionId = Utils.GetSessionId(session.Headers);
+
+            List<WeaponBuild> ret = new();
+            var profile = ProfileController.GetProfile(SessionId);
+            if (profile != null)
+            {
+                ret = profile.Weaponbuilds;
+            }
+
+            string resp = ResponseControl.GetBody(JsonConvert.SerializeObject(ret));
             var rsp = ResponseControl.CompressRsp(resp);
             Utils.SendUnityResponse(session, rsp);
             return true;

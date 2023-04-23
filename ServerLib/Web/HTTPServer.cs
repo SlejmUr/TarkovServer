@@ -74,7 +74,7 @@ namespace ServerLib.Web
         {
             Utils.PrintRequest(request, session);
             string resp = "[]"; //Need better handling on bundles
-            var crsp = Web.ResponseControl.CompressRsp(resp);
+            var crsp = ResponseControl.CompressRsp(resp);
             return Utils.SendUnityResponse(session, crsp);
         }
 
@@ -139,6 +139,7 @@ namespace ServerLib.Web
 
             protected override void OnReceivedRequest(HttpRequest request)
             {
+                Headers.Clear();
                 for (int i = 0; i < request.Headers; i++)
                 {
                     var headerpart = request.Header(i);
@@ -146,7 +147,7 @@ namespace ServerLib.Web
                 }
                 string url = request.Url;
                 url = Uri.UnescapeDataString(url);
-                Console.WriteLine(url);
+                Debug.PrintDebug(url);
                 var ret = PluginLoader.PluginHttpRequest(request, this);
                 if (ret.Contains(true))
                     return;
@@ -166,7 +167,7 @@ namespace ServerLib.Web
 
                 if (!Sent)
                 {
-                    File.AppendAllText("REQUESTED", request.Body + "\n");
+                    File.AppendAllText("REQUESTED.txt", url + "\n" + request.Body + "\n");
                 }
 
                 SendResponse(Response.MakeOkResponse());

@@ -27,7 +27,7 @@ namespace ServerLib.Handlers
                 }
                 else
                 {
-                    EmulatorInit(iPlugin);
+                    PluginInit(iPlugin);
                     pluginsList.Add(iPlugin.Name, new PluginInfos
                     {
                         PluginPath = file,
@@ -38,6 +38,32 @@ namespace ServerLib.Handlers
 
                 }
             }
+        }
+
+        public static Dictionary<string, MethodInfo> UrlLoader(Assembly assembly)
+        {
+            Dictionary<string, MethodInfo> ret = new();
+            var methods = assembly.GetTypes().SelectMany(x => x.GetMethods()).ToArray();
+            var basemethods = methods.Where(x => x.GetCustomAttribute<HTTPAttribute>() != null && x.ReturnType == typeof(bool)).ToArray();
+            methods = basemethods.Where(x => x.GetCustomAttribute<HTTPAttribute>().method.Contains("GET")).ToArray();
+            foreach (var method in methods)
+            {
+                if (method == null)
+                    continue;
+                var url = method.GetCustomAttribute<HTTPAttribute>().url;
+                Debug.PrintDebug(method.Name + $" ({url}) is added as an URL", "[HTTPServer/Plugin]");
+                ret.Add(url, method);
+            }
+            methods = basemethods.Where(x => x.GetCustomAttribute<HTTPAttribute>().method.Contains("POST")).ToArray();
+            foreach (var method in methods)
+            {
+                if (method == null)
+                    continue;
+                var url = method.GetCustomAttribute<HTTPAttribute>().url;
+                Debug.PrintDebug(method.Name + $" ({url}) is added as an URL", "[HTTPServer/Plugin]");
+                ret.Add(url, method);
+            }
+            return ret;
         }
 
         public static List<bool> PluginHttpRequest(HttpRequest request, HttpsBackendSession session)
@@ -72,7 +98,7 @@ namespace ServerLib.Handlers
             }
             else
             {
-                EmulatorInit(iPlugin);
+                PluginInit(iPlugin);
                 pluginsList.Add(iPlugin.Name, new PluginInfos
                 {
                     PluginPath = currdir + "/Plugins/" + DllName + ".dll",
@@ -80,7 +106,7 @@ namespace ServerLib.Handlers
                 });
             }
         }
-        private static void EmulatorInit(IPlugin iPlugin)
+        private static void PluginInit(IPlugin iPlugin)
         {
             iPlugin.Initialize();
             Debug.PrintDebug("New Plugin Loaded" +
@@ -91,6 +117,7 @@ namespace ServerLib.Handlers
                 "\nPlugin Desc: " + iPlugin.Description
                 , "[PLUGIN]");
         }
+
         internal class PluginInfos
         {
             public string PluginPath;

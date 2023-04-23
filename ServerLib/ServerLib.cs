@@ -50,7 +50,6 @@ namespace ServerLib
             IP = _ip_port;
             ip_port = $"{Ip}:{port}";
             CertHelper.Make(IPAddress.Parse(Ip), _ip_port);
-            JWTHandler.CreateRSA();
             ProfileController.Init();
             Controllers.DialogController.Init();
             AccountController.Init();

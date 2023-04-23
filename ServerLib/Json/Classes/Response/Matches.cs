@@ -1,10 +1,28 @@
 ﻿using Newtonsoft.Json;
 
-namespace ServerLib.Json.Classes
+namespace ServerLib.Json.Classes.Response
 {
-    public class AcceptGroupInvite
+    public class Matches
     {
-        public class Response
+        public class CurrentGroup
+        {
+            [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
+            public List<Member> squad { get; set; }
+
+            [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
+            public RaidSettings raidSettings { get; set; }
+        }
+
+        public class GroupStatus
+        {
+            [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
+            public List<Member> players { get; set; }
+
+            [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
+            public bool maxPveCountExceeded { get; set; }
+        }
+
+        public class Member
         {
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public string _id { get; set; }
@@ -14,6 +32,9 @@ namespace ServerLib.Json.Classes
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public PlayerInviteInfo Info { get; set; }
+
+            [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
+            public bool lookingGroup { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public bool isLeader { get; set; }

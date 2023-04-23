@@ -5,7 +5,7 @@ using ServerLib.Controllers;
 using ServerLib.Utilities;
 using System.Security.Cryptography;
 
-namespace ServerLib.Handlers
+namespace ExtCommands
 {
     public class JWTHandler
     {

@@ -1,5 +1,6 @@
 ﻿using ComponentAce.Compression.Libs.zlib;
 using Newtonsoft.Json;
+using ServerLib.Json.Classes;
 
 namespace ServerLib.Web
 {
@@ -14,7 +15,7 @@ namespace ServerLib.Web
             var Stuff = "{\"err\":" + errorcode + ",\"errmsg\":" + errormsg + ",\"data\":" + Data + "}";
             return Stuff;
         }
-        public static string GetBodyCRC(string Data, int errorcode = 0, string errormsg = "null", int crc = 0)
+        public static string GetBodyCRC(string Data, int errorcode = 0, string errormsg = "null", uint crc = 0)
         {
             var Stuff = "{\"err\":" + errorcode + ",\"errmsg\":" + errormsg + ",\"data\":" + Data + ",\"crc\":" + crc + "}";
             return Stuff;
@@ -36,7 +37,7 @@ namespace ServerLib.Web
             return SimpleZlib.Decompress(data);
         }
 
-        public static string GetNotifier(string SessionId)
+        public static NotifierChannel GetNotifier(string SessionId)
         {
             Json.Classes.NotifierChannel notifier = new()
             {
@@ -47,7 +48,7 @@ namespace ServerLib.Web
                 ws = WebSocket.IP
             };
 
-            return JsonConvert.SerializeObject(notifier);
+            return notifier;
         }
     }
 }
