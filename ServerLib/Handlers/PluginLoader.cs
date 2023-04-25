@@ -113,7 +113,6 @@ namespace ServerLib.Handlers
                 "\nPlugin Name: " + iPlugin.Name +
                 "\nPlugin Version: " + iPlugin.Version +
                 "\nPlugin Author: " + iPlugin.Author +
-                "\nPlugin Mode: " + iPlugin.Mode +
                 "\nPlugin Desc: " + iPlugin.Description
                 , "[PLUGIN]");
         }

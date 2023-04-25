@@ -26,9 +26,9 @@ namespace Plugin
 
         public string Version { get; } = "0.1";
 
-        public string Mode { get; } = "Server";
-
         public string Description { get; } = "Add external commands support";
+
+        public List<string> Dependencies => new() { "TestPlugin" };
 
         public void Initialize()
         {

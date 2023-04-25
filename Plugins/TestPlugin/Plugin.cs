@@ -20,15 +20,15 @@ namespace Plugin
             Console.WriteLine("Welcome from " + Name + " !");
         }
 
-        public string Name { get; } = "TestPlugin";
+        public string Name => "TestPlugin";
 
-        public string Author { get; } = "SlejmUr";
+        public string Author => "SlejmUr";
 
-        public string Version { get; } = "0.1";
+        public string Version => "0.1";
 
-        public string Mode { get; } = "Server";
+        public string Description => "Testing and showoff for future plugins";
 
-        public string Description { get; } = "Testing and showoff for future plugins";
+        public List<string> Dependencies => new();
 
         public void Initialize()
         {

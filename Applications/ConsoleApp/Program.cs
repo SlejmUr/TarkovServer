@@ -79,6 +79,9 @@ namespace ConsoleApp
             }
 
             SL.ServerLib.Stop();
+
+            if (SLH.ArgumentHandler.Debug)
+                Console.ReadLine();
         }
 
         internal static Assembly AssemblyResolveEvent(object sender, ResolveEventArgs args)

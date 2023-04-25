@@ -5,13 +5,14 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
-
+	
   <ItemGroup>
-    <PackageReference Include="System.Composition.AttributedModel" Version="6.0.0" />
+	<PackageReference Include="JWT" Version="10.0.2" />
+	<PackageReference Include="System.Composition.AttributedModel" Version="6.0.0" />
   </ItemGroup>
-
+	
   <ItemGroup>
-    <ProjectReference Include="..\ServerLib\ServerLib.csproj" />
+    <ProjectReference Include="..\..\ServerLib\ServerLib.csproj" />
   </ItemGroup>
-
+	
 </Project>

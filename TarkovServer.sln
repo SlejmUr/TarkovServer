@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32126.317
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp", "ConsoleApp\ConsoleApp.csproj", "{04857310-DBE1-4591-B962-8F6E52DADC2B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp", "Applications\ConsoleApp\ConsoleApp.csproj", "{04857310-DBE1-4591-B962-8F6E52DADC2B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestPlugin", "TestPlugin\TestPlugin.csproj", "{DABBB05F-8940-431E-80E1-4B3CAD365816}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestPlugin", "Plugins\TestPlugin\TestPlugin.csproj", "{DABBB05F-8940-431E-80E1-4B3CAD365816}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServerLib", "ServerLib\ServerLib.csproj", "{B01285BA-D1A3-4A02-8E9F-B198473C9E35}"
 EndProject
@@ -16,9 +16,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestApp", "TestApp\TestApp.csproj", "{C97F4B46-4C77-43C7-A212-1AF8E86A1609}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServerApp", "ServerApp\ServerApp.csproj", "{234AAE88-6F31-46D6-A3DD-3EBFC50C3B90}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServerApp", "Applications\ServerApp\ServerApp.csproj", "{234AAE88-6F31-46D6-A3DD-3EBFC50C3B90}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExtCommands", "ExtCommands\ExtCommands.csproj", "{320F8CF8-E4E8-4464-8FD6-FFB9C7E0A312}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExtCommands", "Plugins\ExtCommands\ExtCommands.csproj", "{320F8CF8-E4E8-4464-8FD6-FFB9C7E0A312}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

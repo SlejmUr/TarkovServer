@@ -19,7 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ServerLib\ServerLib.csproj" />
+    <ProjectReference Include="..\..\ServerLib\ServerLib.csproj" />
   </ItemGroup>
 
   <ItemGroup>

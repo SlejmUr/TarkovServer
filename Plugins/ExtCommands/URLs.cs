@@ -1,4 +1,5 @@
 ﻿using NetCoreServer;
+using Newtonsoft.Json;
 using ServerLib.Controllers;
 using ServerLib.Utilities;
 using static ServerLib.Web.HTTPServer;
@@ -11,9 +12,20 @@ namespace ExtCommands
         public static bool ExtCommandsAuth(HttpRequest request, HttpsBackendSession session)
         {
             Console.WriteLine(request.Body);
-           
-
-            session.SendResponse(session.Response.MakeGetResponse(""));
+            List<string> x = new()
+            { 
+                "yywww",
+                "dddddddddddddddddd"
+            };
+            ServerLib.Json.Classes.Configs.Plugin plugin = new()
+            { 
+                file = "yeet",
+                ignore = false,
+                dependencies = x
+            };
+            var rsp = JsonConvert.SerializeObject(plugin);
+            Debug.PrintError(rsp);
+            session.SendResponse(session.Response.MakeGetResponse(rsp));
             return true;
         }
 

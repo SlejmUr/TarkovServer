@@ -8,8 +8,8 @@ namespace ServerLib.Utilities
         string Name { get; }
         string Author { get; }
         string Version { get; }
-        string Mode { get; }
         string Description { get; }
+        List<string> Dependencies { get; }
         void Initialize();
         bool HttpRequest(HttpRequest request, HttpsBackendSession session);
         void ShutDown();
