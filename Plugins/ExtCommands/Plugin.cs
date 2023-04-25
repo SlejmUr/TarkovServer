@@ -20,13 +20,13 @@ namespace Plugin
             JWTHandler.CreateRSA();
         }
 
-        public string Name { get; } = "ExtCommands";
+        public string Name => "ExtCommands";
 
-        public string Author { get; } = "SlejmUr";
+        public string Author => "SlejmUr";
 
-        public string Version { get; } = "0.1";
+        public string Version => "0.1";
 
-        public string Description { get; } = "Add external commands support";
+        public string Description => "Add external commands support";
 
         public List<string> Dependencies => new() { "TestPlugin" };
 

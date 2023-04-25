@@ -8,6 +8,7 @@ using SLU = ServerLib.Utilities;
 using SLC = ServerLib.Controllers;
 using SLW = ServerLib.Web;
 using ServerLib.Controllers;
+using ServerLib.Utilities;
 
 namespace ConsoleApp
 {
@@ -40,6 +41,7 @@ namespace ConsoleApp
             }
 
             AppDomain.CurrentDomain.AssemblyResolve += AssemblyResolveEvent;
+            AppDomain.CurrentDomain.AssemblyLoad += CurrentDomain_AssemblyLoad;
 
             Console.OutputEncoding = Encoding.UTF8;
             Console.Title = $"MTGA - SharpServer [{Version.LoadVersion}]";
@@ -84,12 +86,18 @@ namespace ConsoleApp
                 Console.ReadLine();
         }
 
+        private static void CurrentDomain_AssemblyLoad(object? sender, AssemblyLoadEventArgs args)
+        {
+            Debug.PrintDebug(args.LoadedAssembly.FullName, "[AssemblyLoad]");
+        }
+
         internal static Assembly AssemblyResolveEvent(object sender, ResolveEventArgs args)
         {
             var _FileName = "";
             try
             {
                 var assembly = new AssemblyName(args.Name).Name;
+                Debug.PrintDebug(assembly, "[AssemblyResolveEvent]");
                 _FileName = Path.Combine(File.ReadAllText("path.txt"), $"{assembly}.dll");
                 // resources are embedded inside assembly
                 if (_FileName.Contains("resources"))

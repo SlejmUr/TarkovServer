@@ -14,11 +14,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.editorconfig = .editorconfig
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestApp", "TestApp\TestApp.csproj", "{C97F4B46-4C77-43C7-A212-1AF8E86A1609}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServerApp", "Applications\ServerApp\ServerApp.csproj", "{234AAE88-6F31-46D6-A3DD-3EBFC50C3B90}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExtCommands", "Plugins\ExtCommands\ExtCommands.csproj", "{320F8CF8-E4E8-4464-8FD6-FFB9C7E0A312}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExtCommands", "Plugins\ExtCommands\ExtCommands.csproj", "{320F8CF8-E4E8-4464-8FD6-FFB9C7E0A312}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -38,10 +36,6 @@ Global
 		{B01285BA-D1A3-4A02-8E9F-B198473C9E35}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B01285BA-D1A3-4A02-8E9F-B198473C9E35}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B01285BA-D1A3-4A02-8E9F-B198473C9E35}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C97F4B46-4C77-43C7-A212-1AF8E86A1609}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C97F4B46-4C77-43C7-A212-1AF8E86A1609}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C97F4B46-4C77-43C7-A212-1AF8E86A1609}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C97F4B46-4C77-43C7-A212-1AF8E86A1609}.Release|Any CPU.Build.0 = Release|Any CPU
 		{234AAE88-6F31-46D6-A3DD-3EBFC50C3B90}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{234AAE88-6F31-46D6-A3DD-3EBFC50C3B90}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{234AAE88-6F31-46D6-A3DD-3EBFC50C3B90}.Release|Any CPU.ActiveCfg = Release|Any CPU

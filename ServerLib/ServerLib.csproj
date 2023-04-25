@@ -8,7 +8,7 @@
 
   <ItemGroup>
     <Content Include="Files\**">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
 	<ItemGroup>

@@ -77,6 +77,7 @@ namespace ServerLib
         public static void Stop()
         {
             PluginLoader.UnloadPlugins();
+            ConfigController.Save();
             HTTPServer.Stop();
             WebSocket.Stop();
         }

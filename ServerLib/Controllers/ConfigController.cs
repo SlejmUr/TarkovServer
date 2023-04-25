@@ -50,7 +50,7 @@ namespace ServerLib.Controllers
                                 Configs.CustomSettings = JsonConvert.DeserializeObject<Json.Classes.CustomConfig.Base>(dataraw);
                                 break;
                             case "plugin":
-                                Configs.Plugins = dataraw;
+                                Configs.Plugins = JsonConvert.DeserializeObject<List<Json.Classes.Configs.Plugin>>(dataraw);
                                 break;
                             default:
                                 break;
@@ -59,6 +59,14 @@ namespace ServerLib.Controllers
                     }
                 }
             }
+        }
+
+        public static void Save()
+        {
+            File.WriteAllText("Files/configs/server.json", JsonConvert.SerializeObject(Configs.Server));
+            File.WriteAllText("Files/configs/gameplay.json", JsonConvert.SerializeObject(Configs.Gameplay));
+            File.WriteAllText("Files/configs/custom.json", JsonConvert.SerializeObject(Configs.CustomSettings));
+            File.WriteAllText("Files/configs/plugin.json", JsonConvert.SerializeObject(Configs.Plugins));
         }
 
         /// <summary>

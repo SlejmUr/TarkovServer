@@ -13,6 +13,7 @@
 	
   <ItemGroup>
     <ProjectReference Include="..\..\ServerLib\ServerLib.csproj" />
+    <ProjectReference Include="..\TestPlugin\TestPlugin.csproj" />
   </ItemGroup>
 	
 </Project>

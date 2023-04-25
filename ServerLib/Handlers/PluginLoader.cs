@@ -1,4 +1,6 @@
 ﻿using NetCoreServer;
+using ServerLib.Controllers;
+using ServerLib.Json.Classes;
 using ServerLib.Utilities;
 using System.Reflection;
 using static ServerLib.Web.HTTPServer;
@@ -12,32 +14,88 @@ namespace ServerLib.Handlers
         {
             string currdir = Directory.GetCurrentDirectory();
 
+            var plugins = ConfigController.Configs.Plugins;
+            if (plugins == null ) 
+            {
+                plugins = new();
+            }
+
             if (!Directory.Exists(Path.Combine(currdir, "Plugins"))) { Directory.CreateDirectory(Path.Combine(currdir, "Plugins")); }
+
+            Dictionary<IPlugin, List<string>> PluginDependencies = new();
 
             foreach (string file in Directory.GetFiles(Path.Combine(currdir, "Plugins"), "*.dll"))
             {
-                if (file.Contains("ignore")) { continue; }
-
-                IPlugin iPlugin = (IPlugin)Activator.CreateInstance(Assembly.LoadFile(file).GetType("Plugin.Plugin"));
-                if (pluginsList.ContainsKey(iPlugin.Name))
+                Configs.Plugin plugin = new Configs.Plugin()
+                { 
+                    ignore = false
+                };
+                string prettyname = file.Replace(Path.Combine(currdir, "Plugins") + Path.DirectorySeparatorChar,"");;
+                if (plugins.Where(x => x.file == prettyname).Any())
                 {
-                    Debug.PrintWarn("Plugin already loaded!");
-                    //iPlugin.ShutDown();
-                    //iPlugin.Dispose();
+                    var maybeplugin = plugins.Where(x=>x.file == prettyname).SingleOrDefault();
+                    if (maybeplugin != null) 
+                    {
+                        plugin = maybeplugin;
+                    }
                 }
                 else
                 {
-                    PluginInit(iPlugin);
-                    pluginsList.Add(iPlugin.Name, new PluginInfos
+                    plugin.file = prettyname;
+                }
+
+                if (file.Contains("ignore"))
+                {
+                    plugin.ignore = true;
+                }
+
+                if (plugin.ignore)
+                    continue;
+
+                IPlugin iPlugin = (IPlugin)Activator.CreateInstance(Assembly.LoadFile(file).GetType("Plugin.Plugin"));
+
+                plugin.dependencies = iPlugin.Dependencies;
+
+                PluginDependencies.Add(iPlugin, plugin.dependencies);
+
+                if (plugins.Where(x => x.file == plugin.file).Any())
+                {
+                    var maybeplugin = plugins.Where(x => x.file == prettyname).SingleOrDefault();
+                    plugins.Remove(maybeplugin);
+                }
+                plugins.Add(plugin);
+            }
+
+            var ordered = PluginDependencies.OrderBy(x=>x.Value.Count);
+
+            foreach (var item in ordered)
+            {
+                Console.WriteLine(item.Key.Name);
+                Console.WriteLine(string.Join(", ", item.Value));
+
+                foreach (var dependency in item.Value)
+                {
+                    if (!pluginsList.ContainsKey(dependency))
                     {
-                        PluginPath = file,
-                        Plugin = iPlugin
+                        Debug.PrintError($"Plugin ({item.Key.Name}) cannot be loaded! (Dependency Error)");
+                        return;
+                    }
+                }
+
+                if (pluginsList.ContainsKey(item.Key.Name))
+                {
+                    Debug.PrintWarn("Plugin already loaded!");
+                }
+                else
+                {
+                    PluginInit(item.Key);
+                    pluginsList.Add(item.Key.Name, new PluginInfos
+                    {
+                        Plugin = item.Key
                     });
-
-
-
                 }
             }
+
         }
 
         public static Dictionary<string, MethodInfo> UrlLoader(Assembly assembly)
@@ -101,7 +159,6 @@ namespace ServerLib.Handlers
                 PluginInit(iPlugin);
                 pluginsList.Add(iPlugin.Name, new PluginInfos
                 {
-                    PluginPath = currdir + "/Plugins/" + DllName + ".dll",
                     Plugin = iPlugin
                 });
             }
@@ -119,7 +176,6 @@ namespace ServerLib.Handlers
 
         internal class PluginInfos
         {
-            public string PluginPath;
             public IPlugin Plugin;
         }
     }

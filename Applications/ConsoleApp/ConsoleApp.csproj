@@ -15,7 +15,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="..\.editorconfig" Link=".editorconfig" />
+    <None Include="..\..\.editorconfig" Link=".editorconfig" />
   </ItemGroup>
 
   <ItemGroup>
@@ -24,30 +24,30 @@
 
   <ItemGroup>
 	<Reference Include="Assembly-CSharp">
-      <HintPath>..\Ref\Assembly-CSharp.dll</HintPath>
+      <HintPath>..\..\Ref\Assembly-CSharp.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="bsg.componentace.compression.libs.zlib">
-      <HintPath>..\Ref\bsg.componentace.compression.libs.zlib.dll</HintPath>
+      <HintPath>..\..\Ref\bsg.componentace.compression.libs.zlib.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="bsg.microsoft.extensions.objectpool">
-      <HintPath>..\Ref\bsg.microsoft.extensions.objectpool.dll</HintPath>
+      <HintPath>..\..\Ref\bsg.microsoft.extensions.objectpool.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="bsg.system.buffers">
-      <HintPath>..\Ref\bsg.system.buffers.dll</HintPath>
+      <HintPath>..\..\Ref\bsg.system.buffers.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Newtonsoft.Json">
-      <HintPath>..\Ref\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\..\Ref\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine">
-      <HintPath>..\Ref\UnityEngine.dll</HintPath>
+      <HintPath>..\..\Ref\UnityEngine.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEngine.CoreModule">
-      <HintPath>..\Ref\UnityEngine.CoreModule.dll</HintPath>
+      <HintPath>..\..\Ref\UnityEngine.CoreModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
   </ItemGroup>

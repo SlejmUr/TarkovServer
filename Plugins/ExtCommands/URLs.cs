@@ -12,19 +12,7 @@ namespace ExtCommands
         public static bool ExtCommandsAuth(HttpRequest request, HttpsBackendSession session)
         {
             Console.WriteLine(request.Body);
-            List<string> x = new()
-            { 
-                "yywww",
-                "dddddddddddddddddd"
-            };
-            ServerLib.Json.Classes.Configs.Plugin plugin = new()
-            { 
-                file = "yeet",
-                ignore = false,
-                dependencies = x
-            };
-            var rsp = JsonConvert.SerializeObject(plugin);
-            Debug.PrintError(rsp);
+            var rsp = JWTHandler.CreateAuthToken("yeet","yssss");
             session.SendResponse(session.Response.MakeGetResponse(rsp));
             return true;
         }
