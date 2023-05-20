@@ -1,7 +1,6 @@
 ﻿using NetCoreServer;
 using Newtonsoft.Json;
 using ServerLib.Controllers;
-using ServerLib.Json;
 using ServerLib.Utilities;
 using ServerLib.Utilities.Helpers;
 using static ServerLib.Json.Classes.Profile;
@@ -144,7 +143,7 @@ namespace ServerLib.Web
         public static bool ClientGlobals(HttpRequest request, HttpsBackendSession session)
         {
             Utils.PrintRequest(request, session);
-            var rsp = ResponseControl.CompressRsp(File.ReadAllText("Files/base/globals.json"));
+            var rsp = ResponseControl.CompressRsp(File.ReadAllText("Files/static/globals.json"));
             Utils.SendUnityResponse(session, rsp);
             return true;
         }
@@ -153,7 +152,7 @@ namespace ServerLib.Web
         public static bool ClientSettings(HttpRequest request, HttpsBackendSession session)
         {
             Utils.PrintRequest(request, session);
-            var rsp = ResponseControl.CompressRsp(File.ReadAllText("Files/others/client.settings.json"));
+            var rsp = ResponseControl.CompressRsp(File.ReadAllText("Files/static/client.settings.json"));
             Utils.SendUnityResponse(session, rsp);
             return true;
         }
@@ -173,7 +172,9 @@ namespace ServerLib.Web
         public static bool ClientLocations(HttpRequest request, HttpsBackendSession session)
         {
             Utils.PrintRequest(request, session);
-            string resp = ResponseControl.GetBody(DatabaseController.DataBase.Location.AllLocations);
+            //string resp = ResponseControl.GetBody(DatabaseController.DataBase.Location.AllLocations);
+            //TODO LOCATION
+            string resp = "{}";
             var rsp = ResponseControl.CompressRsp(resp);
             Utils.SendUnityResponse(session, rsp);
             return true;
@@ -194,7 +195,7 @@ namespace ServerLib.Web
         {
             Utils.PrintRequest(request, session);
             string SessionId = Utils.GetSessionId(session.Headers);
-            string resp = ResponseControl.GetBody(JsonConvert.SerializeObject(DatabaseController.DataBase.Templates));
+            string resp = ResponseControl.GetBody(JsonConvert.SerializeObject(DatabaseController.DataBase.Others.Templates));
             var rsp = ResponseControl.CompressRsp(resp);
             Utils.SendUnityResponse(session, rsp);
             return true;

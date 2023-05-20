@@ -6,11 +6,6 @@ namespace ServerLib.Json.Classes
 {
     public class Database
     {
-        public basic Basic { get; set; } = new();
-        public class basic
-        {
-            public List<string> BlacklistedIds { get; set; }
-        }
         public bot Bot { get; set; } = new();
         public class bot
         {
@@ -42,7 +37,6 @@ namespace ServerLib.Json.Classes
         {
             public Dictionary<string, Character.Base> CharacterBase = new();
             public Dictionary<string, List<string>> CharacterStorage = new();
-            public Dictionary<string, Character.Customization> DefaultCustomization = new();
         }
         public hideout Hideout { get; set; } = new();
         public class hideout
@@ -57,7 +51,6 @@ namespace ServerLib.Json.Classes
         public class locale
         {
             public string Languages { get; set; }
-            public string Extras { get; set; }
             public Dictionary<string, string> Locales { get; set; } = new();
             public Dictionary<string, Dictionary<string, string>> LocalesDict { get; set; } = new();
         }
@@ -65,15 +58,14 @@ namespace ServerLib.Json.Classes
         public class location
         {
             public string AllLocations { get; set; }
+            public string Base { get; set; }
             public Dictionary<string, string> Locations { get; set; } = new();
-
-            // Adding more on locations currently doing only Base
         }
 
         public others Others { get; set; } = new();
         public class others
         {
-            public List<string> ChildlessList { get; set; }
+            public Handbook.Base Templates { get; set; }
             public string Quests { get; set; }
             public Dictionary<string, string> Customization { get; set; } = new();
             public Dictionary<string, TemplateItem.Base> Items { get; set; }
@@ -81,12 +73,9 @@ namespace ServerLib.Json.Classes
             public Dictionary<string, int> Resupply { get; set; } = new();
         }
 
-        public Handbook.Base Templates { get; set; }
-
         public trader Trader = new();
         public class trader
         {
-            public string LiveFlea { get; set; }
             public Dictionary<string, Trader.Base> Traders { get; set; } = new();
         }
         public Dictionary<string, string> Weather { get; set; } = new();

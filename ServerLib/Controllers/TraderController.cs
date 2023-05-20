@@ -136,8 +136,8 @@ namespace ServerLib.Controllers
 
         public static bool ItemInPurchaseCategories(string TraderId, Item.Base item)
         {
-            var categories = DatabaseController.DataBase.Templates.Categories;
-            var items = DatabaseController.DataBase.Templates.Items;
+            var categories = DatabaseController.DataBase.Others.Templates.Categories;
+            var items = DatabaseController.DataBase.Others.Templates.Items;
 
             var traderbase = GetBaseByTrader(TraderId);
 

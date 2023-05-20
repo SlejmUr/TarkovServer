@@ -11,12 +11,10 @@ namespace ServerLib.Controllers
         {
             if (!Directory.Exists("user/profiles")) { Directory.CreateDirectory("user/profiles"); }
             ConfigController.Init();
-            LoadBasics();
             LoadCharacters();
             LoadBots();
             LoadHideOut();
             LoadLocale();
-            LoadTemplates();
             LoadOthers();
             LoadLocations();
             LoadTraders();
@@ -25,35 +23,22 @@ namespace ServerLib.Controllers
             Debug.PrintInfo("Initialization Done!", "DATABASE");
         }
 
-        static void LoadBasics()
-        {
-            DataBase.Basic = new();
-            DataBase.Basic.BlacklistedIds = JsonConvert.DeserializeObject<List<string>>(File.ReadAllText("Files/base/blacklist.json"));
-            Debug.PrintDebug("Basics loaded");
-        }
-        static void LoadTemplates()
-        {
-            DataBase.Templates = new();
-            DataBase.Templates.Items = JsonConvert.DeserializeObject<List<Json.Classes.Handbook.HandbookItem>>(File.ReadAllText("Files/templates/items.json"));
-            DataBase.Templates.Categories = JsonConvert.DeserializeObject<List<Json.Classes.Handbook.Category>>(File.ReadAllText("Files/templates/categories.json"));
-            Debug.PrintDebug("Templates loaded");
-        }
-
         static void LoadOthers()
         {
             DataBase.Others = new();
-            foreach (var item in DataBase.Templates.Items)
+            DataBase.Others.Templates = new();
+            DataBase.Others.Templates = JsonConvert.DeserializeObject<Json.Classes.Handbook.Base>(File.ReadAllText("Files/others/handbook.json"));
+            foreach (var item in DataBase.Others.Templates.Items)
             {
                 DataBase.Others.ItemPrices.Add(item.Id, item.Price);
             }
-            DataBase.Others.ChildlessList = JsonConvert.DeserializeObject<List<string>>(File.ReadAllText("Files/others/childlessList.json"));
             DataBase.Others.Items = JsonConvert.DeserializeObject<Dictionary<string, TemplateItem.Base>>(File.ReadAllText("Files/others/items.json"));
             DataBase.Others.Quests = File.ReadAllText("Files/others/quests.json");
+            DataBase.Others.Resupply = new();
             if (File.Exists("Files/others/resupply.json"))
             {
                 DataBase.Others.Resupply = JsonConvert.DeserializeObject<Dictionary<string, int>>(File.ReadAllText("Files/others/resupply.json"));
             }
-            DataBase.Others.Resupply = new();
             DataBase.Others.Customization = new();
             dynamic customs = JsonConvert.DeserializeObject<dynamic>(File.ReadAllText("Files/others/customization.json"));
             foreach (var item in customs)
@@ -69,9 +54,7 @@ namespace ServerLib.Controllers
             DataBase.Characters = new();
             DataBase.Characters.CharacterBase["bear"] = JsonConvert.DeserializeObject<Character.Base>(File.ReadAllText("Files/characters/character_bear.json"));
             DataBase.Characters.CharacterBase["usec"] = JsonConvert.DeserializeObject<Character.Base>(File.ReadAllText("Files/characters/character_usec.json"));
-            DataBase.Characters.CharacterBase["scav"] = JsonConvert.DeserializeObject<Character.Base>(File.ReadAllText("Files/characters/playerScav.json"));
             DataBase.Characters.CharacterStorage = JsonConvert.DeserializeObject<Dictionary<string, List<string>>>(File.ReadAllText("Files/characters/storage.json"));
-            DataBase.Characters.DefaultCustomization = JsonConvert.DeserializeObject<Dictionary<string, Character.Customization>>(File.ReadAllText("Files/characters/defaultCustomization.json"));
             Debug.PrintDebug("Characters loaded");
         }
         static void LoadBots()
@@ -168,7 +151,7 @@ namespace ServerLib.Controllers
             DataBase.Hideout = new();
             Database.hideout hideout = new();
             hideout.Areas = File.ReadAllText("Files/hideout/areas.json");
-            hideout.Production = File.ReadAllText("Files/hideout/productions.json");
+            hideout.Production = File.ReadAllText("Files/hideout/production.json");
             hideout.Qte = File.ReadAllText("Files/hideout/qte.json");
             hideout.Scavcase = File.ReadAllText("Files/hideout/scavcase.json");
             hideout.Settings = File.ReadAllText("Files/hideout/settings.json");
@@ -179,7 +162,6 @@ namespace ServerLib.Controllers
         {
             DataBase.Locale = new();
             DataBase.Locale.Languages = File.ReadAllText("Files/locales/languages.json");
-            DataBase.Locale.Extras = File.ReadAllText("Files/locales/extras.json");
             string stuff = "Files/locales";
             var dirs = Directory.GetDirectories("Files/locales");
             foreach (var dir in dirs)
@@ -199,7 +181,7 @@ namespace ServerLib.Controllers
         static void LoadLocations()
         {
             DataBase.Location = new();
-            DataBase.Location.AllLocations = File.ReadAllText("Files/locations/all_locations.json");
+            DataBase.Location.Base = File.ReadAllText("Files/locations/base.json");
             var dirs = Directory.GetDirectories("Files/locations");
             foreach (var dir in dirs)
             {
@@ -208,6 +190,7 @@ namespace ServerLib.Controllers
                 foreach (var file in files)
                 {
                     string filename = file.Replace("Files/locations\\" + dirname + "\\", "").Replace(".json", "");
+                    Debug.PrintDebug($"Location: {dirname + "_" + filename}", "LoadLocations");
                     DataBase.Location.Locations.Add(dirname + "_" + filename, File.ReadAllText(file));
                 }
             }
@@ -216,7 +199,6 @@ namespace ServerLib.Controllers
         static void LoadTraders()
         {
             DataBase.Trader = new();
-            DataBase.Trader.LiveFlea = File.ReadAllText("Files/traders/liveflea.json");
             Trader.Base trader = new();
             var dirs = Directory.GetDirectories("Files/traders");
             foreach (var dir in dirs)
@@ -226,6 +208,7 @@ namespace ServerLib.Controllers
                 foreach (var file in files)
                 {
                     string filename = file.Replace("Files/traders\\" + dirname + "\\", "").Replace(".json", "");
+                    Debug.PrintDebug($"Trader: {dirname + "_" + filename}", "LoadTraders");
                     //DataBase.Locations.Add(dirname + "_" + filename, File.ReadAllText(file));
                     switch (filename)
                     {
