@@ -1,6 +1,7 @@
 ﻿using ServerLib.Handlers;
 using DB = ServerLib.Utilities.Debug;
 using System.Diagnostics;
+using ServerLib.Json.Enums;
 
 namespace ServerLib.Controllers
 {
@@ -18,6 +19,19 @@ namespace ServerLib.Controllers
             { "ban" , Ban },
             { "unban" , UnBan },
             { "debug" , DebugEnable }
+        };
+        public static Dictionary<string, EPerms> CommandsPermission = new()
+        {
+            { "help" , EPerms.User },
+            { "restart" , EPerms.Admin },
+            { "reload" , EPerms.Admin },
+            { "stop" , EPerms.Console },
+            { "op" , EPerms.Mod },
+            { "deop" , EPerms.Mod },
+            { "setpermission" , EPerms.Mod },
+            { "ban" , EPerms.Mod },
+            { "unban" , EPerms.Mod },
+            { "debug" , EPerms.Console }
         };
 
         public static void Run(string CommandName)

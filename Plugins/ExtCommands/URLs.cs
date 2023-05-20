@@ -20,11 +20,27 @@ namespace ExtCommands
         [HTTP("POST", "/extcommands/use")]
         public static bool ExtCommandsPost(HttpRequest request, HttpsBackendSession session)
         {
-            Console.WriteLine(request.Body);
+            Console.WriteLine($"Command: {request.Body}");
 
-            
-
-            session.SendResponse(session.Response.MakeGetResponse(""));
+            if (session.Headers.TryGetValue("Auth", out string authtoken) && JWTHandler.Validate(authtoken))
+            {
+                var json = JsonConvert.DeserializeObject<jwt_json>(JWTHandler.GetJWTJson(authtoken));
+                if (json.Perms == ServerLib.Json.Enums.EPerms.Blocked)
+                {
+                    session.SendResponse(session.Response.MakeGetResponse("You are Banned!"));
+                    return true;
+                }
+                if (CommandsController.CommandsPermission.TryGetValue(request.Body.Split(" ")[0], out var permission))
+                {
+                    if (permission >= json.Perms)
+                    {
+                        CommandsController.Run(request.Body);
+                        session.SendResponse(session.Response.MakeGetResponse("Success!"));
+                        return true;
+                    }            
+                }
+            }
+            session.SendResponse(session.Response.MakeGetResponse("Something not right..."));
             return true;
         }
     }

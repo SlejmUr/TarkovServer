@@ -56,8 +56,7 @@ namespace ExtCommands
             .Issuer("TarkovServer")
             .WithAlgorithm(new RS256Algorithm(rsa, rsa))
             .ExpirationTime(exp)
-            .AddClaim("permission", perm)
-            .AddClaim("client-secret", ClientSharedSecret)
+            .AddClaim<jwt_json>("json", new() { Perms = perm, ClientSecret = ClientSharedSecret })
             .Encode();
 
             return token;

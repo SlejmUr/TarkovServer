@@ -4,6 +4,8 @@
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <Authors>SlejmUr</Authors>
+    <Description>Add external commands support</Description>
   </PropertyGroup>
 	
   <ItemGroup>
@@ -13,7 +15,6 @@
 	
   <ItemGroup>
     <ProjectReference Include="..\..\ServerLib\ServerLib.csproj" />
-    <ProjectReference Include="..\TestPlugin\TestPlugin.csproj" />
   </ItemGroup>
 	
 </Project>

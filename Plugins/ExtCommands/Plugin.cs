@@ -24,11 +24,11 @@ namespace Plugin
 
         public string Author => "SlejmUr";
 
-        public string Version => "0.1";
+        public string Version => "1.0";
 
         public string Description => "Add external commands support";
 
-        public List<string> Dependencies => new() { "TestPlugin" };
+        public List<string> Dependencies => new() { };  //No dependency
 
         public void Initialize()
         {
