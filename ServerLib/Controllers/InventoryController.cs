@@ -12,7 +12,7 @@ namespace ServerLib.Controllers
             var character = CharacterController.GetPmcCharacter(SessionId);
             if (character == null)
             {
-                Debug.PrintError($"Inventory for Character {SessionId} not found!", "[InventoryController]");
+                Debug.PrintError($"Inventory for Character {SessionId} not found!", "InventoryController");
                 return null;
             }
             return character.Inventory;
@@ -120,7 +120,7 @@ namespace ServerLib.Controllers
 
                 if (freeslot == null && freeslot.Equals(new Others.FreeSlot()))
                 {
-                    Debug.PrintError($"Unable to add item {item.Tpl}. No space!", "[AddItemToInventory]");
+                    Debug.PrintError($"Unable to add item {item.Tpl}. No space!", "AddItemToInventory");
                     return ret;
                 }
 
@@ -150,7 +150,7 @@ namespace ServerLib.Controllers
             if (itemData._parent == "543be5cb4bdc2deb348b4568")
             {
                 if (itemData._props.StackSlots == null)
-                    Debug.PrintWarn($"AmmoBox {item.Tpl} does not have StackSlots", "[AdjustItemForPurchase]");
+                    Debug.PrintWarn($"AmmoBox {item.Tpl} does not have StackSlots", "AdjustItemForPurchase");
 
                 ret.AddRange(ItemController.HandleAmmoBoxes(item.Id, itemData));
             }

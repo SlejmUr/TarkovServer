@@ -12,7 +12,7 @@ namespace ServerLib.Controllers
             ProfileAddons = new();
             ProfileAddonsDict = new();
             GetAddonList();
-            Debug.PrintInfo("Initialization Done!", "[Friends]");
+            Debug.PrintInfo("Initialization Done!", "Friends");
         }
 
         public static Dictionary<string, ProfileAddon> ProfileAddonsDict;

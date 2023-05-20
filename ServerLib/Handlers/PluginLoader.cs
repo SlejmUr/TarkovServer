@@ -109,7 +109,7 @@ namespace ServerLib.Handlers
                 if (method == null)
                     continue;
                 var url = method.GetCustomAttribute<HTTPAttribute>().url;
-                Debug.PrintDebug(method.Name + $" ({url}) is added as an URL", "[HTTPServer/Plugin]");
+                Debug.PrintDebug(method.Name + $" ({url}) is added as an URL", "HTTPServer/Plugin");
                 ret.Add(url, method);
             }
             methods = basemethods.Where(x => x.GetCustomAttribute<HTTPAttribute>().method.Contains("POST")).ToArray();
@@ -118,7 +118,7 @@ namespace ServerLib.Handlers
                 if (method == null)
                     continue;
                 var url = method.GetCustomAttribute<HTTPAttribute>().url;
-                Debug.PrintDebug(method.Name + $" ({url}) is added as an URL", "[HTTPServer/Plugin]");
+                Debug.PrintDebug(method.Name + $" ({url}) is added as an URL", "HTTPServer/Plugin");
                 ret.Add(url, method);
             }
             return ret;
@@ -171,7 +171,7 @@ namespace ServerLib.Handlers
                 "\nPlugin Version: " + iPlugin.Version +
                 "\nPlugin Author: " + iPlugin.Author +
                 "\nPlugin Desc: " + iPlugin.Description
-                , "[PLUGIN]");
+                , "PLUGIN");
         }
 
         internal class PluginInfos

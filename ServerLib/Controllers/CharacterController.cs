@@ -19,7 +19,7 @@ namespace ServerLib.Controllers
         public static void Init()
         {
             GetCharacters();
-            Debug.PrintInfo("Initialization Done!", "[CHARACTER]");
+            Debug.PrintInfo("Initialization Done!", "CHARACTER");
         }
 
         public static void GetCharacters()
@@ -56,14 +56,14 @@ namespace ServerLib.Controllers
             var createReq = JsonConvert.DeserializeObject<Create>(JSON);
             if (createReq == null)
             {
-                Debug.PrintError($"[CreateCharacter] createReq not found");
+                Debug.PrintError($"createReq not found", "CreateCharacter");
                 return;
             }
 
             var account = AccountController.FindAccount(SessionId);
             if (account == null)
             {
-                Debug.PrintError($"[CreateCharacter] Account not found");
+                Debug.PrintError($"Account not found", "CreateCharacter");
                 return;
             }
 
@@ -100,7 +100,7 @@ namespace ServerLib.Controllers
             }
             //Generate scav
             //Item ReID
-            Debug.PrintInfo($"Character Created with Id {SessionId}!", "[CHARACTER]");
+            Debug.PrintInfo($"Character Created with Id {SessionId}!", "CHARACTER");
         }
 
         public static Character.Base? GetPmcCharacter(string SessionId)
@@ -110,7 +110,7 @@ namespace ServerLib.Controllers
             {
                 return character;
             }
-            Debug.PrintWarn($"Character isnt made for {SessionId}!", "[GetPmcCharacter]");
+            Debug.PrintWarn($"Character isnt made for {SessionId}!", "GetPmcCharacter");
             return null;
         }
 
@@ -131,7 +131,7 @@ namespace ServerLib.Controllers
                    }               
                 };
             }
-            Debug.PrintWarn($"Character isnt made for {SessionId}!", "[GetPmcCharacter]");
+            Debug.PrintWarn($"Character isnt made for {SessionId}!", "GetPmcCharacter");
             return null;
         }
 
@@ -142,7 +142,7 @@ namespace ServerLib.Controllers
             {
                 return character;
             }
-            Debug.PrintWarn($"Character isnt made for {SessionId}!", "[GetScavCharacter]");
+            Debug.PrintWarn($"Character isnt made for {SessionId}!", "GetScavCharacter");
             return null;
         }
 
@@ -195,7 +195,7 @@ namespace ServerLib.Controllers
                 var character = GetPmcCharacter(SessionId);
                 if (character == null)
                 {
-                    Debug.PrintWarn($"Character not found, check if {SessionId} is correct", "[ChangeNickname]");
+                    Debug.PrintWarn($"Character not found, check if {SessionId} is correct", "ChangeNickname");
                     return "taken";
                 }
 
@@ -213,7 +213,7 @@ namespace ServerLib.Controllers
             var character = GetPmcCharacter(SessionId);
             if (character == null)
             {
-                Debug.PrintWarn($"Character not found, check if {SessionId} is correct", "[ChangeVoice]");
+                Debug.PrintWarn($"Character not found, check if {SessionId} is correct", "ChangeVoice");
                 return;
             }
 
@@ -229,7 +229,7 @@ namespace ServerLib.Controllers
             var character = GetPmcCharacter(SessionId);
             if (character == null)
             {
-                Debug.PrintWarn($"Character not found, check if {SessionId} is correct", "[GetStashType]");
+                Debug.PrintWarn($"Character not found, check if {SessionId} is correct", "GetStashType");
                 return "";
             }
 
@@ -255,7 +255,7 @@ namespace ServerLib.Controllers
                 var character = GetPmcCharacter(SessionId);
                 if (character == null)
                 {
-                    Debug.PrintWarn($"Character not found, check if {SessionId} is correct", "[RaidKilled]");
+                    Debug.PrintWarn($"Character not found, check if {SessionId} is correct", "RaidKilled");
                     return;
                 }
 
@@ -280,7 +280,7 @@ namespace ServerLib.Controllers
             var character = GetPmcCharacter(SessionId);
             if (character == null)
             {
-                Debug.PrintWarn($"Character not found, check if {SessionId} is correct", "[GetLoyality]");
+                Debug.PrintWarn($"Character not found, check if {SessionId} is correct", "GetLoyality");
                 return 0;
             }
 

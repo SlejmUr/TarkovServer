@@ -446,7 +446,7 @@ namespace ServerLib.Controllers
             var containerTemplate = Get(container.Tpl);
             if (containerTemplate == null)
             {
-                Debug.PrintError($"{container.Tpl} is invalid!", "[CreateContainerMap]");
+                Debug.PrintError($"{container.Tpl} is invalid!", "CreateContainerMap");
                 return null;
             }
 
@@ -482,7 +482,7 @@ namespace ServerLib.Controllers
         {
             if (container == null)
             {
-                Debug.PrintError("Container is null!", "[PositionItemsInMap]");
+                Debug.PrintError("Container is null!", "PositionItemsInMap");
                 return null;
             }
 
@@ -504,7 +504,7 @@ namespace ServerLib.Controllers
                         else
                         {
                             var error = $"Inventory item occupies invalid slot: _id: {item.Id} _tpl: ${item.Tpl} parentId: ${item.ParentId} slotId: ${item.SlotId} y: ${row} x: ${column} -width: ${itemSize.Width} height: ${itemSize.Height}";
-                            Debug.PrintError(error, "[PositionItemsInMap]");
+                            Debug.PrintError(error, "PositionItemsInMap");
                             return null;
                         }
                     }

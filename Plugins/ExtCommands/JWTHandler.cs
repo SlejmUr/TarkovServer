@@ -41,7 +41,7 @@ namespace ExtCommands
             var profile = ProfileController.GetProfile(SessionId);
             if (profile == null)
             {
-                Debug.PrintError("Profile not found returning null!", "[CreateAuthToken]");
+                Debug.PrintError("Profile not found returning null!", "CreateAuthToken");
                 return string.Empty;
             }
             var perm = profile.ProfileAddon.Permission;

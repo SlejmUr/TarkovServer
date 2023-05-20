@@ -16,7 +16,7 @@ namespace ServerLib.Responders
             var character = CharacterController.GetPmcCharacter(SessionId);
             if (character == null)
             {
-                Debug.PrintError("[ProfileStatus] Character not found!");
+                Debug.PrintError("Character not found!", "ProfileStatus");
             }
             Json.Classes.ProfileStatus.Response response = new()
             {

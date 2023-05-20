@@ -88,7 +88,7 @@ namespace ConsoleApp
 
         private static void CurrentDomain_AssemblyLoad(object? sender, AssemblyLoadEventArgs args)
         {
-            Debug.PrintDebug(args.LoadedAssembly.FullName, "[AssemblyLoad]");
+            Debug.PrintDebug(args.LoadedAssembly.FullName, "AssemblyLoad");
         }
 
         internal static Assembly AssemblyResolveEvent(object sender, ResolveEventArgs args)
@@ -97,7 +97,7 @@ namespace ConsoleApp
             try
             {
                 var assembly = new AssemblyName(args.Name).Name;
-                Debug.PrintDebug(assembly, "[AssemblyResolveEvent]");
+                Debug.PrintDebug(assembly, "AssemblyResolveEvent");
                 _FileName = Path.Combine(File.ReadAllText("path.txt"), $"{assembly}.dll");
                 // resources are embedded inside assembly
                 if (_FileName.Contains("resources"))

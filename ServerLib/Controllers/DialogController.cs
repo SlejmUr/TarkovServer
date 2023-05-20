@@ -11,7 +11,7 @@ namespace ServerLib.Controllers
         public static void Init()
         {
             Dialogs = new();
-            Debug.PrintInfo("Initialization Done!", "[DIALOG]");
+            Debug.PrintInfo("Initialization Done!", "DIALOG");
         }
 
         public static void Reload()

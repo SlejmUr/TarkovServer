@@ -22,7 +22,7 @@ namespace ServerLib.Controllers
             LoadTraders();
             LoadWeater();
             LoadCustomConfig();
-            Debug.PrintInfo("Initialization Done!", "[DATABASE]");
+            Debug.PrintInfo("Initialization Done!", "DATABASE");
         }
 
         static void LoadBasics()

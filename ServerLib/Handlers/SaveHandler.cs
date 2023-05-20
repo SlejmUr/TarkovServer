@@ -14,7 +14,7 @@ namespace ServerLib.Handlers
         /// <param name="SessionId">SessionId/AccountId</param>
         public static void SaveAll(string SessionId,bool IsAki = false)
         {
-            Debug.PrintInfo("Saving started...", "[SAVE]");
+            Debug.PrintInfo("Saving started...", "SAVE");
             if (IsAki)
             {
                 Save(SessionId, "Aki", GetAkiPath(SessionId), JsonConvert.SerializeObject(ProfileController.ProfilesDict[SessionId]), IsAki);
@@ -27,7 +27,7 @@ namespace ServerLib.Handlers
                 Save(SessionId, "Storage", GetStoragePath(SessionId), JsonConvert.SerializeObject(ProfileController.ProfilesDict[SessionId].Suits));
 
             }
-            Debug.PrintInfo("Saving ended!", "[SAVE]");
+            Debug.PrintInfo("Saving ended!", "SAVE");
         }
 
         /// <summary>
@@ -37,16 +37,16 @@ namespace ServerLib.Handlers
         /// <param name="account">Account</param>
         public static void SaveAccount(string SessionId, Profile.Info account)
         {
-            Debug.PrintInfo("Saving started...", "[SAVE]");
+            Debug.PrintInfo("Saving started...", "SAVE");
             Save(SessionId, "Account", GetAccountPath(SessionId), JsonConvert.SerializeObject(account));
-            Debug.PrintInfo("Saving ended!", "[SAVE]");
+            Debug.PrintInfo("Saving ended!", "SAVE");
         }
 
         public static void SaveAddon(string SessionId, ProfileAddon account)
         {
-            Debug.PrintInfo("Saving started...", "[SAVE]");
+            Debug.PrintInfo("Saving started...", "SAVE");
             Save(SessionId, "Others", GetOthersPath(SessionId), JsonConvert.SerializeObject(account));
-            Debug.PrintInfo("Saving ended!", "[SAVE]");
+            Debug.PrintInfo("Saving ended!", "SAVE");
         }
 
         /// <summary>
@@ -56,9 +56,9 @@ namespace ServerLib.Handlers
         /// <param name="character">Character</param>
         public static void SaveCharacter(string SessionId, Character.Base character)
         {
-            Debug.PrintInfo("Saving started...", "[SAVE]");
+            Debug.PrintInfo("Saving started...", "SAVE");
             Save(SessionId, "Character", GetCharacterPath(SessionId), JsonConvert.SerializeObject(character));
-            Debug.PrintInfo("Saving ended!", "[SAVE]");
+            Debug.PrintInfo("Saving ended!", "SAVE");
         }
 
         /// <summary>

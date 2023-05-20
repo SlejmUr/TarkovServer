@@ -26,7 +26,7 @@ namespace ServerLib.Controllers
         public static void Init()
         {
             GetAccountList();
-            Debug.PrintInfo("Initialization Done!", "[ACCOUNT]");
+            Debug.PrintInfo("Initialization Done!", "ACCOUNT");
         }
 
         public static void GetAccountList()
@@ -38,7 +38,7 @@ namespace ServerLib.Controllers
                 var account = JsonConvert.DeserializeObject<Profile.Info>(File.ReadAllText($"{dir}/account.json"));
                 if (!Accounts.Contains(account))
                 {
-                    Debug.PrintInfo("(Re)Loaded account data for profile: " + account.Id, "[ACCOUNT]");
+                    Debug.PrintInfo("(Re)Loaded account data for profile: " + account.Id, "ACCOUNT");
                     Accounts.Add(account);
                 }
                 if (!ActiveAccountIds.Contains(account.Id))

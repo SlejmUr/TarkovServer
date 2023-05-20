@@ -20,7 +20,7 @@ namespace ServerLib.Controllers
         public static void Init()
         {
             ReloadProfiles();
-            Debug.PrintInfo("Initialization Done!", "[Profile]");
+            Debug.PrintInfo("Initialization Done!", "Profile");
         }
 
         public static void ReloadProfiles()
@@ -117,7 +117,6 @@ namespace ServerLib.Controllers
                     ret.Add(account);
                     if (!ProfilesDict.ContainsKey(account.Info.Id))
                     {
-                        Debug.PrintInfo("ConvertFromAkiProfile!");
                         ProfilesDict.Add(account.Info.Id, account);
                     }
                 }

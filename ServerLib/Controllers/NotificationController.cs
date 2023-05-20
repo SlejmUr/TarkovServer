@@ -75,7 +75,7 @@ namespace ServerLib.Controllers
         {
             if (WebSocket.ConnectedSessions.TryGetValue(SessionId, out var ip))
             {
-                Debug.PrintInfo("Notification Sent!", "[Notification]");
+                Debug.PrintInfo("Notification Sent!", "Notification");
                 return WebSocket.SendToClient(ip, JsonConvert.SerializeObject(notification, Formatting.Indented));
 
             }
