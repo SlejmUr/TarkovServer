@@ -9,6 +9,7 @@ namespace ServerLib
 {
     public class ServerLib
     {
+        public static bool IsAlreadyQuited = false;
         public static string IP = "https://127.0.0.1:7777";
         public static string ip_port = "127.0.0.1:7777";
 
@@ -76,10 +77,13 @@ namespace ServerLib
         /// </summary>
         public static void Stop()
         {
+            if (IsAlreadyQuited)
+                return;
             PluginLoader.UnloadPlugins();
             ConfigController.Save();
             HTTPServer.Stop();
             WebSocket.Stop();
+            IsAlreadyQuited = true;
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using static ServerLib.Json.Converters;
 
 namespace ServerLib.Json.Classes
 {
@@ -289,7 +290,7 @@ namespace ServerLib.Json.Classes
             public double ScopesCount { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public List<List<double>> AimSensitivity { get; set; }
+            public AimSensitivity AimSensitivity { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public List<List<double>> Zooms { get; set; }
@@ -781,7 +782,7 @@ namespace ServerLib.Json.Classes
             public string StimulatorBuffs { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public Dictionary<string, Dictionary<string, double>> effects_health { get; set; }
+            public EffectsHealthUnion effects_health { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public object effects_damage { get; set; }

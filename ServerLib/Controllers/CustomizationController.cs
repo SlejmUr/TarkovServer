@@ -1,5 +1,4 @@
-﻿using Newtonsoft.Json;
-using ServerLib.Json.Classes;
+﻿using ServerLib.Json.Classes;
 
 namespace ServerLib.Controllers
 {
@@ -11,7 +10,7 @@ namespace ServerLib.Controllers
             return File.ReadAllText("Files/others/customization.json");
         }
 
-        public static Dictionary<string, string> GetAllCustomization()
+        public static Dictionary<string, CustomizationItem.Base> GetAllCustomization()
         {
             return DatabaseController.DataBase.Others.Customization;
         }
@@ -21,8 +20,7 @@ namespace ServerLib.Controllers
             List<string> list = new();
             foreach (var keyValue in DatabaseController.DataBase.Others.Customization)
             {
-                string custom = DatabaseController.DataBase.Others.Customization[keyValue.Key];
-                var customization = JsonConvert.DeserializeObject<CustomizationItem.Base>(custom);
+                var customization = DatabaseController.DataBase.Others.Customization[keyValue.Key];
 
                 if (customization != null)
                 {
@@ -43,9 +41,7 @@ namespace ServerLib.Controllers
         {
             foreach (var keyValue in DatabaseController.DataBase.Others.Customization)
             {
-                string custom = DatabaseController.DataBase.Others.Customization[keyValue.Key];
-                var customization = JsonConvert.DeserializeObject<CustomizationItem.Base>(custom);
-
+                var customization = DatabaseController.DataBase.Others.Customization[keyValue.Key];
                 if (customization._id == Id)
                 {
                     return customization._name;
@@ -58,8 +54,7 @@ namespace ServerLib.Controllers
         {
             foreach (var keyValue in DatabaseController.DataBase.Others.Customization)
             {
-                string custom = DatabaseController.DataBase.Others.Customization[keyValue.Key];
-                var customization = JsonConvert.DeserializeObject<CustomizationItem.Base>(custom);
+                var customization = DatabaseController.DataBase.Others.Customization[keyValue.Key];
                 if (customization._id == Id)
                 {
                     return customization;

@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using static ServerLib.Json.Converters;
 
 namespace ServerLib.Json.Classes
 {
@@ -55,7 +56,7 @@ namespace ServerLib.Json.Classes
             public string Feet { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public Prefab Prefab { get; set; }
+            public CustomizationPrefab Prefab { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public Prefab WatchPrefab { get; set; }
@@ -82,13 +83,13 @@ namespace ServerLib.Json.Classes
         public class XYZ
         {
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public int x { get; set; }
+            public double x { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public int y { get; set; }
+            public double y { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public int z { get; set; }
+            public double z { get; set; }
         }
     }
 }

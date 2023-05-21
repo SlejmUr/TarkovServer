@@ -67,7 +67,7 @@ namespace ServerLib.Json.Classes
         {
             public Handbook.Base Templates { get; set; }
             public string Quests { get; set; }
-            public Dictionary<string, string> Customization { get; set; } = new();
+            public Dictionary<string, CustomizationItem.Base> Customization { get; set; } = new();
             public Dictionary<string, TemplateItem.Base> Items { get; set; }
             public Dictionary<string, int> ItemPrices { get; set; } = new();
             public Dictionary<string, int> Resupply { get; set; } = new();
@@ -79,5 +79,7 @@ namespace ServerLib.Json.Classes
             public Dictionary<string, Trader.Base> Traders { get; set; } = new();
         }
         public Dictionary<string, string> Weather { get; set; } = new();
+
+        public LootBase Loot { get; set; } = new();
     }
 }

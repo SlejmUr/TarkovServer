@@ -64,8 +64,11 @@ namespace ServerLib.Web
 
         public static void Stop()
         {
-            wsServer.Stop();
-            wsServer.Dispose();
+            if (wsServer != null)
+            {
+                wsServer.Stop();
+                wsServer.Dispose();
+            }
         }
 
         public static bool SendToClient(string ipPort, string text)

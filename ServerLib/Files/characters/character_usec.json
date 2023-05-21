@@ -3809,13 +3809,13 @@
         "Id": "BotReload",
         "Progress": 0,
         "PointsEarnedDuringSession": 0,
-        "LastAccess": -2147483648
+        "LastAccess": 0
       },
       {
         "Id": "BotSound",
         "Progress": 0,
         "PointsEarnedDuringSession": 0,
-        "LastAccess": -2147483648
+        "LastAccess": 0
       },
       {
         "Id": "Endurance",
@@ -3977,13 +3977,13 @@
         "Id": "AimDrills",
         "Progress": 0,
         "PointsEarnedDuringSession": 0,
-        "LastAccess": -2147483648
+        "LastAccess": 0
       },
       {
         "Id": "Surgery",
         "Progress": 0,
         "PointsEarnedDuringSession": 0,
-        "LastAccess": -2147483648
+        "LastAccess": 0
       },
       {
         "Id": "CovertMovement",
@@ -4001,7 +4001,7 @@
         "Id": "MagDrills",
         "Progress": 0,
         "PointsEarnedDuringSession": 0,
-        "LastAccess": -2147483648
+        "LastAccess": 0
       },
       {
         "Id": "Sniping",

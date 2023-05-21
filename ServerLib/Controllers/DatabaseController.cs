@@ -1,6 +1,8 @@
 ﻿using Newtonsoft.Json;
 using ServerLib.Json.Classes;
 using ServerLib.Utilities;
+using static ServerLib.Json.Classes.LootBase;
+using static ServerLib.Json.Converters;
 
 namespace ServerLib.Controllers
 {
@@ -32,7 +34,12 @@ namespace ServerLib.Controllers
             {
                 DataBase.Others.ItemPrices.Add(item.Id, item.Price);
             }
-            DataBase.Others.Items = JsonConvert.DeserializeObject<Dictionary<string, TemplateItem.Base>>(File.ReadAllText("Files/others/items.json"));
+            DataBase.Others.Items = JsonConvert.DeserializeObject<Dictionary<string, TemplateItem.Base>>(File.ReadAllText("Files/others/items.json"), new JsonConverter[] 
+            { 
+                AimSensitivityConverter.Singleton,
+                EffectsHealthUnionConverter.Singleton
+
+            });
             DataBase.Others.Quests = File.ReadAllText("Files/others/quests.json");
             DataBase.Others.Resupply = new();
             if (File.Exists("Files/others/resupply.json"))
@@ -40,12 +47,15 @@ namespace ServerLib.Controllers
                 DataBase.Others.Resupply = JsonConvert.DeserializeObject<Dictionary<string, int>>(File.ReadAllText("Files/others/resupply.json"));
             }
             DataBase.Others.Customization = new();
-            dynamic customs = JsonConvert.DeserializeObject<dynamic>(File.ReadAllText("Files/others/customization.json"));
-            foreach (var item in customs)
+            DataBase.Others.Customization = JsonConvert.DeserializeObject<Dictionary<string, CustomizationItem.Base>>(File.ReadAllText("Files/others/customization.json"),
+            new JsonConverter[]
             {
-                var customItem = item.ToString().Split(":")[0].Replace("\"", "");
-                DataBase.Others.Customization.Add(customItem.ToString(), customs[customItem].ToString());
-            }
+                CustomizationItemPrefabConverter.Singleton
+            });
+            DataBase.Loot = new();
+            DataBase.Loot.staticAmmo = JsonConvert.DeserializeObject<Dictionary<string, List<StaticAmmoDetails>>>(File.ReadAllText("Files/loot/staticAmmo.json"));
+            DataBase.Loot.staticContainers = JsonConvert.DeserializeObject<Dictionary<string, StaticContainerDetails>>(File.ReadAllText("Files/loot/staticContainers.json"));
+            DataBase.Loot.staticLoot = JsonConvert.DeserializeObject<Dictionary<string, StaticLootDetails>>(File.ReadAllText("Files/loot/staticLoot.json"));
             Debug.PrintDebug("Others loaded");
         }
 

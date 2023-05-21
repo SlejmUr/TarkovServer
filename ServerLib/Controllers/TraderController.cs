@@ -74,9 +74,9 @@ namespace ServerLib.Controllers
             };
             return names[TraderId];
         }
-        public static List<Base> GetTradersInfo()
+        public static List<TraderBase> GetTradersInfo()
         {
-            List<Base> TraderBase = new List<Base>();
+            List<TraderBase> TraderBase = new List<TraderBase>();
 
             foreach (var trader in DatabaseController.DataBase.Trader.Traders)
             {
@@ -86,7 +86,7 @@ namespace ServerLib.Controllers
                     {
                         trader.Value.traderbase.avatar = trader.Value.traderbase.avatar.Replace("jpg", "png");
                     }
-                    TraderBase.Add(trader.Value);
+                    TraderBase.Add(trader.Value.traderbase);
                 }
             }
             return TraderBase;

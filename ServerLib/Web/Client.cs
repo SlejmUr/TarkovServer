@@ -1,6 +1,7 @@
 ﻿using NetCoreServer;
 using Newtonsoft.Json;
 using ServerLib.Controllers;
+using ServerLib.Json.Classes;
 using ServerLib.Utilities;
 using ServerLib.Utilities.Helpers;
 using static ServerLib.Json.Classes.Profile;
@@ -143,7 +144,7 @@ namespace ServerLib.Web
         public static bool ClientGlobals(HttpRequest request, HttpsBackendSession session)
         {
             Utils.PrintRequest(request, session);
-            var rsp = ResponseControl.CompressRsp(File.ReadAllText("Files/static/globals.json"));
+            var rsp = ResponseControl.CompressRsp(ResponseControl.GetBody(File.ReadAllText("Files/static/globals.json")));
             Utils.SendUnityResponse(session, rsp);
             return true;
         }
@@ -172,9 +173,7 @@ namespace ServerLib.Web
         public static bool ClientLocations(HttpRequest request, HttpsBackendSession session)
         {
             Utils.PrintRequest(request, session);
-            //string resp = ResponseControl.GetBody(DatabaseController.DataBase.Location.AllLocations);
-            //TODO LOCATION
-            string resp = "{}";
+            string resp = ResponseControl.GetBody(JsonConvert.SerializeObject(LocationController.GetAllLocation()));
             var rsp = ResponseControl.CompressRsp(resp);
             Utils.SendUnityResponse(session, rsp);
             return true;

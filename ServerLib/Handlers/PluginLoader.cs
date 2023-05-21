@@ -142,6 +142,7 @@ namespace ServerLib.Handlers
                 plugin.Value.Plugin.Dispose();
                 Console.WriteLine($"Plugin {plugin.Key} is now unloaded!");
             }
+            pluginsList.Clear();
         }
         public static void ManualLoadPlugin(string DllName)
         {

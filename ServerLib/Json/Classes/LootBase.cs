@@ -2,21 +2,17 @@
 
 namespace ServerLib.Json.Classes
 {
-    internal class LootBase
+    public class LootBase
     {
-        public class ILootBase
-        {
-            [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public Dictionary<string, List<IStaticAmmoDetails>> staticAmmo { get; set; }
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
+        public Dictionary<string, List<StaticAmmoDetails>> staticAmmo { get; set; }
 
-            [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public Dictionary<string, IStaticContainerDetails> staticContainers { get; set; }
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
+        public Dictionary<string, StaticContainerDetails> staticContainers { get; set; }
 
-            [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public Dictionary<string, IStaticLootDetails> staticLoot { get; set; }
-
-        }
-        public class IStaticAmmoDetails
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
+        public Dictionary<string, StaticLootDetails> staticLoot { get; set; }
+        public class StaticAmmoDetails
         {
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public string tpl { get; set; }
@@ -25,19 +21,19 @@ namespace ServerLib.Json.Classes
             public int relativeProbability { get; set; }
 
         }
-        public class IStaticContainerDetails
+        public class StaticContainerDetails
         {
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public List<IStaticWeaponProps> staticWeapons { get; set; }
+            public List<StaticWeaponProps> staticWeapons { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public List<IStaticContainerProps> staticContainers { get; set; }
+            public List<StaticContainerProps> staticContainers { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public List<IStaticForcedProps> staticForced { get; set; }
+            public List<StaticForcedProps> staticForced { get; set; }
 
         }
-        public class IStaticWeaponProps
+        public class StaticWeaponProps
         {
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public string Id { get; set; }
@@ -70,7 +66,7 @@ namespace ServerLib.Json.Classes
             public List<Item> Items { get; set; }
 
         }
-        public class IStaticContainerProps
+        public class StaticContainerProps
         {
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public string Id { get; set; }
@@ -124,7 +120,7 @@ namespace ServerLib.Json.Classes
             public string _tpl { get; set; }
 
         }
-        public class IStaticForcedProps
+        public class StaticForcedProps
         {
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public string containerId { get; set; }
@@ -133,7 +129,7 @@ namespace ServerLib.Json.Classes
             public string itemTpl { get; set; }
 
         }
-        public class IStaticLootDetails
+        public class StaticLootDetails
         {
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public List<ItemCountDistribution> itemcountDistribution { get; set; }
@@ -160,6 +156,5 @@ namespace ServerLib.Json.Classes
             public int relativeProbability { get; set; }
 
         }
-
     }
 }

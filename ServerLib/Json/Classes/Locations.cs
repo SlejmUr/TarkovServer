@@ -2,19 +2,15 @@
 
 namespace ServerLib.Json.Classes
 {
-    internal class Locations
+    public class Locations
     {
         public class Base
         {
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public _Locations locations { get; set; }
+            public Dictionary<string, Location.Base> locations { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public List<Path> paths { get; set; }
-
-        }
-        public class _Locations
-        {
 
         }
         public class Path
