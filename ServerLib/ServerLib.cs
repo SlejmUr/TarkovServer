@@ -56,7 +56,7 @@ namespace ServerLib
             AccountController.Init();
             CharacterController.Init();
             Start(Ip, port);
-            WebSocket.Start(Ip, port + 1);
+            NewWebSocket.Start(Ip, port + 1);
             if (!ArgumentHandler.DontLoadPlugin)
             {
                 PluginLoader.LoadPlugins();
@@ -82,7 +82,7 @@ namespace ServerLib
             PluginLoader.UnloadPlugins();
             ConfigController.Save();
             HTTPServer.Stop();
-            WebSocket.Stop();
+            NewWebSocket.Stop();
             IsAlreadyQuited = true;
         }
     }
