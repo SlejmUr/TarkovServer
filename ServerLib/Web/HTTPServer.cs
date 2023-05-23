@@ -152,6 +152,13 @@ namespace ServerLib.Web
                 if (ret.Contains(true))
                     return;
 
+                if (url.Contains("?retry="))
+                {
+                    var retry = url.Split("?retry=");
+                    Debug.PrintDebug("Retreid: " + retry[1]);
+                    url = retry[0];
+                }
+
                 _request = request;
                 bool Sent = false;
                 foreach (var item in HttpServerThingy)

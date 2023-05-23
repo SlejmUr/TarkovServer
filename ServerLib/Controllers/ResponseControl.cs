@@ -39,13 +39,13 @@ namespace ServerLib.Web
 
         public static NotifierChannel GetNotifier(string SessionId)
         {
-            Json.Classes.NotifierChannel notifier = new()
+            NotifierChannel notifier = new()
             {
                 server = ServerLib.ip_port,
                 channel_id = SessionId,
-                url = ServerLib.IP,
+                url = ServerLib.IP + "/notifierServer/get/" + SessionId,
                 notifierServer = ServerLib.IP,
-                ws = WebSocket.IP
+                ws = WebSocket.IpPort + "notifierServer/getwebsocket/" +  SessionId
             };
 
             return notifier;

@@ -1,5 +1,6 @@
 ﻿using ServerLib.Json.Classes;
 using Newtonsoft.Json;
+using ServerLib.Utilities;
 
 namespace ServerLib.Controllers
 {
@@ -8,6 +9,8 @@ namespace ServerLib.Controllers
         public static Locations.Base GetAllLocation()
         {
             var lbase = JsonConvert.DeserializeObject<Locations.Base>(DatabaseController.DataBase.Location.Base);
+            if (lbase == null)
+                Debug.PrintWarn("No Location Base!", "GetAllLocation");
 
             foreach (var loc in DatabaseController.DataBase.Location.Locations)
             {
@@ -15,10 +18,15 @@ namespace ServerLib.Controllers
                     continue;
 
                 var locbase = JsonConvert.DeserializeObject<Location.Base>(loc.Value);
+                if (locbase == null)
+                {
+                    Debug.PrintWarn("No Location Value!", "GetAllLocation");
+                }
                 locbase.Loot = new();
                 lbase.locations.Add(locbase._Id, locbase);
             }
-            return lbase;       
+            return lbase;
+
         }
     }
 }

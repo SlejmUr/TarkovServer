@@ -66,6 +66,7 @@ namespace ServerLib.Web
             Utils.PrintRequest(request, session);
             string SessionId = Utils.GetSessionId(session.Headers);
             string resp = ResponseControl.GetBody(JsonConvert.SerializeObject(ResponseControl.GetNotifier(SessionId)));
+            Debug.PrintDebug(resp);
             var rsp = ResponseControl.CompressRsp(resp);
             Utils.SendUnityResponse(session, rsp);
             return true;
@@ -173,7 +174,9 @@ namespace ServerLib.Web
         public static bool ClientLocations(HttpRequest request, HttpsBackendSession session)
         {
             Utils.PrintRequest(request, session);
-            string resp = ResponseControl.GetBody(JsonConvert.SerializeObject(LocationController.GetAllLocation()));
+            var json = JsonConvert.SerializeObject(LocationController.GetAllLocation());
+            File.WriteAllText("client_locations.json", json);
+            string resp = ResponseControl.GetBody(json);
             var rsp = ResponseControl.CompressRsp(resp);
             Utils.SendUnityResponse(session, rsp);
             return true;
@@ -208,7 +211,7 @@ namespace ServerLib.Web
 
             List<WeaponBuild> ret = new();
             var profile = ProfileController.GetProfile(SessionId);
-            if (profile != null)
+            if (profile != null && profile.Weaponbuilds != null && profile.Weaponbuilds.Count > 0)
             {
                 ret = profile.Weaponbuilds;
             }

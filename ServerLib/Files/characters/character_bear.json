@@ -3891,7 +3891,7 @@
 				"Id": "MagDrills",
 				"Progress": 0,
 				"PointsEarnedDuringSession": 0,
-				"LastAccess": -2147483648
+				"LastAccess": 0
 			},
 			{
 				"Id": "Sniping",

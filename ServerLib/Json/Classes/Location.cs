@@ -15,13 +15,13 @@ namespace ServerLib.Json.Classes
             public List<AirdropParameter> AirdropParameters { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public int Area { get; set; }
+            public double Area { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public int AveragePlayTime { get; set; }
+            public double AveragePlayTime { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public int AveragePlayerLevel { get; set; }
+            public double AveragePlayerLevel { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public List<Banner> Banners { get; set; }
@@ -30,52 +30,52 @@ namespace ServerLib.Json.Classes
             public List<BossLocationSpawn> BossLocationSpawn { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public int BotAssault { get; set; }
+            public double BotAssault { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public int BotEasy { get; set; }
+            public double BotEasy { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public int BotHard { get; set; }
+            public double BotHard { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public int BotImpossible { get; set; }
+            public double BotImpossible { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public BotLocationModifier BotLocationModifier { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public int BotMarksman { get; set; }
+            public double BotMarksman { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public int BotMax { get; set; }
+            public double BotMax { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public int BotMaxPlayer { get; set; }
+            public double BotMaxPlayer { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public int BotMaxTimePlayer { get; set; }
+            public double BotMaxTimePlayer { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public int BotNormal { get; set; }
+            public double BotNormal { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public int BotSpawnTimeOffMax { get; set; }
+            public double BotSpawnTimeOffMax { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public int BotSpawnTimeOffMin { get; set; }
+            public double BotSpawnTimeOffMin { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public int BotSpawnTimeOnMax { get; set; }
+            public double BotSpawnTimeOnMax { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public int BotSpawnTimeOnMin { get; set; }
+            public double BotSpawnTimeOnMin { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public int BotStart { get; set; }
+            public double BotStart { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public int BotStop { get; set; }
+            public double BotStop { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public string Description { get; set; }
@@ -93,13 +93,13 @@ namespace ServerLib.Json.Classes
             public bool EnableCoop { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public int GlobalLootChanceModifier { get; set; }
+            public double GlobalLootChanceModifier { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public int IconX { get; set; }
+            public double IconX { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public int IconY { get; set; }
+            public double IconY { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public string Id { get; set; }
@@ -117,28 +117,28 @@ namespace ServerLib.Json.Classes
             public List<object> Loot { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public int MaxBotPerZone { get; set; }
+            public double MaxBotPerZone { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public int MaxDistToFreePoint { get; set; }
+            public double MaxDistToFreePodouble { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public int MaxPlayers { get; set; }
+            public double MaxPlayers { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public int MinDistToExitPoint { get; set; }
+            public double MinDistToExitPodouble { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public int MinDistToFreePoint { get; set; }
+            public double MinDistToFreePodouble { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public List<MinMaxBot> MinMaxBots { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public int MinPlayers { get; set; }
+            public double MinPlayers { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public int MaxCoopGroup { get; set; }
+            public double MaxCoopGroup { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public string Name { get; set; }
@@ -159,13 +159,13 @@ namespace ServerLib.Json.Classes
             public Preview Preview { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public int RequiredPlayerLevel { get; set; }
+            public double RequiredPlayerLevel { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public int PmcMaxPlayersInGroup { get; set; }
+            public double PmcMaxPlayersInGroup { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public int ScavMaxPlayersInGroup { get; set; }
+            public double ScavMaxPlayersInGroup { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public string Rules { get; set; }
@@ -177,10 +177,10 @@ namespace ServerLib.Json.Classes
             public Scene Scene { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public List<SpawnPointParam> SpawnPointParams { get; set; }
+            public List<SpawnPodoubleParam> SpawnPodoubleParams { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public int UnixDateTime { get; set; }
+            public double UnixDateTime { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public string _Id { get; set; }
@@ -189,19 +189,19 @@ namespace ServerLib.Json.Classes
             public List<object> doors { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public int EscapeTimeLimit { get; set; }
+            public double EscapeTimeLimit { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public int EscapeTimeLimitCoop { get; set; }
+            public double EscapeTimeLimitCoop { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public int exit_access_time { get; set; }
+            public double exit_access_time { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public int exit_count { get; set; }
+            public double exit_count { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public int exit_time { get; set; }
+            public double exit_time { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public List<Exit> exits { get; set; }
@@ -213,7 +213,7 @@ namespace ServerLib.Json.Classes
             public List<Limit> limits { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public int matching_min_seconds { get; set; }
+            public double matching_min_seconds { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public bool GenerateLocalLootCache { get; set; }
@@ -222,22 +222,22 @@ namespace ServerLib.Json.Classes
             public List<MaxItemCountInLocation> maxItemCountInLocation { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public int sav_summon_seconds { get; set; }
+            public double sav_summon_seconds { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public int tmp_location_field_remove_me { get; set; }
+            public double tmp_location_field_remove_me { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public int users_gather_seconds { get; set; }
+            public double users_gather_seconds { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public int users_spawn_seconds_n { get; set; }
+            public double users_spawn_seconds_n { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public int users_spawn_seconds_n2 { get; set; }
+            public double users_spawn_seconds_n2 { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public int users_summon_seconds { get; set; }
+            public double users_summon_seconds { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public List<Wave> waves { get; set; }
@@ -247,10 +247,10 @@ namespace ServerLib.Json.Classes
 
         {
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public int min { get; set; }
+            public double min { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public int max { get; set; }
+            public double max { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public List<object> items { get; set; }
@@ -259,34 +259,34 @@ namespace ServerLib.Json.Classes
         public class AirdropParameter
         {
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public int AirdropPointDeactivateDistance { get; set; }
+            public double AirdropPodoubleDeactivateDistance { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public int MinPlayersCountToSpawnAirdrop { get; set; }
+            public double MinPlayersCountToSpawnAirdrop { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public int PlaneAirdropChance { get; set; }
+            public double PlaneAirdropChance { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public int PlaneAirdropCooldownMax { get; set; }
+            public double PlaneAirdropCooldownMax { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public int PlaneAirdropCooldownMin { get; set; }
+            public double PlaneAirdropCooldownMin { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public int PlaneAirdropEnd { get; set; }
+            public double PlaneAirdropEnd { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public int PlaneAirdropMax { get; set; }
+            public double PlaneAirdropMax { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public int PlaneAirdropStartMax { get; set; }
+            public double PlaneAirdropStartMax { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public int PlaneAirdropStartMin { get; set; }
+            public double PlaneAirdropStartMin { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public int UnsuccessfulTryPenalty { get; set; }
+            public double UnsuccessfulTryPenalty { get; set; }
 
         }
         public class Banner
@@ -310,7 +310,7 @@ namespace ServerLib.Json.Classes
         public class BossLocationSpawn
         {
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public int BossChance { get; set; }
+            public double BossChance { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public string BossDifficult { get; set; }
@@ -337,7 +337,7 @@ namespace ServerLib.Json.Classes
             public bool RandomTimeSpawn { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public int Time { get; set; }
+            public double Time { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public string TriggerId { get; set; }
@@ -346,7 +346,7 @@ namespace ServerLib.Json.Classes
             public string TriggerName { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public int Delay { get; set; }
+            public double Delay { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public List<BossSupport> Supports { get; set; }
@@ -371,34 +371,34 @@ namespace ServerLib.Json.Classes
         public class BotLocationModifier
         {
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public int AccuracySpeed { get; set; }
+            public double AccuracySpeed { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public int DistToActivate { get; set; }
+            public double DistToActivate { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public int DistToPersueAxemanCoef { get; set; }
+            public double DistToPersueAxemanCoef { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public int DistToSleep { get; set; }
+            public double DistToSleep { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public int GainSight { get; set; }
+            public double GainSight { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public int KhorovodChance { get; set; }
+            public double KhorovodChance { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public int MagnetPower { get; set; }
+            public double MagnetPower { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public int MarksmanAccuratyCoef { get; set; }
+            public double MarksmanAccuratyCoef { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public int Scattering { get; set; }
+            public double Scattering { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public int VisibleDistance { get; set; }
+            public double VisibleDistance { get; set; }
 
         }
         public class MinMaxBot
@@ -407,10 +407,10 @@ namespace ServerLib.Json.Classes
             public WildSpawnType WildSpawnType { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public int max { get; set; }
+            public double max { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public int min { get; set; }
+            public double min { get; set; }
 
         }
         public class Preview
@@ -431,7 +431,7 @@ namespace ServerLib.Json.Classes
             public string rcid { get; set; }
 
         }
-        public class SpawnPointParam
+        public class SpawnPodoubleParam
         {
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public string BotZoneName { get; set; }
@@ -443,7 +443,7 @@ namespace ServerLib.Json.Classes
             public ColliderParams ColliderParams { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public int DelayToCanSpawnSec { get; set; }
+            public double DelayToCanSpawnSec { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public string Id { get; set; }
@@ -455,7 +455,7 @@ namespace ServerLib.Json.Classes
             public xyz Position { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public int Rotation { get; set; }
+            public double Rotation { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public List<string> Sides { get; set; }
@@ -476,34 +476,34 @@ namespace ServerLib.Json.Classes
             public xyz Center { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public int Radius { get; set; }
+            public double Radius { get; set; }
 
         }
         public class xyz
         {
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public int x { get; set; }
+            public double x { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public int y { get; set; }
+            public double y { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public int z { get; set; }
+            public double z { get; set; }
 
         }
         public class Exit
         {
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public int Chance { get; set; }
+            public double Chance { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public int Count { get; set; }
+            public double Count { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public string EntryPoints { get; set; }
+            public string EntryPodoubles { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public int ExfiltrationTime { get; set; }
+            public double ExfiltrationTime { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public string ExfiltrationType { get; set; }
@@ -515,10 +515,10 @@ namespace ServerLib.Json.Classes
             public string Id { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public int MaxTime { get; set; }
+            public double MaxTime { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public int MinTime { get; set; }
+            public double MinTime { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public string Name { get; set; }
@@ -527,7 +527,7 @@ namespace ServerLib.Json.Classes
             public string PassageRequirement { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public int PlayersCount { get; set; }
+            public double PlayersCount { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public string RequirementTip { get; set; }
@@ -539,7 +539,7 @@ namespace ServerLib.Json.Classes
             public string TemplateId { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public int Value { get; set; }
+            public double Value { get; set; }
 
         }
         public class Wave
@@ -551,7 +551,7 @@ namespace ServerLib.Json.Classes
             public string BotSide { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public string SpawnPoints { get; set; }
+            public string SpawnPodoubles { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public WildSpawnType WildSpawnType { get; set; }
@@ -560,19 +560,19 @@ namespace ServerLib.Json.Classes
             public bool isPlayers { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public int number { get; set; }
+            public double number { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public int slots_max { get; set; }
+            public double slots_max { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public int slots_min { get; set; }
+            public double slots_min { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public int time_max { get; set; }
+            public double time_max { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public int time_min { get; set; }
+            public double time_min { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public string sptId { get; set; }

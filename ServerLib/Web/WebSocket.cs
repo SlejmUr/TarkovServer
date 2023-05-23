@@ -1,4 +1,6 @@
-﻿using Newtonsoft.Json;
+﻿using NetCoreServer;
+using Newtonsoft.Json;
+using ServerLib.Utilities;
 using System.Text;
 using WatsonWebsocket;
 
@@ -20,6 +22,7 @@ namespace ServerLib.Web
             IP = $"{ip}:{port}";
             Console.WriteLine("WebSocket Server started on " + IpPort);
             wsServer = new WatsonWsServer(ip, port, ssl);
+            wsServer.Logger = Debug.PrintWebsocket;
             wsServer.AcceptInvalidCertificates = true;
             wsServer.ClientConnected += ClientConnected;
             wsServer.ClientDisconnected += ClientDisconnected;
@@ -49,6 +52,8 @@ namespace ServerLib.Web
 
         private static void ClientConnected(object? sender, ConnectionEventArgs args)
         {
+            Debug.PrintInfo("ClientConnected");
+            Debug.PrintInfo(args.ToString());
             ConnectedIps.Add(args.Client.IpPort);
             GuidIP.Add(args.Client.Guid, args.Client.IpPort);
             IPToGuid.Add(args.Client.IpPort, args.Client.Guid);

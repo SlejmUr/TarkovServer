@@ -7,6 +7,14 @@ namespace ServerLib.Utilities
     {
         #region Debug Print
         public static L logger = new(true);
+
+        public static void PrintWebsocket(string ToPrint)
+        {
+            Console.ForegroundColor = GetColorByType("info");
+            Console.WriteLine($"[WEBSOCKET] {ToPrint}");
+            logger.Log("WEBSOCKET", ToPrint);
+            Console.ResetColor();
+        }
         public static void PrintInfo(string ToPrint, string prefix = "INFO")
         {
             Console.ForegroundColor = GetColorByType("info");
