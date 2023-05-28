@@ -12,7 +12,7 @@ namespace ServerLib.Web
         {
             Utils.PrintRequest(request, session);
             // RPS
-            var rsp = ResponseControl.CompressRsp(ConfigController.Configs.Gameplay.Raid.InRaid.ShowDeathMessage.ToString());
+            var rsp = ConfigController.Configs.Gameplay.Raid.InRaid.ShowDeathMessage.ToString();
             Utils.SendUnityResponse(session, rsp);
             return true;
         }
@@ -25,7 +25,7 @@ namespace ServerLib.Web
             string Uncompressed = ResponseControl.DeCompressReq(request.BodyBytes);
             CharacterController.RaidKilled(Uncompressed, SessionId);
             // RPS
-            var rsp = ResponseControl.CompressRsp("{}");
+            var rsp = "{}";
             Utils.SendUnityResponse(session, rsp);
             return true;
         }
@@ -38,7 +38,7 @@ namespace ServerLib.Web
             var decomp = ResponseControl.DeCompressReq(request.BodyBytes);
             File.AppendAllText("saveAccount.json", decomp);
             // RPS
-            var rsp = ResponseControl.CompressRsp(ResponseControl.NullResponse());
+            var rsp = ResponseControl.NullResponse();
             Utils.SendUnityResponse(session, rsp);
             return true;
         }
@@ -51,7 +51,7 @@ namespace ServerLib.Web
             var decomp = ResponseControl.DeCompressReq(request.BodyBytes);
             File.AppendAllText("lootingContainer.json", decomp);
             // RPS
-            var rsp = ResponseControl.CompressRsp(ResponseControl.NullResponse());
+            var rsp = ResponseControl.NullResponse();
             Utils.SendUnityResponse(session, rsp);
             return true;
         }
@@ -64,7 +64,7 @@ namespace ServerLib.Web
             var decomp = ResponseControl.DeCompressReq(request.BodyBytes);
             File.AppendAllText("RaidSettings.json", decomp);
             // RPS
-            var rsp = ResponseControl.CompressRsp(ResponseControl.NullResponse());
+            var rsp = ResponseControl.NullResponse();
             Utils.SendUnityResponse(session, rsp);
             return true;
         }
@@ -77,7 +77,7 @@ namespace ServerLib.Web
             var decomp = ResponseControl.DeCompressReq(request.BodyBytes);
             File.AppendAllText("CoopRaidSettings.json", decomp);
             // RPS
-            var rsp = ResponseControl.CompressRsp(ResponseControl.NullResponse());
+            var rsp = ResponseControl.NullResponse();
             Utils.SendUnityResponse(session, rsp);
             return true;
         }

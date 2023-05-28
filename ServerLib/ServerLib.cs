@@ -27,7 +27,7 @@ namespace ServerLib
             CertHelper.Make(IPAddress.Parse(Ip), _ip_port);
             DatabaseController.Init();
             ProfileController.Init();
-            Controllers.DialogController.Init();
+            Controllers.DialogueController.Init();
             AccountController.Init();
             CharacterController.Init();
             Start(Ip, port);
@@ -52,7 +52,7 @@ namespace ServerLib
             ip_port = $"{Ip}:{port}";
             CertHelper.Make(IPAddress.Parse(Ip), _ip_port);
             ProfileController.Init();
-            Controllers.DialogController.Init();
+            Controllers.DialogueController.Init();
             AccountController.Init();
             CharacterController.Init();
             Start(Ip, port);

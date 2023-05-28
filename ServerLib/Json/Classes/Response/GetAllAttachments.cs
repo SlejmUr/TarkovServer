@@ -5,7 +5,6 @@ namespace ServerLib.Json.Classes
     public class GetAllAttachments
     {
         public class Response
-
         {
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public List<Profile.Message> messages { get; set; }

@@ -69,14 +69,13 @@ namespace ServerLib.Controllers
 
             account.Wipe = false;
             SaveHandler.SaveAccount(SessionId, account);
-
             var character = DatabaseController.DataBase.Characters.CharacterBase[createReq.Side.ToLower()];
             var ID = Utils.CreateNewID();
             var time = TimeHelper.UnixTimeNow_Int();
 
             character.Id = "pmc" + ID;
             character.Aid = SessionId;
-            character.Savage = "scav" + ID;
+            //character.Savage = "scav" + ID;
             character.Info.Side = createReq.Side;
             character.Info.Nickname = createReq.Nickname;
             character.Info.LowerNickname = createReq.Nickname.ToLower();
@@ -87,9 +86,9 @@ namespace ServerLib.Controllers
             character.Quests = new();
             character.RepeatableQuests = new();
             SaveHandler.Save(SessionId, "Character", SaveHandler.GetCharacterPath(SessionId), JsonConvert.SerializeObject(character));
-            var storage = DatabaseController.DataBase.Characters.CharacterStorage[createReq.Side];
+            var storage = DatabaseController.DataBase.Characters.CharacterStorage[createReq.Side.ToLower()];
             SaveHandler.Save(SessionId, "Storage", SaveHandler.GetStoragePath(SessionId), JsonConvert.SerializeObject(storage));
-            if (!Characters.ContainsKey(SessionId))
+            if (!Characters.ContainsKey(SessionId + "_pmc"))
             {
                 Characters.Add(SessionId + "_pmc", character);
             }

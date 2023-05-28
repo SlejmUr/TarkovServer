@@ -3,6 +3,7 @@ using System.Net.Sockets;
 using System.Text;
 using ChatShared;
 using NetCoreServer;
+using Newtonsoft.Json;
 using ServerLib.Utilities;
 
 namespace ServerLib.Web
@@ -45,7 +46,7 @@ namespace ServerLib.Web
 
             public override void OnWsConnected(HttpRequest request)
             {
-                Console.WriteLine($"Chat WebSocket session with Id {Id} connected!");
+                Console.WriteLine($"WebSocket session with Id {Id} connected!");
                 Debug.PrintDebug(request.ToString());
                 Debug.PrintDebug(request.Url);
                 Debug.PrintDebug(request.Body);
@@ -53,7 +54,7 @@ namespace ServerLib.Web
 
             public override void OnWsDisconnected()
             {
-                Console.WriteLine($"Chat WebSocket session with Id {Id} disconnected!");
+                Console.WriteLine($"WebSocket session with Id {Id} disconnected!");
             }
 
             public override void OnWsReceived(byte[] buffer, long offset, long size)
@@ -72,7 +73,7 @@ namespace ServerLib.Web
 
             protected override void OnError(SocketError error)
             {
-                Console.WriteLine($"Chat WebSocket session caught an error with code {error}");
+                Console.WriteLine($"WebSocket session caught an error with code {error}");
             }
         }
 
@@ -84,7 +85,7 @@ namespace ServerLib.Web
 
             protected override void OnError(SocketError error)
             {
-                Console.WriteLine($"Chat WebSocket server caught an error with code {error}");
+                Console.WriteLine($"Tarkov WebSocket server caught an error with code {error}");
             }
         }
     }

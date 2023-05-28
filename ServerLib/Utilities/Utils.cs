@@ -1,5 +1,6 @@
 ﻿using EFT;
 using NetCoreServer;
+using ServerLib.Web;
 using static ServerLib.Web.HTTPServer;
 
 namespace ServerLib.Utilities
@@ -9,7 +10,11 @@ namespace ServerLib.Utilities
         #region Session Stuff
         public static bool SendUnityResponse(HttpsBackendSession session, string resp)
         {
-            var rsp = session.Response.MakeGetResponse(resp, "application/json");
+            var url = session.LastRequest().Url.Replace("/","_");
+            string SessionId = GetSessionId(session.Headers);
+            if (!Directory.Exists("ServerResponses")) { Directory.CreateDirectory("ServerResponses"); }
+            File.WriteAllText("ServerResponses/" + SessionId + url + ".json", resp);
+            var rsp = session.Response.MakeGetResponse(ResponseControl.CompressRsp(resp), "application/json");
             rsp = rsp.SetHeader("Content-Type", "application/json");
             rsp = rsp.SetHeader("Content-Encoding", "deflate");
             session.SendResponse(rsp);

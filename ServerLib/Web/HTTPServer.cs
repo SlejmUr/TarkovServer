@@ -74,8 +74,7 @@ namespace ServerLib.Web
         {
             Utils.PrintRequest(request, session);
             string resp = "[]"; //Need better handling on bundles
-            var crsp = ResponseControl.CompressRsp(resp);
-            return Utils.SendUnityResponse(session, crsp);
+            return Utils.SendUnityResponse(session, resp);
         }
 
         [HTTP("GET", "/ServerInternalIPAddress")]

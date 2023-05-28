@@ -102,7 +102,7 @@ namespace ServerLib.Controllers
             }
             if (ID == null)
             {
-                string AccountID = Utils.CreateNewID("AID");
+                string AccountID = Utils.CreateNewID();
                 Profile.Info account = new()
                 {
                     Id = AccountID,

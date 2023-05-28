@@ -12,7 +12,7 @@ namespace ServerLib.Controllers
         public static Profile.Dialogue GetDialog(string SessionId, EMessageType messageType, Profile.UserDialogInfo dialogInfo)
         {
             var key = (dialogInfo.info.MemberCategory == EMemberCategory.Trader) ? dialogInfo._id : dialogInfo.info.Nickname;
-            if (!DialogController.Dialogs[SessionId].TryGetValue(key, out var dialog))
+            if (!DialogueController.Dialogs[SessionId].TryGetValue(key, out var dialog))
             {
                 List<Profile.UserDialogInfo> users = new();
                 if (dialogInfo.info.MemberCategory != EMemberCategory.Trader)
@@ -29,7 +29,7 @@ namespace ServerLib.Controllers
                     New = 0,
                     Users = users
                 };
-                DialogController.Dialogs[SessionId].Add(key, dialogue);
+                DialogueController.Dialogs[SessionId].Add(key, dialogue);
                 return dialogue;
             }
             return dialog;

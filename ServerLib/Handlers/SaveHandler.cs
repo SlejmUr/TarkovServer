@@ -22,7 +22,7 @@ namespace ServerLib.Handlers
             else
             {
                 Save(SessionId, "Account", GetAccountPath(SessionId), JsonConvert.SerializeObject(AccountController.FindAccount(SessionId)));
-                Save(SessionId, "Dialog", GetDialogPath(SessionId), JsonConvert.SerializeObject(Controllers.DialogController.Dialogs[SessionId]));
+                Save(SessionId, "Dialog", GetDialogPath(SessionId), JsonConvert.SerializeObject(Controllers.DialogueController.Dialogs[SessionId]));
                 Save(SessionId, "Character", GetCharacterPath(SessionId), JsonConvert.SerializeObject(CharacterController.GetPmcCharacter(SessionId)));
                 Save(SessionId, "Storage", GetStoragePath(SessionId), JsonConvert.SerializeObject(ProfileController.ProfilesDict[SessionId].Suits));
 
@@ -85,7 +85,6 @@ namespace ServerLib.Handlers
                 File.WriteAllText(path, Serialized);
                 Debug.PrintDebug($"New {saveType} {SessionId} registered and was saved to disk.");
             }
-
         }
         #endregion
         #region Paths

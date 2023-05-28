@@ -25,27 +25,31 @@ namespace ServerLib.Responders
                 {
                     new()
                     {
-                        profileid = character.Savage,
+                        profileid = character.Id,
                         profileToken = null,
                         status = "Free",
                         sid = "",
                         ip = "",
                         port = 0
                     }
-                    ,
-                    new()
-                    {
-                        profileid = character.Aid,
-                        profileToken = null,
-                        status = "Free",
-                        sid = "",
-                        ip = "",
-                        port = 0
-                    }
-
                 }
             };
-            return CompressRsp(GetBody(JsonConvert.SerializeObject(response)));
+
+            if (!string.IsNullOrEmpty(character.Savage))
+            {
+                response.profiles.Add(new()
+                {
+                    profileid = character.Savage,
+                    profileToken = null,
+                    status = "Free",
+                    sid = "",
+                    ip = "",
+                    port = 0
+                });
+            }
+            
+            var body = GetBody(JsonConvert.SerializeObject(response));
+            return CompressRsp(body);
         }
 
         public static byte[] ProfileNicknameValidate(string Uncompressed)
@@ -110,7 +114,7 @@ namespace ServerLib.Responders
             CharacterController.CreateCharacter(SessionId, Uncompressed);
             Json.Classes.UID rsp = new()
             {
-                uid = SessionId
+                uid = "pmc" + SessionId
             };
             return CompressRsp(GetBody(JsonConvert.SerializeObject(rsp)));
         }
