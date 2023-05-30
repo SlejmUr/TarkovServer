@@ -44,7 +44,7 @@ namespace ServerLib.Web
                 server = ServerLib.ip_port,
                 channel_id = SessionId,
                 url = "",
-                notifierServer = ServerLib.IP,
+                notifierServer = ServerLib.IP + "/notifierServer/" + SessionId,
                 ws = NewWebSocket.IpPort + SessionId
             };
 

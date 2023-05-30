@@ -72,87 +72,15 @@ namespace ServerLib.Controllers
             DataBase.Bot = new();
             DataBase.Bot.Base = File.ReadAllText("Files/bot/botBase.json");
             DataBase.Bot.Appearance = File.ReadAllText("Files/bot/appearance.json");
-            DataBase.Bot.Settings = File.ReadAllText("Files/bot/botSettings.json");
-            DataBase.Bot.Names = JsonConvert.DeserializeObject<Bots.BotNames>(File.ReadAllText("Files/bot/names.json"));
             DataBase.Bot.WeaponCache = File.ReadAllText("Files/bot/weaponcache.json");
-            Database.bot.bots bots = new();
-            Database.bot.bots.difficulty difficulty = new();
-            string stuff = "Files/bot/bots";
-            var dirs = Directory.GetDirectories("Files/bot/bots");
-            foreach (var dir in dirs)
+            DataBase.Bot.Types = new();
+            var dirs = Directory.GetFiles("Files/bot/types");
+            foreach (var item in dirs)
             {
-                string botname = dir.Replace(stuff + "\\", "");
-                var files = Directory.GetFiles(dir);
-                foreach (var file in files)
-                {
-                    string bot_test = file.Replace(dir + "\\", "").Replace(".json", "");
-                    switch (bot_test)
-                    {
-                        case "loadout":
-                            bots.Loadout = File.ReadAllText(file);
-                            break;
-                        case "health":
-                            bots.Health = File.ReadAllText(file);
-                            break;
-                    }
-                }
-                var dir2 = Directory.GetDirectories(dir);
-                foreach (var dir1 in dir2)
-                {
-                    var files2 = Directory.GetFiles(dir1);
-                    foreach (var file1 in files2)
-                    {
-                        string bot_test = file1.Replace(dir1 + "\\", "").Replace(".json", "");
-                        string normalfile = file1.Replace("\\", "/");
-                        if (dir1.Contains("difficulties"))
-                        {
-                            switch (bot_test)
-                            {
-                                case "easy":
-                                    difficulty.Easy = File.ReadAllText(normalfile);
-                                    break;
-                                case "normal":
-                                    difficulty.Normal = File.ReadAllText(normalfile);
-                                    break;
-                                case "hard":
-                                    difficulty.Hard = File.ReadAllText(normalfile);
-                                    break;
-                                case "impossible":
-                                    difficulty.Impossible = File.ReadAllText(normalfile);
-                                    break;
-                                default:
-                                    difficulty.Custom = File.ReadAllText(normalfile);
-                                    break;
-                            }
-                        }
-                    }
-                }
-                bots.Difficulty = difficulty;
-                DataBase.Bot.Bots.Add(botname, bots);
-                bots = new();
+                var name = item.Replace("Files/bot/types\\", "").Replace(".json","");
+                Debug.PrintDebug(name);
+                DataBase.Bot.Types.Add(name, JsonConvert.DeserializeObject<Bots.BotType>(File.ReadAllText(item)));
             }
-
-            DataBase.Bot.NamesDict.Add("BossBully", DataBase.Bot.Names.BossBully);
-            DataBase.Bot.NamesDict.Add("BossGluhar", DataBase.Bot.Names.BossGluhar);
-            DataBase.Bot.NamesDict.Add("BossKilla", DataBase.Bot.Names.BossKilla);
-            DataBase.Bot.NamesDict.Add("BossKnight", DataBase.Bot.Names.BossKnight);
-            DataBase.Bot.NamesDict.Add("BossKojaniy", DataBase.Bot.Names.BossKojaniy);
-            DataBase.Bot.NamesDict.Add("BossSanitar", DataBase.Bot.Names.BossSanitar);
-            DataBase.Bot.NamesDict.Add("BossTagilla", DataBase.Bot.Names.BossTagilla);
-            DataBase.Bot.NamesDict.Add("BossZryachiy", DataBase.Bot.Names.BossZryachiy);
-            DataBase.Bot.NamesDict.Add("FollowerBigPipe", DataBase.Bot.Names.FollowerBigPipe);
-            DataBase.Bot.NamesDict.Add("FollowerBirdEye", DataBase.Bot.Names.FollowerBirdEye);
-            DataBase.Bot.NamesDict.Add("FollowerBully", DataBase.Bot.Names.FollowerBully);
-            DataBase.Bot.NamesDict.Add("FollowerKojaniy", DataBase.Bot.Names.FollowerKojaniy);
-            DataBase.Bot.NamesDict.Add("FollowerSanitar", DataBase.Bot.Names.FollowerSanitar);
-            DataBase.Bot.NamesDict.Add("FollowerTagilla", DataBase.Bot.Names.FollowerTagilla);
-            DataBase.Bot.NamesDict.Add("FollowerZryachiy", DataBase.Bot.Names.FollowerZryachiy);
-            DataBase.Bot.NamesDict.Add("GeneralFollower", DataBase.Bot.Names.GeneralFollower);
-            DataBase.Bot.NamesDict.Add("Gifter", DataBase.Bot.Names.Gifter);
-            DataBase.Bot.NamesDict.Add("Normal", DataBase.Bot.Names.Normal);
-            DataBase.Bot.NamesDict.Add("Scav", DataBase.Bot.Names.Scav);
-            DataBase.Bot.NamesDict.Add("Sectantpriest", DataBase.Bot.Names.Sectantpriest);
-            DataBase.Bot.NamesDict.Add("Sectantwarrior", DataBase.Bot.Names.Sectantwarrior);
 
             Debug.PrintDebug("Bots loaded");
         }

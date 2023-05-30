@@ -7,11 +7,11 @@ namespace ServerLib.Responders
 {
     public static class GameProfile
     {
-        public static byte[] Template(string SessionId)
+        public static string Template(string SessionId)
         {
-            return CompressRsp(GetBody(JsonConvert.SerializeObject("")));
+            return GetBody(JsonConvert.SerializeObject(""));
         }
-        public static byte[] ProfileStatus(string SessionId)
+        public static string ProfileStatus(string SessionId)
         {
             var character = CharacterController.GetPmcCharacter(SessionId);
             if (character == null)
@@ -47,12 +47,11 @@ namespace ServerLib.Responders
                     port = 0
                 });
             }
-            
-            var body = GetBody(JsonConvert.SerializeObject(response));
-            return CompressRsp(body);
+
+            return GetBody(JsonConvert.SerializeObject(response));
         }
 
-        public static byte[] ProfileNicknameValidate(string Uncompressed)
+        public static string ProfileNicknameValidate(string Uncompressed)
         {
             var nickname = AccountController.ValidateNickname(JsonConvert.DeserializeObject<Json.Classes.Nickname>(Uncompressed));
             var resp = GetBody("{status: \"ok\"}");
@@ -65,16 +64,15 @@ namespace ServerLib.Responders
             {
                 resp = GetBody("null", 256, "The nickname is too short");
             }
-            return CompressRsp(resp);
+            return resp;
         }
 
-        public static byte[] ProfileList(string SessionId)
+        public static string ProfileList(string SessionId)
         {
-            string resp = CharacterController.GetCompleteCharacter(SessionId);
-            return CompressRsp(GetBody(resp));
+            return GetBody(CharacterController.GetCompleteCharacter(SessionId));
         }
 
-        public static byte[] ProfileSearch(string Uncompressed)
+        public static string ProfileSearch(string Uncompressed)
         {
             var nickname = JsonConvert.DeserializeObject<Json.Classes.Nickname>(Uncompressed);
             var searched = CharacterController.SearchNickname(nickname.nickname);
@@ -95,28 +93,28 @@ namespace ServerLib.Responders
                 responses.Add(rsp);
             }
 
-            return CompressRsp(GetBody(JsonConvert.SerializeObject(responses)));
+            return GetBody(JsonConvert.SerializeObject(responses));
         }
 
-        public static byte[] ProfileSelect(string SessionId)
+        public static string ProfileSelect(string SessionId)
         {
             Json.Classes.SelectProfile.Response response = new()
             { 
                 status = "ok",
-                notifierServer = "",
+                notifierServer = ServerLib.IP + "/notifierServer/" + SessionId,
                 notifier = GetNotifier(SessionId)
             };
-            return CompressRsp(GetBody(JsonConvert.SerializeObject(response)));
+            return GetBody(JsonConvert.SerializeObject(response));
         }
 
-        public static byte[] ProfileCreate(string SessionId, string Uncompressed)
+        public static string ProfileCreate(string SessionId, string Uncompressed)
         {
             CharacterController.CreateCharacter(SessionId, Uncompressed);
             Json.Classes.UID rsp = new()
             {
                 uid = "pmc" + SessionId
             };
-            return CompressRsp(GetBody(JsonConvert.SerializeObject(rsp)));
+            return GetBody(JsonConvert.SerializeObject(rsp));
         }
     }
 }

@@ -31,8 +31,8 @@ namespace ServerLib.Web
             string botname = session.HttpParam["botname"];
             string difficulty = session.HttpParam["difficulty"];
             Utils.PrintRequest(request, session);
-            var difff = BotController.GetBotDifficulty(botname, difficulty);
-            var resp = ResponseControl.NoBody(difff);
+            //var difff = BotController.GetBotDifficulty(botname, difficulty);
+            var resp = ResponseControl.NullResponse();
             return Utils.SendUnityResponse(session, resp);
         }
 

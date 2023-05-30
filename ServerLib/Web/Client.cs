@@ -106,7 +106,7 @@ namespace ServerLib.Web
                 new()
                 { 
                     Address = server.Ip,
-                    Port = $"{1000}"
+                    Port = $"{server.Port}"
                 }
             };
             string resp = ResponseControl.GetBody(JsonConvert.SerializeObject(servers));

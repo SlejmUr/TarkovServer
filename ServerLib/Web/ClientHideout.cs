@@ -11,10 +11,8 @@ namespace ServerLib.Web
         public static bool Areas(HttpRequest request, HttpsBackendSession session)
         {
             Utils.PrintRequest(request, session);
-            string SessionId = Utils.GetSessionId(session.Headers);
             string resp = ResponseControl.GetBody(DatabaseController.DataBase.Hideout.Areas);
-            var rsp = ResponseControl.CompressRsp(resp);
-            Utils.SendUnityResponse(session, rsp);
+            Utils.SendUnityResponse(session, resp);
             return true;
         }
 
@@ -22,10 +20,8 @@ namespace ServerLib.Web
         public static bool ProductionRecipes(HttpRequest request, HttpsBackendSession session)
         {
             Utils.PrintRequest(request, session);
-            string SessionId = Utils.GetSessionId(session.Headers);
             string resp = ResponseControl.GetBody(DatabaseController.DataBase.Hideout.Production);
-            var rsp = ResponseControl.CompressRsp(resp);
-            Utils.SendUnityResponse(session, rsp);
+            Utils.SendUnityResponse(session, resp);
             return true;
         }
 
@@ -33,10 +29,8 @@ namespace ServerLib.Web
         public static bool ProductionScavcaseRecipes(HttpRequest request, HttpsBackendSession session)
         {
             Utils.PrintRequest(request, session);
-            string SessionId = Utils.GetSessionId(session.Headers);
             string resp = ResponseControl.GetBody(DatabaseController.DataBase.Hideout.Scavcase);
-            var rsp = ResponseControl.CompressRsp(resp);
-            Utils.SendUnityResponse(session, rsp);
+            Utils.SendUnityResponse(session, resp);
             return true;
         }
 
@@ -44,10 +38,8 @@ namespace ServerLib.Web
         public static bool Settings(HttpRequest request, HttpsBackendSession session)
         {
             Utils.PrintRequest(request, session);
-            string SessionId = Utils.GetSessionId(session.Headers);
             string resp = ResponseControl.GetBodyCRC(DatabaseController.DataBase.Hideout.Settings,0,"null", 4187301386);
-            var rsp = ResponseControl.CompressRsp(resp);
-            Utils.SendUnityResponse(session, rsp);
+            Utils.SendUnityResponse(session, resp);
             return true;
         }
 
@@ -55,10 +47,8 @@ namespace ServerLib.Web
         public static bool QTEList(HttpRequest request, HttpsBackendSession session)
         {
             Utils.PrintRequest(request, session);
-            string SessionId = Utils.GetSessionId(session.Headers);
             string resp = ResponseControl.GetBody(DatabaseController.DataBase.Hideout.Qte);
-            var rsp = ResponseControl.CompressRsp(resp);
-            Utils.SendUnityResponse(session, rsp);
+            Utils.SendUnityResponse(session, resp);
             return true;
         }
     }

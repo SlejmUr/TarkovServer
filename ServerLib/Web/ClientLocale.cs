@@ -12,7 +12,7 @@ namespace ServerLib.Web
         {
             //REQ stuff
             Utils.PrintRequest(request, session);
-            var rsp = ResponseControl.CompressRsp(ResponseControl.GetBody(LocaleController.GetLanguages()));
+            var rsp = ResponseControl.GetBody(LocaleController.GetLanguages());
             Utils.SendUnityResponse(session, rsp);
             return true;
         }
@@ -25,8 +25,7 @@ namespace ServerLib.Web
             string SessionId = Utils.GetSessionId(session.Headers);
             Utils.PrintRequest(request, session);
             var resp = ResponseControl.GetBody(LocaleController.GetMenu(locale, SessionId));
-            var rsp = ResponseControl.CompressRsp(resp);
-            Utils.SendUnityResponse(session, rsp);
+            Utils.SendUnityResponse(session, resp);
             return true;
         }
 
@@ -38,8 +37,7 @@ namespace ServerLib.Web
             string SessionId = Utils.GetSessionId(session.Headers);
             Utils.PrintRequest(request, session);
             var resp = ResponseControl.GetBody(LocaleController.GetLocale(locale, SessionId));
-            var rsp = ResponseControl.CompressRsp(resp);
-            Utils.SendUnityResponse(session, rsp);
+            Utils.SendUnityResponse(session, resp);
             return true;
 
         }

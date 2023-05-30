@@ -1,5 +1,6 @@
 ﻿using EFT;
 using Newtonsoft.Json;
+using ServerLib.Generators;
 using ServerLib.Handlers;
 using ServerLib.Json.Classes;
 using ServerLib.Utilities;
@@ -75,7 +76,7 @@ namespace ServerLib.Controllers
 
             character.Id = "pmc" + ID;
             character.Aid = SessionId;
-            //character.Savage = "scav" + ID;
+            character.Savage = "scav" + ID;
             character.Info.Side = createReq.Side;
             character.Info.Nickname = createReq.Nickname;
             character.Info.LowerNickname = createReq.Nickname.ToLower();
@@ -85,6 +86,7 @@ namespace ServerLib.Controllers
             character.Customization.Head = createReq.HeadId;
             character.Quests = new();
             character.RepeatableQuests = new();
+            character.Info.SavageLockTime = 1000000;
             SaveHandler.Save(SessionId, "Character", SaveHandler.GetCharacterPath(SessionId), JsonConvert.SerializeObject(character));
             var storage = DatabaseController.DataBase.Characters.CharacterStorage[createReq.Side.ToLower()];
             SaveHandler.Save(SessionId, "Storage", SaveHandler.GetStoragePath(SessionId), JsonConvert.SerializeObject(storage));
@@ -96,8 +98,20 @@ namespace ServerLib.Controllers
             {
                 Characters.Remove(SessionId + "_pmc");
                 Characters.Add(SessionId + "_pmc", character);
-            }
+            }           
+            /*
             //Generate scav
+            var scav = Scav.Generate(SessionId);
+            if (!Characters.ContainsKey(SessionId + "_scav"))
+            {
+                Characters.Add(SessionId + "_scav", scav);
+            }
+            else
+            {
+                Characters.Remove(SessionId + "_scav");
+                Characters.Add(SessionId + "_scav", scav);
+            }
+            */
             //Item ReID
             Debug.PrintInfo($"Character Created with Id {SessionId}!", "CHARACTER");
         }
@@ -150,16 +164,24 @@ namespace ServerLib.Controllers
             List<Character.Base> ouptut = new();
             if (!AccountController.IsWiped(SessionId))
             {
+                var scav = JsonConvert.DeserializeObject<Character.Base>(File.ReadAllText("Files/bot/playerScav.json"));
+                scav.Aid = SessionId;
+                scav.Id = "scav" + SessionId;
+                scav.Info.RegistrationDate = TimeHelper.UnixTimeNow_Int();
+                /*
                 var scav = GetScavCharacter(SessionId);
                 if (scav != null) 
                 {
                     ouptut.Add(scav);
-                }
+                }*/
                 var character = GetPmcCharacter(SessionId);
                 if (character != null)
                 {
                     ouptut.Add(character);
-                }              
+                    ouptut.Add(scav);
+                }
+
+                
             }
 
             return JsonConvert.SerializeObject(ouptut);

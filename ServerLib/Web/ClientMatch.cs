@@ -12,7 +12,7 @@ namespace ServerLib.Web
         public static bool Available(HttpRequest request, HttpsBackendSession session)
         {
             Utils.PrintRequest(request, session);
-            var rsp = ResponseControl.CompressRsp(ResponseControl.GetBody("true"));
+            var rsp = ResponseControl.GetBody("true");
             Utils.SendUnityResponse(session, rsp);
             return true;
         }
@@ -24,7 +24,7 @@ namespace ServerLib.Web
             string Uncompressed = ResponseControl.DeCompressReq(request.BodyBytes);
             //(exitStatus, exitName, raidSeconds)
 
-            var rsp = ResponseControl.CompressRsp(ResponseControl.NullResponse());
+            var rsp = ResponseControl.NullResponse();
             Utils.SendUnityResponse(session, rsp);
             return true;
         }
@@ -33,7 +33,7 @@ namespace ServerLib.Web
         public static bool Join(HttpRequest request, HttpsBackendSession session)
         {
             Utils.PrintRequest(request, session);
-            var rsp = ResponseControl.CompressRsp(ResponseControl.NullResponse());
+            var rsp = ResponseControl.NullResponse();
             Utils.SendUnityResponse(session, rsp);
             return true;
         }
@@ -42,7 +42,7 @@ namespace ServerLib.Web
         public static bool StartGame(HttpRequest request, HttpsBackendSession session)
         {
             Utils.PrintRequest(request, session);
-            var rsp = ResponseControl.CompressRsp(ResponseControl.NullResponse());
+            var rsp = ResponseControl.NullResponse();
             Utils.SendUnityResponse(session, rsp);
             return true;
         }
@@ -51,7 +51,7 @@ namespace ServerLib.Web
         public static bool GroupStatus(HttpRequest request, HttpsBackendSession session)
         {
             Utils.PrintRequest(request, session);
-            var rsp = ResponseControl.CompressRsp(ResponseControl.NullResponse());
+            var rsp = ResponseControl.NullResponse();
             Utils.SendUnityResponse(session, rsp);
             return true;
         }
@@ -60,7 +60,7 @@ namespace ServerLib.Web
         public static bool GroupCurrent(HttpRequest request, HttpsBackendSession session)
         {
             Utils.PrintRequest(request, session);
-            var rsp = ResponseControl.CompressRsp(ResponseControl.NullResponse());
+            var rsp = ResponseControl.NullResponse();
             Utils.SendUnityResponse(session, rsp);
             return true;
         }
@@ -74,7 +74,7 @@ namespace ServerLib.Web
             List<Members> fromProfile = new();
             clientGroupStatus.Players = fromProfile.ToArray();
 
-            var rsp = ResponseControl.CompressRsp(ResponseControl.GetBody(JsonConvert.SerializeObject(clientGroupStatus)));
+            var rsp = ResponseControl.GetBody(JsonConvert.SerializeObject(clientGroupStatus));
             Utils.SendUnityResponse(session, rsp);
             return true;
         }

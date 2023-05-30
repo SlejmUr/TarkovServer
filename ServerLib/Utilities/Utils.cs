@@ -14,11 +14,7 @@ namespace ServerLib.Utilities
             string SessionId = GetSessionId(session.Headers);
             if (!Directory.Exists("ServerResponses")) { Directory.CreateDirectory("ServerResponses"); }
             File.WriteAllText("ServerResponses/" + SessionId + url + ".json", resp);
-            var rsp = session.Response.MakeGetResponse(ResponseControl.CompressRsp(resp), "application/json");
-            rsp = rsp.SetHeader("Content-Type", "application/json");
-            rsp = rsp.SetHeader("Content-Encoding", "deflate");
-            session.SendResponse(rsp);
-            return true;
+            return SendUnityResponse(session, ResponseControl.CompressRsp(resp));
         }
 
         public static bool SendUnityResponse(HttpsBackendSession session, byte[] resp)
@@ -29,6 +25,7 @@ namespace ServerLib.Utilities
             session.SendResponse(rsp);
             return true;
         }
+
         public static void PrintRequest(HttpRequest req, HttpsBackendSession session)
         {
             Dictionary<string, string> Headers = new();
@@ -43,6 +40,7 @@ namespace ServerLib.Utilities
             string SessionId = GetSessionId(Headers);
             Console.WriteLine("[" + time + "] " + from_ip + " | " + SessionId + " = " + fullurl);
         }
+
         public static string GetSessionId(Dictionary<string, string> HttpHeaders)
         {
             if (HttpHeaders.ContainsKey("Cookie"))
