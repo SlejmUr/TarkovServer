@@ -98,7 +98,6 @@ namespace ServerLib.Web
         [HTTP("POST", "/client/server/list")]
         public static bool ClientServerList(HttpRequest request, HttpsBackendSession session)
         {
-
             Utils.PrintRequest(request, session);
             var server = ConfigController.Configs.Server;
             List<Server> servers = new()
@@ -106,10 +105,20 @@ namespace ServerLib.Web
                 new()
                 { 
                     Address = server.Ip,
-                    Port = $"{server.Port}"
+                    Port = $"{1000}"
                 }
             };
             string resp = ResponseControl.GetBody(JsonConvert.SerializeObject(servers));
+            Utils.SendUnityResponse(session, resp);
+            return true;
+        }
+
+        [HTTP("POST", "/client/quest/list")]
+        public static bool ClientQuestList(HttpRequest request, HttpsBackendSession session)
+        {
+            Utils.PrintRequest(request, session);
+            var quests = Controllers.QuestController.GetQuests();
+            string resp = ResponseControl.GetBody(JsonConvert.SerializeObject(quests));
             Utils.SendUnityResponse(session, resp);
             return true;
         }

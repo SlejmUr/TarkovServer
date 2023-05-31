@@ -1,8 +1,10 @@
 ﻿using NetCoreServer;
 using Newtonsoft.Json;
+using ServerLib.Controllers;
+using ServerLib.Json.Classes;
 using ServerLib.Utilities;
+using static ServerLib.Json.Classes.Response.Matches;
 using static ServerLib.Web.HTTPServer;
-
 
 namespace ServerLib.Web
 {
@@ -33,7 +35,19 @@ namespace ServerLib.Web
         public static bool Join(HttpRequest request, HttpsBackendSession session)
         {
             Utils.PrintRequest(request, session);
-            var rsp = ResponseControl.NullResponse();
+
+            var sessionId = Utils.GetSessionId(session.Headers);
+
+            var jsonreq = JsonConvert.DeserializeObject<JoinMatchReq>(ResponseControl.DeCompressReq(request.BodyBytes));
+
+            JoinMatch joinMatch = new JoinMatch()
+            { 
+                ProfileId = sessionId,
+                IpAddress = "192.168.1.50",
+                Port = 1000,
+                LocationId = jsonreq.location
+            };
+            var rsp = ResponseControl.GetBody(JsonConvert.SerializeObject(joinMatch));
             Utils.SendUnityResponse(session, rsp);
             return true;
         }
@@ -41,7 +55,32 @@ namespace ServerLib.Web
         [HTTP("POST", "/client/match/group/start_game")]
         public static bool StartGame(HttpRequest request, HttpsBackendSession session)
         {
-            Utils.PrintRequest(request, session);
+            Utils.PrintRequest(request, session); 
+            var sessionId = Utils.GetSessionId(session.Headers);
+            var jsonreq = JsonConvert.DeserializeObject<StartGameReq>(ResponseControl.DeCompressReq(request.BodyBytes));
+            MatchController.SendStart(jsonreq.groupId, "192.168.1.50",1000);
+            var match = MatchController.GetMatch(sessionId);
+            var user = match.Value.Users.Where(x=>x.profileid == sessionId).FirstOrDefault();
+            ProfileStatus.Response response = new()
+            {
+                maxPveCountExceeded = false,
+                profiles = new()
+                {
+                    new()
+                    {
+                        profileid = sessionId,
+                        profileToken = user.profileToken,
+                        status = "MatchWait",
+                        sid = "",
+                        ip = "",
+                        port = 0,
+                        location = match.Value.Location,
+                        raidMode = "Online",
+                        mode = "deathmatch",
+                        shortId = ""
+                    }
+                }
+            };
             var rsp = ResponseControl.NullResponse();
             Utils.SendUnityResponse(session, rsp);
             return true;
@@ -51,10 +90,33 @@ namespace ServerLib.Web
         public static bool GroupStatus(HttpRequest request, HttpsBackendSession session)
         {
             Utils.PrintRequest(request, session);
+            var sessionId = Utils.GetSessionId(session.Headers);
+            var jsonreq = JsonConvert.DeserializeObject<GetGroupStatus>(ResponseControl.DeCompressReq(request.BodyBytes));
+            MatchController.CheckStatus(sessionId, jsonreq);
+            ProfileStatus.Response response = new()
+            {
+                maxPveCountExceeded = false,
+                profiles = new()
+                {
+                }
+            };
+            var rsp = ResponseControl.GetBody(JsonConvert.SerializeObject(response));
+            Utils.SendUnityResponse(session, rsp);
+            return true;
+        }
+
+        [HTTP("POST", "/client/match/group/exit")]
+        public static bool GroupExit(HttpRequest request, HttpsBackendSession session)
+        {
+            Utils.PrintRequest(request, session);
+            var sessionId = Utils.GetSessionId(session.Headers);
+            var jsonreq = JsonConvert.DeserializeObject<GetGroupStatus>(ResponseControl.DeCompressReq(request.BodyBytes));
+            MatchController.CheckStatus(sessionId, jsonreq);
             var rsp = ResponseControl.NullResponse();
             Utils.SendUnityResponse(session, rsp);
             return true;
         }
+
 
         [HTTP("POST", "/client/match/group/current")]
         public static bool GroupCurrent(HttpRequest request, HttpsBackendSession session)
@@ -65,16 +127,11 @@ namespace ServerLib.Web
             return true;
         }
 
-        [HTTP("POST", "/client/match/group/create")]
-        public static bool GroupCreate(HttpRequest request, HttpsBackendSession session)
+        [HTTP("POST", "/client/match/raid/ready")]
+        public static bool RaidReady(HttpRequest request, HttpsBackendSession session)
         {
             Utils.PrintRequest(request, session);
-
-            ClientGroupStatusJson clientGroupStatus = new();
-            List<Members> fromProfile = new();
-            clientGroupStatus.Players = fromProfile.ToArray();
-
-            var rsp = ResponseControl.GetBody(JsonConvert.SerializeObject(clientGroupStatus));
+            var rsp = ResponseControl.GetBody("true");
             Utils.SendUnityResponse(session, rsp);
             return true;
         }

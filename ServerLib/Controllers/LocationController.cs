@@ -8,24 +8,33 @@ namespace ServerLib.Controllers
     {
         public static Locations.Base GetAllLocation()
         {
-            var lbase = JsonConvert.DeserializeObject<Locations.Base>(DatabaseController.DataBase.Location.Base);
-            if (lbase == null)
-                Debug.PrintWarn("No Location Base!", "GetAllLocation");
-
-            foreach (var loc in DatabaseController.DataBase.Location.Locations)
+            try
             {
-                if (!loc.Key.Contains("_base"))
-                    continue;
+                var lbase = JsonConvert.DeserializeObject<Locations.Base>(DatabaseController.DataBase.Location.Base);
+                if (lbase == null)
+                    Debug.PrintWarn("No Location Base!", "GetAllLocation");
 
-                var locbase = JsonConvert.DeserializeObject<Location.Base>(loc.Value);
-                if (locbase == null)
+                foreach (var loc in DatabaseController.DataBase.Location.Locations)
                 {
-                    Debug.PrintWarn("No Location Value!", "GetAllLocation");
+                    if (!loc.Key.Contains("_base"))
+                        continue;
+
+                    var locbase = JsonConvert.DeserializeObject<Location.Base>(loc.Value);
+                    if (locbase == null)
+                    {
+                        Debug.PrintWarn("No Location Value!", "GetAllLocation");
+                    }
+                    locbase.Loot = new();
+                    lbase.locations.Add(locbase._Id, locbase);
                 }
-                locbase.Loot = new();
-                lbase.locations.Add(locbase._Id, locbase);
+                return lbase;
             }
-            return lbase;
+            catch (Exception ex)
+            {
+                Debug.PrintError(ex.ToString());
+            }
+            return null;
+
 
         }
     }

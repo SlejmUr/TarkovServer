@@ -33,6 +33,15 @@ namespace ServerLib.Json
             public static implicit operator AimSensitivity(double[][] DoubleArrayArray) => new AimSensitivity { DoubleArrayArray = DoubleArrayArray };
         }
 
+        public partial struct Location
+        {
+            public Item._Location ItemLocation;
+            public long? IntLocation;
+
+            public static implicit operator Location(Item._Location ItemLocation) => new Location { ItemLocation = ItemLocation };
+            public static implicit operator Location(long IntLocation) => new Location { IntLocation = IntLocation };
+        }
+
         public class AimSensitivityConverter : JsonConverter
         {
             public override bool CanConvert(Type t) => t == typeof(AimSensitivity) || t == typeof(AimSensitivity?);
@@ -108,7 +117,42 @@ namespace ServerLib.Json
             public static readonly EffectsHealthUnionConverter Singleton = new EffectsHealthUnionConverter();
         }
 
+        public class ItemLocationConverter : JsonConverter
+        {
+            public override bool CanConvert(Type t) => t == typeof(Location) || t == typeof(Location?);
 
+            public override object ReadJson(JsonReader reader, Type t, object existingValue, JsonSerializer serializer)
+            {
+                switch (reader.TokenType)
+                {
+                    case JsonToken.StartObject:
+                        var objectValue = serializer.Deserialize<Item._Location>(reader);
+                        return new Location { ItemLocation = objectValue };
+                    case JsonToken.Integer:
+                        var intValue = serializer.Deserialize<long>(reader);
+                        return new Location { IntLocation = intValue };
+                }
+                throw new Exception("Cannot unmarshal type Location");
+            }
+
+            public override void WriteJson(JsonWriter writer, object untypedValue, JsonSerializer serializer)
+            {
+                var value = (Location)untypedValue;
+                if (value.IntLocation != null)
+                {
+                    serializer.Serialize(writer, value.IntLocation.Value);
+                    return;
+                }
+                if (value.ItemLocation != null)
+                {
+                    serializer.Serialize(writer, value.ItemLocation);
+                    return;
+                }
+                throw new Exception("Cannot marshal type Location");
+            }
+
+            public static readonly ItemLocationConverter Singleton = new ItemLocationConverter();
+        }
         public class CustomizationItemPrefabConverter : JsonConverter
         {
             public override bool CanConvert(Type t) => t == typeof(CustomizationPrefab) || t == typeof(CustomizationPrefab?);

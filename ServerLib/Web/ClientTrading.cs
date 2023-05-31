@@ -47,7 +47,7 @@ namespace ServerLib.Web
             var x = new GClass601()
             {
                 _id = "pmc" + SessionId,
-                suites = JsonConvert.DeserializeObject<string[]>(File.ReadAllText(SaveHandler.GetStoragePath(SessionId)))
+                suites = ProfileController.GetProfile(SessionId).Suits.ToArray()
             };
             string resp = ResponseControl.GetBody(JsonConvert.SerializeObject(x));
             Utils.SendUnityResponse(session, resp);

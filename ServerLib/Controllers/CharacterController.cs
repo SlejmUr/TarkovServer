@@ -2,7 +2,9 @@
 using Newtonsoft.Json;
 using ServerLib.Generators;
 using ServerLib.Handlers;
+using ServerLib.Json;
 using ServerLib.Json.Classes;
+using ServerLib.Json.Helpers;
 using ServerLib.Utilities;
 using ServerLib.Utilities.Helpers;
 
@@ -87,7 +89,7 @@ namespace ServerLib.Controllers
             character.Quests = new();
             character.RepeatableQuests = new();
             character.Info.SavageLockTime = 1000000;
-            SaveHandler.Save(SessionId, "Character", SaveHandler.GetCharacterPath(SessionId), JsonConvert.SerializeObject(character));
+            SaveHandler.Save(SessionId, "Character", SaveHandler.GetCharacterPath(SessionId), JsonHelper.FromCharacterBase(character));
             var storage = DatabaseController.DataBase.Characters.CharacterStorage[createReq.Side.ToLower()];
             SaveHandler.Save(SessionId, "Storage", SaveHandler.GetStoragePath(SessionId), JsonConvert.SerializeObject(storage));
             if (!Characters.ContainsKey(SessionId + "_pmc"))
@@ -164,7 +166,7 @@ namespace ServerLib.Controllers
             List<Character.Base> ouptut = new();
             if (!AccountController.IsWiped(SessionId))
             {
-                var scav = JsonConvert.DeserializeObject<Character.Base>(File.ReadAllText("Files/bot/playerScav.json"));
+                var scav = JsonHelper.ToCharacterBase("Files/bot/playerScav.json");
                 scav.Aid = SessionId;
                 scav.Id = "scav" + SessionId;
                 scav.Info.RegistrationDate = TimeHelper.UnixTimeNow_Int();
@@ -184,7 +186,7 @@ namespace ServerLib.Controllers
                 
             }
 
-            return JsonConvert.SerializeObject(ouptut);
+            return JsonConvert.SerializeObject(ouptut, new JsonConverter[] { Converters.ItemLocationConverter.Singleton });
         }
 
         public static List<Character.Base> SearchNickname(string Nickname)

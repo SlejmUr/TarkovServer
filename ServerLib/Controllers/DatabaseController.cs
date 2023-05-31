@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using ServerLib.Json.Classes;
+using ServerLib.Json.Helpers;
 using ServerLib.Utilities;
 using static ServerLib.Json.Classes.LootBase;
 using static ServerLib.Json.Converters;
@@ -61,9 +62,9 @@ namespace ServerLib.Controllers
 
         static void LoadCharacters()
         {
-            DataBase.Characters = new();
-            DataBase.Characters.CharacterBase["bear"] = JsonConvert.DeserializeObject<Character.Base>(File.ReadAllText("Files/characters/character_bear.json"));
-            DataBase.Characters.CharacterBase["usec"] = JsonConvert.DeserializeObject<Character.Base>(File.ReadAllText("Files/characters/character_usec.json"));
+            DataBase.Characters = new();      
+            DataBase.Characters.CharacterBase["bear"] = JsonHelper.ToCharacterBase("Files/characters/character_bear.json");
+            DataBase.Characters.CharacterBase["usec"] = JsonHelper.ToCharacterBase("Files/characters/character_usec.json");
             DataBase.Characters.CharacterStorage = JsonConvert.DeserializeObject<Dictionary<string, List<string>>>(File.ReadAllText("Files/characters/storage.json"));
             Debug.PrintDebug("Characters loaded");
         }

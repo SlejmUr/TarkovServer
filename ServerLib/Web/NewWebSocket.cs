@@ -40,6 +40,15 @@ namespace ServerLib.Web
             }
         }
 
+        public static TarkovServer? GetServer()
+        {
+            if (SocketServer != null && !SocketServer.IsDisposed)
+            {
+                return SocketServer;
+            }
+            return null;
+        }
+
         public class TarkovSession : WsSession
         {
             public TarkovSession(WsServer server) : base(server) { }

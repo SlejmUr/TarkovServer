@@ -142,19 +142,6 @@ namespace ServerLib.Json.Classes
         public bool startInGroup { get; set; }
 
     }
-    public class CreateGroup
-
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-        public string location { get; set; }
-
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-        public ERaidMode raidMode { get; set; }
-
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-        public bool startInGroup { get; set; }
-
-    }
 
     public class EndOfflineRaid
     {
@@ -258,7 +245,7 @@ namespace ServerLib.Json.Classes
 
     }
 
-    public class JoinMatch
+    public class JoinMatchReq
 
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
@@ -290,6 +277,32 @@ namespace ServerLib.Json.Classes
 
         }
     }
+
+
+    public class StartGameReq
+
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
+        public string groupId { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
+        public List<Server> servers { get; set; }
+
+        public class Server
+
+        {
+            [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
+            public int ping { get; set; }
+
+            [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
+            public string ip { get; set; }
+
+            [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
+            public string port { get; set; }
+
+        }
+    }
+
 
     public class RaidSettings
     {

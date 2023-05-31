@@ -1,7 +1,6 @@
 ﻿using Newtonsoft.Json;
 using ServerLib.Handlers;
 using ServerLib.Json.Classes;
-using ServerLib.Json.Helpers;
 using ServerLib.Utilities;
 using ServerLib.Utilities.Helpers;
 
@@ -31,21 +30,21 @@ namespace ServerLib.Controllers
 
         public static void GetAccountList()
         {
-            string[] dirs = Directory.GetDirectories("user/profiles");
-            foreach (string dir in dirs)
+            ProfileController.Profiles.ForEach(profile =>
             {
-                if (!File.Exists($"{dir}/account.json")) { continue; }
-                var account = JsonConvert.DeserializeObject<Profile.Info>(File.ReadAllText($"{dir}/account.json"));
-                if (!Accounts.Contains(account))
+                if (profile.Info == null)
+                    return;
+
+                if (!Accounts.Contains(profile.Info))
                 {
-                    Debug.PrintInfo("(Re)Loaded account data for profile: " + account.Id, "ACCOUNT");
-                    Accounts.Add(account);
+                    Debug.PrintInfo("(Re)Loaded account data for profile: " + profile.Info.Id, "ACCOUNT");
+                    Accounts.Add(profile.Info);
                 }
-                if (!ActiveAccountIds.Contains(account.Id))
+                if (!ActiveAccountIds.Contains(profile.Info.Id))
                 {
-                    ActiveAccountIds.Add(account.Id);
+                    ActiveAccountIds.Add(profile.Info.Id);
                 }
-            }
+            });
         }
 
         /// <summary>
@@ -62,7 +61,6 @@ namespace ServerLib.Controllers
         #region Ported Functions
         /// <summary>
         /// Login the Profile to the Server 
-        /// <br>Same as Controllers/AccountController.js@func=login()</br>
         /// </summary>
         /// <param name="JsonInfo">Json Serialized Profile</param>
         /// <returns>AccountId | FAILED</returns>
@@ -88,7 +86,6 @@ namespace ServerLib.Controllers
 
         /// <summary>
         /// Register the Profile to the Server
-        /// <br>Same as Controllers/AccountController.js@func=register()</br>
         /// </summary>
         /// <param name="JsonInfo">Json Serialized Profile</param>
         /// <returns>AccountId | ALREADY_IN_USE</returns>
@@ -130,7 +127,6 @@ namespace ServerLib.Controllers
 
         /// <summary>
         /// Searching AccountId by Username and Password.
-        /// <br>Same as Controllers/AccountController.js@func=findAccountIdByUsernameAndPassword()</br>
         /// </summary>
         /// <param name="name">UserName</param>
         /// <param name="passw">Password</param>
@@ -160,7 +156,6 @@ namespace ServerLib.Controllers
 
         /// <summary>
         /// Check if already is Email is used by another user.
-        /// <br>Same as Controllers/AccountController.js@func=isEmailAlreadyInUse()</br>
         /// </summary>
         /// <param name="name">Username</param>
         /// <returns>True | False</returns>
@@ -179,52 +174,47 @@ namespace ServerLib.Controllers
 
         /// <summary>
         /// Check the Client character exist.
-        /// <br>Same as Controllers/AccountController.js@func=clientHasProfile()</br>
         /// </summary>
         /// <param name="SessionId">SessionId/AccountId</param>
         /// <returns>True | False</returns>
         public static bool ClientHasProfile(string SessionId)
         {
             ReloadAccountBySessionId(SessionId);
-            var account = FindAccount(SessionId);
-            if (account != null)
+            var profile = ProfileController.GetProfile(SessionId);
+            if (profile != null && profile.Characters != null)
             {
-                if (!File.Exists("user/profiles/" + SessionId + "/character.json"))
-                {
-                    Debug.PrintInfo($"New account {SessionId} logged in!");
-                }
-                return true;
+                if (profile.Characters.Pmc != null)
+                    return true;
             }
+            Debug.PrintInfo($"New account {SessionId} logged in!");
             return false;
         }
 
 
         /// <summary>
         /// Reload that account you provide by in SessonID
-        /// <br>Same as Controllers/AccountController.js@func=reloadAccountBySessionId()</br>
         /// </summary>
         /// <param name="SessionId">SessionId/AccountId</param>
         public static void ReloadAccountBySessionId(string SessionId)
         {
             if (SessionId == null) { new Exception("SessionId Null!"); }
-            if (!File.Exists($"user/profiles/{SessionId}/account.json"))
+            var profile = ProfileController.GetProfile(SessionId);
+            if (profile.Info == null)
+                return;
+
+            if (!Accounts.Contains(profile.Info))
             {
-                Debug.PrintWarn("Account file not exist. ID: " + SessionId);
+                Debug.PrintInfo("(Re)Loaded account data for profile: " + profile.Info.Id, "ACCOUNT");
+                Accounts.Add(profile.Info);
             }
-            else
+            if (!ActiveAccountIds.Contains(profile.Info.Id))
             {
-                if (Accounts.Where(x => x.Id == SessionId).Count() == 0)
-                {
-                    Debug.PrintInfo("[WARN] Account isnt Cached, Load from disk. ID:" + SessionId);
-                    var account = JsonConvert.DeserializeObject<Profile.Info>(File.ReadAllText($"user/profiles/{SessionId}/account.json"));
-                    Accounts.Add(account);
-                }
+                ActiveAccountIds.Add(profile.Info.Id);
             }
         }
 
         /// <summary>
         /// Find account data in loaded account list
-        /// <br>Same as Controllers/AccountController.js@func=find()</br>
         /// </summary>
         /// <param name="SessionId">SessionId/AccountId</param>
         /// <returns>Account Data | null</returns>
@@ -243,7 +233,6 @@ namespace ServerLib.Controllers
 
         /// <summary>
         /// Get if the Account is Wiped or not
-        /// <br>Same as Controllers/AccountController.js@func=IsWiped()</br>
         /// </summary>
         /// <param name="SessionId">SessionId/AccountId</param>
         /// <returns>True | False</returns>
@@ -268,7 +257,6 @@ namespace ServerLib.Controllers
 
         /// <summary>
         /// Get if Nickname is taken
-        /// <br>Same as Controllers/AccountController.js@func=nicknameTaken()</br>
         /// </summary>
         /// <param name="JsonInfo">Json Serialized Request</param>
         /// <returns>False | True</returns>
@@ -289,7 +277,6 @@ namespace ServerLib.Controllers
 
         /// <summary>
         /// Validate a Nickname
-        /// <br>Same as Controllers/AccountController.js@func=validateNickname()</br>
         /// </summary>
         /// <param name="JsonInfo">Json Serialized Request</param>
         /// <returns>tooshort | taken | OK</returns>
@@ -318,7 +305,6 @@ namespace ServerLib.Controllers
 
         /// <summary>
         /// Tries to login and change the Account Password
-        /// <br>Same as Controllers/AccountController.js@func=changePassword()</br>
         /// </summary>
         /// <param name="JsonInfo">Json Serialized Profile & Changes</param>
         /// <returns>AccountID | FAILED</returns>
@@ -369,7 +355,6 @@ namespace ServerLib.Controllers
         /// Delete everything that this account was used for.
         /// </summary>
         /// <param name="SessionId">SessionId/AccountId</param>
-        /// <param name="profile">Account/Profile Name</param>
         /// <returns>OK | FAILED</returns>
         public static string DeleteAccount(string SessionId)
         {

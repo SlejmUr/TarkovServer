@@ -140,7 +140,7 @@ namespace ServerLib.Json.Classes
             public List<VisibilityCondition> visibilityConditions { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public List<string> target { get; set; }
+            public object target { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public List<EQuestStatus> status { get; set; }
@@ -179,7 +179,7 @@ namespace ServerLib.Json.Classes
             public string zoneId { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public bool type { get; set; }
+            public object type { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public bool countInRaid { get; set; }
@@ -212,7 +212,7 @@ namespace ServerLib.Json.Classes
             public string id { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public List<string> target { get; set; }
+            public object target { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public string compareMethod { get; set; }

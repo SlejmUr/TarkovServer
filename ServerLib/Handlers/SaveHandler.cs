@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using ServerLib.Controllers;
 using ServerLib.Json.Classes;
+using ServerLib.Json.Helpers;
 using ServerLib.Utilities;
 
 namespace ServerLib.Handlers
@@ -22,8 +23,8 @@ namespace ServerLib.Handlers
             else
             {
                 Save(SessionId, "Account", GetAccountPath(SessionId), JsonConvert.SerializeObject(AccountController.FindAccount(SessionId)));
-                Save(SessionId, "Dialog", GetDialogPath(SessionId), JsonConvert.SerializeObject(Controllers.DialogueController.Dialogs[SessionId]));
-                Save(SessionId, "Character", GetCharacterPath(SessionId), JsonConvert.SerializeObject(CharacterController.GetPmcCharacter(SessionId)));
+                Save(SessionId, "Dialog", GetDialogPath(SessionId), JsonConvert.SerializeObject(DialogueController.Dialogs[SessionId]));
+                Save(SessionId, "Character", GetCharacterPath(SessionId), JsonHelper.FromCharacterBase(CharacterController.GetPmcCharacter(SessionId)));
                 Save(SessionId, "Storage", GetStoragePath(SessionId), JsonConvert.SerializeObject(ProfileController.ProfilesDict[SessionId].Suits));
 
             }
@@ -57,7 +58,7 @@ namespace ServerLib.Handlers
         public static void SaveCharacter(string SessionId, Character.Base character)
         {
             Debug.PrintInfo("Saving started...", "SAVE");
-            Save(SessionId, "Character", GetCharacterPath(SessionId), JsonConvert.SerializeObject(character));
+            Save(SessionId, "Character", GetCharacterPath(SessionId), JsonHelper.FromCharacterBase(character));
             Debug.PrintInfo("Saving ended!", "SAVE");
         }
 

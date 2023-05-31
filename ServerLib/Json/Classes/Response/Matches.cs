@@ -4,22 +4,28 @@ namespace ServerLib.Json.Classes.Response
 {
     public class Matches
     {
-        public class CurrentGroup
+        public class JoinMatch
         {
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
+            public string ProfileId { get; set; }
+
+            [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
+            public string IpAddress { get; set; }
+
+            [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
+            public int Port { get; set; }
+
+            [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
+            public string LocationId { get; set; }
+
+        }
+        public class CurrentGroup
+        {
+            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
             public List<Member> squad { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public RaidSettings raidSettings { get; set; }
-        }
-
-        public class GroupStatus
-        {
-            [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public List<Member> players { get; set; }
-
-            [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public bool maxPveCountExceeded { get; set; }
         }
 
         public class Member

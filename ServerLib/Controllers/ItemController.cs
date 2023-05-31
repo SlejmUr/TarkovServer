@@ -435,7 +435,7 @@ namespace ServerLib.Controllers
                 }
             }
 
-            if (item.Location.R == 0)
+            if (item.Location.ItemLocation.R == 0)
                 return new() { Height = itemHeight, Width = itemWidth };
             else
                 return new() { Height = itemWidth, Width = itemHeight };
@@ -486,16 +486,16 @@ namespace ServerLib.Controllers
                 return null;
             }
 
-            var items = containerItems.Where(item => item.ParentId == container.Id && item.Location != null).ToList();
+            var items = containerItems.Where(item => item.ParentId == container.Id && item.Location.ItemLocation != null).ToList();
 
             foreach (var item in items)
             {
                 var itemSize = GetSize(item, GetAllChildItemsInInventory(item, containerItems));
-                int sizeh = ((int)(item.Location.Y + itemSize.Height));
-                for (int row = item.Location.Y; row < sizeh; row++)
+                int sizeh = ((int)(item.Location.ItemLocation.Y + itemSize.Height));
+                for (int row = item.Location.ItemLocation.Y; row < sizeh; row++)
                 {
-                    int sizew = ((int)(item.Location.X + itemSize.Width));
-                    for (int column = item.Location.X; column < sizew; column++)
+                    int sizew = ((int)(item.Location.ItemLocation.X + itemSize.Width));
+                    for (int column = item.Location.ItemLocation.X; column < sizew; column++)
                     {
                         if (container.Map.TryGetValue(item.SlotId, out var value))
                         {

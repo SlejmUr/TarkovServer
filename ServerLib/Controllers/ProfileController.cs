@@ -1,7 +1,10 @@
 ﻿using Newtonsoft.Json;
 using ServerLib.Handlers;
+using ServerLib.Json;
 using ServerLib.Json.Classes;
+using ServerLib.Json.Helpers;
 using ServerLib.Utilities;
+using static ServerLib.Json.Classes.CustomConfig;
 
 namespace ServerLib.Controllers
 {
@@ -73,12 +76,12 @@ namespace ServerLib.Controllers
                 }
                 if (File.Exists($"{dir}/character.json"))
                 {
-                    var character = JsonConvert.DeserializeObject<Character.Base>(File.ReadAllText($"{dir}/character.json"));
+                    var character = JsonHelper.ToCharacterBase($"{dir}/character.json");
                     @base.Characters.Pmc = character;
                 }
                 if (File.Exists($"{dir}/scav.json"))
                 {
-                    var scav = JsonConvert.DeserializeObject<Character.Base>(File.ReadAllText($"{dir}/scav.json"));
+                    var scav = JsonHelper.ToCharacterBase($"{dir}/scav.json");
                     @base.Characters.Scav = scav;
                 }
                 if (File.Exists($"{dir}/storage.json"))
@@ -93,6 +96,7 @@ namespace ServerLib.Controllers
                 }
                 if (!ProfilesDict.ContainsKey(@base.Info.Id))
                 {
+                    Debug.PrintDebug($"Profile Added {@base.Info.Id}", "ConvertFromProfile");
                     ProfilesDict.Add(@base.Info.Id,@base);
                 }
                 ret.Add(@base);
@@ -113,10 +117,11 @@ namespace ServerLib.Controllers
             {
                 if (dir.Contains(".json"))
                 {
-                    var account = JsonConvert.DeserializeObject<Profile.Base>(File.ReadAllText(dir));
+                    var account = JsonConvert.DeserializeObject<Profile.Base>(File.ReadAllText(dir), new JsonConverter[] { Converters.ItemLocationConverter.Singleton });
                     ret.Add(account);
                     if (!ProfilesDict.ContainsKey(account.Info.Id))
                     {
+                        Debug.PrintDebug($"Profile Added {account.Info.Id}", "ConvertFromAkiProfile");
                         ProfilesDict.Add(account.Info.Id, account);
                     }
                 }
@@ -144,7 +149,7 @@ namespace ServerLib.Controllers
                 }
                 if (File.Exists($"{dir}/character.json"))
                 {
-                    var character = JsonConvert.DeserializeObject<Character.Base>(File.ReadAllText($"{dir}/character.json"));
+                    var character = JsonHelper.ToCharacterBase($"{dir}/character.json");
                     @base.Characters = new()
                     { 
                         Scav = character,
@@ -163,6 +168,7 @@ namespace ServerLib.Controllers
                 }
                 if (!ProfilesDict.ContainsKey(@base.Info.Id))
                 {
+                    Debug.PrintDebug($"Profile Added {@base.Info.Id}", "ConvertFromJET");
                     ProfilesDict.Add(@base.Info.Id, @base);
                 }
                 ret.Add(@base);
@@ -193,7 +199,7 @@ namespace ServerLib.Controllers
             {
                 var Id = dict.Key;
                 SaveHandler.Save(Id, "Account", SaveHandler.GetAccountPath(Id), JsonConvert.SerializeObject(dict.Value.Info));
-                SaveHandler.Save(Id, "Character", SaveHandler.GetCharacterPath(Id), JsonConvert.SerializeObject(dict.Value.Characters.Pmc));
+                SaveHandler.Save(Id, "Character", SaveHandler.GetCharacterPath(Id), JsonHelper.FromCharacterBase(dict.Value.Characters.Pmc));
                 SaveHandler.Save(Id, "Dialog", SaveHandler.GetDialogPath(Id), JsonConvert.SerializeObject(dict.Value.Dialogues));
                 SaveHandler.Save(Id, "Storage", SaveHandler.GetStoragePath(Id), JsonConvert.SerializeObject(dict.Value.Suits));
             }
@@ -207,7 +213,7 @@ namespace ServerLib.Controllers
             foreach (var dict in ProfilesDict)
             {
                 var Id = dict.Key;
-                SaveHandler.Save(Id, "Aki", SaveHandler.GetAkiPath(Id), JsonConvert.SerializeObject(dict.Value), true);
+                SaveHandler.Save(Id, "Aki", SaveHandler.GetAkiPath(Id), JsonConvert.SerializeObject(dict.Value, new JsonConverter[] { Converters.ItemLocationConverter.Singleton }), true);
             }
         }
 
@@ -218,17 +224,17 @@ namespace ServerLib.Controllers
                 var Id = dict.Key;
                 Profile.Base newBase = dict.Value;
                 SaveHandler.Save(Id, "Account", SaveHandler.GetAccountPath(Id), JsonConvert.SerializeObject(newBase.Info));
-                SaveHandler.Save(Id, "Character", SaveHandler.GetCharacterPath(Id), JsonConvert.SerializeObject(newBase.Characters.Pmc));
+                SaveHandler.Save(Id, "Character", SaveHandler.GetCharacterPath(Id), JsonHelper.FromCharacterBase(newBase.Characters.Pmc));
                 SaveHandler.Save(Id, "Dialog", SaveHandler.GetDialogPath(Id), JsonConvert.SerializeObject(newBase.Dialogues));
                 SaveHandler.Save(Id, "Storage", SaveHandler.GetStoragePath(Id), JsonConvert.SerializeObject(newBase.Suits));
-                SaveHandler.Save(Id, "Scav", SaveHandler.GetScavPath(Id), JsonConvert.SerializeObject(newBase.Characters.Scav));
+                SaveHandler.Save(Id, "Scav", SaveHandler.GetScavPath(Id), JsonHelper.FromCharacterBase(newBase.Characters.Scav));
                 SaveHandler.Save(Id, "Others", SaveHandler.GetOthersPath(Id), JsonConvert.SerializeObject(newBase.ProfileAddon));
                 newBase.Info = new();
                 newBase.Characters = new();
                 newBase.Dialogues = new();
                 newBase.Suits = new();
                 newBase.ProfileAddon = new();
-                SaveHandler.Save(Id, "Profile", SaveHandler.GetOthersPath(Id), JsonConvert.SerializeObject(newBase));
+                SaveHandler.Save(Id, "Profile", SaveHandler.GetOthersPath(Id), JsonConvert.SerializeObject(newBase, new JsonConverter[] { Converters.ItemLocationConverter.Singleton }));
             }
         }
     }
