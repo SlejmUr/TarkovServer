@@ -121,6 +121,7 @@ namespace ServerLib.Controllers
         {
             DataBase.Location = new();
             DataBase.Location.Base = File.ReadAllText("Files/locations/base.json");
+            DataBase.Location.AllLocations = File.ReadAllText("Files/locations/location_all.json");
             var dirs = Directory.GetDirectories("Files/locations");
             foreach (var dir in dirs)
             {

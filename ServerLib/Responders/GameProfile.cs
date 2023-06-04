@@ -18,6 +18,7 @@ namespace ServerLib.Responders
             {
                 Debug.PrintError("Character not found!", "ProfileStatus");
             }
+
             Json.Classes.ProfileStatus.Response response = new()
             {
                 maxPveCountExceeded = false,
@@ -34,6 +35,20 @@ namespace ServerLib.Responders
                     }
                 }
             };
+
+
+            var match = MatchController.GetMatch(SessionId);
+            if (match.HasValue)
+            {
+                response.profiles[0].status = "MatchWait";
+                response.profiles[0].profileToken = match.Value.Users.Where(x => x.profileid == SessionId).FirstOrDefault().profileToken;
+                response.profiles[0].ip = match.Value.Ip;
+                response.profiles[0].port = match.Value.Port;
+                response.profiles[0].location = match.Value.Location;
+                response.profiles[0].raidMode = match.Value.RaidMode.ToString();
+                response.profiles[0].mode = "deathmatch";
+                response.profiles[0].shortId = match.Value.Sid;
+            }
 
             if (!string.IsNullOrEmpty(character.Savage))
             {

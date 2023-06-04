@@ -1,6 +1,7 @@
 ﻿using EFT;
 using Newtonsoft.Json;
 using ServerLib.Json.Classes;
+using ServerLib.Json.Classes.Response;
 using ServerLib.Json.Classes.Websocket;
 using ServerLib.Utilities;
 using ServerLib.Web;
@@ -49,41 +50,40 @@ namespace ServerLib.Controllers
 
         public static string GenerateMatchId(string ProfileId)
         {
-            try
+            var match = GetMatch(ProfileId);
+            if (match.HasValue)
             {
-                var match = GetMatch(ProfileId);
-                if (match.HasValue)
-                {
-                    return match.Value.MatchId;
-                }
-                else
-                {
-                    var id = Utils.CreateNewID();
-                    Matches.Add(id, new() { CreatorId = ProfileId, MatchId = id, Users = new() { new() { profileid = ProfileId } } });
-                    return id;
-                }
+                return match.Value.MatchId;
             }
-            catch (Exception ex)
+            else
             {
-                Debug.PrintError(ex.ToString());
+                var id = Utils.CreateNewID();
+                Matches.Add(id, new() { CreatorId = ProfileId, MatchId = id, Users = new() { new() { profileid = ProfileId } } });
+                return id;
             }
-            return string.Empty;
-
         }
 
         public static void CheckStatus(string ProfileId, GetGroupStatus groupStatus)
         {
-            try
-            {
-                var match = Matches[GenerateMatchId(ProfileId)];
-                match.Location = groupStatus.location;
-                match.RaidMode = groupStatus.raidMode;
-            }
-            catch (Exception ex)
-            {
-                Debug.PrintError(ex.ToString());
-            }
+            var match = Matches[GenerateMatchId(ProfileId)];
+            match.Location = groupStatus.location;
+            match.RaidMode = groupStatus.raidMode;
+        }
 
+        public static void Exit(string ProfileId)
+        {
+            var match = Matches[GenerateMatchId(ProfileId)];
+            Matches.Remove(match.MatchId);
+        }
+
+        public static void JoinMatch(string ProfileId, JoinMatchReq joinMatch)
+        {
+            var match = Matches[GenerateMatchId(ProfileId)];
+            match.Location = joinMatch.location;
+            match.Ip = joinMatch.servers[0].ip;
+            match.Port = int.Parse(joinMatch.servers[0].port);
+            match.RaidMode = ERaidMode.Online;
+            match.Sid = $"{match.Ip}_{match.Port}-Match-{Matches.Count}";
         }
 
         public static void SendStart(string groupId, string Ip, int Port)

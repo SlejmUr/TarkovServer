@@ -38,6 +38,9 @@
 			<HintPath>..\Ref\bsg.system.buffers.dll</HintPath>
 			<Private>False</Private>
 		</Reference>
+		<Reference Include="com.unity.multiplayer-hlapi.Runtime">
+		  <HintPath>..\Ref\com.unity.multiplayer-hlapi.Runtime.dll</HintPath>
+		</Reference>
 		<Reference Include="Newtonsoft.Json">
 			<HintPath>..\Ref\Newtonsoft.Json.dll</HintPath>
 			<Private>False</Private>

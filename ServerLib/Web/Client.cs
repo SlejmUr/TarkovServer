@@ -5,6 +5,7 @@ using ServerLib.Json.Classes;
 using ServerLib.Utilities;
 using ServerLib.Utilities.Helpers;
 using static ServerLib.Json.Classes.Profile;
+using static ServerLib.Json.Converters;
 using static ServerLib.Web.HTTPServer;
 
 namespace ServerLib.Web
@@ -117,9 +118,20 @@ namespace ServerLib.Web
         public static bool ClientQuestList(HttpRequest request, HttpsBackendSession session)
         {
             Utils.PrintRequest(request, session);
-            var quests = Controllers.QuestController.GetQuests();
-            string resp = ResponseControl.GetBody(JsonConvert.SerializeObject(quests));
-            Utils.SendUnityResponse(session, resp);
+            try
+            {
+                var quests = Controllers.QuestController.GetQuests();
+                string resp = ResponseControl.GetBody(JsonConvert.SerializeObject(quests, new JsonConverter[]
+                    {
+                    QuestTargetConverter.Singleton
+                    }));
+                Utils.SendUnityResponse(session, resp);
+            }
+            catch (Exception ex)
+            {
+                Debug.PrintError(ex.ToString());
+            }
+
             return true;
         }
 
@@ -175,6 +187,17 @@ namespace ServerLib.Web
             Utils.PrintRequest(request, session);
             var json = JsonConvert.SerializeObject(LocationController.GetAllLocation());
             string resp = ResponseControl.GetBody(json);
+            Utils.SendUnityResponse(session, resp);
+            return true;
+        }
+
+        [HTTP("POST", "/client/location/getLocalloot")]
+        public static bool ClientLocationLocalLoot(HttpRequest request, HttpsBackendSession session)
+        {
+            Utils.PrintRequest(request, session);
+            var jsonreq = JsonConvert.DeserializeObject<GetLocation>(ResponseControl.DeCompressReq(request.BodyBytes));
+            var location =  LocationController.GetLocationLoot(jsonreq);
+            string resp = ResponseControl.GetBody(JsonConvert.SerializeObject(location));
             Utils.SendUnityResponse(session, resp);
             return true;
         }

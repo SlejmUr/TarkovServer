@@ -20,17 +20,37 @@ namespace ServerLib.Controllers
 
         public static List<Profile.Base> Profiles;
         public static Dictionary<string, Profile.Base> ProfilesDict;
+        public static List<string> AlreadyConverted;
         public static void Init()
         {
+            if (File.Exists("user/converteds.txt"))
+            {
+                AlreadyConverted = File.ReadAllLines("user/converteds.txt").ToList();
+            }
+            else
+            {
+                AlreadyConverted = new();
+            }
+            ConvertAllProfile();
             ReloadProfiles();
             Debug.PrintInfo("Initialization Done!", "Profile");
         }
 
         public static void ReloadProfiles()
         {
+            //Profiles.AddRange(ConvertFromJET());
+            //Profiles.AddRange(ConvertFromAkiProfile());
+            Profiles.AddRange(ConvertFromProfile());
+        }
+
+        public static void ConvertAllProfile()
+        {
             Profiles.AddRange(ConvertFromJET());
             Profiles.AddRange(ConvertFromAkiProfile());
-            Profiles.AddRange(ConvertFromProfile());
+            SaveAsProfile();
+            File.WriteAllLines("user/converteds.txt", AlreadyConverted);
+            ProfilesDict.Clear();
+            Profiles.Clear();
         }
 
         /// <summary>
@@ -139,6 +159,10 @@ namespace ServerLib.Controllers
             string[] dirs = Directory.GetDirectories("user/profiles");
             foreach (string dir in dirs)
             {
+                if (File.Exists($"{dir}/others.json"))
+                {
+                    continue;
+                }
                 Profile.Base @base = new();
                 if (File.Exists($"{dir}/account.json"))
                 {
@@ -235,6 +259,8 @@ namespace ServerLib.Controllers
                 newBase.Suits = new();
                 newBase.ProfileAddon = new();
                 SaveHandler.Save(Id, "Profile", SaveHandler.GetOthersPath(Id), JsonConvert.SerializeObject(newBase, new JsonConverter[] { Converters.ItemLocationConverter.Singleton }));
+                if (!AlreadyConverted.Contains(Id))
+                    AlreadyConverted.Add(Id);
             }
         }
     }

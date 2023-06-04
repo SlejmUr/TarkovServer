@@ -39,12 +39,12 @@ namespace ServerLib.Web
             var sessionId = Utils.GetSessionId(session.Headers);
 
             var jsonreq = JsonConvert.DeserializeObject<JoinMatchReq>(ResponseControl.DeCompressReq(request.BodyBytes));
-
+            MatchController.JoinMatch(sessionId, jsonreq);
             JoinMatch joinMatch = new JoinMatch()
             { 
                 ProfileId = sessionId,
-                IpAddress = "192.168.1.50",
-                Port = 1000,
+                IpAddress = jsonreq.servers[0].ip,
+                Port = int.Parse(jsonreq.servers[0].port),
                 LocationId = jsonreq.location
             };
             var rsp = ResponseControl.GetBody(JsonConvert.SerializeObject(joinMatch));
@@ -110,8 +110,18 @@ namespace ServerLib.Web
         {
             Utils.PrintRequest(request, session);
             var sessionId = Utils.GetSessionId(session.Headers);
-            var jsonreq = JsonConvert.DeserializeObject<GetGroupStatus>(ResponseControl.DeCompressReq(request.BodyBytes));
-            MatchController.CheckStatus(sessionId, jsonreq);
+            MatchController.Exit(sessionId);
+            var rsp = ResponseControl.NullResponse();
+            Utils.SendUnityResponse(session, rsp);
+            return true;
+        }
+
+        [HTTP("POST", "/client/match/group/exit_from_menu")]
+        public static bool GroupExitFromMenu(HttpRequest request, HttpsBackendSession session)
+        {
+            Utils.PrintRequest(request, session);
+            var sessionId = Utils.GetSessionId(session.Headers);
+            MatchController.Exit(sessionId);
             var rsp = ResponseControl.NullResponse();
             Utils.SendUnityResponse(session, rsp);
             return true;
@@ -122,7 +132,11 @@ namespace ServerLib.Web
         public static bool GroupCurrent(HttpRequest request, HttpsBackendSession session)
         {
             Utils.PrintRequest(request, session);
-            var rsp = ResponseControl.NullResponse();
+            CurrentGroup currentGroup = new()
+            { 
+                squad = new()
+            };
+            var rsp = ResponseControl.GetBody(JsonConvert.SerializeObject(currentGroup));
             Utils.SendUnityResponse(session, rsp);
             return true;
         }

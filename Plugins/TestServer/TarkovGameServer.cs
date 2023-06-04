@@ -1,6 +1,7 @@
 ﻿using NetCoreServer;
 using System.Net.Sockets;
 using System.Net;
+using ServerLib.Utilities;
 
 namespace TestServer
 {
@@ -10,13 +11,13 @@ namespace TestServer
 
         protected override void OnStarted()
         {
-            Console.WriteLine("TarkovGameServer started!");
+            Debug.PrintInfo("TarkovGameServer started!", "TarkovGameServer");
             ReceiveAsync();
         }
 
         protected override void OnReceived(EndPoint endpoint, byte[] buffer, long offset, long size)
         {
-            Console.WriteLine($"{endpoint} Sent: {BitConverter.ToString(buffer.Take((int)size).ToArray())}");
+            Debug.PrintInfo($"{endpoint} Sent: {BitConverter.ToString(buffer.Take((int)size).ToArray())}", "TarkovGameServer");
 
             //Sending back :(
             SendAsync(endpoint, buffer, 0, size);
@@ -29,12 +30,12 @@ namespace TestServer
 
         protected override void OnStopped()
         {
-            Console.WriteLine("TarkovGameServer stopped!");
+            Debug.PrintInfo("TarkovGameServer stopped!", "TarkovGameServer");
         }
 
         protected override void OnError(SocketError error)
         {
-            Console.WriteLine($"UDP server caught an error with code {error}");
+            Debug.PrintError($"UDP server caught an error with code {error}", "TarkovGameServer");
         }
     }
 }

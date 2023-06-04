@@ -73,9 +73,6 @@ namespace ServerLib.Json.Classes
             public _Notes Notes { get; set; }
 
             [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public string SurvivorClass { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
             public List<string> WishList { get; set; }
 
         }
@@ -379,9 +376,6 @@ namespace ServerLib.Json.Classes
 
             [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
             public int TotalInGameTime { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public string SurvivorClass { get; set; }
 
         }
         public class DroppedItem

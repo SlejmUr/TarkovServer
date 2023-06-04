@@ -55,6 +55,7 @@ namespace ServerLib
             Controllers.DialogueController.Init();
             AccountController.Init();
             CharacterController.Init();
+            Controllers.QuestController.Init();
             Start(Ip, port);
             NewWebSocket.Start(Ip, port + 1);
             if (!ArgumentHandler.DontLoadPlugin)

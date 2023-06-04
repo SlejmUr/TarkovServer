@@ -5,7 +5,7 @@ namespace ServerLib.Json.Classes
 {
     public class ProfileAddon
     {
-        [JsonProperty("Friends", DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("Friends", NullValueHandling = NullValueHandling.Ignore)]
         public FriendList Friends { get; set; }
 
         [JsonProperty("FriendRequestInbox", NullValueHandling = NullValueHandling.Ignore)]

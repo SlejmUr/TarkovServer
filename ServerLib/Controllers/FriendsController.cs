@@ -1,4 +1,5 @@
-﻿using ServerLib.Json.Classes;
+﻿using ServerLib.Handlers;
+using ServerLib.Json.Classes;
 using ServerLib.Utilities;
 using ServerLib.Utilities.Helpers;
 
@@ -20,11 +21,11 @@ namespace ServerLib.Controllers
         public static void GetAddonList()
         {
             ProfileController.ReloadProfiles();
-            foreach (var profile in ProfileController.Profiles)
+            foreach (var profile in ProfileController.ProfilesDict)
             {
-                if (profile.ProfileAddon == null)
+                if (profile.Value.ProfileAddon == null)
                 {
-                    profile.ProfileAddon = new()
+                    profile.Value.ProfileAddon = new()
                     {
                         Permission = Json.Enums.EPerms.User,
                         FriendRequestInbox = new(),
@@ -36,9 +37,11 @@ namespace ServerLib.Controllers
                             InIgnoreList = new()
                         }
                     };
+                    SaveHandler.SaveAddon(profile.Key, profile.Value.ProfileAddon);
                 }
-                ProfileAddonsDict.TryAdd(profile.Info.Id,profile.ProfileAddon);
-                ProfileAddons.Add(profile.ProfileAddon);
+                ProfileAddonsDict.TryAdd(profile.Key, profile.Value.ProfileAddon);
+                if (!ProfileAddons.Contains(profile.Value.ProfileAddon))
+                    ProfileAddons.Add(profile.Value.ProfileAddon);
             }
         }
 
@@ -46,16 +49,6 @@ namespace ServerLib.Controllers
         {
             GetAddonList();
             var account = ProfileAddonsDict[SessionId];
-            if (account.Friends == null)
-            {
-                account.Friends = new()
-                { 
-                    Friends = new(),
-                    Ignore = new(),
-                    InIgnoreList = new()
-                };
-            }
-
             return account.Friends;
         }
 

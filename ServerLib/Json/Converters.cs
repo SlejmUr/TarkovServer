@@ -79,7 +79,6 @@ namespace ServerLib.Json
 
             public static readonly AimSensitivityConverter Singleton = new AimSensitivityConverter();
         }
-
         public class EffectsHealthUnionConverter : JsonConverter
         {
             public override bool CanConvert(Type t) => t == typeof(EffectsHealthUnion) || t == typeof(EffectsHealthUnion?);
@@ -116,7 +115,6 @@ namespace ServerLib.Json
 
             public static readonly EffectsHealthUnionConverter Singleton = new EffectsHealthUnionConverter();
         }
-
         public class ItemLocationConverter : JsonConverter
         {
             public override bool CanConvert(Type t) => t == typeof(Location) || t == typeof(Location?);
@@ -189,5 +187,53 @@ namespace ServerLib.Json
 
             public static readonly CustomizationItemPrefabConverter Singleton = new CustomizationItemPrefabConverter();
         }
+
+        public partial struct QuestTarget
+        {
+            public string[] StringArray;
+            public string String;
+
+            public static implicit operator QuestTarget(string[] StringArray) => new QuestTarget { StringArray = StringArray };
+            public static implicit operator QuestTarget(string String) => new QuestTarget { String = String };
+        }
+
+        public class QuestTargetConverter : JsonConverter
+        {
+            public override bool CanConvert(Type t) => t == typeof(QuestTarget) || t == typeof(QuestTarget?);
+
+            public override object ReadJson(JsonReader reader, Type t, object existingValue, JsonSerializer serializer)
+            {
+                switch (reader.TokenType)
+                {
+                    case JsonToken.String:
+                    case JsonToken.Date:
+                        var stringValue = serializer.Deserialize<string>(reader);
+                        return new QuestTarget { String = stringValue };
+                    case JsonToken.StartArray:
+                        var arrayValue = serializer.Deserialize<string[]>(reader);
+                        return new QuestTarget { StringArray = arrayValue };
+                }
+                throw new Exception("Cannot unmarshal type QuestTarget");
+            }
+
+            public override void WriteJson(JsonWriter writer, object untypedValue, JsonSerializer serializer)
+            {
+                var value = (QuestTarget)untypedValue;
+                if (value.String != null)
+                {
+                    serializer.Serialize(writer, value.String);
+                    return;
+                }
+                if (value.StringArray != null)
+                {
+                    serializer.Serialize(writer, value.StringArray);
+                    return;
+                }
+                throw new Exception("Cannot marshal type QuestTarget" + untypedValue);
+            }
+
+            public static readonly QuestTargetConverter Singleton = new QuestTargetConverter();
+        }
+
     }
 }

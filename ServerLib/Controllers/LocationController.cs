@@ -1,6 +1,7 @@
 ﻿using ServerLib.Json.Classes;
 using Newtonsoft.Json;
 using ServerLib.Utilities;
+using ServerLib.Utilities.Helpers;
 
 namespace ServerLib.Controllers
 {
@@ -8,34 +9,40 @@ namespace ServerLib.Controllers
     {
         public static Locations.Base GetAllLocation()
         {
-            try
-            {
-                var lbase = JsonConvert.DeserializeObject<Locations.Base>(DatabaseController.DataBase.Location.Base);
-                if (lbase == null)
-                    Debug.PrintWarn("No Location Base!", "GetAllLocation");
+            var lbase = JsonConvert.DeserializeObject<Locations.Base>(DatabaseController.DataBase.Location.Base);
+            if (lbase == null)
+                Debug.PrintWarn("No Location Base!", "GetAllLocation");
 
-                foreach (var loc in DatabaseController.DataBase.Location.Locations)
+            foreach (var loc in DatabaseController.DataBase.Location.Locations)
+            {
+                if (!loc.Key.Contains("_base"))
+                    continue;
+
+                var locbase = JsonConvert.DeserializeObject<Location.Base>(loc.Value);
+                if (locbase == null)
                 {
-                    if (!loc.Key.Contains("_base"))
-                        continue;
-
-                    var locbase = JsonConvert.DeserializeObject<Location.Base>(loc.Value);
-                    if (locbase == null)
-                    {
-                        Debug.PrintWarn("No Location Value!", "GetAllLocation");
-                    }
-                    locbase.Loot = new();
-                    lbase.locations.Add(locbase._Id, locbase);
+                    Debug.PrintWarn("No Location Value!", "GetAllLocation");
                 }
-                return lbase;
+                locbase.UnixDateTime = TimeHelper.UnixTimeNow_Int();
+                locbase.Loot = new();
+                lbase.locations.Add(locbase._Id, locbase);
             }
-            catch (Exception ex)
+            return lbase;
+        }
+
+        public static Location.Base GetLocationLoot(GetLocation location)
+        {
+            Debug.PrintInfo($"Generating loot for location {location.locationId}", "GetLocationLoot");
+            var LocationBase = JsonConvert.DeserializeObject<Location.Base>(DatabaseController.DataBase.Location.Locations[location.locationId + "_base"]);
+            //var LocationLoot = JsonConvert.DeserializeObject<LooseLoot.Base>(DatabaseController.DataBase.Location.Locations[location.locationId + "_looseLoot"]);
+            LocationBase.UnixDateTime = TimeHelper.UnixTimeNow_Int();
+
+            var staticWeapons = DatabaseController.DataBase.Loot.staticContainers[location.locationId].staticWeapons;
+            foreach (var item in staticWeapons)
             {
-                Debug.PrintError(ex.ToString());
+                LocationBase.Loot.Add(item);
             }
-            return null;
-
-
+            return LocationBase;
         }
     }
 }

@@ -37,7 +37,7 @@ namespace ServerLib.Controllers
 
                 if (!Accounts.Contains(profile.Info))
                 {
-                    Debug.PrintInfo("(Re)Loaded account data for profile: " + profile.Info.Id, "ACCOUNT");
+                    Debug.PrintInfo($"(Re)Loaded account data for profile: [{profile.Info.Id}]" , "ACCOUNT");
                     Accounts.Add(profile.Info);
                 }
                 if (!ActiveAccountIds.Contains(profile.Info.Id))
@@ -181,10 +181,9 @@ namespace ServerLib.Controllers
         {
             ReloadAccountBySessionId(SessionId);
             var profile = ProfileController.GetProfile(SessionId);
-            if (profile != null && profile.Characters != null)
+            if (profile != null)
             {
-                if (profile.Characters.Pmc != null)
-                    return true;
+                return true;
             }
             Debug.PrintInfo($"New account {SessionId} logged in!");
             return false;
@@ -202,9 +201,9 @@ namespace ServerLib.Controllers
             if (profile.Info == null)
                 return;
 
-            if (!Accounts.Contains(profile.Info))
+            if (Accounts.Where(x=>x.Id != SessionId).Any())
             {
-                Debug.PrintInfo("(Re)Loaded account data for profile: " + profile.Info.Id, "ACCOUNT");
+                Debug.PrintInfo($"(Re)Loaded account data for profile: [{profile.Info.Id}]", "ACCOUNT");
                 Accounts.Add(profile.Info);
             }
             if (!ActiveAccountIds.Contains(profile.Info.Id))

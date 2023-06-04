@@ -1,4 +1,5 @@
 ﻿using EFT;
+using MirzaBeig.Shaders.ImageEffects;
 using Newtonsoft.Json;
 using ServerLib.Generators;
 using ServerLib.Handlers;
@@ -100,10 +101,11 @@ namespace ServerLib.Controllers
             {
                 Characters.Remove(SessionId + "_pmc");
                 Characters.Add(SessionId + "_pmc", character);
-            }           
-            /*
+            }
+
             //Generate scav
             var scav = Scav.Generate(SessionId);
+            SaveHandler.Save(SessionId, "Scav", SaveHandler.GetScavPath(SessionId), JsonHelper.FromCharacterBase(scav));
             if (!Characters.ContainsKey(SessionId + "_scav"))
             {
                 Characters.Add(SessionId + "_scav", scav);
@@ -113,7 +115,7 @@ namespace ServerLib.Controllers
                 Characters.Remove(SessionId + "_scav");
                 Characters.Add(SessionId + "_scav", scav);
             }
-            */
+            
             //Item ReID
             Debug.PrintInfo($"Character Created with Id {SessionId}!", "CHARACTER");
         }
