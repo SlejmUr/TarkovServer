@@ -156,7 +156,10 @@ namespace ServerLib.Json.Classes
             public Preview Preview { get; set; }
 
             [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-            public int RequiredPlayerLevel { get; set; }
+            public int RequiredPlayerLevelMin { get; set; }
+
+            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
+            public int RequiredPlayerLevelMax { get; set; }
 
             [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
             public int PmcMaxPlayersInGroup { get; set; }

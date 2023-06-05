@@ -47,7 +47,8 @@ namespace ServerLib.Responders
                 response.profiles[0].location = match.Value.Location;
                 response.profiles[0].raidMode = match.Value.RaidMode.ToString();
                 response.profiles[0].mode = "deathmatch";
-                response.profiles[0].shortId = match.Value.Sid;
+                response.profiles[0].sid = match.Value.Sid;
+                response.profiles[0].shortId = "VD0ABA";
             }
 
             if (!string.IsNullOrEmpty(character.Savage))

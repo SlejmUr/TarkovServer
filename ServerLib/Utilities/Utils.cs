@@ -8,12 +8,14 @@ namespace ServerLib.Utilities
     public class Utils
     {
         #region Session Stuff
+        internal static int ReqId = 0;
         public static bool SendUnityResponse(HttpsBackendSession session, string resp)
         {
             var url = session.LastRequest().Url.Replace("/","_");
             string SessionId = GetSessionId(session.Headers);
             if (!Directory.Exists("ServerResponses")) { Directory.CreateDirectory("ServerResponses"); }
-            File.WriteAllText("ServerResponses/" + SessionId + url + ".json", resp);
+            File.WriteAllText("ServerResponses/" + ReqId + "_" + SessionId + url + ".json", resp); 
+            ReqId++;
             return SendUnityResponse(session, ResponseControl.CompressRsp(resp));
         }
 

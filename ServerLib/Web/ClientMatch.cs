@@ -39,6 +39,7 @@ namespace ServerLib.Web
             var sessionId = Utils.GetSessionId(session.Headers);
 
             var jsonreq = JsonConvert.DeserializeObject<JoinMatchReq>(ResponseControl.DeCompressReq(request.BodyBytes));
+            Debug.PrintDebug(JsonConvert.SerializeObject(jsonreq));
             MatchController.JoinMatch(sessionId, jsonreq);
             JoinMatch joinMatch = new JoinMatch()
             { 
@@ -105,11 +106,12 @@ namespace ServerLib.Web
             return true;
         }
 
-        [HTTP("POST", "/client/match/group/exit")]
+        [HTTP("POST", "/client/match/exit")]
         public static bool GroupExit(HttpRequest request, HttpsBackendSession session)
         {
             Utils.PrintRequest(request, session);
             var sessionId = Utils.GetSessionId(session.Headers);
+            Debug.PrintDebug(ResponseControl.DeCompressReq(request.BodyBytes));
             MatchController.Exit(sessionId);
             var rsp = ResponseControl.NullResponse();
             Utils.SendUnityResponse(session, rsp);

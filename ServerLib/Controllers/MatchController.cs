@@ -5,6 +5,7 @@ using ServerLib.Json.Classes.Response;
 using ServerLib.Json.Classes.Websocket;
 using ServerLib.Utilities;
 using ServerLib.Web;
+using static ServerLib.Controllers.MatchController;
 using static ServerLib.Json.Classes.ProfileStatus;
 
 namespace ServerLib.Controllers
@@ -53,11 +54,13 @@ namespace ServerLib.Controllers
             var match = GetMatch(ProfileId);
             if (match.HasValue)
             {
+                Debug.PrintDebug($"Match [{match.Value.MatchId}] found by SessionId [{ProfileId}]", "MatchController");
                 return match.Value.MatchId;
             }
             else
             {
                 var id = Utils.CreateNewID();
+                Debug.PrintDebug($"Match is not found by SessionId [{ProfileId}]. Creating match. MatchId: {id}", "MatchController");
                 Matches.Add(id, new() { CreatorId = ProfileId, MatchId = id, Users = new() { new() { profileid = ProfileId } } });
                 return id;
             }
@@ -72,18 +75,48 @@ namespace ServerLib.Controllers
 
         public static void Exit(string ProfileId)
         {
-            var match = Matches[GenerateMatchId(ProfileId)];
-            Matches.Remove(match.MatchId);
+            
+            var match = GetMatch(ProfileId);
+            if (match.HasValue)
+            {
+                Debug.PrintDebug($"Match [{match.Value.MatchId}] found by SessionId [{ProfileId}]", "MatchController");
+                Matches.Remove(match.Value.MatchId);
+            }
+            //  Todo: Add WS send to quit the match!
         }
 
         public static void JoinMatch(string ProfileId, JoinMatchReq joinMatch)
         {
-            var match = Matches[GenerateMatchId(ProfileId)];
-            match.Location = joinMatch.location;
-            match.Ip = joinMatch.servers[0].ip;
-            match.Port = int.Parse(joinMatch.servers[0].port);
-            match.RaidMode = ERaidMode.Online;
-            match.Sid = $"{match.Ip}_{match.Port}-Match-{Matches.Count}";
+
+            var match = GetMatch(ProfileId);
+            if (match.HasValue)
+            {
+                Matches.TryGetValue(match.Value.MatchId, out var matchData);
+                Debug.PrintDebug($"Match [{matchData.MatchId}] found by SessionId [{ProfileId}]", "MatchController");
+                matchData.Location = joinMatch.location;
+                matchData.Ip = joinMatch.servers[0].ip;
+                matchData.Port = int.Parse(joinMatch.servers[0].port);
+                matchData.RaidMode = ERaidMode.Online;
+                matchData.Sid = $"{matchData.Ip}_{matchData.Port}-Match-{Matches.Count}";
+                Matches[matchData.MatchId] = matchData;
+                SendStart(matchData.MatchId, matchData.Ip, matchData.Port);
+
+            }
+            else
+            {
+                Debug.PrintDebug($"Match for SessionId not exist, creating one.", "MatchController");
+                var matchData = Matches[GenerateMatchId(ProfileId)];
+                matchData.Location = joinMatch.location;
+                matchData.Ip = joinMatch.servers[0].ip;
+                matchData.Port = int.Parse(joinMatch.servers[0].port);
+                matchData.RaidMode = ERaidMode.Online;
+                matchData.Sid = $"{matchData.Ip}_{matchData.Port}-Match-{Matches.Count}";
+                Debug.PrintDebug($"Match [{matchData.MatchId}] created for SessionId [{ProfileId}]", "MatchController");
+                Matches[matchData.MatchId] = matchData;
+                SendStart(matchData.MatchId, matchData.Ip, matchData.Port);
+            }
+
+            
         }
 
         public static void SendStart(string groupId, string Ip, int Port)
@@ -93,27 +126,37 @@ namespace ServerLib.Controllers
             {
                 var sid = $"{Ip}_{Port}-Match-{Matches.Count}";
                 var match = Matches[groupId];
-                match.Ip = Ip;
-                match.Port = Port;
-                match.Sid = sid;
+                if (match.Ip != Ip)
+                    match.Ip = Ip;
+                if (match.Port != Port)
+                    match.Port = Port;
+                if (string.IsNullOrEmpty(match.Sid))
+                    match.Sid = sid;
                 for (int i = 0; i < match.Users.Count; i++)
                 {
                     var user = match.Users[i];
-                    UserConfirmed confirmed = new();
-                    confirmed.profileid = user.profileid;
-                    confirmed.profileToken = Utils.CreateNewID();
-                    user.profileToken = confirmed.profileToken;
-                    confirmed.status = "Busy";
-                    confirmed.ip = Ip;
-                    confirmed.port = Port;
-                    confirmed.sid = sid;
-                    confirmed.version = "live";
-                    confirmed.location = match.Location;
-                    confirmed.mode = "deathmatch";
-                    confirmed.shortId = "VD0ABA";
+                    var token = Utils.CreateNewID();
+                    user.profileToken = token;
+                    UserConfirmed confirmed = new()
+                    {
+                        profileid = user.profileid,
+                        profileToken = token,
+                        status = "Busy",
+                        ip = match.Ip,
+                        port = match.Port,
+                        sid = match.Sid,
+                        version = "live",
+                        location = match.Location,
+                        mode = "deathmatch",
+                        shortId = "VD0ABA",
+                        raidMode = match.RaidMode.ToString(),
+                        additional_info = new() { }
+                    };
                     ws.MulticastText(JsonConvert.SerializeObject(confirmed));
+                    match.Users[i] = user;
                 }
                 match.IsStarted = true;
+                Matches[match.MatchId] = match;
             }
         }
     }
