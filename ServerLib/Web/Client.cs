@@ -238,5 +238,26 @@ namespace ServerLib.Web
             Utils.SendUnityResponse(session, resp);
             return true;
         }
+
+        [HTTP("POST", "/client/getMetricsConfig")]
+        public static bool ClientGetMetricsConfig(HttpRequest request, HttpsBackendSession session)
+        {
+            Utils.PrintRequest(request, session);
+            string SessionId = Utils.GetSessionId(session.Headers);
+            string resp = File.ReadAllText("Files/static/metrics.json");
+            Utils.SendUnityResponse(session, resp);
+            return true;
+        }
+
+        [HTTP("POST", "/client/putMetrics")]
+        public static bool ClientPutMetrics(HttpRequest request, HttpsBackendSession session)
+        {
+            Utils.PrintRequest(request, session);
+            string SessionId = Utils.GetSessionId(session.Headers);
+            File.WriteAllText("PutMetrics.json", ResponseControl.DeCompressReq(request.BodyBytes));
+            string resp = ResponseControl.NullResponse();
+            Utils.SendUnityResponse(session, resp);
+            return true;
+        }
     }
 }

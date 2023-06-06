@@ -15,6 +15,12 @@ namespace ServerLib.Web
         {
             Utils.PrintRequest(request, session);
             var rsp = ResponseControl.GetBody("true");
+            var SessionId = Utils.GetSessionId(session.Headers);
+            var match = MatchController.GetMatch(SessionId);
+            match.matchData.Location = "factory4_day";
+            match.matchData.RaidMode = EFT.ERaidMode.Online;
+            MatchController.Matches[match.matchData.MatchId] = match.matchData;
+            MatchController.SendStart(match.matchData.MatchId,"192.168.1.50",1000);
             Utils.SendUnityResponse(session, rsp);
             return true;
         }
@@ -41,14 +47,30 @@ namespace ServerLib.Web
             var jsonreq = JsonConvert.DeserializeObject<JoinMatchReq>(ResponseControl.DeCompressReq(request.BodyBytes));
             Debug.PrintDebug(JsonConvert.SerializeObject(jsonreq));
             MatchController.JoinMatch(sessionId, jsonreq);
-            JoinMatch joinMatch = new JoinMatch()
-            { 
-                ProfileId = sessionId,
-                IpAddress = jsonreq.servers[0].ip,
-                Port = int.Parse(jsonreq.servers[0].port),
-                LocationId = jsonreq.location
+            var match = MatchController.GetMatch(sessionId);
+            ProfileStatus.Response response = new()
+            {
+                maxPveCountExceeded = false,
+                profiles = new()
+                {
+                    new()
+                    {
+                        profileid = "pmc" + sessionId,
+                        profileToken = match.matchData.Users.Where(x => x.sessionId == sessionId).FirstOrDefault().profileToken,
+                        status = "MatchWait",
+                        sid = "",
+                        ip = "",
+                        port = 0,
+                        location = jsonreq.location,
+                        raidMode = "Online",
+                        mode = "deathmatch",
+                        shortId = "",
+                        version = "live",
+                        additional_info = new()
+                    }
+                }
             };
-            var rsp = ResponseControl.GetBody(JsonConvert.SerializeObject(joinMatch));
+            var rsp = ResponseControl.GetBody(JsonConvert.SerializeObject(response));
             Utils.SendUnityResponse(session, rsp);
             return true;
         }
@@ -61,7 +83,7 @@ namespace ServerLib.Web
             var jsonreq = JsonConvert.DeserializeObject<StartGameReq>(ResponseControl.DeCompressReq(request.BodyBytes));
             MatchController.SendStart(jsonreq.groupId, "192.168.1.50",1000);
             var match = MatchController.GetMatch(sessionId);
-            var user = match.Value.Users.Where(x=>x.profileid == sessionId).FirstOrDefault();
+            var user = match.matchData.Users.Where(x=>x.sessionId == sessionId).FirstOrDefault();
             ProfileStatus.Response response = new()
             {
                 maxPveCountExceeded = false,
@@ -69,13 +91,13 @@ namespace ServerLib.Web
                 {
                     new()
                     {
-                        profileid = sessionId,
+                        profileid = "pmc" +sessionId,
                         profileToken = user.profileToken,
                         status = "MatchWait",
                         sid = "",
                         ip = "",
                         port = 0,
-                        location = match.Value.Location,
+                        location = match.matchData.Location,
                         raidMode = "Online",
                         mode = "deathmatch",
                         shortId = ""
@@ -113,6 +135,16 @@ namespace ServerLib.Web
             var sessionId = Utils.GetSessionId(session.Headers);
             Debug.PrintDebug(ResponseControl.DeCompressReq(request.BodyBytes));
             MatchController.Exit(sessionId);
+            var rsp = ResponseControl.NullResponse();
+            Utils.SendUnityResponse(session, rsp);
+            return true;
+        }
+
+        [HTTP("POST", "/client/match/group/invite/cancel-all")]
+        public static bool GroupCancelInvite(HttpRequest request, HttpsBackendSession session)
+        {
+            Utils.PrintRequest(request, session);
+            var sessionId = Utils.GetSessionId(session.Headers);
             var rsp = ResponseControl.NullResponse();
             Utils.SendUnityResponse(session, rsp);
             return true;

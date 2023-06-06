@@ -36,20 +36,30 @@ namespace ServerLib.Responders
                 }
             };
 
-
-            var match = MatchController.GetMatch(SessionId);
-            if (match.HasValue)
+            try
             {
-                response.profiles[0].status = "MatchWait";
-                response.profiles[0].profileToken = match.Value.Users.Where(x => x.profileid == SessionId).FirstOrDefault().profileToken;
-                response.profiles[0].ip = match.Value.Ip;
-                response.profiles[0].port = match.Value.Port;
-                response.profiles[0].location = match.Value.Location;
-                response.profiles[0].raidMode = match.Value.RaidMode.ToString();
-                response.profiles[0].mode = "deathmatch";
-                response.profiles[0].sid = match.Value.Sid;
-                response.profiles[0].shortId = "VD0ABA";
+                var match = MatchController.GetMatch(SessionId);
+                if (!match.IsNew)
+                {
+                    response.profiles[0].status = "MatchWait";
+                    response.profiles[0].profileToken = match.matchData.Users.Where(x => x.sessionId == SessionId).FirstOrDefault().profileToken;
+                    response.profiles[0].ip = match.matchData.Ip;
+                    response.profiles[0].port = match.matchData.Port;
+                    response.profiles[0].location = match.matchData.Location;
+                    response.profiles[0].raidMode = match.matchData.RaidMode.ToString();
+                    response.profiles[0].mode = "deathmatch";
+                    response.profiles[0].sid = match.matchData.Sid;
+                    response.profiles[0].shortId = "VD0ABA";
+                    response.profiles[0].version = "live";
+                    response.profiles[0].additional_info = new();
+                }
             }
+            catch (Exception ex)
+            {
+
+                Debug.PrintError(ex.ToString());
+            }
+
 
             if (!string.IsNullOrEmpty(character.Savage))
             {

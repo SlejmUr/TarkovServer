@@ -20,7 +20,8 @@ namespace ServerLib.Controllers
             { "ban" , Ban },
             { "unban" , UnBan },
             { "debug" , DebugEnable },
-            { "listmatches" , ListMatches }
+            { "listmatches" , ListMatches },
+             { "deletematches" , DeleteMatches }
         };
         public static Dictionary<string, EPerms> CommandsPermission = new()
         {
@@ -34,7 +35,8 @@ namespace ServerLib.Controllers
             { "ban" , EPerms.Mod },
             { "unban" , EPerms.Mod },
             { "debug" , EPerms.Console },
-            { "listmatches" , EPerms.User }
+            { "listmatches" , EPerms.User },
+            { "deletematches" , EPerms.Mod }
         };
 
         public static void Run(string CommandName)
@@ -207,6 +209,11 @@ namespace ServerLib.Controllers
         {
             var maches = JsonConvert.SerializeObject(MatchController.Matches);
             DB.PrintInfo($"Matches: {maches}");
+        }
+        public static void DeleteMatches(object obj)
+        {
+            MatchController.Matches.Clear();
+            DB.PrintInfo($"Matches Cleared!");
         }
     }
 }

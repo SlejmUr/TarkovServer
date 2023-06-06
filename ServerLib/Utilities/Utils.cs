@@ -13,7 +13,6 @@ namespace ServerLib.Utilities
         {
             var url = session.LastRequest().Url.Replace("/","_");
             string SessionId = GetSessionId(session.Headers);
-            if (!Directory.Exists("ServerResponses")) { Directory.CreateDirectory("ServerResponses"); }
             File.WriteAllText("ServerResponses/" + ReqId + "_" + SessionId + url + ".json", resp); 
             ReqId++;
             return SendUnityResponse(session, ResponseControl.CompressRsp(resp));
