@@ -24,6 +24,7 @@ namespace ServerLib.Controllers
         {
             public string MatchId;
             public string CreatorId;
+            public bool IsScav;
             public List<UserStruct> Users;
             public string Ip;
             public int Port;
@@ -76,6 +77,7 @@ namespace ServerLib.Controllers
             matchData.Port = int.Parse(joinMatch.servers[0].port);
             matchData.RaidMode = ERaidMode.Online;
             matchData.Sid = $"{matchData.Ip}_{matchData.Port}-Match-{Matches.Count}";
+            matchData.IsScav = joinMatch.savage;
             Debug.PrintDebug($"Match [{matchData.MatchId}] created for {ProfileId}", "MatchController");
             Matches[matchData.MatchId] = matchData;
             SendStart(matchData.MatchId, matchData.Ip, matchData.Port);
@@ -83,7 +85,7 @@ namespace ServerLib.Controllers
 
         public static void SendStart(string groupId, string Ip, int Port)
         {
-            var ws = NewWebSocket.GetServer();
+            var ws = WebSocket.GetServer();
             if (ws != null)
             {
                 var sid = $"{Ip}_{Port}-Match-{Matches.Count}";
@@ -101,6 +103,7 @@ namespace ServerLib.Controllers
                     user.profileToken = token;
                     UserConfirmed confirmed = new()
                     {
+                        
                         profileid = "pmc"+user.sessionId,
                         profileToken = token,
                         status = "Busy",
@@ -114,6 +117,8 @@ namespace ServerLib.Controllers
                         raidMode = match.RaidMode.ToString(),
                         additional_info = new() { }
                     };
+                    if (match.IsScav)
+                        confirmed.profileid = "scav" + user.sessionId;
                     ws.MulticastText(JsonConvert.SerializeObject(confirmed));
                     match.Users[i] = user;
                 }

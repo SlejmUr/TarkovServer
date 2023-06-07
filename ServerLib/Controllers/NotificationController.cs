@@ -60,6 +60,7 @@ namespace ServerLib.Controllers
                 eventId = "ping",
             };
         }
+
         public static Json.Classes.Notification CreateNewNotification(Profile.Message message)
         {
             return new()
@@ -76,7 +77,7 @@ namespace ServerLib.Controllers
             if (WebSocket.ConnectedSessions.TryGetValue(SessionId, out var ip))
             {
                 Debug.PrintInfo("Notification Sent!", "Notification");
-                return WebSocket.SendToClient(ip, JsonConvert.SerializeObject(notification, Formatting.Indented));
+                return WebSocket.GetServer().MulticastText(JsonConvert.SerializeObject(notification, Formatting.Indented));
 
             }
             else

@@ -75,7 +75,7 @@ namespace ServerLib
             CharacterController.Init();
             Controllers.QuestController.Init();
             Start(Ip, port);
-            NewWebSocket.Start(Ip, port + 1);
+            WebSocket.Start(Ip, port + 1);
             if (!ArgumentHandler.DontLoadPlugin)
             {
                 PluginLoader.LoadPlugins();
@@ -101,7 +101,7 @@ namespace ServerLib
             PluginLoader.UnloadPlugins();
             ConfigController.Save();
             HTTPServer.Stop();
-            NewWebSocket.Stop();
+            WebSocket.Stop();
             IsAlreadyQuited = true;
         }
     }

@@ -2,6 +2,7 @@
 using ServerLib.Json.Classes;
 using ServerLib.Utilities;
 using ServerLib.Utilities.Helpers;
+using System.Linq;
 
 namespace ServerLib.Controllers
 {
@@ -23,6 +24,10 @@ namespace ServerLib.Controllers
             ProfileController.ReloadProfiles();
             foreach (var profile in ProfileController.ProfilesDict)
             {
+                //  Need Delete then Readd because it can be used
+                if (ProfileAddonsDict.ContainsKey(profile.Key))
+                    ProfileAddons.Remove(profile.Value.ProfileAddon);
+
                 if (profile.Value.ProfileAddon == null)
                 {
                     profile.Value.ProfileAddon = new()
@@ -32,13 +37,24 @@ namespace ServerLib.Controllers
                         FriendRequestOutbox = new(),
                         Friends = new()
                         {
-                            Friends = new(),
+                            Friends = new() { },
                             Ignore = new(),
                             InIgnoreList = new()
                         }
                     };
                     SaveHandler.SaveAddon(profile.Key, profile.Value.ProfileAddon);
                 }
+                if (profile.Value.ProfileAddon.Friends == null)
+                {
+                    profile.Value.ProfileAddon.Friends = new()
+                    {
+                        Friends = new() { },
+                        Ignore = new(),
+                        InIgnoreList = new()
+                    };
+                    SaveHandler.SaveAddon(profile.Key, profile.Value.ProfileAddon);
+                }
+                
                 ProfileAddonsDict.TryAdd(profile.Key, profile.Value.ProfileAddon);
                 if (!ProfileAddons.Contains(profile.Value.ProfileAddon))
                     ProfileAddons.Add(profile.Value.ProfileAddon);

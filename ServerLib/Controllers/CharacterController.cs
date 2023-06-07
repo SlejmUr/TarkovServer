@@ -138,7 +138,8 @@ namespace ServerLib.Controllers
             {
                 return new()
                 { 
-                   Id = character.Aid,
+                   Id = character.Id,
+                   Aid = character.Aid,
                    Info = new()
                    { 
                         Nickname = character.Info.Nickname,
