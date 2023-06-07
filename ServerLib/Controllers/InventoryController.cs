@@ -1,4 +1,5 @@
 ﻿using ServerLib.Handlers;
+using ServerLib.Json;
 using ServerLib.Json.Classes;
 using ServerLib.Utilities;
 
@@ -125,7 +126,7 @@ namespace ServerLib.Controllers
                 }
 
                 item.SlotId = freeslot.SlotId;
-                item.Location = new()
+                Item._Location itemLocation = new()
                 {
                     X = freeslot.X,
                     Y = freeslot.Y,
@@ -134,9 +135,12 @@ namespace ServerLib.Controllers
 
                 if (ItemController.IsSearchableItem(itemData))
                 {
-                    item.Location.IsSearched = (bool)ConfigController.Configs.Gameplay.Items.AllExamined.Enabled;
+                    itemLocation.IsSearched = (bool)ConfigController.Configs.Gameplay.Items.AllExamined.Enabled;
                 }
+                Converters.Location location = new();
+                location.ItemLocation = itemLocation;
 
+                item.Location = location;
                 ret = (AdjustItemForPurchase(ret, item, itemData, ItemController.PrepareChildrenForAddItem(ParentId, childrens)));
             }
             character.Inventory.Items.AddRange(ret);

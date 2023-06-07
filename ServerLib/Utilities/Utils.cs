@@ -1,5 +1,6 @@
 ﻿using EFT;
 using NetCoreServer;
+using ServerLib.Web;
 using static ServerLib.Web.HTTPServer;
 
 namespace ServerLib.Utilities
@@ -7,13 +8,14 @@ namespace ServerLib.Utilities
     public class Utils
     {
         #region Session Stuff
+        internal static int ReqId = 0;
         public static bool SendUnityResponse(HttpsBackendSession session, string resp)
         {
-            var rsp = session.Response.MakeGetResponse(resp, "application/json");
-            rsp = rsp.SetHeader("Content-Type", "application/json");
-            rsp = rsp.SetHeader("Content-Encoding", "deflate");
-            session.SendResponse(rsp);
-            return true;
+            var url = session.LastRequest().Url.Replace("/","_");
+            string SessionId = GetSessionId(session.Headers);
+            File.WriteAllText("ServerResponses/" + ReqId + "_" + SessionId + url + ".json", resp); 
+            ReqId++;
+            return SendUnityResponse(session, ResponseControl.CompressRsp(resp));
         }
 
         public static bool SendUnityResponse(HttpsBackendSession session, byte[] resp)
@@ -24,6 +26,7 @@ namespace ServerLib.Utilities
             session.SendResponse(rsp);
             return true;
         }
+
         public static void PrintRequest(HttpRequest req, HttpsBackendSession session)
         {
             Dictionary<string, string> Headers = new();
@@ -38,6 +41,7 @@ namespace ServerLib.Utilities
             string SessionId = GetSessionId(Headers);
             Console.WriteLine("[" + time + "] " + from_ip + " | " + SessionId + " = " + fullurl);
         }
+
         public static string GetSessionId(Dictionary<string, string> HttpHeaders)
         {
             if (HttpHeaders.ContainsKey("Cookie"))

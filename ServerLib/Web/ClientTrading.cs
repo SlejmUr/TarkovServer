@@ -14,8 +14,7 @@ namespace ServerLib.Web
         {
             Utils.PrintRequest(request, session);
             string resp = ResponseControl.GetBody(JsonConvert.SerializeObject(TraderController.GetTradersInfo()));
-            var rsp = ResponseControl.CompressRsp(resp);
-            Utils.SendUnityResponse(session, rsp);
+            Utils.SendUnityResponse(session, resp);
             return true;
         }
 
@@ -24,8 +23,7 @@ namespace ServerLib.Web
         {
             Utils.PrintRequest(request, session);
             string resp = ResponseControl.GetBody(JsonConvert.SerializeObject(TraderController.GetTradersInfo()));
-            var rsp = ResponseControl.CompressRsp(resp);
-            Utils.SendUnityResponse(session, rsp);
+            Utils.SendUnityResponse(session, resp);
             return true;
         }
 
@@ -37,8 +35,7 @@ namespace ServerLib.Web
             string SessionId = Utils.GetSessionId(session.Headers);
             var assort = JsonConvert.SerializeObject(TraderController.GenerateFilteredAssort(SessionId, traderId));
             string resp = ResponseControl.GetBody(assort);
-            var rsp = ResponseControl.CompressRsp(resp);
-            Utils.SendUnityResponse(session, rsp);
+            Utils.SendUnityResponse(session, resp);
             return true;
         }
 
@@ -47,9 +44,13 @@ namespace ServerLib.Web
         {
             Utils.PrintRequest(request, session);
             string SessionId = Utils.GetSessionId(session.Headers);
-            string resp = ResponseControl.GetBody(File.ReadAllText(SaveHandler.GetStoragePath(SessionId)));
-            var rsp = ResponseControl.CompressRsp(resp);
-            Utils.SendUnityResponse(session, rsp);
+            var x = new GClass601()
+            {
+                _id = "pmc" + SessionId,
+                suites = ProfileController.GetProfile(SessionId).Suits.ToArray()
+            };
+            string resp = ResponseControl.GetBody(JsonConvert.SerializeObject(x));
+            Utils.SendUnityResponse(session, resp);
             return true;
         }
 
@@ -61,8 +62,7 @@ namespace ServerLib.Web
             var suits = JsonConvert.SerializeObject(TraderController.GetSuitsByTrader(id));
 
             string resp = ResponseControl.GetBody(suits);
-            var rsp = ResponseControl.CompressRsp(resp);
-            Utils.SendUnityResponse(session, rsp);
+            Utils.SendUnityResponse(session, resp);
             return true;
         }
     }

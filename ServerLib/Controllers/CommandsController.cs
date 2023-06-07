@@ -2,6 +2,7 @@
 using DB = ServerLib.Utilities.Debug;
 using System.Diagnostics;
 using ServerLib.Json.Enums;
+using Newtonsoft.Json;
 
 namespace ServerLib.Controllers
 {
@@ -18,7 +19,9 @@ namespace ServerLib.Controllers
             { "setpermission" , SetPerm },
             { "ban" , Ban },
             { "unban" , UnBan },
-            { "debug" , DebugEnable }
+            { "debug" , DebugEnable },
+            { "listmatches" , ListMatches },
+             { "deletematches" , DeleteMatches }
         };
         public static Dictionary<string, EPerms> CommandsPermission = new()
         {
@@ -31,7 +34,9 @@ namespace ServerLib.Controllers
             { "setpermission" , EPerms.Mod },
             { "ban" , EPerms.Mod },
             { "unban" , EPerms.Mod },
-            { "debug" , EPerms.Console }
+            { "debug" , EPerms.Console },
+            { "listmatches" , EPerms.User },
+            { "deletematches" , EPerms.Mod }
         };
 
         public static void Run(string CommandName)
@@ -198,6 +203,17 @@ namespace ServerLib.Controllers
             profile.ProfileAddon.Permission = Json.Enums.EPerms.User;
             SaveHandler.SaveAddon(AID, profile.ProfileAddon);
             DB.PrintInfo($"User {AID} is now Unbanned");
+        }
+
+        public static void ListMatches(object obj)
+        {
+            var maches = JsonConvert.SerializeObject(MatchController.Matches);
+            DB.PrintInfo($"Matches: {maches}");
+        }
+        public static void DeleteMatches(object obj)
+        {
+            MatchController.Matches.Clear();
+            DB.PrintInfo($"Matches Cleared!");
         }
     }
 }

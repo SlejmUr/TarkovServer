@@ -59,7 +59,7 @@ namespace ServerLib.Utilities
             switch (type)
             {
                 case "warning":
-                    return ConsoleColor.Yellow;
+                    return ConsoleColor.DarkYellow;
                 case "error":
                     return ConsoleColor.DarkRed;
                 case "debug":

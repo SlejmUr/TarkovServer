@@ -1,4 +1,5 @@
-﻿using ServerLib.Json.Classes;
+﻿using Newtonsoft.Json;
+using ServerLib.Json.Classes;
 
 namespace ServerLib.Json.Helpers
 {
@@ -19,6 +20,17 @@ namespace ServerLib.Json.Helpers
                 Username = login.username,
                 Password = login.password
             };
+        }
+
+        public static string FromCharacterBase(this Character.Base @base)
+        {
+           return JsonConvert.SerializeObject(@base, new JsonConverter[] { Converters.ItemLocationConverter.Singleton });
+        }
+
+        public static Character.Base ToCharacterBase(this string file)
+        {
+            return JsonConvert.DeserializeObject<Character.Base>(File.ReadAllText(file), new JsonConverter[] { Converters.ItemLocationConverter.Singleton });
+
         }
     }
 }

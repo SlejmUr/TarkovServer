@@ -13,8 +13,7 @@ namespace ServerLib.Web
         public static bool SSBotMaxCap(HttpRequest request, HttpsBackendSession session)
         {
             Utils.PrintRequest(request, session);
-            var resp = ResponseControl.CompressRsp("20");
-            return Utils.SendUnityResponse(session, resp);
+            return Utils.SendUnityResponse(session, "20");
         }
 
         [HTTP("GET", "/singleplayer/settings/raid/menu")]
@@ -22,7 +21,7 @@ namespace ServerLib.Web
         {
             Utils.PrintRequest(request, session);
             var defaultraid = JsonConvert.SerializeObject(ConfigController.Configs.Gameplay.Raid.DefaultRaidSettings);
-            var resp = ResponseControl.CompressRsp(ResponseControl.NoBody(defaultraid));
+            var resp = ResponseControl.NoBody(defaultraid);
             return Utils.SendUnityResponse(session, resp);
         }
 
@@ -32,8 +31,8 @@ namespace ServerLib.Web
             string botname = session.HttpParam["botname"];
             string difficulty = session.HttpParam["difficulty"];
             Utils.PrintRequest(request, session);
-            var difff = BotController.GetBotDifficulty(botname, difficulty);
-            var resp = ResponseControl.CompressRsp(ResponseControl.NoBody(difff));
+            //var difff = BotController.GetBotDifficulty(botname, difficulty);
+            var resp = ResponseControl.NullResponse();
             return Utils.SendUnityResponse(session, resp);
         }
 
@@ -42,7 +41,7 @@ namespace ServerLib.Web
         {
             Utils.PrintRequest(request, session);
             var defaultraid = JsonConvert.SerializeObject(ConfigController.Configs.Gameplay.Raid.AirdropSettings);
-            var resp = ResponseControl.CompressRsp(ResponseControl.NoBody(defaultraid));
+            var resp = ResponseControl.NoBody(defaultraid);
             return Utils.SendUnityResponse(session, resp);
         }
     }

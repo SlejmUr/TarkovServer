@@ -66,7 +66,7 @@ namespace ServerLib.Web
             Utils.PrintRequest(request, session);
             string resp = AccountController.GetReservedNickname(SessionId);
             // RPS
-            var rsp = ResponseControl.CompressRsp(ResponseControl.GetBody($"\"{resp}\""));
+            var rsp = ResponseControl.GetBody($"\"{resp}\"");
             Utils.SendUnityResponse(session, rsp);
             return true;
         }
@@ -103,8 +103,7 @@ namespace ServerLib.Web
                 resp = ResponseControl.GetBody("null", 256, "The nickname is too short");
             }
             // RPS
-            var rsp = ResponseControl.CompressRsp(resp);
-            Utils.SendUnityResponse(session, rsp);
+            Utils.SendUnityResponse(session, resp);
             return true;
         }
 
@@ -118,7 +117,7 @@ namespace ServerLib.Web
 
             CharacterController.ChangeVoice(Uncompressed, SessionId);
             // RPS
-            var rsp = ResponseControl.CompressRsp(ResponseControl.NullResponse());
+            var rsp = ResponseControl.NullResponse();
             Utils.SendUnityResponse(session, rsp);
             return true;
         }
@@ -131,8 +130,7 @@ namespace ServerLib.Web
             Utils.PrintRequest(request, session);
             string resp = "";
             // RPS
-            var rsp = ResponseControl.CompressRsp(resp);
-            Utils.SendUnityResponse(session, rsp);
+            Utils.SendUnityResponse(session, resp);
             return true;
         }
 

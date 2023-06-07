@@ -1,7 +1,11 @@
 ﻿using EFT;
+using MirzaBeig.Shaders.ImageEffects;
 using Newtonsoft.Json;
+using ServerLib.Generators;
 using ServerLib.Handlers;
+using ServerLib.Json;
 using ServerLib.Json.Classes;
+using ServerLib.Json.Helpers;
 using ServerLib.Utilities;
 using ServerLib.Utilities.Helpers;
 
@@ -69,7 +73,6 @@ namespace ServerLib.Controllers
 
             account.Wipe = false;
             SaveHandler.SaveAccount(SessionId, account);
-
             var character = DatabaseController.DataBase.Characters.CharacterBase[createReq.Side.ToLower()];
             var ID = Utils.CreateNewID();
             var time = TimeHelper.UnixTimeNow_Int();
@@ -86,10 +89,11 @@ namespace ServerLib.Controllers
             character.Customization.Head = createReq.HeadId;
             character.Quests = new();
             character.RepeatableQuests = new();
-            SaveHandler.Save(SessionId, "Character", SaveHandler.GetCharacterPath(SessionId), JsonConvert.SerializeObject(character));
-            var storage = DatabaseController.DataBase.Characters.CharacterStorage[createReq.Side];
+            character.Info.SavageLockTime = 1000000;
+            SaveHandler.Save(SessionId, "Character", SaveHandler.GetCharacterPath(SessionId), JsonHelper.FromCharacterBase(character));
+            var storage = DatabaseController.DataBase.Characters.CharacterStorage[createReq.Side.ToLower()];
             SaveHandler.Save(SessionId, "Storage", SaveHandler.GetStoragePath(SessionId), JsonConvert.SerializeObject(storage));
-            if (!Characters.ContainsKey(SessionId))
+            if (!Characters.ContainsKey(SessionId + "_pmc"))
             {
                 Characters.Add(SessionId + "_pmc", character);
             }
@@ -98,7 +102,20 @@ namespace ServerLib.Controllers
                 Characters.Remove(SessionId + "_pmc");
                 Characters.Add(SessionId + "_pmc", character);
             }
+
             //Generate scav
+            var scav = Scav.Generate(SessionId);
+            SaveHandler.Save(SessionId, "Scav", SaveHandler.GetScavPath(SessionId), JsonHelper.FromCharacterBase(scav));
+            if (!Characters.ContainsKey(SessionId + "_scav"))
+            {
+                Characters.Add(SessionId + "_scav", scav);
+            }
+            else
+            {
+                Characters.Remove(SessionId + "_scav");
+                Characters.Add(SessionId + "_scav", scav);
+            }
+            
             //Item ReID
             Debug.PrintInfo($"Character Created with Id {SessionId}!", "CHARACTER");
         }
@@ -121,7 +138,8 @@ namespace ServerLib.Controllers
             {
                 return new()
                 { 
-                   Id = character.Aid,
+                   Id = character.Id,
+                   Aid = character.Aid,
                    Info = new()
                    { 
                         Nickname = character.Info.Nickname,
@@ -151,19 +169,27 @@ namespace ServerLib.Controllers
             List<Character.Base> ouptut = new();
             if (!AccountController.IsWiped(SessionId))
             {
+                var scav = JsonHelper.ToCharacterBase("Files/bot/playerScav.json");
+                scav.Aid = SessionId;
+                scav.Id = "scav" + SessionId;
+                scav.Info.RegistrationDate = TimeHelper.UnixTimeNow_Int();
+                /*
                 var scav = GetScavCharacter(SessionId);
                 if (scav != null) 
                 {
                     ouptut.Add(scav);
-                }
+                }*/
                 var character = GetPmcCharacter(SessionId);
                 if (character != null)
                 {
                     ouptut.Add(character);
-                }              
+                    ouptut.Add(scav);
+                }
+
+                
             }
 
-            return JsonConvert.SerializeObject(ouptut);
+            return JsonConvert.SerializeObject(ouptut, new JsonConverter[] { Converters.ItemLocationConverter.Singleton });
         }
 
         public static List<Character.Base> SearchNickname(string Nickname)

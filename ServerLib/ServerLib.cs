@@ -21,13 +21,22 @@ namespace ServerLib
         /// <param name="LoadPlugin">Can Load Plugins</param>
         public static void InitAll(string Ip, int port)
         {
+            if (!Directory.Exists("ServerResponses"))
+            {
+                Directory.CreateDirectory("ServerResponses");
+            }
+            else
+            {
+                Directory.Delete("ServerResponses", true);
+                Directory.CreateDirectory("ServerResponses");
+            }
             string _ip_port = $"https://{Ip}:{port}";
             IP = _ip_port;
             ip_port = $"{Ip}:{port}";
             CertHelper.Make(IPAddress.Parse(Ip), _ip_port);
             DatabaseController.Init();
             ProfileController.Init();
-            Controllers.DialogController.Init();
+            Controllers.DialogueController.Init();
             AccountController.Init();
             CharacterController.Init();
             Start(Ip, port);
@@ -44,6 +53,15 @@ namespace ServerLib
         /// <param name="LoadPlugin">Can Load Plugins</param>
         public static void Init()
         {
+            if (!Directory.Exists("ServerResponses"))
+            {
+                Directory.CreateDirectory("ServerResponses");
+            }
+            else
+            {
+                Directory.Delete("ServerResponses", true);
+                Directory.CreateDirectory("ServerResponses");
+            }
             DatabaseController.Init();
             var Ip = ConfigController.Configs.Server.Ip;
             var port = ConfigController.Configs.Server.Port;
@@ -52,9 +70,10 @@ namespace ServerLib
             ip_port = $"{Ip}:{port}";
             CertHelper.Make(IPAddress.Parse(Ip), _ip_port);
             ProfileController.Init();
-            Controllers.DialogController.Init();
+            Controllers.DialogueController.Init();
             AccountController.Init();
             CharacterController.Init();
+            Controllers.QuestController.Init();
             Start(Ip, port);
             WebSocket.Start(Ip, port + 1);
             if (!ArgumentHandler.DontLoadPlugin)

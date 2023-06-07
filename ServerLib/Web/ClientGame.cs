@@ -26,8 +26,7 @@ namespace ServerLib.Web
             {
                 resp = ResponseControl.GetBody("{\"utc_time\":" + TimeThingy + "}", 999, "Profile Not Found!!");
             }
-            var rsp = ResponseControl.CompressRsp(resp);
-            Utils.SendUnityResponse(session, rsp);
+            Utils.SendUnityResponse(session, resp);
             return true;
         }
 
@@ -48,8 +47,7 @@ namespace ServerLib.Web
                 KeepAliveController.Main(SessionId);
                 resp = ResponseControl.GetBody("{\"msg\":\"OK\", \"utc_time\":" + TimeThingy + "}");
             }
-            var rsp = ResponseControl.CompressRsp(resp);
-            Utils.SendUnityResponse(session, rsp);
+            Utils.SendUnityResponse(session, resp);
             return true;
         }
         [HTTP("POST", "/client/game/version/validate")]
@@ -68,7 +66,7 @@ namespace ServerLib.Web
             {
                 Debug.PrintDebug($"Unknown User connected with client version {version}");
             }
-            var rsp = ResponseControl.CompressRsp(ResponseControl.NullResponse());
+            var rsp = ResponseControl.NullResponse();
             Utils.SendUnityResponse(session, rsp);
             return true;
         }
@@ -119,7 +117,7 @@ namespace ServerLib.Web
                 twitchEventMember = false
             };
 
-            var rsp = ResponseControl.CompressRsp(ResponseControl.GetBody(JsonConvert.SerializeObject(game)));
+            var rsp = ResponseControl.GetBody(JsonConvert.SerializeObject(game));
             Utils.SendUnityResponse(session, rsp);
             return true;
         }
@@ -131,7 +129,7 @@ namespace ServerLib.Web
             Utils.PrintRequest(request, session);
             string SessionId = Utils.GetSessionId(session.Headers);
             AccountController.SessionLogout(SessionId);
-            var rsp = ResponseControl.CompressRsp(ResponseControl.GetBody("{status: \"ok\"}"));
+            var rsp = ResponseControl.GetBody("{status: \"ok\"}");
             Utils.SendUnityResponse(session, rsp);
             return true;
         }
@@ -144,7 +142,7 @@ namespace ServerLib.Web
             string Uncompressed = ResponseControl.DeCompressReq(request.BodyBytes);
             var conditions = JsonConvert.DeserializeObject<List<WaveInfo>>(Uncompressed);
             // RPS
-            var rsp = ResponseControl.CompressRsp("{}");
+            var rsp = "{}";
             Utils.SendUnityResponse(session, rsp);
             return true;
         }

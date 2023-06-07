@@ -19,10 +19,10 @@ namespace ServerLib.Json.Classes
             public string SlotId { get; set; }
 
             [JsonProperty("children", DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public List<Item.Base> Children { get; set; }
+            public List<Base> Children { get; set; }
 
             [JsonProperty("location", DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public _Location Location { get; set; }
+            public Converters.Location Location { get; set; }
 
             [JsonProperty("upd", DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public _Upd Upd { get; set; }

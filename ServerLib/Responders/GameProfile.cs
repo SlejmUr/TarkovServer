@@ -7,17 +7,18 @@ namespace ServerLib.Responders
 {
     public static class GameProfile
     {
-        public static byte[] Template(string SessionId)
+        public static string Template(string SessionId)
         {
-            return CompressRsp(GetBody(JsonConvert.SerializeObject("")));
+            return GetBody(JsonConvert.SerializeObject(""));
         }
-        public static byte[] ProfileStatus(string SessionId)
+        public static string ProfileStatus(string SessionId)
         {
             var character = CharacterController.GetPmcCharacter(SessionId);
             if (character == null)
             {
                 Debug.PrintError("Character not found!", "ProfileStatus");
             }
+
             Json.Classes.ProfileStatus.Response response = new()
             {
                 maxPveCountExceeded = false,
@@ -25,30 +26,68 @@ namespace ServerLib.Responders
                 {
                     new()
                     {
-                        profileid = character.Savage,
+                        profileid = character.Id,
                         profileToken = null,
                         status = "Free",
                         sid = "",
                         ip = "",
                         port = 0
                     }
-                    ,
-                    new()
-                    {
-                        profileid = character.Aid,
-                        profileToken = null,
-                        status = "Free",
-                        sid = "",
-                        ip = "",
-                        port = 0
-                    }
-
                 }
             };
-            return CompressRsp(GetBody(JsonConvert.SerializeObject(response)));
+
+            var match = MatchController.GetMatch(SessionId);
+            if (match.IsNew) 
+            {
+                MatchController.Matches.Remove(match.matchData.MatchId);
+            }
+            if (!match.IsNew && !match.matchData.IsScav)
+            {
+                response.profiles[0].status = "MatchWait";
+                response.profiles[0].profileToken = match.matchData.Users.Where(x => x.sessionId == SessionId).FirstOrDefault().profileToken;
+                response.profiles[0].ip = match.matchData.Ip;
+                response.profiles[0].port = match.matchData.Port;
+                response.profiles[0].location = match.matchData.Location;
+                response.profiles[0].raidMode = match.matchData.RaidMode.ToString();
+                response.profiles[0].mode = "deathmatch";
+                response.profiles[0].sid = match.matchData.Sid;
+                response.profiles[0].shortId = "VD0ABA";
+                response.profiles[0].version = "live";
+                response.profiles[0].additional_info = new();
+            }
+
+            if (!string.IsNullOrEmpty(character.Savage))
+            {
+                response.profiles.Add(new()
+                {
+                    profileid = character.Savage,
+                    profileToken = null,
+                    status = "Free",
+                    sid = "",
+                    ip = "",
+                    port = 0
+                });
+
+                if (!match.IsNew && match.matchData.IsScav)
+                {
+                    response.profiles[1].status = "MatchWait";
+                    response.profiles[1].profileToken = match.matchData.Users.Where(x => x.sessionId == SessionId).FirstOrDefault().profileToken;
+                    response.profiles[1].ip = match.matchData.Ip;
+                    response.profiles[1].port = match.matchData.Port;
+                    response.profiles[1].location = match.matchData.Location;
+                    response.profiles[1].raidMode = match.matchData.RaidMode.ToString();
+                    response.profiles[1].mode = "deathmatch";
+                    response.profiles[1].sid = match.matchData.Sid;
+                    response.profiles[1].shortId = "VD0ABA";
+                    response.profiles[1].version = "live";
+                    response.profiles[1].additional_info = new();
+                }
+            }
+
+            return GetBody(JsonConvert.SerializeObject(response));
         }
 
-        public static byte[] ProfileNicknameValidate(string Uncompressed)
+        public static string ProfileNicknameValidate(string Uncompressed)
         {
             var nickname = AccountController.ValidateNickname(JsonConvert.DeserializeObject<Json.Classes.Nickname>(Uncompressed));
             var resp = GetBody("{status: \"ok\"}");
@@ -61,16 +100,15 @@ namespace ServerLib.Responders
             {
                 resp = GetBody("null", 256, "The nickname is too short");
             }
-            return CompressRsp(resp);
+            return resp;
         }
 
-        public static byte[] ProfileList(string SessionId)
+        public static string ProfileList(string SessionId)
         {
-            string resp = CharacterController.GetCompleteCharacter(SessionId);
-            return CompressRsp(GetBody(resp));
+            return GetBody(CharacterController.GetCompleteCharacter(SessionId));
         }
 
-        public static byte[] ProfileSearch(string Uncompressed)
+        public static string ProfileSearch(string Uncompressed)
         {
             var nickname = JsonConvert.DeserializeObject<Json.Classes.Nickname>(Uncompressed);
             var searched = CharacterController.SearchNickname(nickname.nickname);
@@ -91,28 +129,28 @@ namespace ServerLib.Responders
                 responses.Add(rsp);
             }
 
-            return CompressRsp(GetBody(JsonConvert.SerializeObject(responses)));
+            return GetBody(JsonConvert.SerializeObject(responses));
         }
 
-        public static byte[] ProfileSelect(string SessionId)
+        public static string ProfileSelect(string SessionId)
         {
             Json.Classes.SelectProfile.Response response = new()
             { 
                 status = "ok",
-                notifierServer = "",
+                notifierServer = ServerLib.IP + "/notifierServer/" + SessionId,
                 notifier = GetNotifier(SessionId)
             };
-            return CompressRsp(GetBody(JsonConvert.SerializeObject(response)));
+            return GetBody(JsonConvert.SerializeObject(response));
         }
 
-        public static byte[] ProfileCreate(string SessionId, string Uncompressed)
+        public static string ProfileCreate(string SessionId, string Uncompressed)
         {
             CharacterController.CreateCharacter(SessionId, Uncompressed);
             Json.Classes.UID rsp = new()
             {
-                uid = SessionId
+                uid = "pmc" + SessionId
             };
-            return CompressRsp(GetBody(JsonConvert.SerializeObject(rsp)));
+            return GetBody(JsonConvert.SerializeObject(rsp));
         }
     }
 }

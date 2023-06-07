@@ -1,6 +1,7 @@
 ﻿using ServerLib.Json.Classes;
 using Newtonsoft.Json;
 using ServerLib.Utilities;
+using ServerLib.Utilities.Helpers;
 
 namespace ServerLib.Controllers
 {
@@ -22,11 +23,26 @@ namespace ServerLib.Controllers
                 {
                     Debug.PrintWarn("No Location Value!", "GetAllLocation");
                 }
+                locbase.UnixDateTime = TimeHelper.UnixTimeNow_Int();
                 locbase.Loot = new();
                 lbase.locations.Add(locbase._Id, locbase);
             }
             return lbase;
+        }
 
+        public static Location.Base GetLocationLoot(GetLocation location)
+        {
+            Debug.PrintInfo($"Generating loot for location {location.locationId}", "GetLocationLoot");
+            var LocationBase = JsonConvert.DeserializeObject<Location.Base>(DatabaseController.DataBase.Location.Locations[location.locationId + "_base"]);
+            //var LocationLoot = JsonConvert.DeserializeObject<LooseLoot.Base>(DatabaseController.DataBase.Location.Locations[location.locationId + "_looseLoot"]);
+            LocationBase.UnixDateTime = TimeHelper.UnixTimeNow_Int();
+
+            var staticWeapons = DatabaseController.DataBase.Loot.staticContainers[location.locationId].staticWeapons;
+            foreach (var item in staticWeapons)
+            {
+                LocationBase.Loot.Add(item);
+            }
+            return LocationBase;
         }
     }
 }

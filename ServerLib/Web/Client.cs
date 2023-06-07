@@ -5,6 +5,7 @@ using ServerLib.Json.Classes;
 using ServerLib.Utilities;
 using ServerLib.Utilities.Helpers;
 using static ServerLib.Json.Classes.Profile;
+using static ServerLib.Json.Converters;
 using static ServerLib.Web.HTTPServer;
 
 namespace ServerLib.Web
@@ -34,8 +35,7 @@ namespace ServerLib.Web
                     resp = ResponseControl.GetBody("{ isvalid: false, latestVersion: \"" + server.Version + "\"}");
                 }
             }
-            var rsp = ResponseControl.CompressRsp(resp);
-            Utils.SendUnityResponse(session, rsp);
+            Utils.SendUnityResponse(session, resp);
             return true;
         }
 
@@ -44,8 +44,7 @@ namespace ServerLib.Web
         {
             Utils.PrintRequest(request, session);
             string resp = ResponseControl.GetBody("[]");
-            var rsp = ResponseControl.CompressRsp(resp);
-            Utils.SendUnityResponse(session, rsp);
+            Utils.SendUnityResponse(session, resp);
             return true;
         }
 
@@ -55,8 +54,7 @@ namespace ServerLib.Web
             Console.WriteLine("WebSocketAddress!!!!!!!");
             Utils.PrintRequest(request, session);
             string SessionId = Utils.GetSessionId(session.Headers);
-            var rsp = ResponseControl.CompressRsp(WebSocket.IpPort + SessionId);
-            Utils.SendUnityResponse(session, rsp);
+            Utils.SendUnityResponse(session, WebSocket.IpPort + SessionId);
             return true;
         }
 
@@ -66,9 +64,7 @@ namespace ServerLib.Web
             Utils.PrintRequest(request, session);
             string SessionId = Utils.GetSessionId(session.Headers);
             string resp = ResponseControl.GetBody(JsonConvert.SerializeObject(ResponseControl.GetNotifier(SessionId)));
-            Debug.PrintDebug(resp);
-            var rsp = ResponseControl.CompressRsp(resp);
-            Utils.SendUnityResponse(session, rsp);
+            Utils.SendUnityResponse(session, resp);
             return true;
         }
 
@@ -96,15 +92,13 @@ namespace ServerLib.Web
                 }
             };
             string resp = ResponseControl.GetBody(JsonConvert.SerializeObject(chatServerList));
-            var rsp = ResponseControl.CompressRsp(resp);
-            Utils.SendUnityResponse(session, rsp);
+            Utils.SendUnityResponse(session, resp);
             return true;
         }
 
         [HTTP("POST", "/client/server/list")]
         public static bool ClientServerList(HttpRequest request, HttpsBackendSession session)
         {
-
             Utils.PrintRequest(request, session);
             var server = ConfigController.Configs.Server;
             List<Server> servers = new()
@@ -112,12 +106,32 @@ namespace ServerLib.Web
                 new()
                 { 
                     Address = server.Ip,
-                    Port = $"{server.Port}"
+                    Port = $"{1000}"
                 }
             };
             string resp = ResponseControl.GetBody(JsonConvert.SerializeObject(servers));
-            var rsp = ResponseControl.CompressRsp(resp);
-            Utils.SendUnityResponse(session, rsp);
+            Utils.SendUnityResponse(session, resp);
+            return true;
+        }
+
+        [HTTP("POST", "/client/quest/list")]
+        public static bool ClientQuestList(HttpRequest request, HttpsBackendSession session)
+        {
+            Utils.PrintRequest(request, session);
+            try
+            {
+                var quests = Controllers.QuestController.GetQuests();
+                string resp = ResponseControl.GetBody(JsonConvert.SerializeObject(quests, new JsonConverter[]
+                    {
+                    QuestTargetConverter.Singleton
+                    }));
+                Utils.SendUnityResponse(session, resp);
+            }
+            catch (Exception ex)
+            {
+                Debug.PrintError(ex.ToString());
+            }
+
             return true;
         }
 
@@ -126,8 +140,7 @@ namespace ServerLib.Web
         {
             Utils.PrintRequest(request, session);
             string resp = ResponseControl.GetBody(File.ReadAllText("Files/others/items.json"));
-            var rsp = ResponseControl.CompressRsp(resp);
-            Utils.SendUnityResponse(session, rsp);
+            Utils.SendUnityResponse(session, resp);
             return true;
         }
 
@@ -136,8 +149,7 @@ namespace ServerLib.Web
         {
             Utils.PrintRequest(request, session);
             string resp = ResponseControl.GetBody(File.ReadAllText("Files/others/customization.json"));
-            var rsp = ResponseControl.CompressRsp(resp);
-            Utils.SendUnityResponse(session, rsp);
+            Utils.SendUnityResponse(session, resp);
             return true;
         }
 
@@ -145,7 +157,7 @@ namespace ServerLib.Web
         public static bool ClientGlobals(HttpRequest request, HttpsBackendSession session)
         {
             Utils.PrintRequest(request, session);
-            var rsp = ResponseControl.CompressRsp(ResponseControl.GetBody(File.ReadAllText("Files/static/globals.json")));
+            var rsp = ResponseControl.GetBody(File.ReadAllText("Files/static/globals.json"));
             Utils.SendUnityResponse(session, rsp);
             return true;
         }
@@ -154,7 +166,7 @@ namespace ServerLib.Web
         public static bool ClientSettings(HttpRequest request, HttpsBackendSession session)
         {
             Utils.PrintRequest(request, session);
-            var rsp = ResponseControl.CompressRsp(File.ReadAllText("Files/static/client.settings.json"));
+            var rsp = File.ReadAllText("Files/static/client.settings.json");
             Utils.SendUnityResponse(session, rsp);
             return true;
         }
@@ -165,8 +177,7 @@ namespace ServerLib.Web
             Utils.PrintRequest(request, session);
 
             string resp = ResponseControl.GetBody(DatabaseController.DataBase.Weather["sun"]);
-            var rsp = ResponseControl.CompressRsp(resp);
-            Utils.SendUnityResponse(session, rsp);
+            Utils.SendUnityResponse(session, resp);
             return true;
         }
 
@@ -175,10 +186,19 @@ namespace ServerLib.Web
         {
             Utils.PrintRequest(request, session);
             var json = JsonConvert.SerializeObject(LocationController.GetAllLocation());
-            File.WriteAllText("client_locations.json", json);
             string resp = ResponseControl.GetBody(json);
-            var rsp = ResponseControl.CompressRsp(resp);
-            Utils.SendUnityResponse(session, rsp);
+            Utils.SendUnityResponse(session, resp);
+            return true;
+        }
+
+        [HTTP("POST", "/client/location/getLocalloot")]
+        public static bool ClientLocationLocalLoot(HttpRequest request, HttpsBackendSession session)
+        {
+            Utils.PrintRequest(request, session);
+            var jsonreq = JsonConvert.DeserializeObject<GetLocation>(ResponseControl.DeCompressReq(request.BodyBytes));
+            var location =  LocationController.GetLocationLoot(jsonreq);
+            string resp = ResponseControl.GetBody(JsonConvert.SerializeObject(location));
+            Utils.SendUnityResponse(session, resp);
             return true;
         }
 
@@ -187,8 +207,7 @@ namespace ServerLib.Web
         {
             Utils.PrintRequest(request, session);
             string resp = ResponseControl.GetBody(JsonConvert.SerializeObject(CustomizationController.GetAccountCustomization()));
-            var rsp = ResponseControl.CompressRsp(resp);
-            Utils.SendUnityResponse(session, rsp);
+            Utils.SendUnityResponse(session, resp);
             return true;
         }
 
@@ -198,8 +217,7 @@ namespace ServerLib.Web
             Utils.PrintRequest(request, session);
             string SessionId = Utils.GetSessionId(session.Headers);
             string resp = ResponseControl.GetBody(JsonConvert.SerializeObject(DatabaseController.DataBase.Others.Templates));
-            var rsp = ResponseControl.CompressRsp(resp);
-            Utils.SendUnityResponse(session, rsp);
+            Utils.SendUnityResponse(session, resp);
             return true;
         }
 
@@ -217,8 +235,28 @@ namespace ServerLib.Web
             }
 
             string resp = ResponseControl.GetBody(JsonConvert.SerializeObject(ret));
-            var rsp = ResponseControl.CompressRsp(resp);
-            Utils.SendUnityResponse(session, rsp);
+            Utils.SendUnityResponse(session, resp);
+            return true;
+        }
+
+        [HTTP("POST", "/client/getMetricsConfig")]
+        public static bool ClientGetMetricsConfig(HttpRequest request, HttpsBackendSession session)
+        {
+            Utils.PrintRequest(request, session);
+            string SessionId = Utils.GetSessionId(session.Headers);
+            string resp = File.ReadAllText("Files/static/metrics.json");
+            Utils.SendUnityResponse(session, resp);
+            return true;
+        }
+
+        [HTTP("POST", "/client/putMetrics")]
+        public static bool ClientPutMetrics(HttpRequest request, HttpsBackendSession session)
+        {
+            Utils.PrintRequest(request, session);
+            string SessionId = Utils.GetSessionId(session.Headers);
+            File.WriteAllText("PutMetrics.json", ResponseControl.DeCompressReq(request.BodyBytes));
+            string resp = ResponseControl.NullResponse();
+            Utils.SendUnityResponse(session, resp);
             return true;
         }
     }

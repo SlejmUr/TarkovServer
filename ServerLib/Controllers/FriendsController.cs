@@ -1,6 +1,8 @@
-﻿using ServerLib.Json.Classes;
+﻿using ServerLib.Handlers;
+using ServerLib.Json.Classes;
 using ServerLib.Utilities;
 using ServerLib.Utilities.Helpers;
+using System.Linq;
 
 namespace ServerLib.Controllers
 {
@@ -20,26 +22,49 @@ namespace ServerLib.Controllers
         public static void GetAddonList()
         {
             ProfileController.ReloadProfiles();
-            foreach (var profile in ProfileController.Profiles)
+            foreach (var profile in ProfileController.ProfilesDict)
             {
-                ProfileAddonsDict.TryAdd(profile.Info.Id,profile.ProfileAddon);
-                ProfileAddons.Add(profile.ProfileAddon);
+                //  Need Delete then Readd because it can be used
+                if (ProfileAddonsDict.ContainsKey(profile.Key))
+                    ProfileAddons.Remove(profile.Value.ProfileAddon);
+
+                if (profile.Value.ProfileAddon == null)
+                {
+                    profile.Value.ProfileAddon = new()
+                    {
+                        Permission = Json.Enums.EPerms.User,
+                        FriendRequestInbox = new(),
+                        FriendRequestOutbox = new(),
+                        Friends = new()
+                        {
+                            Friends = new() { },
+                            Ignore = new(),
+                            InIgnoreList = new()
+                        }
+                    };
+                    SaveHandler.SaveAddon(profile.Key, profile.Value.ProfileAddon);
+                }
+                if (profile.Value.ProfileAddon.Friends == null)
+                {
+                    profile.Value.ProfileAddon.Friends = new()
+                    {
+                        Friends = new() { },
+                        Ignore = new(),
+                        InIgnoreList = new()
+                    };
+                    SaveHandler.SaveAddon(profile.Key, profile.Value.ProfileAddon);
+                }
+                
+                ProfileAddonsDict.TryAdd(profile.Key, profile.Value.ProfileAddon);
+                if (!ProfileAddons.Contains(profile.Value.ProfileAddon))
+                    ProfileAddons.Add(profile.Value.ProfileAddon);
             }
         }
 
         public static FriendList GetFriendList(string SessionId)
         {
+            GetAddonList();
             var account = ProfileAddonsDict[SessionId];
-            if (account.Friends == null)
-            {
-                account.Friends = new()
-                { 
-                    Friends = new(),
-                    Ignore = new(),
-                    InIgnoreList = new()
-                };
-            }
-
             return account.Friends;
         }
 
@@ -50,6 +75,7 @@ namespace ServerLib.Controllers
         /// <param name="FriendId">Friend SessionId/AccountId</param>
         public static void AddFriend(string SessionId, string FriendId)
         {
+            GetAddonList();
             var account = ProfileAddonsDict[SessionId];
             var friend = ProfileAddonsDict[FriendId];
             var account_pmc = CharacterController.GetPmcCharacter(SessionId);
@@ -64,6 +90,7 @@ namespace ServerLib.Controllers
 
         public static void MuteFriend(string SessionId, string FriendId)
         {
+            GetAddonList();
             var account = ProfileAddonsDict[SessionId];
             var friend = ProfileAddonsDict[FriendId];
 
@@ -76,6 +103,7 @@ namespace ServerLib.Controllers
 
         public static void UnMuteFriend(string SessionId, string FriendId)
         {
+            GetAddonList();
             var account = ProfileAddonsDict[SessionId];
             var friend = ProfileAddonsDict[FriendId];
 
@@ -93,6 +121,7 @@ namespace ServerLib.Controllers
         /// <param name="FriendId">Friend SessionId/AccountId</param>
         public static void RemoveFriend(string SessionId, string FriendId)
         {
+            GetAddonList();
             var account = ProfileAddonsDict[SessionId];
             var friend = ProfileAddonsDict[FriendId];
 
@@ -111,6 +140,7 @@ namespace ServerLib.Controllers
         /// <returns>RequestId</returns>
         public static string AddRequest(string SessionId, string addId)
         {
+            GetAddonList();
             var account = ProfileAddonsDict[SessionId];
             var friend = ProfileAddonsDict[addId];
 
@@ -136,6 +166,7 @@ namespace ServerLib.Controllers
         /// <returns>RequestId</returns>
         public static void RemoveRequest(string SessionId, string removeId)
         {
+            GetAddonList();
             var acc = ProfileAddonsDict[SessionId];
             var InBox = GetFriendsInbox(SessionId);
             var OutBox = GetFriendsOutbox(SessionId);
@@ -159,6 +190,7 @@ namespace ServerLib.Controllers
         /// <param name="SessionId">SessionId/AccountId</param>
         public static void AcceptAll(string SessionId)
         {
+            GetAddonList();
             List<FriendRequester> empty = new();
             List<string> addedAccounts = new();
 
@@ -199,6 +231,7 @@ namespace ServerLib.Controllers
         /// <returns>List of Friend Request</returns>
         public static List<FriendRequester> GetFriendsInbox(string SessionId)
         {
+            GetAddonList();
             var account = ProfileAddonsDict[SessionId];
             var ouput = account.FriendRequestInbox.ToList();
             return ouput;
@@ -211,6 +244,7 @@ namespace ServerLib.Controllers
         /// <returns>List of Friend Request</returns>
         public static List<FriendRequester> GetFriendsOutbox(string SessionId)
         {
+            GetAddonList();
             var account = ProfileAddonsDict[SessionId];
             var ouput = account.FriendRequestOutbox.ToList();
             return ouput;
@@ -224,6 +258,7 @@ namespace ServerLib.Controllers
         /// <returns>True | False</returns>
         public static bool IsBothFriend(string SessionId, string FriendId)
         {
+            GetAddonList();
             var account = ProfileAddonsDict[SessionId];
             var friend = ProfileAddonsDict[FriendId];
             if (account.Friends.Friends.Where(x => x.Id == FriendId || x.Aid == FriendId).Any())
@@ -244,6 +279,7 @@ namespace ServerLib.Controllers
         /// <returns>True | False</returns>
         public static bool IsFriend(string SessionId, string FriendId)
         {
+            GetAddonList();
             var account = ProfileAddonsDict[SessionId];
 
             if (account.Friends.Friends.Where(x => x.Id == FriendId || x.Aid == FriendId).Any())

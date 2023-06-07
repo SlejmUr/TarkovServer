@@ -10,27 +10,10 @@ namespace ServerLib.Json.Classes
         public class bot
         {
             public string Base { get; set; }
-            public string Settings { get; set; }
-            public Bots.BotNames Names { get; set; }
-            public Dictionary<string, List<string>> NamesDict { get; set; } = new();
             public string Appearance { get; set; }
             public string WeaponCache { get; set; }
-            public Dictionary<string, bots> Bots { get; set; } = new();
-            public class bots
-            {
-                public string Health { get; set; }
-                public string Loadout { get; set; }
-                public difficulty Difficulty { get; set; } = new();
-
-                public class difficulty
-                {
-                    public string Easy { get; set; }
-                    public string Normal { get; set; }
-                    public string Hard { get; set; }
-                    public string Impossible { get; set; }
-                    public string Custom { get; set; }
-                }
-            }
+            public Dictionary<string, Bots.BotType> Types { get; set; } = new();
+        
         }
         public characters Characters { get; set; } = new();
         public class characters

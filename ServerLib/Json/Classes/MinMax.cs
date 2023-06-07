@@ -2,7 +2,7 @@
 {
     public class MinMax
     {
-        public static int Min { get; set; }
-        public static int Max { get; set; }
+        public double Min { get; set; }
+        public double Max { get; set; }
     }
 }

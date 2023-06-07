@@ -33,6 +33,15 @@ namespace ServerLib.Json
             public static implicit operator AimSensitivity(double[][] DoubleArrayArray) => new AimSensitivity { DoubleArrayArray = DoubleArrayArray };
         }
 
+        public partial struct Location
+        {
+            public Item._Location ItemLocation;
+            public long? IntLocation;
+
+            public static implicit operator Location(Item._Location ItemLocation) => new Location { ItemLocation = ItemLocation };
+            public static implicit operator Location(long IntLocation) => new Location { IntLocation = IntLocation };
+        }
+
         public class AimSensitivityConverter : JsonConverter
         {
             public override bool CanConvert(Type t) => t == typeof(AimSensitivity) || t == typeof(AimSensitivity?);
@@ -70,7 +79,6 @@ namespace ServerLib.Json
 
             public static readonly AimSensitivityConverter Singleton = new AimSensitivityConverter();
         }
-
         public class EffectsHealthUnionConverter : JsonConverter
         {
             public override bool CanConvert(Type t) => t == typeof(EffectsHealthUnion) || t == typeof(EffectsHealthUnion?);
@@ -107,8 +115,42 @@ namespace ServerLib.Json
 
             public static readonly EffectsHealthUnionConverter Singleton = new EffectsHealthUnionConverter();
         }
+        public class ItemLocationConverter : JsonConverter
+        {
+            public override bool CanConvert(Type t) => t == typeof(Location) || t == typeof(Location?);
 
+            public override object ReadJson(JsonReader reader, Type t, object existingValue, JsonSerializer serializer)
+            {
+                switch (reader.TokenType)
+                {
+                    case JsonToken.StartObject:
+                        var objectValue = serializer.Deserialize<Item._Location>(reader);
+                        return new Location { ItemLocation = objectValue };
+                    case JsonToken.Integer:
+                        var intValue = serializer.Deserialize<long>(reader);
+                        return new Location { IntLocation = intValue };
+                }
+                throw new Exception("Cannot unmarshal type Location");
+            }
 
+            public override void WriteJson(JsonWriter writer, object untypedValue, JsonSerializer serializer)
+            {
+                var value = (Location)untypedValue;
+                if (value.IntLocation != null)
+                {
+                    serializer.Serialize(writer, value.IntLocation.Value);
+                    return;
+                }
+                if (value.ItemLocation != null)
+                {
+                    serializer.Serialize(writer, value.ItemLocation);
+                    return;
+                }
+                throw new Exception("Cannot marshal type Location");
+            }
+
+            public static readonly ItemLocationConverter Singleton = new ItemLocationConverter();
+        }
         public class CustomizationItemPrefabConverter : JsonConverter
         {
             public override bool CanConvert(Type t) => t == typeof(CustomizationPrefab) || t == typeof(CustomizationPrefab?);
@@ -145,5 +187,53 @@ namespace ServerLib.Json
 
             public static readonly CustomizationItemPrefabConverter Singleton = new CustomizationItemPrefabConverter();
         }
+
+        public partial struct QuestTarget
+        {
+            public string[] StringArray;
+            public string String;
+
+            public static implicit operator QuestTarget(string[] StringArray) => new QuestTarget { StringArray = StringArray };
+            public static implicit operator QuestTarget(string String) => new QuestTarget { String = String };
+        }
+
+        public class QuestTargetConverter : JsonConverter
+        {
+            public override bool CanConvert(Type t) => t == typeof(QuestTarget) || t == typeof(QuestTarget?);
+
+            public override object ReadJson(JsonReader reader, Type t, object existingValue, JsonSerializer serializer)
+            {
+                switch (reader.TokenType)
+                {
+                    case JsonToken.String:
+                    case JsonToken.Date:
+                        var stringValue = serializer.Deserialize<string>(reader);
+                        return new QuestTarget { String = stringValue };
+                    case JsonToken.StartArray:
+                        var arrayValue = serializer.Deserialize<string[]>(reader);
+                        return new QuestTarget { StringArray = arrayValue };
+                }
+                throw new Exception("Cannot unmarshal type QuestTarget");
+            }
+
+            public override void WriteJson(JsonWriter writer, object untypedValue, JsonSerializer serializer)
+            {
+                var value = (QuestTarget)untypedValue;
+                if (value.String != null)
+                {
+                    serializer.Serialize(writer, value.String);
+                    return;
+                }
+                if (value.StringArray != null)
+                {
+                    serializer.Serialize(writer, value.StringArray);
+                    return;
+                }
+                throw new Exception("Cannot marshal type QuestTarget" + untypedValue);
+            }
+
+            public static readonly QuestTargetConverter Singleton = new QuestTargetConverter();
+        }
+
     }
 }

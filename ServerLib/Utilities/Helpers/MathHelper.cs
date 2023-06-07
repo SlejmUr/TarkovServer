@@ -7,6 +7,12 @@
             return (maxOutput - minOutput) * ((value - minInput) / (maxInput - minInput)) + minOutput;
         }
 
+        public static int GetRandomDoubleInt(double min = 0, double max = 100)
+        {
+            int imin = (int)min;
+            int imax = (int)max;
+            return GetRandomInt(imin, imax);
+        }
         public static int GetRandomInt(int min = 0, int max = 100)
         {
             Random random = new();
@@ -28,9 +34,9 @@
             return GetRandomInt() < percentage;
         }
 
-        public static string GetRandomArray(string[] array)
+        public static string GetRandomArray(IList<string> array)
         {
-            return array[GetRandomInt(0, array.Length)];
+            return array[GetRandomInt(0, array.Count)];
         }
 
         public static int Clamp(int value, int min, int max)

@@ -1,106 +1,100 @@
-﻿using NetCoreServer;
-using Newtonsoft.Json;
-using ServerLib.Utilities;
+﻿using System.Net.Sockets;
 using System.Text;
-using WatsonWebsocket;
+using NetCoreServer;
+using Newtonsoft.Json;
+using ServerLib.Controllers;
+using ServerLib.Utilities;
 
 namespace ServerLib.Web
 {
     public class WebSocket
     {
-        static WatsonWsServer wsServer;
-        public static string IpPort = "wss://127.0.0.1:444/";
+        public static string IpPort = "ws://127.0.0.1:444/";
         public static string IP = "127.0.0.1:444";
         public static List<string> ConnectedIps = new();
         public static Dictionary<Guid, string> GuidIP = new();
         public static Dictionary<string, Guid> IPToGuid = new();
         public static Dictionary<string, string> ConnectedSessions = new();
-        public static EventHandler<MessageReceivedEventArgs> MessageReceivedEvent = null;
+        public static EventHandler<byte[]> MessageReceivedEvent = null;
+        static TarkovServer SocketServer;
         public static void Start(string ip, int port, bool ssl = true)
         {
-            IpPort = ssl ? $"wss://{ip}:{port}/socket/" : $"ws://{ip}:{port}/socket/";
-            IP = $"{ip}:{port}";
-            Console.WriteLine("WebSocket Server started on " + IpPort);
-            wsServer = new WatsonWsServer(ip, port, ssl);
-            wsServer.Logger = Debug.PrintWebsocket;
-            wsServer.AcceptInvalidCertificates = true;
-            wsServer.ClientConnected += ClientConnected;
-            wsServer.ClientDisconnected += ClientDisconnected;
-            wsServer.MessageReceived += MessageReceived;
-            wsServer.Start();
-        }
-
-        private static void MessageReceived(object? sender, MessageReceivedEventArgs args)
-        {
-            Console.WriteLine(args.MessageType);
-            Console.WriteLine($"Message received from {args.Client.Guid} ({args.Client.Ip}) : " + Encoding.UTF8.GetString(args.Data));
-            MessageReceivedEvent?.Invoke(sender, args);
-        }
-
-        private static void ClientDisconnected(object? sender, DisconnectionEventArgs args)
-        {
-            if (ConnectedSessions.ContainsValue(args.Client.IpPort))
+            if (ssl)
             {
-                var Session = ConnectedSessions.Where(x => x.Value == args.Client.IpPort).FirstOrDefault().Key;
-                ConnectedSessions.Remove(Session);
+                Debug.PrintWarn("Currently WSS not supperted! Using WS");
             }
-            ConnectedIps.Remove(args.Client.IpPort);
-            GuidIP.Remove(args.Client.Guid);
-            IPToGuid.Remove(args.Client.IpPort);
-            Console.WriteLine("Client disconnected: " + args.Client.IpPort);
+            //IpPort = ssl ? $"wss://{ip}:{port}/socket/" : $"ws://{ip}:{port}/socket/";
+            IpPort = $"ws://{ip}:{port}/";
+            IP = $"{ip}:{port}";
+            SocketServer = new(ip, port);
+            SocketServer.Start();
+            Console.WriteLine("WebSocket Server started on " + IpPort);
         }
-
-        private static void ClientConnected(object? sender, ConnectionEventArgs args)
-        {
-            Debug.PrintInfo("ClientConnected");
-            Debug.PrintInfo(args.ToString());
-            ConnectedIps.Add(args.Client.IpPort);
-            GuidIP.Add(args.Client.Guid, args.Client.IpPort);
-            IPToGuid.Add(args.Client.IpPort, args.Client.Guid);
-            Console.WriteLine("Client Cookies: " + JsonConvert.SerializeObject(args.HttpRequest.Cookies));
-            string SessionId = args.HttpRequest.Url.OriginalString.Split("socket/")[1];
-            ConnectedSessions.Add(SessionId, args.Client.IpPort);
-
-            Console.WriteLine("Client connected: " + args.Client.IpPort + " " + SessionId);
-
-            SendToClient(args.Client.IpPort, JsonConvert.SerializeObject("{type: \"ping\",eventId: \"ping\"}"));
-            Console.WriteLine("Pinged Player " + SessionId);
-        }
-
         public static void Stop()
         {
-            if (wsServer != null)
+            if (SocketServer != null)
             {
-                wsServer.Stop();
-                wsServer.Dispose();
+                SocketServer.Stop();
+                SocketServer.Dispose();
             }
         }
 
-        public static bool SendToClient(string ipPort, string text)
+        public static TarkovServer? GetServer()
         {
-            if (IPToGuid.TryGetValue(ipPort, out var guid))
+            if (SocketServer != null && !SocketServer.IsDisposed)
             {
-                if (wsServer.IsClientConnected(guid))
-                {
-                    bool isSuccess = wsServer.SendAsync(guid, text).Result;
-                    return isSuccess;
-                }
+                return SocketServer;
             }
-            return false;
+            return null;
         }
 
-
-        public static bool SendToClient(string ipPort, byte[] bytes)
+        public class TarkovSession : WsSession
         {
-            if (IPToGuid.TryGetValue(ipPort, out var guid))
+            public TarkovSession(WsServer server) : base(server) { }
+
+            public override void OnWsConnected(HttpRequest request)
             {
-                if (wsServer.IsClientConnected(guid))
-                {
-                    bool isSuccess = wsServer.SendAsync(guid, bytes).Result;
-                    return isSuccess;
-                }
+                Console.WriteLine($"WebSocket session with Id {Id} connected!");
+                Debug.PrintDebug(request.ToString());
+                Debug.PrintDebug(request.Url);
+                //Server.Multicast(JsonConvert.SerializeObject(NotificationController.DefaultNotification(), Formatting.Indented));
             }
-            return false;
+
+            public override void OnWsDisconnected()
+            {
+                Console.WriteLine($"WebSocket session with Id {Id} disconnected!");
+            }
+
+            public override void OnWsReceived(byte[] buffer, long offset, long size)
+            {
+                try
+                {
+                    string message = Encoding.UTF8.GetString(buffer, (int)offset, (int)size);
+                    Console.WriteLine("Incoming: " + message);
+                }
+                catch
+                {
+                    Console.WriteLine("Incoming: " + BitConverter.ToString(buffer));
+                }
+
+            }
+
+            protected override void OnError(SocketError error)
+            {
+                Console.WriteLine($"WebSocket session caught an error with code {error}");
+            }
+        }
+
+        public class TarkovServer : WsServer
+        {
+            public TarkovServer(string address, int port) : base(address, port) { }
+
+            protected override TcpSession CreateSession() { return new TarkovSession(this); }
+
+            protected override void OnError(SocketError error)
+            {
+                Console.WriteLine($"Tarkov WebSocket server caught an error with code {error}");
+            }
         }
     }
 }
