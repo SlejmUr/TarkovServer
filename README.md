@@ -1,4 +1,11 @@
 # Tarkov Server
+This server is discontinued!
+
+Reason:\
+Because I couldn't managed to make through matchmaking with just simple battleye and file check disable there are no reason to continue this project.\
+There will be so much to add that are not currently in and to adapt or look at akis solution to straight up copy or thing for custom solution, so I just discontinue this project.
+
+# Other
 Tarkov Server on C# (.NET 6)
 
 This is my attempt to port existing JavaScript code to C#.\
