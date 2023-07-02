@@ -96,24 +96,6 @@ namespace ServerLib.Web
             return true;
         }
 
-        [HTTP("POST", "/client/server/list")]
-        public static bool ClientServerList(HttpRequest request, HttpsBackendSession session)
-        {
-            Utils.PrintRequest(request, session);
-            var server = ConfigController.Configs.Server;
-            List<Server> servers = new()
-            { 
-                new()
-                { 
-                    Address = server.Ip,
-                    Port = $"{1000}"
-                }
-            };
-            string resp = ResponseControl.GetBody(JsonConvert.SerializeObject(servers));
-            Utils.SendUnityResponse(session, resp);
-            return true;
-        }
-
         [HTTP("POST", "/client/quest/list")]
         public static bool ClientQuestList(HttpRequest request, HttpsBackendSession session)
         {

@@ -14,35 +14,13 @@
 	<ItemGroup>
 		<PackageReference Include="L" Version="5.0.0" />
 		<PackageReference Include="NetCoreServer" Version="6.7.0" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
 		<PackageReference Include="WatsonWebsocket" Version="4.0.9" />
 	</ItemGroup>
 
 	<ItemGroup>
 		<Reference Include="Assembly-CSharp">
 			<HintPath>..\Ref\Assembly-CSharp.dll</HintPath>
-			<Private>False</Private>
-		</Reference>
-		<Reference Include="bsg.componentace.compression.libs.zlib">
-			<HintPath>..\Ref\bsg.componentace.compression.libs.zlib.dll</HintPath>
-			<Private>False</Private>
-		</Reference>
-		<Reference Include="bsg.microsoft.extensions.objectpool">
-			<HintPath>..\Ref\bsg.microsoft.extensions.objectpool.dll</HintPath>
-			<Private>False</Private>
-		</Reference>
-		<Reference Include="bsg.console.core">
-			<HintPath>..\Ref\bsg.console.core.dll</HintPath>
-			<Private>False</Private>
-		</Reference>
-		<Reference Include="bsg.system.buffers">
-			<HintPath>..\Ref\bsg.system.buffers.dll</HintPath>
-			<Private>False</Private>
-		</Reference>
-		<Reference Include="com.unity.multiplayer-hlapi.Runtime">
-		  <HintPath>..\Ref\com.unity.multiplayer-hlapi.Runtime.dll</HintPath>
-		</Reference>
-		<Reference Include="Newtonsoft.Json">
-			<HintPath>..\Ref\Newtonsoft.Json.dll</HintPath>
 			<Private>False</Private>
 		</Reference>
 		<Reference Include="UnityEngine">
@@ -52,6 +30,9 @@
 		<Reference Include="UnityEngine.CoreModule">
 			<HintPath>..\Ref\UnityEngine.CoreModule.dll</HintPath>
 			<Private>False</Private>
+		</Reference>
+		<Reference Include="zlib.net">
+		  <HintPath>..\Ref\zlib.net.dll</HintPath>
 		</Reference>
 	</ItemGroup>
 </Project>

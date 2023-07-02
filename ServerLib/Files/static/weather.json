@@ -1,0 +1,25 @@
+{
+  "err": 0,
+  "errmsg": null,
+  "data": {
+        "time": "2016-04-30 12:00:00",
+        "cloud": 0.258751124,
+        "wind_speed": 0.5,
+        "wind_direction": 1,
+        "wind_gustiness": 0.1,
+        "rain": 0,
+        "rain_intensity": 0.786892533,
+        "fog": 0.003740978,
+        "temp": 25,
+        "pressure": 780,
+        "MainWindPositionX": 0,
+        "MainWindPositionY": 0,
+        "MainWindDirectionX": -500,
+        "MainWindDirectionY": 0,
+        "TopWindPositionX": 0,
+        "TopWindPositionY": 0,
+        "TopWindDirectionX": 0,
+        "TopWindDirectionY": 0,
+        "LyingWater": 0
+  }
+}

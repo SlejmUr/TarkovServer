@@ -1,0 +1,64 @@
+{
+	"_id": "54cb50c76803fa8b248b4571",
+	"working": true,
+	"name": "Павел Егорович",
+	"surname": "Романенко",
+	"nickname": "Prapor",
+	"location": "",
+	"avatar": "/data/images/traders/prapor.png",
+	"balance_rub": 80000000,
+	"balance_dol": 0,
+	"balance_eur": 0,
+	"display": true,
+	"discount": 0,
+	"discount_end": 0,
+	"buyer_up": true,
+	"currency": "RUB",
+	"supply_next_time": 1551040000,
+	"repair": {
+		"availability": true,
+		"quality": "0.9",
+		"excluded_id_list": [],
+		"excluded_category": [],
+		"currency": "5449016a4bdc2d6f028b456f",
+		"currency_coefficient": 1,
+		"price_rate": 0
+	},
+	"insurance": {
+		"availability": true,
+		"min_payment": 0,
+		"min_return_hour": 24,
+		"max_return_hour": 36,
+		"max_storage_time": 72,
+		"excluded_category": []
+	},
+	"gridHeight": 500,
+	"loyalty": {
+		"currentLevel": 1,
+		"currentStanding": 1,
+		"currentSalesSum": 0,
+		"loyaltyLevels": {
+			"0": {
+				"minLevel": 1,
+				"minSalesSum": 0,
+				"minStanding": 0
+			},
+			"1": {
+				"minLevel": 2,
+				"minSalesSum": 10000,
+				"minStanding": 0.2
+			},
+			"2": {
+				"minLevel": 5,
+				"minSalesSum": 15000,
+				"minStanding": 0.35
+			},
+			"3": {
+				"minLevel": 10,
+				"minSalesSum": 100000,
+				"minStanding": 0.5
+			}
+		}
+	},
+	"sell_category": []
+}

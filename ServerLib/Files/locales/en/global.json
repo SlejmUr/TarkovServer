@@ -1,0 +1,2899 @@
+{
+	"err": 0,
+	"errmsg": "0 - ",
+	"data": {
+		"templates": {
+			"node_5422acb9af1c889c16000029": {
+				"Name": "Weapon",
+				"ShortName": "Item",
+				"Description": "Item"
+			},
+			"node_567143bf4bdc2d1a0f8b4567": {
+				"Name": "Pistol case",
+				"ShortName": "Сase",
+				"Description": "Case for pistol and ammo storage. Features a reliable locking mechanism that requires a key."
+			},
+			"node_5447a9cd4bdc2dbd208b4567": {
+				"Name": "Colt M4A1 5.56x45 Assault Rifle",
+				"ShortName": "M4A1",
+				"Description": "Colt M4A1- an assault rifle (carbine), designed in the USA on the basis of AR-15 platform for 5.56x45 NATO cartridge. It was developed primarily for use by vehicle operators and fireteams, who required a more compact and lighter weapon than a standard full-length rifle, but using the same ordnance. However, US SOCOM (United States Special Operations Command) was soon to adopt the M4A1 for all subordinate units, followed by general introduction of M4A1 into service in the US Army and Marine Corps."
+			},
+			"node_5447ac644bdc2d6c208b4567": {
+				"Name": "5.56x45 M193 Ball ammo",
+				"ShortName": "Ball 5.56x45",
+				"Description": "A box of 5.56x45 M193 Ball ammo"
+			},
+			"node_5448ba0b4bdc2d02308b456c": {
+				"Name": "Factory exit key",
+				"ShortName": "Factory key",
+				"Description": "Chemical factory emergency exit door key."
+			},
+			"node_5448bd6b4bdc2dfc2f8b4569": {
+				"Name": "PM 9х18PM pistol",
+				"ShortName": "PM",
+				"Description": "A time-proven PM. Due to the ubiquitous spread of both pistol and ammo, it is still being used by Russian Spetznaz, thanks to it's reliability, weight, and compact size. The only serious drawback is its lack of power and ergonomics."
+			},
+			"node_5448be9a4bdc2dfd2f8b456a": {
+				"Name": "RGD-5 hand grenade",
+				"ShortName": "RGD-5",
+				"Description": "The RGD-5 is classified as an antipersonnel fragmentation time-delayed offensive hand grenade. Fragments are relatively light and have a smaller radius of dispersion, but can easily kill."
+			},
+			"node_5448c12b4bdc2d02308b456f": {
+				"Name": "90-93 9х18PM Magazine, for 8 PM rounds",
+				"ShortName": "PM 90-93",
+				"Description": "Standard 8-round PM 90-93 magazine for IzhMekh-produced PM pistols. Features a side observation slot."
+			},
+			"node_5448c1d04bdc2dff2f8b4569": {
+				"Name": "PMAG GEN M3 20 5.56x45 STANAG 20-round magazine",
+				"ShortName": "GEN M3 20",
+				"Description": "20-round polymer Magpul PMAG GEN M3 20 magazine, for 5.56х45 ammo.\\n"
+			},
+			"node_5448fee04bdc2dbc018b4567": {
+				"Name": "0.6L water bottle",
+				"ShortName": "Water",
+				"Description": "A bottle of water, with some dust and dirt on it."
+			},
+			"node_5448ff904bdc2d6f028b456e": {
+				"Name": "Army Crackers",
+				"ShortName": "Crackers",
+				"Description": "Dense, dry crackers found inside of a Russian army lunchbox."
+			},
+			"node_5449016a4bdc2d6f028b456f": {
+				"Name": "Roubles",
+				"ShortName": "Roubles",
+				"Description": "A few notes of the still-valued Russian roubles."
+			},
+			"node_544901bf4bdc2ddf018b456d": {
+				"Name": "Wad of roubles",
+				"ShortName": "Rouble Wad",
+				"Description": "A wad of the still-valued Russian roubles."
+			},
+			"node_544909bb4bdc2d6f028b4577": {
+				"Name": "AN/PEQ-15 tactical device",
+				"ShortName": "AN/PEQ-15",
+				"Description": "ATPIAL (Advanced Target Pointer Illuminator Aiming Laser) AN/PEQ-15 produced by L3 Insight Technologies. Tactical device that combines laser designators in both visible and IR band with IR searchlight."
+			},
+			"node_54490a4d4bdc2dbc018b4573": {
+				"Name": "Silencerco Sparrow 22 .22LR silencer",
+				"ShortName": "SPW 22",
+				"Description": "The Silencerco Sparrow 22 silencer for rim-fire ammo, including .22LR .17 HMR .22 MAG .22 WMR .22 and Hornet 5.7mm."
+			},
+			"node_54491bb74bdc2d09088b4567": {
+				"Name": "ER Fulcrum Bayonet",
+				"ShortName": "ER Bayonet",
+				"Description": "Extrema Ratio developed its Fulcrum knife by the order of Italian Alpine Troops Headquarters, who required a multipurpose knife suitable for the infantry, a knife that could be used in any action and that could successfully solve any type of problem even where more specialized equipment proved inadequate. It was so successful that the multipurpose knife then led to the development of the Fulcrum Bayonet, which had the same characteristics but could be fixed to the issued rifle."
+			},
+			"node_54491c4f4bdc2db1078b4568": {
+				"Name": "МR-133 12ga shotgun",
+				"ShortName": "МR-133",
+				"Description": "Multi-shot, smoothbore МR-133 pump-action shotgun produced by IzhMekh. Reliable and practical hunting and self-defense weapon. Considered unique in its class for having a slide stop."
+			},
+			"node_544a11ac4bdc2d470e8b456a": {
+				"Name": "Secure container Gamma",
+				"ShortName": "Gamma Container",
+				"Description": "Unique secure container used only by veterans of PMCs formerly deployed in Tarkov. Everything inside of the container is securely locked, and is primarily used for keeping private information safe."
+			},
+			"node_544a378f4bdc2d30388b4567": {
+				"Name": "40-round PMAG GEN M3 40 5.56х45 STANAG magazine",
+				"ShortName": "GEN M3 40",
+				"Description": "40-round polymer Magpul PMAG GEN M3 40 magazine for 5.56х45 ammo.\\n"
+			},
+			"node_544a37c44bdc2d25388b4567": {
+				"Name": "60-round MAG5-60 5.56x45 STANAG magazine",
+				"ShortName": "MAG5-60",
+				"Description": "60-round metal Surefire MAG5-60 high capacity magazine for 5.56х45 ammo.\\n"
+			},
+			"node_544a38634bdc2d58388b4568": {
+				"Name": "Colt USGI A2 5.56x45 Flashhider for AR-15",
+				"ShortName": "USGI A2",
+				"Description": "The 5.56x45 Colt USGI A2 Flashhider a.k.a. Bird Cage is designed for mounting on 5.56x45 weapons built on AR-15 system. However, it can be installed on other weapons of the same caliber, provided that barrel has the same threading for muzzle devices. A service muzzle device for M4A1."
+			},
+			"node_544a39de4bdc2d24388b4567": {
+				"Name": "Leupold DeltaPoint Reflex Sight",
+				"ShortName": "DP",
+				"Description": "Compact DeltaPoint Reflex Sight by Leupold knows almost no limits in the range of application. Originally designed for use on pump-action shotguns in competitions and practical shooting, it was recognized for good performance on a wide range of weapons. From shotguns and handguns to AR-based rifles, as a main or auxiliary sight, it will show excellent results."
+			},
+			"node_544a3a774bdc2d3a388b4567": {
+				"Name": "Leupold Mark 4 HAMR 4x24mm DeltaPoint hybrid assault scope",
+				"ShortName": "HAMR",
+				"Description": "Hybrid Leupold-produced scope comprises the Mark 4 HAMR 4x24mm optical sight with  DeltaPoint reflex sight installed on top of it. It was developed for precision mid-range carbine fire using the 4x optics while being equally effective in close quarters thanks to use of compact reflex sight when necessary."
+			},
+			"node_544a3d0a4bdc2d1b388b4567": {
+				"Name": "Nightforce NXS 2.5-10x24 scope",
+				"ShortName": "NXS 2.5-10",
+				"Description": "The NightForce NXS 2.5-10х24mm scope combines compact size with a wide magnification range from 2,5х to 10х.  Designed for hunting and practical shooting, it is capable of withstanding powerful recoil and placing effective fire on short to long ranges. Superior reliability of this scope allows it to be installed on the weapons of any caliber. It has gained a wide recognition among both civilian shooters and military operators of many countries worldwide. "
+			},
+			"node_544a3f024bdc2d1d388b4568": {
+				"Name": "ELCAN Specter OS4x assault scope",
+				"ShortName": "OS4x",
+				"Description": "Specter OS4x optic scope produced by ELCAN. Designed for small arms utilizing 5.56 NATO ammunition (M4, SA 50, C7). Has a fixed 4х magnification and 6 degrees field of view."
+			},
+			"node_544a5caa4bdc2d1a388b4568": {
+				"Name": "Crye Precision AVS chest rig",
+				"ShortName": "AVS",
+				"Description": "Crye Precision AVS (Adaptive Vest System) is a highly versatile rig system that can be quickly turned from light low-visibility gear into a fully armored and loaded vest - and everything in between."
+			},
+			"node_544a5cde4bdc2d39388b456b": {
+				"Name": "Flyye MBSS Backpack",
+				"ShortName": "MBSS",
+				"Description": "Extra durable backpack from 1000D Cordura, with separate pocket for a water bladder with a hose slot and a MOLLE attachment system on the sides."
+			},
+			"node_544fb25a4bdc2dfb738b4567": {
+				"Name": "Aseptic bandage",
+				"ShortName": "Bandage",
+				"Description": "The most commonly used gauze bandage, autoclaved and aseptic."
+			},
+			"node_544fb3364bdc2d34748b456a": {
+				"Name": "Immobilizing splint",
+				"ShortName": "Splint",
+				"Description": "Common splint for fixing damaged or fractured bones in position as an emergency aid measure."
+			},
+			"node_544fb37f4bdc2dee738b4567": {
+				"Name": "Analgin painkillers",
+				"ShortName": "Painkillers",
+				"Description": "The most cheap and widely spread painkillers."
+			},
+			"node_544fb3f34bdc2d03748b456a": {
+				"Name": "Morphine injector",
+				"ShortName": "Morphine",
+				"Description": "Single-use syringe full of morphine - powerful drug, used primarily to treat both acute and chronic severe pain. "
+			},
+			"node_544fb45d4bdc2dee738b4568": {
+				"Name": "Salewa FIRST AID KIT",
+				"ShortName": "Salewa",
+				"Description": "First aid kit containing bivibag, various types of bandages and dressing tools."
+			},
+			"node_544fb5454bdc2df8738b456a": {
+				"Name": "Leatherman Multitool",
+				"ShortName": "MultiTool",
+				"Description": "With this compact and versatile multitool there is no need to be worried about having the right tools at the right time."
+			},
+			"node_544fb62a4bdc2dfb738b4568": {
+				"Name": "Russian Army pineapple juice",
+				"ShortName": "Pineapple",
+				"Description": "Reconstituted pineapple juice 'Russian Army'. It's hard to imagine a better source of carbs and vitamins under the blockade conditions."
+			},
+			"node_544fb6cc4bdc2d34748b456e": {
+				"Name": "Slickers bar",
+				"ShortName": "Slickers",
+				"Description": "Sweet nutritional bar for some quick bite. Well-balance in proteins, fiber and vitamins, but a bit over the top in sweetness."
+			},
+			"node_54527a984bdc2d4e668b4567": {
+				"Name": "5.56x45 mm M193 Ball",
+				"ShortName": "5.56x45",
+				"Description": "Standard 5.56x45 mm M193 Ball Cartridge",
+				"casingName": "5.56x45 mm M193 Ball"
+			},
+			"node_54527ac44bdc2d36668b4567": {
+				"Name": "5.56x45 mm M193 FMJ",
+				"ShortName": "5.56x45",
+				"Description": "5.56x45 mm M193 FMJ Cartridge",
+				"casingName": "5.56x45 mm M193 FMJ"
+			},
+			"node_545cdae64bdc2d39198b4568": {
+				"Name": "Camelbak Tri-Zip Backpack",
+				"ShortName": "Tri-Zip",
+				"Description": "Mid-sized versatile assault pack. Spacious, sturdy and comfortable, this backpack is loved both by military and hikers worldwide. 34L of total space, a hydration system, easy access to side pockets, near-perfect suspension, and a MOLLE attachment system make it a great choice for up to 72 hours autonomous hikes... or carrying a good load of loot. "
+			},
+			"node_545cdb794bdc2d3a198b456a": {
+				"Name": "FORT Defender Armor",
+				"ShortName": "FORT",
+				"Description": "Adjustable modular set of armor covering the whole torso with armor plates equivalent to NIJ Level III."
+			},
+			"node_557ff21e4bdc2d89578b4586": {
+				"Name": "Tactical glasses",
+				"ShortName": "TacGlass",
+				"Description": "Commonplace tactical glasses with glare and impact protection."
+			},
+			"node_557ffd194bdc2d28148b457f": {
+				"Name": "Pockets",
+				"ShortName": "Pockets",
+				"Description": "Pockets"
+			},
+			"node_5580169d4bdc2d9d138b4585": {
+				"Name": "510mm barrel for МР-43е-1c 12ga",
+				"ShortName": "510mm МР-43е-1c 12ga",
+				"Description": "510mm-long 12ga barrel for МР-43е-1c double-barreled shotgun."
+			},
+			"node_55801eed4bdc2d89578b4588": {
+				"Name": "SV-98 bolt-action sniper rifle",
+				"ShortName": "SV-98",
+				"Description": "SV-98 is a Russian sniper rifle developed in 1998-2000 by a group of weapon engineers led by V. Stronskiy. Serially produced by IzhMash group. It is a magazine-fed bolt-action rifle, designed to engage the military personnel at the distances of up to 1000 m."
+			},
+			"node_5580223e4bdc2d1c128b457f": {
+				"Name": "МР43e double-barrel shotgun",
+				"ShortName": "МР43e",
+				"Description": "A hunter's dream. A classic double-barrel beauty, simple and elegant, with selective shell ejector. Fed with 12ga shells. Extremely rare (how did you find this???)"
+			},
+			"node_558022b54bdc2dac148b458d": {
+				"Name": "Eotech EXPS3 holographic sight",
+				"ShortName": "EXPS3",
+				"Description": "Eotech EXPS3 holo sight. Thanks to design features it can be used with a wide range of weapons even with non-folding sights.\\nCompatible with night vision devices by the means of NV reticle mode. Utilized by US SOCOM as a sight for operations in confined spaces."
+			},
+			"node_5580239d4bdc2de7118b4583": {
+				"Name": "GK-01 compensator",
+				"ShortName": "GK-01",
+				"Description": "Heavy muzzlebrake for Vepr/Saiga 12ga\\n\\nExtremely good at cutting recoil and completely eliminates barrel climb and yaw. Fits all Saiga/Vepr shotguns with external chokes, and with optional adapter - all single-barreled shotguns with both external and internal chokes."
+			},
+			"node_55802d5f4bdc2dac148b458e": {
+				"Name": "PMAG GEN M3 30 5.56x45 STANAG 30-round magazine",
+				"ShortName": "GEN M3 30",
+				"Description": "30-round polymer Magpul PMAG GEN M3 30 magazine, for 5.56х45 ammunition, with an observation slot."
+			},
+			"node_55802f5d4bdc2dac148b458f": {
+				"Name": "Magpul MOE AR-15 pistol grip",
+				"ShortName": "MOE Pistol",
+				"Description": "Polymer Magpul MOE (Magpul Original Equipment) pistol grip can be installed on any weapon compatible with AR-15 pistol grips. Thanks to ergonomic shape and anti slip texture, makes weapon grip and control more comfortable. Inside of the grip contains free space for spare parts, tools and accessories kit or   batteries."
+			},
+			"node_558032574bdc2d89578b458a": {
+				"Name": "Magpul AFG grip",
+				"ShortName": "AFG",
+				"Description": "Magpul AFG (Angled Fore Grip) tactical grip. Enables a more natural grip against the barrel axis. Thanks to that, it reduces recoil and improves the weapon control."
+			},
+			"node_558032614bdc2de7118b4585": {
+				"Name": "Tango Down Stubby BGV-MK46K tactical grip",
+				"ShortName": "BGV-MK46K",
+				"Description": "Tango Down Stubby BGV-MK46K tactical grip. Short grip for use with weapons of close and extra close quarters combat. Ideally fits assault shotguns. Contains a compartment for batteries or SPTA."
+			},
+			"node_559ba5b34bdc2d1f1a8b4582": {
+				"Name": "10-round polymer magazine 7.62х54R for SV-98",
+				"ShortName": "SV-98 polymer",
+				"Description": "Standard Izhmash-produced polymer magazine for SV-98 rifle, 7.62х54R ammo."
+			},
+			"node_55d355e64bdc2d962f8b4569": {
+				"Name": "Upper receiver Colt M4A1 5.56х45 for M4A1 assault rifle",
+				"ShortName": "M4A1 Upper",
+				"Description": "Upper receiver for M4A1 assault rifle manufactured by Colt. Equipped with a mound for attaching additional devices."
+			},
+			"node_55d35ee94bdc2d61338b4568": {
+				"Name": "260mm barrel for AR-15 and compatible 5.56х45",
+				"ShortName": "260mm AR-15 5.56х45",
+				"Description": "A barrel for AR-15 based weapons for 5.56х45 NATO ammo, 260mm long. Corresponds with standard service M4 CQBR barrel.\\n"
+			},
+			"node_55d3632e4bdc2d972f8b4569": {
+				"Name": "370mm barrel for AR-15 and compatible 5.56х45",
+				"ShortName": "370mm AR-15 5.56х45",
+				"Description": "A barrel for AR-15 based weapons for 5.56х45 NATO ammo, 370mm long. Corresponds with standard service M4A1 barrel.\\n"
+			},
+			"node_55d447bb4bdc2d892f8b456f": {
+				"Name": "725mm barrel for MR-43е-1s 12ga",
+				"ShortName": "725mm MR-43е-1s 12ga",
+				"Description": "725 mm long 12ga barrel for MR-43е-1s  double-barreled shotgun."
+			},
+			"node_55d448594bdc2d8c2f8b4569": {
+				"Name": "610mm barrel for МR-133 12ga shotgun",
+				"ShortName": "610mm MR-133 12ga",
+				"Description": "Standard serially produced barrel for MR-133, 610 mm long for 12ga shells."
+			},
+			"node_55d4491a4bdc2d882f8b456e": {
+				"Name": "510mm barrel for МR-133 12ga",
+				"ShortName": "510mm MR-133 12ga",
+				"Description": "Standard serially produced barrel for MR-133, 510 mm long for 12ga shells."
+			},
+			"node_55d449444bdc2d962f8b456d": {
+				"Name": "610mm barrel for МR-133 12ga shotgun with rib",
+				"ShortName": "610mm MR-133 12ga",
+				"Description": "Standard serially produced barrel for MR-133, 610 mm long for 12ga shells, with wide upper rib."
+			},
+			"node_55d44fd14bdc2d962f8b456e": {
+				"Name": " Colt AR-15 charging handle for AR-15",
+				"ShortName": "AR-15 Charge",
+				"Description": "Standard charging handle for AR-15 and compatible systems."
+			},
+			"node_55d459824bdc2d892f8b4573": {
+				"Name": "Knight's Armament KAC RIS handguard for AR-15 and compatibles",
+				"ShortName": "KAC RIS",
+				"Description": "Knight's Armament KAC RIS is a standard service handguard for M4A1, but it can be installed on the most of AR-15 based weapons provided that the barrel length is right. Equipped with 4 mounts for installation of additional accessories and a heat shield."
+			},
+			"node_55d45d3f4bdc2d972f8b456c": {
+				"Name": "Izhmekh MR-133 Beechwood forestock",
+				"ShortName": "МR-133 Beechwood",
+				"Description": "Standard Izhmekh-manufactured forestock, made for MR-133 shotgun out of beechwood."
+			},
+			"node_55d45f484bdc2d972f8b456d": {
+				"Name": "Custom plastic MR-133 forestock with mounts",
+				"ShortName": "Custom МR-133 plastic",
+				"Description": "Off-standard polymer forestock by third party producer for MR-133. Equipped with 2 short and 2 long mounts for installation of additional equipment."
+			},
+			"node_55d480c04bdc2d1d4e8b456a": {
+				"Name": "30-round 6L23 5.45x39 magazine for АК-74 and compatibles",
+				"ShortName": "6L23",
+				"Description": "30-round polymer Izhmash 6L23 magazine for 5.45x39 ammo, for АК-74 and compatible systems."
+			},
+			"node_55d481904bdc2d8c2f8b456a": {
+				"Name": "45-round 6L26 5.45x39 magazine for АК-74 and compatibles",
+				"ShortName": "6L26",
+				"Description": "45-round polymer Izhmash 6L26 magazine for 5.45x39 ammo, for АК-74 and compatible systems."
+			},
+			"node_55d482194bdc2d1d4e8b456b": {
+				"Name": "60-round 6L31 5.45x39 magazine for АК-74 and compatibles",
+				"ShortName": "6L31",
+				"Description": "60-round quad-stack polymer Izhmash 6L31 magazine for 5.45x39 ammo, for АК-74 and compatible systems. Produced as a small batch, never serialized."
+			},
+			"node_55d4837c4bdc2d1d4e8b456c": {
+				"Name": "10-round Saiga 545 5.45x39 magazine for АК-74 and compatibles",
+				"ShortName": "Saiga 545",
+				"Description": "10-round polymer Izhmash Saiga 545 magazine, for the AK-based civilian carbine of the same name, for 5.45x39 ammo."
+			},
+			"node_55d484b44bdc2d1d4e8b456d": {
+				"Name": "6-shell MR-133х8 12ga magazine",
+				"ShortName": "MR-133х6",
+				"Description": "6-shell capacity tube magazine by Izhmekh, for MR-133 12ga shells."
+			},
+			"node_55d485804bdc2d8c2f8b456b": {
+				"Name": "8-shell MR-133х8 12ga magazine",
+				"ShortName": "MR-133х8",
+				"Description": "8-shell capacity tube magazine by Izhmekh, for  MR-133 12ga shells."
+			},
+			"node_55d485be4bdc2d962f8b456f": {
+				"Name": "PM/PPSH 9х18PM 84-round drum mag for PM",
+				"ShortName": "PM/PPSH",
+				"Description": "Makeshift 84-round PM magazine. First assembled by an unknown genius by combining PM and PPSH magazines into a single design for operations in narrow spaces with the aid of ballistic shields. Although it was never serialized even in the smallest number, it can be crafted pretty easily provided you have the donor mags and skillful hands."
+			},
+			"node_55d4887d4bdc2d962f8b4570": {
+				"Name": "Colt AR-15 5.56x45 STANAG 30-round magazine",
+				"ShortName": "STANAG",
+				"Description": "30-round metal Colt AR-15 magazine designed in compliance with STANAG 4179 standard for 5.56х45 ammo.\\nThe STANAG 4179 standard was approved by NATO members in 1980 for the purposes of unification of allied personnel ammo and magazines."
+			},
+			"node_55d48a634bdc2d8b2f8b456a": {
+				"Name": "Kiba Arms International SPRM mount for pump-action shotguns\\n",
+				"ShortName": "SPRM",
+				"Description": "The universal SPRM 13-position mount by Kiba Arms International, for attaching additional devices to the pump-action shotguns."
+			},
+			"node_55d48ebc4bdc2d8c2f8b456c": {
+				"Name": "Delta-tek Sprut mount for pump-action shotguns",
+				"ShortName": "Sprut",
+				"Description": "The Delta-tek Sprut mount is developed for installation on tube magazines of pump-action shotguns like МR-133, МR-153, МR-135, Benelli M2, Winchester 1300 and so on. Features 3 Weaver mounts for attachment of additional devices."
+			},
+			"node_55d4ae6c4bdc2d8b2f8b456e": {
+				"Name": "High Standard M4SS Stock",
+				"ShortName": "M4SS",
+				"Description": "Telescopic High Standard M4SS stock closely follows the classic M4A1 stock except for few geometry details."
+			},
+			"node_55d4af3a4bdc2d972f8b456f": {
+				"Name": " UTG Low Profile A2 Frontsight AR-15",
+				"ShortName": "LPA2F",
+				"Description": "Detachable UTG Low Profile A2 Frontsight, installed over Windham Weaponry Gas Block."
+			},
+			"node_55d4b9964bdc2d1d4e8b456e": {
+				"Name": "Colt A2 AR-15 pistol grip",
+				"ShortName": "A2 Pistol",
+				"Description": "Colt A2 polymer pistol grip can be installed on any weapon compatible with AR-15 grips. Standard service grip for all AR-15-based weapons of US Army and USMC."
+			},
+			"node_55d5f46a4bdc2d1b198b4567": {
+				"Name": "Colt A2 Rearsight AR-15",
+				"ShortName": "CA2R",
+				"Description": "Detachable Colt A2 Rearsight. Standard issue for M4A1."
+			},
+			"node_55d614004bdc2d86028b4568": {
+				"Name": "Surefire SOCOM556-MONSTER 5.56х45 silencer",
+				"ShortName": "MONSTER",
+				"Description": "Surefire SOCOM556-MONSTER 5.56х45 and .223 silencer, can only be installed on compatible Surefire muzzle devices."
+			},
+			"node_55d617094bdc2d89028b4568": {
+				"Name": "Knight's Armament Company KAC QDC Suppressor 6.5x35",
+				"ShortName": "6.5QDCS",
+				"Description": "Knight's Armament Company KAC QDC Suppressor for 6.5x35 ammo. Can only be installed on compatible Knight's Armament QDC muzzle devices."
+			},
+			"node_55d6190f4bdc2d87028b4567": {
+				"Name": "Surefire SOCOM556-MINI MONSTER 5.56х45 Silencer",
+				"ShortName": "M MONSTER",
+				"Description": "Surefire SOCOM556-MINI MONSTER 5.56х45 and .223 silencer is a shorter version of the SOCOM556-MONSTER. Can only be installed on compatible Surefire muzzle devices."
+			},
+			"node_55d7217a4bdc2d86028b456d": {
+				"Name": "Default Inventory",
+				"ShortName": "",
+				"Description": ""
+			},
+			"node_55f84c3c4bdc2d5f408b4576": {
+				"Name": "Daniel Defence RIS II 9.5 foregrip for AR-15-compatible systems",
+				"ShortName": "RIS II 9.5",
+				"Description": "Daniel Defence RIS II 9.5 foregrip is a part of the SOPMOD Block II program to replace the standard M4CQBR or Mk18 foregrips in the US SOCOM service. Made with light but durable aircraft aluminium alloy. Equipped with 4 mounts for installation of additional devices and accessories. This foregrip option is incompatible with М203 UBGL."
+			},
+			"node_55f96d6f4bdc2d5f408b4578": {
+				"Name": "Kiba Arms International Backup Offset Mount",
+				"ShortName": "45OM",
+				"Description": "Universal mount allowing to install auxiliary sight at 45 degrees angle."
+			},
+			"node_560835c74bdc2dc8488b456f": {
+				"Name": "510mm barrel for МR-133 12ga shotgun with rib",
+				"ShortName": "510mm MR-133 12ga",
+				"Description": "Standard serially produced barrel for MR-133, 510 mm long for 12ga shells, with wide upper rib."
+			},
+			"node_560836484bdc2d20478b456e": {
+				"Name": "540mm barrel for МR-133 12ga shotgun",
+				"ShortName": "540mm МR-133",
+				"Description": "Standard serially produced barrel for MR-133, 540 mm long for 12ga shells."
+			},
+			"node_560836b64bdc2d57468b4567": {
+				"Name": "540mm barrel for МR-133 12ga shotgun with rib",
+				"ShortName": "540mm MR-133 12ga",
+				"Description": "Standard serially produced barrel for MR-133, 540 mm long for 12ga shells, with wide upper rib."
+			},
+			"node_560836fb4bdc2d773f8b4569": {
+				"Name": "660mm barrel for МR-133 12ga shotgun",
+				"ShortName": "660mm МR-133",
+				"Description": "Standard serially produced barrel for MR-133, 660 mm long for 12ga shells."
+			},
+			"node_560837154bdc2da74d8b4568": {
+				"Name": "660mm barrel for МR-133 12ga shotgun with rib",
+				"ShortName": "660mm MR-133 12ga",
+				"Description": "Standard serially produced barrel for MR-133, 660 mm long for 12ga shells, with wide upper rib."
+			},
+			"node_5608373c4bdc2dc8488b4570": {
+				"Name": "710mm barrel for МR-133 12ga shotgun",
+				"ShortName": "710mm МR-133",
+				"Description": "Standard serially produced barrel for MR-133, 710 mm long for 12ga shells."
+			},
+			"node_560837544bdc2de22e8b456e": {
+				"Name": "710mm barrel for МR-133 12ga shotgun with rib",
+				"ShortName": "710mm MR-133 12ga",
+				"Description": "Standard serially produced barrel for MR-133, 710 mm long for 12ga shells, with wide upper rib."
+			},
+			"node_560837824bdc2d57468b4568": {
+				"Name": "750mm barrel for МR-133 12ga shotgun",
+				"ShortName": "750mm МR-133",
+				"Description": "Standard serially produced barrel for MR-133, 750 mm long for 12ga shells."
+			},
+			"node_5608379a4bdc2d26448b4569": {
+				"Name": "750mm barrel for МR-133 12ga shotgun with rib",
+				"ShortName": "750mm MR-133 12ga",
+				"Description": "Standard serially produced barrel for MR-133, 750 mm long for 12ga shells, with wide upper rib."
+			},
+			"node_560838c94bdc2d77798b4569": {
+				"Name": "Remington Tactical Choke 12ga",
+				"ShortName": "RTC 12ga",
+				"Description": "Remington Tactical Choke 12ga was developed specifically for use on tactical shotguns and self-defence shotguns. Combines the properties of both cylinder and flashhider."
+			},
+			"node_56083a334bdc2dc8488b4571": {
+				"Name": "Plastic pistol grip for МR-133/153",
+				"ShortName": "133/153 Pl.g.",
+				"Description": "Plastic pistol grip for МR-133 and MR-153 shotguns for replacement of standard stock, manufactured by Izhmekh."
+			},
+			"node_56083be64bdc2d20478b456f": {
+				"Name": "Plastic stock for МR-133/153",
+				"ShortName": "133/153 Pl.s.",
+				"Description": "Plastic stock for МR-133 and MR-153 shotguns with rubber butt-plate manufactured by Izhmekh."
+			},
+			"node_56083cba4bdc2de22e8b456f": {
+				"Name": "Wooden stock for МR-133/153",
+				"ShortName": "133/153 W.s.",
+				"Description": "Wooden stock for МR-133 and MR-153 shotguns with rubber butt-plate manufactured by Izhmekh."
+			},
+			"node_56083e1b4bdc2dc8488b4572": {
+				"Name": "Izhmash SV-98 Rearsight",
+				"ShortName": "SV-98 Rear",
+				"Description": "Standard SV-98 sniper rifle rear sight by Izhmash."
+			},
+			"node_56083eab4bdc2d26448b456a": {
+				"Name": "SV-98 anti-heat ribbon",
+				"ShortName": "SV-98 HR",
+				"Description": "Anti-heat ribbon for SV-98 sniper rifle. Applied to the barrel. Prevents hot air from rising directly from the barrel and creating optical distortions in the line of fire."
+			},
+			"node_560d3b2d4bdc2d773f8b4573": {
+				"Name": "Aimpoint Micro H-1 reflex sight",
+				"ShortName": "H-1",
+				"Description": "Compact Micro H-1 reflex sight by Aimpoint was designed for use with any kind of firearms and even with bows. Lightweight, compact, and durable. Almost identical to its high-end brother Micro T-1 except for NVD-compatible reticle mode."
+			},
+			"node_560d5e524bdc2d25448b4571": {
+				"Name": "12x70 Buckshot",
+				"ShortName": "12x70",
+				"Description": "12x70 Buckshot shell for 12ga shotguns",
+				"casingName": "12x70 Buckshot"
+			},
+			"node_560d61e84bdc2da74d8b4571": {
+				"Name": "Regular 7.62х54R SNB",
+				"ShortName": "7.62х54R",
+				"Description": "Regular 7.62х54R SNB rifle cartridge",
+				"casingName": "Regular 7.62х54R SNB"
+			},
+			"node_560d657b4bdc2da74d8b4572": {
+				"Name": "2P Klesch flashlight + laser designator",
+				"ShortName": "Klesch",
+				"Description": "Underbarrel-mounted LED flashlight '2P Klesch + LCU' produced by Zenit."
+			},
+			"node_560d75f54bdc2da74d8b4573": {
+				"Name": "7.62x54 R SNB ammo",
+				"ShortName": "SNB 7.62x54 R",
+				"Description": "A pack of 7.62x54 R SNB cartridges"
+			},
+			"node_560e620e4bdc2d724b8b456b": {
+				"Name": "SV-98 muzzle device",
+				"ShortName": "SV-98 STD",
+				"Description": "Standard-issue SV-98 muzzle device"
+			},
+			"node_5644bd2b4bdc2d3b4c8b4572": {
+				"Name": "АК-74N 5.45x39 assault rifle",
+				"ShortName": "АК-74N",
+				"Description": "Kalashnikov 5.45 mm assault rifle, developed in 1970 by М. Т. Kalashnikov, became a further evolution of AKM due to adoption of the new 5.45x39 ammunition by the military. The key design difference from the standard АК-74 is a side mount for optical and night scopes."
+			},
+			"node_5645bc214bdc2d363b8b4571": {
+				"Name": "Kiver-M Helmet",
+				"ShortName": "Kiver-M",
+				"Description": "Ballistic helmet offering protection grade equivalent to IIA level."
+			},
+			"node_5645bcc04bdc2d363b8b4572": {
+				"Name": "Peltor ComTac 2 headset",
+				"ShortName": "ComTac2",
+				"Description": "The Com-Tac 2 amplifies low level sounds while suppressing impulse noises. Water resistant for outdoor usage."
+			},
+			"node_5648a69d4bdc2ded0b8b457b": {
+				"Name": "BlackRock chest rig",
+				"ShortName": "BlackRock",
+				"Description": "Artisan custom-made chest rig for wearing on top of armor in urban operations. Sturdy and versatile. Features both MOLLE and ALICE attachment systems."
+			},
+			"node_5648a7494bdc2d9d488b4583": {
+				"Name": "SVS Personal Armor",
+				"ShortName": "SVS",
+				"Description": "Light armor, offering essential protection of vital body areas only, but still pretty dependable, with IIIA level plates. Can and intended to be carried under a chest rig."
+			},
+			"node_5648ac824bdc2ded0b8b457d": {
+				"Name": "Zenit RP-1 charge handle for AK",
+				"ShortName": "RP-1",
+				"Description": "RP-1 charge handle by Zenit is a milled detail, manufactured with D16T aluminium alloy with black coating. Compatible with all models of AK rifles and carbines based on it. \\nRP-1 is larger and more convenient than the standard charge handle, which improves the weapon ergonomics and makes handling more comfortable. The RP-1 is installed above the base handle through kit-enclosed bolts. © Zenit"
+			},
+			"node_5648ae314bdc2d3d1c8b457f": {
+				"Name": "CAA RS47 foregrip for AK-compatible systems",
+				"ShortName": "CAA RS47",
+				"Description": "The RS47 foregrip, manufactured by Command Arms with light polymer, fits the majority of rifles and carbines built on the base of АК. Equipped with two short and two long rail mounts for installing additional devices."
+			},
+			"node_5648b0744bdc2d363b8b4578": {
+				"Name": "Wooden AK-74 stock (6P20 Sb.6)",
+				"ShortName": "6P20 Sb.6",
+				"Description": "Standard Izhmash-produced wooden АК-74 stock."
+			},
+			"node_5648b1504bdc2d9d488b4584": {
+				"Name": "Polymer AK-74 foregrip (6P20 Sb.9)",
+				"ShortName": "6P20 Sb.9",
+				"Description": "Polymer AK-74 foregrip produced by Izhmash that replaced the classic wooden one."
+			},
+			"node_5648b2414bdc2d3b4c8b4578": {
+				"Name": "UltiMAK M1-B gas tube for АК",
+				"ShortName": "M1-B",
+				"Description": "M1-B designed by Ultimak only replaces the standard gas tube, turning it into a scope mount. The lower foregrip part remains the same; in this case, polymer AK-47 foregrip. Additionally fastened to the barrel for improved reliability."
+			},
+			"node_5648b4534bdc2d3d1c8b4580": {
+				"Name": "B-10М foregrip and rail mount B-19",
+				"ShortName": "B-10М B-19",
+				"Description": "Integrally machined B-10M foregrip is manufactured from aluminium alloy D16T with black coating and can be installed instead of the standard-issue foregrip on AK series 103, 104, 105, 74C, 74M, AKM and AKMS. B-19 rail mount is basically a sight support hovering over dust cover. Also integrally machined from D16T aluminium alloy with black coating, it can be installed on B-10M or B-21M foregrips.©Zenit"
+			},
+			"node_5648b62b4bdc2d9d488b4585": {
+				"Name": "GP-34 underbarrel grenade launcher",
+				"ShortName": "GP-34",
+				"Description": "Underbarrel grenade launcher for 40mm VOG-25 grenades, installed on AK family of assault rifles."
+			},
+			"node_5648b6ff4bdc2d3d1c8b4581": {
+				"Name": "Tactica Tula 10000 mount",
+				"ShortName": "ТТ 10000",
+				"Description": "Universal mount for АК dust cover, manufactured by Tactica Tula company. Designed for installation of optical scopes, collimator sights, laser designators and other devices and accessories on АК systems family and semiautomatic smoothbore Saiga carbines."
+			},
+			"node_5649a2464bdc2d91118b45a8": {
+				"Name": "NcStar MPR45 Backup mount",
+				"ShortName": "MPR45",
+				"Description": "Universal mount by NcStar that allows installing the auxiliary sight at 45 degrees angle."
+			},
+			"node_5649aa744bdc2ded0b8b457e": {
+				"Name": "Izhmash 5.45x39 АК-74 muzzlebrake & compensator (6P20 0-20)",
+				"ShortName": "6P20 0-20",
+				"Description": "Standard Izhmash-produced muzzlebrake and compensator for АК-74 and weapon systems based on it."
+			},
+			"node_5649ab884bdc2ded0b8b457f": {
+				"Name": "Zenit DTK-1 7.62х39 & 5.45x39 muzzlebrake & compensator for АК ",
+				"ShortName": "DTK-1",
+				"Description": "Muzzlebrake compensator DTK-1 by Zenit is designed for installation on 7.62х39 and 5.45х39 AK-based weapon systems. Reduces recoil and counters the barrel climb. The crown on the DTK nose is meant for breaking of tampered glass. 24x1.5 mm threading. ©Zenit"
+			},
+			"node_5649ad3f4bdc2df8348b4585": {
+				"Name": "Izhmash AK-74 bakelite pistol grip (6P4 Sb.8V)",
+				"ShortName": "6P4 Sb.8V",
+				"Description": "Izhmash bakelite pistol grip for AK-74 and compatible weapon systems."
+			},
+			"node_5649ade84bdc2d1b2b8b4587": {
+				"Name": "Izhmash AK-74 polymer pistol grip (6P1 Sb.8)",
+				"ShortName": "6P1 Sb.8",
+				"Description": "Izhmash polymer pistol grip for AK-74 and compatibles, designed to replace the old bakelite grip."
+			},
+			"node_5649ae4a4bdc2d1b2b8b4588": {
+				"Name": "Zenit RK-3 AK pistol grip",
+				"ShortName": "RК-3",
+				"Description": "RK-3 Classica anatomic pistol grip features built-in hermetically sealed battery storage compartment and is designed for installation as replacement of standard AK pistol grip.©Zenit"
+			},
+			"node_5649af094bdc2df8348b4586": {
+				"Name": "Izhmash АК-74 dust cover (6P1 0-1)",
+				"ShortName": "6P1 0-1",
+				"Description": "Standard АК-74 top dust cover by Izhmash."
+			},
+			"node_5649af884bdc2d1b2b8b4589": {
+				"Name": "Zenit B-33 dust cover for АК-74",
+				"ShortName": "B-33",
+				"Description": "B-33 dust cover with integrated Picatinny rail is compatible with all models of Kalashnikov automatic rifles and carbines based on AK system. Allows installation of all Picatinny-mountable sights, ensuring the consistency of median aimpoint even after repeated removal and replacement of dust cover. © Zenit"
+			},
+			"node_5649b0544bdc2d1b2b8b458a": {
+				"Name": "AK-74 Standard Rearsight (6P1 Sb.2)",
+				"ShortName": "6P1 Sb.2",
+				"Description": "Standard АК-74 rear sight manufactured by Izhmash."
+			},
+			"node_5649b0fc4bdc2d17108b4588": {
+				"Name": "Izhmash polymer АК-74 stock (6P20 Sb.7)",
+				"ShortName": "6P20 Sb.7",
+				"Description": "Polymer АК-74 stock produced by Izhmash which replaced the wooden one."
+			},
+			"node_5649b1c04bdc2d16268b457c": {
+				"Name": "Izhmash wooden АК-74 stock (6P20 Sb.5)",
+				"ShortName": "6P20 Sb.5",
+				"Description": "Standard wooden АК-74 stock produced by Izhmash."
+			},
+			"node_5649b2314bdc2d79388b4576": {
+				"Name": "ME adapter for АК",
+				"ShortName": "МЕ4",
+				"Description": "Adapter for installation of telescopic stock buffer tubes on AKs with non-folding stocks."
+			},
+			"node_5649be884bdc2d79388b4577": {
+				"Name": "Colt buffer tube",
+				"ShortName": "CST",
+				"Description": "Colt Receiver Extension Buffer Tube, 4-position, Mil-Spec diameter will fit any AR-15-based carbine."
+			},
+			"node_5649d9a14bdc2d79388b4580": {
+				"Name": "Tactica Tula TT01 Rearsight Weaver Adapter",
+				"ShortName": "ТТ01",
+				"Description": "Rear sight adapter ТТ01, designed by Tactica Tula company for AK. Installed in place of a standard sight, and allows to use it if no alternative sight is installed."
+			},
+			"node_5649ed104bdc2d3d1c8b458b": {
+				"Name": "7.62x39 PS rounds",
+				"ShortName": "PS 7.62x39",
+				"Description": "A package of 7.62x39 PS rounds"
+			},
+			"node_564ca99c4bdc2d16268b4589": {
+				"Name": "6L20 30-round 5.45x39 magazine for АК-74 and compatible weapons",
+				"ShortName": "6L20",
+				"Description": "30-round bakelite Izhmash 6L20 magazine for 5.45x39 ammo, for АК-74 and compatible systems."
+			},
+			"node_564ca9df4bdc2d35148b4569": {
+				"Name": "6L18 45-round 5.45x39 magazine for АК-74 and compatible weapons",
+				"ShortName": "6L18",
+				"Description": "45-round bakelite Izhmash 6L26 magazine for 5.45x39 ammo, for АК-74 and compatible systems. Also a standard issue RPK-74 magazine."
+			},
+			"node_564caa3d4bdc2d17108b458e": {
+				"Name": "TGP-A 5.45х39 muzzle device/suppressor",
+				"ShortName": "TGP-A",
+				"Description": "Tactical muzzle device/suppressor TGP-A, manufactured by State R&D Agency 'Special devices and Comms' for AK-based 5.45х39 automatic rifles."
+			},
+			"node_5656d7c34bdc2d9d198b4587": {
+				"Name": "7.62x39 mm PS",
+				"ShortName": "7.62x39",
+				"Description": "7.62x39 mm PS cartridge",
+				"casingName": "7.62x39 mm PS"
+			},
+			"node_5656eb674bdc2d35148b457c": {
+				"Name": "40 mm VOG-25",
+				"ShortName": "40mm",
+				"Description": "40 mm VOG grenade launcher fragmentation round",
+				"casingName": "40 mm VOG-25"
+			},
+			"node_566966cd4bdc2d0c4c8b4578": {
+				"Name": "Box full of junk",
+				"ShortName": "Junk box",
+				"Description": "A box full of junk that nobody will call treasure."
+			},
+			"node_566abbc34bdc2d92178b4576": {
+				"Name": "Stash",
+				"ShortName": "Stash",
+				"Description": "Somebody's badly camouflaged stash."
+			},
+			"node_5671446a4bdc2d97058b4569": {
+				"Name": "Pistol Case Key",
+				"ShortName": "Case Key",
+				"Description": "A key for a pistol case. No markings or hints."
+			},
+			"node_5672c92d4bdc2d180f8b4567": {
+				"Name": "Dorm room 118 Key",
+				"ShortName": "Room 118 Key",
+				"Description": "A dorm room key with a tag on it, reading 'Room 118'."
+			},
+			"node_5672cb124bdc2d1a0f8b4568": {
+				"Name": "AA Battery",
+				"ShortName": "AA Bat.",
+				"Description": "AA Battery, used over a wide array of consumer devices."
+			},
+			"node_5672cb304bdc2dc2088b456a": {
+				"Name": "D Size Battery",
+				"ShortName": "D Bat.",
+				"Description": "D (also R20, 373, Mono, UM) - one of the standard sizes for multipurpose batteries, used in the most energy-consuming portable electric devices like portable stereos, radiosets, GM counters and powerful hand lights."
+			},
+			"node_5672cb724bdc2dc2088b456b": {
+				"Name": "Geiger-Muller counter",
+				"ShortName": "GMcount",
+				"Description": "Gas discharge device for automatic count of detected ionizing particles."
+			},
+			"node_5673de654bdc2d180f8b456d": {
+				"Name": "Can of pacific saury",
+				"ShortName": "Saury",
+				"Description": "Smoked pacific saury in a tin can offers some easily digestible protein and aliphatic acid, making it a nice addition to your rations."
+			},
+			"node_56742c284bdc2d98058b456d": {
+				"Name": "Crickent lighter",
+				"ShortName": "Crickent",
+				"Description": "Very common lighter."
+			},
+			"node_56742c2e4bdc2d95058b456d": {
+				"Name": "Zibbo lighter",
+				"ShortName": "Zibbo",
+				"Description": "Metal Zibbo gasoline lighter, renowned for being reliable and windproof ."
+			},
+			"node_56742c324bdc2d150f8b456d": {
+				"Name": "Broken GPhone",
+				"ShortName": "Broken Phone",
+				"Description": "GPhone 9s - one of the previous generations of the famous smartphone model. Shattered beyond repair."
+			},
+			"node_5675838d4bdc2d95058b456e": {
+				"Name": "Drawer",
+				"ShortName": "Drawer",
+				"Description": "Dorm locker drawer."
+			},
+			"node_5696686a4bdc2da3298b456a": {
+				"Name": "Dollars",
+				"ShortName": "Dollars",
+				"Description": "Several dollar bills."
+			},
+			"node_569668774bdc2da2298b4568": {
+				"Name": "Euros",
+				"ShortName": "Euros",
+				"Description": "Several notes of euros."
+			},
+			"node_56d59856d2720bd8418b456a": {
+				"Name": "P226R 9х19 pistol",
+				"ShortName": "P226R",
+				"Description": "The SIG Sauer P226R is a full-sized, service-type pistol made by SIG Sauer, a standard service weapon of Navy SEALs. Chambered for the 9x19mm Parabellum, features a Picatinny rail mount on the underside of a frame."
+			},
+			"node_56d59948d2720bb7418b4582": {
+				"Name": "P226 magazine",
+				"ShortName": "9х19 P226",
+				"Description": "Standard 15-round 9х19 magazine for P226."
+			},
+			"node_56d59d3ad2720bdb418b4577": {
+				"Name": "9x19 mm Pst gzh",
+				"ShortName": "9x19 Pst gzh",
+				"Description": "9x19 mm Pst gzh round. Steel core bullet. Developed by TSNIITOCHMASH in the early 90s. Bullet weight — 5,4 g, muzzle velocity — 445—470 m/s. It outperforms the commercially available 9×19 mm Parabellum ordnance and corresponds to the more powerful 9×19 mm NATO army rounds (9×19 +P). The bullet hits through 4 mm plate of St.3 steel at distance of 55 m.",
+				"casingName": ""
+			},
+			"node_56d5a1f7d2720bb3418b456a": {
+				"Name": "112mm barrel for P226 9x19",
+				"ShortName": "112mm P226 9x19",
+				"Description": "Standard 112mm-long barrel for P226."
+			},
+			"node_56d5a2bbd2720bb8418b456a": {
+				"Name": "Black polymer Sig Sauer pistol grip for P226",
+				"ShortName": "BPGripP226",
+				"Description": "Standard black polymer Sig Sauer pistol grip for P226. Manufacturer Part Code: GRIP226BLKPOL"
+			},
+			"node_56d5a407d2720bb3418b456b": {
+				"Name": "SIG Sauer P226R 9x19 pistol slide",
+				"ShortName": "P226 Slide",
+				"Description": "Blued SIG Sauer Mk25 slide for 9x19 P226."
+			},
+			"node_56d5a661d2720bd8418b456b": {
+				"Name": "Sig Sauer Standard Frontsight",
+				"ShortName": "Sig #8FR",
+				"Description": "Standard frontsight for P226. Manufacturer Part Code: SIGHTCONTRASTFR"
+			},
+			"node_56d5a77ed2720b90418b4568": {
+				"Name": "Sig Sauer P226 Standard Rearsight",
+				"ShortName": "Sig #8R",
+				"Description": "Standard Sig Sauer Rearsight for P226. Manufacturer Part Code: CONTRASTREAR8"
+			},
+			"node_56dee2bdd2720bc8328b4567": {
+				"Name": "МR-153 12ga semi-automatic shotgun",
+				"ShortName": "МR-153",
+				"Description": "Smoothbore multi-shot MR-153 shotgun, produced by Izhmekh. Reliable and practical hunting and self-defence weapon."
+			},
+			"node_56deec93d2720bec348b4568": {
+				"Name": "750 mm barrel for MR-153 12ga shotgun",
+				"ShortName": "750mm МР-153 12ga",
+				"Description": "Standard serially produced barrel for МР-153 shotgun, 750 mm long for 12ga shells."
+			},
+			"node_56deed6ed2720b4c698b4583": {
+				"Name": "Izhmekh МR-153 Polymer stock",
+				"ShortName": "МR-153 Polymer",
+				"Description": "Standard Izhmekh-manufactured polymer stock for MR-153 shotgun."
+			},
+			"node_56deee15d2720bee328b4567": {
+				"Name": "МR-153 foreend cap",
+				"ShortName": "МR153x4",
+				"Description": "МR-153 12ga 30x25 foreend cap"
+			},
+			"node_56deeefcd2720bc8328b4568": {
+				"Name": "МR-153 magazine extension",
+				"ShortName": "МR153x8",
+				"Description": "8-shell МR-153 12ga magazine extension"
+			},
+			"node_56def37dd2720bec348b456a": {
+				"Name": "X400 tactical flashlight",
+				"ShortName": "X400",
+				"Description": "SureFire X400 combined LED and red laser Weapon Light."
+			},
+			"node_56dfef82d2720bbd668b4567": {
+				"Name": "5.45x39 mm BP",
+				"ShortName": "5.45x39 BP",
+				"Description": "5.45x39 mm BP cartridge with armor-piercing BP bullet.",
+				"casingName": "5.45x39 mm BP"
+			},
+			"node_56dff026d2720bb8668b4567": {
+				"Name": "5.45x39 mm BS",
+				"ShortName": "5.45x39 BS",
+				"Description": "5.45x39 mm BS cartridge with special armor-piercing BS bullet.",
+				"casingName": "5.45x39 mm BS"
+			},
+			"node_56dff061d2720bb5668b4567": {
+				"Name": "5.45x39 mm BT",
+				"ShortName": "5.45x39 BT",
+				"Description": "5.45x39 mm BT cartridge with armor-piercing tracer BT bullet.",
+				"casingName": "5.45x39 mm BT"
+			},
+			"node_56dff0bed2720bb0668b4567": {
+				"Name": "5.45x39 mm FMJ",
+				"ShortName": "5.45x39 FMJ",
+				"Description": "5.45x39 mm FMJ sport cartridge for target practice. 2-part bullet, bimetal jacket.",
+				"casingName": "5.45x39 mm FMJ"
+			},
+			"node_56dff216d2720bbd668b4568": {
+				"Name": "5.45x39 mm HP",
+				"ShortName": "5.45x39 HP",
+				"Description": "5.45x39 mm HP Sport cartridge for target shooting. 2-part bullet with bimetal jacket and lead core.",
+				"casingName": "5.45x39 mm HP"
+			},
+			"node_56dff2ced2720bb4668b4567": {
+				"Name": "5.45x39 mm PP",
+				"ShortName": "5.45x39 PP",
+				"Description": "5.45x39 mm PP GRAU Index — 7Н10 cartridge with enhanced penetration PP bullet. ",
+				"casingName": "5.45x39 mm PP"
+			},
+			"node_56dff338d2720bbd668b4569": {
+				"Name": "5.45x39 mm PRS",
+				"ShortName": "5.45x39 PRS",
+				"Description": "5.45x39 mm PRS cartridge with reduced ricochet bullet (developed for needs of special forces and law enforcement).",
+				"casingName": "5.45x39 mm PRS"
+			},
+			"node_56dff3afd2720bba668b4567": {
+				"Name": "5.45x39 mm PS",
+				"ShortName": "5.45x39 PS",
+				"Description": "5.45x39 mm PS GRAU Index — 7Н6М cartridge with regular PS steel core bullet.",
+				"casingName": "5.45x39 mm PS"
+			},
+			"node_56dff421d2720b5f5a8b4567": {
+				"Name": "5.45x39 mm SP",
+				"ShortName": "5.45x39 SP",
+				"Description": "5.45x39 mm SP Sporting cartridge for target practice.",
+				"casingName": "5.45x39 mm SP"
+			},
+			"node_56dff4a2d2720bbd668b456a": {
+				"Name": "5.45x39 mm T",
+				"ShortName": "5.45x39 T",
+				"Description": "5.45x39 mm T GRAU Index  — 7Т3 cartridge with T tracer bullet.",
+				"casingName": "5.45x39 mm T"
+			},
+			"node_56dff4ecd2720b5f5a8b4568": {
+				"Name": "5.45x39 mm US",
+				"ShortName": "5.45x39 US",
+				"Description": "5.45x39 mm US GRAU Index — 7U1, reduced speed US bullet cartridge.",
+				"casingName": "5.45x39 mm US"
+			},
+			"node_56e0598dd2720bb5668b45a6": {
+				"Name": "PB 9х18PM silenced pistol",
+				"ShortName": "PB",
+				"Description": "PB silenced pistol (GRAU Index 6П9) was designed for the purposes of army reconnaissance groups and USSR KGB personnel and introduced into service in 1967. Still operated nowadays by FSB special forces and internal troops of Ministry of Internal Affairs."
+			},
+			"node_56e05a6ed2720bd0748b4567": {
+				"Name": "TSNIITOCHMASH bakelite PB side grips",
+				"ShortName": "Bakelite PB",
+				"Description": "Standard issue PB bakelite side grips."
+			},
+			"node_56e05b06d2720bb2668b4586": {
+				"Name": "Stock silencer for PB  9х18 PM",
+				"ShortName": "PB-S",
+				"Description": "Standard-issue detachable PB pistol silencer."
+			},
+			"node_56e294cdd2720b603a8b4575": {
+				"Name": "Mystery Ranch Terraplane Backpack",
+				"ShortName": "Terraplane 85L",
+				"Description": "This durable, made with 500 Cordura, spacious, comfortable to wear and well-organized extra large backpack can hold half of Tarkov and still have some space left."
+			},
+			"node_56e335e4d2720b6c058b456d": {
+				"Name": "Scav Backpack",
+				"ShortName": "ScavBP",
+				"Description": "Some cheap replica of a 3-day assault pack with a MOLLE attachment system, adapted and enhanced by the owner as much as his creativity allowed. Does not offer much comfort, and the volume is lower than a genuine 3-day backpack, but it's still a backpack."
+			},
+			"node_56e33634d2720bd8058b456b": {
+				"Name": "Duffle bag",
+				"ShortName": "Duffle",
+				"Description": "Gym duffle bag, what used to be associated with fitness enthusiasts, is now associated with scavs."
+			},
+			"node_56e33680d2720be2748b4576": {
+				"Name": "Transformer Bag",
+				"ShortName": "T-Bag",
+				"Description": "A rather spacious messenger bag, large enough to fit a lunchbox, laptop and some papers - or a small emergency survival kit. Its transformable sling and universal size allow it to be worn both as bag and a compact backpack."
+			},
+			"node_56ea6fafd2720b844b8b4593": {
+				"Name": "Noveske KX3 5.56x45 flashhider",
+				"ShortName": "KX3",
+				"Description": "The Noveske KX3 Flash Hider, aka the Burning Pig, is designed to increase reliability in short-barreled members of AR-15 family by increasing back pressure and directing the muzzle blast forward of the shooter. Although originally designed for short-barreled AR-15s, it will work on any barrel length, and have since been introduced for a variety of mounts. This particular KX3 may be used on 5.56mm barrels with 1/2x28 threading. \\n"
+			},
+			"node_56ea70acd2720b844b8b4594": {
+				"Name": "Hensoldt FF 3-12x56 scope",
+				"ShortName": "FF 3-12",
+				"Description": "Hensoldt FF 3-12x56 telescopic sight was developed to deliver maximum performance and high adjustment ranges while maintaining a short optical system. With increased transparency in the blue spectral range and adjustable reticle light it is particularly comfortable under low-light conditions. The FF version of the scope has the reticle placed in the first image plane, thus, the reticle pattern is also magnified when the magnification is changed. This makes it possible to determine the distance using the MIL-DOT without having to calculate."
+			},
+			"node_56ea7165d2720b6e518b4583": {
+				"Name": "Badger Ordnance Tactical Charging Handle Latch ",
+				"ShortName": "BOTL",
+				"Description": "The Badger Ordnance Tactical Charging Handle is optimized for use with Mil Spec AR-15/M16/M4 platform rifles and features preinstalled popular Gen I Tactical Latch of the same company. All components are machined from 6061 Alloy and Mil Spec Type III Hardcoat Anodized."
+			},
+			"node_56ea7293d2720b8d4b8b45ba": {
+				"Name": "Sight Mount Sig 220-239 rear sight bearing",
+				"ShortName": "SM220-239",
+				"Description": "220-239 rear sight bearing produced by Sight Mount company for Sig Sauer 220, 226, 227, 229, 239 pistols. It is installed as a replacement of the standard rear sight and allows to use it if no scope is installed."
+			},
+			"node_56ea8180d2720bf2698b456a": {
+				"Name": "KAC QD Compensator 5.56x45",
+				"ShortName": "KAC QDC",
+				"Description": "The KAC 5.56 QD muzzle compensator/flashhider is an effective flash suppressor that also serves as a platform for attaching a KAC quick detach QDSS-NT4 sound suppressor. Installed on weapons based on AR-15/M16/M4."
+			},
+			"node_56ea8222d2720b69698b4567": {
+				"Name": "Izhmash SV-98 bipod",
+				"ShortName": "SV-98 Bipod",
+				"Description": "Standard SV-98 bipod. Folded into the forestock when not used."
+			},
+			"node_56ea8d2fd2720b7c698b4570": {
+				"Name": "Windham Weaponry Rail Gas Block",
+				"ShortName": "PICBLOCK",
+				"Description": "Installed as replacement to standard AR-15-based weapons gas block, it adds a Picatinny rail that allows installing your own accessory front sight."
+			},
+			"node_56eabcd4d2720b66698b4574": {
+				"Name": "MK12 Low Profile Gas Block",
+				"ShortName": "MK12",
+				"Description": "The MK12 Gas Block is only compatible with the RIS II (M4A1 & MK18) family of rail systems manufactured by Daniel Defense. It is not compatible with any other Daniel Defense rail system. This is due to various clearance issues. This only applies to rail system lengths that would completely shroud the gas block. If you are mounting the gas block to the barrel without being shrouded by the rail system, then this does not apply. In that case, it will fit as long as barrel diameter is .750."
+			},
+			"node_56eabf3bd2720b75698b4569": {
+				"Name": "MOE Carbine stock",
+				"ShortName": "MOE Stock",
+				"Description": "Drop-in replacement buttstock for AR15/M16 carbines by Magpul Original Equipment. Uses mil-spec sized receiver extension tubes. Frame profile avoids snagging and shields the release latch to prevent accidental activation, includes a standard 0.30' thick rubber butt-pad to prevent slippage even with body armor or modular gear."
+			},
+			"node_570fd6c2d2720bc6458b457f": {
+				"Name": "Eotech 553 holographic sight",
+				"ShortName": "553",
+				"Description": "Eotech 553 holographic collimator sight. Thanks to design features it can be used with a wide range of weapons even with non-folding sights. Compatible with night vision devices by the means of NV reticle mode. Utilized by US SOCOM as a primary sight for operations in confined spaces."
+			},
+			"node_570fd721d2720bc5458b4596": {
+				"Name": "Walther MRS reflex sight",
+				"ShortName": "MRS",
+				"Description": "Reflex Walther Multi-Reticle Point Sight features 2 dots and 2 reticles with adjustable brightness levels. Cheap, accurate (but has to zeroed every time the reticle type is switched), compact and offers good battery life - but not too sturdy and reliable."
+			},
+			"node_570fd79bd2720bc7458b4583": {
+				"Name": "OKP-7 reflex sight",
+				"ShortName": "OKP-7",
+				"Description": "The original design of OKP sights allows firing from unstable positions in rapidly changing conditions, reduces the operator fatigue, and, if necessary, allows unhindered use of base mechanical sights. The key feature of this sight is a rimless reflector attachment that doesn't block any field of fire sections; instead, reflector is protected by thin and durable visor that is almost un-noticeable when firing."
+			},
+			"node_5710c24ad2720bc3458b45a3": {
+				"Name": "F-1 Hand grenade",
+				"ShortName": "F-1",
+				"Description": "F-1 hand grenade (GRAU Index 57-Г-721) is an anti-personnel fragmentation defensive grenade, designed for neutralizing enemy personnel in the defensive combat. Due to significant effective fragmentation radius it can only be thrown from behind the cover, APC or tank."
+			},
+			"node_571659bb2459771fb2755a12": {
+				"Name": "DI ECS FDE pistol grip for AR-15 based systems",
+				"ShortName": "ECS FDE",
+				"Description": "ECS polymer pistol grip can be installed at any weapon compatible with AR-15 grips. The only difference from standard one is color."
+			},
+			"node_571a12c42459771f627b58a0": {
+				"Name": "TT pistol 7.62х25 ТТ",
+				"ShortName": "TT",
+				"Description": "A legendary pistol. It has seen numerous military conflicts and is still being in service in the certain spots of our planet, in one modification or another. This one is a classic TT-33, the most mass-produced version. It features Browning short-recoil tilting-barrel system, but very different otherwise - purposefully simple, single-action, no safety measures except half cock notch, it is able to withstand horrible operating abuse. Thanks to powerful 7.62x25 cartridge and relatively long barrel, TT boasts high muzzle velocity, penetration and impressive accuracy, even over long distances."
+			},
+			"node_571a26d524597720680fbe8a": {
+				"Name": "116mm 7.62х25 ТТ barrel",
+				"ShortName": "116mm st. ТТ",
+				"Description": "Standard barrel for TT pistol."
+			},
+			"node_571a279b24597720b4066566": {
+				"Name": "Homespun 121mm 7.62х25 ТТ barrel with threading",
+				"ShortName": "121mm thr. TT",
+				"Description": "Homespun barrel for TT pistol, with threading for silencer installation."
+			},
+			"node_571a282c2459771fb2755a69": {
+				"Name": "Standard TT side grips",
+				"ShortName": "TT grips",
+				"Description": "Standard post-war issue TT pistol side grips."
+			},
+			"node_571a28e524597720b4066567": {
+				"Name": "Makeshift 7.62х25 ТТ silencer",
+				"ShortName": "TT silencer",
+				"Description": "Makeshift silencer for TT with homespun barrel. Install and operate at your own discretion."
+			},
+			"node_571a29dc2459771fb2755a6a": {
+				"Name": "tt-105 7.62х25 ТТ Magazine",
+				"ShortName": "tt-105",
+				"Description": "Standard late issue 8-round magazine for TT pistol without lanyard ring."
+			},
+			"node_57235b6f24597759bf5a30f1": {
+				"Name": "AN/PVS-14 + Skull Lock Head Mount",
+				"ShortName": "PVS-14",
+				"Description": "AN/PVS-14 Monocular Night Vision Device mounted on Skull Lock Head Mount. \\nArmy/Navy Portable Visual Search device allows nighttime detection of targets on distances of up to 350m with 40°\\nFOV and adjustable brightness. Mounted on the Skull Lock Head Mount that allows to adjust the device into 7 possible positions and features a weight storage basket on the back for improved weight distribution."
+			},
+			"node_572b7adb24597762ae139821": {
+				"Name": "Scav Vest",
+				"ShortName": "Scav Vest",
+				"Description": "A fisherman's vest can more or less replace a chest rig, if the need is pressing enough. Doesnt offer much space."
+			},
+			"node_572b7d8524597762b472f9d1": {
+				"Name": "Baseball cap",
+				"ShortName": "Cap",
+				"Description": "Baseball cap, the most basic device for glare protection."
+			},
+			"node_572b7f1624597762ae139822": {
+				"Name": "Balaclava",
+				"ShortName": "Balaclava",
+				"Description": "A balaclava. The pinnacle of scav outfitting."
+			},
+			"node_572b7fa124597762b472f9d2": {
+				"Name": "Knitcap",
+				"ShortName": "Knitcap",
+				"Description": "Warm knitted hat, traditionally made for skiers but worn by everyone."
+			},
+			"node_572b7fa524597762b747ce82": {
+				"Name": "Lower half-mask",
+				"ShortName": "Mask",
+				"Description": "A piece of cloth, typically a bandana, covering the face from nose and below, is the most typical attribute of a street gang member."
+			},
+			"node_5732ee6a24597719ae0c0281": {
+				"Name": "Waist pouch",
+				"ShortName": "Waistbag",
+				"Description": "Durable and convenient waist pouch for a variety of things you want to keep close. Very secure."
+			},
+			"node_5733279d245977289b77ec24": {
+				"Name": "Car battery",
+				"ShortName": "Battery",
+				"Description": "A typical 12 V, 40 Ah lead-acid car batteries are in quite a demand with traders, who resell them in the areas that have been left without power supply."
+			},
+			"node_573474f924597738002c6174": {
+				"Name": "Chainlet",
+				"ShortName": "Chainlet",
+				"Description": "Small piece of jewellery worn around the neck. Depending on the materials and weight, can be quite valuable even now."
+			},
+			"node_5734758f24597738025ee253": {
+				"Name": "Golden neck chain",
+				"ShortName": "GoldChain",
+				"Description": "Golden neck chain is bound to be a rather profitable piece of jewelry to find."
+			},
+			"node_573475fb24597737fb1379e1": {
+				"Name": "Apollon Soyuz cigarettes ",
+				"ShortName": "Cigarettes",
+				"Description": "Apollon Soyuz cigarettes will take you to the stars from cough when you inhale them."
+			},
+			"node_573476d324597737da2adc13": {
+				"Name": "Malboro Cigarettes",
+				"ShortName": "Cigarettes",
+				"Description": "Malboro Cigarettes are a big hit with the better-off part of the local smoking populace."
+			},
+			"node_573476f124597737e04bf328": {
+				"Name": "Wilston cigarettes",
+				"ShortName": "Cigarettes",
+				"Description": "The image of a typical street punk would not be complete without Wilston cigarettes."
+			},
+			"node_5734770f24597738025ee254": {
+				"Name": "Strike Cigarettes",
+				"ShortName": "Cigarettes",
+				"Description": "Strike Cigarettes can be sold off to traders for their personal use later."
+			},
+			"node_5734773724597737fd047c14": {
+				"Name": "Condensed milk",
+				"ShortName": "Cond. milk",
+				"Description": "Condensed milk that once was a part of field ration for the Union soldiers in Civil War have since reached unprecedented popularity in post-Soviet countries, becoming almost a staple product. Canned, it can be stored for decades and remain just as sweet, tasty and nutritious."
+			},
+			"node_5734779624597737e04bf329": {
+				"Name": "CPU Fan",
+				"ShortName": "CPU Fan",
+				"Description": "In conditions of total deficiency of elementary goods and conveniences, CPU cooling fans come in handy for crafty locals - wind power generators made from them charge radios, they are used as household fans, and even serve as vent intakes, replacing native heavy blades."
+			},
+			"node_573477e124597737dd42e191": {
+				"Name": "PC CPU",
+				"ShortName": "CPU",
+				"Description": "PC central processing units, in lack of properly working computers, have found their purpose as a construction material for makeshift antenna reflector-type parasites."
+			},
+			"node_5734781f24597737e04bf32a": {
+				"Name": "DVD drive",
+				"ShortName": "DVD",
+				"Description": "Magnets, laser diodes and lenses make PC DVD drives a valuable resource for all sorts of makeshift survivor geekery, including motion detectors and designators."
+			},
+			"node_573478bc24597738002c6175": {
+				"Name": "Horse figurine",
+				"ShortName": "Figurine",
+				"Description": "Horrendously kitsch horse figurine is useless in Tarkov - just as anywhere else - but somewhere out there, there are dealers still willing to buy such things. Something is not right about this."
+			},
+			"node_5734795124597738002c6176": {
+				"Name": "Insulating tape",
+				"ShortName": "Tape",
+				"Description": "Although insulating tape is primarily intended for insulation of  wires, its practical application is limited only by creativity of its owner. Most typical cases include minor maintenance, holding together split parts, binding some stuff together and anti-slip wrapping of handles."
+			},
+			"node_57347b8b24597737dd42e192": {
+				"Name": "Matches",
+				"ShortName": "Matches",
+				"Description": "A matchbox full of safety matches. Lighters are more reliable and easier to use, but that's exactly why everybody tries to keep them hidden when asked for a light."
+			},
+			"node_57347baf24597738002c6178": {
+				"Name": "RAM",
+				"ShortName": "RAM",
+				"Description": "Old RAM are a primary source of IC chips for various microcontroller purposes of the locals."
+			},
+			"node_57347c1124597737fb1379e3": {
+				"Name": "Duct tape",
+				"ShortName": "Duct tape",
+				"Description": "Duct tape is a universal tool to fix in one place something that moves, but shouldn't."
+			},
+			"node_57347c2e24597744902c94a1": {
+				"Name": "Power supply unit",
+				"ShortName": "PSU",
+				"Description": "PC power supply units can be easily converted from powering PCs to a universal charger for all kinds of low-voltage rechargeable batteries and devices."
+			},
+			"node_57347c5b245977448d35f6e1": {
+				"Name": "Bolts",
+				"ShortName": "Bolts",
+				"Description": "Bolts, together with nuts, are used to fasten things in place."
+			},
+			"node_57347c77245977448d35f6e2": {
+				"Name": "Screw nut",
+				"ShortName": "Screw nut",
+				"Description": "Just a commonplace screw nut, with no apparent use."
+			},
+			"node_57347c93245977448d35f6e3": {
+				"Name": "Toothpaste",
+				"ShortName": "Toothpaste",
+				"Description": "Not that teeth hygiene was essential in the city now, but why not, if a chance is here."
+			},
+			"node_57347ca924597744596b4e71": {
+				"Name": "Graphics card",
+				"ShortName": "GPU",
+				"Description": "A graphics card is just as good source of electronic components as anything else - fans, GPUs, IC, whatever."
+			},
+			"node_57347cd0245977445a2d6ff1": {
+				"Name": "T-Shaped Plug",
+				"ShortName": "T-Plug",
+				"Description": "A T-shaped splitter for the wall power outlet."
+			},
+			"node_57347cf924597744902c94a2": {
+				"Name": "Dogtags",
+				"ShortName": "Dogtags",
+				"Description": "Army dogtags serve the purpose of quickly identifying the wounded and deceased in combat. "
+			},
+			"node_57347d3d245977448f7b7f61": {
+				"Name": "Rye croutons",
+				"ShortName": "Croutons",
+				"Description": "Croutons from traditional Russian sourdough rye Borodinskiy bread."
+			},
+			"node_57347d5f245977448b40fa81": {
+				"Name": "Humpback salmon",
+				"ShortName": "Humpback",
+				"Description": "Can of humpback salmon, tasty source of aliphatic acids and niacin."
+			},
+			"node_57347d692459774491567cf1": {
+				"Name": "Can of green peas",
+				"ShortName": "Peas",
+				"Description": "Can of green peas, rich in vitamins and selenium, which makes it especially valuable in the dubious environmental conditions of Norvinsk region."
+			},
+			"node_57347d7224597744596b4e72": {
+				"Name": "Can of beef stew",
+				"ShortName": "Tushonka",
+				"Description": "Canned beef stew, commonly referred to as tushonka, can be stored for years, thus rivaling condensed milk in importance as military and tourist food supply."
+			},
+			"node_57347d8724597744596b4e76": {
+				"Name": "Squash spread",
+				"ShortName": "Squash",
+				"Description": "Can of squash spread, a little vegetable treasure that goes well with almost anything and boasts an impressive set of vitamins and minerals."
+			},
+			"node_57347d90245977448f7b7f65": {
+				"Name": "Pack of oat flakes",
+				"ShortName": "Oatflakes",
+				"Description": "Package of oat flakes, primary component of healthy porridge for breakfast."
+			},
+			"node_57347d9c245977448b40fa85": {
+				"Name": "Can of herring",
+				"ShortName": "Herring",
+				"Description": "Canned herring, probably the lightest meal among canned fish, is rich with calcium and magnesium. This goes well with saury."
+			},
+			"node_57347da92459774491567cf5": {
+				"Name": "Can of beef stew",
+				"ShortName": "Tushonka",
+				"Description": "Canned beef stew, commonly referred to as tushonka, can be stored for years, thus rivaling condensed milk in importance as military and tourist food supply. Not very good cold, though. Seems to be made out of cheap parts of cows, like ankles or knuckles."
+			},
+			"node_5735fdcd2459776445391d61": {
+				"Name": "7.62x25mm TT AKBS",
+				"ShortName": "7.62x25 AKBS",
+				"Description": "7.62x25mm TT sport-hunting round.",
+				"casingName": "7.62x25mm TT AKBS"
+			},
+			"node_5735ff5c245977640e39ba7e": {
+				"Name": "7.62x25mm TT FMJ43",
+				"ShortName": "7.62x25 FMJ43",
+				"Description": "7.62x25mm TT sport-hunting round with FMJ43 bullet.",
+				"casingName": "7.62x25mm TT FMJ43"
+			},
+			"node_573601b42459776410737435": {
+				"Name": "7.62x25mm TT LRN",
+				"ShortName": "7.62x25 LRN",
+				"Description": "7.62x25mm TT sport-hunting round with LRNPC bullet.",
+				"casingName": "7.62x25mm TT LRN"
+			},
+			"node_573602322459776445391df1": {
+				"Name": "7.62x25mm TT LRNPC",
+				"ShortName": "7.62x25 LRNPC",
+				"Description": "7.62x25mm TT sport-hunting round with LRNPC bullet.",
+				"casingName": "7.62x25mm TT LRNPC"
+			},
+			"node_5736026a245977644601dc61": {
+				"Name": "7.62x25mm TT P gl",
+				"ShortName": "7.62x25 P gl",
+				"Description": "7.62x25mm TT P gl round with regular bullet.",
+				"casingName": "7.62x25mm TT P gl"
+			},
+			"node_573603562459776430731618": {
+				"Name": "7.62x25mm TT Pst gzh",
+				"ShortName": "7.62x25 Pst gzh",
+				"Description": "7.62x25mm TT Pst gzh round with Pst steel core bullet.",
+				"casingName": "7.62x25mm TT Pst gzh"
+			},
+			"node_573603c924597764442bd9cb": {
+				"Name": "7.62x25mm TT T gzh",
+				"ShortName": "T gzh",
+				"Description": "7.62x25mm TT T gzh round with tracer bullet",
+				"casingName": "7.62x25mm TT T gzh"
+			},
+			"node_573718ba2459775a75491131": {
+				"Name": "9x18 mm PM 9 BZT gzh",
+				"ShortName": "9 BZT gzh",
+				"Description": "9x18 mm PM round with enhanced armor-piercing full-metal bullet.",
+				"casingName": ""
+			},
+			"node_573719762459775a626ccbc1": {
+				"Name": "9x18 mm PM 9 P gzh",
+				"ShortName": "9 P gzh",
+				"Description": "9x18 mm PM round with lead core bullet.",
+				"casingName": ""
+			},
+			"node_573719df2459775a626ccbc2": {
+				"Name": "9x18 mm PM PBM",
+				"ShortName": "PBM",
+				"Description": "9x18 mm PM round with armor-piercing jacketed soft point bullet.",
+				"casingName": ""
+			},
+			"node_57371aab2459775a77142f22": {
+				"Name": "9x18 mm PM PMM",
+				"ShortName": "PMM",
+				"Description": "9x18 mm PM round with enhanced penetration bullet.",
+				"casingName": ""
+			},
+			"node_57371b192459775a9f58a5e0": {
+				"Name": "9x18 mm PM PPe gzh",
+				"ShortName": "PPe gzh",
+				"Description": "9x18 mm PM round with expanding bullet.",
+				"casingName": ""
+			},
+			"node_57371e4124597760ff7b25f1": {
+				"Name": "9x18 mm PM PPT gzh",
+				"ShortName": "PPT gzh",
+				"Description": "9x18 mm PM round with tracer bullet.",
+				"casingName": ""
+			},
+			"node_57371eb62459776125652ac1": {
+				"Name": "9x18 mm PM PRS gs",
+				"ShortName": "PRS gs",
+				"Description": "9x18 mm PM round with reduced ricochet bullet.",
+				"casingName": ""
+			},
+			"node_57371f2b24597761224311f1": {
+				"Name": "9x18 mm PM PS gs PPO",
+				"ShortName": "PS gs PPO",
+				"Description": "9x18 mm PM round with lead core ball bullet.",
+				"casingName": ""
+			},
+			"node_57371f8d24597761006c6a81": {
+				"Name": "9x18 mm PM PSO gzh",
+				"ShortName": "PSO gzh",
+				"Description": "9x18 mm PM sport-hunting round with lead core ball bullet.",
+				"casingName": ""
+			},
+			"node_5737201124597760fc4431f1": {
+				"Name": "9x18 mm PM Pst gzh",
+				"ShortName": "Pst gzh",
+				"Description": "9х18 mm PM round with steel core bullet.",
+				"casingName": ""
+			},
+			"node_5737207f24597760ff7b25f2": {
+				"Name": "9х18 mm PM PSV",
+				"ShortName": "PSV",
+				"Description": "9х18 mm PM round with hollow point bullet.",
+				"casingName": ""
+			},
+			"node_573720e02459776143012541": {
+				"Name": "9х18 PM mm RG028 gzh",
+				"ShortName": "RG028 gzh",
+				"Description": "9x18 PM mm round with enhanced penetration expanding bullet.",
+				"casingName": ""
+			},
+			"node_57372140245977611f70ee91": {
+				"Name": "9х18 mm PM SP7 gzh",
+				"ShortName": "SP7 gzh",
+				"Description": "9x18 mm PM round with enhanced stopping effect expanding bullet.",
+				"casingName": ""
+			},
+			"node_5737218f245977612125ba51": {
+				"Name": "9х18 mm PM SP8 gzh",
+				"ShortName": "SP8 gzh",
+				"Description": "9x18 mm PM round with reduced penetration expanding bullet.",
+				"casingName": ""
+			},
+			"node_573722e82459776104581c21": {
+				"Name": "16 pcs. 9х18 PM BZHT gzh ammo box",
+				"ShortName": "BZHT gzh",
+				"Description": "Cardboard box of 9x18 PM BZHT gzh ammo, 16 rounds."
+			},
+			"node_573724b42459776125652ac2": {
+				"Name": "16 pcs. 9х18 PM P gzh ammo box",
+				"ShortName": "P gzh",
+				"Description": "Cardboard box of 9x18 PM P gzh ammo, 16 rounds."
+			},
+			"node_5737250c2459776125652acc": {
+				"Name": "16 pcs. 9х18 PM PBM ammo box",
+				"ShortName": "PBM",
+				"Description": "Cardboard box of 9x18 PM PBM ammo, 16 rounds."
+			},
+			"node_5737256c2459776125652acd": {
+				"Name": "16 pcs. 9х18 PM PMM ammo box",
+				"ShortName": "PMM",
+				"Description": "Cardboard box of 9x18 PM PMM ammo, 16 rounds."
+			},
+			"node_573725b0245977612125bae2": {
+				"Name": "16 pcs. 9х18 PM Ppe gzh ammo box",
+				"ShortName": "Ppe gzh",
+				"Description": "Cardboard box of 9x18 PM Ppe gzh ammo, 16 rounds."
+			},
+			"node_5737260b24597761224311f2": {
+				"Name": "16 pcs. 9х18 PM PPT gzh ammo box",
+				"ShortName": "PPT gzh",
+				"Description": "Cardboard box of 9x18 PM PPT gzh ammo, 16 rounds."
+			},
+			"node_5737266524597761006c6a8c": {
+				"Name": "16 pcs. 9х18 PM PRS gs ammo box",
+				"ShortName": "PRS gzh",
+				"Description": "Cardboard box of 9x18 PM PRS gs ammo, 16 rounds."
+			},
+			"node_573726d824597765d96be361": {
+				"Name": "16 pcs. 9х18 PM PS gs PPO ammo box  ",
+				"ShortName": "PS gs PPO",
+				"Description": "Cardboard box of 9x18 PM PS gs PPO ammo, 16 rounds."
+			},
+			"node_5737273924597765dd374461": {
+				"Name": "16 pcs. 9х18 PM PSO gzh ammo box",
+				"ShortName": "PSO gzh",
+				"Description": "Cardboard box of sport-hunting 9x18 PM PSO gzh ammo, 16 rounds."
+			},
+			"node_573727c624597765cc785b5b": {
+				"Name": "16 pcs. 9х18 PM Pst gzh ammo box",
+				"ShortName": "Pst gzh",
+				"Description": "Cardboard box of 9x18 PM Pst gzh ammo, 16 rounds."
+			},
+			"node_5737280e24597765cc785b5c": {
+				"Name": "16 pcs. 9х18 PM PSV ammo box",
+				"ShortName": "PSV",
+				"Description": "Cardboard box of 9x18 PM PSV ammo, 16 rounds."
+			},
+			"node_5737287724597765e1625ae2": {
+				"Name": "16 pcs. 9х18 PM RG028 gzh ammo box",
+				"ShortName": "RG028 gzh",
+				"Description": "Cardboard box of 9x18 PM RG028 gzh ammo, 16 rounds."
+			},
+			"node_573728cc24597765cc785b5d": {
+				"Name": "16 pcs. 9х18 PM SP7 gzh ammo box",
+				"ShortName": "SP7 gzh",
+				"Description": "Cardboard box of 9x18 PM SP7 gzh ammo, 16 rounds."
+			},
+			"node_573728f324597765e5728561": {
+				"Name": "16 pcs. 9х18 PM SP8 gzh ammo box",
+				"ShortName": "SP8 gzh",
+				"Description": "Cardboard box of 9x18 PM SP8 gzh ammo, 16 rounds."
+			},
+			"node_5737292724597765e5728562": {
+				"Name": "120 pcs. 5.45х39 BP gs ammo pack",
+				"ShortName": "BP gs",
+				"Description": "A waterproof package of 5.45х39 BP gs cartridges, 120 pieces."
+			},
+			"node_57372a7f24597766fe0de0c1": {
+				"Name": "120 pcs. 5.45х39 BP gs ammo pack",
+				"ShortName": "BP gs",
+				"Description": "A damaged waterproof package of 5.45х39 BP gs cartridges, 120 pieces."
+			},
+			"node_57372ac324597767001bc261": {
+				"Name": "30 pcs. 5.45х39 BP gs ammo pack",
+				"ShortName": "BP gs",
+				"Description": "A paper package of 5.45х39 BP gs cartridges, 30 pieces."
+			},
+			"node_57372b832459776701014e41": {
+				"Name": "120 pcs. 5.45х39 BS gs ammo pack",
+				"ShortName": "BS gs",
+				"Description": "A waterproof package of 5.45х39 BS gs cartridges, 120 pieces."
+			},
+			"node_57372bad245977670b7cd242": {
+				"Name": "120 pcs. 5.45х39 BS gs ammo pack",
+				"ShortName": "BS gs",
+				"Description": "A damaged waterproof package of 5.45х39 BS gs cartridges, 120 pieces."
+			},
+			"node_57372bd3245977670b7cd243": {
+				"Name": "30 pcs. 5.45х39 BS gs ammo pack",
+				"ShortName": "BS gs",
+				"Description": "A paper package of 5.45х39 BS gs cartridges, 30 pieces."
+			},
+			"node_57372c21245977670937c6c2": {
+				"Name": "120 pcs. 5.45х39 BT gs ammo pack",
+				"ShortName": "BT gs",
+				"Description": "A waterproof package of 5.45х39 BT gs cartridges, 120 pieces."
+			},
+			"node_57372c56245977685e584582": {
+				"Name": "120 pcs. 5.45х39 BT gs ammo pack",
+				"ShortName": "BT gs",
+				"Description": "A damaged waterproof package of 5.45х39 BT gs cartridges, 120 pieces."
+			},
+			"node_57372c89245977685d4159b1": {
+				"Name": "30 pcs. 5.45х39 BT gs ammo pack",
+				"ShortName": "BT gs",
+				"Description": "A paper package of 5.45х39 BT gs cartridges, 30 pieces."
+			},
+			"node_57372d1b2459776862260581": {
+				"Name": "120 pcs. 5.45х39 PP gs ammo pack",
+				"ShortName": "PP gs",
+				"Description": "A waterproof package of 5.45х39 PP gs cartridges, 120 pieces."
+			},
+			"node_57372d4c245977685a3da2a1": {
+				"Name": "120 pcs. 5.45х39 PP gs ammo pack",
+				"ShortName": "PP gs",
+				"Description": "A damaged waterproof package of 5.45х39 PP gs cartridges, 120 pieces."
+			},
+			"node_57372db0245977685d4159b2": {
+				"Name": "30 pcs. 5.45х39 PP gs ammo pack",
+				"ShortName": "PP gs",
+				"Description": "A paper package of 5.45х39 PP gs cartridges, 30 pieces."
+			},
+			"node_57372deb245977685d4159b3": {
+				"Name": "120 pcs. 5.45х39 PRS gs ammo pack",
+				"ShortName": "PRS gs",
+				"Description": "A waterproof package of 5.45х39 PRS gs cartridges, 120 pieces."
+			},
+			"node_57372e1924597768553071c1": {
+				"Name": "120 pcs. 5.45х39 PRS gs ammo pack",
+				"ShortName": "PRS gs",
+				"Description": "A damaged waterproof package of 5.45х39 PRS gs cartridges, 120 pieces."
+			},
+			"node_57372e4a24597768553071c2": {
+				"Name": "30 pcs. 5.45х39 PRS gs ammo pack",
+				"ShortName": "PRS gs",
+				"Description": "A paper package of 5.45х39 PRS gs cartridges, 30 pieces."
+			},
+			"node_57372e73245977685d4159b4": {
+				"Name": "120 pcs. 5.45х39 PS gs ammo pack",
+				"ShortName": "PS gs",
+				"Description": "A waterproof package of 5.45х39 PS gs cartridges, 120 pieces."
+			},
+			"node_57372e94245977685648d3e1": {
+				"Name": "120 pcs. 5.45х39 PS gs ammo pack",
+				"ShortName": "PS gs",
+				"Description": "A damaged waterproof package of 5.45х39 PS gs cartridges, 120 pieces."
+			},
+			"node_57372ebf2459776862260582": {
+				"Name": "30 pcs. 5.45х39 PS gs ammo pack",
+				"ShortName": "PS gs",
+				"Description": "A paper package of 5.45х39 PS gs cartridges, 30 pieces."
+			},
+			"node_57372ee1245977685d4159b5": {
+				"Name": "120 pcs. 5.45х39 T gs ammo pack",
+				"ShortName": "T gs",
+				"Description": "A waterproof package of 5.45х39 T gs cartridges, 120 pieces."
+			},
+			"node_57372f2824597769a270a191": {
+				"Name": "120 pcs. 5.45х39 T gs ammo pack",
+				"ShortName": "T gs",
+				"Description": "A damaged waterproof package of 5.45х39 T gs cartridges, 120 pieces."
+			},
+			"node_57372f5c24597769917c0131": {
+				"Name": "30 pcs. 5.45х39 T gs ammo pack",
+				"ShortName": "T gs",
+				"Description": "A paper package of 5.45х39 T gs cartridges, 30 pieces."
+			},
+			"node_57372f7d245977699b53e301": {
+				"Name": "120 pcs. 5.45х39 US gs ammo pack",
+				"ShortName": "US gs",
+				"Description": "A waterproof package of 5.45х39 US gs cartridges, 120 pieces."
+			},
+			"node_57372fc52459776998772ca1": {
+				"Name": "120 pcs. 5.45х39 US gs ammo pack",
+				"ShortName": "US gs",
+				"Description": "A damaged waterproof package of 5.45х39 US gs cartridges, 120 pieces."
+			},
+			"node_5737300424597769942d5a01": {
+				"Name": "30 pcs. 5.45х39 US gs ammo pack",
+				"ShortName": "US gs",
+				"Description": "A paper package of 5.45х39 US gs cartridges, 30 pieces."
+			},
+			"node_5737330a2459776af32363a1": {
+				"Name": "30 pcs. 5.45х39 FMJ ammo box",
+				"ShortName": "FMJ",
+				"Description": "A box of 5.45х39 FMJ sport-hunting cartridges, 30 pieces."
+			},
+			"node_5737339e2459776af261abeb": {
+				"Name": "30 pcs. 5.45х39 HP ammo box",
+				"ShortName": "HP",
+				"Description": "A box of 5.45х39 HP sport-hunting cartridges, 30 pieces."
+			},
+			"node_573733c72459776b0b7b51b0": {
+				"Name": "30 pcs. 5.45х39 SP ammo box",
+				"ShortName": "SP",
+				"Description": "A box of 5.45х39 SP sport-hunting cartridges, 30 pieces."
+			},
+			"node_5739d41224597779c3645501": {
+				"Name": "16 pcs. 9x19 Pst Gzh ammo box",
+				"ShortName": "Pst Gzh",
+				"Description": "Cardboard box of 9x19 Pst Gzh ammo, 16 rounds."
+			},
+			"node_57486e672459770abd687134": {
+				"Name": "OKP-7 reflex sight",
+				"ShortName": "OKP-7 Dove",
+				"Description": "The original design of OKP sights allows firing from unstable positions in rapidly changing conditions, reduces the operator fatigue, and, if necessary, allows unhindered use of base mechanical sights. The key feature of this sight is a rimless reflector attachment that doesn't block any field of fire sections; instead, reflector is protected by thin and durable visor that is almost un-noticeable when firing. This variant is installed on the dovetail type mount."
+			},
+			"node_574dad8024597745964bf05c": {
+				"Name": "Wooden stock for SKS",
+				"ShortName": "SKS W.s.",
+				"Description": "Standard-issue wooden SKS stock produced by TOZ."
+			},
+			"node_574db213245977459a2f3f5d": {
+				"Name": "SKS Standard Rearsight",
+				"ShortName": "SKS Rear",
+				"Description": "SKS standard ramp-type rear sight"
+			},
+			"node_574eb85c245977648157eec3": {
+				"Name": "Factory Plan",
+				"ShortName": "Factory Plan",
+				"Description": "A simplified and updated copy of the factory facilities blueprint."
+			},
+			"node_57505f6224597709a92585a9": {
+				"Name": "Alyonka chocolate bar",
+				"ShortName": "Alyonka",
+				"Description": "The best known milk chocolate of post-Soviet space, sweet and creamy, but also makes you dehydrated."
+			},
+			"node_575062b524597720a31c09a1": {
+				"Name": "Green Ice",
+				"ShortName": "Green Tea",
+				"Description": "Sweetened green tea drink, tastes better while cold."
+			},
+			"node_57513f07245977207e26a311": {
+				"Name": "Apple juice",
+				"ShortName": "Apple Jc.",
+				"Description": "Clarified and reconstituted apple juice, a bit refreshing, a bit sweet."
+			},
+			"node_57513f9324597720a7128161": {
+				"Name": "Grand juice",
+				"ShortName": "Pom. Juice",
+				"Description": "Grand pomegranate juice, great drink for those who lack bitterness in their lives."
+			},
+			"node_57513fcc24597720a31c09a6": {
+				"Name": "Vita juice",
+				"ShortName": "Vita juice",
+				"Description": "Multifruit and multivitamin juice can be confusing tastewise, but it sure is healthy."
+			},
+			"node_5751435d24597720a27126d1": {
+				"Name": "Max energy",
+				"ShortName": "NRG Drink",
+				"Description": "Max Energy energy drink, designed like a battery, but different in contents - regular caffeine,  sugar, and flavoring."
+			},
+			"node_57514643245977207f2c2d09": {
+				"Name": "TarCola",
+				"ShortName": "TarCola",
+				"Description": "TarCola is a widely spread cola-flavored soft drink produced, before the conflict, by a local drinks manufacturer."
+			},
+			"node_575146b724597720a27126d5": {
+				"Name": "Pack of milk",
+				"ShortName": "Milk",
+				"Description": "1L package of milk that mysteriously survived until now."
+			},
+			"node_5751487e245977207e26a315": {
+				"Name": "Emelya rye croutons",
+				"ShortName": "Emelya",
+				"Description": "Emelya rye croutons with assorted flavours were a favourite snack of teens and lazy beer drinkers, but, unlike them, stayed behind."
+			},
+			"node_5751496424597720a27126da": {
+				"Name": "Hot Rod",
+				"ShortName": "Hot Rod",
+				"Description": "Hot Rod, though being the most recognizable energy drink in the world, is not much more powerful that its counterparts. The standards are the same for all."
+			},
+			"node_57518f7724597720a31c09ab": {
+				"Name": "Key 3",
+				"ShortName": "Key 3",
+				"Description": "Key 3"
+			},
+			"node_57518fd424597720c85dbaaa": {
+				"Name": "Key 5",
+				"ShortName": "Key 5",
+				"Description": "Key 5"
+			},
+			"node_5751916f24597720a27126df": {
+				"Name": "Key 2",
+				"ShortName": "Key 2",
+				"Description": "Key 2"
+			},
+			"node_5751961124597720a13989a7": {
+				"Name": "Keycard",
+				"ShortName": "Keycard",
+				"Description": "Keycard"
+			},
+			"node_5751961824597720a31c09ac": {
+				"Name": "Black Keycard",
+				"ShortName": "Black KC",
+				"Description": "Black Keycard"
+			},
+			"node_5751962524597720a7128169": {
+				"Name": "Blue Keycard",
+				"ShortName": "Blue KC",
+				"Description": "Blue Keycard"
+			},
+			"node_5751a25924597722c463c472": {
+				"Name": "Army bandage",
+				"ShortName": "Bandage",
+				"Description": "Army-issue gauze bandage."
+			},
+			"node_5751a89d24597722aa0e8db0": {
+				"Name": "Golden Star Balm",
+				"ShortName": "GoldenStar",
+				"Description": "Famous Vietnamese Golden Star Balm, also known as Cao Sao Vang is made from essential oils like Camphor, Menthol, Peppermint, Cajuput. Balm for external use: a small amount of ше is applied to the sub-district and rubbing of the skin: for headache - the temples and the nape of the neck, with a cold - under the nostrils, the common cold - in the chest, back, abdomen, insect bites - on the place of bite. Precautions and special instructions: Intended for external use only."
+			},
+			"node_5755356824597772cb798962": {
+				"Name": "AI-2 medikit",
+				"ShortName": "AI-2",
+				"Description": "The AI-2 medikit was developed as a standard service first aid kit for various defence and law enforcement agencies and civil defense forces of USSR. In case of all-out conflict with the use of weapons of mass destruction it should have been distributed to the population  of the affected and surrounding areas."
+			},
+			"node_5755383e24597772cb798966": {
+				"Name": "Vaseline",
+				"ShortName": "Vaseline",
+				"Description": "Vaseline, or, more precisely, petroleum jelly, is a versatile ointment used for a number of purposes where its water insulation and lubrication properties are required, for instance, treating small cuts and burns, coating corrosion-prone items or lubricating gear that requires non-acidic lubricants."
+			},
+			"node_576165642459773c7a400233": {
+				"Name": "Saiga 12ga ver. 10 12x76 assault rifle",
+				"ShortName": "Saiga 12ga v.10",
+				"Description": "Semi-automatic 12ga carbine with folding stock and firing mechanism safety lock that only allows firing from extended stock position. Features short 430mm barrel."
+			},
+			"node_576167ab2459773cad038c43": {
+				"Name": "SOK-12 Protection tube",
+				"ShortName": "SOK-12 P.T.",
+				"Description": "Standard-issue threading protection tube for SOK-12."
+			},
+			"node_576169e62459773c69055191": {
+				"Name": "SOK-12 polymer handguard Sb.7-1",
+				"ShortName": "Sb.7-1",
+				"Description": "The Sb.7-1 is a standard polymer handguard with sling swivel installed on SOK-12 and SOK-12S."
+			},
+			"node_57616a9e2459773c7a400234": {
+				"Name": "Sb.5 5-round 12x76 magazine for SOK-12 and compatible weapons",
+				"ShortName": "Sb.5",
+				"Description": "5-round Sb.5 polymer plastic magazine for SOK-12 and compatible weapons, intended for use with 12x76  or 12x70 shells."
+			},
+			"node_57616c112459773cce774d66": {
+				"Name": "Izhmash SOK-12 Sb.0-2 dust cover",
+				"ShortName": "Sb.0-2",
+				"Description": "Standard issue Izhmash-manufactured SOK-12 metal dust cover. "
+			},
+			"node_57616ca52459773c69055192": {
+				"Name": "Izhmash SOK-12 АК type stock",
+				"ShortName": "SOK-12АК Stock",
+				"Description": "Izhmash-made folding polymer AK-styled stock for SOK-12."
+			},
+			"node_57655f7d2459777aa2064c85": {
+				"Name": "VOMZ Pilad P1X42 ('WEAVER') D reflex sight",
+				"ShortName": "P1X42WD",
+				"Description": "Open type reflex sight designed for precision aiming of sport and hunting weapons at different types of targets, including quickly moving ones. This specimen is equipped with dot reticle."
+			},
+			"node_576697f22459770ab53cf5f6": {
+				"Name": "VOMZ Pilad P1X42 ('WEAVER') P reflex sight",
+				"ShortName": "P1X42WP",
+				"Description": "Open type reflex sight designed for precision aiming of sport and hunting weapons at different types of targets, including quickly moving ones. This specimen is equipped with post reticle."
+			},
+			"node_576697fd2459770ab2362162": {
+				"Name": "VOMZ Pilad P1X42 ('WEAVER') S reflex sight",
+				"ShortName": "P1X42WS",
+				"Description": "Open type reflex sight designed for precision aiming of sport and hunting weapons at different types of targets, including quickly moving ones. This specimen is equipped with dotted post reticle."
+			},
+			"node_574d967124597745970e7c94": {
+				"Name": "Simonov Semi-Automatic Carbine SKS 7.62x39",
+				"ShortName": "SKS",
+				"Description": "Soviet semi-automatic carbine designed by Sergei Simonov for 7.62x39 cartridge and known abroad as SKS-45. Immensely popular both in CIS countries and in the West, this weapon is still in active service in some countries in form of various copies and modifications. This particular specimen comes from extended storage warehouses of Tula Arms Plant and haven't yet undergo the civilian weapon normalization procedure."
+			},
+			"node_576a581d2459771e7b1bc4f1": {
+				"Name": "Yarygin MR-443 Grach 9х19 pistol",
+				"ShortName": "MR-443 'Grach'",
+				"Description": "Russian-produced semiautomatic 9х19 pistol, a service weapon of Russian army, special forces of Ministry of internal affairs and other defence and law enforcement agencies. "
+			},
+			"node_576a5ed62459771e9c2096cb": {
+				"Name": "MR-443 magazine",
+				"ShortName": "9х19 MR-443",
+				"Description": "Standard 18-round 9х19 magazine for MR-443."
+			},
+			"node_576a63cd2459771e796e0e11": {
+				"Name": "Polymer Izhmekh pistol grip for MR-443",
+				"ShortName": "P.grip.MR443",
+				"Description": "Standard service pistol grip for MR-443 manufactured by Izhmekh."
+			},
+			"node_576a7c512459771e796e0e17": {
+				"Name": "B-8 mount",
+				"ShortName": "B-8",
+				"Description": "B-8 rail mount is installed on Yarygin pistol (MR-443 Grach and its civilian version MR-446 Viking) for use with additional attachments, e.g. 2KS Klesch Mini tactical laser flashlight."
+			},
+			"node_576fd4ec2459777f0b518431": {
+				"Name": "Zenit-Belomo PSO 1M2-1 4x24 scope",
+				"ShortName": "PSO 1M2-1",
+				"Description": "Military grade sniper optical scope PSO 1M2-1, manufactured by Zenit-Belomo. This optical scope is designed for precision sight fire with Special Sniper Rifle (VSS) and Dragunov Sniper Rifle (SVD) on the variety of targets with 4x magnification and 6 degree FOV."
+			},
+			"node_577d128124597739d65d0e56": {
+				"Name": "Burris FastFire Weaver Base",
+				"ShortName": "FFWB",
+				"Description": "This base from Burris allows to mount the compact FastFire Series Sights to a Weaver or Picatinny-style rail."
+			},
+			"node_577d141e24597739c5255e01": {
+				"Name": "Burris FastFire 3 Reflex Sight",
+				"ShortName": "FF3",
+				"Description": "Light  and  tough,  the  FastFire  series  puts an  unmistakable,  bright  red  dot  on  your target  to  give  you  an  immediate  speed and  accuracy  advantage.  Can  be  used  as  a  primary sight or paired on top of an existing sight."
+			},
+			"node_577e1c9d2459773cd707c525": {
+				"Name": "Printer paper",
+				"ShortName": "Paper",
+				"Description": "Office-grade paper for printers and copiers, it can nevertheless be used for writing as well, just like any paper."
+			},
+			"node_5780cda02459777b272ede61": {
+				"Name": "Dorm room 306 Key",
+				"ShortName": "306 Key",
+				"Description": "A dorm room key with 306 tag on it."
+			},
+			"node_5780cf692459777de4559321": {
+				"Name": "Dorm room 315 Key",
+				"ShortName": "315 Key",
+				"Description": "A dorm room key with 315 tag on it."
+			},
+			"node_5780cf722459777a5108b9a1": {
+				"Name": "Dorm room 308 Key",
+				"ShortName": "308 Key",
+				"Description": "A dorm room key with 308 tag on it. The room tagged on the key is rumored to have a case with good ammo, seemingly planted there by an unknown figure, but it's unlikely that you'll find anything."
+			},
+			"node_5780cf7f2459777de4559322": {
+				"Name": "Marked key",
+				"ShortName": "Mark.Key",
+				"Description": "Key with strange symbol scratched on it."
+			},
+			"node_5780cf942459777df90dcb72": {
+				"Name": "Dorm room 214 Key",
+				"ShortName": "Room 214 Key",
+				"Description": "A dorm room key with 214 tag on it."
+			},
+			"node_5780cf9e2459777df90dcb73": {
+				"Name": "Dorm room 218 Key",
+				"ShortName": "Room 218 Key",
+				"Description": "A dorm room key with 218 tag on it."
+			},
+			"node_5780cfa52459777dfb276eb1": {
+				"Name": "Dorm room 220 Key",
+				"ShortName": "Room 220 Key",
+				"Description": "A dorm room key with 220 tag on it."
+			},
+			"node_5780d0532459777a5108b9a2": {
+				"Name": "Customs office key",
+				"ShortName": "Customs key",
+				"Description": "Key to the Customs office building"
+			},
+			"node_5780d0652459777df90dcb74": {
+				"Name": "Unknown Key",
+				"ShortName": "??? Key",
+				"Description": "An unknown key. No tags or clues."
+			},
+			"node_5780d07a2459777de4559324": {
+				"Name": "Portable cabin key",
+				"ShortName": "Cabin key",
+				"Description": "A key to one of the portable on-site cabins, probably the one that is used by guards."
+			},
+			"node_57838ad32459774a17445cd2": {
+				"Name": "Special Sniper Rifle VSS Vintorez ",
+				"ShortName": "VSS",
+				"Description": "VSS (Vintovka Sniperskaya Specialnaya, Special Sniper Rifle) - suppressed sniper rifle with integral suppressor, designed in the 80s in TSNIITochMash Institute for the needs of special-purpose teams and task forces."
+			},
+			"node_57838c962459774a1651ec63": {
+				"Name": "VSS 9х39 integral barrel-suppressor",
+				"ShortName": "VSS suppressor",
+				"Description": "TSNIITochMash-manufactured integral barrel-suppressor module for VSS Vintorez."
+			},
+			"node_57838e1b2459774a256959b1": {
+				"Name": "VSS Vintorez Standard Rearsight",
+				"ShortName": "VSS Rear",
+				"Description": "Standard mechanical vertically adjustable rear sight for VSS Vintorez."
+			},
+			"node_57838f0b2459774a256959b2": {
+				"Name": "10-round 6L24 9x39 VSS magazine",
+				"ShortName": "6L24",
+				"Description": "10-round polymer TSNIITochMash 6L24 magazine for 9x39 VSS ammo."
+			},
+			"node_57838f9f2459774a150289a0": {
+				"Name": "20-round 6L25 9x39 VSS magazine",
+				"ShortName": "6L25",
+				"Description": "20-round polymer TSNIITochMash 6L25 magazine for 9x39 VSS and AS VAL ammo."
+			},
+			"node_578395402459774a256959b5": {
+				"Name": "VSS Vintorez dust cover",
+				"ShortName": "Ksk VSS",
+				"Description": "Standard steel VSS Vintorez top dust cover by TSNIITochMash."
+			},
+			"node_578395e82459774a0e553c7b": {
+				"Name": "TSNIITochMash VSS Vintorez stock",
+				"ShortName": "VSS Stock",
+				"Description": "Wooden VSS Vintorez stock produced by TSNIITochMash/"
+			},
+			"node_5783c43d2459774bbe137486": {
+				"Name": "Empty Wallet",
+				"ShortName": "Wallet",
+				"Description": "Empty Wallet"
+			},
+			"node_578f8778245977358849a9b5": {
+				"Name": "Jacket",
+				"ShortName": "Jacket",
+				"Description": "Jacket"
+			},
+			"node_578f8782245977354405a1e3": {
+				"Name": "Safe",
+				"ShortName": "Safe",
+				"Description": "Safe"
+			},
+			"node_578f879c24597735401e6bc6": {
+				"Name": "Cash register",
+				"ShortName": "Register",
+				"Description": "Cash register"
+			},
+			"node_578f87a3245977356274f2cb": {
+				"Name": "Sport bag",
+				"ShortName": "Bag",
+				"Description": "Sport bag"
+			},
+			"node_578f87ad245977356274f2cc": {
+				"Name": "Wooden crate",
+				"ShortName": "Crate",
+				"Description": "Wooden crate"
+			},
+			"node_578f87b7245977356274f2cd": {
+				"Name": "Drawer",
+				"ShortName": "Drawer",
+				"Description": "Drawer"
+			},
+			"node_579204f224597773d619e051": {
+				"Name": "PM (t) 9х18PM pistol",
+				"ShortName": "PM(t)",
+				"Description": "A semi-mythical PM with extended barrel and suppressor mount threading. Some claim it was a limited series manufactured in Bulgaria, others insist on DDR, and some are even prone to think of it as a handcrafted upgrade. How did it end up in the Norvinsk region, no living soul can tell."
+			},
+			"node_5798a2832459774b53341029": {
+				"Name": "Customs plan",
+				"ShortName": "Customs",
+				"Description": "A plan of the vast Customs premises, maybe not the most up-to date, but still better than nothing."
+			},
+			"node_57a0dfb82459774d3078b56c": {
+				"Name": "9х39 mm SP-5",
+				"ShortName": "SP-5",
+				"Description": "9х39 mm VSS cartridge with steel core.",
+				"casingName": ""
+			},
+			"node_57a0e5022459774d1673f889": {
+				"Name": "9х39 mm SP-6",
+				"ShortName": "SP-6",
+				"Description": "Armor-piercing 9х39 mm VSS cartridge with half-jacketed, high-carbon U12A steel core bullet.",
+				"casingName": ""
+			},
+			"node_57a3459f245977764a01f703": {
+				"Name": "B-3 mount",
+				"ShortName": "B-3",
+				"Description": "B-3 mounts are fixed on the VSS or VAL suppressor to form a Picatinny rail for installation of additional weapon equipment."
+			},
+			"node_57a349b2245977762b199ec7": {
+				"Name": "Old Key",
+				"ShortName": "Old Key",
+				"Description": "Old key, apparently even Soviet-made, most likely it's from administration building doors."
+			},
+			"node_57a9b9ce2459770ee926038d": {
+				"Name": "IzhMash SOK-12 Front sight",
+				"ShortName": "SOK12 FS",
+				"Description": "Standard-issue IzhMash-produced SOK-12 front sight."
+			},
+			"node_57ac965c24597706be5f975c": {
+				"Name": "ELCAN SpecterDR 1x/4x Scope",
+				"ShortName": "DR1/4x",
+				"Description": "The SpecterDR (Dual Role) 1x/4x scope from Specter scope series designed by ELCAN has marked a breakthrough in the optic sight development by becoming the first variable scope that truly has two work modes, switching from 4x magnification to 1x in one touch. "
+			},
+			"node_57aca93d2459771f2c7e26db": {
+				"Name": "ELCAN SpecterDR 1x/4x Scope FDE",
+				"ShortName": "DR1/4xFDE",
+				"Description": "The SpecterDR (Dual Role) 1x/4x scope from Specter scope series designed by ELCAN has marked a breakthrough in the optic sight development by becoming the first variable scope that truly has two work modes, switching from 4x magnification to 1x in one touch. "
+			},
+			"node_57acb6222459771ec34b5cb0": {
+				"Name": "Pilad 043-02 Mount",
+				"ShortName": "043-02",
+				"Description": "Aluminium sight support with Picatinny rail mount for installation of scopes and accessories."
+			},
+			"node_57ade1442459771557167e15": {
+				"Name": "Armacon Baskak stock",
+				"ShortName": "Baskak",
+				"Description": "Russian-made light tube stock of very spartan design for use with AK systems that can be installed both on Mil-Spec and Com-Spec M/AR standard receiver adaptors. Not compatible with AR systems!"
+			},
+			"node_57adff4f24597737f373b6e6": {
+				"Name": "Sig BRAVO4 4X30 Scope",
+				"ShortName": "BRAVO4",
+				"Description": "Designed by Sig, BRAVO4 4X30 optical scope sight features the uniquely large FOV, 43% wider than closest competitors. It also has an extra rail mount on top of it that allows installation of backup compact sight."
+			},
+			"node_57ae0171245977343c27bfcf": {
+				"Name": "Belomo PK-06 reflex sight",
+				"ShortName": "PK-06",
+				"Description": "Open reflex sight with automatic reticle brightness adjustment and switching between 3 reticle types. "
+			},
+			"node_57af48872459771f0b2ebf11": {
+				"Name": "Hogue OverMolded Rubber Grip FDE",
+				"ShortName": "OMRG FDE",
+				"Description": "Fibergalss, rubber-overmolded anti-slip pistol grip for AR systems."
+			},
+			"node_57c44b372459772d2b39b8ce": {
+				"Name": "AS VAL",
+				"ShortName": "AS VAL",
+				"Description": "AS VAL (Avtomat Specialniy, Special Automatic Rifle) - silenced automatic rifle with integral suppressor designed for special forces units. Developed in TSNIITochMash on the VSS Vintorez platform."
+			},
+			"node_57c44dd02459772d2e0ae249": {
+				"Name": "AS VAL 9х39 integral barrel-suppressor",
+				"ShortName": "VAL suppressor",
+				"Description": "TSNIITochMash-manufactured integral barrel-suppressor module for AS VAL."
+			},
+			"node_57c44e7b2459772d28133248": {
+				"Name": "AS VAL Standard rear sight",
+				"ShortName": "AS VAL rear sight",
+				"Description": "Standard-issue adjustable distance mechanical rear sight for AS VAL."
+			},
+			"node_57c44f4f2459772d2c627113": {
+				"Name": "AS VAL Dust cover",
+				"ShortName": "VAL Dust cover",
+				"Description": "Standard AS VAL dust cover manufactured by TSNIITochMash."
+			},
+			"node_57c44fa82459772d2d75e415": {
+				"Name": "AS VAL Pistol grip",
+				"ShortName": "VAL pol.",
+				"Description": "AS VAL polymer pistol grip."
+			},
+			"node_57c450252459772d28133253": {
+				"Name": "TSNIITochMash AS VAL stock",
+				"ShortName": "VAL Stock",
+				"Description": "Foldable skeleton stock for AS VAL produced by TSNIITochMash."
+			},
+			"node_57c55efc2459772d2c6271e7": {
+				"Name": "Hogue OverMolded Rubber Grip Black",
+				"ShortName": "OMRG Black",
+				"Description": "Fibergalss, rubber-overmolded anti-slip pistol grip for AR systems."
+			},
+			"node_57c55f092459772d291a8463": {
+				"Name": "Hogue OverMolded Rubber Grip Ghillie Earth",
+				"ShortName": "OMRG GE",
+				"Description": "Fibergalss, rubber-overmolded anti-slip pistol grip for AR systems."
+			},
+			"node_57c55f112459772d28133310": {
+				"Name": "Hogue OverMolded Rubber Grip Ghillie Green",
+				"ShortName": "OMRG GG",
+				"Description": "Fibergalss, rubber-overmolded anti-slip pistol grip for AR systems."
+			},
+			"node_57c55f172459772d27602381": {
+				"Name": "Hogue OverMolded Rubber Grip OD Green",
+				"ShortName": "OMRG OD",
+				"Description": "Fibergalss, rubber-overmolded anti-slip pistol grip for AR systems."
+			},
+			"node_57c5ac0824597754771e88a9": {
+				"Name": "Optical scope March Tactical 3-24x42 FFP",
+				"ShortName": "3-24x42",
+				"Description": "March Tactical 3-24x42 First Focal Plane scope, reliable and accurate with ammunition of any power."
+			},
+			"node_57c69dd424597774c03b7bbc": {
+				"Name": "30mm Scope mount",
+				"ShortName": "30mm Mount",
+				"Description": "Universal 30mm scope base mount for installation on Picatinny rails."
+			},
+			"node_57c9a89124597704ee6faec1": {
+				"Name": "Sig Sauer FDE pistol grip for P226 (Combat)",
+				"ShortName": "226FDE",
+				"Description": "Brown polymer Sig Sauer FDE pistol grip for P226. Used as standard service grip on P226 Combat."
+			},
+			"node_57cd379a24597778e7682ecf": {
+				"Name": "Gerber Downrange Tomahawk",
+				"ShortName": "GDT",
+				"Description": "Tactical tomahawk, multitool and breaching tool, all-in-one solution."
+			},
+			"node_57cff947245977638e6f2a19": {
+				"Name": "Magpul MOE AK HAND GUARD (Black) for AK",
+				"ShortName": "MOE AK",
+				"Description": "The Magpul MOE AK HAND GUARD is installed on AKM/AK-74 compatible weapon systems. Equipped with licensed M-LOK mounts for installation of additional devices or rails. "
+			},
+			"node_57cffb66245977632f391a99": {
+				"Name": "Magpul M-LOK AFG Tactical grip",
+				"ShortName": "AFG M-LOK",
+				"Description": "Magpul M-LOK AFG Tactical grip. Can only be installed on Magpul licensed M-LOK slot on the applicable equipment."
+			},
+			"node_57cffcd624597763133760c5": {
+				"Name": "Magpul M-LOK AFG (Flat Dark Earth) Tactical grip",
+				"ShortName": "AFG M-LOK",
+				"Description": "Magpul M-LOK AFG Tactical grip. Can only be installed on Magpul licensed M-LOK slot on the applicable equipment."
+			},
+			"node_57cffcdd24597763f5110006": {
+				"Name": "Magpul M-LOK AFG (Olive Drab) Tactical grip",
+				"ShortName": "AFG M-LOK",
+				"Description": "Magpul M-LOK AFG Tactical grip. Can only be installed on Magpul licensed M-LOK slot on the applicable equipment."
+			},
+			"node_57cffce524597763b31685d8": {
+				"Name": "Magpul M-LOK AFG (Stealth Gray) Tactical grip",
+				"ShortName": "AFG M-LOK",
+				"Description": "Magpul M-LOK AFG Tactical grip. Can only be installed on Magpul licensed M-LOK slot on the applicable equipment."
+			},
+			"node_57cffd8224597763b03fc609": {
+				"Name": "Magpul MOE AK HAND GUARD (Flat Dark Earth) for AK",
+				"ShortName": "MOE AK",
+				"Description": "The Magpul MOE AK HAND GUARD is installed on AKM/AK-74 compatible weapon systems. Equipped with licensed M-LOK mounts for installation of additional devices or rails. "
+			},
+			"node_57cffddc24597763133760c6": {
+				"Name": "Magpul MOE AK HAND GUARD (Flat Dark Earth) for AK",
+				"ShortName": "MOE AK",
+				"Description": "The Magpul MOE AK HAND GUARD is installed on AKM/AK-74 compatible weapon systems. Equipped with licensed M-LOK mounts for installation of additional devices or rails. "
+			},
+			"node_57cffe0024597763b03fc60b": {
+				"Name": "Magpul MOE AK HAND GUARD (Plum) for AK",
+				"ShortName": "MOE AK",
+				"Description": "The Magpul MOE AK HAND GUARD is installed on AKM/AK-74 compatible weapon systems. Equipped with licensed M-LOK mounts for installation of additional devices or rails. "
+			},
+			"node_57cffe20245977632f391a9d": {
+				"Name": "Magpul MOE AK HAND GUARD (Stealth Gray) for AK",
+				"ShortName": "MOE AK",
+				"Description": "The Magpul MOE AK HAND GUARD is installed on AKM/AK-74 compatible weapon systems. Equipped with licensed M-LOK mounts for installation of additional devices or rails. "
+			},
+			"node_57d14e1724597714010c3f4b": {
+				"Name": "Standard 9x18PM 20-round magazine for PP-91",
+				"ShortName": "PP91 Std",
+				"Description": "Standard 20-round capacity metal magazine for PP-91 Kedr-based SMGs, manufactured by ZMZ."
+			},
+			"node_57d1519e24597714373db79d": {
+				"Name": "Standard 9x18PM 30-round magazine for PP-91",
+				"ShortName": "PP91 Std",
+				"Description": "Standard 30-round capacity metal magazine for PP-91 Kedr-based SMGs, manufactured by ZMZ."
+			},
+			"node_57d152ec245977144076ccdf": {
+				"Name": "ZMZ Polymer pistol grip for PP-91",
+				"ShortName": "PP91 Pol",
+				"Description": "ZMZ-produced polymer pistol grip for PP-91 Kedr and other SMGs based on it."
+			},
+			"node_57d14d2524597714373db789": {
+				"Name": "PP-91 Kedr 9x18PM SMG",
+				"ShortName": "PP-91 'Kedr'",
+				"Description": "The PP-91 Kedr SMG was developed in the early 90s by the order of Ministry of Internal Affairs and is now produced at Zlatoust machinery plant (Zlatoustovskiy Mashinostroitelnyi Zavod, ZMZ). At the moment, it is a service weapon of almost all Russian law enforcement forces."
+			},
+			"node_57d17c5e2459775a5c57d17d": {
+				"Name": "Ultrafire WF-501B Flashlight",
+				"ShortName": "WF501B",
+				"Description": "Simple but powerful LED flashlight with a sturdy body. "
+			},
+			"node_57d17e212459775a1179a0f5": {
+				"Name": "25 mm mount ring",
+				"ShortName": "25 mm ring",
+				"Description": "Universal platform for installation of 25 mm accessories on Picatinny mounts."
+			},
+			"node_57da93632459771cb65bf83f": {
+				"Name": "KAC QDSS NT-4 Black 5.56х45 silencer",
+				"ShortName": "NT-4 blk.",
+				"Description": "KAC QDSS NT-4 5.56х45 and .223 silencer, can only be installed on compatible KAC muzzle devices."
+			},
+			"node_57dbb57e2459774673234890": {
+				"Name": "KAC QDSS NT-4 FDE 5.56х45 silencer",
+				"ShortName": "NT-4 FDE",
+				"Description": "KAC QDSS NT-4 5.56х45 and .223 silencer, can only be installed on compatible KAC muzzle devices."
+			},
+			"node_57dc2fa62459775949412633": {
+				"Name": "Kalashnikov AKS-74U 5.45x39",
+				"ShortName": "AKS-74U",
+				"Description": "Reduced version of AKS-74 assault rifle, developed in the early 80s for combat vehicle crews and airborne troops, also became very popular with law enforcement and special forces for its compact size."
+			},
+			"node_57dc324a24597759501edc20": {
+				"Name": "IzhMash 5.45x39 muzzle break for AKS-74U (6P26 0-20)",
+				"ShortName": "6P26 0-20",
+				"Description": "Standard-issue IzhMash muzzle break for AKS-74U and AKS-74UN, installed on 24x1.5 mm threading."
+			},
+			"node_57dc32dc245977596d4ef3d3": {
+				"Name": "Wooden AKS-74U Handguard (6P26 Sb.6)",
+				"ShortName": "6P26 Sb.6",
+				"Description": "Standard-issue wooden handguard for AKS-74U, AKS-74UN and AKS-74UB, manufactured by IzhMash."
+			},
+			"node_57dc334d245977597164366f": {
+				"Name": "AKS-74U Dust cover (6P26 Sb.7)",
+				"ShortName": "6P26 Sb.7",
+				"Description": "Standard IzhMash-produced AKS-74U, AKS-74UN and AKS-74UB dust cover."
+			},
+			"node_57dc347d245977596754e7a1": {
+				"Name": "IzhMash metal stock for AKS-74U (6P26 Sb.5)",
+				"ShortName": "6P26 Sb.5",
+				"Description": "Metal skeleton stock for AKS-74U, AKS-74UN and AKS-74UB manufactured by IzhMash."
+			},
+			"node_57e26ea924597715ca604a09": {
+				"Name": "Bars A-2607- Damascus",
+				"ShortName": "A-2607",
+				"Description": "A Bars knife A-2607, manufactured of damascus steel with wenge handle and brass guard."
+			},
+			"node_57e26fc7245977162a14b800": {
+				"Name": "Bars A-2607- 95x18",
+				"ShortName": "A-2607",
+				"Description": "A Bars knife A-2607, forged of 95x18 steel with fine wood handle and brass guard."
+			},
+			"node_57e3dba62459770f0c32322b": {
+				"Name": "Izhmash AK-74 Textolite pistol grip (6P4 Sb.9)",
+				"ShortName": "6P4 Sb.9",
+				"Description": "Izhmash textolite pistol grip for AK-74 and compatible weapon systems."
+			},
+			"node_57ee59b42459771c7b045da5": {
+				"Name": "Rotor 43 RIS mount for PP Kedr",
+				"ShortName": "Kedr RIS",
+				"Description": "A RIS mount for PP Kedr manufactured by Rotor 43."
+			},
+			"node_57f3a5ae2459772b0e0bf19e": {
+				"Name": "PSO scope eyecup",
+				"ShortName": "PSO eyecup",
+				"Description": "Rubber eyecup for PSO scopes family"
+			},
+			"node_57f3c6bd24597738e730fa2f": {
+				"Name": "PP-91-01 Kedr-B 9x18PM SMG",
+				"ShortName": "PP-91-01 Kedr-B",
+				"Description": "A rare silenced version of the PP-91 Kedr SMG, denominated as PP-91-01 Kedr-B."
+			},
+			"node_57f3c7e024597738ea4ba286": {
+				"Name": "PP-91-01 Kedr-B muzzle thread piece",
+				"ShortName": "PP-91-01 muzzlethread",
+				"Description": "Muzzle thread piece for PP-91-01 Kedr-B with expansion chamber."
+			},
+			"node_57f3c8cc2459773ec4480328": {
+				"Name": "PP-91-01 Kedr-B 9x18PM suppressor",
+				"ShortName": "PP-91-01 suppressor",
+				"Description": "Standard service detachable PP-91-01 Kedr-B 9x18PM suppressor. Can be removed for compact carrying purposes."
+			},
+			"node_57f4c844245977379d5c14d1": {
+				"Name": "PP-9 Klin 9x18PMM SMG",
+				"ShortName": "PP-9 Klin",
+				"Description": "A further evolution of the Kedr SMG for new 9x18 PMM cartridge, designated as PP-9 Klin. Has been manufactured since 1996 till 2002 by the order of the Ministry of Internal Affairs."
+			},
+			"node_57fd23e32459772d0805bcf1": {
+				"Name": "Holosun LS321 Tactical device",
+				"ShortName": "LS321",
+				"Description": "Holosun LS321 is a multi-laser tactical device with green laser in the visible light spectrum, IR laser and IR searchlight."
+			},
+			"node_57ffa9f4245977728561e844": {
+				"Name": "B-11 AKS-74U Handguard",
+				"ShortName": "B-11",
+				"Description": "Integrally machined B-11 foregrip is manufactured from aluminium alloy D16T with black coating and can be installed instead of the standard-issue foregrip on AKS-74U. Fitted with Picatinny rail mounts on three sides, allowing installation of additional equipment (tactical foregrips, flashlights, laser designators)."
+			},
+			"node_57ffaea724597779f52b3a4d": {
+				"Name": "B-12 Mount",
+				"ShortName": "B-12",
+				"Description": "B-12 gas tube overhanging rail mount is installed on the side rail of the B-10 handguard and provides a weapon with means of installing a complex of sights and tactical devices by forming rail mounts over the weapon gas tube and on the side of a handguard."
+			},
+			"node_57ffb0062459777a045af529": {
+				"Name": "B-18 Mount",
+				"ShortName": "B-18",
+				"Description": "The B-18 rail mount is installed on the standard rear sight of AKS-74U forms a sight support hovering over the rifle dust cover."
+			},
+			"node_57ffb0e42459777d047111c5": {
+				"Name": "PBS-4 5.45х39 Silencer",
+				"ShortName": "PBS-4",
+				"Description": "The PBS-4 silencer, manufactured by TSNIITochMash for use as a part of 'Canary' assault rifle grenade launcher system."
+			},
+			"node_5811ce572459770cba1a34ea": {
+				"Name": "Stash",
+				"ShortName": "Stash",
+				"Description": "Somebody's badly camouflaged stash."
+			},
+			"node_5811ce662459770f6f490f32": {
+				"Name": "Stash",
+				"ShortName": "Stash",
+				"Description": "Somebody's badly camouflaged stash."
+			},
+			"node_5811ce772459770e9e5f9532": {
+				"Name": "Stash",
+				"ShortName": "Stash",
+				"Description": "Somebody's badly camouflaged stash."
+			},
+			"node_5447b5cf4bdc2d65278b4567": {
+				"Name": "Handgun",
+				"ShortName": "Pistol",
+				"Description": "Pistolet"
+			},
+			"node_5645bbf24bdc2d17108b4574": {
+				"Name": "Helm",
+				"ShortName": "Item",
+				"Description": "Item"
+			},
+			"node_5645bcb74bdc2ded0b8b4578": {
+				"Name": "Headphones",
+				"ShortName": "Item",
+				"Description": "Item"
+			},
+			"node_543be5664bdc2dd4348b4569": {
+				"Name": "Meds",
+				"ShortName": "Item",
+				"Description": "Item"
+			},
+			"node_543be5cb4bdc2deb348b4568": {
+				"Name": "Ammo container",
+				"ShortName": "Item",
+				"Description": "Item"
+			},
+			"node_543be5dd4bdc2deb348b4569": {
+				"Name": "Money",
+				"ShortName": "Item",
+				"Description": "Item"
+			},
+			"node_543be5e94bdc2df1348b4568": {
+				"Name": "Key",
+				"ShortName": "Item",
+				"Description": "Item"
+			},
+			"node_543be5f84bdc2dd4348b456a": {
+				"Name": "Equipment",
+				"ShortName": "Item",
+				"Description": "Item"
+			},
+			"node_543be6564bdc2df4348b4568": {
+				"Name": "Throwable weapon",
+				"ShortName": "Item",
+				"Description": "Item"
+			},
+			"node_543be6674bdc2df1348b4569": {
+				"Name": "Food and drink",
+				"ShortName": "Item",
+				"Description": "Item"
+			},
+			"node_56ea9461d2720b67698b456f": {
+				"Name": "Gas block",
+				"ShortName": "Item",
+				"Description": "Item"
+			},
+			"node_5447b5e04bdc2d62278b4567": {
+				"Name": "SMG",
+				"ShortName": "Item",
+				"Description": "Item"
+			},
+			"node_5447b5f14bdc2d61278b4567": {
+				"Name": "Assault rifle",
+				"ShortName": "Item",
+				"Description": "Item"
+			},
+			"node_5447b5fc4bdc2d87278b4567": {
+				"Name": "Assault carbine",
+				"ShortName": "Item",
+				"Description": "Item"
+			},
+			"node_5447b6094bdc2dc3278b4567": {
+				"Name": "Shotgun",
+				"ShortName": "Item",
+				"Description": "Item"
+			},
+			"node_5447b6194bdc2d67278b4567": {
+				"Name": "Marskman rifle",
+				"ShortName": "Item",
+				"Description": "Item"
+			},
+			"node_5447b6254bdc2dc3278b4568": {
+				"Name": "Sniper rifle",
+				"ShortName": "Item",
+				"Description": "Item"
+			},
+			"node_5447bed64bdc2d97278b4568": {
+				"Name": "Machinegun",
+				"ShortName": "Item",
+				"Description": "Item"
+			},
+			"node_5447bedf4bdc2d87278b4568": {
+				"Name": "Grenade launcher",
+				"ShortName": "Item",
+				"Description": "Item"
+			},
+			"node_5447bee84bdc2dc3278b4569": {
+				"Name": "Special weapon",
+				"ShortName": "Item",
+				"Description": "Item"
+			},
+			"node_5447e0e74bdc2d3c308b4567": {
+				"Name": "Special item",
+				"ShortName": "Item",
+				"Description": "Item"
+			},
+			"node_5447e1d04bdc2dff2f8b4567": {
+				"Name": "Knife",
+				"ShortName": "Item",
+				"Description": "Item"
+			},
+			"node_5448bc234bdc2d3c308b4569": {
+				"Name": "Magazine",
+				"ShortName": "Item",
+				"Description": "Item"
+			},
+			"node_5448bf274bdc2dfc2f8b456a": {
+				"Name": "Port. container",
+				"ShortName": "Item",
+				"Description": "Item"
+			},
+			"node_5448e5284bdc2dcb718b4567": {
+				"Name": "Chest rig",
+				"ShortName": "Item",
+				"Description": "Item"
+			},
+			"node_5448e53e4bdc2d60728b4567": {
+				"Name": "Backpack",
+				"ShortName": "Item",
+				"Description": "Item"
+			},
+			"node_5448e54d4bdc2dcc718b4568": {
+				"Name": "Armor",
+				"ShortName": "Item",
+				"Description": "Item"
+			},
+			"node_5448e5724bdc2ddf718b4568": {
+				"Name": "Vis. observ. device",
+				"ShortName": "Item",
+				"Description": "Item"
+			},
+			"node_5448e8d04bdc2ddf718b4569": {
+				"Name": "Food",
+				"ShortName": "Item",
+				"Description": "Item"
+			},
+			"node_5448e8d64bdc2dce718b4568": {
+				"Name": "Drink",
+				"ShortName": "Item",
+				"Description": "Item"
+			},
+			"node_5448eb774bdc2d0a728b4567": {
+				"Name": "Barter item",
+				"ShortName": "Item",
+				"Description": "Item"
+			},
+			"node_5448ecbe4bdc2d60728b4568": {
+				"Name": "Info",
+				"ShortName": "Item",
+				"Description": "Item"
+			},
+			"node_5448f39d4bdc2d0a728b4568": {
+				"Name": "Medikit",
+				"ShortName": "Item",
+				"Description": "Item"
+			},
+			"node_5448f3a14bdc2d27728b4569": {
+				"Name": "Drug",
+				"ShortName": "Item",
+				"Description": "Item"
+			},
+			"node_5448f3a64bdc2d60728b456a": {
+				"Name": "Stimulator",
+				"ShortName": "Item",
+				"Description": "Item"
+			},
+			"node_5448f3ac4bdc2dce718b4569": {
+				"Name": "Medical item",
+				"ShortName": "Item",
+				"Description": "Item"
+			},
+			"node_5448fe124bdc2da5018b4567": {
+				"Name": "Weapon mod",
+				"ShortName": "Item",
+				"Description": "Item"
+			},
+			"node_5448fe394bdc2d0d028b456c": {
+				"Name": "Muzzle device",
+				"ShortName": "Item",
+				"Description": "Item"
+			},
+			"node_5448fe7a4bdc2d6f028b456b": {
+				"Name": "Sights",
+				"ShortName": "Item",
+				"Description": "Item"
+			},
+			"node_566162e44bdc2d3f298b4573": {
+				"Name": "Compound item",
+				"ShortName": "Item",
+				"Description": "Item"
+			},
+			"node_5661632d4bdc2d903d8b456b": {
+				"Name": "Stackable item",
+				"ShortName": "Item",
+				"Description": "Item"
+			},
+			"node_566168634bdc2d144c8b456c": {
+				"Name": "Searchable item",
+				"ShortName": "Item",
+				"Description": "Item"
+			},
+			"node_566965d44bdc2d814c8b4571": {
+				"Name": "Loot container",
+				"ShortName": "Item",
+				"Description": "Item"
+			},
+			"node_566abbb64bdc2d144c8b457d": {
+				"Name": "Stash",
+				"ShortName": "Item",
+				"Description": "Item"
+			},
+			"node_5671435f4bdc2d96058b4569": {
+				"Name": "Locking container",
+				"ShortName": "Item",
+				"Description": "Item"
+			},
+			"node_567583764bdc2d98058b456e": {
+				"Name": "Stationary cont.",
+				"ShortName": "Item",
+				"Description": "Item"
+			},
+			"node_567849dd4bdc2d150f8b456e": {
+				"Name": "Map",
+				"ShortName": "Item",
+				"Description": "Item"
+			},
+			"node_5485a8684bdc2da71d8b4567": {
+				"Name": "Ammo",
+				"ShortName": "Item",
+				"Description": "Item",
+				"casingName": ""
+			},
+			"node_550aa4154bdc2dd8348b456b": {
+				"Name": "Functional mod",
+				"ShortName": "Item",
+				"Description": "Item"
+			},
+			"node_550aa4af4bdc2dd4348b456e": {
+				"Name": "Сompensator",
+				"ShortName": "Item",
+				"Description": "Item"
+			},
+			"node_550aa4bf4bdc2dd6348b456b": {
+				"Name": "Flashhider",
+				"ShortName": "Item",
+				"Description": "Item"
+			},
+			"node_550aa4cd4bdc2dd8348b456c": {
+				"Name": "Silencer",
+				"ShortName": "Item",
+				"Description": "Item"
+			},
+			"node_550aa4dd4bdc2dc9348b4569": {
+				"Name": "Comb. muzzle device",
+				"ShortName": "Item",
+				"Description": "Item"
+			},
+			"node_555ef6e44bdc2de9068b457e": {
+				"Name": "Barrel",
+				"ShortName": "Item",
+				"Description": "Item"
+			},
+			"node_557596e64bdc2dc2118b4571": {
+				"Name": "Pockets",
+				"ShortName": "Item",
+				"Description": "Item"
+			},
+			"node_550ad14d4bdc2dd5348b456c": {
+				"Name": "PMS",
+				"ShortName": "Item",
+				"Description": "Item"
+			},
+			"node_55802f3e4bdc2de7118b4584": {
+				"Name": "Gear mod",
+				"ShortName": "Item",
+				"Description": "Item"
+			},
+			"node_55818a104bdc2db9688b4569": {
+				"Name": "Handguard",
+				"ShortName": "Item",
+				"Description": "Item"
+			},
+			"node_55802f4a4bdc2ddb688b4569": {
+				"Name": "Essential mod",
+				"ShortName": "Item",
+				"Description": "Item"
+			},
+			"node_55818a304bdc2db5418b457d": {
+				"Name": "Receiver",
+				"ShortName": "Item",
+				"Description": "Item"
+			},
+			"node_55818a594bdc2db9688b456a": {
+				"Name": "Stock",
+				"ShortName": "Item",
+				"Description": "Item"
+			},
+			"node_55818a604bdc2db5418b457e": {
+				"Name": "Mag shaft",
+				"ShortName": "Item",
+				"Description": "Item"
+			},
+			"node_55818a684bdc2ddd698b456d": {
+				"Name": "Pistol grip",
+				"ShortName": "Item",
+				"Description": "Item"
+			},
+			"node_55818a6f4bdc2db9688b456b": {
+				"Name": "Charging handle",
+				"ShortName": "Item",
+				"Description": "Item"
+			},
+			"node_55818ac54bdc2d5b648b456e": {
+				"Name": "Ironsight",
+				"ShortName": "Item",
+				"Description": "Item"
+			},
+			"node_55818acf4bdc2dde698b456b": {
+				"Name": "Compact reflex sight",
+				"ShortName": "Item",
+				"Description": "Item"
+			},
+			"node_55818ad54bdc2ddc698b4569": {
+				"Name": "Reflex sight",
+				"ShortName": "Item",
+				"Description": "Item"
+			},
+			"node_55818add4bdc2d5b648b456f": {
+				"Name": "Assault scope",
+				"ShortName": "Item",
+				"Description": "Item"
+			},
+			"node_55818ae44bdc2dde698b456c": {
+				"Name": "Scope",
+				"ShortName": "Item",
+				"Description": "Item"
+			},
+			"node_55818aeb4bdc2ddc698b456a": {
+				"Name": "Special scope",
+				"ShortName": "Item",
+				"Description": "Item"
+			},
+			"node_55818af64bdc2d5b648b4570": {
+				"Name": "Foregrip",
+				"ShortName": "Item",
+				"Description": "Item"
+			},
+			"node_55818afb4bdc2dde698b456d": {
+				"Name": "Bipod",
+				"ShortName": "Item",
+				"Description": "Item"
+			},
+			"node_55818b014bdc2ddc698b456b": {
+				"Name": "UBGL",
+				"ShortName": "Item",
+				"Description": "Item"
+			},
+			"node_55818b084bdc2d5b648b4571": {
+				"Name": "Flashlight",
+				"ShortName": "Item",
+				"Description": "Item"
+			},
+			"node_55818b0e4bdc2dde698b456e": {
+				"Name": "Laser designator",
+				"ShortName": "Item",
+				"Description": "Item"
+			},
+			"node_55818b164bdc2ddc698b456c": {
+				"Name": "Comb. tact. device",
+				"ShortName": "Item",
+				"Description": "Item"
+			},
+			"node_55818b1d4bdc2d5b648b4572": {
+				"Name": "Rail covers",
+				"ShortName": "Item",
+				"Description": "Item"
+			},
+			"node_55818b224bdc2dde698b456f": {
+				"Name": "Mount",
+				"ShortName": "Item",
+				"Description": "Item"
+			},
+			"node_55d720f24bdc2d88028b456d": {
+				"Name": "Inventory",
+				"ShortName": "Item",
+				"Description": "Item"
+			},
+			"node_57864a3d24597754843f8721": {
+				"Name": "Jewelry",
+				"ShortName": "Item",
+				"Description": "Item"
+			},
+			"node_57864a66245977548f04a81f": {
+				"Name": "Electronics",
+				"ShortName": "Item",
+				"Description": "Item"
+			},
+			"node_57864ada245977548638de91": {
+				"Name": "Building material",
+				"ShortName": "Item",
+				"Description": "Item"
+			},
+			"node_57864bb7245977548b3b66c2": {
+				"Name": "Tool",
+				"ShortName": "Item",
+				"Description": "Item"
+			},
+			"node_57864c322459775490116fbf": {
+				"Name": "Household goods",
+				"ShortName": "Item",
+				"Description": "Item"
+			},
+			"node_57864c8c245977548867e7f1": {
+				"Name": "Medical supplies",
+				"ShortName": "Item",
+				"Description": "Item"
+			},
+			"node_57864e4c24597754843f8723": {
+				"Name": "Lubricant",
+				"ShortName": "Item",
+				"Description": "Item"
+			},
+			"node_57864ee62459775490116fc1": {
+				"Name": "Battery",
+				"ShortName": "Item",
+				"Description": "Item"
+			},
+			"node_5795f317245977243854e041": {
+				"Name": "Common container",
+				"ShortName": "Item",
+				"Description": "Item"
+			},
+			"node_57bef4c42459772e8d35a53b": {
+				"Name": "Armored equipment",
+				"ShortName": "Item",
+				"Description": "Item"
+			},
+			"node_5827272a24597748c74bdeea": {
+				"Name": "SOK-12 aluminum handguard MTU002 Long Top",
+				"ShortName": "MTU002 L",
+				"Description": "EDIT"
+			},
+			"node_58272b392459774b4c7b3ccd": {
+				"Name": "SOK-12 aluminum handguard MTU002 Short Top",
+				"ShortName": "MTU002 S",
+				"Description": "EDIT"
+			},
+			"node_58272b842459774abc128d50": {
+				"Name": "EDIT",
+				"ShortName": "EDIT",
+				"Description": "EDIT"
+			},
+			"node_m995": {
+                "Name": "5.56x45 мм M995",
+                "ShortName": "М995",
+                "Description": "Armor-piercing cartridge 5. 56x45 M995 with a tungsten core"
+            },
+			"node_58272d7f2459774f6311ddfd": {
+				"Name": "EDIT",
+				"ShortName": "EDIT",
+				"Description": "EDIT"
+			}
+		},
+		"locations": {
+			"node_54621f014bdc2de6728b4567": {
+				"Name": "Arena",
+				"Description": "A makeshift arena for gladiator fights, redesigned by remaining locals out of Equator-2 shopping mall.",
+				"pic": {
+					"path": "CONTENT/banners/SYS1.jpg",
+					"rcid": ""
+				},
+				"banners": {
+					"node_54621f014bdc2de6728b4567": {
+						"name": "United Security",
+						"description": "The USEC private military company was established in 1999 after the merging of two companies: KerniSEC and Safe Sea. In 2004, an agent of TerraGroup international holding made contact with USEC, which have essentially become a private army of the holding, with offices all around the world and over 7500 strong of staff.",
+						"pic": {
+							"path": "CONTENT/banners/SYS1.jpg",
+							"rcid": ""
+						}
+					},
+					"54621f014bdc2de6728b4567": {
+						"name": "BEAR",
+						"description": "The BEAR private military company was established by a secret decree of the Russian Federation Government as a countermeasure against illegal activities of TerraGroup in Russian territory. Not much information is known.",
+						"pic": {
+							"path": "CONTENT/banners/SYS1.jpg",
+							"rcid": ""
+						}
+					}
+				}
+			},
+			"node_55f2d3fd4bdc2d5f408b4567": {
+				"Name": "Factory",
+				"Description": "The industrial estate and facilities of chemical plant No. 16 were rented out illegally to TerraGroup. During the Contract Wars, the premises of the plant became a scene for numerous firefights between USEC and BEAR that determined control over the industrial district of Tarkov. Later on, in the wake of chaos, the plant facilities turned into a shelter for the remaining civilians, scavs, and all kinds of straggling military and armed forces, including scattered remains of USEC and BEAR",
+				"pic": {
+					"path": "CONTENT/banners/SYS1.jpg",
+					"rcid": ""
+				},
+				"banners": {
+					"node_55f2d4884bdc2d0b288b46b7": {
+						"name": "United Security",
+						"description": "The USEC private military company was established in 1999 after merger of two companies: KerniSEC and Safe Sea. In 2004, an agent of Terra Group international holding made contact with USEC, which have consecutively become, essentially, a private army of the holding, with offices all around the world and over 7500 strong of staff.",
+						"pic": {
+							"path": "CONTENT/banners/SYS1.jpg",
+							"rcid": ""
+						}
+					},
+					"55f2d4884bdc2d0b288b46b7": {
+						"name": "BEAR",
+						"description": "The BEAR private military company was established by a secret decree of the Russian Federation Government as a countermeasure against illegal activities of the Terra Group in the Russian territory.",
+						"pic": {
+							"path": "CONTENT/banners/SYS1.jpg",
+							"rcid": ""
+						}
+					}
+				}
+			},
+			"node_56c5928bd2720bd5288b456a": {
+				"Name": "Customs",
+				"Description": "Large piece of industrial park adjacent to the factory - includes customs terminal, dorms, fuel oil storage and other infrastructure objects.",
+				"pic": {
+					"path": "CONTENT/banners/SYS1.jpg",
+					"rcid": ""
+				},
+				"banners": {
+					"node_56c5928bd2720bd5288b456a": {
+						"name": "United Security",
+						"description": "The USEC private military company was established in 1999 after merger of two companies: KerniSEC and Safe Sea. In 2004, an agent of Terra Group international holding made contact with USEC, which have consecutively become, essentially, a private army of the holding, with offices all around the world and over 7500 strong of staff.",
+						"pic": {
+							"path": "CONTENT/banners/SYS1.jpg",
+							"rcid": ""
+						}
+					},
+					"56c5928bd2720bd5288b456a": {
+						"name": "BEAR",
+						"description": "The BEAR private military company was established by a secret decree of the Russian Federation Government as a countermeasure against illegal activities of the Terra Group in the Russian territory.",
+						"pic": {
+							"path": "CONTENT/banners/SYS1.jpg",
+							"rcid": ""
+						}
+					}
+				}
+			},
+			"node_56c591b3d2720be0288b456d": {
+				"Name": "Dust",
+				"Description": "An incomprehensible piece of a map from some game, probably Buyanov was under drugs once he decided to introduce it into the game",
+				"pic": {
+					"path": "CONTENT/banners/SYS1.jpg",
+					"rcid": ""
+				},
+				"banners": {
+					"node_56c591b3d2720be0288b456d": {
+						"name": "United Security",
+						"description": "Terrorists",
+						"pic": {
+							"path": "CONTENT/banners/SYS1.jpg",
+							"rcid": ""
+						}
+					},
+					"56c591b3d2720be0288b456d": {
+						"name": "BEAR",
+						"description": "Counter-terrorists",
+						"pic": {
+							"path": "CONTENT/banners/SYS1.jpg",
+							"rcid": ""
+						}
+					}
+				}
+			}
+		},
+		"trading": {
+			"node_54cb50c76803fa8b248b4571": {
+				"FullName": "Pavel Yegorovich Romanenko",
+				"FirstName": "Pavel Romanenko",
+				"Nickname": "Prapor",
+				"Location": "A town in the outskirts of Tarkov.",
+				"Description": "Warrant officer in charge of supply warehouses on the sustaining base for the Internal Troops enforcing the Norvinsk region blockade. During the Contract Wars, he secretly supplied the BEAR PMC operators with weapons, ammunition and various other provisions he had at his disposal."
+			},
+			"node_579dc571d53a0658a154fbec": {
+				"FullName": "<Real name unknown>",
+				"FirstName": "<Real name unknown>",
+				"Nickname": "Fence",
+				"Location": "A network of outlets all over Tarkov and its outskirts",
+				"Description": "The conflict has barely started when Fence has already started setting up anonymous outlets for buying and selling good. Keeping incognito, he nevertheless managed to put together a well-organised smuggler network operating all over Norvinsk region."
+			},
+			"node_54cb57776803fa99248b456e": {
+				"FullName": "Habibulina Elvira",
+				"FirstName": "Elvira",
+				"Nickname": "Nurse",
+				"Location": "Tarkov",
+				"Description": "Nurse"
+			},
+			"node_ItemTrader_6": {
+				"FullName": "Alexander Kovalchuk",
+				"FirstName": "Alexander Kovalchuk",
+				"Nickname": "KIBA",
+				"Location": "Interchange",
+				"Description": "The owner of a large weapons store Kiba Arms, continued to sell weapons and modules after the conflict. It also sells rare ammunition."
+			},
+			"node_581c7928ace78e2454d146c1": {
+				"FullName": "Ogrizenko Artemiy Volodimirovich",
+				"FirstName": "Artemiy",
+				"Nickname": "Hohol",
+				"Location": "Tarkov",
+				"Description": "Hohol"
+			},
+			"node_581c79e4ace78e2454d146c5": {
+				"FullName": "Tadeush Pilsudski",
+				"FirstName": "Tadeush",
+				"Nickname": "Pshek",
+				"Location": "Tarkov",
+				"Description": "Pshek"
+			},
+			"node_581c7989ace78e2454d146c3": {
+				"FullName": "Abramyan Arshavir Sarkisovich",
+				"FirstName": "Abramyan",
+				"Nickname": "Magpie",
+				"Location": "Tarkov",
+				"Description": "Magpie"
+			},
+			"ItemTrader_2": {
+				"FullName": "Никита Васильевич Буянов",
+				"FirstName": "Буянов",
+				"Nickname": "TRAINFENDER",
+				"Location": "Офис BATTLESTATE GAMES",
+				"Description": "Создал Тарков и тебя тоже."
+			},
+			"node_581c7a43ace78e2454d146c7": {
+				"FullName": "Kiselev Alexandr Fyodorovich",
+				"FirstName": "Alexandr",
+				"Nickname": "Huckster",
+				"Location": "Tarkov",
+				"Description": "Huckster"
+			},
+			"node_581c7a7dace78e2454d146c9": {
+				"FullName": "Samoilov Sergey Arsenevich",
+				"FirstName": "Sergey",
+				"Nickname": "Locksmith",
+				"Location": "Tarkov",
+				"Description": "Locksmith"
+			},
+			"node_581c7aa5ace78e2454d146cb": {
+				"FullName": "Haritonov Ivan Egorovich",
+				"FirstName": "Ivan",
+				"Nickname": "Leshi",
+				"Location": "Tarkov",
+				"Description": "Leshi"
+			},
+			"node_581c7accace78e2454d146cd": {
+				"FullName": "Samusenko Demyan Olegovich",
+				"FirstName": "Demyan",
+				"Nickname": "Warden",
+				"Location": "Tarkov",
+				"Description": "Warden"
+			},
+			"node_581c7af7ace78e2454d146cf": {
+				"FullName": "Genatulin Farit Ahmadullovich",
+				"FirstName": "Farit",
+				"Nickname": "Bashkir",
+				"Location": "Tarkov",
+				"Description": "Bashkir"
+			}
+		}
+	}
+}

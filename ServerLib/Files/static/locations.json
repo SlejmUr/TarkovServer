@@ -1,0 +1,1117 @@
+{
+	"err": 0,
+	"errmsg": "",
+	"data": {
+		"locations": {
+			"56c591b3d2720be0288b456d": {
+				"Enabled": false,
+				"Locked": false,
+				"Name": "Tarkov Streets",
+				"Description": "City of Tarkov, where we don't play soft, them guns get popped off. You know how it's going down. In the city of Tarkov, where we don't play soft, them guns get popped off.",
+				"Scene": {
+					"path": "maps/develop.bundle",
+					"rcid": "develop"
+				},
+				"Area": 0,
+				"RequiredPlayerLevel": 0,
+				"surv_gather_minutes": 0,
+				"surv_min": 0,
+				"surv_max": 0,
+				"sav_gather_minutes": 0,
+				"exit_count": 0,
+				"exit_access_time": 0,
+				"exit_time": 0,
+				"Preview": {
+					"path": "",
+					"rcid": ""
+				},
+				"IconX": 473,
+				"IconY": 720,
+				"Banners": [
+					{
+						"enable": true,
+						"banner": {
+							"name": "- ",
+							"description": "   ",
+							"pic": {
+								"path": "CONTENT/banners/SYS1.jpg",
+								"rcid": ""
+							}
+						}
+					}
+				],
+				"AveragePlayTime": 0,
+				"AveragePlayerLevel": 0,
+				"MinPlayers": 0,
+				"MaxPlayers": 0,
+				"Rules": "Normal",
+				"IsSecret": false,
+				"_id": "56c591b3d2720be0288b456d"
+			},
+			"custom": {
+				"IsSecret": false,
+				"IconX": 456,
+				"IconY": 443,
+				"_Id": "56c5928bd2720bd5288b456a",
+				"_id": "custom",
+				"Id": "bigmap",
+				"Enabled": true,
+				"Locked": false,
+				"Name": "Customs",
+				"Scene": {
+					"path": "maps/customs_preset.bundle",
+					"rcid": "bigmap.scenespreset.asset"
+				},
+				"Description": "Very Big Map",
+				"Area": 0,
+				"RequiredPlayerLevel": 0,
+				"session_duration_minutes": 240,
+				"surv_gather_minutes": 10,
+				"sav_gather_minutes": 10,
+				"exit_count": 2,
+				"exit_access_time": 240,
+				"exit_time": 2,
+				"Preview": {
+					"path": "",
+					"rcid": ""
+				},
+				"filter_ex": [],
+				"waves": [
+					{
+						"time_min": 0,
+						"time_max": 40,
+						"slots_min": 3,
+						"slots_max": 3,
+						"SpawnPoints": "Scav_OBSH_2",
+						"BotSide": "Savage"
+					},
+					{
+						"time_min": 0,
+						"time_max": 40,
+						"slots_min": 3,
+						"slots_max": 3,
+						"SpawnPoints": "Scav_OBSH_0",
+						"BotSide": "Usec"
+					},
+					{
+						"time_min": 0,
+						"time_max": 40,
+						"slots_min": 3,
+						"slots_max": 3,
+						"SpawnPoints": "Scav_ZAV_04",
+						"BotSide": "Bear"
+					},
+					{
+						"time_min": 0,
+						"time_max": 40,
+						"slots_min": 3,
+						"slots_max": 3,
+						"SpawnPoints": "Scav_OBSH_1",
+						"BotSide": "Usec"
+					},
+					{
+						"time_min": 0,
+						"time_max": 40,
+						"slots_min": 3,
+						"slots_max": 3,
+						"SpawnPoints": "Scav_ZAV_01",
+						"BotSide": "Savage"
+					},
+					{
+						"time_min": 120,
+						"time_max": 200,
+						"slots_min": 3,
+						"slots_max": 3,
+						"SpawnPoints": "Scav_FirstWave_2",
+						"BotSide": "Savage"
+					},
+					{
+						"time_min": 120,
+						"time_max": 200,
+						"slots_min": 3,
+						"slots_max": 3,
+						"SpawnPoints": "Scav_ZAV_06",
+						"BotSide": "Savage"
+					},
+					{
+						"time_min": 360,
+						"time_max": 420,
+						"slots_min": 3,
+						"slots_max": 3,
+						"SpawnPoints": "Scav_FirstWave_3",
+						"BotSide": "Savage"
+					},
+					{
+						"time_min": 360,
+						"time_max": 420,
+						"slots_min": 3,
+						"slots_max": 3,
+						"SpawnPoints": "Scav_OBSH_02",
+						"BotSide": "Savage"
+					},
+					{
+						"time_min": 670,
+						"time_max": 980,
+						"slots_min": 3,
+						"slots_max": 3,
+						"SpawnPoints": "Scav_OBSH_01",
+						"BotSide": "Savage"
+					}
+				],
+				"limits": [],
+				"points": null,
+				"doors": {},
+				"containers": null,
+				"Banners": [],
+				"MinPlayers": 1,
+				"MaxPlayers": 2,
+				"AveragePlayerLevel": 10,
+				"AveragePlayTime": 100,
+				"Rules": "AvoidAllPmc",
+				"SpawnAreas": [
+					{
+						"Id": "Scav_FirstWave_1",
+						"Sides": [
+							"Savage"
+						],
+						"Position": {
+							"x": 59.69,
+							"y": -2.15,
+							"z": 120.662
+						},
+						"Center": {
+							"x": 0,
+							"y": 0,
+							"z": 0
+						},
+						"Size": {
+							"x": 2.2,
+							"y": 2.04,
+							"z": 2.14
+						}
+					},
+					{
+						"Id": "Scav_FirstWave_2",
+						"Sides": [
+							"Savage"
+						],
+						"Position": {
+							"x": 63.68,
+							"y": -2.15,
+							"z": 107.03
+						},
+						"Center": {
+							"x": 0,
+							"y": 0,
+							"z": 0
+						},
+						"Size": {
+							"x": 2.2,
+							"y": 2.04,
+							"z": 2.14
+						}
+					},
+					{
+						"Id": "Scav_FirstWave_3",
+						"Sides": [
+							"Savage"
+						],
+						"Position": {
+							"x": 66.91,
+							"y": -2.15,
+							"z": 120.1
+						},
+						"Center": {
+							"x": 0,
+							"y": 0,
+							"z": 0
+						},
+						"Size": {
+							"x": 2.2,
+							"y": 2.04,
+							"z": 2.14
+						}
+					},
+					{
+						"Id": "Scav_OBSH_01",
+						"Sides": [
+							"Savage"
+						],
+						"Position": {
+							"x": 252.04,
+							"y": 0.96,
+							"z": 174.41
+						},
+						"Center": {
+							"x": 0,
+							"y": 0,
+							"z": 0
+						},
+						"Size": {
+							"x": 2.2,
+							"y": 2.04,
+							"z": 2.14
+						}
+					},
+					{
+						"Id": "Scav_OBSH_02",
+						"Sides": [
+							"Savage"
+						],
+						"Position": {
+							"x": 248.83,
+							"y": 1.07,
+							"z": 145.93
+						},
+						"Center": {
+							"x": 0,
+							"y": 0,
+							"z": 0
+						},
+						"Size": {
+							"x": 2.2,
+							"y": 2.04,
+							"z": 2.14
+						}
+					},
+					{
+						"Id": "Scav_OBSH_03",
+						"Sides": [
+							"Savage"
+						],
+						"Position": {
+							"x": 256.21,
+							"y": 2.856,
+							"z": 180.74
+						},
+						"Center": {
+							"x": 0,
+							"y": 0,
+							"z": 0
+						},
+						"Size": {
+							"x": 2.2,
+							"y": 2.04,
+							"z": 2.14
+						}
+					},
+					{
+						"Id": "Scav_OBSH_04",
+						"Sides": [
+							"Savage"
+						],
+						"Position": {
+							"x": 253.85,
+							"y": 1.5,
+							"z": 161.19
+						},
+						"Center": {
+							"x": 0,
+							"y": 0,
+							"z": 0
+						},
+						"Size": {
+							"x": 2.2,
+							"y": 2.04,
+							"z": 2.14
+						}
+					},
+					{
+						"Id": "Scav_OBSH_05",
+						"Sides": [
+							"Savage"
+						],
+						"Position": {
+							"x": 244.46,
+							"y": 1.14,
+							"z": 160.26
+						},
+						"Center": {
+							"x": 0,
+							"y": 0,
+							"z": 0
+						},
+						"Size": {
+							"x": 2.2,
+							"y": 2.04,
+							"z": 2.14
+						}
+					},
+					{
+						"Id": "Scav_OBSH_06",
+						"Sides": [
+							"Savage"
+						],
+						"Position": {
+							"x": 243.23,
+							"y": 1.1,
+							"z": 165.73
+						},
+						"Center": {
+							"x": 0,
+							"y": 0,
+							"z": 0
+						},
+						"Size": {
+							"x": 2.2,
+							"y": 2.04,
+							"z": 2.14
+						}
+					},
+					{
+						"Id": "Scav_OBSH_06 (1)",
+						"Sides": [
+							"Savage"
+						],
+						"Position": {
+							"x": 488.32,
+							"y": 2.42,
+							"z": 17.26
+						},
+						"Center": {
+							"x": 0,
+							"y": 0,
+							"z": 0
+						},
+						"Size": {
+							"x": 2.2,
+							"y": 2.04,
+							"z": 2.14
+						}
+					},
+					{
+						"Id": "Scav_OBSH_06 (2)",
+						"Sides": [
+							"Savage"
+						],
+						"Position": {
+							"x": 490.85,
+							"y": 2.42,
+							"z": 22.55
+						},
+						"Center": {
+							"x": 0,
+							"y": 0,
+							"z": 0
+						},
+						"Size": {
+							"x": 2.2,
+							"y": 2.04,
+							"z": 2.14
+						}
+					},
+					{
+						"Id": "Scav_OBSH_06 (3)",
+						"Sides": [
+							"Savage"
+						],
+						"Position": {
+							"x": 494.08,
+							"y": 2.42,
+							"z": 18.41
+						},
+						"Center": {
+							"x": 0,
+							"y": 0,
+							"z": 0
+						},
+						"Size": {
+							"x": 2.2,
+							"y": 2.04,
+							"z": 2.14
+						}
+					},
+					{
+						"Id": "Scav_OBSH_06 (4)",
+						"Sides": [
+							"Savage"
+						],
+						"Position": {
+							"x": 498.4,
+							"y": 2.42,
+							"z": 17.17
+						},
+						"Center": {
+							"x": 0,
+							"y": 0,
+							"z": 0
+						},
+						"Size": {
+							"x": 2.2,
+							"y": 2.04,
+							"z": 2.14
+						}
+					},
+					{
+						"Id": "Scav_OBSH_06 (5)",
+						"Sides": [
+							"Savage"
+						],
+						"Position": {
+							"x": 485.77,
+							"y": 2.42,
+							"z": 14.8
+						},
+						"Center": {
+							"x": 0,
+							"y": 0,
+							"z": 0
+						},
+						"Size": {
+							"x": 2.2,
+							"y": 2.04,
+							"z": 2.14
+						}
+					},
+					{
+						"Id": "Scav_OBSH_06 (6)",
+						"Sides": [
+							"Savage"
+						],
+						"Position": {
+							"x": 503.75,
+							"y": 2.42,
+							"z": 16.79
+						},
+						"Center": {
+							"x": 0,
+							"y": 0,
+							"z": 0
+						},
+						"Size": {
+							"x": 2.2,
+							"y": 2.04,
+							"z": 2.14
+						}
+					},
+					{
+						"Id": "Scav_ZAV_01",
+						"Sides": [
+							"Savage"
+						],
+						"Position": {
+							"x": 473.7,
+							"y": 3.55,
+							"z": -105.45
+						},
+						"Center": {
+							"x": 0,
+							"y": 0,
+							"z": 0
+						},
+						"Size": {
+							"x": 2.2,
+							"y": 2.04,
+							"z": 2.14
+						}
+					},
+					{
+						"Id": "Scav_ZAV_02",
+						"Sides": [
+							"Savage"
+						],
+						"Position": {
+							"x": 450.48,
+							"y": 3.89,
+							"z": -122.97
+						},
+						"Center": {
+							"x": 0,
+							"y": 0,
+							"z": 0
+						},
+						"Size": {
+							"x": 2.2,
+							"y": 2.04,
+							"z": 2.14
+						}
+					},
+					{
+						"Id": "Scav_ZAV_03",
+						"Sides": [
+							"Savage"
+						],
+						"Position": {
+							"x": 467.26,
+							"y": 3.71,
+							"z": -102.86
+						},
+						"Center": {
+							"x": 0,
+							"y": 0,
+							"z": 0
+						},
+						"Size": {
+							"x": 2.2,
+							"y": 2.04,
+							"z": 2.14
+						}
+					},
+					{
+						"Id": "Scav_ZAV_04",
+						"Sides": [
+							"Savage"
+						],
+						"Position": {
+							"x": 399.84,
+							"y": 4.25,
+							"z": -117.45
+						},
+						"Center": {
+							"x": 0,
+							"y": 0,
+							"z": 0
+						},
+						"Size": {
+							"x": 2.2,
+							"y": 2.04,
+							"z": 2.14
+						}
+					},
+					{
+						"Id": "Scav_ZAV_05",
+						"Sides": [
+							"Savage"
+						],
+						"Position": {
+							"x": 395.73,
+							"y": 3.29,
+							"z": -117.17
+						},
+						"Center": {
+							"x": 0,
+							"y": 0,
+							"z": 0
+						},
+						"Size": {
+							"x": 2.2,
+							"y": 2.04,
+							"z": 2.14
+						}
+					},
+					{
+						"Id": "Scav_ZAV_06",
+						"Sides": [
+							"Savage"
+						],
+						"Position": {
+							"x": 456.79,
+							"y": 2.61,
+							"z": -100.48
+						},
+						"Center": {
+							"x": 0,
+							"y": 0,
+							"z": 0
+						},
+						"Size": {
+							"x": 2.2,
+							"y": 2.04,
+							"z": 2.14
+						}
+					},
+					{
+						"Id": "Start1",
+						"Sides": [
+							"Usec",
+							"Bear"
+						],
+						"Position": {
+							"x": -333.1,
+							"y": 2.40,
+							"z": -206.3
+						},
+						"Center": {
+							"x": 0,
+							"y": 0,
+							"z": 0
+						},
+						"Size": {
+							"x": 2.2,
+							"y": 2.04,
+							"z": 2.14
+						}
+					},
+					{
+						"Id": "Start2",
+						"Sides": [
+							"Usec",
+							"Bear"
+						],
+						"Position": {
+							"x": -293.9,
+							"y": 2.53,
+							"z": -232.43
+						},
+						"Center": {
+							"x": 0,
+							"y": 0,
+							"z": 0
+						},
+						"Size": {
+							"x": 2.2,
+							"y": 2.04,
+							"z": 2.14
+						}
+					},
+					{
+						"Id": "Start3",
+						"Sides": [
+							"Usec",
+							"Bear"
+						],
+						"Position": {
+							"x": -322.52,
+							"y": 2.53,
+							"z": -222.21
+						},
+						"Center": {
+							"x": 0,
+							"y": 0,
+							"z": 0
+						},
+						"Size": {
+							"x": 2.2,
+							"y": 2.04,
+							"z": 2.14
+						}
+					},
+					{
+						"Id": "Start4",
+						"Sides": [
+							"Usec",
+							"Bear"
+						],
+						"Position": {
+							"x": -291.059,
+							"y": 1.187,
+							"z": -38.346
+						},
+						"Center": {
+							"x": 0,
+							"y": 0,
+							"z": 0
+						},
+						"Size": {
+							"x": 2.2,
+							"y": 2.04,
+							"z": 2.14
+						}
+					},
+					{
+						"Id": "Start5",
+						"Sides": [
+							"Usec",
+							"Bear"
+						],
+						"Position": {
+							"x": -251.972,
+							"y": 2.122,
+							"z": -68.699
+						},
+						"Center": {
+							"x": 0,
+							"y": 0,
+							"z": 0
+						},
+						"Size": {
+							"x": 2.2,
+							"y": 2.04,
+							"z": 2.14
+						}
+					},
+					{
+						"Id": "Start6",
+						"Sides": [
+							"Usec",
+							"Bear"
+						],
+						"Position": {
+							"x": -206.30,
+							"y": 2.4,
+							"z": -333.10
+						},
+						"Center": {
+							"x": 0,
+							"y": 0,
+							"z": 0
+						},
+						"Size": {
+							"x": 2.2,
+							"y": 2.04,
+							"z": 2.14
+						}
+					}
+				]
+			},
+			"factory": {
+				"IsSecret": false,
+				"IconX": 318,
+				"IconY": 359,
+				"_Id": "55f2d3fd4bdc2d5f408b4567",
+				"_id": "factory",
+				"Id": "factory4",
+				"Enabled": true,
+				"Locked": false,
+				"Name": "Factory",
+				"Scene": {
+					"path": "maps/factory_preset.bundle",
+					"rcid": "factory.scenespreset.asset"
+				},
+				"Description": "The industrial estate and facilities of the chemical plant No.16 that were rented out illegally to the TerraGroup company. ",
+				"Area": 0.9,
+				"RequiredPlayerLevel": 1,
+				"session_duration_minutes": 45,
+				"surv_gather_minutes": 10,
+				"sav_gather_minutes": 10,
+				"exit_count": 3,
+				"exit_access_time": 60,
+				"exit_time": 1,
+				"Preview": {
+					"path": "",
+					"rcid": ""
+				},
+				"filter_ex": [],
+				"waves": [
+					{
+						"time_min": 0,
+						"time_max": 30,
+						"slots_min": 12,
+						"slots_max":  20,
+						"SpawnPoints": "Scavspawn (11)",
+						"BotSide": "Savage"
+					},
+					{
+						"time_min": 5,
+						"time_max": 60,
+						"slots_min": 12,
+						"slots_max":  20,
+						"SpawnPoints": "ScavPMCspawn",
+						"BotSide": "Bear"
+					},
+					{
+						"time_min": 10,
+						"time_max": 60,
+						"slots_min": 12,
+						"slots_max":  20,
+						"SpawnPoints": "ScavPMCspawn (1)",
+						"BotSide": "Usec"
+					}
+				],
+				"limits": [],
+				"points": null,
+				"doors": {},
+				"containers": null,
+				"Banners": [],
+				"MinPlayers": 1,
+				"MaxPlayers": 40,
+				"AveragePlayerLevel": 30,
+				"AveragePlayTime": 60,
+				"Rules": "AvoidOwnPmc",
+				"SpawnAreas": [
+					{
+						"Id": "ScavPMCspawn",
+						"Sides": [
+							"Usec",
+							"Bear",
+							"Savage"
+						],
+						"Position": {
+							"x": -42.797,
+							"y": 2.36,
+							"z": 41.269
+						},
+						"Center": {
+							"x": 0,
+							"y": 0,
+							"z": 0
+						},
+						"Size": {
+							"x": 1.48,
+							"y": 2.04,
+							"z": 1.53
+						}
+					},
+					{
+						"Id": "ScavPMCspawn (1)",
+						"Sides": [
+							"Usec",
+							"Bear",
+							"Savage"
+						],
+						"Position": {
+							"x": -17.286,
+							"y": -1.462,
+							"z": 38.702
+						},
+						"Center": {
+							"x": 0,
+							"y": 0,
+							"z": 0
+						},
+						"Size": {
+							"x": 1.48,
+							"y": 2.04,
+							"z": 1.53
+						}
+					},
+					{
+						"Id": "ScavPMCspawn (2)",
+						"Sides": [
+							"Usec",
+							"Bear",
+							"Savage"
+						],
+						"Position": {
+							"x": 39.164,
+							"y": -1.565,
+							"z": -32.459
+						},
+						"Center": {
+							"x": 0,
+							"y": 0,
+							"z": 0
+						},
+						"Size": {
+							"x": 1.48,
+							"y": 2.04,
+							"z": 1.53
+						}
+					},
+					{
+						"Id": "ScavPMCspawn (3)",
+						"Sides": [
+							"Usec",
+							"Bear",
+							"Savage"
+						],
+						"Position": {
+							"x": 60.98,
+							"y": 1.42,
+							"z": -38.76
+						},
+						"Center": {
+							"x": 0,
+							"y": 0,
+							"z": 0
+						},
+						"Size": {
+							"x": 1.48,
+							"y": 2.04,
+							"z": 1.53
+						}
+					},
+					{
+						"Id": "ScavPMCspawn (6)",
+						"Sides": [
+							"Usec",
+							"Bear",
+							"Savage"
+						],
+						"Position": {
+							"x": 19.872,
+							"y": -1.558,
+							"z": -1.301
+						},
+						"Center": {
+							"x": 0,
+							"y": 0,
+							"z": 0
+						},
+						"Size": {
+							"x": 1.48,
+							"y": 2.04,
+							"z": 1.53
+						}
+					},
+					{
+						"Id": "ScavPMCspawn (8)",
+						"Sides": [
+							"Usec",
+							"Bear",
+							"Savage"
+						],
+						"Position": {
+							"x": -23.77,
+							"y": 2.36,
+							"z": 66.04
+						},
+						"Center": {
+							"x": 0,
+							"y": 0,
+							"z": 0
+						},
+						"Size": {
+							"x": 1.48,
+							"y": 2.04,
+							"z": 1.53
+						}
+					},
+					{
+						"Id": "Scavspawn (10)",
+						"Sides": [
+							"Savage"
+						],
+						"Position": {
+							"x": 58.77,
+							"y": 1.609,
+							"z": -32.36
+						},
+						"Center": {
+							"x": 0,
+							"y": 0,
+							"z": 0
+						},
+						"Size": {
+							"x": 1.48,
+							"y": 2.04,
+							"z": 1.53
+						}
+					},
+					{
+						"Id": "Scavspawn (11)",
+						"Sides": [
+							"Savage"
+						],
+						"Position": {
+							"x": 44.99,
+							"y": 1.75,
+							"z": -37.57
+						},
+						"Center": {
+							"x": 0,
+							"y": 0,
+							"z": 0
+						},
+						"Size": {
+							"x": 1.48,
+							"y": 2.04,
+							"z": 1.53
+						}
+					},
+					{
+						"Id": "Scavspawn (5)",
+						"Sides": [
+							"Savage"
+						],
+						"Position": {
+							"x": -6.783,
+							"y": -1.489,
+							"z": 28.517
+						},
+						"Center": {
+							"x": 0,
+							"y": 0,
+							"z": 0
+						},
+						"Size": {
+							"x": 1.48,
+							"y": 2.04,
+							"z": 1.53
+						}
+					},
+					{
+						"Id": "Scavspawn (7)",
+						"Sides": [
+							"Savage"
+						],
+						"Position": {
+							"x": -45.046,
+							"y": 2.36,
+							"z": 55.05
+						},
+						"Center": {
+							"x": 0,
+							"y": 0,
+							"z": 0
+						},
+						"Size": {
+							"x": 1.48,
+							"y": 2.04,
+							"z": 1.53
+						}
+					},
+					{
+						"Id": "Scavspawn (9)",
+						"Sides": [
+							"Savage"
+						],
+						"Position": {
+							"x": 62.762,
+							"y": 1.609,
+							"z": -32.238
+						},
+						"Center": {
+							"x": 0,
+							"y": 0,
+							"z": 0
+						},
+						"Size": {
+							"x": 1.48,
+							"y": 2.04,
+							"z": 1.53
+						}
+					}
+				]
+			},
+			"55f2d3fd4bdc2d5f408b4567": {
+				"Enabled": false,
+				"Locked": false,
+				"Name": "hvh map",
+				"Description": "epic style",
+				"Scene": {
+					"path": "maps/dust2.bundle",
+					"rcid": "dust2.scenespreset.asset"
+				},
+				"Area": 0,
+				"RequiredPlayerLevel": 0,
+				"surv_gather_minutes": 1,
+				"surv_min": 6,
+				"surv_max": 9,
+				"sav_gather_minutes": 0,
+				"exit_count": 1,
+				"exit_access_time": 10,
+				"exit_time": 2,
+				"Preview": {
+					"path": "",
+					"rcid": ""
+				},
+				"IconX": 400,
+				"IconY": 500,
+				"Banners": [
+					{
+						"name": "BANNER1",
+						"description": "BANNER1",
+						"pic": {
+							"path": "CONTENT/banners/SYS1.jpg",
+							"rcid": ""
+						}
+					}
+				],
+				"AveragePlayTime": 0,
+				"AveragePlayerLevel": 22,
+				"MinPlayers": 0,
+				"MaxPlayers": 0,
+				"Rules": false,
+				"IsSecret": false,
+				"_id": "55f2d3fd4bdc2d5f408b4567",
+				"_Id": "56c591b3d2720be0288b456d",
+				"Id": "bigmap"
+			}
+		},
+		"paths": [
+			{
+				"Source": "node:55f2d3fd4bdc2d5f408b4567",
+				"Destination": "node:56c591b3d2720be0288b456d"
+			},
+			{
+				"Source": "node:custom",
+				"Destination": "node:55f2d3fd4bdc2d5f408b4567"
+			},
+			{
+				"Source": "node:factory",
+				"Destination": "node:custom"
+			}
+		]
+	}
+}
