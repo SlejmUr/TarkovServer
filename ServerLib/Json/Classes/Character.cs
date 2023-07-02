@@ -1,871 +1,515 @@
-﻿using EFT.Quests;
+﻿using System.Globalization;
 using Newtonsoft.Json;
-using ServerLib.Json.Enums;
+using Newtonsoft.Json.Converters;
 
 namespace ServerLib.Json.Classes
 {
     public class Character
     {
-        public class Base
+        public partial class Base
         {
+            [JsonProperty("TraderStandings")]
+            public BackendCounters TraderStandings { get; set; }
 
-            [JsonProperty("_id", NullValueHandling = NullValueHandling.Ignore)]
+            [JsonProperty("_id")]
             public string Id { get; set; }
 
-            [JsonProperty("aid", NullValueHandling = NullValueHandling.Ignore)]
+            [JsonProperty("aid")]
             public string Aid { get; set; }
 
-            [JsonProperty("savage", DefaultValueHandling = DefaultValueHandling.Ignore)]
-            public string Savage { get; set; }
+            [JsonProperty("int_id")]
+            public long IntId { get; set; }
 
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
+            [JsonProperty("Info")]
             public Info Info { get; set; }
 
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
+            [JsonProperty("Customization")]
             public Customization Customization { get; set; }
 
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
+            [JsonProperty("Encyclopedia")]
+            public string[] Encyclopedia { get; set; }
+
+            [JsonProperty("Health")]
             public Health Health { get; set; }
 
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
+            [JsonProperty("Inventory")]
             public Inventory Inventory { get; set; }
 
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
+            [JsonProperty("Skills")]
             public Skills Skills { get; set; }
 
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public Stats Stats { get; set; }
+            [JsonProperty("Notes")]
+            public Notes Notes { get; set; }
 
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public Dictionary<string, bool> Encyclopedia { get; set; }
+            [JsonProperty("Quests")]
+            public object[] Quests { get; set; }
 
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
+            [JsonProperty("ConditionCounters")]
             public ConditionCounters ConditionCounters { get; set; }
 
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public Dictionary<string, BackendCounter> BackendCounters { get; set; }
+            [JsonProperty("BackendCounters")]
+            public BackendCounters BackendCounters { get; set; }
 
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public List<InsuredItem> InsuredItems { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public Hideout Hideout { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public List<Quest> Quests { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public Dictionary<string, TraderInfo> TradersInfo { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public UnlockedInfo UnlockedInfo { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public RagfairInfo RagfairInfo { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public List<RepeatableQuests.CharacterRepeatableQuest> RepeatableQuests { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public List<Bonus> Bonuses { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public _Notes Notes { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public List<string> WishList { get; set; }
-
+            [JsonProperty("Stats")]
+            public Stats Stats { get; set; }
         }
 
-        public class UnlockedInfo
+        public partial class BackendCounters
         {
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public List<string> unlockedProductionRecipe { get; set; }
-
         }
-        public class Info
-        {
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public string EntryPoint { get; set; }
 
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
+        public partial class ConditionCounters
+        {
+            [JsonProperty("Counters")]
+            public object[] Counters { get; set; }
+        }
+
+        public partial class Customization
+        {
+            [JsonProperty("Head")]
+            public Body Head { get; set; }
+
+            [JsonProperty("Body")]
+            public Body Body { get; set; }
+
+            [JsonProperty("Feet")]
+            public Body Feet { get; set; }
+
+            [JsonProperty("Hands")]
+            public Body Hands { get; set; }
+        }
+
+        public partial class Body
+        {
+            [JsonProperty("path")]
+            public string Path { get; set; }
+
+            [JsonProperty("rcid")]
+            public string Rcid { get; set; }
+        }
+
+        public partial class Health
+        {
+            [JsonProperty("HealthSeed")]
+            public long HealthSeed { get; set; }
+
+            [JsonProperty("IsAlive")]
+            public bool IsAlive { get; set; }
+
+            [JsonProperty("HydrationLimitedValue")]
+            public EnergyLimitedValue HydrationLimitedValue { get; set; }
+
+            [JsonProperty("EnergyLimitedValue")]
+            public EnergyLimitedValue EnergyLimitedValue { get; set; }
+
+            [JsonProperty("BodyPartsHealth")]
+            public BodyPartsHealth BodyPartsHealth { get; set; }
+
+            [JsonProperty("DestroyedParts")]
+            public object[] DestroyedParts { get; set; }
+
+            [JsonProperty("EffectInfoList")]
+            public object[] EffectInfoList { get; set; }
+
+            [JsonProperty("StimulatorInfoList")]
+            public object[] StimulatorInfoList { get; set; }
+
+            [JsonProperty("HealthRegenInfo")]
+            public RegenInfo HealthRegenInfo { get; set; }
+
+            [JsonProperty("HydrationRegenInfo")]
+            public RegenInfo HydrationRegenInfo { get; set; }
+
+            [JsonProperty("EnergyRegenInfo")]
+            public RegenInfo EnergyRegenInfo { get; set; }
+
+            [JsonProperty("DamageCoefficient")]
+            public long DamageCoefficient { get; set; }
+        }
+
+        public partial class BodyPartsHealth
+        {
+            [JsonProperty("Head")]
+            public EnergyLimitedValue Head { get; set; }
+
+            [JsonProperty("Chest")]
+            public EnergyLimitedValue Chest { get; set; }
+
+            [JsonProperty("Stomach")]
+            public EnergyLimitedValue Stomach { get; set; }
+
+            [JsonProperty("LeftArm")]
+            public EnergyLimitedValue LeftArm { get; set; }
+
+            [JsonProperty("RightArm")]
+            public EnergyLimitedValue RightArm { get; set; }
+
+            [JsonProperty("LeftLeg")]
+            public EnergyLimitedValue LeftLeg { get; set; }
+
+            [JsonProperty("RightLeg")]
+            public EnergyLimitedValue RightLeg { get; set; }
+        }
+
+        public partial class EnergyLimitedValue
+        {
+            [JsonProperty("MaxTopThreshold")]
+            public long MaxTopThreshold { get; set; }
+
+            [JsonProperty("MinTopThreshold")]
+            public long MinTopThreshold { get; set; }
+
+            [JsonProperty("CurrAndMaxValue")]
+            public CurrAndMaxValue CurrAndMaxValue { get; set; }
+        }
+
+        public partial class CurrAndMaxValue
+        {
+            [JsonProperty("CurrentValue")]
+            public double CurrentValue { get; set; }
+
+            [JsonProperty("MaxValue")]
+            public long MaxValue { get; set; }
+        }
+
+        public partial class RegenInfo
+        {
+            [JsonProperty("startTime")]
+            public long StartTime { get; set; }
+
+            [JsonProperty("addedValue")]
+            public long AddedValue { get; set; }
+
+            [JsonProperty("timeInterval")]
+            public long TimeInterval { get; set; }
+        }
+
+        public partial class Info
+        {
+            [JsonProperty("Experience")]
+            public long Experience { get; set; }
+
+            [JsonProperty("Level")]
+            public long Level { get; set; }
+
+            [JsonProperty("Nickname")]
             public string Nickname { get; set; }
 
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public string LowerNickname { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
+            [JsonProperty("Side")]
             public string Side { get; set; }
 
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public string Voice { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public int Level { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public int Experience { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public int RegistrationDate { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public string GameVersion { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public int AccountType { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public EMemberCategory MemberCategory { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public bool lockedMoveCommands { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public double SavageLockTime { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public int LastTimePlayedAsSavage { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public Settings Settings { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public int NicknameChangeDate { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public List<object> NeedWipeOptions { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public List<Ban> Bans { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public bool BannedState { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public int BannedUntil { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public bool IsStreamerModeAvailable { get; set; }
-
-        }
-        public class Settings
-        {
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public string Role { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public string BotDifficulty { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public int Experience { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public double StandingForKill { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public double AggressorBonus { get; set; }
-
-        }
-        public class Ban
-        {
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public EBan type { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public int dateTime { get; set; }
-
+            [JsonProperty("RegistrationDate")]
+            public long RegistrationDate { get; set; }
         }
 
-        public class Customization
+        public partial class Inventory
         {
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public string Head { get; set; }
+            [JsonProperty("items")]
+            public Item[] Items { get; set; }
 
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public string Body { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public string Feet { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public string Hands { get; set; }
-
-        }
-        public class Health
-        {
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public CurrentMax Hydration { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public CurrentMax Energy { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public CurrentMax Temperature { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public BodyPartsHealth BodyParts { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public int UpdateTime { get; set; }
-
-        }
-        public class BodyPartsHealth
-        {
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public BodyPartHealth Head { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public BodyPartHealth Chest { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public BodyPartHealth Stomach { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public BodyPartHealth LeftArm { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public BodyPartHealth RightArm { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public BodyPartHealth LeftLeg { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public BodyPartHealth RightLeg { get; set; }
-
-        }
-        public class BodyPartHealth
-        {
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public CurrentMax Health { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public Dictionary<string, BodyPartEffectProperties> Effects { get; set; }
-
-        }
-        public class BodyPartEffectProperties
-
-        {
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public int Time { get; set; }
-
-        }
-        public class CurrentMax
-        {
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public double Current { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public double Maximum { get; set; }
-
-        }
-        public class Inventory
-        {
-            [JsonProperty("items",  NullValueHandling = NullValueHandling.Ignore)]
-            public List<Item.Base> Items { get; set; }
-
-            [JsonProperty("equipment",  NullValueHandling = NullValueHandling.Ignore)]
+            [JsonProperty("equipment")]
             public string Equipment { get; set; }
 
-            [JsonProperty("stash",  NullValueHandling = NullValueHandling.Ignore)]
+            [JsonProperty("stash")]
             public string Stash { get; set; }
 
-            [JsonProperty("sortingTable",  NullValueHandling = NullValueHandling.Ignore)]
-            public string SortingTable { get; set; }
-
-            [JsonProperty("questRaidItems",  NullValueHandling = NullValueHandling.Ignore)]
-            public string QuestRaidItems { get; set; }
-
-            [JsonProperty("questStashItems",  NullValueHandling = NullValueHandling.Ignore)]
-            public string QuestStashItems { get; set; }
-
-            [JsonProperty("fastPanel",  NullValueHandling = NullValueHandling.Ignore)]
-            public Dictionary<string, string> FastPanel { get; set; }
-
-        }
-        public class Skills
-        {
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public List<BaseSkill> Common { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public List<BaseSkill> Mastering { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public int Points { get; set; }
+            [JsonProperty("fastPanel")]
+            public BackendCounters FastPanel { get; set; }
         }
 
-        public class DictSkills
+        public partial class Item
         {
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public Dictionary<string, BaseSkill> Common { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public Dictionary<string, BaseSkill> Mastering { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public int Points { get; set; }
-        }
-
-        public class BaseSkill
-        {
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
+            [JsonProperty("_id")]
             public string Id { get; set; }
 
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public double Progress { get; set; }
+            [JsonProperty("_tpl")]
+            public string Tpl { get; set; }
 
-            //Common START
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public double PointsEarnedDuringSession { get; set; }
+            [JsonProperty("parentId", NullValueHandling = NullValueHandling.Ignore)]
+            public string ParentId { get; set; }
 
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public int LastAccess { get; set; }
-            //Common END
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public double max { get; set; }
+            [JsonProperty("slotId", NullValueHandling = NullValueHandling.Ignore)]
+            public string SlotId { get; set; }
 
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public double min { get; set; }
+            [JsonProperty("upd", NullValueHandling = NullValueHandling.Ignore)]
+            public Upd Upd { get; set; }
 
+            [JsonProperty("location")]
+            public LocationUnion? Location { get; set; }
         }
 
-        public class Stats
+        public partial class LocationClass
         {
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public List<string> CarriedQuestItems { get; set; }
+            [JsonProperty("x")]
+            public long X { get; set; }
 
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public List<Victim> Victims { get; set; }
+            [JsonProperty("y")]
+            public long Y { get; set; }
 
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public int TotalSessionExperience { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public int LastSessionDate { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public SessionCounters SessionCounters { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public OverallCounters OverallCounters { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public int SessionExperienceMult { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public int ExperienceBonusMult { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public Aggressor Aggressor { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public List<DroppedItem> DroppedItems { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public List<FoundInRaidItem> FoundInRaidItems { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public DamageHistory DamageHistory { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public DeathCause DeathCause { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public LastPlayerState LastPlayerState { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public int TotalInGameTime { get; set; }
-
-        }
-        public class DroppedItem
-
-        {
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public string QuestId { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public string ItemId { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public string ZoneId { get; set; }
-
-        }
-        public class FoundInRaidItem
-
-        {
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public string QuestId { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public string ItemId { get; set; }
-
-        }
-        public class Victim
-        {
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public string AccountId { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public string ProfileId { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public string Name { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public string Side { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public string BodyPart { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public string Time { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public int Distance { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public int Level { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public string Weapon { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public string Role { get; set; }
-
-        }
-        public class SessionCounters
-        {
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public List<CounterKeyValue> Items { get; set; }
-
-        }
-        public class OverallCounters
-        {
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public List<CounterKeyValue> Items { get; set; }
-
-        }
-        public class CounterKeyValue
-        {
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public List<string> Key { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public int Value { get; set; }
-
-        }
-        public class ConditionCounters
-        {
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public List<Counter> Counters { get; set; }
-
-        }
-        public class Counter
-        {
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public string id { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public int value { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public string qid { get; set; }
-
-        }
-        public class Aggressor
-        {
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public string AccountId { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public string ProfileId { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public string MainProfileNickname { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public string Name { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public string Side { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public string BodyPart { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public string HeadSegment { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public string WeaponName { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public string Category { get; set; }
-
-        }
-        public class DamageHistory
-        {
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public string LethalDamagePart { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public LethalDamage LethalDamage { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public BodyPartsDamageHistory BodyParts { get; set; }
-
-        }
-        public class LethalDamage
-        {
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public int Amount { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public string Type { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public string SourceId { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public string OverDamageFrom { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public bool Blunt { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public int ImpactsCount { get; set; }
-
-        }
-        public class BodyPartsDamageHistory
-        {
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public List<DamageStats> Head { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public List<DamageStats> Chest { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public List<DamageStats> Stomach { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public List<DamageStats> LeftArm { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public List<DamageStats> RightArm { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public List<DamageStats> LeftLeg { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public List<DamageStats> RightLeg { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public List<DamageStats> Common { get; set; }
-
-        }
-        public class DamageStats
-        {
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public int Amount { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public string Type { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public string SourceId { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public string OverDamageFrom { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public bool Blunt { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public int ImpactsCount { get; set; }
-
-        }
-        public class DeathCause
-        {
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public string DamageType { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public string Side { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public string Role { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public string WeaponId { get; set; }
-
-        }
-        public class LastPlayerState
-
-        {
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public LastPlayerStateInfo Info { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public Dictionary<string, string> Customization { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public object Equipment { get; set; }
-
-        }
-        public class LastPlayerStateInfo
-
-        {
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public string Nickname { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public string Side { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public int Level { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public string MemberCategory { get; set; }
-
-        }
-        public class BackendCounter
-        {
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public string id { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public string qid { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public int value { get; set; }
-
-        }
-        public class InsuredItem
-        {
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public string tid { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public string itemId { get; set; }
-
-        }
-        public class Hideout
-        {
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public Dictionary<string, Productive> Production { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public List<HideoutArea> Areas { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public Dictionary<string, HideoutImprovement> Improvements { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public int sptUpdateLastRunTimestamp { get; set; }
-
-        }
-        public class HideoutImprovement
-
-        {
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public bool completed { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public int improveCompleteTimestamp { get; set; }
-
+            [JsonProperty("r")]
+            public RUnion R { get; set; }
         }
 
-        public class Productive
+        public partial class Upd
         {
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public string RecipeId { get; set; }
+            [JsonProperty("Durability", NullValueHandling = NullValueHandling.Ignore)]
+            public long? Durability { get; set; }
 
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public List<Product> Products { get; set; }
+            [JsonProperty("StackObjectsCount", NullValueHandling = NullValueHandling.Ignore)]
+            public long? StackObjectsCount { get; set; }
 
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public int Progress { get; set; }
+            [JsonProperty("hpPercent", NullValueHandling = NullValueHandling.Ignore)]
+            public long? HpPercent { get; set; }
 
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public bool inProgress { get; set; }
+            [JsonProperty("hpResource", NullValueHandling = NullValueHandling.Ignore)]
+            public long? HpResource { get; set; }
 
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public int StartTimestamp { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public int SkipTime { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public int ProductionTime { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public bool sptIsScavCase { get; set; }
-
+            [JsonProperty("MaxDurability", NullValueHandling = NullValueHandling.Ignore)]
+            public long? MaxDurability { get; set; }
         }
 
-        public class Product
+        public partial class Notes
         {
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public string _id { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public string _tpl { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public Item._Upd upd { get; set; }
-
-        }
-        public class HideoutArea
-        {
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public EHideoutAreas type { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public int level { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public bool active { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public bool passiveBonusesEnabled { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public int completeTime { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public bool constructing { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public List<HideoutSlot> slots { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public string lastRecipe { get; set; }
-
-        }
-        public class HideoutSlot
-        {
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public int locationIndex { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public List<HideoutItem> item { get; set; }
-
-        }
-        public class HideoutItem
-        {
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public string _id { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public string _tpl { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public Item._Upd upd { get; set; }
-
+            [JsonProperty("Notes")]
+            public object[] NotesNotes { get; set; }
         }
 
-        public class _Notes
+        public partial class Skills
         {
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public List<Note> Notes { get; set; }
+            [JsonProperty("Common")]
+            public Common[] Common { get; set; }
 
+            [JsonProperty("Mastering")]
+            public object[] Mastering { get; set; }
+
+            [JsonProperty("Points")]
+            public long Points { get; set; }
         }
 
-        public class Quest
+        public partial class Common
         {
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public string qid { get; set; }
+            [JsonProperty("Id")]
+            public string Id { get; set; }
 
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public int startTime { get; set; }
+            [JsonProperty("Progress")]
+            public long Progress { get; set; }
 
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public EQuestStatus status { get; set; }
+            [JsonProperty("MaxAchieved")]
+            public long MaxAchieved { get; set; }
 
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public Dictionary<string, int> statusTimers { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public List<string> completedConditions { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public int availableAfter { get; set; }
-
+            [JsonProperty("LastAccess")]
+            public long LastAccess { get; set; }
         }
-        public class TraderInfo
+
+        public partial class Stats
         {
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public int loyaltyLevel { get; set; }
+            [JsonProperty("SessionCounters")]
+            public Counters SessionCounters { get; set; }
 
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public int salesSum { get; set; }
+            [JsonProperty("OverallCounters")]
+            public Counters OverallCounters { get; set; }
 
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public bool disabled { get; set; }
+            [JsonProperty("SessionExperienceMult")]
+            public double SessionExperienceMult { get; set; }
 
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public double standing { get; set; }
+            [JsonProperty("TotalSessionExperience")]
+            public long TotalSessionExperience { get; set; }
 
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public int nextResupply { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public bool unlocked { get; set; }
-
+            [JsonProperty("LastSessionDate")]
+            public long LastSessionDate { get; set; }
         }
-        public class RagfairInfo
+
+        public partial class Counters
         {
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public double rating { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public bool isRatingGrowing { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public List<RagfairOffer.Base> offers { get; set; }
-
+            [JsonProperty("Items")]
+            public ItemElement[] Items { get; set; }
         }
-        public class Bonus
+
+        public partial class ItemElement
         {
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public string id { get; set; }
+            [JsonProperty("Key")]
+            public string[] Key { get; set; }
 
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public string type { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public string templateId { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public bool passive { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public bool production { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public bool visible { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public int value { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public string icon { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public List<string> filter { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public string skillType { get; set; }
-
+            [JsonProperty("Value")]
+            public long Value { get; set; }
         }
-        public class Note
+
+        public enum REnum { Horizontal, Vertical };
+
+        public partial struct RUnion
         {
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public int Time { get; set; }
+            public REnum? Enum;
+            public long? Integer;
 
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public string Text { get; set; }
+            public static implicit operator RUnion(REnum Enum) => new RUnion { Enum = Enum };
+            public static implicit operator RUnion(long Integer) => new RUnion { Integer = Integer };
+        }
 
+        public partial struct LocationUnion
+        {
+            public long? Integer;
+            public LocationClass LocationClass;
+
+            public static implicit operator LocationUnion(long Integer) => new LocationUnion { Integer = Integer };
+            public static implicit operator LocationUnion(LocationClass LocationClass) => new LocationUnion { LocationClass = LocationClass };
+            public bool IsNull => LocationClass == null && Integer == null;
+        }
+
+        public partial class Base
+        {
+            public static Base FromJson(string json) => JsonConvert.DeserializeObject<Base>(json, Converter.Settings);
+        }
+
+        internal static class Converter
+        {
+            public static readonly JsonSerializerSettings Settings = new JsonSerializerSettings
+            {
+                MetadataPropertyHandling = MetadataPropertyHandling.Ignore,
+                DateParseHandling = DateParseHandling.None,
+                Converters = {
+                LocationUnionConverter.Singleton,
+                RUnionConverter.Singleton,
+                REnumConverter.Singleton,
+                new IsoDateTimeConverter { DateTimeStyles = DateTimeStyles.AssumeUniversal }
+            },
+            };
+        }
+
+        internal class LocationUnionConverter : JsonConverter
+        {
+            public override bool CanConvert(Type t) => t == typeof(LocationUnion) || t == typeof(LocationUnion?);
+
+            public override object ReadJson(JsonReader reader, Type t, object existingValue, JsonSerializer serializer)
+            {
+                switch (reader.TokenType)
+                {
+                    case JsonToken.Null:
+                        return new LocationUnion { };
+                    case JsonToken.Integer:
+                        var integerValue = serializer.Deserialize<long>(reader);
+                        return new LocationUnion { Integer = integerValue };
+                    case JsonToken.StartObject:
+                        var objectValue = serializer.Deserialize<LocationClass>(reader);
+                        return new LocationUnion { LocationClass = objectValue };
+                }
+                throw new Exception("Cannot unmarshal type LocationUnion");
+            }
+
+            public override void WriteJson(JsonWriter writer, object untypedValue, JsonSerializer serializer)
+            {
+                var value = (LocationUnion)untypedValue;
+                if (value.IsNull)
+                {
+                    serializer.Serialize(writer, null);
+                    return;
+                }
+                if (value.Integer != null)
+                {
+                    serializer.Serialize(writer, value.Integer.Value);
+                    return;
+                }
+                if (value.LocationClass != null)
+                {
+                    serializer.Serialize(writer, value.LocationClass);
+                    return;
+                }
+                throw new Exception("Cannot marshal type LocationUnion");
+            }
+
+            public static readonly LocationUnionConverter Singleton = new LocationUnionConverter();
+        }
+
+        internal class RUnionConverter : JsonConverter
+        {
+            public override bool CanConvert(Type t) => t == typeof(RUnion) || t == typeof(RUnion?);
+
+            public override object ReadJson(JsonReader reader, Type t, object existingValue, JsonSerializer serializer)
+            {
+                switch (reader.TokenType)
+                {
+                    case JsonToken.Integer:
+                        var integerValue = serializer.Deserialize<long>(reader);
+                        return new RUnion { Integer = integerValue };
+                    case JsonToken.String:
+                    case JsonToken.Date:
+                        var stringValue = serializer.Deserialize<string>(reader);
+                        switch (stringValue)
+                        {
+                            case "Horizontal":
+                                return new RUnion { Enum = REnum.Horizontal };
+                            case "Vertical":
+                                return new RUnion { Enum = REnum.Vertical };
+                        }
+                        break;
+                }
+                throw new Exception("Cannot unmarshal type RUnion");
+            }
+
+            public override void WriteJson(JsonWriter writer, object untypedValue, JsonSerializer serializer)
+            {
+                var value = (RUnion)untypedValue;
+                if (value.Integer != null)
+                {
+                    serializer.Serialize(writer, value.Integer.Value);
+                    return;
+                }
+                if (value.Enum != null)
+                {
+                    switch (value.Enum)
+                    {
+                        case REnum.Horizontal:
+                            serializer.Serialize(writer, "Horizontal");
+                            return;
+                        case REnum.Vertical:
+                            serializer.Serialize(writer, "Vertical");
+                            return;
+                    }
+                }
+                throw new Exception("Cannot marshal type RUnion");
+            }
+
+            public static readonly RUnionConverter Singleton = new RUnionConverter();
+        }
+
+        internal class REnumConverter : JsonConverter
+        {
+            public override bool CanConvert(Type t) => t == typeof(REnum) || t == typeof(REnum?);
+
+            public override object ReadJson(JsonReader reader, Type t, object existingValue, JsonSerializer serializer)
+            {
+                if (reader.TokenType == JsonToken.Null) return null;
+                var value = serializer.Deserialize<string>(reader);
+                switch (value)
+                {
+                    case "Horizontal":
+                        return REnum.Horizontal;
+                    case "Vertical":
+                        return REnum.Vertical;
+                }
+                throw new Exception("Cannot unmarshal type REnum");
+            }
+
+            public override void WriteJson(JsonWriter writer, object untypedValue, JsonSerializer serializer)
+            {
+                if (untypedValue == null)
+                {
+                    serializer.Serialize(writer, null);
+                    return;
+                }
+                var value = (REnum)untypedValue;
+                switch (value)
+                {
+                    case REnum.Horizontal:
+                        serializer.Serialize(writer, "Horizontal");
+                        return;
+                    case REnum.Vertical:
+                        serializer.Serialize(writer, "Vertical");
+                        return;
+                }
+                throw new Exception("Cannot marshal type REnum");
+            }
+
+            public static readonly REnumConverter Singleton = new REnumConverter();
         }
     }
 }

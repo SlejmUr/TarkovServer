@@ -4,7 +4,7 @@ using ServerLib.Controllers;
 using ServerLib.Json.Classes;
 using ServerLib.Utilities;
 using ServerLib.Utilities.Helpers;
-using static ServerLib.Json.Classes.Profile;
+using static ServerLib.Json.Classes.Character;
 using static ServerLib.Json.Converters;
 using static ServerLib.Web.HTTPServer;
 
@@ -103,10 +103,7 @@ namespace ServerLib.Web
             try
             {
                 var quests = Controllers.QuestController.GetQuests();
-                string resp = ResponseControl.GetBody(JsonConvert.SerializeObject(quests, new JsonConverter[]
-                    {
-                    QuestTargetConverter.Singleton
-                    }));
+                string resp = ResponseControl.GetBody(JsonConvert.SerializeObject(quests));
                 Utils.SendUnityResponse(session, resp);
             }
             catch (Exception ex)
@@ -121,7 +118,7 @@ namespace ServerLib.Web
         public static bool ClientItems(HttpRequest request, HttpsBackendSession session)
         {
             Utils.PrintRequest(request, session);
-            string resp = ResponseControl.GetBody(File.ReadAllText("Files/others/items.json"));
+            string resp = ResponseControl.GetBody(File.ReadAllText("Files/static/items.json"));
             Utils.SendUnityResponse(session, resp);
             return true;
         }
@@ -173,17 +170,6 @@ namespace ServerLib.Web
             return true;
         }
 
-        [HTTP("POST", "/client/location/getLocalloot")]
-        public static bool ClientLocationLocalLoot(HttpRequest request, HttpsBackendSession session)
-        {
-            Utils.PrintRequest(request, session);
-            var jsonreq = JsonConvert.DeserializeObject<GetLocation>(ResponseControl.DeCompressReq(request.BodyBytes));
-            var location =  LocationController.GetLocationLoot(jsonreq);
-            string resp = ResponseControl.GetBody(JsonConvert.SerializeObject(location));
-            Utils.SendUnityResponse(session, resp);
-            return true;
-        }
-
         [HTTP("POST", "/client/account/customization")]
         public static bool ClientAccountCustomization(HttpRequest request, HttpsBackendSession session)
         {
@@ -203,23 +189,7 @@ namespace ServerLib.Web
             return true;
         }
 
-        [HTTP("POST", "/client/handbook/builds/my/list")]
-        public static bool ClientHandbookBuildsMyList(HttpRequest request, HttpsBackendSession session)
-        {
-            Utils.PrintRequest(request, session);
-            string SessionId = Utils.GetSessionId(session.Headers);
-
-            List<WeaponBuild> ret = new();
-            var profile = ProfileController.GetProfile(SessionId);
-            if (profile != null && profile.Weaponbuilds != null && profile.Weaponbuilds.Count > 0)
-            {
-                ret = profile.Weaponbuilds;
-            }
-
-            string resp = ResponseControl.GetBody(JsonConvert.SerializeObject(ret));
-            Utils.SendUnityResponse(session, resp);
-            return true;
-        }
+     
 
         [HTTP("POST", "/client/getMetricsConfig")]
         public static bool ClientGetMetricsConfig(HttpRequest request, HttpsBackendSession session)

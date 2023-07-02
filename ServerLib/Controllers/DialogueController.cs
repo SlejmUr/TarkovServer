@@ -8,7 +8,7 @@ namespace ServerLib.Controllers
 {
     public class DialogueController
     {
-        public static Dictionary<string, Dictionary<string, Profile.Dialogue>> Dialogs;
+        public static Dictionary<string, Dictionary<string, Character.Dialogue>> Dialogs;
 
         public static void Init()
         {
@@ -33,9 +33,9 @@ namespace ServerLib.Controllers
         /// Reload Dialog
         /// </summary>
         /// <param name="SessionId">SessionId/AccountId</param>
-        public static List<Profile.DialogueInfo> GetDialogs(string SessionId)
+        public static List<Character.DialogueInfo> GetDialogs(string SessionId)
         {
-            List<Profile.DialogueInfo> ret = new();
+            List<Character.DialogueInfo> ret = new();
             Reload();
             try
             {
@@ -64,10 +64,10 @@ namespace ServerLib.Controllers
             return ret;
         }
 
-        public static Profile.Dialogue GetDialog(string SessionId, string DialogueId)
+        public static Character.Dialogue GetDialog(string SessionId, string DialogueId)
         {
             Reload();
-            Profile.Dialogue ret = new();
+            Character.Dialogue ret = new();
             if (Dialogs[SessionId].TryGetValue(DialogueId, out var dialogue))
             {
                 return dialogue;
@@ -82,14 +82,14 @@ namespace ServerLib.Controllers
         /// <param name="content">MessageContent</param>
         /// <param name="SessionId">SessionId/AccountId</param>
         /// <param name="rewards">StashItem</param>
-        public static void AddDialogMessage(string SessionId, string DialogueId, Profile.MessageContent content, Profile.MessageItems rewards)
+        public static void AddDialogMessage(string SessionId, string DialogueId, Character.MessageContent content, Character.MessageItems rewards)
         {
             var dialogData = GetDialog(SessionId, DialogueId);
             var isnewDialog = dialogData._id != DialogueId;
 
             if (isnewDialog)
             {
-                Profile.Dialogue dialog = new()
+                Character.Dialogue dialog = new()
                 {
                     _id = DialogueId,
                     messages = new(),
@@ -103,7 +103,7 @@ namespace ServerLib.Controllers
 
             dialogData.New += 1;
 
-            Profile.MessageItems stashItems = new();
+            Character.MessageItems stashItems = new();
 
             //Todo, make reward items a new Json thingy
             //rewards = HelperController.ReplaceIDs(null,rewards);
@@ -127,7 +127,7 @@ namespace ServerLib.Controllers
 
                 dialogData.attachmentsNew += 1;
             }
-            Profile.Message message = new()
+            Character.Message message = new()
             {
                 _id = Utils.CreateNewID(),
                 uid = DialogueId,
@@ -255,7 +255,7 @@ namespace ServerLib.Controllers
             return response;
         }
 
-        public static List<Profile.Message> GetActiveMessagesFromDialog(string SessionId, string DialogueId)
+        public static List<Character.Message> GetActiveMessagesFromDialog(string SessionId, string DialogueId)
         {
             int curDt = TimeHelper.UnixTimeNow_Int();
             var dialogs = GetDialog(SessionId, DialogueId);
@@ -268,19 +268,19 @@ namespace ServerLib.Controllers
             return dialogs.messages.Where(x => x.items != null && x.items.data != null && x.items.data.Count > 0).Any();
         }
 
-        public static List<Profile.Message> GetMessageWithRewards(List<Profile.Message> messages)
+        public static List<Character.Message> GetMessageWithRewards(List<Character.Message> messages)
         {
             return messages.Where(x => x.items != null && x.items.data != null && x.items.data.Count > 0).ToList();
         }
 
-        public static List<Profile.UserDialogInfo> GetProflesFromMail(string SessionId, List<Profile.UserDialogInfo> users)
+        public static List<Character.UserDialogInfo> GetProflesFromMail(string SessionId, List<Character.UserDialogInfo> users)
         {
             var pmc = CharacterController.GetPmcCharacter(SessionId);
-            List<Profile.UserDialogInfo> ret = new();
+            List<Character.UserDialogInfo> ret = new();
             if (users != null && users.Count > 0)
             {
                 ret.AddRange(users);
-                ret.Add(new Profile.UserDialogInfo()
+                ret.Add(new Character.UserDialogInfo()
                 { 
                     _id = pmc.Id,
                     info = new()
@@ -305,7 +305,7 @@ namespace ServerLib.Controllers
         /// <param name="DialogueId">DialogID</param>
         /// <param name="SessionId">SessionId/AccountId</param>
         /// <returns>New Dialog</returns>
-        public static Profile.DialogueInfo GetDialogInfo(string SessionId, string DialogueId, bool IsTrader = false)
+        public static Character.DialogueInfo GetDialogInfo(string SessionId, string DialogueId, bool IsTrader = false)
         {
             var dialog = ProfileController.GetProfile(SessionId).Dialogues[DialogueId];
             List<object> users = new();
@@ -330,11 +330,11 @@ namespace ServerLib.Controllers
         /// </summary>
         /// <param name="dialog">DialogID</param>
         /// <returns>New Dialog Messages</returns>
-        public static Profile.MessagePreview GetMessagePreview(Profile.Dialogue dialog)
+        public static Character.MessagePreview GetMessagePreview(Character.Dialogue dialog)
         {
             // The last message of the dialogue should be shown on the preview.
             var message = dialog.messages[dialog.messages.Count - 1];
-            var ret = new Profile.MessagePreview()
+            var ret = new Character.MessagePreview()
             {
                 dt = message.dt,
                 type = message.type,

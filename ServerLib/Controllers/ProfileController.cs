@@ -18,8 +18,8 @@ namespace ServerLib.Controllers
             ProfilesDict.Clear();
         }
 
-        public static List<Profile.Base> Profiles;
-        public static Dictionary<string, Profile.Base> ProfilesDict;
+        public static List<Character.Base> Profiles;
+        public static Dictionary<string, Character.Base> ProfilesDict;
         public static List<string> AlreadyConverted;
         public static void Init()
         {
@@ -56,7 +56,7 @@ namespace ServerLib.Controllers
         /// <summary>
         /// Convert Our version of profile
         /// </summary>
-        public static List<Profile.Base> ConvertFromProfile()
+        public static List<Character.Base> ConvertFromProfile()
         {
             /*
              So we doing the funny!
@@ -71,17 +71,17 @@ namespace ServerLib.Controllers
              others => not inside anywhere else
              */
 
-            List<Profile.Base> ret = new();
+            List<Character.Base> ret = new();
             string[] dirs = Directory.GetDirectories("user/profiles");
             foreach (string dir in dirs)
             {
-                Profile.Base @base = new()
+                Character.Base @base = new()
                 { 
                     Characters = new()
                 }; 
                 if (File.Exists($"{dir}/profile.json"))
                 {
-                    var pbase = JsonConvert.DeserializeObject<Profile.Base>(File.ReadAllText($"{dir}/profile.json"));
+                    var pbase = JsonConvert.DeserializeObject<Character.Base>(File.ReadAllText($"{dir}/profile.json"));
                     @base = pbase;
                 }
                 if (File.Exists($"{dir}/others.json"))
@@ -91,7 +91,7 @@ namespace ServerLib.Controllers
                 }
                 if (File.Exists($"{dir}/account.json"))
                 {
-                    var account = JsonConvert.DeserializeObject<Profile.Info>(File.ReadAllText($"{dir}/account.json"));
+                    var account = JsonConvert.DeserializeObject<Character.Info>(File.ReadAllText($"{dir}/account.json"));
                     @base.Info = account;
                 }
                 if (File.Exists($"{dir}/character.json"))
@@ -111,7 +111,7 @@ namespace ServerLib.Controllers
                 }
                 if (File.Exists($"{dir}/dialog.json"))
                 {
-                    var dialog = JsonConvert.DeserializeObject<Dictionary<string, Profile.Dialogue>>(File.ReadAllText($"{dir}/dialog.json"));
+                    var dialog = JsonConvert.DeserializeObject<Dictionary<string, Character.Dialogue>>(File.ReadAllText($"{dir}/dialog.json"));
                     @base.Dialogues = dialog;
                 }
                 if (!ProfilesDict.ContainsKey(@base.Info.Id))
@@ -129,15 +129,15 @@ namespace ServerLib.Controllers
         /// <summary>
         /// Convert AKI version of profile
         /// </summary>
-        public static List<Profile.Base> ConvertFromAkiProfile()
+        public static List<Character.Base> ConvertFromAkiProfile()
         {
-            List<Profile.Base> ret = new();
+            List<Character.Base> ret = new();
             string[] dirs = Directory.GetFiles("user/profiles");
             foreach (string dir in dirs)
             {
                 if (dir.Contains(".json"))
                 {
-                    var account = JsonConvert.DeserializeObject<Profile.Base>(File.ReadAllText(dir), new JsonConverter[] { Converters.ItemLocationConverter.Singleton });
+                    var account = JsonConvert.DeserializeObject<Character.Base>(File.ReadAllText(dir), new JsonConverter[] { Converters.ItemLocationConverter.Singleton });
                     ret.Add(account);
                     if (!ProfilesDict.ContainsKey(account.Info.Id))
                     {
@@ -153,9 +153,9 @@ namespace ServerLib.Controllers
         /// <summary>
         /// Convert JET type of versions of profile
         /// </summary>
-        public static List<Profile.Base> ConvertFromJET()
+        public static List<Character.Base> ConvertFromJET()
         {
-            List<Profile.Base> ret = new();
+            List<Character.Base> ret = new();
             string[] dirs = Directory.GetDirectories("user/profiles");
             foreach (string dir in dirs)
             {
@@ -163,10 +163,10 @@ namespace ServerLib.Controllers
                 {
                     continue;
                 }
-                Profile.Base @base = new();
+                Character.Base @base = new();
                 if (File.Exists($"{dir}/account.json"))
                 {
-                    var account = JsonConvert.DeserializeObject<Profile.Info>(File.ReadAllText($"{dir}/account.json"));
+                    var account = JsonConvert.DeserializeObject<Character.Info>(File.ReadAllText($"{dir}/account.json"));
                     if (account.Edition == null | string.IsNullOrEmpty(account.Edition))
                         continue;
                     @base.Info = account;
@@ -187,7 +187,7 @@ namespace ServerLib.Controllers
                 }
                 if (File.Exists($"{dir}/dialog.json"))
                 {
-                    var dialog = JsonConvert.DeserializeObject<Dictionary<string, Profile.Dialogue>>(File.ReadAllText($"{dir}/dialog.json"));
+                    var dialog = JsonConvert.DeserializeObject<Dictionary<string, Character.Dialogue>>(File.ReadAllText($"{dir}/dialog.json"));
                     @base.Dialogues = dialog;
                 }
                 if (!ProfilesDict.ContainsKey(@base.Info.Id))
@@ -201,10 +201,10 @@ namespace ServerLib.Controllers
         }
 
 
-        public static Profile.Base? GetProfile(string SessionId)
+        public static Character.Base? GetProfile(string SessionId)
         {
             ReloadProfiles();
-            if (ProfilesDict.TryGetValue(SessionId, out Profile.Base? ret))
+            if (ProfilesDict.TryGetValue(SessionId, out Character.Base? ret))
             {
                 return ret;
             }
@@ -246,7 +246,7 @@ namespace ServerLib.Controllers
             foreach (var dict in ProfilesDict)
             {
                 var Id = dict.Key;
-                Profile.Base newBase = dict.Value;
+                Character.Base newBase = dict.Value;
                 SaveHandler.Save(Id, "Account", SaveHandler.GetAccountPath(Id), JsonConvert.SerializeObject(newBase.Info));
                 SaveHandler.Save(Id, "Character", SaveHandler.GetCharacterPath(Id), JsonHelper.FromCharacterBase(newBase.Characters.Pmc));
                 SaveHandler.Save(Id, "Dialog", SaveHandler.GetDialogPath(Id), JsonConvert.SerializeObject(newBase.Dialogues));

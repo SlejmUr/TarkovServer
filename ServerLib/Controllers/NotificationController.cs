@@ -9,17 +9,17 @@ namespace ServerLib.Controllers
 {
     public class NotificationController
     {
-        public static Profile.Dialogue GetDialog(string SessionId, EMessageType messageType, Profile.UserDialogInfo dialogInfo)
+        public static Character.Dialogue GetDialog(string SessionId, EMessageType messageType, Character.UserDialogInfo dialogInfo)
         {
             var key = (dialogInfo.info.MemberCategory == EMemberCategory.Trader) ? dialogInfo._id : dialogInfo.info.Nickname;
             if (!DialogueController.Dialogs[SessionId].TryGetValue(key, out var dialog))
             {
-                List<Profile.UserDialogInfo> users = new();
+                List<Character.UserDialogInfo> users = new();
                 if (dialogInfo.info.MemberCategory != EMemberCategory.Trader)
                 {
                     users.Add(dialogInfo);
                 }
-                Profile.Dialogue dialogue = new()
+                Character.Dialogue dialogue = new()
                 {
                     _id = key,
                     type = messageType,
@@ -35,11 +35,11 @@ namespace ServerLib.Controllers
             return dialog;
         }
 
-        public static void SendMessageToPlayer(string SessionId, EMessageType messageType, Profile.UserDialogInfo dialogInfo, string messageText )
+        public static void SendMessageToPlayer(string SessionId, EMessageType messageType, Character.UserDialogInfo dialogInfo, string messageText )
         { 
             var dialog = GetDialog( SessionId, messageType, dialogInfo );
             dialog.New += 1;
-            Profile.Message message = new()
+            Character.Message message = new()
             { 
                 _id = Utils.CreateNewID(),
                 uid = dialog._id,
@@ -61,7 +61,7 @@ namespace ServerLib.Controllers
             };
         }
 
-        public static Json.Classes.Notification CreateNewNotification(Profile.Message message)
+        public static Json.Classes.Notification CreateNewNotification(Character.Message message)
         {
             return new()
             {
@@ -86,7 +86,7 @@ namespace ServerLib.Controllers
             }
         }
 
-        public static void SendNotificationMessage(string SessionId, Profile.Message message)
+        public static void SendNotificationMessage(string SessionId, Character.Message message)
         {
             var notification = CreateNewNotification(message);
             Send(SessionId, notification);

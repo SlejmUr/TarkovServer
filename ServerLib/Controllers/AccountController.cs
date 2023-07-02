@@ -18,7 +18,7 @@ namespace ServerLib.Controllers
             ActiveAccountIds.Clear();
         }
 
-        public static List<Profile.Info> Accounts;
+        public static List<Character.Info> Accounts;
         public static List<string> ActiveAccountIds;
 
         #region Custom Made Functions
@@ -100,7 +100,7 @@ namespace ServerLib.Controllers
             if (ID == null)
             {
                 string AccountID = Utils.CreateNewID();
-                Profile.Info account = new()
+                Character.Info account = new()
                 {
                     Id = AccountID,
                     Username = profile.username,
@@ -217,7 +217,7 @@ namespace ServerLib.Controllers
         /// </summary>
         /// <param name="SessionId">SessionId/AccountId</param>
         /// <returns>Account Data | null</returns>
-        public static Profile.Info? FindAccount(string SessionId)
+        public static Character.Info? FindAccount(string SessionId)
         {
             ReloadAccountBySessionId(SessionId);
             foreach (var account in Accounts)

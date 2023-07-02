@@ -36,7 +36,7 @@ namespace ServerLib.Handlers
         /// </summary>
         /// <param name="SessionId">SessionId/AccountId</param>
         /// <param name="account">Account</param>
-        public static void SaveAccount(string SessionId, Profile.Info account)
+        public static void SaveAccount(string SessionId, Character.Info account)
         {
             Debug.PrintInfo("Saving started...", "SAVE");
             Save(SessionId, "Account", GetAccountPath(SessionId), JsonConvert.SerializeObject(account));
