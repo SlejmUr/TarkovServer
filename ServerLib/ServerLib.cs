@@ -33,14 +33,11 @@ namespace ServerLib
             string _ip_port = $"https://{Ip}:{port}";
             IP = _ip_port;
             ip_port = $"{Ip}:{port}";
-            CertHelper.Make(IPAddress.Parse(Ip), _ip_port);
             DatabaseController.Init();
-            ProfileController.Init();
-            Controllers.DialogueController.Init();
             AccountController.Init();
             CharacterController.Init();
             Start(Ip, port);
-            WebSocket.Start(Ip, port + 1);
+            //WebSocket.Start(Ip, port + 1);
             if (!ArgumentHandler.DontLoadPlugin)
             {
                 PluginLoader.LoadPlugins();
@@ -68,14 +65,10 @@ namespace ServerLib
             string _ip_port = $"https://{Ip}:{port}";
             IP = _ip_port;
             ip_port = $"{Ip}:{port}";
-            CertHelper.Make(IPAddress.Parse(Ip), _ip_port);
-            ProfileController.Init();
-            Controllers.DialogueController.Init();
             AccountController.Init();
             CharacterController.Init();
-            Controllers.QuestController.Init();
             Start(Ip, port);
-            WebSocket.Start(Ip, port + 1);
+            //WebSocket.Start(Ip, port + 1);
             if (!ArgumentHandler.DontLoadPlugin)
             {
                 PluginLoader.LoadPlugins();

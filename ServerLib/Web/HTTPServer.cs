@@ -6,7 +6,6 @@ using ServerLib.Utilities.Helpers;
 using System.Net;
 using System.Net.Sockets;
 using System.Reflection;
-using System.Security.Authentication;
 
 namespace ServerLib.Web
 {
@@ -18,8 +17,7 @@ namespace ServerLib.Web
         public static void Start(string IP, int Port)
         {
             HttpServerThingy.Clear();
-            var context = new SslContext(SslProtocols.Tls12, CertHelper.GetCert());
-            server = new HttpsBackendServer(context, IPAddress.Parse(IP), Port);
+            server = new HttpsBackendServer(IPAddress.Parse(IP), Port);
             Console.WriteLine("[HTTPS] Server Started on https://" + IP + ":" + Port);
             server.Start();
             var methods = Assembly.GetExecutingAssembly().GetTypes().SelectMany(x => x.GetMethods()).ToArray();
@@ -98,9 +96,9 @@ namespace ServerLib.Web
             return server;
         }
 
-        public class HttpsBackendServer : HttpsServer
+        public class HttpsBackendServer : HttpServer
         {
-            public HttpsBackendServer(SslContext context, IPAddress address, int port) : base(context, address, port) { }
+            public HttpsBackendServer(IPAddress address, int port) : base(address, port) { }
 
             HttpsBackendSession? session;
 
@@ -109,13 +107,12 @@ namespace ServerLib.Web
                 return session;
             }
 
-            protected override SslSession CreateSession()
+            protected override TcpSession CreateSession()
             {
                 session = new HttpsBackendSession(this);
 
                 return session;
             }
-
             protected override void OnError(SocketError error)
             {
                 Console.WriteLine($"HTTPS server caught an error: {error}");
@@ -123,11 +120,11 @@ namespace ServerLib.Web
 
         }
 
-        public class HttpsBackendSession : HttpsSession
+        public class HttpsBackendSession : HttpSession
         {
             public Dictionary<string, string> HttpParam = new();
             public Dictionary<string, string> Headers = new();
-            public HttpsBackendSession(HttpsServer server) : base(server) { }
+            public HttpsBackendSession(HttpServer server) : base(server) { }
 
             HttpRequest? _request;
 
@@ -165,6 +162,7 @@ namespace ServerLib.Web
                     if (UrlHelper.Match(url, item.Key, out HttpParam) || item.Key == url)
                     {
                         Debug.PrintDebug("Url Called function: " + item.Value.Name);
+                        Debug.logger.Log("REQUEST", request.ToString());
                         item.Value.Invoke(this, new object[] { request, this });
                         Sent = true;
                     }

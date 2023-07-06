@@ -14,13 +14,6 @@
             {
                 KeepAliveCounter.Add(SessionId, 0);
             }
-
-
-            if (!AccountController.IsWiped(SessionId))
-            {
-                //UpdateTraders(SessionId);
-                //UpdatePlayerHideout(SessionId);
-            }
         }
         public static void DeleteKeepAlive(string SessionId)
         {

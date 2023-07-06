@@ -21,18 +21,7 @@ namespace ServerLib.Web
             return true;
         }
 
-        [HTTP("POST", "/client/game/profile/search")]
-        public static bool ProfileSearch(HttpRequest request, HttpsBackendSession session)
-        {
-            //REQ stuff
-            string SessionId = Utils.GetSessionId(session.Headers);
-            Utils.PrintRequest(request, session);
-            string Uncompressed = ResponseControl.DeCompressReq(request.BodyBytes);
-            var rsp = GameProfile.ProfileSearch(Uncompressed);
-            Utils.SendUnityResponse(session, rsp);
-            return true;
-        }
-
+      
         [HTTP("POST", "/client/game/profile/select")]
         public static bool ProfileSelect(HttpRequest request, HttpsBackendSession session)
         {
@@ -104,21 +93,6 @@ namespace ServerLib.Web
             }
             // RPS
             Utils.SendUnityResponse(session, resp);
-            return true;
-        }
-
-        [HTTP("POST", "/client/game/profile/voice/change")]
-        public static bool ProfileVoiceChange(HttpRequest request, HttpsBackendSession session)
-        {
-            //REQ stuff
-            string SessionId = Utils.GetSessionId(session.Headers);
-            Utils.PrintRequest(request, session);
-            string Uncompressed = ResponseControl.DeCompressReq(request.BodyBytes);
-
-            CharacterController.ChangeVoice(Uncompressed, SessionId);
-            // RPS
-            var rsp = ResponseControl.NullResponse();
-            Utils.SendUnityResponse(session, rsp);
             return true;
         }
 

@@ -24,7 +24,7 @@ namespace ServerLib.Controllers
         public static void RebuildFromBaseConfigs()
         {
             RefreshConfigFromBase("server");
-            RefreshConfigFromBase("gameplay");
+            RefreshConfigFromBase("bot");
             RefreshConfigFromBase("custom");
             RefreshConfigFromBase("plugin");
             string[] dirs = Directory.GetFiles("Files/configs");
@@ -44,7 +44,7 @@ namespace ServerLib.Controllers
                                 Configs.Server = JsonConvert.DeserializeObject<Json.ServerConfig.Base>(dataraw);
                                 break;
                             case "gameplay":
-                                Configs.Gameplay = JsonConvert.DeserializeObject<Json.Classes.GameplayConfig.Base>(dataraw);
+                                Configs.Bot = JsonConvert.DeserializeObject<Json.Classes.BotConfig.Base>(dataraw);
                                 break;
                             case "custom":
                                 Configs.CustomSettings = JsonConvert.DeserializeObject<Json.Classes.CustomConfig.Base>(dataraw);
@@ -64,7 +64,7 @@ namespace ServerLib.Controllers
         public static void Save()
         {
             File.WriteAllText("Files/configs/server.json", JsonConvert.SerializeObject(Configs.Server));
-            File.WriteAllText("Files/configs/gameplay.json", JsonConvert.SerializeObject(Configs.Gameplay));
+            File.WriteAllText("Files/configs/bot.json", JsonConvert.SerializeObject(Configs.Bot));
             File.WriteAllText("Files/configs/custom.json", JsonConvert.SerializeObject(Configs.CustomSettings));
             File.WriteAllText("Files/configs/plugin.json", JsonConvert.SerializeObject(Configs.Plugins));
         }

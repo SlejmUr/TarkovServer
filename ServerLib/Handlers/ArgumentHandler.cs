@@ -6,7 +6,7 @@ namespace ServerLib.Handlers
     {
         #region Handler
         public static string Ip { get; internal set; } = "172.0.0.1";
-        public static int Port { get; internal set; } = 7777;
+        public static int Port { get; internal set; } = 6969;
         public static bool Debug { get; internal set; } = false;
         public static bool AskHelp { get; internal set; } = false;
         public static bool DontLoadPlugin { get; internal set; } = false;
@@ -30,7 +30,7 @@ namespace ServerLib.Handlers
             Console.WriteLine("Command arguments to change server behavour:");
             Console.WriteLine();
             Console.WriteLine("-ip {168.192.1.50} \t\t Running the server under this IP. (Default: 172.0.0.1 AKA Localhost)");
-            Console.WriteLine("-port {7777} \t\t\t Running the server under this Port. (Default: 7777)");
+            Console.WriteLine("-port {6969} \t\t\t Running the server under this Port. (Default: 6969)");
             Console.WriteLine("-loadplugin {pluginfile.dll} \t Running the server & load plugin before everything else. (Not default)");
             Console.WriteLine("-noplugin \t\t\t Disable loading all plugins, override -loadplugin!");
             Console.WriteLine("-reloadconfig \t\t\t Reload all config");

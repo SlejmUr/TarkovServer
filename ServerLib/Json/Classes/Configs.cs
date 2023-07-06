@@ -4,7 +4,7 @@
     {
         public CustomConfig.Base CustomSettings { get; set; }
         public ServerConfig.Base Server { get; set; }
-        public GameplayConfig.Base Gameplay { get; set; }
+        public BotConfig.Base Bot { get; set; }
         public List<Plugin> Plugins { get; set; }
 
         public class Plugin

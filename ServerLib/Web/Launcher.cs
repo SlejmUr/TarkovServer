@@ -15,7 +15,7 @@ namespace ServerLib.Web
             Utils.PrintRequest(request, session);
             string Uncompressed = ResponseControl.DeCompressReq(request.BodyBytes);
             // RPS
-            string resp = AccountController.Login(JsonConvert.DeserializeObject<Json.Classes.Login>(Uncompressed));
+            string resp = AccountController.Login(JsonConvert.DeserializeObject<Json.Classes.Requests.Login>(Uncompressed));
             var rsp = ResponseControl.CompressRsp(resp);
             session.SendResponse(session.Response.MakeGetResponse(rsp).SetHeader("Content-Encoding", "deflate"));
             return true;
@@ -29,7 +29,7 @@ namespace ServerLib.Web
             string Uncompressed = ResponseControl.DeCompressReq(request.BodyBytes);
 
             // RPS
-            string resp = AccountController.Register(JsonConvert.DeserializeObject<Json.Classes.Login>(Uncompressed));
+            string resp = AccountController.Register(JsonConvert.DeserializeObject<Json.Classes.Requests.Register>(Uncompressed));
             var rsp = ResponseControl.CompressRsp(resp);
             session.SendResponse(session.Response.MakeGetResponse(rsp).SetHeader("Content-Encoding", "deflate"));
             return true;
@@ -73,36 +73,6 @@ namespace ServerLib.Web
             // RPS
             Console.WriteLine(Uncompressed);
             string resp = AccountController.RemoveAccount(Uncompressed);
-            var rsp = ResponseControl.CompressRsp(resp);
-            session.SendResponse(session.Response.MakeGetResponse(rsp).SetHeader("Content-Encoding", "deflate"));
-            return true;
-        }
-
-        [HTTP("POST", "/launcher/profile/change/password")]
-        public static bool LauncherChangePassword(HttpRequest request, HttpsBackendSession session)
-        {
-            //REQ stuff
-            Utils.PrintRequest(request, session);
-            string Uncompressed = ResponseControl.DeCompressReq(request.BodyBytes);
-
-            // RPS
-            string resp = AccountController.ChangePassword(JsonConvert.DeserializeObject<Json.Classes.Change>(Uncompressed));
-            var rsp = ResponseControl.CompressRsp(resp);
-            session.SendResponse(session.Response.MakeGetResponse(rsp).SetHeader("Content-Encoding", "deflate"));
-            return true;
-        }
-
-
-        [HTTP("POST", "/launcher/profile/change/wipe")]
-        public static bool LauncherChangeWipe(HttpRequest request, HttpsBackendSession session)
-        {
-            //REQ stuff
-            Utils.PrintRequest(request, session);
-            string Uncompressed = ResponseControl.DeCompressReq(request.BodyBytes);
-
-            // RPS
-            Console.WriteLine(Uncompressed);
-            var resp = AccountController.SetWipe(Uncompressed);
             var rsp = ResponseControl.CompressRsp(resp);
             session.SendResponse(session.Response.MakeGetResponse(rsp).SetHeader("Content-Encoding", "deflate"));
             return true;

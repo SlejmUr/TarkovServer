@@ -1,0 +1,23 @@
+{
+    "pmcWar":{
+        "enabled": true,
+        "sideUsec": 60
+    },
+    "limit": {
+        "bossKilla": 1,
+        "bossBully": 1,
+        "bullyFollowers": 5,
+        "marksman": 10,
+        "pmcBot": 20,
+        "scav": 30
+    },
+    "spawn": {
+        "glasses": 30,
+        "faceCover": 40,
+        "headwear": 40,
+        "backpack": 25,
+        "armorVest": 25,
+        "medPocket": 100,
+        "itemPocket": 0
+    }
+}

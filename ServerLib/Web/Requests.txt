@@ -1,0 +1,59 @@
+client/game/hardwareCode/activate
+client/game/register
+client/game/remove
+client/game/restore_password
+client/game/version/validate
+client/game/login =>  GClass155
+client/game/profile/items/moving => Gclass51_0
+client/game/keepalive
+client/game/logout
+client/game/profile/save
+
+client/game/profile/nickname/change
+client/game/profile/nickname/validate
+client/game/profile/nickname/reserved => string
+client/game/profile/create => EFT.Profile
+client/game/profile/list => EFT.Profile[]
+client/game/profile/select => SelectProfileResponse
+client/profile/status => AllProfileStatus[]
+
+client/items => Gclass164_1
+client/items/characteristics => Characteristics
+client/locations => LocationSettings
+client/globals => GlobalsConfig
+client/notifier/channel/create => GClass176
+client/locale/{Locale} => GClass150
+client/weather => Weather2
+client/quest/list => QuestTemplateList
+
+client/match/available => bool
+client/match/join => AllProfileStatus[]
+client/match/exit
+
+
+
+client/trading/api/getTradersList => Gclass732_0[]
+client/trading/api/getTrader/{TraderID} => Gclass732_0
+client/trading/api/getTraderAssort/{TraderId} => Gclass736_0
+client/trading/api/getUserAssortPrice/trader/{TraderId} => Dictionary<string, Gclass735_0>
+client/trading/api/purchase/prepare
+
+TradingSession/api/getTradingItems => Dictionary<string, GClass154>
+TradingSession/api/getTradingItem/{Id} => Dictionary<string, GClass154>
+TradingSession/api/getAllCurrency => Dictionary<string, GClass737>
+TradingSession/api/getBlackMarketItems => Dictionary<string, GClass740>
+TradingSession/json/prepare
+
+server/register
+server/keepalive
+server/items => Gclass164_1
+server/items/characteristics => Characteristics
+server/savages => EFT.Profile[]
+server/players/summon => GClass148
+server/players/leaves => GClass149
+server/selectmap => GClass157
+server/profile/gameover
+server/match/end
+server/unregister
+server/globals => GlobalsConfig
+server/quest/list => QuestTemplateList

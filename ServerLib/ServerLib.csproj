@@ -27,10 +27,6 @@
 			<HintPath>..\Ref\UnityEngine.dll</HintPath>
 			<Private>False</Private>
 		</Reference>
-		<Reference Include="UnityEngine.CoreModule">
-			<HintPath>..\Ref\UnityEngine.CoreModule.dll</HintPath>
-			<Private>False</Private>
-		</Reference>
 		<Reference Include="zlib.net">
 		  <HintPath>..\Ref\zlib.net.dll</HintPath>
 		</Reference>

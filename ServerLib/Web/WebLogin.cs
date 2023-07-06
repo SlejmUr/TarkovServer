@@ -13,7 +13,7 @@ namespace ServerLib.Web
         {
             Console.WriteLine(request.Body);
             // RPS
-            string resp = AccountController.Login(JsonConvert.DeserializeObject<Json.Classes.Login>(request.Body));
+            string resp = AccountController.Login(JsonConvert.DeserializeObject<Json.Classes.Requests.Login>(request.Body));
             Console.WriteLine(resp);
             var rsp = session.Response.MakeGetResponse(resp);
             session.SendResponse(rsp);
@@ -25,19 +25,7 @@ namespace ServerLib.Web
         {
             Console.WriteLine(request.Body);
             // RPS
-            string resp = AccountController.Register(JsonConvert.DeserializeObject<Json.Classes.Login>(request.Body));
-            var rsp = session.Response.MakeGetResponse(resp);
-            session.SendResponse(rsp);
-            return true;
-        }
-
-        [HTTP("POST", "/webprofile/wipe")]
-        public static bool LauncherWipe(HttpRequest request, HttpsBackendSession session)
-        {
-            //REQ stuff
-            var WipeProfile = JsonConvert.DeserializeObject<Json.WebProfile.WebWipe>(request.Body);
-            // RPS
-            string resp = AccountController.SetWipe(WipeProfile.AccountId);
+            string resp = AccountController.Register(JsonConvert.DeserializeObject<Json.Classes.Requests.Register>(request.Body));
             var rsp = session.Response.MakeGetResponse(resp);
             session.SendResponse(rsp);
             return true;

@@ -1,7 +1,4 @@
 ﻿using NetCoreServer;
-using Newtonsoft.Json;
-using ServerLib.Controllers;
-using ServerLib.Handlers;
 using ServerLib.Utilities;
 using static ServerLib.Web.HTTPServer;
 
@@ -13,16 +10,7 @@ namespace ServerLib.Web
         public static bool ClientTradingApiGetTradersList(HttpRequest request, HttpsBackendSession session)
         {
             Utils.PrintRequest(request, session);
-            string resp = ResponseControl.GetBody(JsonConvert.SerializeObject(TraderController.GetTradersInfo()));
-            Utils.SendUnityResponse(session, resp);
-            return true;
-        }
-
-        [HTTP("POST", "/client/trading/api/traderSettings")]
-        public static bool ClientTradingApiTraderSettings(HttpRequest request, HttpsBackendSession session)
-        {
-            Utils.PrintRequest(request, session);
-            string resp = ResponseControl.GetBody(JsonConvert.SerializeObject(TraderController.GetTradersInfo()));
+            string resp = File.ReadAllText("Files/static/traderList.json");
             Utils.SendUnityResponse(session, resp);
             return true;
         }
@@ -32,36 +20,27 @@ namespace ServerLib.Web
         {
             Utils.PrintRequest(request, session);
             string traderId = session.HttpParam["traderId"];
-            string SessionId = Utils.GetSessionId(session.Headers);
-            var assort = JsonConvert.SerializeObject(TraderController.GenerateFilteredAssort(SessionId, traderId));
-            string resp = ResponseControl.GetBody(assort);
+            string resp = File.ReadAllText($"Files/assort/{traderId}.json");
             Utils.SendUnityResponse(session, resp);
             return true;
         }
 
-        [HTTP("POST", "/client/trading/customization/storage")]
-        public static bool ClientTradingCustomizationStorage(HttpRequest request, HttpsBackendSession session)
+        [HTTP("POST", "/client/trading/api/getTrader/{traderId}")]
+        public static bool ClientTradingApiGetTrader(HttpRequest request, HttpsBackendSession session)
         {
             Utils.PrintRequest(request, session);
-            string SessionId = Utils.GetSessionId(session.Headers);
-            var x = new GClass601()
-            {
-                _id = "pmc" + SessionId,
-                suites = ProfileController.GetProfile(SessionId).Suits.ToArray()
-            };
-            string resp = ResponseControl.GetBody(JsonConvert.SerializeObject(x));
+            string traderId = session.HttpParam["traderId"];
+            string resp = File.ReadAllText($"Files/traders/{traderId}.json");
             Utils.SendUnityResponse(session, resp);
             return true;
         }
 
-        [HTTP("POST", "/client/trading/customization/{id}/offers")]
-        public static bool ClientTradingCustomizationOffers(HttpRequest request, HttpsBackendSession session)
+        [HTTP("POST", "/client/trading/api/getUserAssortPrice/trader/{TraderId}")]
+        public static bool ClientTradingApiGetUserAssortPriceTrader(HttpRequest request, HttpsBackendSession session)
         {
             Utils.PrintRequest(request, session);
-            string id = session.HttpParam["id"];
-            var suits = JsonConvert.SerializeObject(TraderController.GetSuitsByTrader(id));
-
-            string resp = ResponseControl.GetBody(suits);
+            string traderId = session.HttpParam["traderId"];
+            string resp = File.ReadAllText($"Files/static/purchases.json");
             Utils.SendUnityResponse(session, resp);
             return true;
         }

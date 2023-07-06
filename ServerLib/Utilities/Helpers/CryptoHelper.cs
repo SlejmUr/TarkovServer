@@ -7,8 +7,14 @@ namespace ServerLib.Utilities.Helpers
     {
         public static string Hash(string _base)
         {
-            using var sha1 = SHA1.Create();
-            return Convert.ToHexString(sha1.ComputeHash(Encoding.UTF8.GetBytes(_base)));
+            var md5 = MD5.Create();
+            byte[] array = md5.ComputeHash(Encoding.UTF8.GetBytes(_base));
+            StringBuilder stringBuilder = new StringBuilder();
+            for (int i = 0; i < array.Length; i++)
+            {
+                stringBuilder.Append(array[i].ToString("x2"));
+            }
+            return stringBuilder.ToString();
         }
     }
 }

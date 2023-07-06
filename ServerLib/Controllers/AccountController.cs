@@ -10,41 +10,45 @@ namespace ServerLib.Controllers
     {
         static AccountController()
         {
-            if (!Directory.Exists("user/profiles")) { Directory.CreateDirectory("user/profiles"); }
+            if (!Directory.Exists("profiles")) { Directory.CreateDirectory("profiles"); }
 
             Accounts = new();
             Accounts.Clear();
+            AccountsDict = new();
+            AccountsDict.Clear();
             ActiveAccountIds = new();
             ActiveAccountIds.Clear();
         }
 
-        public static List<Character.Info> Accounts;
+        public static List<Account> Accounts;
+        public static Dictionary<string, Account> AccountsDict;
         public static List<string> ActiveAccountIds;
 
-        #region Custom Made Functions
+        
         public static void Init()
         {
-            GetAccountList();
+            ReloadAccounts();
             Debug.PrintInfo("Initialization Done!", "ACCOUNT");
         }
 
-        public static void GetAccountList()
+        public static void ReloadAccounts()
         {
-            ProfileController.Profiles.ForEach(profile =>
+            foreach (var dir in Directory.GetDirectories("profiles"))
             {
-                if (profile.Info == null)
-                    return;
-
-                if (!Accounts.Contains(profile.Info))
+                foreach (var file in Directory.GetFiles(dir))
                 {
-                    Debug.PrintInfo($"(Re)Loaded account data for profile: [{profile.Info.Id}]" , "ACCOUNT");
-                    Accounts.Add(profile.Info);
+                    if (file.Contains("account.json"))
+                    { 
+                        var acc = JsonConvert.DeserializeObject<Account>(File.ReadAllText(file));
+                        if (acc != null)
+                        {
+                            if (!Accounts.Contains(acc))
+                                Accounts.Add(acc);
+                            AccountsDict.TryAdd(acc.Aid, acc);
+                        }
+                    }
                 }
-                if (!ActiveAccountIds.Contains(profile.Info.Id))
-                {
-                    ActiveAccountIds.Add(profile.Info.Id);
-                }
-            });
+            }
         }
 
         /// <summary>
@@ -57,16 +61,14 @@ namespace ServerLib.Controllers
             ActiveAccountIds.Remove(SessionId);
         }
 
-        #endregion
-        #region Ported Functions
         /// <summary>
         /// Login the Profile to the Server 
         /// </summary>
         /// <param name="JsonInfo">Json Serialized Profile</param>
         /// <returns>AccountId | FAILED</returns>
-        public static string Login(Login profile)
+        public static string Login(Requests.Login login)
         {
-            string ID = FindAccountIdByUsernameAndPassword(profile.username, profile.password);
+            string ID = FindAccountIdByUsernameAndPassword(login.email, login.pass);
 
             if (ID == null)
             {
@@ -89,29 +91,29 @@ namespace ServerLib.Controllers
         /// </summary>
         /// <param name="JsonInfo">Json Serialized Profile</param>
         /// <returns>AccountId | ALREADY_IN_USE</returns>
-        public static string Register(Login profile)
+        public static string Register(Requests.Register register)
         {
-            string ID = FindAccountIdByUsernameAndPassword(profile.username, profile.password);
+            string ID = FindAccountIdByUsernameAndPassword(register.email, register.pass);
 
-            if (IsEmailAlreadyInUse(profile.username))
+            if (IsEmailAlreadyInUse(register.email))
             {
                 return "ALREADY_IN_USE";
             }
             if (ID == null)
             {
                 string AccountID = Utils.CreateNewID();
-                Character.Info account = new()
+                Account account = new()
                 {
-                    Id = AccountID,
-                    Username = profile.username,
-                    Wipe = false
+                    Aid = AccountID,
+                    Id = Accounts.Count + 1,
+                    Email = register.email,
+                    Permission = Json.EPerms.User
                 };
                 if (ConfigController.Configs.CustomSettings.Account.UseSha1)
-                    account.Password = CryptoHelper.Hash(profile.password);
+                    account.Password = CryptoHelper.Hash(register.pass);
                 else
-                    account.Password = profile.password;
+                    account.Password = register.pass;
                 SaveHandler.SaveAccount(AccountID, account);
-                SaveHandler.SaveAddon(AccountID, new());
                 Debug.PrintInfo("Register Success! " + AccountID);
                 if (!ActiveAccountIds.Contains(AccountID))
                 {
@@ -131,23 +133,23 @@ namespace ServerLib.Controllers
         /// <param name="name">UserName</param>
         /// <param name="passw">Password</param>
         /// <returns>AccountId | ""</returns>
-        public static string FindAccountIdByUsernameAndPassword(string name, string passw)
+        public static string FindAccountIdByUsernameAndPassword(string mail, string passw)
         {
-            GetAccountList();
+            ReloadAccounts();
             foreach (var account in Accounts)
             {
                 if (ConfigController.Configs.CustomSettings.Account.UseSha1)
                 {
-                    if (account.Username == name && account.Password == CryptoHelper.Hash(passw))
+                    if (account.Email == mail && account.Password == CryptoHelper.Hash(passw))
                     {
-                        return account.Id;
+                        return account.Aid;
                     }
                 }
                 else
                 {
-                    if (account.Username == name && account.Password == passw)
+                    if (account.Email == mail && account.Password == passw)
                     {
-                        return account.Id;
+                        return account.Aid;
                     }
                 }
             }
@@ -159,12 +161,12 @@ namespace ServerLib.Controllers
         /// </summary>
         /// <param name="name">Username</param>
         /// <returns>True | False</returns>
-        public static bool IsEmailAlreadyInUse(string name)
+        public static bool IsEmailAlreadyInUse(string mail)
         {
-            GetAccountList();
+            ReloadAccounts();
             foreach (var account in Accounts)
             {
-                if (account.Username == name)
+                if (account.Email == mail)
                 {
                     return true;
                 }
@@ -179,8 +181,8 @@ namespace ServerLib.Controllers
         /// <returns>True | False</returns>
         public static bool ClientHasProfile(string SessionId)
         {
-            ReloadAccountBySessionId(SessionId);
-            var profile = ProfileController.GetProfile(SessionId);
+            ReloadAccounts();
+            var profile = CharacterController.GetCharacter(SessionId);
             if (profile != null)
             {
                 return true;
@@ -189,57 +191,22 @@ namespace ServerLib.Controllers
             return false;
         }
 
-
-        /// <summary>
-        /// Reload that account you provide by in SessonID
-        /// </summary>
-        /// <param name="SessionId">SessionId/AccountId</param>
-        public static void ReloadAccountBySessionId(string SessionId)
-        {
-            if (SessionId == null) { new Exception("SessionId Null!"); }
-            var profile = ProfileController.GetProfile(SessionId);
-            if (profile.Info == null)
-                return;
-
-            if (Accounts.Where(x=>x.Id != SessionId).Any())
-            {
-                Debug.PrintInfo($"(Re)Loaded account data for profile: [{profile.Info.Id}]", "ACCOUNT");
-                Accounts.Add(profile.Info);
-            }
-            if (!ActiveAccountIds.Contains(profile.Info.Id))
-            {
-                ActiveAccountIds.Add(profile.Info.Id);
-            }
-        }
-
         /// <summary>
         /// Find account data in loaded account list
         /// </summary>
         /// <param name="SessionId">SessionId/AccountId</param>
         /// <returns>Account Data | null</returns>
-        public static Character.Info? FindAccount(string SessionId)
+        public static Account? FindAccount(string SessionId)
         {
-            ReloadAccountBySessionId(SessionId);
+            ReloadAccounts();
             foreach (var account in Accounts)
             {
-                if (account.Id == SessionId)
+                if (account.Aid == SessionId)
                 {
                     return account;
                 }
             }
             return null;
-        }
-
-        /// <summary>
-        /// Get if the Account is Wiped or not
-        /// </summary>
-        /// <param name="SessionId">SessionId/AccountId</param>
-        /// <returns>True | False</returns>
-        public static bool IsWiped(string SessionId)
-        {
-            var Account = FindAccount(SessionId);
-            if (Account == null) { new Exception("Account null!"); }
-            return Account.Wipe;
         }
 
         /// <summary>
@@ -251,7 +218,7 @@ namespace ServerLib.Controllers
         {
             var Account = FindAccount(SessionId);
             if (Account == null) { new Exception("Account null!"); }
-            return Account.Username;
+            return Account.Email;
         }
 
         /// <summary>
@@ -259,7 +226,7 @@ namespace ServerLib.Controllers
         /// </summary>
         /// <param name="JsonInfo">Json Serialized Request</param>
         /// <returns>False | True</returns>
-        public static bool IsNicknameTaken(Nickname nickname)
+        public static bool IsNicknameTaken(Requests.Nickname nickname)
         {
             var custom = ConfigController.Configs.CustomSettings;
             if (nickname == null) { return false; }
@@ -267,7 +234,7 @@ namespace ServerLib.Controllers
             {
                 foreach (var acc in Accounts)
                 {
-                    if (acc.Username.ToLower() == nickname.nickname.ToLower())
+                    if (acc.Email.ToLower() == nickname.nickname.ToLower())
                         return true;
                 }
             }
@@ -279,7 +246,7 @@ namespace ServerLib.Controllers
         /// </summary>
         /// <param name="JsonInfo">Json Serialized Request</param>
         /// <returns>tooshort | taken | OK</returns>
-        public static string ValidateNickname(Nickname nickname)
+        public static string ValidateNickname(Requests.Nickname nickname)
         {
             if (nickname == null)
                 return "taken";
@@ -287,53 +254,6 @@ namespace ServerLib.Controllers
                 return "tooshort";
             if (IsNicknameTaken(nickname))
                 return "taken";
-            return "OK";
-        }
-
-        /// <summary>
-        /// Get the Lang from Account by SessionId
-        /// </summary>
-        /// <param name="SessionId">SessionId/AccountId</param>
-        /// <returns>"en" | Account Lang</returns>
-        public static string GetAccountLang(string SessionId)
-        {
-            var Account = FindAccount(SessionId);
-            if (Account == null) { new Exception("Account null!"); }
-            return Account.Lang;
-        }
-
-        /// <summary>
-        /// Tries to login and change the Account Password
-        /// </summary>
-        /// <param name="JsonInfo">Json Serialized Profile & Changes</param>
-        /// <returns>AccountID | FAILED</returns>
-        public static string ChangePassword(Change changes)
-        {
-            var AccountID = Login(changes);
-            if (AccountID != "FAILED")
-            {
-                var Account = FindAccount(AccountID);
-                if (ConfigController.Configs.CustomSettings.Account.UseSha1)
-                    Account.Password = CryptoHelper.Hash(Account.Password);
-                else
-                    Account.Password = Account.Password;
-                SaveHandler.SaveAccount(AccountID, Account);
-            }
-            return AccountID;
-        }
-        #endregion
-        #region Edited but same functions
-        /// <summary>
-        /// Set session ready to WIPE
-        /// </summary>
-        /// <param name="SessionId">SessionId/AccountId</param>
-        /// <returns>OK | FAILED</returns>
-        public static string SetWipe(string SessionId)
-        {
-            var Account = FindAccount(SessionId);
-            if (Account == null) { return "FAILED"; }
-            Account.Wipe = true;
-            SaveHandler.SaveAccount(SessionId, Account);
             return "OK";
         }
 
@@ -346,7 +266,7 @@ namespace ServerLib.Controllers
         {
             var Account = FindAccount(SessionId);
             if (Account == null) { return "FAILED"; }
-            Directory.Delete($"user/profiles/{SessionId}", true);
+            Directory.Delete($"profiles/{SessionId}", true);
             return "OK";
         }
 
@@ -357,23 +277,21 @@ namespace ServerLib.Controllers
         /// <returns>OK | FAILED</returns>
         public static string DeleteAccount(string SessionId)
         {
-            if (Directory.Exists($"user/profiles/{SessionId}"))
+            if (Directory.Exists($"profiles/{SessionId}"))
             {
-                if (Accounts.Where(x => x.Id == SessionId).Count() > 0)
+                if (Accounts.Where(x => x.Aid == SessionId).Count() > 0)
                 {
-                    Accounts.Remove(Accounts.Where(x => x.Id == SessionId).FirstOrDefault());
+                    Accounts.Remove(Accounts.Where(x => x.Aid == SessionId).FirstOrDefault());
                 }
                 if (ActiveAccountIds.Contains(SessionId))
                 {
                     ActiveAccountIds.Remove(SessionId);
                 }
                 KeepAliveController.DeleteKeepAlive(SessionId);
-                Directory.Delete($"user/profiles/{SessionId}", true);
+                Directory.Delete($"profiles/{SessionId}", true);
                 return "OK";
             }
             return "FAILED";
         }
-        #endregion
-
     }
 }

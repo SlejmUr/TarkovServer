@@ -1,6 +1,4 @@
 ﻿using ComponentAce.Compression.Libs.zlib;
-using Newtonsoft.Json;
-using ServerLib.Json.Classes;
 
 namespace ServerLib.Web
 {
@@ -35,20 +33,6 @@ namespace ServerLib.Web
         public static string DeCompressReq(byte[] data)
         {
             return SimpleZlib.Decompress(data);
-        }
-
-        public static NotifierChannel GetNotifier(string SessionId)
-        {
-            NotifierChannel notifier = new()
-            {
-                server = ServerLib.ip_port,
-                channel_id = SessionId,
-                url = "",
-                notifierServer = ServerLib.IP + "/notifierServer/" + SessionId,
-                ws = WebSocket.IpPort + SessionId
-            };
-
-            return notifier;
         }
     }
 }

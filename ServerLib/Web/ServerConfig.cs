@@ -20,18 +20,6 @@ namespace ServerLib.Web
             return true;
         }
 
-        [HTTP("GET", "/server/config/gameplay")]
-        public static bool ConfigGameplay(HttpRequest request, HttpsBackendSession session)
-        {
-            string resp = "";
-            if (ConfigController.Configs.CustomSettings.Server.PublicConfigEnabled)
-            {
-                resp = JsonConvert.SerializeObject(ConfigController.Configs.Gameplay);
-            }
-            session.SendResponse(session.Response.MakeGetResponse(resp));
-            return true;
-        }
-
         [HTTP("GET", "/server/config/plugin")]
         public static bool ConfigPlugin(HttpRequest request, HttpsBackendSession session)
         {

@@ -1,18 +1,14 @@
 {
 	"ip": "127.0.0.1",
-	"port": 443,
+	"port": 6969,
 	"name": "Tarkov Server",
-	"discord": "",
-	"website": "",
-	"version": "",
+	"version": "Alpha-0.1",
 	"debug": true,
-	"lootDebug": true,
-	"serverIPs": {
-		"Enable": false,
-		"Trading": "https://127.0.0.1:443",
-		"Messaging": "https://127.0.0.1:443",
-		"Main": "https://127.0.0.1:443",
-		"RagFair": "https://127.0.0.1:443",
-		"Lobby": "https://127.0.0.1:443"
-	}
+	"servers":
+	[
+		{
+			"ip":"127.0.0.1",
+			"port": 7777
+		}
+	]
 }
