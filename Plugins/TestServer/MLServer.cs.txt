@@ -1,0 +1,60 @@
+﻿using UnityEngine.Networking;
+
+namespace TestServer
+{
+    public class MLServer
+    {
+        public NetworkServerSimple server;
+
+        public void Start()
+        {
+            try
+            {
+                var tarkovConfig = MLHelper.GetTarkovConfig();
+                HostTopology hostTopology = new HostTopology(tarkovConfig, 100);
+                server = new NetworkServerSimple();
+                server.Configure(hostTopology);
+                var isListen = server.Listen("127.0.0.1", 7777);
+                Console.WriteLine(isListen);
+                server.RegisterHandler(1, new NetworkMessageDelegate(x));
+                Timer();
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.InnerException);
+                Console.WriteLine(ex.Source);
+            }
+           
+        }
+
+        public void Timer()
+        {
+            if (server != null)
+            {
+                if (server.serverHostId != -1)
+                {
+                    server.Update();
+                    Thread.Sleep(100);
+                    Timer();
+                }
+            
+            }
+        
+        }
+
+
+        public void x(NetworkMessage msg)
+        { 
+        
+        }
+
+        public void Stop()
+        {
+            server.Stop();
+            Console.WriteLine("MLServer Stopped!");
+        }
+    }
+}

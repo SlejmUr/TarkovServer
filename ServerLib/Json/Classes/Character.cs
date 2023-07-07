@@ -91,7 +91,7 @@ namespace ServerLib.Json.Classes
         public partial class Health
         {
             [JsonProperty("HealthSeed")]
-            public long HealthSeed { get; set; }
+            public int HealthSeed { get; set; }
 
             [JsonProperty("IsAlive")]
             public bool IsAlive { get; set; }
@@ -154,10 +154,10 @@ namespace ServerLib.Json.Classes
         public partial class EnergyLimitedValue
         {
             [JsonProperty("MaxTopThreshold")]
-            public long MaxTopThreshold { get; set; }
+            public int MaxTopThreshold { get; set; }
 
             [JsonProperty("MinTopThreshold")]
-            public long MinTopThreshold { get; set; }
+            public int MinTopThreshold { get; set; }
 
             [JsonProperty("CurrAndMaxValue")]
             public CurrAndMaxValue CurrAndMaxValue { get; set; }
@@ -169,28 +169,28 @@ namespace ServerLib.Json.Classes
             public double CurrentValue { get; set; }
 
             [JsonProperty("MaxValue")]
-            public long MaxValue { get; set; }
+            public int MaxValue { get; set; }
         }
 
         public partial class RegenInfo
         {
             [JsonProperty("startTime")]
-            public long StartTime { get; set; }
+            public int StartTime { get; set; }
 
             [JsonProperty("addedValue")]
-            public long AddedValue { get; set; }
+            public int AddedValue { get; set; }
 
             [JsonProperty("timeInterval")]
-            public long TimeInterval { get; set; }
+            public int TimeInterval { get; set; }
         }
 
         public partial class Info
         {
             [JsonProperty("Experience")]
-            public long Experience { get; set; }
+            public int Experience { get; set; }
 
             [JsonProperty("Level")]
-            public long Level { get; set; }
+            public int Level { get; set; }
 
             [JsonProperty("Nickname")]
             public string Nickname { get; set; }
@@ -199,7 +199,7 @@ namespace ServerLib.Json.Classes
             public string Side { get; set; }
 
             [JsonProperty("RegistrationDate")]
-            public long RegistrationDate { get; set; }
+            public int RegistrationDate { get; set; }
         }
 
         public partial class Inventory

@@ -20,7 +20,7 @@ namespace ServerLib.Responders
                 Debug.PrintError("Character not found!", "ProfileStatus");
             }
 
-            Json.Classes.Other.ProfileStatus[] response =
+            Other.ProfileStatus[] response =
             {
                 new()
                 {
@@ -76,7 +76,7 @@ namespace ServerLib.Responders
                 status = "ok",
                 notifier = new()
                 {
-                    { "server", ServerLib.IP },
+                    { "server", ServerLib.ip_port },
                     { "channel_id", SessionId }
                 }
             };

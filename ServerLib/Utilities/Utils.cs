@@ -14,6 +14,12 @@ namespace ServerLib.Utilities
         public static bool SendUnityResponse(HttpsBackendSession session, string resp)
         {
             var url = session.LastRequest().Url.Replace("/","_");
+            if (url.Contains("?"))
+                url = url.Replace("?","_");
+
+            if (url.Contains("="))
+                url = url.Replace("=", "_");
+
             string SessionId = GetSessionId(session.Headers);
             File.WriteAllText("ServerResponses/" + ReqId + "_" + SessionId + url + ".json", resp); 
             ReqId++;

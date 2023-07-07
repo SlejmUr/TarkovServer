@@ -25,6 +25,7 @@ namespace TestServer
 
         protected override void OnSent(EndPoint endpoint, long sent)
         {
+            Debug.PrintInfo($"{endpoint} Sending Bytes {sent}");
             ReceiveAsync();
         }
 

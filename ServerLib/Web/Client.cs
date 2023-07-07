@@ -110,5 +110,15 @@ namespace ServerLib.Web
             Utils.SendUnityResponse(session, resp);
             return true;
         }
+
+        [HTTP("POST", "/push/notifier/get/{userId}")]
+        public static bool PushNotifier(HttpRequest request, HttpsBackendSession session)
+        {
+            Utils.PrintRequest(request, session);
+            string userId = session.HttpParam["userId"].ToLower();
+            Debug.PrintDebug(userId);
+            Utils.SendUnityResponse(session, ResponseControl.GetBody("[]"));
+            return true;
+        }
     }
 }

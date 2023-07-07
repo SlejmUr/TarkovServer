@@ -1,9 +1,5 @@
 # Tarkov Server
-This server is discontinued!
-
-Reason:\
-Because I couldn't managed to make through matchmaking with just simple battleye and file check disable there are no reason to continue this project.\
-There will be so much to add that are not currently in and to adapt or look at akis solution to straight up copy or thing for custom solution, so I just discontinue this project.
+Alpha 0.1.0.1001 version Server Emulator.
 
 # Other
 Tarkov Server on C# (.NET 6)
@@ -16,22 +12,13 @@ Still in early phase, in development!
 
 ## References
 Assembly-CSharp.dll\
-bsg.componentace.compression.libs.zlib.dll\
-bsg.console.core\
-bsg.microsoft.extensions.objectpool.dll\
-bsg.system.buffers.dll\
-Newtonsoft.Json\
-UnityEngine.dll\
-UnityEngine.CoreModule.dll
-
+zlib.dll\
 (Just put all in there you didn't miss much)
 
 ## Credits
+- polivilas for EXFIL Server
 - TheMaoci for official Research and Dump Tutorials
 - JET Team for making Tarkov Server
-- Paulov for editing Existed Tarkov Server code
-- Altered Escape Team for MTGA and some of easier Server code
-- SPT-AKI Team for some of the newest Jsons
 - NBJF, Panther for Testing & Debugging
 - SlejmUr for the Original Idea
 
@@ -39,10 +26,6 @@ UnityEngine.CoreModule.dll
 Make a Ref folder next to TarkovServer.sln and paste the References.\
 Open SLN in Visual Studio.\
 Build=>(Re-)Build Solution
-
-## Linux Support
-I planning to add a linux support (If most of the stuff done) on this project, If you want to help me with this DM me on Discord!
-(I'm on many Tarkov related Discord servers)
 
 ## Mod/Plugin support
 You can add your or anyone plugin, but be careful cus they can use any malicius code.\

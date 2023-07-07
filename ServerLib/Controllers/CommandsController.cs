@@ -115,9 +115,9 @@ namespace ServerLib.Controllers
             Console.WriteLine("ban <AID>:\t\t\tBan the given AID");
             Console.WriteLine("unban <AID>:\t\t\tUnban the given AID");
             Console.WriteLine("debug:\t\t\t\tEnable Debug options");
-            Console.WriteLine("listmatches:\t\t\t\tList all matches");
-            Console.WriteLine("deletematches:\t\t\t\tDelete all matches");
-            Console.WriteLine("registeruser <mail> <pass>:\t\t\t\tRegister designed user");
+            Console.WriteLine("listmatches:\t\t\tList all matches");
+            Console.WriteLine("deletematches:\t\t\tDelete all matches");
+            Console.WriteLine("registeruser <mail> <pass>:\t\tRegister designed user");
             Console.WriteLine();
         }
 
@@ -227,7 +227,12 @@ namespace ServerLib.Controllers
         {
             var x = (string[])obj;
             var email = x[0];
-            var pass = x[0];
+            var pass = x[1];
+            if (x.Length > 1)
+            {
+                DB.PrintWarn("Command not complete, use: !registeruser <mail> <pass>");
+                return;
+            }
             var account = AccountController.Register(new()
             { 
                 email = email,

@@ -17,8 +17,6 @@ namespace ServerLib.Web
             var rsp = ResponseControl.GetBody("true");
             var SessionId = Utils.GetSessionId(session.Headers);
             var match = GetMatch(SessionId);
-            match.matchData.Location = "factory4_day";
-            Matches[match.matchData.MatchId] = match.matchData;
             Utils.SendUnityResponse(session, rsp);
             return true;
         }
@@ -57,7 +55,7 @@ namespace ServerLib.Web
             Utils.PrintRequest(request, session);
             var sessionId = Utils.GetSessionId(session.Headers);
             Debug.PrintDebug(ResponseControl.DeCompressReq(request.BodyBytes));
-            MatchController.Exit(sessionId);
+            Exit(sessionId);
             var rsp = ResponseControl.NullResponse();
             Utils.SendUnityResponse(session, rsp);
             return true;
