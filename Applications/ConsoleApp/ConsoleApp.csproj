@@ -21,35 +21,4 @@
   <ItemGroup>
     <ProjectReference Include="..\..\ServerLib\ServerLib.csproj" />
   </ItemGroup>
-
-  <ItemGroup>
-	<Reference Include="Assembly-CSharp">
-      <HintPath>..\..\Ref\Assembly-CSharp.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="bsg.componentace.compression.libs.zlib">
-      <HintPath>..\..\Ref\bsg.componentace.compression.libs.zlib.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="bsg.microsoft.extensions.objectpool">
-      <HintPath>..\..\Ref\bsg.microsoft.extensions.objectpool.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="bsg.system.buffers">
-      <HintPath>..\..\Ref\bsg.system.buffers.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\..\Ref\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine">
-      <HintPath>..\..\Ref\UnityEngine.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEngine.CoreModule">
-      <HintPath>..\..\Ref\UnityEngine.CoreModule.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-  </ItemGroup>
-
 </Project>

@@ -117,7 +117,7 @@ namespace ServerLib.Web
             Utils.PrintRequest(request, session);
             string userId = session.HttpParam["userId"].ToLower();
             Debug.PrintDebug(userId);
-            Utils.SendUnityResponse(session, ResponseControl.GetBody("[]"));
+            Utils.SendUnityResponse(session, System.Text.Encoding.Default.GetBytes(ResponseControl.GetBody("[]")));
             return true;
         }
     }

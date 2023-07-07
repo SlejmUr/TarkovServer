@@ -31,13 +31,18 @@ namespace ServerLib.Web
             var jsonreq = JsonConvert.DeserializeObject<Requests.MatchJoin>(ResponseControl.DeCompressReq(request.BodyBytes));
             Debug.PrintDebug(JsonConvert.SerializeObject(jsonreq));
             JoinMatch(sessionId, jsonreq);
+            var character = CharacterController.GetCharacter(sessionId);
+            if (character == null)
+            {
+                Debug.PrintError("Character not found!", "ProfileStatus");
+            }
             var match = GetMatch(sessionId);
             Other.ProfileStatus[] response =
             {
                     new()
                     {
-                        profileid = sessionId,
-                        status = "MatchWait",
+                        profileid = character.Id,
+                        status = "Busy",
                         ip = match.matchData.Ip,
                         port = match.matchData.Port,
                         location = match.matchData.Location,

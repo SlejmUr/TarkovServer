@@ -1,7 +1,6 @@
 ﻿using JWT.Algorithms;
 using JWT.Builder;
 using JWT.Exceptions;
-using ServerLib.Controllers;
 using ServerLib.Utilities;
 using System.Security.Cryptography;
 
@@ -14,6 +13,10 @@ namespace ExtCommands
         /// </summary>
         public static void CreateRSA()
         {
+            if (!Directory.Exists("cert"))
+            {
+                Directory.CreateDirectory("cert");
+            }
             if (!File.Exists("cert/rsa.xml"))
             {
                 RSA rsa = RSA.Create();

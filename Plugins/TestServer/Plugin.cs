@@ -19,7 +19,7 @@ namespace Plugin
 
         }
         public TarkovGameServer gameServer;
-        //public MLServer MLServer;
+
         public string Name => "TestServer";
 
         public string Author => "SlejmUr";
@@ -30,11 +30,9 @@ namespace Plugin
 
         public List<string> Dependencies => new();
 
-
-
         public void Initialize()
         {
-            gameServer = new(IPAddress.Parse(ConfigController.Configs.Server.Ip),1000);
+            gameServer = new(IPAddress.Parse(ConfigController.Configs.Server.Ip), 7000);
 
         }
         public void ShutDown()

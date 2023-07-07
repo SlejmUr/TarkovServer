@@ -1,0 +1,41 @@
+// EFT.AbstractGameSession.Class105
+bytes_1 = prefabs
+bytes_2 = weaters
+bool_0 = Should Restart (0)
+networkInstanceId_0 = ID, we set to 1
+byte_0 = Anything It connect to "EFT Channel" should be X-5
+gclass215_0 = 
+Bool
+int64
+int64
+float/single
+
+
+GClass143.Class13
+{0}:Asset:{1}
+BundleName 
+BundleName:Asset:String.Empty
+
+
+OneFourSeven should return back like that:
+read:
+	networkInstanceId_0 = new NetworkInstanceId(reader.ReadUInt32());
+	byte_0 = reader.ReadByte();
+	gclass215_0 = GClass215.Deserialize(reader);
+	byte_1 = reader.ReadBytesAndSize();
+	byte_2 = reader.ReadBytesAndSize();
+	bool_0 = reader.ReadBoolean();
+
+write:
+	writer.Write(networkInstanceId_0.Value);
+	writer.Write(byte_0);
+	gclass215_0.Serialize(writer, gameOnly: true);
+	writer.WriteBytesFull(byte_1);
+	writer.WriteBytesFull(byte_2);
+	writer.Write(bool_0);
+
+//this helps if we need 1 or 2 int64
+DateTime dateTime_ = ((!reader.ReadBoolean()) ? DateTime.FromBinary(reader.ReadInt64()) : DateTime.UtcNow);
+
+
+prefabs, weaters are compressed with SimpleZlib, problalb level 9?

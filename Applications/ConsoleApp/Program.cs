@@ -1,12 +1,9 @@
 ﻿using System.Reflection;
 using System.Text;
-using Newtonsoft.Json;
 
 using SL = ServerLib;
 using SLH = ServerLib.Handlers;
 using SLU = ServerLib.Utilities;
-using SLC = ServerLib.Controllers;
-using SLW = ServerLib.Web;
 using ServerLib.Controllers;
 using ServerLib.Utilities;
 
@@ -14,7 +11,6 @@ namespace ConsoleApp
 {
     internal class Program
     {
-        static CVersion Version = new CVersion();
         static void LogDetailed(string text) 
         {
             SLU.Debug.PrintInfo(text);
@@ -27,8 +23,6 @@ namespace ConsoleApp
         static void ServerInfo() 
         {
             LogDetailed("Welcome in Tarkov Server Console!");
-            ConsoleSpacer();
-            LogDetailed($"Versions: \n{SLU.Versions.ServerVersion}\n{Version.LoadVersion}");
             ConsoleSpacer();
         }
 
@@ -44,7 +38,7 @@ namespace ConsoleApp
             AppDomain.CurrentDomain.AssemblyLoad += CurrentDomain_AssemblyLoad;
 
             Console.OutputEncoding = Encoding.UTF8;
-            Console.Title = $"MTGA - SharpServer [{Version.LoadVersion}]";
+            Console.Title = $"TarkovServer - AlphaGame";
             ServerInfo();
 
             SLH.ArgumentHandler.MainArg(args);
