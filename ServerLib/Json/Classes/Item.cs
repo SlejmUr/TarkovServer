@@ -910,7 +910,7 @@ namespace ServerLib.Json.Classes
             public static Base FromJson(string json) => JsonConvert.DeserializeObject<Base>(json, Converter.Settings);
         }
 
-        internal static class Converter
+        public static class Converter
         {
             public static readonly JsonSerializerSettings Settings = new JsonSerializerSettings
             {

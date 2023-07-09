@@ -18,9 +18,12 @@ namespace TestServer
         protected override void OnReceived(EndPoint endpoint, byte[] buffer, long offset, long size)
         {
             Debug.PrintInfo($"{endpoint} Sent: {BitConverter.ToString(buffer.Take((int)size).ToArray())}", "TarkovGameServer");
-
-            //Sending back :(
-            SendAsync(endpoint, buffer, 0, size);
+            var buf = buffer.Take((int)size).ToArray();
+            var packetId = BitConverter.ToInt32(buf, 0);
+            //removing the 4 bytes packetId
+            var rsp = PacketProcess.Process(packetId, buf[4..]);
+            //Sending to UnityServer
+            SendAsync(endpoint, rsp, 0, rsp.Length);
         }
 
         protected override void OnSent(EndPoint endpoint, long sent)

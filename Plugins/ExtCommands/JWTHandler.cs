@@ -1,6 +1,7 @@
 ﻿using JWT.Algorithms;
 using JWT.Builder;
 using JWT.Exceptions;
+using ServerLib.Controllers;
 using ServerLib.Utilities;
 using System.Security.Cryptography;
 
@@ -41,13 +42,13 @@ namespace ExtCommands
 
         public static string CreateAuthToken(string SessionId, string ClientSharedSecret, long exp = long.MinValue)
         {
-            var profile = ProfileController.GetProfile(SessionId);
+            var profile = AccountController.FindAccount(SessionId);
             if (profile == null)
             {
                 Debug.PrintError("Profile not found returning null!", "CreateAuthToken");
                 return string.Empty;
             }
-            var perm = profile.ProfileAddon.Permission;
+            var perm = profile.Permission;
 
             RSA rsa = GetRSA();
             if (exp == long.MinValue)

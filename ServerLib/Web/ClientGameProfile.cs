@@ -102,6 +102,8 @@ namespace ServerLib.Web
             //REQ stuff
             string SessionId = Utils.GetSessionId(session.Headers);
             Utils.PrintRequest(request, session);
+            string Uncompressed = ResponseControl.DeCompressReq(request.BodyBytes);
+            Console.WriteLine("Items Moving: " + Uncompressed);
             string resp = "";
             // RPS
             Utils.SendUnityResponse(session, resp);

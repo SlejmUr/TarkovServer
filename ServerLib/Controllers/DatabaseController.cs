@@ -12,6 +12,7 @@ namespace ServerLib.Controllers
             ConfigController.Init();
             LoadCharacters();
             LoadBots();
+            LoadItems();
             Debug.PrintInfo("Initialization Done!", "DATABASE");
         }
 
@@ -35,6 +36,13 @@ namespace ServerLib.Controllers
             DataBase.Bot.Weapons = JsonConvert.DeserializeObject<Bot.Weapons[]>(File.ReadAllText("Files/bot/botWeapons.json"));
             DataBase.Bot.Settings = JsonConvert.DeserializeObject<Dictionary<string, string[]>>(File.ReadAllText("Files/bot/botSettings.json"));
             Debug.PrintDebug("Bots loaded");
+        }
+
+        static void LoadItems()
+        {
+            DataBase.Items = new();
+            DataBase.Items = JsonConvert.DeserializeObject<Dictionary<string, Item.Base>>(File.ReadAllText("Files/static/items.json"), Item.Converter.Settings);
+            Debug.PrintDebug("Items loaded");
         }
     }
 }

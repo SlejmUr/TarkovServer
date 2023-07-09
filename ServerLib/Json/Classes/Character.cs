@@ -8,9 +8,6 @@ namespace ServerLib.Json.Classes
     {
         public partial class Base
         {
-            [JsonProperty("TraderStandings")]
-            public BackendCounters TraderStandings { get; set; }
-
             [JsonProperty("_id")]
             public string Id { get; set; }
 
@@ -42,13 +39,16 @@ namespace ServerLib.Json.Classes
             public Notes Notes { get; set; }
 
             [JsonProperty("Quests")]
-            public object[] Quests { get; set; }
+            public Quest[] Quests { get; set; }
+
+            [JsonProperty("TraderStandings")]
+            public Dictionary<string, TraderStanding> TraderStandings { get; set; }
 
             [JsonProperty("ConditionCounters")]
             public ConditionCounters ConditionCounters { get; set; }
 
             [JsonProperty("BackendCounters")]
-            public BackendCounters BackendCounters { get; set; }
+            public Dictionary<string, BackendCounters> BackendCounters { get; set; }
 
             [JsonProperty("Stats")]
             public Stats Stats { get; set; }
@@ -56,6 +56,21 @@ namespace ServerLib.Json.Classes
 
         public partial class BackendCounters
         {
+            public int value { get; set; }
+        }
+
+        public partial class TraderStanding
+        {
+            public int level { get; set; }
+            public int sales_sum { get; set; }
+            public float standing { get; set; }
+            public StandingLevel next_level { get; set; }
+            public class StandingLevel
+            {
+                public int min_leve { get; set; }
+                public int min_sales_sum { get; set; }
+                public float standing { get; set; }
+            }
         }
 
         public partial class ConditionCounters
@@ -214,7 +229,7 @@ namespace ServerLib.Json.Classes
             public string Stash { get; set; }
 
             [JsonProperty("fastPanel")]
-            public BackendCounters FastPanel { get; set; }
+            public object FastPanel { get; set; }
         }
 
         public partial class Item
@@ -271,7 +286,13 @@ namespace ServerLib.Json.Classes
         public partial class Notes
         {
             [JsonProperty("Notes")]
-            public object[] NotesNotes { get; set; }
+            public InsideNotes[] NotesNotes { get; set; }
+        }
+
+        public partial class InsideNotes
+        {
+            public long Time { get; set; }
+            public string Text { get; set; }
         }
 
         public partial class Skills
@@ -333,7 +354,12 @@ namespace ServerLib.Json.Classes
             [JsonProperty("Value")]
             public long Value { get; set; }
         }
-
+        public class Quest
+        {
+            public string qid { get; set; }
+            public int startTime { get; set; }
+            public int status { get; set; }
+        }
         public enum REnum { Horizontal, Vertical };
 
         public partial struct RUnion

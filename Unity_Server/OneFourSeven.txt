@@ -38,4 +38,21 @@ write:
 DateTime dateTime_ = ((!reader.ReadBoolean()) ? DateTime.FromBinary(reader.ReadInt64()) : DateTime.UtcNow);
 
 
-prefabs, weaters are compressed with SimpleZlib, problalb level 9?
+prefabs, weaters are compressed with SimpleZlib, problalb level 9?	-YES it is level 9
+
+
+
+ERROR 
+
+Illegal JSON sequence i0: 0 i2: 0lo: 0
+  at GClass59+GClass44+Class35.MoveNext () [0x00000] in <filename unknown>:0 
+  at Class25`1[GClass84`1[JsonFx.Model.ModelTokenType]].method_0 (Int32 int_0) [0x00000] in <filename unknown>:0 
+  at Class28`1[GClass84`1[JsonFx.Model.ModelTokenType]].method_0 () [0x00000] in <filename unknown>:0 
+  at Class28`1[GClass84`1[JsonFx.Model.ModelTokenType]].get_IsCompleted () [0x00000] in <filename unknown>:0 
+  at GClass52+Class45.MoveNext () [0x00000] in <filename unknown>:0 
+  at GClass57`1[JsonFx.Model.ModelTokenType].method_4 (GInterface23`1 ginterface23_0, IEnumerable`1 ienumerable_0, System.Type type_0, System.Object object_0) [0x00000] in <filename unknown>:0 
+ 
+
+we need to format both pref and weat to a [] of that data.
+only unknown (apart from the BundleName) is what we need to add?
+weater ser is a little bit yanky (check GClass711)

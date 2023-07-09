@@ -17,5 +17,7 @@
         {
             public Dictionary<string, Character.Base> CharacterBase = new();
         }
+
+        public Dictionary<string, Item.Base> Items { get; set; }
     }
 }

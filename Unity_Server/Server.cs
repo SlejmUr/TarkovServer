@@ -5,7 +5,7 @@ using UnityEngine.Networking;
 
 public class Server : NetworkBehaviour
 {
-	public NetworkServerSimple server;
+	public TarkovNetworkServer server;
 
 	public void StartServer()
 	{
@@ -14,12 +14,18 @@ public class Server : NetworkBehaviour
 			LogFilter.current = LogFilter.FilterLevel.Developer;
 			var tarkovConfig = ServerHelper.GetTarkovConfig();
 			HostTopology hostTopology = new HostTopology(tarkovConfig, 100);
-			server = new NetworkServerSimple();
+			server = new TarkovNetworkServer();
 			server.Configure(hostTopology);
 			var isListen = server.Listen("127.0.0.1", 7777);
 			Console.WriteLine(isListen);
 			Debug.Log("Server Started");
+			server.RegisterHandler(32, Loaded);
+			server.RegisterHandler(33, Loaded);
+			server.RegisterHandler(35, Loaded);
+			server.RegisterHandler(36, Loaded);
 			server.RegisterHandler(147, Game.OneFourSeven);
+			server.RegisterHandler(170, Loaded);
+			server.RegisterHandler(171, Loaded);
 			RegisterCommandDelegate(typeof(Test), -249139387, Test.LogMe); //KillMe
 			RegisterCommandDelegate(typeof(Test), 1930730778, Test.LogMe); //PlayerInput
 			RegisterCommandDelegate(typeof(Test), 2102444979, Test.LogMe); //SendP2PInput
@@ -61,13 +67,21 @@ public class Server : NetworkBehaviour
 
 	}
 
+	public static void Loaded(NetworkMessage msg)
+	{
+		Debug.Log (msg.channelId + " " + msg.msgType + " " + msg.conn.connectionId);
+	}
+		
+
+
+
 	void LateUpdate()
 	{
 		if (server != null)
 		{
 			if (server.serverHostId != -1)
 			{
-				Debug.Log("Timer");
+				//Debug.Log("Timer");
 				server.Update();
 			}
 		}

@@ -28,7 +28,4 @@ public static class NRHelper
 
 	// Token: 0x0400218F RID: 8591
 	private static readonly FieldInfo fieldInfo_1 = fieldInfo_0.FieldType.GetField("m_Buffer", BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.GetField);
-
-	// Token: 0x04002190 RID: 8592
-	private static readonly FieldInfo fieldInfo_2 = fieldInfo_0.FieldType.GetField("m_Pos", BindingFlags.Instance | BindingFlags.NonPublic);
 }

@@ -20,7 +20,7 @@ namespace ServerLib.Web
         public static bool ClientItems(HttpRequest request, HttpsBackendSession session)
         {
             Utils.PrintRequest(request, session);
-            string resp = File.ReadAllText("Files/static/items.json");
+            string resp = ResponseControl.GetBody(File.ReadAllText("Files/static/items.json"));
             Utils.SendUnityResponse(session, resp);
             return true;
         }
