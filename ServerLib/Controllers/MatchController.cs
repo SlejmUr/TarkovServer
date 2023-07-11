@@ -51,7 +51,7 @@ namespace ServerLib.Controllers
         {
             
             var match = GetMatch(ProfileId);
-            Debug.PrintDebug($"Match [{match.matchData.MatchId}] is Deleted", "MatchController");
+            Debug.PrintDebug($"Match [{match.matchData.MatchId}] deleted.", "MatchController");
             Matches.Remove(match.matchData.MatchId);
         }
 

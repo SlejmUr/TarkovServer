@@ -57,7 +57,7 @@ namespace ServerLib.Controllers
         /// <param name="SessionId">SessionId/AccountId</param>
         public static void SessionLogout(string SessionId)
         {
-            Debug.PrintDebug($"User with ID {SessionId} has been logged out");
+            Debug.PrintDebug($"User with ID {SessionId} has logged out");
             ActiveAccountIds.Remove(SessionId);
         }
 
@@ -72,12 +72,12 @@ namespace ServerLib.Controllers
 
             if (ID == null)
             {
-                Debug.PrintInfo("Login FAILED! " + ID);
+                Debug.PrintInfo("Login FAILED: " + ID);
                 return "FAILED";
             }
             else
             {
-                Debug.PrintInfo("Login Success! " + ID);
+                Debug.PrintInfo("Login Success: " + ID);
                 if (!ActiveAccountIds.Contains(ID))
                 {
                     ActiveAccountIds.Add(ID);
