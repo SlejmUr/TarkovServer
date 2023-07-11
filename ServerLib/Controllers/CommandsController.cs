@@ -228,7 +228,7 @@ namespace ServerLib.Controllers
             var x = (string[])obj;
             var email = x[0];
             var pass = x[1];
-            if (x.Length > 1)
+            if (x.Length < 1)
             {
                 DB.PrintWarn("Command not complete, use: !registeruser <mail> <pass>");
                 return;
