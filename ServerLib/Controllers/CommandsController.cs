@@ -60,7 +60,7 @@ namespace ServerLib.Controllers
         public static void DebugEnable(object obj)
         {
             ArgumentHandler.Debug = true;
-            DB.PrintInfo("Debug now has been enabled!");
+            DB.PrintInfo("Debug mode has been enabled!");
         }
 
         public static void Restart(object obj)
@@ -102,15 +102,21 @@ namespace ServerLib.Controllers
             */
             Console.WriteLine("Commands List: " + string.Join(", ", Commands.Keys.ToList()));
             Console.WriteLine();
-            Console.WriteLine("reload:\t\t\t\tStop and Start the server");
+            Console.WriteLine("reload:\t\t\t\tRestart the server");
             Console.WriteLine("restart:\t\t\tRestart the current app (Console)");
             Console.WriteLine("stop:\t\t\t\tStops the server");
-            Console.WriteLine("op <AID>:\t\t\tSet Admin the given AID");
-            Console.WriteLine("deop <AID>:\t\t\tSet Back to User the given AID");
-            Console.WriteLine("setpermission <AID> <PermId>:\tSet Permission to the given AID");
-            Console.WriteLine("ban <AID>:\t\t\tBan the given AID");
-            Console.WriteLine("unban <AID>:\t\t\tUnban the given AID");
+            Console.WriteLine("op <AID>:\t\t\tGives admin to the specified AID");
+            Console.WriteLine("deop <AID>:\t\t\tRemove admin from the specified AID");
+            Console.WriteLine("setpermission <AID> <PermId>:\tSets Permission to the specified AID");
+            Console.WriteLine("ban <AID>:\t\t\tBan the specified AID");
+            Console.WriteLine("unban <AID>:\t\t\tUnban the specified AID");
             Console.WriteLine("debug:\t\t\t\tEnable Debug options");
+            Console.WriteLine();
+            Console.WriteLine("AID stands for "Account ID".");
+            Console.WriteLine("You can find a user's AID in the profiles folder inside of your ConsoleApp.");
+            Console.WriteLine("The user's AID is the name of the folder.");
+            Console.WriteLine();
+            Console.WriteLine("All commands should start with !");
             Console.WriteLine();
         }
 
@@ -119,19 +125,19 @@ namespace ServerLib.Controllers
             var x = (string[])obj;
             if (x.Length == 0)
             {
-                DB.PrintWarn("No User to OP, use: !op <AID>");
+                DB.PrintWarn("No user to give OP. use: !op <AID>");
                 return;
             }               
             var AID = x[x.Length-1];
             var profile = ProfileController.GetProfile(AID);
             if (profile == null)
             {
-                DB.PrintWarn("Profile null, cannot give OP to non existing profile!");
+                DB.PrintWarn("Profile doesn't exist. You cannot give OP to a non-existent profile!");
                 return;
             }
             profile.ProfileAddon.Permission = Json.Enums.EPerms.Admin;
             SaveHandler.SaveAddon(AID,profile.ProfileAddon);
-            DB.PrintInfo($"User {AID} is now {Json.Enums.EPerms.Admin}");
+            DB.PrintInfo($"AID {AID} is now {Json.Enums.EPerms.Admin}");
         }
 
         public static void SetPerm(object obj)
@@ -139,7 +145,7 @@ namespace ServerLib.Controllers
             var x = (string[])obj; 
             if (x.Length > 2)
             {
-                DB.PrintWarn("No User or Permission defined. Use: !setpermission <AID>");
+                DB.PrintWarn("No AID or permission defined. Use: !setpermission <AID>");
                 return;
             }
             var AID = x[0];
@@ -147,12 +153,12 @@ namespace ServerLib.Controllers
             var profile = ProfileController.GetProfile(AID);
             if (profile == null)
             {
-                DB.PrintWarn("Profile null, cannot give OP to non existing profile!");
+                DB.PrintWarn("Profile doesn't exist. You cannot give OP to a non-existent profile!");
                 return;
             }
             profile.ProfileAddon.Permission = (Json.Enums.EPerms)perm;
             SaveHandler.SaveAddon(AID, profile.ProfileAddon);
-            DB.PrintInfo($"User {AID} is now {(Json.Enums.EPerms)perm}");
+            DB.PrintInfo($"AID {AID} is now {(Json.Enums.EPerms)perm}");
         }
 
         public static void DeOp(object obj)
@@ -160,19 +166,19 @@ namespace ServerLib.Controllers
             var x = (string[])obj;
             if (x.Length == 0)
             {
-                DB.PrintWarn("No User to DEOP, use: !deop <AID>");
+                DB.PrintWarn("No AID to DEOP, use: !deop <AID>");
                 return;
             }
             var AID = x[0];
             var profile = ProfileController.GetProfile(AID);
             if (profile == null)
             {
-                DB.PrintWarn("Profile null, cannot give OP to non existing profile!");
+                DB.PrintWarn("Profile doesn't exist. You cannot remove OP from a non-existent profile!");
                 return;
             }
             profile.ProfileAddon.Permission = Json.Enums.EPerms.User;
             SaveHandler.SaveAddon(AID, profile.ProfileAddon);
-            DB.PrintInfo($"User {AID} is now {Json.Enums.EPerms.User}");
+            DB.PrintInfo($"AID {AID} is now {Json.Enums.EPerms.User}");
         }
 
         public static void Ban(object obj)
@@ -182,12 +188,12 @@ namespace ServerLib.Controllers
             var profile = ProfileController.GetProfile(AID);
             if (profile == null)
             {
-                DB.PrintWarn("Profile null, cannot give OP to non existing profile!");
+                DB.PrintWarn("Profile doesn't exist. You cannot ban a non-existent profile!");
                 return;
             }
             profile.ProfileAddon.Permission = Json.Enums.EPerms.Blocked;
             SaveHandler.SaveAddon(AID, profile.ProfileAddon);
-            DB.PrintInfo($"User {AID} is now Banned");
+            DB.PrintInfo($"AID {AID} is now Banned");
         }
 
         public static void UnBan(object obj)
@@ -197,18 +203,18 @@ namespace ServerLib.Controllers
             var profile = ProfileController.GetProfile(AID);
             if (profile == null)
             {
-                DB.PrintWarn("Profile null, cannot give OP to non existing profile!");
+                DB.PrintWarn("Profile doesn't exist. You cannot unban a non-existent profile!");
                 return;
             }
             profile.ProfileAddon.Permission = Json.Enums.EPerms.User;
             SaveHandler.SaveAddon(AID, profile.ProfileAddon);
-            DB.PrintInfo($"User {AID} is now Unbanned");
+            DB.PrintInfo($"AID {AID} is now Unbanned");
         }
 
         public static void ListMatches(object obj)
         {
             var maches = JsonConvert.SerializeObject(MatchController.Matches);
-            DB.PrintInfo($"Matches: {maches}");
+            DB.PrintInfo($"Current Matches: {maches}");
         }
         public static void DeleteMatches(object obj)
         {

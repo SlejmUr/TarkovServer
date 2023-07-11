@@ -26,7 +26,7 @@ namespace ConsoleApp
 
         static void ServerInfo() 
         {
-            LogDetailed("Welcome in Tarkov Server Console!");
+            LogDetailed("Welcome to the EXFIL dedicated server console!");
             ConsoleSpacer();
             LogDetailed($"Versions: \n{SLU.Versions.ServerVersion}\n{Version.LoadVersion}");
             ConsoleSpacer();
@@ -57,7 +57,7 @@ namespace ConsoleApp
             if (!string.IsNullOrWhiteSpace(SLH.ArgumentHandler.LoadMyPlugin))
             {
                 Console.ForegroundColor = ConsoleColor.Red;
-                LogDetailed("Warning! You loading a plugin before everything else is loaded!");
+                LogDetailed("Warning! You're trying to load a plugin before everything else is loaded! Please wait!");
                 Console.ResetColor();
 
                 Console.WriteLine(SLH.ArgumentHandler.LoadMyPlugin);
@@ -66,8 +66,8 @@ namespace ConsoleApp
 
             SL.ServerLib.Init();
             LogDetailed("Initialization Done!");
-            Console.WriteLine("Commands are starting with !. Like !help");
-            Console.WriteLine("Type 'exit' or 'q' to end application");
+            Console.WriteLine("Commands start with !, an example of this would be: !help");
+            Console.WriteLine("Type 'exit' or 'q' to exit the ConsoleApp and close the server.");
             string endCheck = "not";
             while (endCheck.ToLower() != "exit")
             {
@@ -109,7 +109,7 @@ namespace ConsoleApp
             catch (Exception e)
             {
                  Console.WriteLine(
-                    $"Cannot find a file(or file is not unlocked) named:\r\n{_FileName}\r\nWith an exception: {e.Message}\r\nApplication will close after pressing OK.",
+                    $"Cannot find the file (or ConsoleApp doesn't have permission to use the file) named:\r\n{_FileName}\r\nWith the exception: {e.Message}\r\nThe application will close after pressing OK.",
                     "File load error!");
                 Console.ReadLine();
             }

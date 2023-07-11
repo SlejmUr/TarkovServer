@@ -53,7 +53,7 @@ namespace ServerLib.Controllers
         /// <param name="SessionId">SessionId/AccountId</param>
         public static void SessionLogout(string SessionId)
         {
-            Debug.PrintDebug($"User with ID {SessionId} has been logged out");
+            Debug.PrintDebug($"User with ID {SessionId} has logged out");
             ActiveAccountIds.Remove(SessionId);
         }
 
@@ -70,12 +70,12 @@ namespace ServerLib.Controllers
 
             if (ID == null)
             {
-                Debug.PrintInfo("Login FAILED! " + ID);
+                Debug.PrintInfo("Login FAILED! (are you using the right password?): " + ID);
                 return "FAILED";
             }
             else
             {
-                Debug.PrintInfo("Login Success! " + ID);
+                Debug.PrintInfo("Login Success: " + ID);
                 if (!ActiveAccountIds.Contains(ID))
                 {
                     ActiveAccountIds.Add(ID);
@@ -112,7 +112,7 @@ namespace ServerLib.Controllers
                     account.Password = profile.password;
                 SaveHandler.SaveAccount(AccountID, account);
                 SaveHandler.SaveAddon(AccountID, new());
-                Debug.PrintInfo("Register Success! " + AccountID);
+                Debug.PrintInfo("Register Success: " + AccountID);
                 if (!ActiveAccountIds.Contains(AccountID))
                 {
                     ActiveAccountIds.Add(AccountID);
