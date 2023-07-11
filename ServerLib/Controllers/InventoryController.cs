@@ -13,7 +13,7 @@ namespace ServerLib.Controllers
             var character = CharacterController.GetCharacter(SessionId);
             if (character == null)
             {
-                Debug.PrintError($"Inventory for Character {SessionId} not found!", "InventoryController");
+                Debug.PrintError($"Inventory for character {SessionId} not found! This could result in a crash!", "InventoryController");
                 return null;
             }
             return character.Inventory;

@@ -22,7 +22,7 @@ namespace ConsoleApp
 
         static void ServerInfo() 
         {
-            LogDetailed("Welcome in Tarkov Server Console!");
+            LogDetailed("Welcome to the EXFIL Dedicated Server Console!");
             ConsoleSpacer();
         }
 
@@ -51,7 +51,7 @@ namespace ConsoleApp
             if (!string.IsNullOrWhiteSpace(SLH.ArgumentHandler.LoadMyPlugin))
             {
                 Console.ForegroundColor = ConsoleColor.Red;
-                LogDetailed("Warning! You loading a plugin before everything else is loaded!");
+                LogDetailed("Warning! You're trying to load a plugin before everything else is loaded! Please wait!");
                 Console.ResetColor();
 
                 Console.WriteLine(SLH.ArgumentHandler.LoadMyPlugin);
@@ -60,8 +60,8 @@ namespace ConsoleApp
 
             SL.ServerLib.Init();
             LogDetailed("Initialization Done!");
-            Console.WriteLine("Commands are starting with !. Like !help");
-            Console.WriteLine("Type 'exit' or 'q' to end application");
+            Console.WriteLine("Commands start with !. For example: !help");
+            Console.WriteLine("Type 'exit' or 'q' to quit the console and shutdown the server.");
             string endCheck = "not";
             while (endCheck.ToLower() != "exit")
             {
@@ -103,7 +103,7 @@ namespace ConsoleApp
             catch (Exception e)
             {
                  Console.WriteLine(
-                    $"Cannot find a file(or file is not unlocked) named:\r\n{_FileName}\r\nWith an exception: {e.Message}\r\nApplication will close after pressing OK.",
+                    $"Cannot find a file (or the server doesn't have permission to use the file) named:\r\n{_FileName}\r\nWith the exception: {e.Message}\r\nThe app will close after pressing OK.",
                     "File load error!");
                 Console.ReadLine();
             }

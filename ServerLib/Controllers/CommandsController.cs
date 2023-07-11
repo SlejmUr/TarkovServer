@@ -62,7 +62,7 @@ namespace ServerLib.Controllers
         public static void DebugEnable(object obj)
         {
             ArgumentHandler.Debug = true;
-            DB.PrintInfo("Debug now has been enabled!");
+            DB.PrintInfo("Debug has been enabled!");
         }
 
         public static void Restart(object obj)
@@ -106,12 +106,12 @@ namespace ServerLib.Controllers
             */
             Console.WriteLine("Commands List: " + string.Join(", ", Commands.Keys.ToList()));
             Console.WriteLine();
-            Console.WriteLine("reload:\t\t\t\tStop and Start the server");
+            Console.WriteLine("reload:\t\t\t\tRestart the server");
             Console.WriteLine("restart:\t\t\tRestart the current app (Console)");
             Console.WriteLine("stop:\t\t\t\tStops the server");
-            Console.WriteLine("op <AID>:\t\t\tSet Admin the given AID");
-            Console.WriteLine("deop <AID>:\t\t\tSet Back to User the given AID");
-            Console.WriteLine("setpermission <AID> <PermId>:\tSet Permission to the given AID");
+            Console.WriteLine("op <AID>:\t\t\tGives admin to the given AID");
+            Console.WriteLine("deop <AID>:\t\t\tRemoves admin from the given AID");
+            Console.WriteLine("setpermission <AID> <PermId>:\tSets permissions for the given AID");
             Console.WriteLine("ban <AID>:\t\t\tBan the given AID");
             Console.WriteLine("unban <AID>:\t\t\tUnban the given AID");
             Console.WriteLine("debug:\t\t\t\tEnable Debug options");
@@ -119,6 +119,8 @@ namespace ServerLib.Controllers
             Console.WriteLine("deletematches:\t\t\tDelete all matches");
             Console.WriteLine("registeruser <mail> <pass>:\t\tRegister designed user");
             Console.WriteLine();
+            Console.WriteLine("AID stands for "Account ID". You can find a user's AID in ConsoleApp's 'profiles' folder.");
+            Console.WriteLine("The name of the folder is the user's AID.");
         }
 
         public static void Op(object obj)
@@ -133,7 +135,7 @@ namespace ServerLib.Controllers
             var account = AccountController.FindAccount(AID);
             if (account == null)
             {
-                DB.PrintWarn("Profile null, cannot give OP to non existing profile!");
+                DB.PrintWarn("Profile null, cannot give OP to a non-existent profile!");
                 return;
             }
             account.Permission = EPerms.Admin;
@@ -154,7 +156,7 @@ namespace ServerLib.Controllers
             var account = AccountController.FindAccount(AID);
             if (account == null)
             {
-                DB.PrintWarn("Profile null, cannot set permission to non existing profile!");
+                DB.PrintWarn("Profile null, cannot set permission for a non-existent profile!");
                 return;
             }
             account.Permission = (EPerms)perm;
@@ -174,7 +176,7 @@ namespace ServerLib.Controllers
             var account = AccountController.FindAccount(AID);
             if (account == null)
             {
-                DB.PrintWarn("Profile null, cannot remove OP to non existing profile!");
+                DB.PrintWarn("Profile null, cannot remove OP from non-existent profile!");
                 return;
             }
             account.Permission = EPerms.User;
@@ -189,7 +191,7 @@ namespace ServerLib.Controllers
             var account = AccountController.FindAccount(AID);
             if (account == null)
             {
-                DB.PrintWarn("Profile null, cannot ban non existing profile!");
+                DB.PrintWarn("Profile null, cannot ban non-existent profile!");
                 return;
             }
             account.Permission = EPerms.Blocked;
@@ -204,12 +206,12 @@ namespace ServerLib.Controllers
             var account = AccountController.FindAccount(AID);
             if (account == null)
             {
-                DB.PrintWarn("Profile null, cannot unban non existing profile!");
+                DB.PrintWarn("Profile null, cannot unban non-existent profile!");
                 return;
             }
             account.Permission = EPerms.User;
             SaveHandler.SaveAccount(AID, account);
-            DB.PrintInfo($"User {AID} is now Unbanned");
+            DB.PrintInfo($"User {AID} unbanned");
         }
 
         public static void ListMatches(object obj)
@@ -230,7 +232,7 @@ namespace ServerLib.Controllers
             var pass = x[1];
             if (x.Length < 1)
             {
-                DB.PrintWarn("Command not complete, use: !registeruser <mail> <pass>");
+                DB.PrintWarn("Command not complete. Use: !registeruser <mail> <pass> (with <mail> and <pass> being your username and password)");
                 return;
             }
             var account = AccountController.Register(new()
@@ -238,7 +240,7 @@ namespace ServerLib.Controllers
                 email = email,
                 pass = pass
             });
-            DB.PrintInfo($"User {account} is created!");
+            DB.PrintInfo($"AID {account} created!");
         }
     }
 }
