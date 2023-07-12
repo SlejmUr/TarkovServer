@@ -119,7 +119,7 @@ namespace ServerLib.Controllers
             Console.WriteLine("deletematches:\t\t\tDelete all matches");
             Console.WriteLine("registeruser <mail> <pass>:\t\tRegister designed user");
             Console.WriteLine();
-            Console.WriteLine("AID stands for "Account ID". You can find a user's AID in ConsoleApp's 'profiles' folder.");
+            Console.WriteLine("AID stands for 'Account ID'. You can find a user's AID in ConsoleApp's 'profiles' folder.");
             Console.WriteLine("The name of the folder is the user's AID.");
         }
 
