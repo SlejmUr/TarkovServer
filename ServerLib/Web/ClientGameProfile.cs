@@ -4,6 +4,7 @@ using ServerLib.Utilities;
 using ServerLib.Utilities.Helpers;
 using static ServerLib.Web.HTTPServer;
 using ServerLib.Responders;
+using Newtonsoft.Json;
 
 namespace ServerLib.Web
 {
@@ -117,7 +118,8 @@ namespace ServerLib.Web
             Utils.PrintRequest(request, session);
             string Uncompressed = ResponseControl.DeCompressReq(request.BodyBytes);
             Console.WriteLine("Items Moving: " + Uncompressed);
-            string resp = "";
+            var body = JsonConvert.DeserializeObject<dynamic>(Uncompressed);
+            string resp = ResponseControl.GetBody(ItemController.HandleMoving(SessionId, body));
             // RPS
             Utils.SendUnityResponse(session, resp);
             return true;

@@ -220,7 +220,7 @@ namespace ServerLib.Json.Classes
         public partial class Inventory
         {
             [JsonProperty("items")]
-            public Item[] Items { get; set; }
+            public List<Item> Items { get; set; }
 
             [JsonProperty("equipment")]
             public string Equipment { get; set; }
