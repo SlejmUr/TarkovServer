@@ -84,12 +84,12 @@ namespace ServerLib.Web
             var resp = ResponseControl.GetBody("{\"status\": 0, \"nicknamechangedate\": " + TimeHelper.UnixTimeNow_Int() + "}");
             if (nickname == "taken")
             {
-                resp = ResponseControl.GetBody("null", 255, "The nickname is already in use");
+                resp = ResponseControl.GetBody("null", 216, "The nickname is already in use");
             }
 
             if (nickname == "tooshort")
             {
-                resp = ResponseControl.GetBody("null", 256, "The nickname is too short");
+                resp = ResponseControl.GetBody("null", 225, "The nickname is too short");
             }
             // RPS
             Utils.SendUnityResponse(session, resp);

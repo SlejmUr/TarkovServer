@@ -3,8 +3,6 @@ using Newtonsoft.Json;
 using ServerLib.Controllers;
 using ServerLib.Json.Classes;
 using ServerLib.Utilities;
-using ServerLib.Utilities.Helpers;
-using UnityEngine.Networking.Match;
 using static ServerLib.Web.HTTPServer;
 
 namespace ServerLib.Web
@@ -34,11 +32,11 @@ namespace ServerLib.Web
             Requests.Validate validate = JsonConvert.DeserializeObject<Requests.Validate>(Uncompressed);
             if (AccountController.FindAccount(SessionId) != null)
             {
-                Debug.PrintDebug($"User ({SessionId}) connected with client version {validate.version}");
+                Debug.PrintDebug($"User ({SessionId}) connected with client version {validate.version.ToString()}");
             }
             else
             {
-                Debug.PrintDebug($"Unknown User connected with client version {validate.version}");
+                Debug.PrintDebug($"Unknown User connected with client version {validate.version.ToString()}");
             }
             var rsp = ResponseControl.NullResponse();
             Utils.SendUnityResponse(session, rsp);
@@ -54,16 +52,25 @@ namespace ServerLib.Web
             string Uncompressed = ResponseControl.DeCompressReq(request.BodyBytes);
             Debug.PrintDebug(Uncompressed);
             var ID =  AccountController.Login(JsonConvert.DeserializeObject<Requests.Login>(Uncompressed));
-            GClass155 response = new()
-            { 
-                lang = "en",
-                aid = ID,
-                activeProfileId = ID,
-                token = ID,
-                nickname = ID,
-                taxonomy = "105"
-            };
-            var rsp = ResponseControl.GetBody(JsonConvert.SerializeObject(response));
+            string rsp = "";
+            if (ID == "FAILED")
+            {
+                rsp = ResponseControl.GetBody("", 206, "Login failed, No account can be identified");
+            }
+            else 
+            {
+                GClass155 response = new()
+                {
+                    lang = "en",
+                    aid = ID,
+                    activeProfileId = ID,
+                    token = ID,
+                    nickname = ID,
+                    taxonomy = "105"
+                };
+                rsp = ResponseControl.GetBody(JsonConvert.SerializeObject(response));
+            }
+
             Utils.SendUnityResponse(session, rsp);
             return true;
         }

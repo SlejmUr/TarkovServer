@@ -14,14 +14,11 @@ namespace ServerLib.Controllers
 
             Accounts = new();
             Accounts.Clear();
-            AccountsDict = new();
-            AccountsDict.Clear();
             ActiveAccountIds = new();
             ActiveAccountIds.Clear();
         }
 
-        public static List<Account> Accounts;
-        public static Dictionary<string, Account> AccountsDict;
+        public static Dictionary<string, Account> Accounts;
         public static List<string> ActiveAccountIds;
 
         
@@ -42,9 +39,14 @@ namespace ServerLib.Controllers
                         var acc = JsonConvert.DeserializeObject<Account>(File.ReadAllText(file));
                         if (acc != null)
                         {
-                            if (!Accounts.Contains(acc))
-                                Accounts.Add(acc);
-                            AccountsDict.TryAdd(acc.Aid, acc);
+                            //  Used to reflesh profile if already exists
+                            if (Accounts.ContainsKey(acc.Aid))
+                            {
+                                //  Can be edited to check if account are same and if not then dont replace
+                                Accounts[acc.Aid] = acc;
+                            }
+                            else
+                                Accounts.TryAdd(acc.Aid, acc);
                         }
                     }
                 }
@@ -136,7 +138,7 @@ namespace ServerLib.Controllers
         public static string FindAccountIdByUsernameAndPassword(string mail, string passw)
         {
             ReloadAccounts();
-            foreach (var account in Accounts)
+            foreach (var account in Accounts.Values)
             {
                 if (ConfigController.Configs.CustomSettings.Account.UseSha1)
                 {
@@ -164,7 +166,7 @@ namespace ServerLib.Controllers
         public static bool IsEmailAlreadyInUse(string mail)
         {
             ReloadAccounts();
-            foreach (var account in Accounts)
+            foreach (var account in Accounts.Values)
             {
                 if (account.Email == mail)
                 {
@@ -199,7 +201,7 @@ namespace ServerLib.Controllers
         public static Account? FindAccount(string SessionId)
         {
             ReloadAccounts();
-            foreach (var account in Accounts)
+            foreach (var account in Accounts.Values)
             {
                 if (account.Aid == SessionId)
                 {
@@ -232,7 +234,7 @@ namespace ServerLib.Controllers
             if (nickname == null) { return false; }
             if (custom.Account.CheckTakenNickname)
             {
-                foreach (var acc in Accounts)
+                foreach (var acc in Accounts.Values)
                 {
                     if (acc.Email.ToLower() == nickname.nickname.ToLower())
                         return true;
@@ -258,6 +260,18 @@ namespace ServerLib.Controllers
         }
 
         /// <summary>
+        /// Check the Account are banned or not
+        /// </summary>
+        /// <param name="SessionId"></param>
+        /// <returns>True if Account Permission is Blocked</returns>
+        public static bool IsAccountBanned(string SessionId)
+        {
+            var Account = FindAccount(SessionId);
+            if (Account == null) { return false; }
+            return Account.Permission == Json.EPerms.Blocked;
+        }
+
+        /// <summary>
         /// Remove a directory if account exist
         /// </summary>
         /// <param name="SessionId">SessionId/AccountId</param>
@@ -279,9 +293,9 @@ namespace ServerLib.Controllers
         {
             if (Directory.Exists($"profiles/{SessionId}"))
             {
-                if (Accounts.Where(x => x.Aid == SessionId).Count() > 0)
+                if (Accounts.ContainsKey(SessionId))
                 {
-                    Accounts.Remove(Accounts.Where(x => x.Aid == SessionId).FirstOrDefault());
+                    Accounts.Remove(SessionId);
                 }
                 if (ActiveAccountIds.Contains(SessionId))
                 {

@@ -1,4 +1,5 @@
 ﻿using ComponentAce.Compression.Libs.zlib;
+using ServerLib.Controllers;
 
 namespace ServerLib.Web
 {
@@ -17,6 +18,14 @@ namespace ServerLib.Web
         {
             var Stuff = "{\"err\":" + errorcode + ",\"errmsg\":" + errormsg + ",\"data\":" + Data + ",\"crc\":" + crc + "}";
             return Stuff;
+        }
+        public static string BodyWithCheckUserAccess(string SessionId, string Body)
+        {
+            if (AccountController.IsAccountBanned(SessionId))
+            {
+                return GetBody("", 205, "You are banned.");
+            }
+            return GetBody(Body);
         }
         public static string NullResponse()
         {

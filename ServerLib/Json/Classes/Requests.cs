@@ -69,6 +69,11 @@ namespace ServerLib.Json.Classes
             public string game;
             public string backend;
             public string taxonomy;
+
+            public override string ToString()
+            {
+                return $"{major}.{minor}.{game}.{backend}.{taxonomy}";
+            }
         }
 
         public class Login
