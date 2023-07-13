@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using ServerLib.Controllers;
+using ServerLib.Handlers;
 using ServerLib.Json.Classes;
 using ServerLib.Utilities;
 using static ServerLib.Web.ResponseControl;
@@ -11,6 +12,29 @@ namespace ServerLib.Responders
         public static string Template(string SessionId)
         {
             return GetBody(JsonConvert.SerializeObject(""));
+        }
+
+        public static string Save(string SessionId, string JsonBody)
+        {
+            var character = CharacterController.GetCharacter(SessionId);
+            if (character == null)
+            {
+                Debug.PrintError("Character not found!", "ProfileStatus");
+            }
+            var profilesave = JsonConvert.DeserializeObject<Requests.ProfileSave>(JsonBody);
+            try
+            {
+                Debug.PrintDebug("User exitStatus: " + profilesave.exitStatus);
+                var newChar = Character.Base.FromJson(profilesave.Profile);
+                SaveHandler.SaveCharacter(SessionId, newChar);
+                CharacterController.ReloadCharacters();
+            }
+            catch (Exception ex)
+            {
+                Debug.PrintError(ex.ToString(), "GameProfile.SAVE");
+            }
+
+            return GetBody("null");
         }
         public static string ProfileStatus(string SessionId)
         {

@@ -47,6 +47,19 @@ namespace ServerLib.Web
             return true;
         }
 
+        [HTTP("POST", "/client/game/profile/save")]
+        public static bool ProfileSave(HttpRequest request, HttpsBackendSession session)
+        {
+            //REQ stuff
+            string SessionId = Utils.GetSessionId(session.Headers);
+            Utils.PrintRequest(request, session);
+            string Uncompressed = ResponseControl.DeCompressReq(request.BodyBytes);
+
+            var rsp = GameProfile.Save(SessionId, Uncompressed);
+            Utils.SendUnityResponse(session, rsp);
+            return true;
+        }
+
         [HTTP("POST", "/client/game/profile/nickname/reserved")]
         public static bool ProfileNicknameReserved(HttpRequest request, HttpsBackendSession session)
         {
