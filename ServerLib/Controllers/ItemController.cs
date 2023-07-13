@@ -113,35 +113,6 @@ namespace ServerLib.Controllers
             }
         }
 
-        public static void QuestHandover(string SessionId, dynamic body)
-        {
-            var ch = CharacterController.GetCharacter(SessionId);
-            if (ch != null)
-            {
-                var counter = 0;
-                var found = false;
-
-                foreach (dynamic itemHandover in body.items)
-                {
-                    counter += itemHandover.count;
-                    RemoveItem(SessionId, "{\"item\":\"" + itemHandover.id + "\"}");
-                }
-
-
-                foreach (var item in ch.BackendCounters)
-                {
-                    if (item.Key == body.conditionId)
-                    {
-                        item.Value.value += counter;
-                        found = true;
-                    }
-                
-                }
-
-                SaveHandler.SaveCharacter(SessionId, ch);
-            }
-        }
-
         public static void RemoveItem(string SessionId, dynamic body)
         {
             var ch = CharacterController.GetCharacter(SessionId);
@@ -198,6 +169,12 @@ namespace ServerLib.Controllers
             {
                 case "QuestAccept":
                     AcceptQuest(SessionId, body);
+                    break;
+                case "CompleteQuest":
+                    CompleteQuest(SessionId, body);
+                    break;
+                case "Remove":
+                    RemoveItem(SessionId, body);
                     break;
                 default:
                     Debug.PrintError("Action Cannot be Handled! " + body.Action);
