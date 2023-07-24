@@ -1,5 +1,5 @@
 # Tarkov Server
-Alpha 0.1.0.1001 version Server Emulator.
+0.11.7.3333 version Server Emulator.
 
 # Other
 Tarkov Server on C# (.NET 6)

@@ -1,0 +1,3 @@
+Assembly-CSharp.dll.backup: NOT Cleaned. ORIGINAL assembly
+Assembly-CSharp.dll: CLEANED, DEOBF ASSEMBLY
+SClient.dll: NATIVE (c/c++) Saberclaw CLIENT ANTI CHEAT, CHEACK Assembly-CSharp-firstpass.dll for it

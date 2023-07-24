@@ -1,6 +1,6 @@
 Classes and notes for Server
 
-Need to install Unity 5.3.6
+Need to install Unity 5.6.6f2
 Install Multiplayer module (UNET) or is it installed automaticly ? idk
 
 todo:
