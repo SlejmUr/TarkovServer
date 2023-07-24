@@ -361,4 +361,5 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
-/Ref
+# /Ref --Removed because OLD AS FUCK version and should be able to compile in action whenever we want :)
+/Backup
