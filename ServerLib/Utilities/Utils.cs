@@ -33,11 +33,11 @@ namespace ServerLib.Utilities
             response.SetHeader("Content-Type", "application/json");
             if (SessionId != "")
             {
-                response.SetCookie("Set-Cookie", "PHPSESSID=" + SessionId);
+                response.SetHeader("Set-Cookie", "PHPSESSID=" + SessionId);
             }
             response.SetBody(resp);
             ReqId++;
-            Debug.PrintInfo("Response Bytes: " + session.SendResponse(response.GetResponse()));
+            session.SendResponse(response.GetResponse());
             return true;
         }
 

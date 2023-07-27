@@ -42,6 +42,7 @@ namespace ServerLib.Controllers
         public static void CreateCharacter(string SessionId, string JSON)
         {
             var createReq = JsonConvert.DeserializeObject<Requests.Create>(JSON);
+            Debug.PrintDebug(JSON);
             if (createReq == null)
             {
                 Debug.PrintError($"createReq not found", "CreateCharacter");

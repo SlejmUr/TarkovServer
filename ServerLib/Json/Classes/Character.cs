@@ -24,7 +24,7 @@ namespace ServerLib.Json.Classes
             public Customization Customization { get; set; }
 
             [JsonProperty("Encyclopedia")]
-            public string[] Encyclopedia { get; set; }
+            public Dictionary<string,bool> Encyclopedia { get; set; }
 
             [JsonProperty("Health")]
             public Health Health { get; set; }
