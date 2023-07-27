@@ -1,4 +1,5 @@
 ﻿using NetCoreServer;
+using Newtonsoft.Json;
 using ServerLib.Controllers;
 using ServerLib.Handlers;
 using ServerLib.Utilities;
@@ -163,6 +164,7 @@ namespace ServerLib.Web
                     {
                         Debug.PrintDebug("Url Called function: " + item.Value.Name);
                         Debug.logger.Log("REQUEST", request.ToString());
+                        Debug.logger.Log("REQUEST", JsonConvert.SerializeObject(Headers));
                         item.Value.Invoke(this, new object[] { request, this });
                         Sent = true;
                     }

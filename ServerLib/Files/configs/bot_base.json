@@ -1,7 +1,7 @@
 {
     "pmcWar":{
-        "enabled": true,
-        "sideUsec": 60
+        "enabled": false,
+        "sideUsec": 55
     },
     "limit": {
         "bossKilla": 1,
@@ -17,7 +17,7 @@
         "headwear": 40,
         "backpack": 25,
         "armorVest": 25,
-        "medPocket": 100,
-        "itemPocket": 0
+        "medPocket": 10,
+        "itemPocket": 10
     }
 }

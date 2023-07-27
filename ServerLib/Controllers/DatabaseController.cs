@@ -34,7 +34,6 @@ namespace ServerLib.Controllers
             DataBase.Bot.Bosses.TryAdd("Killa", Character.Base.FromJson(File.ReadAllText("Files/bot/botBossKilla.json")));
             DataBase.Bot.Names = JsonConvert.DeserializeObject<Bot.Names>(File.ReadAllText("Files/bot/botNames.json"));
             DataBase.Bot.Weapons = JsonConvert.DeserializeObject<Bot.Weapons[]>(File.ReadAllText("Files/bot/botWeapons.json"));
-            DataBase.Bot.Settings = JsonConvert.DeserializeObject<Dictionary<string, string[]>>(File.ReadAllText("Files/bot/botSettings.json"));
             Debug.PrintDebug("Bots loaded");
         }
 

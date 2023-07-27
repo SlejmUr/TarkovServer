@@ -43,7 +43,7 @@ namespace ServerLib.Controllers
                             case "server":
                                 Configs.Server = JsonConvert.DeserializeObject<Json.ServerConfig.Base>(dataraw);
                                 break;
-                            case "gameplay":
+                            case "bot":
                                 Configs.Bot = JsonConvert.DeserializeObject<Json.Classes.BotConfig.Base>(dataraw);
                                 break;
                             case "custom":

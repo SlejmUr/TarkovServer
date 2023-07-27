@@ -78,12 +78,12 @@ namespace ServerLib.Responders
             var resp = GetBody("{status: \"ok\"}");
             if (nickname == "taken")
             {
-                resp = GetBody("null", 255, "The nickname is already in use");
+                resp = GetBody("null", 225, "The nickname is already in use");
             }
 
             if (nickname == "tooshort")
             {
-                resp = GetBody("null", 256, "The nickname is too short");
+                resp = GetBody("null", 226, "The nickname is too short");
             }
             return resp;
         }
@@ -95,14 +95,10 @@ namespace ServerLib.Responders
 
         public static string ProfileSelect(string SessionId)
         {
-            SelectProfileResponse response = new()
+            GClass358 response = new()
             { 
                 status = "ok",
-                notifier = new()
-                {
-                    { "server", ServerLib.ip_port },
-                    { "channel_id", SessionId }
-                }
+                notifierServer = ServerLib.ip_port + "/" + SessionId
             };
             return GetBody(JsonConvert.SerializeObject(response));
         }

@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using ServerLib.Controllers;
 using ServerLib.Json.Classes;
 using ServerLib.Utilities;
+using ServerLib.Utilities.Helpers;
 using static ServerLib.Web.HTTPServer;
 
 namespace ServerLib.Web
@@ -55,20 +56,32 @@ namespace ServerLib.Web
             string rsp = "";
             if (ID == "FAILED")
             {
-                rsp = ResponseControl.GetBody("", 206, "Login failed, No account can be identified");
+                // NO walid error code for Login?
+                rsp = ResponseControl.GetBody("null", 0, "Login failed, No account can be identified");
             }
             else 
             {
-                GClass155 response = new()
+                GClass327 response = new()
                 {
                     lang = "en",
                     aid = ID,
                     activeProfileId = ID,
                     token = ID,
                     nickname = ID,
-                    taxonomy = "105"
+                    taxonomy = "341",
+                    backend = new()
+                    {
+                        Main = ServerLib.IP,
+                        Messaging = ServerLib.IP,
+                        Trading = ServerLib.IP,
+                        RagFair = ServerLib.IP
+                    },
+                    totalInGame = 1,
+                    utc_time = TimeHelper.UnixTimeNow_Int(),
+                    queued = false
                 };
                 rsp = ResponseControl.GetBody(JsonConvert.SerializeObject(response));
+                session.Headers.Add("Cookie", "PHPSESSID=" + ID);
             }
 
             Utils.SendUnityResponse(session, rsp);

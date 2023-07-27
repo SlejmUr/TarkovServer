@@ -10,7 +10,7 @@ namespace ServerLib
     public class ServerLib
     {
         public static bool IsAlreadyQuited = false;
-        public static string IP = "https://127.0.0.1:7777";
+        public static string IP = "http://127.0.0.1:7777";
         public static string ip_port = "127.0.0.1:7777";
 
         /// <summary>
@@ -30,7 +30,7 @@ namespace ServerLib
                 Directory.Delete("ServerResponses", true);
                 Directory.CreateDirectory("ServerResponses");
             }
-            string _ip_port = $"https://{Ip}:{port}";
+            string _ip_port = $"http://{Ip}:{port}";
             IP = _ip_port;
             ip_port = $"{Ip}:{port}";
             DatabaseController.Init();
@@ -62,7 +62,7 @@ namespace ServerLib
             DatabaseController.Init();
             var Ip = ConfigController.Configs.Server.Ip;
             var port = ConfigController.Configs.Server.Port;
-            string _ip_port = $"https://{Ip}:{port}";
+            string _ip_port = $"http://{Ip}:{port}";
             IP = _ip_port;
             ip_port = $"{Ip}:{port}";
             AccountController.Init();

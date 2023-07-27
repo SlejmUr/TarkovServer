@@ -74,7 +74,8 @@ namespace ServerLib.Controllers
 
             if (ID == null)
             {
-                Debug.PrintInfo("Login FAILED: " + ID);
+                Debug.PrintInfo("Login FAILED!");
+                Debug.PrintInfo($"If your Account do not exist please crete one!\nCredentials: Email: {login.email}, Password: {login.pass} (Use !registeruser)");
                 return "FAILED";
             }
             else

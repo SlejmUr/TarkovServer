@@ -1,6 +1,8 @@
 ﻿using EFT;
 using NetCoreServer;
+using Newtonsoft.Json;
 using ServerLib.Web;
+using System;
 using System.Security.Cryptography;
 using System.Text;
 using static ServerLib.Web.HTTPServer;
@@ -21,17 +23,21 @@ namespace ServerLib.Utilities
                 url = url.Replace("=", "_");
 
             string SessionId = GetSessionId(session.Headers);
-            File.WriteAllText("ServerResponses/" + ReqId + "_" + SessionId + url + ".json", resp); 
-            ReqId++;
-            return SendUnityResponse(session, ResponseControl.CompressRsp(resp));
+            File.WriteAllText("ServerResponses/" + ReqId + "_" + SessionId + url + ".json", resp);      
+            return SendUnityResponse(session, ResponseControl.CompressRsp(resp), SessionId);
         }
 
-        public static bool SendUnityResponse(HttpsBackendSession session, byte[] resp)
+        public static bool SendUnityResponse(HttpsBackendSession session, byte[] resp, string SessionId)
         {
-            var rsp = session.Response.MakeGetResponse(resp, "application/json");
-            rsp = rsp.SetHeader("Content-Type", "application/json");
-            rsp = rsp.SetHeader("Content-Encoding", "deflate");
-            session.SendResponse(rsp);
+            ResponseCreator response = new();
+            response.SetHeader("Content-Type", "application/json");
+            if (SessionId != "")
+            {
+                response.SetCookie("Set-Cookie", "PHPSESSID=" + SessionId);
+            }
+            response.SetBody(resp);
+            ReqId++;
+            Debug.PrintInfo("Response Bytes: " + session.SendResponse(response.GetResponse()));
             return true;
         }
 
@@ -52,10 +58,10 @@ namespace ServerLib.Utilities
 
         public static string GetSessionId(Dictionary<string, string> HttpHeaders)
         {
-            if (HttpHeaders.ContainsKey("X-WSSE"))
+            if (HttpHeaders.ContainsKey("Cookie"))
             {
-                var Cookie = HttpHeaders["X-WSSE"];
-                var SessionId = Cookie.Split("=")[1].Split(" ")[0];
+                var Cookie = HttpHeaders["Cookie"];
+                var SessionId = Cookie.Split("=")[1];
                 return SessionId;
             }
             return "";

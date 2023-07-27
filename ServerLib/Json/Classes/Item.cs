@@ -1,6 +1,7 @@
 ﻿using System.Globalization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using static EFT.Player;
 
 namespace ServerLib.Json.Classes
 {
@@ -26,7 +27,6 @@ namespace ServerLib.Json.Classes
             [JsonProperty("_proto", NullValueHandling = NullValueHandling.Ignore)]
             public string Proto { get; set; }
         }
-
         public partial class ItemProps
         {
             [JsonProperty("Name", NullValueHandling = NullValueHandling.Ignore)]
@@ -57,7 +57,7 @@ namespace ServerLib.Json.Classes
             public Rarity? Rarity { get; set; }
 
             [JsonProperty("SpawnChance", NullValueHandling = NullValueHandling.Ignore)]
-            public long? SpawnChance { get; set; }
+            public double? SpawnChance { get; set; }
 
             [JsonProperty("CreditsPrice", NullValueHandling = NullValueHandling.Ignore)]
             public long? CreditsPrice { get; set; }
@@ -66,7 +66,10 @@ namespace ServerLib.Json.Classes
             public string ItemSound { get; set; }
 
             [JsonProperty("Prefab", NullValueHandling = NullValueHandling.Ignore)]
-            public ConfigPath Prefab { get; set; }
+            public Prefab Prefab { get; set; }
+
+            [JsonProperty("UsePrefab", NullValueHandling = NullValueHandling.Ignore)]
+            public Prefab UsePrefab { get; set; }
 
             [JsonProperty("StackObjectsCount", NullValueHandling = NullValueHandling.Ignore)]
             public long? StackObjectsCount { get; set; }
@@ -78,10 +81,7 @@ namespace ServerLib.Json.Classes
             public bool? ExaminedByDefault { get; set; }
 
             [JsonProperty("ExamineTime", NullValueHandling = NullValueHandling.Ignore)]
-            public double? ExamineTime { get; set; }
-
-            [JsonProperty("IsUnlootable", NullValueHandling = NullValueHandling.Ignore)]
-            public bool? IsUnlootable { get; set; }
+            public long? ExamineTime { get; set; }
 
             [JsonProperty("IsUndiscardable", NullValueHandling = NullValueHandling.Ignore)]
             public bool? IsUndiscardable { get; set; }
@@ -98,6 +98,9 @@ namespace ServerLib.Json.Classes
             [JsonProperty("IsLockedafterEquip", NullValueHandling = NullValueHandling.Ignore)]
             public bool? IsLockedafterEquip { get; set; }
 
+            [JsonProperty("QuestItem", NullValueHandling = NullValueHandling.Ignore)]
+            public bool? QuestItem { get; set; }
+
             [JsonProperty("LootExperience", NullValueHandling = NullValueHandling.Ignore)]
             public long? LootExperience { get; set; }
 
@@ -106,6 +109,550 @@ namespace ServerLib.Json.Classes
 
             [JsonProperty("HideEntrails", NullValueHandling = NullValueHandling.Ignore)]
             public bool? HideEntrails { get; set; }
+
+            [JsonProperty("RepairCost", NullValueHandling = NullValueHandling.Ignore)]
+            public long? RepairCost { get; set; }
+
+            [JsonProperty("RepairSpeed", NullValueHandling = NullValueHandling.Ignore)]
+            public long? RepairSpeed { get; set; }
+
+            [JsonProperty("ExtraSizeLeft", NullValueHandling = NullValueHandling.Ignore)]
+            public long? ExtraSizeLeft { get; set; }
+
+            [JsonProperty("ExtraSizeRight", NullValueHandling = NullValueHandling.Ignore)]
+            public long? ExtraSizeRight { get; set; }
+
+            [JsonProperty("ExtraSizeUp", NullValueHandling = NullValueHandling.Ignore)]
+            public long? ExtraSizeUp { get; set; }
+
+            [JsonProperty("ExtraSizeDown", NullValueHandling = NullValueHandling.Ignore)]
+            public long? ExtraSizeDown { get; set; }
+
+            [JsonProperty("ExtraSizeForceAdd", NullValueHandling = NullValueHandling.Ignore)]
+            public bool? ExtraSizeForceAdd { get; set; }
+
+            [JsonProperty("MergesWithChildren", NullValueHandling = NullValueHandling.Ignore)]
+            public bool? MergesWithChildren { get; set; }
+
+            [JsonProperty("BannedFromRagfair", NullValueHandling = NullValueHandling.Ignore)]
+            public bool? BannedFromRagfair { get; set; }
+
+            [JsonProperty("ConflictingItems", NullValueHandling = NullValueHandling.Ignore)]
+            public string[] ConflictingItems { get; set; }
+
+            [JsonProperty("FixedPrice", NullValueHandling = NullValueHandling.Ignore)]
+            public bool? FixedPrice { get; set; }
+
+            [JsonProperty("Unlootable", NullValueHandling = NullValueHandling.Ignore)]
+            public bool? Unlootable { get; set; }
+
+            [JsonProperty("UnlootableFromSlot", NullValueHandling = NullValueHandling.Ignore)]
+            public UnlootableFromSlot? UnlootableFromSlot { get; set; }
+
+            [JsonProperty("UnlootableFromSide", NullValueHandling = NullValueHandling.Ignore)]
+            public UnlootableFromSide[] UnlootableFromSide { get; set; }
+
+            [JsonProperty("ChangePriceCoef", NullValueHandling = NullValueHandling.Ignore)]
+            public long? ChangePriceCoef { get; set; }
+
+            [JsonProperty("AllowSpawnOnLocations", NullValueHandling = NullValueHandling.Ignore)]
+            public AllowSpawnOnLocation[] AllowSpawnOnLocations { get; set; }
+
+            [JsonProperty("SendToClient", NullValueHandling = NullValueHandling.Ignore)]
+            public bool? SendToClient { get; set; }
+
+            [JsonProperty("DogTagQualities", NullValueHandling = NullValueHandling.Ignore)]
+            public bool? DogTagQualities { get; set; }
+
+            [JsonProperty("Grids", NullValueHandling = NullValueHandling.Ignore)]
+            public Grid[] Grids { get; set; }
+
+            [JsonProperty("Slots", NullValueHandling = NullValueHandling.Ignore)]
+            public Slot[] Slots { get; set; }
+
+            [JsonProperty("KeyIds", NullValueHandling = NullValueHandling.Ignore)]
+            public string[] KeyIds { get; set; }
+
+            [JsonProperty("TagColor", NullValueHandling = NullValueHandling.Ignore)]
+            public long? TagColor { get; set; }
+
+            [JsonProperty("TagName", NullValueHandling = NullValueHandling.Ignore)]
+            public string TagName { get; set; }
+
+            [JsonProperty("Durability", NullValueHandling = NullValueHandling.Ignore)]
+            public long? Durability { get; set; }
+
+            [JsonProperty("Accuracy", NullValueHandling = NullValueHandling.Ignore)]
+            public long? Accuracy { get; set; }
+
+            [JsonProperty("Recoil", NullValueHandling = NullValueHandling.Ignore)]
+            public double? Recoil { get; set; }
+
+            [JsonProperty("Loudness", NullValueHandling = NullValueHandling.Ignore)]
+            public long? Loudness { get; set; }
+
+            [JsonProperty("EffectiveDistance", NullValueHandling = NullValueHandling.Ignore)]
+            public long? EffectiveDistance { get; set; }
+
+            [JsonProperty("Ergonomics", NullValueHandling = NullValueHandling.Ignore)]
+            public double? Ergonomics { get; set; }
+
+            [JsonProperty("Velocity", NullValueHandling = NullValueHandling.Ignore)]
+            public double? Velocity { get; set; }
+
+            [JsonProperty("RaidModdable", NullValueHandling = NullValueHandling.Ignore)]
+            public bool? RaidModdable { get; set; }
+
+            [JsonProperty("ToolModdable", NullValueHandling = NullValueHandling.Ignore)]
+            public bool? ToolModdable { get; set; }
+
+            [JsonProperty("BlocksFolding", NullValueHandling = NullValueHandling.Ignore)]
+            public bool? BlocksFolding { get; set; }
+
+            [JsonProperty("BlocksCollapsible", NullValueHandling = NullValueHandling.Ignore)]
+            public bool? BlocksCollapsible { get; set; }
+
+            [JsonProperty("IsAnimated", NullValueHandling = NullValueHandling.Ignore)]
+            public bool? IsAnimated { get; set; }
+
+            [JsonProperty("HasShoulderContact", NullValueHandling = NullValueHandling.Ignore)]
+            public bool? HasShoulderContact { get; set; }
+
+            [JsonProperty("SightingRange", NullValueHandling = NullValueHandling.Ignore)]
+            public long? SightingRange { get; set; }
+
+            [JsonProperty("ModesCount", NullValueHandling = NullValueHandling.Ignore)]
+            public long? ModesCount { get; set; }
+
+            [JsonProperty("muzzleModType", NullValueHandling = NullValueHandling.Ignore)]
+            public MuzzleModType? MuzzleModType { get; set; }
+
+            [JsonProperty("sightModType", NullValueHandling = NullValueHandling.Ignore)]
+            public SightModType? SightModType { get; set; }
+
+            [JsonProperty("variableZoom", NullValueHandling = NullValueHandling.Ignore)]
+            public bool? VariableZoom { get; set; }
+
+            [JsonProperty("varZoomCount", NullValueHandling = NullValueHandling.Ignore)]
+            public long? VarZoomCount { get; set; }
+
+            [JsonProperty("varZoomAdd", NullValueHandling = NullValueHandling.Ignore)]
+            public long? VarZoomAdd { get; set; }
+
+            [JsonProperty("aimingSensitivity", NullValueHandling = NullValueHandling.Ignore)]
+            public double? AimingSensitivity { get; set; }
+
+            [JsonProperty("SightModesCount", NullValueHandling = NullValueHandling.Ignore)]
+            public long? SightModesCount { get; set; }
+
+            [JsonProperty("OpticCalibrationDistances")]
+            public long[] OpticCalibrationDistances { get; set; }
+
+            [JsonProperty("Intensity", NullValueHandling = NullValueHandling.Ignore)]
+            public double? Intensity { get; set; }
+
+            [JsonProperty("Mask", NullValueHandling = NullValueHandling.Ignore)]
+            public string Mask { get; set; }
+
+            [JsonProperty("MaskSize", NullValueHandling = NullValueHandling.Ignore)]
+            public double? MaskSize { get; set; }
+
+            [JsonProperty("NoiseIntensity", NullValueHandling = NullValueHandling.Ignore)]
+            public double? NoiseIntensity { get; set; }
+
+            [JsonProperty("NoiseScale", NullValueHandling = NullValueHandling.Ignore)]
+            public long? NoiseScale { get; set; }
+
+            [JsonProperty("Color", NullValueHandling = NullValueHandling.Ignore)]
+            public Color Color { get; set; }
+
+            [JsonProperty("DiffuseIntensity", NullValueHandling = NullValueHandling.Ignore)]
+            public double? DiffuseIntensity { get; set; }
+
+            [JsonProperty("magAnimationIndex", NullValueHandling = NullValueHandling.Ignore)]
+            public long? MagAnimationIndex { get; set; }
+
+            [JsonProperty("Cartridges", NullValueHandling = NullValueHandling.Ignore)]
+            public Cartridge[] Cartridges { get; set; }
+
+            [JsonProperty("CanFast", NullValueHandling = NullValueHandling.Ignore)]
+            public bool? CanFast { get; set; }
+
+            [JsonProperty("CanHit", NullValueHandling = NullValueHandling.Ignore)]
+            public bool? CanHit { get; set; }
+
+            [JsonProperty("CanAdmin", NullValueHandling = NullValueHandling.Ignore)]
+            public bool? CanAdmin { get; set; }
+
+            [JsonProperty("LoadUnloadModifier", NullValueHandling = NullValueHandling.Ignore)]
+            public long? LoadUnloadModifier { get; set; }
+
+            [JsonProperty("CheckTimeModifier", NullValueHandling = NullValueHandling.Ignore)]
+            public long? CheckTimeModifier { get; set; }
+
+            [JsonProperty("CheckOverride", NullValueHandling = NullValueHandling.Ignore)]
+            public long? CheckOverride { get; set; }
+
+            [JsonProperty("ReloadMagType", NullValueHandling = NullValueHandling.Ignore)]
+            public ReloadM? ReloadMagType { get; set; }
+
+            [JsonProperty("IsShoulderContact", NullValueHandling = NullValueHandling.Ignore)]
+            public bool? IsShoulderContact { get; set; }
+
+            [JsonProperty("Foldable", NullValueHandling = NullValueHandling.Ignore)]
+            public bool? Foldable { get; set; }
+
+            [JsonProperty("Retractable", NullValueHandling = NullValueHandling.Ignore)]
+            public bool? Retractable { get; set; }
+
+            [JsonProperty("SizeReduceRight", NullValueHandling = NullValueHandling.Ignore)]
+            public long? SizeReduceRight { get; set; }
+
+            [JsonProperty("CenterOfImpact", NullValueHandling = NullValueHandling.Ignore)]
+            public double? CenterOfImpact { get; set; }
+
+            [JsonProperty("ShotgunDispersion", NullValueHandling = NullValueHandling.Ignore)]
+            public double? ShotgunDispersion { get; set; }
+
+            [JsonProperty("IsSilencer", NullValueHandling = NullValueHandling.Ignore)]
+            public bool? IsSilencer { get; set; }
+
+            [JsonProperty("SearchSound", NullValueHandling = NullValueHandling.Ignore)]
+            public string SearchSound { get; set; }
+
+            [JsonProperty("BlocksArmorVest", NullValueHandling = NullValueHandling.Ignore)]
+            public bool? BlocksArmorVest { get; set; }
+
+            [JsonProperty("speedPenaltyPercent", NullValueHandling = NullValueHandling.Ignore)]
+            public long? SpeedPenaltyPercent { get; set; }
+
+            [JsonProperty("GridLayoutName", NullValueHandling = NullValueHandling.Ignore)]
+            public GridLayoutName? GridLayoutName { get; set; }
+
+            [JsonProperty("SpawnFilter", NullValueHandling = NullValueHandling.Ignore)]
+            public string[] SpawnFilter { get; set; }
+
+            [JsonProperty("containType", NullValueHandling = NullValueHandling.Ignore)]
+            public object[] ContainType { get; set; }
+
+            [JsonProperty("sizeWidth", NullValueHandling = NullValueHandling.Ignore)]
+            public long? SizeWidth { get; set; }
+
+            [JsonProperty("sizeHeight", NullValueHandling = NullValueHandling.Ignore)]
+            public long? SizeHeight { get; set; }
+
+            [JsonProperty("isSecured", NullValueHandling = NullValueHandling.Ignore)]
+            public bool? IsSecured { get; set; }
+
+            [JsonProperty("spawnTypes", NullValueHandling = NullValueHandling.Ignore)]
+            public string SpawnTypes { get; set; }
+
+            [JsonProperty("lootFilter", NullValueHandling = NullValueHandling.Ignore)]
+            public object[] LootFilter { get; set; }
+
+            [JsonProperty("spawnRarity", NullValueHandling = NullValueHandling.Ignore)]
+            public string SpawnRarity { get; set; }
+
+            [JsonProperty("minCountSpawn", NullValueHandling = NullValueHandling.Ignore)]
+            public long? MinCountSpawn { get; set; }
+
+            [JsonProperty("maxCountSpawn", NullValueHandling = NullValueHandling.Ignore)]
+            public long? MaxCountSpawn { get; set; }
+
+            [JsonProperty("openedByKeyID", NullValueHandling = NullValueHandling.Ignore)]
+            public object[] OpenedByKeyId { get; set; }
+
+            [JsonProperty("RigLayoutName", NullValueHandling = NullValueHandling.Ignore)]
+            public string RigLayoutName { get; set; }
+
+            [JsonProperty("MaxDurability", NullValueHandling = NullValueHandling.Ignore)]
+            public long? MaxDurability { get; set; }
+
+            [JsonProperty("armorZone", NullValueHandling = NullValueHandling.Ignore)]
+            public ArmorZone[] ArmorZone { get; set; }
+
+            [JsonProperty("armorClass", NullValueHandling = NullValueHandling.Ignore)]
+            [JsonConverter(typeof(DecodingChoiceConverter))]
+            public long? ArmorClass { get; set; }
+
+            [JsonProperty("mousePenalty", NullValueHandling = NullValueHandling.Ignore)]
+            public long? MousePenalty { get; set; }
+
+            [JsonProperty("weaponErgonomicPenalty", NullValueHandling = NullValueHandling.Ignore)]
+            public long? WeaponErgonomicPenalty { get; set; }
+
+            [JsonProperty("BluntThroughput", NullValueHandling = NullValueHandling.Ignore)]
+            public double? BluntThroughput { get; set; }
+
+            [JsonProperty("ArmorMaterial", NullValueHandling = NullValueHandling.Ignore)]
+            public ArmorMaterial? ArmorMaterial { get; set; }
+
+            [JsonProperty("weapClass", NullValueHandling = NullValueHandling.Ignore)]
+            public WeapClass? WeapClass { get; set; }
+
+            [JsonProperty("weapUseType", NullValueHandling = NullValueHandling.Ignore)]
+            public WeapUseType? WeapUseType { get; set; }
+
+            [JsonProperty("ammoCaliber", NullValueHandling = NullValueHandling.Ignore)]
+            public string AmmoCaliber { get; set; }
+
+            [JsonProperty("OperatingResource", NullValueHandling = NullValueHandling.Ignore)]
+            public long? OperatingResource { get; set; }
+
+            [JsonProperty("RepairComplexity", NullValueHandling = NullValueHandling.Ignore)]
+            public long? RepairComplexity { get; set; }
+
+            [JsonProperty("durabSpawnMin", NullValueHandling = NullValueHandling.Ignore)]
+            public long? DurabSpawnMin { get; set; }
+
+            [JsonProperty("durabSpawnMax", NullValueHandling = NullValueHandling.Ignore)]
+            public long? DurabSpawnMax { get; set; }
+
+            [JsonProperty("isFastReload", NullValueHandling = NullValueHandling.Ignore)]
+            public bool? IsFastReload { get; set; }
+
+            [JsonProperty("RecoilForceUp", NullValueHandling = NullValueHandling.Ignore)]
+            public long? RecoilForceUp { get; set; }
+
+            [JsonProperty("RecoilForceBack", NullValueHandling = NullValueHandling.Ignore)]
+            public long? RecoilForceBack { get; set; }
+
+            [JsonProperty("Convergence", NullValueHandling = NullValueHandling.Ignore)]
+            public double? Convergence { get; set; }
+
+            [JsonProperty("RecoilAngle", NullValueHandling = NullValueHandling.Ignore)]
+            public long? RecoilAngle { get; set; }
+
+            [JsonProperty("weapFireType", NullValueHandling = NullValueHandling.Ignore)]
+            public WeapFireType[] WeapFireType { get; set; }
+
+            [JsonProperty("RecolDispersion", NullValueHandling = NullValueHandling.Ignore)]
+            public long? RecolDispersion { get; set; }
+
+            [JsonProperty("bFirerate", NullValueHandling = NullValueHandling.Ignore)]
+            public long? BFirerate { get; set; }
+
+            [JsonProperty("bEffDist", NullValueHandling = NullValueHandling.Ignore)]
+            public long? BEffDist { get; set; }
+
+            [JsonProperty("bHearDist", NullValueHandling = NullValueHandling.Ignore)]
+            public long? BHearDist { get; set; }
+
+            [JsonProperty("isChamberLoad", NullValueHandling = NullValueHandling.Ignore)]
+            public bool? IsChamberLoad { get; set; }
+
+            [JsonProperty("chamberAmmoCount", NullValueHandling = NullValueHandling.Ignore)]
+            public long? ChamberAmmoCount { get; set; }
+
+            [JsonProperty("isBoltCatch", NullValueHandling = NullValueHandling.Ignore)]
+            public bool? IsBoltCatch { get; set; }
+
+            [JsonProperty("defMagType", NullValueHandling = NullValueHandling.Ignore)]
+            public string DefMagType { get; set; }
+
+            [JsonProperty("defAmmo", NullValueHandling = NullValueHandling.Ignore)]
+            public string DefAmmo { get; set; }
+
+            [JsonProperty("shotgunDispersion", NullValueHandling = NullValueHandling.Ignore)]
+            public long? PropsShotgunDispersion { get; set; }
+
+            [JsonProperty("Chambers", NullValueHandling = NullValueHandling.Ignore)]
+            public Chamber[] Chambers { get; set; }
+
+            [JsonProperty("CameraRecoil", NullValueHandling = NullValueHandling.Ignore)]
+            public double? CameraRecoil { get; set; }
+
+            [JsonProperty("CameraSnap", NullValueHandling = NullValueHandling.Ignore)]
+            public double? CameraSnap { get; set; }
+
+            [JsonProperty("ReloadMode", NullValueHandling = NullValueHandling.Ignore)]
+            public ReloadM? ReloadMode { get; set; }
+
+            [JsonProperty("AimPlane", NullValueHandling = NullValueHandling.Ignore)]
+            public double? AimPlane { get; set; }
+
+            [JsonProperty("DeviationCurve", NullValueHandling = NullValueHandling.Ignore)]
+            public long? DeviationCurve { get; set; }
+
+            [JsonProperty("DeviationMax", NullValueHandling = NullValueHandling.Ignore)]
+            public long? DeviationMax { get; set; }
+
+            [JsonProperty("TacticalReloadStiffnes", NullValueHandling = NullValueHandling.Ignore)]
+            public Blindness TacticalReloadStiffnes { get; set; }
+
+            [JsonProperty("TacticalReloadFixation", NullValueHandling = NullValueHandling.Ignore)]
+            public double? TacticalReloadFixation { get; set; }
+
+            [JsonProperty("RecoilCenter", NullValueHandling = NullValueHandling.Ignore)]
+            public Blindness RecoilCenter { get; set; }
+
+            [JsonProperty("RotationCenter", NullValueHandling = NullValueHandling.Ignore)]
+            public Blindness RotationCenter { get; set; }
+
+            [JsonProperty("RotationCenterNoStock", NullValueHandling = NullValueHandling.Ignore)]
+            public Blindness RotationCenterNoStock { get; set; }
+
+            [JsonProperty("FoldedSlot", NullValueHandling = NullValueHandling.Ignore)]
+            public FoldedSlot? FoldedSlot { get; set; }
+
+            [JsonProperty("CompactHandling", NullValueHandling = NullValueHandling.Ignore)]
+            public bool? CompactHandling { get; set; }
+
+            [JsonProperty("MinRepairDegradation", NullValueHandling = NullValueHandling.Ignore)]
+            public long? MinRepairDegradation { get; set; }
+
+            [JsonProperty("MaxRepairDegradation", NullValueHandling = NullValueHandling.Ignore)]
+            public double? MaxRepairDegradation { get; set; }
+
+            [JsonProperty("IronSightRange", NullValueHandling = NullValueHandling.Ignore)]
+            public long? IronSightRange { get; set; }
+
+            [JsonProperty("MustBoltBeOpennedForExternalReload", NullValueHandling = NullValueHandling.Ignore)]
+            public bool? MustBoltBeOpennedForExternalReload { get; set; }
+
+            [JsonProperty("MustBoltBeOpennedForInternalReload", NullValueHandling = NullValueHandling.Ignore)]
+            public bool? MustBoltBeOpennedForInternalReload { get; set; }
+
+            [JsonProperty("BoltAction", NullValueHandling = NullValueHandling.Ignore)]
+            public bool? BoltAction { get; set; }
+
+            [JsonProperty("HipAccuracyRestorationDelay", NullValueHandling = NullValueHandling.Ignore)]
+            public double? HipAccuracyRestorationDelay { get; set; }
+
+            [JsonProperty("HipAccuracyRestorationSpeed", NullValueHandling = NullValueHandling.Ignore)]
+            public long? HipAccuracyRestorationSpeed { get; set; }
+
+            [JsonProperty("HipInnaccuracyGain", NullValueHandling = NullValueHandling.Ignore)]
+            public double? HipInnaccuracyGain { get; set; }
+
+            [JsonProperty("ManualBoltCatch", NullValueHandling = NullValueHandling.Ignore)]
+            public bool? ManualBoltCatch { get; set; }
+
+            [JsonProperty("BlocksEarpiece", NullValueHandling = NullValueHandling.Ignore)]
+            public bool? BlocksEarpiece { get; set; }
+
+            [JsonProperty("BlocksEyewear", NullValueHandling = NullValueHandling.Ignore)]
+            public bool? BlocksEyewear { get; set; }
+
+            [JsonProperty("BlocksHeadwear", NullValueHandling = NullValueHandling.Ignore)]
+            public bool? BlocksHeadwear { get; set; }
+
+            [JsonProperty("BlocksFaceCover", NullValueHandling = NullValueHandling.Ignore)]
+            public bool? BlocksFaceCover { get; set; }
+
+            [JsonProperty("foodUseTime", NullValueHandling = NullValueHandling.Ignore)]
+            public long? FoodUseTime { get; set; }
+
+            [JsonProperty("foodEffectType", NullValueHandling = NullValueHandling.Ignore)]
+            public DEffectType? FoodEffectType { get; set; }
+
+            [JsonProperty("effects_health", NullValueHandling = NullValueHandling.Ignore)]
+            public EffectsHealth EffectsHealth { get; set; }
+
+            [JsonProperty("effects_damage", NullValueHandling = NullValueHandling.Ignore)]
+            public EffectsDamage EffectsDamage { get; set; }
+
+            [JsonProperty("effects_speed", NullValueHandling = NullValueHandling.Ignore)]
+            public EffectsSpeed EffectsSpeed { get; set; }
+
+            [JsonProperty("MaxResource", NullValueHandling = NullValueHandling.Ignore)]
+            public long? MaxResource { get; set; }
+
+            [JsonProperty("MaximumNumberOfUsage", NullValueHandling = NullValueHandling.Ignore)]
+            public long? MaximumNumberOfUsage { get; set; }
+
+            [JsonProperty("knifeHitDelay", NullValueHandling = NullValueHandling.Ignore)]
+            public long? KnifeHitDelay { get; set; }
+
+            [JsonProperty("knifeHitSlashRate", NullValueHandling = NullValueHandling.Ignore)]
+            public long? KnifeHitSlashRate { get; set; }
+
+            [JsonProperty("knifeHitStabRate", NullValueHandling = NullValueHandling.Ignore)]
+            public long? KnifeHitStabRate { get; set; }
+
+            [JsonProperty("knifeHitRadius", NullValueHandling = NullValueHandling.Ignore)]
+            public double? KnifeHitRadius { get; set; }
+
+            [JsonProperty("knifeHitSlashDam", NullValueHandling = NullValueHandling.Ignore)]
+            public long? KnifeHitSlashDam { get; set; }
+
+            [JsonProperty("knifeHitStabDam", NullValueHandling = NullValueHandling.Ignore)]
+            public long? KnifeHitStabDam { get; set; }
+
+            [JsonProperty("knifeDurab", NullValueHandling = NullValueHandling.Ignore)]
+            public long? KnifeDurab { get; set; }
+
+            [JsonProperty("PrimaryDistance", NullValueHandling = NullValueHandling.Ignore)]
+            public double? PrimaryDistance { get; set; }
+
+            [JsonProperty("SecondryDistance", NullValueHandling = NullValueHandling.Ignore)]
+            public double? SecondryDistance { get; set; }
+
+            [JsonProperty("SlashPenetration", NullValueHandling = NullValueHandling.Ignore)]
+            public long? SlashPenetration { get; set; }
+
+            [JsonProperty("StabPenetration", NullValueHandling = NullValueHandling.Ignore)]
+            public long? StabPenetration { get; set; }
+
+            [JsonProperty("PrimaryConsumption", NullValueHandling = NullValueHandling.Ignore)]
+            public long? PrimaryConsumption { get; set; }
+
+            [JsonProperty("SecondryConsumption", NullValueHandling = NullValueHandling.Ignore)]
+            public long? SecondryConsumption { get; set; }
+
+            [JsonProperty("DeflectionConsumption", NullValueHandling = NullValueHandling.Ignore)]
+            public long? DeflectionConsumption { get; set; }
+
+            [JsonProperty("ConfigPathStr", NullValueHandling = NullValueHandling.Ignore)]
+            public string ConfigPathStr { get; set; }
+
+            [JsonProperty("MaxMarkersCount", NullValueHandling = NullValueHandling.Ignore)]
+            public long? MaxMarkersCount { get; set; }
+
+            [JsonProperty("scaleMin", NullValueHandling = NullValueHandling.Ignore)]
+            public double? ScaleMin { get; set; }
+
+            [JsonProperty("scaleMax", NullValueHandling = NullValueHandling.Ignore)]
+            public double? ScaleMax { get; set; }
+
+            [JsonProperty("medUseTime", NullValueHandling = NullValueHandling.Ignore)]
+            public long? MedUseTime { get; set; }
+
+            [JsonProperty("medEffectType", NullValueHandling = NullValueHandling.Ignore)]
+            public DEffectType? MedEffectType { get; set; }
+
+            [JsonProperty("MaxHpResource", NullValueHandling = NullValueHandling.Ignore)]
+            public long? MaxHpResource { get; set; }
+
+            [JsonProperty("hpResourceRate", NullValueHandling = NullValueHandling.Ignore)]
+            public long? HpResourceRate { get; set; }
+
+            [JsonProperty("StimulatorBuffs", NullValueHandling = NullValueHandling.Ignore)]
+            public string StimulatorBuffs { get; set; }
+
+            [JsonProperty("MaxEfficiency", NullValueHandling = NullValueHandling.Ignore)]
+            public long? MaxEfficiency { get; set; }
+
+            [JsonProperty("Addiction", NullValueHandling = NullValueHandling.Ignore)]
+            public long? Addiction { get; set; }
+
+            [JsonProperty("Overdose", NullValueHandling = NullValueHandling.Ignore)]
+            public long? Overdose { get; set; }
+
+            [JsonProperty("OverdoseRecovery", NullValueHandling = NullValueHandling.Ignore)]
+            public long? OverdoseRecovery { get; set; }
+
+            [JsonProperty("AddictionRecovery", NullValueHandling = NullValueHandling.Ignore)]
+            public long? AddictionRecovery { get; set; }
+
+            [JsonProperty("Buffs", NullValueHandling = NullValueHandling.Ignore)]
+            public BuffsUnion? Buffs { get; set; }
+
+            [JsonProperty("apResource", NullValueHandling = NullValueHandling.Ignore)]
+            public long? ApResource { get; set; }
+
+            [JsonProperty("krResource", NullValueHandling = NullValueHandling.Ignore)]
+            public long? KrResource { get; set; }
 
             [JsonProperty("StackMinRandom", NullValueHandling = NullValueHandling.Ignore)]
             public long? StackMinRandom { get; set; }
@@ -133,6 +680,9 @@ namespace ServerLib.Json.Classes
 
             [JsonProperty("PenetrationPower", NullValueHandling = NullValueHandling.Ignore)]
             public long? PenetrationPower { get; set; }
+
+            [JsonProperty("PenetrationPowerDiviation", NullValueHandling = NullValueHandling.Ignore)]
+            public double? PenetrationPowerDiviation { get; set; }
 
             [JsonProperty("ammoHear", NullValueHandling = NullValueHandling.Ignore)]
             public long? AmmoHear { get; set; }
@@ -185,185 +735,29 @@ namespace ServerLib.Json.Classes
             [JsonProperty("Deterioration", NullValueHandling = NullValueHandling.Ignore)]
             public long? Deterioration { get; set; }
 
-            [JsonProperty("Grids", NullValueHandling = NullValueHandling.Ignore)]
-            public Grid[] Grids { get; set; }
+            [JsonProperty("SpeedRetardation", NullValueHandling = NullValueHandling.Ignore)]
+            public double? SpeedRetardation { get; set; }
 
-            [JsonProperty("Slots", NullValueHandling = NullValueHandling.Ignore)]
-            public Slot[] Slots { get; set; }
+            [JsonProperty("Tracer", NullValueHandling = NullValueHandling.Ignore)]
+            public bool? Tracer { get; set; }
 
-            [JsonProperty("Durability", NullValueHandling = NullValueHandling.Ignore)]
-            public long? Durability { get; set; }
+            [JsonProperty("TracerColor", NullValueHandling = NullValueHandling.Ignore)]
+            public TracerColor? TracerColor { get; set; }
 
-            [JsonProperty("Accuracy", NullValueHandling = NullValueHandling.Ignore)]
-            public long? Accuracy { get; set; }
+            [JsonProperty("TracerDistance", NullValueHandling = NullValueHandling.Ignore)]
+            public double? TracerDistance { get; set; }
 
-            [JsonProperty("Recoil", NullValueHandling = NullValueHandling.Ignore)]
-            public double? Recoil { get; set; }
+            [JsonProperty("ArmorDamage", NullValueHandling = NullValueHandling.Ignore)]
+            public long? ArmorDamage { get; set; }
 
-            [JsonProperty("Loudness", NullValueHandling = NullValueHandling.Ignore)]
-            public long? Loudness { get; set; }
+            [JsonProperty("Caliber", NullValueHandling = NullValueHandling.Ignore)]
+            public string Caliber { get; set; }
 
-            [JsonProperty("EffectiveDistance", NullValueHandling = NullValueHandling.Ignore)]
-            public long? EffectiveDistance { get; set; }
-
-            [JsonProperty("Ergonomics", NullValueHandling = NullValueHandling.Ignore)]
-            public double? Ergonomics { get; set; }
-
-            [JsonProperty("Velocity", NullValueHandling = NullValueHandling.Ignore)]
-            public long? Velocity { get; set; }
-
-            [JsonProperty("RaidModdable", NullValueHandling = NullValueHandling.Ignore)]
-            public bool? RaidModdable { get; set; }
-
-            [JsonProperty("ToolModdable", NullValueHandling = NullValueHandling.Ignore)]
-            public bool? ToolModdable { get; set; }
-
-            [JsonProperty("BlocksFolding", NullValueHandling = NullValueHandling.Ignore)]
-            public bool? BlocksFolding { get; set; }
-
-            [JsonProperty("BlocksCollapsible", NullValueHandling = NullValueHandling.Ignore)]
-            public bool? BlocksCollapsible { get; set; }
-
-            [JsonProperty("ModesCount", NullValueHandling = NullValueHandling.Ignore)]
-            public long? ModesCount { get; set; }
-
-            [JsonProperty("ammoCaliber", NullValueHandling = NullValueHandling.Ignore)]
-            public string AmmoCaliber { get; set; }
+            [JsonProperty("StaminaBurnPerDamage", NullValueHandling = NullValueHandling.Ignore)]
+            public double? StaminaBurnPerDamage { get; set; }
 
             [JsonProperty("StackSlots", NullValueHandling = NullValueHandling.Ignore)]
             public Cartridge[] StackSlots { get; set; }
-
-            [JsonProperty("modDurab", NullValueHandling = NullValueHandling.Ignore)]
-            public long? ModDurab { get; set; }
-
-            [JsonProperty("muzzleModType", NullValueHandling = NullValueHandling.Ignore)]
-            public MuzzleModType? MuzzleModType { get; set; }
-
-            [JsonProperty("weapClass", NullValueHandling = NullValueHandling.Ignore)]
-            public string WeapClass { get; set; }
-
-            [JsonProperty("weapUseType", NullValueHandling = NullValueHandling.Ignore)]
-            public WeapUseType? WeapUseType { get; set; }
-
-            [JsonProperty("weapFireType", NullValueHandling = NullValueHandling.Ignore)]
-            public WeapFireType[] WeapFireType { get; set; }
-
-            [JsonProperty("MaxDurability", NullValueHandling = NullValueHandling.Ignore)]
-            public long? MaxDurability { get; set; }
-
-            [JsonProperty("OperatingResource", NullValueHandling = NullValueHandling.Ignore)]
-            public long? OperatingResource { get; set; }
-
-            [JsonProperty("RepairComplexity", NullValueHandling = NullValueHandling.Ignore)]
-            public long? RepairComplexity { get; set; }
-
-            [JsonProperty("durabSpawnMin", NullValueHandling = NullValueHandling.Ignore)]
-            public long? DurabSpawnMin { get; set; }
-
-            [JsonProperty("durabSpawnMax", NullValueHandling = NullValueHandling.Ignore)]
-            public long? DurabSpawnMax { get; set; }
-
-            [JsonProperty("isFastReload", NullValueHandling = NullValueHandling.Ignore)]
-            public bool? IsFastReload { get; set; }
-
-            [JsonProperty("RecoilForceUp", NullValueHandling = NullValueHandling.Ignore)]
-            public long? RecoilForceUp { get; set; }
-
-            [JsonProperty("RecoilForceBack", NullValueHandling = NullValueHandling.Ignore)]
-            public long? RecoilForceBack { get; set; }
-
-            [JsonProperty("Convergence", NullValueHandling = NullValueHandling.Ignore)]
-            public double? Convergence { get; set; }
-
-            [JsonProperty("RecoilAngle", NullValueHandling = NullValueHandling.Ignore)]
-            public long? RecoilAngle { get; set; }
-
-            [JsonProperty("RecolDispersion", NullValueHandling = NullValueHandling.Ignore)]
-            public long? RecolDispersion { get; set; }
-
-            [JsonProperty("bFirerate", NullValueHandling = NullValueHandling.Ignore)]
-            public long? BFirerate { get; set; }
-
-            [JsonProperty("bEffDist", NullValueHandling = NullValueHandling.Ignore)]
-            public long? BEffDist { get; set; }
-
-            [JsonProperty("bHearDist", NullValueHandling = NullValueHandling.Ignore)]
-            public long? BHearDist { get; set; }
-
-            [JsonProperty("isChamberLoad", NullValueHandling = NullValueHandling.Ignore)]
-            public bool? IsChamberLoad { get; set; }
-
-            [JsonProperty("chamberAmmoCount", NullValueHandling = NullValueHandling.Ignore)]
-            public long? ChamberAmmoCount { get; set; }
-
-            [JsonProperty("isBoltCatch", NullValueHandling = NullValueHandling.Ignore)]
-            public bool? IsBoltCatch { get; set; }
-
-            [JsonProperty("defMagType", NullValueHandling = NullValueHandling.Ignore)]
-            public string DefMagType { get; set; }
-
-            [JsonProperty("shotgunDispersion", NullValueHandling = NullValueHandling.Ignore)]
-            public long? ShotgunDispersion { get; set; }
-
-            [JsonProperty("Chambers", NullValueHandling = NullValueHandling.Ignore)]
-            public Chamber[] Chambers { get; set; }
-
-            [JsonProperty("CameraRecoil", NullValueHandling = NullValueHandling.Ignore)]
-            public double? CameraRecoil { get; set; }
-
-            [JsonProperty("ReloadMode", NullValueHandling = NullValueHandling.Ignore)]
-            public ReloadMode? ReloadMode { get; set; }
-
-            [JsonProperty("CenterOfImpact", NullValueHandling = NullValueHandling.Ignore)]
-            public double? CenterOfImpact { get; set; }
-
-            [JsonProperty("AimPlane", NullValueHandling = NullValueHandling.Ignore)]
-            public double? AimPlane { get; set; }
-
-            [JsonProperty("DeviationCurve", NullValueHandling = NullValueHandling.Ignore)]
-            public long? DeviationCurve { get; set; }
-
-            [JsonProperty("DeviationMax", NullValueHandling = NullValueHandling.Ignore)]
-            public long? DeviationMax { get; set; }
-
-            [JsonProperty("armorPoints", NullValueHandling = NullValueHandling.Ignore)]
-            public long? ArmorPoints { get; set; }
-
-            [JsonProperty("armorClass", NullValueHandling = NullValueHandling.Ignore)]
-            public ArmorClass? ArmorClass { get; set; }
-
-            [JsonProperty("speedPenaltyPercent", NullValueHandling = NullValueHandling.Ignore)]
-            public long? SpeedPenaltyPercent { get; set; }
-
-            [JsonProperty("mousePenalty", NullValueHandling = NullValueHandling.Ignore)]
-            public long? MousePenalty { get; set; }
-
-            [JsonProperty("weaponErgonomicPenalty", NullValueHandling = NullValueHandling.Ignore)]
-            public long? WeaponErgonomicPenalty { get; set; }
-
-            [JsonProperty("armorZone", NullValueHandling = NullValueHandling.Ignore)]
-            public string[] ArmorZone { get; set; }
-
-            [JsonProperty("medUseTime", NullValueHandling = NullValueHandling.Ignore)]
-            public long? MedUseTime { get; set; }
-
-            [JsonProperty("medEffectType", NullValueHandling = NullValueHandling.Ignore)]
-            public DEffectType? MedEffectType { get; set; }
-
-            [JsonProperty("MaxHpResource", NullValueHandling = NullValueHandling.Ignore)]
-            public long? MaxHpResource { get; set; }
-
-            [JsonProperty("hpResourceRate", NullValueHandling = NullValueHandling.Ignore)]
-            public long? HpResourceRate { get; set; }
-
-            [JsonProperty("effects_health", NullValueHandling = NullValueHandling.Ignore)]
-            public EffectsHealth EffectsHealth { get; set; }
-
-            [JsonProperty("effects_damage", NullValueHandling = NullValueHandling.Ignore)]
-            public EffectsDamage EffectsDamage { get; set; }
-
-            [JsonProperty("effects_speed", NullValueHandling = NullValueHandling.Ignore)]
-            public EffectsSpeed EffectsSpeed { get; set; }
 
             [JsonProperty("type", NullValueHandling = NullValueHandling.Ignore)]
             public string Type { get; set; }
@@ -377,83 +771,14 @@ namespace ServerLib.Json.Classes
             [JsonProperty("rate", NullValueHandling = NullValueHandling.Ignore)]
             public long? Rate { get; set; }
 
-            [JsonProperty("throwType", NullValueHandling = NullValueHandling.Ignore)]
+            [JsonProperty("ThrowType", NullValueHandling = NullValueHandling.Ignore)]
             public string ThrowType { get; set; }
 
-            [JsonProperty("explEff", NullValueHandling = NullValueHandling.Ignore)]
-            public bool? ExplEff { get; set; }
-
-            [JsonProperty("explSounds", NullValueHandling = NullValueHandling.Ignore)]
-            public bool? ExplSounds { get; set; }
-
-            [JsonProperty("colSounds", NullValueHandling = NullValueHandling.Ignore)]
-            public bool? ColSounds { get; set; }
-
-            [JsonProperty("throwMinDist", NullValueHandling = NullValueHandling.Ignore)]
-            public long? ThrowMinDist { get; set; }
-
-            [JsonProperty("throwMaxDist", NullValueHandling = NullValueHandling.Ignore)]
-            public long? ThrowMaxDist { get; set; }
-
-            [JsonProperty("explRadius", NullValueHandling = NullValueHandling.Ignore)]
-            public long? ExplRadius { get; set; }
-
-            [JsonProperty("explDelay", NullValueHandling = NullValueHandling.Ignore)]
-            public double? ExplDelay { get; set; }
-
-            [JsonProperty("throwDamMin", NullValueHandling = NullValueHandling.Ignore)]
-            public long? ThrowDamMin { get; set; }
-
-            [JsonProperty("throwDamMax", NullValueHandling = NullValueHandling.Ignore)]
-            public long? ThrowDamMax { get; set; }
-
-            [JsonProperty("contusionDist", NullValueHandling = NullValueHandling.Ignore)]
-            public long? ContusionDist { get; set; }
-
-            [JsonProperty("contMinTime", NullValueHandling = NullValueHandling.Ignore)]
-            public long? ContMinTime { get; set; }
-
-            [JsonProperty("contMaxType", NullValueHandling = NullValueHandling.Ignore)]
-            public long? ContMaxType { get; set; }
-
-            [JsonProperty("throwDamPenetr", NullValueHandling = NullValueHandling.Ignore)]
-            public long? ThrowDamPenetr { get; set; }
-
-            [JsonProperty("isFlash", NullValueHandling = NullValueHandling.Ignore)]
-            public bool? IsFlash { get; set; }
-
-            [JsonProperty("isStun", NullValueHandling = NullValueHandling.Ignore)]
-            public bool? IsStun { get; set; }
-
-            [JsonProperty("isDesorient", NullValueHandling = NullValueHandling.Ignore)]
-            public bool? IsDesorient { get; set; }
-
-            [JsonProperty("throwEffMinTime", NullValueHandling = NullValueHandling.Ignore)]
-            public long? ThrowEffMinTime { get; set; }
-
-            [JsonProperty("throwEffMaxTime", NullValueHandling = NullValueHandling.Ignore)]
-            public long? ThrowEffMaxTime { get; set; }
-
-            [JsonProperty("throwSensMin", NullValueHandling = NullValueHandling.Ignore)]
-            public long? ThrowSensMin { get; set; }
-
-            [JsonProperty("throwSensMax", NullValueHandling = NullValueHandling.Ignore)]
-            public long? ThrowSensMax { get; set; }
-
-            [JsonProperty("smokeColor", NullValueHandling = NullValueHandling.Ignore)]
-            public bool? SmokeColor { get; set; }
-
-            [JsonProperty("smokeTime", NullValueHandling = NullValueHandling.Ignore)]
-            public long? SmokeTime { get; set; }
-
-            [JsonProperty("sonarPeriod", NullValueHandling = NullValueHandling.Ignore)]
-            public long? SonarPeriod { get; set; }
-
-            [JsonProperty("sonarTime", NullValueHandling = NullValueHandling.Ignore)]
-            public long? SonarTime { get; set; }
+            [JsonProperty("ExplDelay", NullValueHandling = NullValueHandling.Ignore)]
+            public long? ExplDelay { get; set; }
 
             [JsonProperty("MinExplosionDistance", NullValueHandling = NullValueHandling.Ignore)]
-            public long? MinExplosionDistance { get; set; }
+            public double? MinExplosionDistance { get; set; }
 
             [JsonProperty("MaxExplosionDistance", NullValueHandling = NullValueHandling.Ignore)]
             public long? MaxExplosionDistance { get; set; }
@@ -461,128 +786,122 @@ namespace ServerLib.Json.Classes
             [JsonProperty("FragmentsCount", NullValueHandling = NullValueHandling.Ignore)]
             public long? FragmentsCount { get; set; }
 
-            [JsonProperty("MinFragmentDamage", NullValueHandling = NullValueHandling.Ignore)]
-            public long? MinFragmentDamage { get; set; }
+            [JsonProperty("FragmentType", NullValueHandling = NullValueHandling.Ignore)]
+            public string FragmentType { get; set; }
 
-            [JsonProperty("MaxFragmentDamage", NullValueHandling = NullValueHandling.Ignore)]
-            public long? MaxFragmentDamage { get; set; }
+            [JsonProperty("Strength", NullValueHandling = NullValueHandling.Ignore)]
+            public long? Strength { get; set; }
 
-            [JsonProperty("foodUseTime", NullValueHandling = NullValueHandling.Ignore)]
-            public long? FoodUseTime { get; set; }
+            [JsonProperty("ContusionDistance", NullValueHandling = NullValueHandling.Ignore)]
+            public long? ContusionDistance { get; set; }
 
-            [JsonProperty("foodEffectType", NullValueHandling = NullValueHandling.Ignore)]
-            public FoodEffectType? FoodEffectType { get; set; }
+            [JsonProperty("throwDamMax", NullValueHandling = NullValueHandling.Ignore)]
+            public long? ThrowDamMax { get; set; }
 
-            [JsonProperty("MaxResource", NullValueHandling = NullValueHandling.Ignore)]
-            public long? MaxResource { get; set; }
+            [JsonProperty("explDelay", NullValueHandling = NullValueHandling.Ignore)]
+            public double? PropsExplDelay { get; set; }
 
-            [JsonProperty("sightModType", NullValueHandling = NullValueHandling.Ignore)]
-            public SightModType? SightModType { get; set; }
+            [JsonProperty("Blindness", NullValueHandling = NullValueHandling.Ignore)]
+            public Blindness Blindness { get; set; }
 
-            [JsonProperty("variableZoom", NullValueHandling = NullValueHandling.Ignore)]
-            public bool? VariableZoom { get; set; }
+            [JsonProperty("Contusion", NullValueHandling = NullValueHandling.Ignore)]
+            public Blindness Contusion { get; set; }
 
-            [JsonProperty("varZoomCount", NullValueHandling = NullValueHandling.Ignore)]
-            public long? VarZoomCount { get; set; }
+            [JsonProperty("EmitTime", NullValueHandling = NullValueHandling.Ignore)]
+            public long? EmitTime { get; set; }
 
-            [JsonProperty("varZoomAdd", NullValueHandling = NullValueHandling.Ignore)]
-            public long? VarZoomAdd { get; set; }
+            [JsonProperty("CanBeHiddenDuringThrow", NullValueHandling = NullValueHandling.Ignore)]
+            public bool? CanBeHiddenDuringThrow { get; set; }
 
-            [JsonProperty("aimingSensitivity", NullValueHandling = NullValueHandling.Ignore)]
-            public double? AimingSensitivity { get; set; }
+            [JsonProperty("Indestructibility", NullValueHandling = NullValueHandling.Ignore)]
+            public double? Indestructibility { get; set; }
 
-            [JsonProperty("IsShoulderContact", NullValueHandling = NullValueHandling.Ignore)]
-            public bool? IsShoulderContact { get; set; }
+            [JsonProperty("headSegments", NullValueHandling = NullValueHandling.Ignore)]
+            public HeadSegment[] HeadSegments { get; set; }
 
-            [JsonProperty("apResource", NullValueHandling = NullValueHandling.Ignore)]
-            public long? ApResource { get; set; }
+            [JsonProperty("FaceShieldComponent", NullValueHandling = NullValueHandling.Ignore)]
+            public bool? FaceShieldComponent { get; set; }
 
-            [JsonProperty("krResource", NullValueHandling = NullValueHandling.Ignore)]
-            public long? KrResource { get; set; }
+            [JsonProperty("FaceShieldMask", NullValueHandling = NullValueHandling.Ignore)]
+            public FaceShieldMask? FaceShieldMask { get; set; }
 
-            [JsonProperty("knifeHitDelay", NullValueHandling = NullValueHandling.Ignore)]
-            public long? KnifeHitDelay { get; set; }
+            [JsonProperty("HasHinge", NullValueHandling = NullValueHandling.Ignore)]
+            public bool? HasHinge { get; set; }
 
-            [JsonProperty("knifeHitSlashRate", NullValueHandling = NullValueHandling.Ignore)]
-            public long? KnifeHitSlashRate { get; set; }
+            [JsonProperty("MaterialType", NullValueHandling = NullValueHandling.Ignore)]
+            public MaterialType? MaterialType { get; set; }
 
-            [JsonProperty("knifeHitStabRate", NullValueHandling = NullValueHandling.Ignore)]
-            public long? KnifeHitStabRate { get; set; }
+            [JsonProperty("RicochetParams", NullValueHandling = NullValueHandling.Ignore)]
+            public Blindness RicochetParams { get; set; }
 
-            [JsonProperty("knifeHitRadius", NullValueHandling = NullValueHandling.Ignore)]
-            public double? KnifeHitRadius { get; set; }
+            [JsonProperty("DeafStrength", NullValueHandling = NullValueHandling.Ignore)]
+            public DeafStrength? DeafStrength { get; set; }
 
-            [JsonProperty("knifeHitSlashDam", NullValueHandling = NullValueHandling.Ignore)]
-            public long? KnifeHitSlashDam { get; set; }
+            [JsonProperty("Distortion", NullValueHandling = NullValueHandling.Ignore)]
+            public double? Distortion { get; set; }
 
-            [JsonProperty("knifeHitStabDam", NullValueHandling = NullValueHandling.Ignore)]
-            public long? KnifeHitStabDam { get; set; }
+            [JsonProperty("CompressorTreshold", NullValueHandling = NullValueHandling.Ignore)]
+            public long? CompressorTreshold { get; set; }
 
-            [JsonProperty("knifeDurab", NullValueHandling = NullValueHandling.Ignore)]
-            public long? KnifeDurab { get; set; }
+            [JsonProperty("CompressorAttack", NullValueHandling = NullValueHandling.Ignore)]
+            public long? CompressorAttack { get; set; }
 
-            [JsonProperty("magAnimationIndex", NullValueHandling = NullValueHandling.Ignore)]
-            public long? MagAnimationIndex { get; set; }
+            [JsonProperty("CompressorRelease", NullValueHandling = NullValueHandling.Ignore)]
+            public long? CompressorRelease { get; set; }
 
-            [JsonProperty("Cartridges", NullValueHandling = NullValueHandling.Ignore)]
-            public Cartridge[] Cartridges { get; set; }
+            [JsonProperty("CompressorGain", NullValueHandling = NullValueHandling.Ignore)]
+            public long? CompressorGain { get; set; }
 
-            [JsonProperty("CanFast", NullValueHandling = NullValueHandling.Ignore)]
-            public bool? CanFast { get; set; }
+            [JsonProperty("CutoffFreq", NullValueHandling = NullValueHandling.Ignore)]
+            public long? CutoffFreq { get; set; }
 
-            [JsonProperty("CanHit", NullValueHandling = NullValueHandling.Ignore)]
-            public bool? CanHit { get; set; }
+            [JsonProperty("Resonance", NullValueHandling = NullValueHandling.Ignore)]
+            public double? Resonance { get; set; }
 
-            [JsonProperty("CanAdmin", NullValueHandling = NullValueHandling.Ignore)]
-            public bool? CanAdmin { get; set; }
+            [JsonProperty("CompressorVolume", NullValueHandling = NullValueHandling.Ignore)]
+            public long? CompressorVolume { get; set; }
 
-            [JsonProperty("containType", NullValueHandling = NullValueHandling.Ignore)]
-            public object[] ContainType { get; set; }
+            [JsonProperty("AmbientVolume", NullValueHandling = NullValueHandling.Ignore)]
+            public long? AmbientVolume { get; set; }
 
-            [JsonProperty("sizeWidth", NullValueHandling = NullValueHandling.Ignore)]
-            public long? SizeWidth { get; set; }
+            [JsonProperty("DryVolume", NullValueHandling = NullValueHandling.Ignore)]
+            public long? DryVolume { get; set; }
+        }
 
-            [JsonProperty("sizeHeight", NullValueHandling = NullValueHandling.Ignore)]
-            public long? SizeHeight { get; set; }
+        public partial class Blindness
+        {
+            [JsonProperty("x")]
+            public double X { get; set; }
 
-            [JsonProperty("isSecured", NullValueHandling = NullValueHandling.Ignore)]
-            public bool? IsSecured { get; set; }
+            [JsonProperty("y")]
+            public double Y { get; set; }
 
-            [JsonProperty("spawnTypes", NullValueHandling = NullValueHandling.Ignore)]
-            public MuzzleModType? SpawnTypes { get; set; }
+            [JsonProperty("z")]
+            public double Z { get; set; }
+        }
 
-            [JsonProperty("lootFilter", NullValueHandling = NullValueHandling.Ignore)]
-            public object[] LootFilter { get; set; }
+        public partial class Buff
+        {
+            [JsonProperty("Skill", NullValueHandling = NullValueHandling.Ignore)]
+            public string Skill { get; set; }
 
-            [JsonProperty("spawnRarity", NullValueHandling = NullValueHandling.Ignore)]
-            public SpawnRarity? SpawnRarity { get; set; }
+            [JsonProperty("FadeIn")]
+            public long FadeIn { get; set; }
 
-            [JsonProperty("minCountSpawn", NullValueHandling = NullValueHandling.Ignore)]
-            public long? MinCountSpawn { get; set; }
+            [JsonProperty("Plato")]
+            public long Plato { get; set; }
 
-            [JsonProperty("maxCountSpawn", NullValueHandling = NullValueHandling.Ignore)]
-            public long? MaxCountSpawn { get; set; }
+            [JsonProperty("FadeOut")]
+            public long FadeOut { get; set; }
 
-            [JsonProperty("openedByKeyID", NullValueHandling = NullValueHandling.Ignore)]
-            public object[] OpenedByKeyId { get; set; }
+            [JsonProperty("PlatoValue")]
+            public long PlatoValue { get; set; }
+        }
 
-            [JsonProperty("SpawnFilter", NullValueHandling = NullValueHandling.Ignore)]
-            public string[] SpawnFilter { get; set; }
-
-            [JsonProperty("KeyIds", NullValueHandling = NullValueHandling.Ignore)]
-            public string[] KeyIds { get; set; }
-
-            [JsonProperty("ConfigPath", NullValueHandling = NullValueHandling.Ignore)]
-            public ConfigPath ConfigPath { get; set; }
-
-            [JsonProperty("MaxMarkersCount", NullValueHandling = NullValueHandling.Ignore)]
-            public long? MaxMarkersCount { get; set; }
-
-            [JsonProperty("scaleMin", NullValueHandling = NullValueHandling.Ignore)]
-            public double? ScaleMin { get; set; }
-
-            [JsonProperty("scaleMax", NullValueHandling = NullValueHandling.Ignore)]
-            public long? ScaleMax { get; set; }
+        public partial class BuffsClass
+        {
+            [JsonProperty("Vitality")]
+            public Buff Vitality { get; set; }
         }
 
         public partial class Cartridge
@@ -635,6 +954,9 @@ namespace ServerLib.Json.Classes
             [JsonProperty("_required")]
             public bool ChamberRequired { get; set; }
 
+            [JsonProperty("_mergeSlotWithChildren")]
+            public bool MergeSlotWithChildren { get; set; }
+
             [JsonProperty("_proto")]
             public ChamberProto Proto { get; set; }
         }
@@ -654,13 +976,19 @@ namespace ServerLib.Json.Classes
             public long? MaxStackCount { get; set; }
         }
 
-        public partial class ConfigPath
+        public partial class Color
         {
-            [JsonProperty("path")]
-            public string Path { get; set; }
+            [JsonProperty("r")]
+            public long R { get; set; }
 
-            [JsonProperty("rcid")]
-            public string Rcid { get; set; }
+            [JsonProperty("g")]
+            public long G { get; set; }
+
+            [JsonProperty("b")]
+            public long B { get; set; }
+
+            [JsonProperty("a")]
+            public long A { get; set; }
         }
 
         public partial class EffectsDamage
@@ -694,6 +1022,12 @@ namespace ServerLib.Json.Classes
 
             [JsonProperty("duration")]
             public long Duration { get; set; }
+
+            [JsonProperty("fadeOut", NullValueHandling = NullValueHandling.Ignore)]
+            public long? FadeOut { get; set; }
+
+            [JsonProperty("cost", NullValueHandling = NullValueHandling.Ignore)]
+            public long? Cost { get; set; }
         }
 
         public partial class EffectsHealth
@@ -765,7 +1099,7 @@ namespace ServerLib.Json.Classes
         public partial class Grid
         {
             [JsonProperty("_name")]
-            public string Name { get; set; }
+            public NameUnion Name { get; set; }
 
             [JsonProperty("_id")]
             public string Id { get; set; }
@@ -791,11 +1125,23 @@ namespace ServerLib.Json.Classes
             [JsonProperty("cellsV")]
             public long CellsV { get; set; }
 
+            [JsonProperty("minCount")]
+            public long MinCount { get; set; }
+
             [JsonProperty("maxCount")]
             public long MaxCount { get; set; }
 
             [JsonProperty("maxWeight")]
             public long MaxWeight { get; set; }
+        }
+
+        public partial class Prefab
+        {
+            [JsonProperty("path")]
+            public string Path { get; set; }
+
+            [JsonProperty("rcid")]
+            public string Rcid { get; set; }
         }
 
         public partial class Slot
@@ -815,6 +1161,9 @@ namespace ServerLib.Json.Classes
             [JsonProperty("_required")]
             public bool SlotRequired { get; set; }
 
+            [JsonProperty("_mergeSlotWithChildren")]
+            public bool MergeSlotWithChildren { get; set; }
+
             [JsonProperty("_proto")]
             public ChamberProto Proto { get; set; }
         }
@@ -827,21 +1176,27 @@ namespace ServerLib.Json.Classes
 
         public partial class TentacledFilter
         {
-            [JsonProperty("Shift", NullValueHandling = NullValueHandling.Ignore)]
-            public long? Shift { get; set; }
-
             [JsonProperty("Filter")]
             public string[] Filter { get; set; }
+
+            [JsonProperty("Shift", NullValueHandling = NullValueHandling.Ignore)]
+            public long? Shift { get; set; }
 
             [JsonProperty("AnimationIndex", NullValueHandling = NullValueHandling.Ignore)]
             public long? AnimationIndex { get; set; }
         }
 
+        public enum AllowSpawnOnLocation { Laboratory, Shoreline };
+
         public enum AmmoSfx { Standart, Tracer, TracerRed };
 
         public enum AmmoType { Buckshot, Bullet, Grenade };
 
-        public enum BackgroundColor { Black, Blue, Default, Green, Grey, Orange, Red, Violet, Yellow };
+        public enum ArmorMaterial { Aluminium, Aramid, ArmoredSteel, Ceramic, Combined, Glass, Titan, Uhmwpe };
+
+        public enum ArmorZone { Chest, Head, LeftArm, LeftLeg, RightArm, RightLeg, Stomach };
+
+        public enum BackgroundColor { Black, Blue, Default, Green, Grey, Orange, Violet, Yellow };
 
         public enum CartridgeName { Cartridges };
 
@@ -849,97 +1204,228 @@ namespace ServerLib.Json.Classes
 
         public enum CasingSounds { PistolSmall, Rifle556, Rifle762, ShotgunBig, The40Mmgrenade };
 
-        public enum ChamberName { PatronInWeapon, PatronInWeapon001, PatronInWeapon002 };
+        public enum ChamberName { PatronInWeapon };
 
         public enum ChamberProto { The55D30C394Bdc2Dae468B4577, The55D30C4C4Bdc2Db4468B457E, The55D4Af244Bdc2D962F8B4571, The55D721144Bdc2D89028B456F };
 
+        public enum DeafStrength { High, Low, None };
+
+        public enum FaceShieldMask { Narrow, NoMask, Wide };
+
+        public enum FoldedSlot { Empty, ModStock, ModStock001, ModStockAkms };
+
         public enum DEffectType { AfterUse, DuringUse };
+
+        public enum GridLayoutName { Empty, Paratus };
+
+        public enum NameName { Hideout, Main, Pocket1, Pocket2, Pocket3, Pocket4, Pocket5 };
 
         public enum GridProto { The55D329C24Bdc2D892F8B4567 };
 
+        public enum HeadSegment { Ears, Eyes, Jaws, Nape, Top };
+
+        public enum MaterialType { BodyArmor, GlassVisor, Helmet };
+
+        public enum MuzzleModType { Brake, Conpensator, MuzzleCombo, Pms, Silencer };
+
         public enum Rarity { Common, NotExist, Rare, Superrare };
 
-        public enum ReloadMode { ExternalMagazine, InternalMagazine, OnlyBarrel };
+        public enum ReloadM { ExternalMagazine, InternalMagazine };
 
         public enum SightModType { Hybrid, Iron, Optic, Reflex };
 
-        public enum WeapFireType { Doublet, Fullauto, Single };
+        public enum TracerColor { Green, Red, TracerGreen, TracerRed, TracerYellow };
+
+        public enum UnlootableFromSide { Bear, Savage, Usec };
+
+        public enum UnlootableFromSlot { FirstPrimaryWeapon, Scabbard };
+
+        public enum WeapClass { AssaultCarbine, AssaultRifle, Machinegun, MarksmanRifle, Pistol, Shotgun, Smg, SniperRifle };
+
+        public enum WeapFireType { Burst, Fullauto, Single };
 
         public enum WeapUseType { Primary, Secondary };
 
         public enum TypeEnum { Item, Node };
 
-        public partial struct ArmorClass
+        public partial struct BuffsUnion
         {
-            public bool? Bool;
+            public Buff[] BuffArray;
+            public BuffsClass BuffsClass;
+
+            public static implicit operator BuffsUnion(Buff[] BuffArray) => new BuffsUnion { BuffArray = BuffArray };
+            public static implicit operator BuffsUnion(BuffsClass BuffsClass) => new BuffsUnion { BuffsClass = BuffsClass };
+        }
+
+        public partial struct NameUnion
+        {
+            public NameName? Enum;
             public long? Integer;
 
-            public static implicit operator ArmorClass(bool Bool) => new ArmorClass { Bool = Bool };
-            public static implicit operator ArmorClass(long Integer) => new ArmorClass { Integer = Integer };
-        }
-
-        public partial struct FoodEffectType
-        {
-            public bool? Bool;
-            public DEffectType? Enum;
-
-            public static implicit operator FoodEffectType(bool Bool) => new FoodEffectType { Bool = Bool };
-            public static implicit operator FoodEffectType(DEffectType Enum) => new FoodEffectType { Enum = Enum };
-        }
-
-        public partial struct MuzzleModType
-        {
-            public bool? Bool;
-            public string String;
-
-            public static implicit operator MuzzleModType(bool Bool) => new MuzzleModType { Bool = Bool };
-            public static implicit operator MuzzleModType(string String) => new MuzzleModType { String = String };
-        }
-
-        public partial struct SpawnRarity
-        {
-            public bool? Bool;
-            public Rarity? Enum;
-
-            public static implicit operator SpawnRarity(bool Bool) => new SpawnRarity { Bool = Bool };
-            public static implicit operator SpawnRarity(Rarity Enum) => new SpawnRarity { Enum = Enum };
+            public static implicit operator NameUnion(NameName Enum) => new NameUnion { Enum = Enum };
+            public static implicit operator NameUnion(long Integer) => new NameUnion { Integer = Integer };
         }
 
         public partial class Base
         {
-            public static Base FromJson(string json) => JsonConvert.DeserializeObject<Base>(json, Converter.Settings);
+            public static Dictionary<string, Base> FromJson(string json) => JsonConvert.DeserializeObject<Dictionary<string, Base>>(json, Converter.Settings);
         }
 
-        public static class Converter
+        internal static class Converter
         {
             public static readonly JsonSerializerSettings Settings = new JsonSerializerSettings
             {
                 MetadataPropertyHandling = MetadataPropertyHandling.Ignore,
                 DateParseHandling = DateParseHandling.None,
                 Converters = {
+                AllowSpawnOnLocationConverter.Singleton,
+                ArmorMaterialConverter.Singleton,
                 BackgroundColorConverter.Singleton,
+                BuffsUnionConverter.Singleton,
                 CartridgeNameConverter.Singleton,
                 CartridgeProtoConverter.Singleton,
                 ChamberNameConverter.Singleton,
                 ChamberProtoConverter.Singleton,
+                DeafStrengthConverter.Singleton,
+                FaceShieldMaskConverter.Singleton,
+                FoldedSlotConverter.Singleton,
+                GridLayoutNameConverter.Singleton,
+                NameUnionConverter.Singleton,
+                NameNameConverter.Singleton,
                 GridProtoConverter.Singleton,
+                MaterialTypeConverter.Singleton,
                 RarityConverter.Singleton,
-                ReloadModeConverter.Singleton,
+                ReloadMConverter.Singleton,
+                TracerColorConverter.Singleton,
+                UnlootableFromSideConverter.Singleton,
+                UnlootableFromSlotConverter.Singleton,
                 AmmoSfxConverter.Singleton,
                 AmmoTypeConverter.Singleton,
-                ArmorClassConverter.Singleton,
+                ArmorZoneConverter.Singleton,
                 CasingSoundsConverter.Singleton,
-                FoodEffectTypeConverter.Singleton,
                 DEffectTypeConverter.Singleton,
+                HeadSegmentConverter.Singleton,
                 MuzzleModTypeConverter.Singleton,
                 SightModTypeConverter.Singleton,
-                SpawnRarityConverter.Singleton,
+                WeapClassConverter.Singleton,
                 WeapFireTypeConverter.Singleton,
                 WeapUseTypeConverter.Singleton,
                 TypeEnumConverter.Singleton,
                 new IsoDateTimeConverter { DateTimeStyles = DateTimeStyles.AssumeUniversal }
             },
             };
+        }
+
+        internal class AllowSpawnOnLocationConverter : JsonConverter
+        {
+            public override bool CanConvert(Type t) => t == typeof(AllowSpawnOnLocation) || t == typeof(AllowSpawnOnLocation?);
+
+            public override object ReadJson(JsonReader reader, Type t, object existingValue, JsonSerializer serializer)
+            {
+                if (reader.TokenType == JsonToken.Null) return null;
+                var value = serializer.Deserialize<string>(reader);
+                switch (value)
+                {
+                    case "Shoreline":
+                        return AllowSpawnOnLocation.Shoreline;
+                    case "laboratory":
+                        return AllowSpawnOnLocation.Laboratory;
+                }
+                throw new Exception("Cannot unmarshal type AllowSpawnOnLocation");
+            }
+
+            public override void WriteJson(JsonWriter writer, object untypedValue, JsonSerializer serializer)
+            {
+                if (untypedValue == null)
+                {
+                    serializer.Serialize(writer, null);
+                    return;
+                }
+                var value = (AllowSpawnOnLocation)untypedValue;
+                switch (value)
+                {
+                    case AllowSpawnOnLocation.Shoreline:
+                        serializer.Serialize(writer, "Shoreline");
+                        return;
+                    case AllowSpawnOnLocation.Laboratory:
+                        serializer.Serialize(writer, "laboratory");
+                        return;
+                }
+                throw new Exception("Cannot marshal type AllowSpawnOnLocation");
+            }
+
+            public static readonly AllowSpawnOnLocationConverter Singleton = new AllowSpawnOnLocationConverter();
+        }
+
+        internal class ArmorMaterialConverter : JsonConverter
+        {
+            public override bool CanConvert(Type t) => t == typeof(ArmorMaterial) || t == typeof(ArmorMaterial?);
+
+            public override object ReadJson(JsonReader reader, Type t, object existingValue, JsonSerializer serializer)
+            {
+                if (reader.TokenType == JsonToken.Null) return null;
+                var value = serializer.Deserialize<string>(reader);
+                switch (value)
+                {
+                    case "Aluminium":
+                        return ArmorMaterial.Aluminium;
+                    case "Aramid":
+                        return ArmorMaterial.Aramid;
+                    case "ArmoredSteel":
+                        return ArmorMaterial.ArmoredSteel;
+                    case "Ceramic":
+                        return ArmorMaterial.Ceramic;
+                    case "Combined":
+                        return ArmorMaterial.Combined;
+                    case "Glass":
+                        return ArmorMaterial.Glass;
+                    case "Titan":
+                        return ArmorMaterial.Titan;
+                    case "UHMWPE":
+                        return ArmorMaterial.Uhmwpe;
+                }
+                throw new Exception("Cannot unmarshal type ArmorMaterial");
+            }
+
+            public override void WriteJson(JsonWriter writer, object untypedValue, JsonSerializer serializer)
+            {
+                if (untypedValue == null)
+                {
+                    serializer.Serialize(writer, null);
+                    return;
+                }
+                var value = (ArmorMaterial)untypedValue;
+                switch (value)
+                {
+                    case ArmorMaterial.Aluminium:
+                        serializer.Serialize(writer, "Aluminium");
+                        return;
+                    case ArmorMaterial.Aramid:
+                        serializer.Serialize(writer, "Aramid");
+                        return;
+                    case ArmorMaterial.ArmoredSteel:
+                        serializer.Serialize(writer, "ArmoredSteel");
+                        return;
+                    case ArmorMaterial.Ceramic:
+                        serializer.Serialize(writer, "Ceramic");
+                        return;
+                    case ArmorMaterial.Combined:
+                        serializer.Serialize(writer, "Combined");
+                        return;
+                    case ArmorMaterial.Glass:
+                        serializer.Serialize(writer, "Glass");
+                        return;
+                    case ArmorMaterial.Titan:
+                        serializer.Serialize(writer, "Titan");
+                        return;
+                    case ArmorMaterial.Uhmwpe:
+                        serializer.Serialize(writer, "UHMWPE");
+                        return;
+                }
+                throw new Exception("Cannot marshal type ArmorMaterial");
+            }
+
+            public static readonly ArmorMaterialConverter Singleton = new ArmorMaterialConverter();
         }
 
         internal class BackgroundColorConverter : JsonConverter
@@ -964,8 +1450,6 @@ namespace ServerLib.Json.Classes
                         return BackgroundColor.Grey;
                     case "orange":
                         return BackgroundColor.Orange;
-                    case "red":
-                        return BackgroundColor.Red;
                     case "violet":
                         return BackgroundColor.Violet;
                     case "yellow":
@@ -1002,9 +1486,6 @@ namespace ServerLib.Json.Classes
                     case BackgroundColor.Orange:
                         serializer.Serialize(writer, "orange");
                         return;
-                    case BackgroundColor.Red:
-                        serializer.Serialize(writer, "red");
-                        return;
                     case BackgroundColor.Violet:
                         serializer.Serialize(writer, "violet");
                         return;
@@ -1016,6 +1497,43 @@ namespace ServerLib.Json.Classes
             }
 
             public static readonly BackgroundColorConverter Singleton = new BackgroundColorConverter();
+        }
+
+        internal class BuffsUnionConverter : JsonConverter
+        {
+            public override bool CanConvert(Type t) => t == typeof(BuffsUnion) || t == typeof(BuffsUnion?);
+
+            public override object ReadJson(JsonReader reader, Type t, object existingValue, JsonSerializer serializer)
+            {
+                switch (reader.TokenType)
+                {
+                    case JsonToken.StartObject:
+                        var objectValue = serializer.Deserialize<BuffsClass>(reader);
+                        return new BuffsUnion { BuffsClass = objectValue };
+                    case JsonToken.StartArray:
+                        var arrayValue = serializer.Deserialize<Buff[]>(reader);
+                        return new BuffsUnion { BuffArray = arrayValue };
+                }
+                throw new Exception("Cannot unmarshal type BuffsUnion");
+            }
+
+            public override void WriteJson(JsonWriter writer, object untypedValue, JsonSerializer serializer)
+            {
+                var value = (BuffsUnion)untypedValue;
+                if (value.BuffArray != null)
+                {
+                    serializer.Serialize(writer, value.BuffArray);
+                    return;
+                }
+                if (value.BuffsClass != null)
+                {
+                    serializer.Serialize(writer, value.BuffsClass);
+                    return;
+                }
+                throw new Exception("Cannot marshal type BuffsUnion");
+            }
+
+            public static readonly BuffsUnionConverter Singleton = new BuffsUnionConverter();
         }
 
         internal class CartridgeNameConverter : JsonConverter
@@ -1094,14 +1612,9 @@ namespace ServerLib.Json.Classes
             {
                 if (reader.TokenType == JsonToken.Null) return null;
                 var value = serializer.Deserialize<string>(reader);
-                switch (value)
+                if (value == "patron_in_weapon")
                 {
-                    case "patron_in_weapon":
-                        return ChamberName.PatronInWeapon;
-                    case "patron_in_weapon001":
-                        return ChamberName.PatronInWeapon001;
-                    case "patron_in_weapon002":
-                        return ChamberName.PatronInWeapon002;
+                    return ChamberName.PatronInWeapon;
                 }
                 throw new Exception("Cannot unmarshal type ChamberName");
             }
@@ -1114,17 +1627,10 @@ namespace ServerLib.Json.Classes
                     return;
                 }
                 var value = (ChamberName)untypedValue;
-                switch (value)
+                if (value == ChamberName.PatronInWeapon)
                 {
-                    case ChamberName.PatronInWeapon:
-                        serializer.Serialize(writer, "patron_in_weapon");
-                        return;
-                    case ChamberName.PatronInWeapon001:
-                        serializer.Serialize(writer, "patron_in_weapon001");
-                        return;
-                    case ChamberName.PatronInWeapon002:
-                        serializer.Serialize(writer, "patron_in_weapon002");
-                        return;
+                    serializer.Serialize(writer, "patron_in_weapon");
+                    return;
                 }
                 throw new Exception("Cannot marshal type ChamberName");
             }
@@ -1183,6 +1689,335 @@ namespace ServerLib.Json.Classes
             public static readonly ChamberProtoConverter Singleton = new ChamberProtoConverter();
         }
 
+        internal class DeafStrengthConverter : JsonConverter
+        {
+            public override bool CanConvert(Type t) => t == typeof(DeafStrength) || t == typeof(DeafStrength?);
+
+            public override object ReadJson(JsonReader reader, Type t, object existingValue, JsonSerializer serializer)
+            {
+                if (reader.TokenType == JsonToken.Null) return null;
+                var value = serializer.Deserialize<string>(reader);
+                switch (value)
+                {
+                    case "High":
+                        return DeafStrength.High;
+                    case "Low":
+                        return DeafStrength.Low;
+                    case "None":
+                        return DeafStrength.None;
+                }
+                throw new Exception("Cannot unmarshal type DeafStrength");
+            }
+
+            public override void WriteJson(JsonWriter writer, object untypedValue, JsonSerializer serializer)
+            {
+                if (untypedValue == null)
+                {
+                    serializer.Serialize(writer, null);
+                    return;
+                }
+                var value = (DeafStrength)untypedValue;
+                switch (value)
+                {
+                    case DeafStrength.High:
+                        serializer.Serialize(writer, "High");
+                        return;
+                    case DeafStrength.Low:
+                        serializer.Serialize(writer, "Low");
+                        return;
+                    case DeafStrength.None:
+                        serializer.Serialize(writer, "None");
+                        return;
+                }
+                throw new Exception("Cannot marshal type DeafStrength");
+            }
+
+            public static readonly DeafStrengthConverter Singleton = new DeafStrengthConverter();
+        }
+
+        internal class FaceShieldMaskConverter : JsonConverter
+        {
+            public override bool CanConvert(Type t) => t == typeof(FaceShieldMask) || t == typeof(FaceShieldMask?);
+
+            public override object ReadJson(JsonReader reader, Type t, object existingValue, JsonSerializer serializer)
+            {
+                if (reader.TokenType == JsonToken.Null) return null;
+                var value = serializer.Deserialize<string>(reader);
+                switch (value)
+                {
+                    case "Narrow":
+                        return FaceShieldMask.Narrow;
+                    case "NoMask":
+                        return FaceShieldMask.NoMask;
+                    case "Wide":
+                        return FaceShieldMask.Wide;
+                }
+                throw new Exception("Cannot unmarshal type FaceShieldMask");
+            }
+
+            public override void WriteJson(JsonWriter writer, object untypedValue, JsonSerializer serializer)
+            {
+                if (untypedValue == null)
+                {
+                    serializer.Serialize(writer, null);
+                    return;
+                }
+                var value = (FaceShieldMask)untypedValue;
+                switch (value)
+                {
+                    case FaceShieldMask.Narrow:
+                        serializer.Serialize(writer, "Narrow");
+                        return;
+                    case FaceShieldMask.NoMask:
+                        serializer.Serialize(writer, "NoMask");
+                        return;
+                    case FaceShieldMask.Wide:
+                        serializer.Serialize(writer, "Wide");
+                        return;
+                }
+                throw new Exception("Cannot marshal type FaceShieldMask");
+            }
+
+            public static readonly FaceShieldMaskConverter Singleton = new FaceShieldMaskConverter();
+        }
+
+        internal class FoldedSlotConverter : JsonConverter
+        {
+            public override bool CanConvert(Type t) => t == typeof(FoldedSlot) || t == typeof(FoldedSlot?);
+
+            public override object ReadJson(JsonReader reader, Type t, object existingValue, JsonSerializer serializer)
+            {
+                if (reader.TokenType == JsonToken.Null) return null;
+                var value = serializer.Deserialize<string>(reader);
+                switch (value)
+                {
+                    case "":
+                        return FoldedSlot.Empty;
+                    case "mod_stock":
+                        return FoldedSlot.ModStock;
+                    case "mod_stock_001":
+                        return FoldedSlot.ModStock001;
+                    case "mod_stock_akms":
+                        return FoldedSlot.ModStockAkms;
+                }
+                throw new Exception("Cannot unmarshal type FoldedSlot");
+            }
+
+            public override void WriteJson(JsonWriter writer, object untypedValue, JsonSerializer serializer)
+            {
+                if (untypedValue == null)
+                {
+                    serializer.Serialize(writer, null);
+                    return;
+                }
+                var value = (FoldedSlot)untypedValue;
+                switch (value)
+                {
+                    case FoldedSlot.Empty:
+                        serializer.Serialize(writer, "");
+                        return;
+                    case FoldedSlot.ModStock:
+                        serializer.Serialize(writer, "mod_stock");
+                        return;
+                    case FoldedSlot.ModStock001:
+                        serializer.Serialize(writer, "mod_stock_001");
+                        return;
+                    case FoldedSlot.ModStockAkms:
+                        serializer.Serialize(writer, "mod_stock_akms");
+                        return;
+                }
+                throw new Exception("Cannot marshal type FoldedSlot");
+            }
+
+            public static readonly FoldedSlotConverter Singleton = new FoldedSlotConverter();
+        }
+
+        internal class GridLayoutNameConverter : JsonConverter
+        {
+            public override bool CanConvert(Type t) => t == typeof(GridLayoutName) || t == typeof(GridLayoutName?);
+
+            public override object ReadJson(JsonReader reader, Type t, object existingValue, JsonSerializer serializer)
+            {
+                if (reader.TokenType == JsonToken.Null) return null;
+                var value = serializer.Deserialize<string>(reader);
+                switch (value)
+                {
+                    case "":
+                        return GridLayoutName.Empty;
+                    case "Paratus":
+                        return GridLayoutName.Paratus;
+                }
+                throw new Exception("Cannot unmarshal type GridLayoutName");
+            }
+
+            public override void WriteJson(JsonWriter writer, object untypedValue, JsonSerializer serializer)
+            {
+                if (untypedValue == null)
+                {
+                    serializer.Serialize(writer, null);
+                    return;
+                }
+                var value = (GridLayoutName)untypedValue;
+                switch (value)
+                {
+                    case GridLayoutName.Empty:
+                        serializer.Serialize(writer, "");
+                        return;
+                    case GridLayoutName.Paratus:
+                        serializer.Serialize(writer, "Paratus");
+                        return;
+                }
+                throw new Exception("Cannot marshal type GridLayoutName");
+            }
+
+            public static readonly GridLayoutNameConverter Singleton = new GridLayoutNameConverter();
+        }
+
+        internal class NameUnionConverter : JsonConverter
+        {
+            public override bool CanConvert(Type t) => t == typeof(NameUnion) || t == typeof(NameUnion?);
+
+            public override object ReadJson(JsonReader reader, Type t, object existingValue, JsonSerializer serializer)
+            {
+                switch (reader.TokenType)
+                {
+                    case JsonToken.String:
+                    case JsonToken.Date:
+                        var stringValue = serializer.Deserialize<string>(reader);
+                        switch (stringValue)
+                        {
+                            case "hideout":
+                                return new NameUnion { Enum = NameName.Hideout };
+                            case "main":
+                                return new NameUnion { Enum = NameName.Main };
+                            case "pocket1":
+                                return new NameUnion { Enum = NameName.Pocket1 };
+                            case "pocket2":
+                                return new NameUnion { Enum = NameName.Pocket2 };
+                            case "pocket3":
+                                return new NameUnion { Enum = NameName.Pocket3 };
+                            case "pocket4":
+                                return new NameUnion { Enum = NameName.Pocket4 };
+                            case "pocket5":
+                                return new NameUnion { Enum = NameName.Pocket5 };
+                        }
+                        long l;
+                        if (Int64.TryParse(stringValue, out l))
+                        {
+                            return new NameUnion { Integer = l };
+                        }
+                        break;
+                }
+                throw new Exception("Cannot unmarshal type NameUnion");
+            }
+
+            public override void WriteJson(JsonWriter writer, object untypedValue, JsonSerializer serializer)
+            {
+                var value = (NameUnion)untypedValue;
+                if (value.Enum != null)
+                {
+                    switch (value.Enum)
+                    {
+                        case NameName.Hideout:
+                            serializer.Serialize(writer, "hideout");
+                            return;
+                        case NameName.Main:
+                            serializer.Serialize(writer, "main");
+                            return;
+                        case NameName.Pocket1:
+                            serializer.Serialize(writer, "pocket1");
+                            return;
+                        case NameName.Pocket2:
+                            serializer.Serialize(writer, "pocket2");
+                            return;
+                        case NameName.Pocket3:
+                            serializer.Serialize(writer, "pocket3");
+                            return;
+                        case NameName.Pocket4:
+                            serializer.Serialize(writer, "pocket4");
+                            return;
+                        case NameName.Pocket5:
+                            serializer.Serialize(writer, "pocket5");
+                            return;
+                    }
+                }
+                if (value.Integer != null)
+                {
+                    serializer.Serialize(writer, value.Integer.Value.ToString());
+                    return;
+                }
+                throw new Exception("Cannot marshal type NameUnion");
+            }
+
+            public static readonly NameUnionConverter Singleton = new NameUnionConverter();
+        }
+
+        internal class NameNameConverter : JsonConverter
+        {
+            public override bool CanConvert(Type t) => t == typeof(NameName) || t == typeof(NameName?);
+
+            public override object ReadJson(JsonReader reader, Type t, object existingValue, JsonSerializer serializer)
+            {
+                if (reader.TokenType == JsonToken.Null) return null;
+                var value = serializer.Deserialize<string>(reader);
+                switch (value)
+                {
+                    case "hideout":
+                        return NameName.Hideout;
+                    case "main":
+                        return NameName.Main;
+                    case "pocket1":
+                        return NameName.Pocket1;
+                    case "pocket2":
+                        return NameName.Pocket2;
+                    case "pocket3":
+                        return NameName.Pocket3;
+                    case "pocket4":
+                        return NameName.Pocket4;
+                    case "pocket5":
+                        return NameName.Pocket5;
+                }
+                throw new Exception("Cannot unmarshal type NameName");
+            }
+
+            public override void WriteJson(JsonWriter writer, object untypedValue, JsonSerializer serializer)
+            {
+                if (untypedValue == null)
+                {
+                    serializer.Serialize(writer, null);
+                    return;
+                }
+                var value = (NameName)untypedValue;
+                switch (value)
+                {
+                    case NameName.Hideout:
+                        serializer.Serialize(writer, "hideout");
+                        return;
+                    case NameName.Main:
+                        serializer.Serialize(writer, "main");
+                        return;
+                    case NameName.Pocket1:
+                        serializer.Serialize(writer, "pocket1");
+                        return;
+                    case NameName.Pocket2:
+                        serializer.Serialize(writer, "pocket2");
+                        return;
+                    case NameName.Pocket3:
+                        serializer.Serialize(writer, "pocket3");
+                        return;
+                    case NameName.Pocket4:
+                        serializer.Serialize(writer, "pocket4");
+                        return;
+                    case NameName.Pocket5:
+                        serializer.Serialize(writer, "pocket5");
+                        return;
+                }
+                throw new Exception("Cannot marshal type NameName");
+            }
+
+            public static readonly NameNameConverter Singleton = new NameNameConverter();
+        }
+
         internal class GridProtoConverter : JsonConverter
         {
             public override bool CanConvert(Type t) => t == typeof(GridProto) || t == typeof(GridProto?);
@@ -1215,6 +2050,52 @@ namespace ServerLib.Json.Classes
             }
 
             public static readonly GridProtoConverter Singleton = new GridProtoConverter();
+        }
+
+        internal class MaterialTypeConverter : JsonConverter
+        {
+            public override bool CanConvert(Type t) => t == typeof(MaterialType) || t == typeof(MaterialType?);
+
+            public override object ReadJson(JsonReader reader, Type t, object existingValue, JsonSerializer serializer)
+            {
+                if (reader.TokenType == JsonToken.Null) return null;
+                var value = serializer.Deserialize<string>(reader);
+                switch (value)
+                {
+                    case "BodyArmor":
+                        return MaterialType.BodyArmor;
+                    case "GlassVisor":
+                        return MaterialType.GlassVisor;
+                    case "Helmet":
+                        return MaterialType.Helmet;
+                }
+                throw new Exception("Cannot unmarshal type MaterialType");
+            }
+
+            public override void WriteJson(JsonWriter writer, object untypedValue, JsonSerializer serializer)
+            {
+                if (untypedValue == null)
+                {
+                    serializer.Serialize(writer, null);
+                    return;
+                }
+                var value = (MaterialType)untypedValue;
+                switch (value)
+                {
+                    case MaterialType.BodyArmor:
+                        serializer.Serialize(writer, "BodyArmor");
+                        return;
+                    case MaterialType.GlassVisor:
+                        serializer.Serialize(writer, "GlassVisor");
+                        return;
+                    case MaterialType.Helmet:
+                        serializer.Serialize(writer, "Helmet");
+                        return;
+                }
+                throw new Exception("Cannot marshal type MaterialType");
+            }
+
+            public static readonly MaterialTypeConverter Singleton = new MaterialTypeConverter();
         }
 
         internal class RarityConverter : JsonConverter
@@ -1268,9 +2149,9 @@ namespace ServerLib.Json.Classes
             public static readonly RarityConverter Singleton = new RarityConverter();
         }
 
-        internal class ReloadModeConverter : JsonConverter
+        internal class ReloadMConverter : JsonConverter
         {
-            public override bool CanConvert(Type t) => t == typeof(ReloadMode) || t == typeof(ReloadMode?);
+            public override bool CanConvert(Type t) => t == typeof(ReloadM) || t == typeof(ReloadM?);
 
             public override object ReadJson(JsonReader reader, Type t, object existingValue, JsonSerializer serializer)
             {
@@ -1279,13 +2160,11 @@ namespace ServerLib.Json.Classes
                 switch (value)
                 {
                     case "ExternalMagazine":
-                        return ReloadMode.ExternalMagazine;
+                        return ReloadM.ExternalMagazine;
                     case "InternalMagazine":
-                        return ReloadMode.InternalMagazine;
-                    case "OnlyBarrel":
-                        return ReloadMode.OnlyBarrel;
+                        return ReloadM.InternalMagazine;
                 }
-                throw new Exception("Cannot unmarshal type ReloadMode");
+                throw new Exception("Cannot unmarshal type ReloadM");
             }
 
             public override void WriteJson(JsonWriter writer, object untypedValue, JsonSerializer serializer)
@@ -1295,23 +2174,163 @@ namespace ServerLib.Json.Classes
                     serializer.Serialize(writer, null);
                     return;
                 }
-                var value = (ReloadMode)untypedValue;
+                var value = (ReloadM)untypedValue;
                 switch (value)
                 {
-                    case ReloadMode.ExternalMagazine:
+                    case ReloadM.ExternalMagazine:
                         serializer.Serialize(writer, "ExternalMagazine");
                         return;
-                    case ReloadMode.InternalMagazine:
+                    case ReloadM.InternalMagazine:
                         serializer.Serialize(writer, "InternalMagazine");
                         return;
-                    case ReloadMode.OnlyBarrel:
-                        serializer.Serialize(writer, "OnlyBarrel");
-                        return;
                 }
-                throw new Exception("Cannot marshal type ReloadMode");
+                throw new Exception("Cannot marshal type ReloadM");
             }
 
-            public static readonly ReloadModeConverter Singleton = new ReloadModeConverter();
+            public static readonly ReloadMConverter Singleton = new ReloadMConverter();
+        }
+
+        internal class TracerColorConverter : JsonConverter
+        {
+            public override bool CanConvert(Type t) => t == typeof(TracerColor) || t == typeof(TracerColor?);
+
+            public override object ReadJson(JsonReader reader, Type t, object existingValue, JsonSerializer serializer)
+            {
+                if (reader.TokenType == JsonToken.Null) return null;
+                var value = serializer.Deserialize<string>(reader);
+                switch (value)
+                {
+                    case "green":
+                        return TracerColor.Green;
+                    case "red":
+                        return TracerColor.Red;
+                    case "tracerGreen":
+                        return TracerColor.TracerGreen;
+                    case "tracerRed":
+                        return TracerColor.TracerRed;
+                    case "tracerYellow":
+                        return TracerColor.TracerYellow;
+                }
+                throw new Exception("Cannot unmarshal type TracerColor");
+            }
+
+            public override void WriteJson(JsonWriter writer, object untypedValue, JsonSerializer serializer)
+            {
+                if (untypedValue == null)
+                {
+                    serializer.Serialize(writer, null);
+                    return;
+                }
+                var value = (TracerColor)untypedValue;
+                switch (value)
+                {
+                    case TracerColor.Green:
+                        serializer.Serialize(writer, "green");
+                        return;
+                    case TracerColor.Red:
+                        serializer.Serialize(writer, "red");
+                        return;
+                    case TracerColor.TracerGreen:
+                        serializer.Serialize(writer, "tracerGreen");
+                        return;
+                    case TracerColor.TracerRed:
+                        serializer.Serialize(writer, "tracerRed");
+                        return;
+                    case TracerColor.TracerYellow:
+                        serializer.Serialize(writer, "tracerYellow");
+                        return;
+                }
+                throw new Exception("Cannot marshal type TracerColor");
+            }
+
+            public static readonly TracerColorConverter Singleton = new TracerColorConverter();
+        }
+
+        internal class UnlootableFromSideConverter : JsonConverter
+        {
+            public override bool CanConvert(Type t) => t == typeof(UnlootableFromSide) || t == typeof(UnlootableFromSide?);
+
+            public override object ReadJson(JsonReader reader, Type t, object existingValue, JsonSerializer serializer)
+            {
+                if (reader.TokenType == JsonToken.Null) return null;
+                var value = serializer.Deserialize<string>(reader);
+                switch (value)
+                {
+                    case "Bear":
+                        return UnlootableFromSide.Bear;
+                    case "Savage":
+                        return UnlootableFromSide.Savage;
+                    case "Usec":
+                        return UnlootableFromSide.Usec;
+                }
+                throw new Exception("Cannot unmarshal type UnlootableFromSide");
+            }
+
+            public override void WriteJson(JsonWriter writer, object untypedValue, JsonSerializer serializer)
+            {
+                if (untypedValue == null)
+                {
+                    serializer.Serialize(writer, null);
+                    return;
+                }
+                var value = (UnlootableFromSide)untypedValue;
+                switch (value)
+                {
+                    case UnlootableFromSide.Bear:
+                        serializer.Serialize(writer, "Bear");
+                        return;
+                    case UnlootableFromSide.Savage:
+                        serializer.Serialize(writer, "Savage");
+                        return;
+                    case UnlootableFromSide.Usec:
+                        serializer.Serialize(writer, "Usec");
+                        return;
+                }
+                throw new Exception("Cannot marshal type UnlootableFromSide");
+            }
+
+            public static readonly UnlootableFromSideConverter Singleton = new UnlootableFromSideConverter();
+        }
+
+        internal class UnlootableFromSlotConverter : JsonConverter
+        {
+            public override bool CanConvert(Type t) => t == typeof(UnlootableFromSlot) || t == typeof(UnlootableFromSlot?);
+
+            public override object ReadJson(JsonReader reader, Type t, object existingValue, JsonSerializer serializer)
+            {
+                if (reader.TokenType == JsonToken.Null) return null;
+                var value = serializer.Deserialize<string>(reader);
+                switch (value)
+                {
+                    case "FirstPrimaryWeapon":
+                        return UnlootableFromSlot.FirstPrimaryWeapon;
+                    case "Scabbard":
+                        return UnlootableFromSlot.Scabbard;
+                }
+                throw new Exception("Cannot unmarshal type UnlootableFromSlot");
+            }
+
+            public override void WriteJson(JsonWriter writer, object untypedValue, JsonSerializer serializer)
+            {
+                if (untypedValue == null)
+                {
+                    serializer.Serialize(writer, null);
+                    return;
+                }
+                var value = (UnlootableFromSlot)untypedValue;
+                switch (value)
+                {
+                    case UnlootableFromSlot.FirstPrimaryWeapon:
+                        serializer.Serialize(writer, "FirstPrimaryWeapon");
+                        return;
+                    case UnlootableFromSlot.Scabbard:
+                        serializer.Serialize(writer, "Scabbard");
+                        return;
+                }
+                throw new Exception("Cannot marshal type UnlootableFromSlot");
+            }
+
+            public static readonly UnlootableFromSlotConverter Singleton = new UnlootableFromSlotConverter();
         }
 
         internal class AmmoSfxConverter : JsonConverter
@@ -1406,47 +2425,110 @@ namespace ServerLib.Json.Classes
             public static readonly AmmoTypeConverter Singleton = new AmmoTypeConverter();
         }
 
-        internal class ArmorClassConverter : JsonConverter
+        internal class DecodingChoiceConverter : JsonConverter
         {
-            public override bool CanConvert(Type t) => t == typeof(ArmorClass) || t == typeof(ArmorClass?);
+            public override bool CanConvert(Type t) => t == typeof(long) || t == typeof(long?);
 
             public override object ReadJson(JsonReader reader, Type t, object existingValue, JsonSerializer serializer)
             {
+                if (reader.TokenType == JsonToken.Null) return null;
                 switch (reader.TokenType)
                 {
-                    case JsonToken.Boolean:
-                        var boolValue = serializer.Deserialize<bool>(reader);
-                        return new ArmorClass { Bool = boolValue };
+                    case JsonToken.Integer:
+                        var integerValue = serializer.Deserialize<long>(reader);
+                        return integerValue;
                     case JsonToken.String:
                     case JsonToken.Date:
                         var stringValue = serializer.Deserialize<string>(reader);
                         long l;
                         if (Int64.TryParse(stringValue, out l))
                         {
-                            return new ArmorClass { Integer = l };
+                            return l;
                         }
                         break;
                 }
-                throw new Exception("Cannot unmarshal type ArmorClass");
+                throw new Exception("Cannot unmarshal type long");
             }
 
             public override void WriteJson(JsonWriter writer, object untypedValue, JsonSerializer serializer)
             {
-                var value = (ArmorClass)untypedValue;
-                if (value.Bool != null)
+                if (untypedValue == null)
                 {
-                    serializer.Serialize(writer, value.Bool.Value);
+                    serializer.Serialize(writer, null);
                     return;
                 }
-                if (value.Integer != null)
-                {
-                    serializer.Serialize(writer, value.Integer.Value.ToString());
-                    return;
-                }
-                throw new Exception("Cannot marshal type ArmorClass");
+                var value = (long)untypedValue;
+                serializer.Serialize(writer, value);
+                return;
             }
 
-            public static readonly ArmorClassConverter Singleton = new ArmorClassConverter();
+            public static readonly DecodingChoiceConverter Singleton = new DecodingChoiceConverter();
+        }
+
+        internal class ArmorZoneConverter : JsonConverter
+        {
+            public override bool CanConvert(Type t) => t == typeof(ArmorZone) || t == typeof(ArmorZone?);
+
+            public override object ReadJson(JsonReader reader, Type t, object existingValue, JsonSerializer serializer)
+            {
+                if (reader.TokenType == JsonToken.Null) return null;
+                var value = serializer.Deserialize<string>(reader);
+                switch (value)
+                {
+                    case "Chest":
+                        return ArmorZone.Chest;
+                    case "Head":
+                        return ArmorZone.Head;
+                    case "LeftArm":
+                        return ArmorZone.LeftArm;
+                    case "LeftLeg":
+                        return ArmorZone.LeftLeg;
+                    case "RightArm":
+                        return ArmorZone.RightArm;
+                    case "RightLeg":
+                        return ArmorZone.RightLeg;
+                    case "Stomach":
+                        return ArmorZone.Stomach;
+                }
+                throw new Exception("Cannot unmarshal type ArmorZone");
+            }
+
+            public override void WriteJson(JsonWriter writer, object untypedValue, JsonSerializer serializer)
+            {
+                if (untypedValue == null)
+                {
+                    serializer.Serialize(writer, null);
+                    return;
+                }
+                var value = (ArmorZone)untypedValue;
+                switch (value)
+                {
+                    case ArmorZone.Chest:
+                        serializer.Serialize(writer, "Chest");
+                        return;
+                    case ArmorZone.Head:
+                        serializer.Serialize(writer, "Head");
+                        return;
+                    case ArmorZone.LeftArm:
+                        serializer.Serialize(writer, "LeftArm");
+                        return;
+                    case ArmorZone.LeftLeg:
+                        serializer.Serialize(writer, "LeftLeg");
+                        return;
+                    case ArmorZone.RightArm:
+                        serializer.Serialize(writer, "RightArm");
+                        return;
+                    case ArmorZone.RightLeg:
+                        serializer.Serialize(writer, "RightLeg");
+                        return;
+                    case ArmorZone.Stomach:
+                        serializer.Serialize(writer, "Stomach");
+                        return;
+                }
+                throw new Exception("Cannot marshal type ArmorZone");
+            }
+
+            public static readonly ArmorZoneConverter Singleton = new ArmorZoneConverter();
         }
 
         internal class CasingSoundsConverter : JsonConverter
@@ -1505,58 +2587,6 @@ namespace ServerLib.Json.Classes
             public static readonly CasingSoundsConverter Singleton = new CasingSoundsConverter();
         }
 
-        internal class FoodEffectTypeConverter : JsonConverter
-        {
-            public override bool CanConvert(Type t) => t == typeof(FoodEffectType) || t == typeof(FoodEffectType?);
-
-            public override object ReadJson(JsonReader reader, Type t, object existingValue, JsonSerializer serializer)
-            {
-                switch (reader.TokenType)
-                {
-                    case JsonToken.Boolean:
-                        var boolValue = serializer.Deserialize<bool>(reader);
-                        return new FoodEffectType { Bool = boolValue };
-                    case JsonToken.String:
-                    case JsonToken.Date:
-                        var stringValue = serializer.Deserialize<string>(reader);
-                        switch (stringValue)
-                        {
-                            case "afterUse":
-                                return new FoodEffectType { Enum = DEffectType.AfterUse };
-                            case "duringUse":
-                                return new FoodEffectType { Enum = DEffectType.DuringUse };
-                        }
-                        break;
-                }
-                throw new Exception("Cannot unmarshal type FoodEffectType");
-            }
-
-            public override void WriteJson(JsonWriter writer, object untypedValue, JsonSerializer serializer)
-            {
-                var value = (FoodEffectType)untypedValue;
-                if (value.Bool != null)
-                {
-                    serializer.Serialize(writer, value.Bool.Value);
-                    return;
-                }
-                if (value.Enum != null)
-                {
-                    switch (value.Enum)
-                    {
-                        case DEffectType.AfterUse:
-                            serializer.Serialize(writer, "afterUse");
-                            return;
-                        case DEffectType.DuringUse:
-                            serializer.Serialize(writer, "duringUse");
-                            return;
-                    }
-                }
-                throw new Exception("Cannot marshal type FoodEffectType");
-            }
-
-            public static readonly FoodEffectTypeConverter Singleton = new FoodEffectTypeConverter();
-        }
-
         internal class DEffectTypeConverter : JsonConverter
         {
             public override bool CanConvert(Type t) => t == typeof(DEffectType) || t == typeof(DEffectType?);
@@ -1598,37 +2628,111 @@ namespace ServerLib.Json.Classes
             public static readonly DEffectTypeConverter Singleton = new DEffectTypeConverter();
         }
 
+        internal class HeadSegmentConverter : JsonConverter
+        {
+            public override bool CanConvert(Type t) => t == typeof(HeadSegment) || t == typeof(HeadSegment?);
+
+            public override object ReadJson(JsonReader reader, Type t, object existingValue, JsonSerializer serializer)
+            {
+                if (reader.TokenType == JsonToken.Null) return null;
+                var value = serializer.Deserialize<string>(reader);
+                switch (value)
+                {
+                    case "Ears":
+                        return HeadSegment.Ears;
+                    case "Eyes":
+                        return HeadSegment.Eyes;
+                    case "Jaws":
+                        return HeadSegment.Jaws;
+                    case "Nape":
+                        return HeadSegment.Nape;
+                    case "Top":
+                        return HeadSegment.Top;
+                }
+                throw new Exception("Cannot unmarshal type HeadSegment");
+            }
+
+            public override void WriteJson(JsonWriter writer, object untypedValue, JsonSerializer serializer)
+            {
+                if (untypedValue == null)
+                {
+                    serializer.Serialize(writer, null);
+                    return;
+                }
+                var value = (HeadSegment)untypedValue;
+                switch (value)
+                {
+                    case HeadSegment.Ears:
+                        serializer.Serialize(writer, "Ears");
+                        return;
+                    case HeadSegment.Eyes:
+                        serializer.Serialize(writer, "Eyes");
+                        return;
+                    case HeadSegment.Jaws:
+                        serializer.Serialize(writer, "Jaws");
+                        return;
+                    case HeadSegment.Nape:
+                        serializer.Serialize(writer, "Nape");
+                        return;
+                    case HeadSegment.Top:
+                        serializer.Serialize(writer, "Top");
+                        return;
+                }
+                throw new Exception("Cannot marshal type HeadSegment");
+            }
+
+            public static readonly HeadSegmentConverter Singleton = new HeadSegmentConverter();
+        }
+
         internal class MuzzleModTypeConverter : JsonConverter
         {
             public override bool CanConvert(Type t) => t == typeof(MuzzleModType) || t == typeof(MuzzleModType?);
 
             public override object ReadJson(JsonReader reader, Type t, object existingValue, JsonSerializer serializer)
             {
-                switch (reader.TokenType)
+                if (reader.TokenType == JsonToken.Null) return null;
+                var value = serializer.Deserialize<string>(reader);
+                switch (value)
                 {
-                    case JsonToken.Boolean:
-                        var boolValue = serializer.Deserialize<bool>(reader);
-                        return new MuzzleModType { Bool = boolValue };
-                    case JsonToken.String:
-                    case JsonToken.Date:
-                        var stringValue = serializer.Deserialize<string>(reader);
-                        return new MuzzleModType { String = stringValue };
+                    case "brake":
+                        return MuzzleModType.Brake;
+                    case "conpensator":
+                        return MuzzleModType.Conpensator;
+                    case "muzzleCombo":
+                        return MuzzleModType.MuzzleCombo;
+                    case "pms":
+                        return MuzzleModType.Pms;
+                    case "silencer":
+                        return MuzzleModType.Silencer;
                 }
                 throw new Exception("Cannot unmarshal type MuzzleModType");
             }
 
             public override void WriteJson(JsonWriter writer, object untypedValue, JsonSerializer serializer)
             {
-                var value = (MuzzleModType)untypedValue;
-                if (value.Bool != null)
+                if (untypedValue == null)
                 {
-                    serializer.Serialize(writer, value.Bool.Value);
+                    serializer.Serialize(writer, null);
                     return;
                 }
-                if (value.String != null)
+                var value = (MuzzleModType)untypedValue;
+                switch (value)
                 {
-                    serializer.Serialize(writer, value.String);
-                    return;
+                    case MuzzleModType.Brake:
+                        serializer.Serialize(writer, "brake");
+                        return;
+                    case MuzzleModType.Conpensator:
+                        serializer.Serialize(writer, "conpensator");
+                        return;
+                    case MuzzleModType.MuzzleCombo:
+                        serializer.Serialize(writer, "muzzleCombo");
+                        return;
+                    case MuzzleModType.Pms:
+                        serializer.Serialize(writer, "pms");
+                        return;
+                    case MuzzleModType.Silencer:
+                        serializer.Serialize(writer, "silencer");
+                        return;
                 }
                 throw new Exception("Cannot marshal type MuzzleModType");
             }
@@ -1687,66 +2791,75 @@ namespace ServerLib.Json.Classes
             public static readonly SightModTypeConverter Singleton = new SightModTypeConverter();
         }
 
-        internal class SpawnRarityConverter : JsonConverter
+        internal class WeapClassConverter : JsonConverter
         {
-            public override bool CanConvert(Type t) => t == typeof(SpawnRarity) || t == typeof(SpawnRarity?);
+            public override bool CanConvert(Type t) => t == typeof(WeapClass) || t == typeof(WeapClass?);
 
             public override object ReadJson(JsonReader reader, Type t, object existingValue, JsonSerializer serializer)
             {
-                switch (reader.TokenType)
+                if (reader.TokenType == JsonToken.Null) return null;
+                var value = serializer.Deserialize<string>(reader);
+                switch (value)
                 {
-                    case JsonToken.Boolean:
-                        var boolValue = serializer.Deserialize<bool>(reader);
-                        return new SpawnRarity { Bool = boolValue };
-                    case JsonToken.String:
-                    case JsonToken.Date:
-                        var stringValue = serializer.Deserialize<string>(reader);
-                        switch (stringValue)
-                        {
-                            case "Common":
-                                return new SpawnRarity { Enum = Rarity.Common };
-                            case "Not_exist":
-                                return new SpawnRarity { Enum = Rarity.NotExist };
-                            case "Rare":
-                                return new SpawnRarity { Enum = Rarity.Rare };
-                            case "Superrare":
-                                return new SpawnRarity { Enum = Rarity.Superrare };
-                        }
-                        break;
+                    case "assaultCarbine":
+                        return WeapClass.AssaultCarbine;
+                    case "assaultRifle":
+                        return WeapClass.AssaultRifle;
+                    case "machinegun":
+                        return WeapClass.Machinegun;
+                    case "marksmanRifle":
+                        return WeapClass.MarksmanRifle;
+                    case "pistol":
+                        return WeapClass.Pistol;
+                    case "shotgun":
+                        return WeapClass.Shotgun;
+                    case "smg":
+                        return WeapClass.Smg;
+                    case "sniperRifle":
+                        return WeapClass.SniperRifle;
                 }
-                throw new Exception("Cannot unmarshal type SpawnRarity");
+                throw new Exception("Cannot unmarshal type WeapClass");
             }
 
             public override void WriteJson(JsonWriter writer, object untypedValue, JsonSerializer serializer)
             {
-                var value = (SpawnRarity)untypedValue;
-                if (value.Bool != null)
+                if (untypedValue == null)
                 {
-                    serializer.Serialize(writer, value.Bool.Value);
+                    serializer.Serialize(writer, null);
                     return;
                 }
-                if (value.Enum != null)
+                var value = (WeapClass)untypedValue;
+                switch (value)
                 {
-                    switch (value.Enum)
-                    {
-                        case Rarity.Common:
-                            serializer.Serialize(writer, "Common");
-                            return;
-                        case Rarity.NotExist:
-                            serializer.Serialize(writer, "Not_exist");
-                            return;
-                        case Rarity.Rare:
-                            serializer.Serialize(writer, "Rare");
-                            return;
-                        case Rarity.Superrare:
-                            serializer.Serialize(writer, "Superrare");
-                            return;
-                    }
+                    case WeapClass.AssaultCarbine:
+                        serializer.Serialize(writer, "assaultCarbine");
+                        return;
+                    case WeapClass.AssaultRifle:
+                        serializer.Serialize(writer, "assaultRifle");
+                        return;
+                    case WeapClass.Machinegun:
+                        serializer.Serialize(writer, "machinegun");
+                        return;
+                    case WeapClass.MarksmanRifle:
+                        serializer.Serialize(writer, "marksmanRifle");
+                        return;
+                    case WeapClass.Pistol:
+                        serializer.Serialize(writer, "pistol");
+                        return;
+                    case WeapClass.Shotgun:
+                        serializer.Serialize(writer, "shotgun");
+                        return;
+                    case WeapClass.Smg:
+                        serializer.Serialize(writer, "smg");
+                        return;
+                    case WeapClass.SniperRifle:
+                        serializer.Serialize(writer, "sniperRifle");
+                        return;
                 }
-                throw new Exception("Cannot marshal type SpawnRarity");
+                throw new Exception("Cannot marshal type WeapClass");
             }
 
-            public static readonly SpawnRarityConverter Singleton = new SpawnRarityConverter();
+            public static readonly WeapClassConverter Singleton = new WeapClassConverter();
         }
 
         internal class WeapFireTypeConverter : JsonConverter
@@ -1759,8 +2872,8 @@ namespace ServerLib.Json.Classes
                 var value = serializer.Deserialize<string>(reader);
                 switch (value)
                 {
-                    case "doublet":
-                        return WeapFireType.Doublet;
+                    case "burst":
+                        return WeapFireType.Burst;
                     case "fullauto":
                         return WeapFireType.Fullauto;
                     case "single":
@@ -1779,8 +2892,8 @@ namespace ServerLib.Json.Classes
                 var value = (WeapFireType)untypedValue;
                 switch (value)
                 {
-                    case WeapFireType.Doublet:
-                        serializer.Serialize(writer, "doublet");
+                    case WeapFireType.Burst:
+                        serializer.Serialize(writer, "burst");
                         return;
                     case WeapFireType.Fullauto:
                         serializer.Serialize(writer, "fullauto");
