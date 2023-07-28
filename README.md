@@ -16,7 +16,7 @@ zlib.dll\
 (Just put all in there you didn't miss much)
 
 ## Credits
-- polivilas for EXFIL Server
+- polivilas for Emutarkov Server
 - TheMaoci for official Research and Dump Tutorials
 - JET Team for making Tarkov Server
 - NBJF, Panther for Testing & Debugging
