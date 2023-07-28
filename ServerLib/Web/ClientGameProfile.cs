@@ -17,7 +17,8 @@ namespace ServerLib.Web
             string SessionId = Utils.GetSessionId(session.Headers);
             Utils.PrintRequest(request, session);
 
-            var rsp = GameProfile.ProfileList(SessionId);
+            var rsp = File.ReadAllText("profiles/temp_list.txt");
+            //var rsp = GameProfile.ProfileList(SessionId);
             Utils.SendUnityResponse(session, rsp);
             return true;
         }

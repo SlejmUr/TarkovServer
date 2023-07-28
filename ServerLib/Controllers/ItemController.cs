@@ -92,7 +92,7 @@ namespace ServerLib.Controllers
             if (ch != null)
             {
                 // statuses seem as follow - 1 - not accepted | 2 - accepted | 3 - failed | 4 - completed
-                ch.Quests = ch.Quests.Append(new Character.Quest() { qid = body.qid, startTime = 1337, status = 1 }).ToArray();
+                ch.Quests = ch.Quests.Append(new Character.Quest() { qid = body.qid, startTime = 1337, status = "Locked" }).ToArray();
                 SaveHandler.SaveCharacter(SessionId, ch);
             }
         }
@@ -106,7 +106,7 @@ namespace ServerLib.Controllers
                 {
                     if (item.qid == body.qid)
                     {
-                        item.status = 4;
+                        item.status = "Success";
                     }
                 }
                 SaveHandler.SaveCharacter(SessionId, ch);

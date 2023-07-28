@@ -4,6 +4,7 @@ using ServerLib.Controllers;
 using ServerLib.Json.Classes;
 using ServerLib.Utilities;
 using ServerLib.Utilities.Helpers;
+using static ServerLib.Json.Classes.Response;
 using static ServerLib.Web.HTTPServer;
 
 namespace ServerLib.Web
@@ -57,28 +58,27 @@ namespace ServerLib.Web
             if (ID == "FAILED")
             {
                 // NO walid error code for Login?
-                rsp = ResponseControl.GetBody("null", 0, "Login failed, No account can be identified");
+                rsp = ResponseControl.GetBody("null", 206, "account not found");
             }
             else 
             {
-                GClass327 response = new()
+                LoginRSP response = new()
                 {
-                    lang = "en",
-                    aid = ID,
-                    activeProfileId = ID,
-                    token = ID,
-                    nickname = ID,
-                    taxonomy = "341",
-                    backend = new()
+                    Lang = "en",
+                    ActiveProfileId = ID,
+                    Aid = ID,
+                    Token = ID,
+                    Taxonomy = "341",
+                    Backend = new()
                     {
                         Main = ServerLib.IP,
                         Messaging = ServerLib.IP,
                         Trading = ServerLib.IP,
                         RagFair = ServerLib.IP
                     },
-                    totalInGame = 1,
-                    utc_time = TimeHelper.UnixTimeNow_Int(),
-                    queued = false
+                    TotalInGame = 1,
+                    UtcTime = TimeHelper.UnixTimeNow(),
+                    Queued = false
                 };
                 rsp = ResponseControl.GetBody(JsonConvert.SerializeObject(response));
                 session.Headers.Add("Cookie", "PHPSESSID=" + ID);

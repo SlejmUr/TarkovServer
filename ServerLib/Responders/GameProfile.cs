@@ -3,6 +3,7 @@ using ServerLib.Controllers;
 using ServerLib.Handlers;
 using ServerLib.Json.Classes;
 using ServerLib.Utilities;
+using static ServerLib.Json.Classes.Response;
 using static ServerLib.Web.ResponseControl;
 
 namespace ServerLib.Responders
@@ -95,10 +96,14 @@ namespace ServerLib.Responders
 
         public static string ProfileSelect(string SessionId)
         {
-            GClass358 response = new()
+            notif response = new()
             { 
-                status = "ok",
-                notifierServer = ServerLib.ip_port + "/" + SessionId
+                Status = "ok",
+                Notifier = new()
+                {
+                    { "server","http://192.168.1.50:6969" },
+                    { "channel_id", SessionId }
+                }
             };
             return GetBody(JsonConvert.SerializeObject(response));
         }

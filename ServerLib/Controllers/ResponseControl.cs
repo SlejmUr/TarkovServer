@@ -11,6 +11,10 @@ namespace ServerLib.Web
         }
         public static string GetBody(string Data, int errorcode = 0, string errormsg = "null")
         {
+            if (errormsg != "null")
+            {
+                errormsg = "\""+ errormsg +"\"";
+            }
             var Stuff = "{\"err\":" + errorcode + ",\"errmsg\":" + errormsg + ",\"data\":" + Data + "}";
             return Stuff;
         }
