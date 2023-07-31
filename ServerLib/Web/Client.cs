@@ -1,5 +1,10 @@
 ﻿using NetCoreServer;
+using Newtonsoft.Json;
+using ServerLib.Json.Classes;
 using ServerLib.Utilities;
+using ServerLib.Utilities.Helpers;
+using System.Globalization;
+using static ServerLib.Json.Classes.Response;
 using static ServerLib.Web.HTTPServer;
 
 namespace ServerLib.Web
@@ -39,15 +44,24 @@ namespace ServerLib.Web
         {
             Utils.PrintRequest(request, session);
             var rsp = File.ReadAllText("Files/static/weather.json");
+
+            Response.WeatherData weather = JsonConvert.DeserializeObject<Response.WeatherData>(rsp);
+            weather.Weather.Timestamp = TimeHelper.UnixTimeNow_Int();
+            var time = DateTime.UtcNow;
+            weather.Date = time.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture);
+            weather.Time = time.ToString("HH:mm:ss", CultureInfo.InvariantCulture);
+            weather.Weather.Date = time.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture);
+            weather.Weather.Time = time.ToString("yyyy-MM-dd HH:mm:ss", CultureInfo.InvariantCulture);
+            rsp = ResponseControl.GetBody(JsonConvert.SerializeObject(weather));
             Utils.SendUnityResponse(session, rsp);
             return true;
         }
 
-        [HTTP("POST", "/client/items/characteristics")]
-        public static bool ClientItemsCharacteristics(HttpRequest request, HttpsBackendSession session)
+        [HTTP("POST", "/client/handbook/templates")]
+        public static bool ClientHandbookTemplates(HttpRequest request, HttpsBackendSession session)
         {
             Utils.PrintRequest(request, session);
-            var rsp = File.ReadAllText("Files/static/characteristics.json");
+            var rsp = File.ReadAllText("Files/static/templates.json");
             Utils.SendUnityResponse(session, rsp);
             return true;
         }
@@ -111,13 +125,27 @@ namespace ServerLib.Web
             return true;
         }
 
-        [HTTP("POST", "/push/notifier/get/{userId}")]
-        public static bool PushNotifier(HttpRequest request, HttpsBackendSession session)
+        [HTTP("POST", "/client/notifier/channel/create")]
+        public static bool NotifierChannelCreate(HttpRequest request, HttpsBackendSession session)
         {
             Utils.PrintRequest(request, session);
-            string userId = session.HttpParam["userId"].ToLower();
-            Debug.PrintDebug(userId);
-            //Utils.SendUnityResponse(session, System.Text.Encoding.Default.GetBytes(ResponseControl.GetBody("[]")));
+            var sessionId = Utils.GetSessionId(session.Headers);
+            notif2 serv = new()
+            { 
+                notifierServer = $"http://172.0.0.1:6969/notifier/{sessionId}" 
+            };
+            Utils.SendUnityResponse(session, ResponseControl.GetBody(JsonConvert.SerializeObject(serv)));
+            return true;
+        }
+
+        [HTTP("POST", "/notifier/{id}")]
+        public static bool NotifierId(HttpRequest request, HttpsBackendSession session)
+        {
+            Utils.PrintRequest(request, session);
+            var sessionId = Utils.GetSessionId(session.Headers);
+            string id = session.HttpParam["id"].ToLower();
+            Console.WriteLine("yeeeeeeeeeeeeeeet");
+            Utils.SendUnityResponse(session, ResponseControl.NullResponse());
             return true;
         }
     }

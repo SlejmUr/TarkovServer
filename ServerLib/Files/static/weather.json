@@ -1,21 +1,19 @@
 {
-  "err": 0,
-  "errmsg": null,
-  "data": {
-    "weather": {
-      "timestamp": 1690479856,
-      "cloud": -0.475,
-      "wind_speed": 2,
-      "wind_direction": 3,
-      "wind_gustiness": 0.081,
-      "rain": 1,
-      "rain_intensity": 0,
-      "fog": 0.002,
-      "temp": 14,
-      "pressure": 763
-    },
-    "date": "2023-07-25",
-    "time": "2023-07-25 16:54:43",
-    "acceleration": 1
-  }
+  "weather": {
+    "timestamp": 1690812863,
+    "cloud": -0.475,
+    "wind_speed": 2,
+    "wind_direction": 3,
+    "wind_gustiness": 0.081,
+    "rain": 1,
+    "rain_intensity": 0,
+    "fog": 0.002,
+    "temp": 14,
+    "pressure": 763,
+    "date": "2023-07-31",
+    "time": "2023-07-31 16:14:23"
+  },
+  "date": "2023-07-31",
+  "time": "16:14:23",
+  "acceleration": 1
 }
