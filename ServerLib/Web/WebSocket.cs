@@ -16,7 +16,7 @@ namespace ServerLib.Web
         public static Dictionary<string, Guid> IPToGuid = new();
         public static Dictionary<string, string> ConnectedSessions = new();
         public static EventHandler<byte[]> MessageReceivedEvent = null;
-        static TarkovServer SocketServer;
+        static TarkovWSServer SocketServer;
         public static void Start(string ip, int port, bool ssl = true)
         {
             if (ssl)
@@ -39,7 +39,7 @@ namespace ServerLib.Web
             }
         }
 
-        public static TarkovServer? GetServer()
+        public static TarkovWSServer? GetServer()
         {
             if (SocketServer != null && !SocketServer.IsDisposed)
             {
@@ -85,9 +85,9 @@ namespace ServerLib.Web
             }
         }
 
-        public class TarkovServer : WsServer
+        public class TarkovWSServer : WsServer
         {
-            public TarkovServer(string address, int port) : base(address, port) { }
+            public TarkovWSServer(string address, int port) : base(address, port) { }
 
             protected override TcpSession CreateSession() { return new TarkovSession(this); }
 

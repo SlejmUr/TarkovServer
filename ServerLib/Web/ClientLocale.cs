@@ -24,6 +24,7 @@ namespace ServerLib.Web
             //REQ stuff
             string SessionId = Utils.GetSessionId(session.Headers);
             Utils.PrintRequest(request, session);
+            Debug.PrintDebug("Locale: " + locale);
             var resp = ResponseControl.GetBody(LocaleController.GetMenu(locale, SessionId));
             Utils.SendUnityResponse(session, resp);
             return true;

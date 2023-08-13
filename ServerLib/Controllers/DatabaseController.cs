@@ -189,6 +189,7 @@ namespace ServerLib.Controllers
         }
         static void LoadCustomConfig()
         {
+            return;
             var Custom = ConfigController.Configs.CustomSettings;
             if (Custom.Locale.UseCustomLocale)
             {

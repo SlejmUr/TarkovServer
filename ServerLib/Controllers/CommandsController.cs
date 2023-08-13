@@ -21,7 +21,8 @@ namespace ServerLib.Controllers
             { "unban" , UnBan },
             { "debug" , DebugEnable },
             { "listmatches" , ListMatches },
-             { "deletematches" , DeleteMatches }
+            { "deletematches" , DeleteMatches },
+            { "createuser", CreateUser }
         };
         public static Dictionary<string, EPerms> CommandsPermission = new()
         {
@@ -36,7 +37,8 @@ namespace ServerLib.Controllers
             { "unban" , EPerms.Mod },
             { "debug" , EPerms.Console },
             { "listmatches" , EPerms.User },
-            { "deletematches" , EPerms.Mod }
+            { "deletematches" , EPerms.Mod },
+            { "createuser" , EPerms.Admin },
         };
 
         public static void Run(string CommandName)
@@ -110,6 +112,7 @@ namespace ServerLib.Controllers
             Console.WriteLine("setpermission <AID> <PermId>:\tSet Permission to the given AID");
             Console.WriteLine("ban <AID>:\t\t\tBan the given AID");
             Console.WriteLine("unban <AID>:\t\t\tUnban the given AID");
+            Console.WriteLine("createuser <mail> <passw>:\tCreating new user");
             Console.WriteLine("debug:\t\t\t\tEnable Debug options");
             Console.WriteLine();
         }
@@ -203,6 +206,27 @@ namespace ServerLib.Controllers
             profile.ProfileAddon.Permission = Json.Enums.EPerms.User;
             SaveHandler.SaveAddon(AID, profile.ProfileAddon);
             DB.PrintInfo($"User {AID} is now Unbanned");
+        }
+
+        public static void CreateUser(object obj)
+        {
+            var x = (string[])obj;
+            var username = x[0];
+            var password = x[1];
+            //todo check length:
+
+            var registerId = AccountController.Register(new Json.Classes.Login()
+            { 
+                password = password,
+                username = username
+
+            });
+            if (registerId == "ALREADY_IN_USE")
+            {
+                DB.PrintWarn("Account already in use!");
+                return;
+            }
+            DB.PrintInfo($"User {registerId} is now Created");
         }
 
         public static void ListMatches(object obj)

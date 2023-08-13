@@ -15,6 +15,6 @@ namespace ServerLib.Json.Classes
         public List<FriendRequester> FriendRequestOutbox { get; set; } = new();
 
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-        public EPerms Permission { get; set; }
+        public EPerms Permission { get; set; } = EPerms.User;
     }
 }

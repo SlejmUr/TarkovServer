@@ -21,9 +21,8 @@ namespace ServerLib.Utilities
         public static bool SendUnityResponse(HttpsBackendSession session, byte[] resp)
         {
             var rsp = session.Response.MakeGetResponse(resp, "application/json");
-            rsp = rsp.SetHeader("Content-Type", "application/json");
-            rsp = rsp.SetHeader("Content-Encoding", "deflate");
             session.SendResponse(rsp);
+            Debug.PrintDebug("WE SENT UNITY RESPONSE!");
             return true;
         }
 
