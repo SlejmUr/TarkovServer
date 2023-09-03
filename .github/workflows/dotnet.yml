@@ -31,7 +31,7 @@ jobs:
       run: dotnet restore
       
     - name: Publish
-      run: dotnet publish -c ${{ matrix.configuration }}
+      run: dotnet publish -c ${{ matrix.configuration }} --property:PublishDir=../artifacts
 
     - name: Upload artifact (Applications)
       uses: actions/upload-artifact@v3
