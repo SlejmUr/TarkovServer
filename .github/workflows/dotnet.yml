@@ -33,10 +33,23 @@ jobs:
     - name: Publish
       run: dotnet publish -c ${{ matrix.configuration }}
 
-    - name: Upload artifact
+    - name: Upload artifact (Applications)
       uses: actions/upload-artifact@v3
       with:
-        name: TarkovServer-artifact
-        path: Applications
+        name: TarkovServerApplications
+        path: Applications\artifacts\
+        if-no-files-found: error
+
+    - name: Upload artifact (Plugins)
+      uses: actions/upload-artifact@v3
+      with:
+        name: TarkovServerPlugins
+        path: Plugins\artifacts\
         if-no-files-found: error
         
+    - name: Upload artifact (Core/Lib)
+      uses: actions/upload-artifact@v3
+      with:
+        name: TarkovServerLib
+        path: artifacts\
+        if-no-files-found: error
