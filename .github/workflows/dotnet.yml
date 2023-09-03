@@ -1,0 +1,66 @@
+name: .NET Build
+
+on:
+  push:
+      paths-ignore:
+      - '.github/*'
+      - '.github/*_TEMPLATE/**'
+      - '*.md'
+  pull_request:
+      paths-ignore:
+      - '.github/*'
+      - '.github/*_TEMPLATE/**'
+      - '*.md'
+
+jobs:
+  build:
+    name: .NET on ${{ matrix.runs-on }} (${{ matrix.configuration }})
+    runs-on: ${{ matrix.runs-on }}
+    strategy:
+      fail-fast: false
+      matrix:
+        runs-on: [windows-latest]
+        configuration: [Release,Debug]
+    steps:
+    - uses: actions/checkout@v3
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: 6.0.x
+    - name: Restore dependencies
+      run: dotnet restore
+      
+    - name: Publish
+      run: dotnet publish -c ${{ matrix.configuration }} --property:PublishDir=../artifacts
+      
+    - name: Tar files (Applications)
+      run: tar -cvf Applications.tar Applications\artifacts
+
+    - name: Tar files (Plugins)
+      run: tar -cvf Plugins.tar Plugins\artifacts
+
+
+    - name: Tar files (Core/Lib)
+      run: tar -cvf CoreLib.tar artifacts
+      
+      
+    - name: Upload artifact (Applications)
+      uses: actions/upload-artifact@v3
+      with:
+        name: TarkovServerApplications-${{ matrix.configuration }}
+        path: Applications.tar
+        if-no-files-found: error
+
+    - name: Upload artifact (Plugins)
+      uses: actions/upload-artifact@v3
+      with:
+        name: TarkovServerPlugins-${{ matrix.configuration }}
+        path: Plugins.tar
+        if-no-files-found: error
+        
+    - name: Upload artifact (Core/Lib)
+      uses: actions/upload-artifact@v3
+      with:
+        name: TarkovServerLib-${{ matrix.configuration }}
+        path: CoreLib.tar
+        if-no-files-found: error
