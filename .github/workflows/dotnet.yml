@@ -31,15 +31,12 @@ jobs:
       run: dotnet restore
       
     - name: Publish
-      run: dotnet publish -c ${{ matrix.configuration }} --property:PublishDir=../artifacts
-
-#    - name: Tar files
-#      run: tar -cvf artifacts.tar artifacts
+      run: dotnet publish -c ${{ matrix.configuration }}
 
     - name: Upload artifact
       uses: actions/upload-artifact@v3
-      #if: matrix.configuration == 'Release' && matrix.runs-on == 'windows-latest'
       with:
         name: TarkovServer-artifact
-        path: artifacts
+        path: Applications
         if-no-files-found: error
+        
