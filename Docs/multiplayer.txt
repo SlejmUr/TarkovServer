@@ -1,0 +1,22 @@
+To start a multiplayer server:
+
+change aki/mtga/sit server code to response this:
+
+
+/client/match/available
+true
+
+/client/match/join
+status = "Busy",
+gameMode = "deathmatch"
+
+/client/profile/status
+make sure this one is getting the status that you saving/receiving
+
+change or pathc this methods:
+RunFilesChecking(ConsistencyEnsuranceMode ordinaryFileEnsuranceMode = ConsistencyEnsuranceMode.Fast, ConsistencyEnsuranceMode criticalFileEnsuranceMode = ConsistencyEnsuranceMode.Full, CancellationToken token = default(CancellationToken))
+
+public async Task RunValidation(BEClient.LogDelegate logDelegate, BEClient.IsLogLevelEnabledDelegate isLogLevelEnabledDelegate)
+set this.Succeed = true;
+
+have fun to your code with unity shinenigans or smth

@@ -131,7 +131,8 @@ namespace ServerLib.Web
             Utils.PrintRequest(request, session);
             var sessionId = Utils.GetSessionId(session.Headers);
             notif2 serv = new()
-            { 
+            {
+                Status = "ok",
                 notifierServer = $"http://172.0.0.1:6969/notifier/{sessionId}" 
             };
             Utils.SendUnityResponse(session, ResponseControl.GetBody(JsonConvert.SerializeObject(serv)));

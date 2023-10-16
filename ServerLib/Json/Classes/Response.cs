@@ -44,6 +44,9 @@ namespace ServerLib.Json.Classes
         }
         public class notif2
         {
+            [JsonProperty("status")]
+            public string Status { get; set; }
+
             [JsonProperty("notifierServer")]
             public string notifierServer { get; set; }
         }
