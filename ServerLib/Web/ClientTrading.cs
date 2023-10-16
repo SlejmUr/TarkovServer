@@ -44,7 +44,7 @@ namespace ServerLib.Web
         {
             Utils.PrintRequest(request, session);
             string SessionId = Utils.GetSessionId(session.Headers);
-            var x = new GClass601()
+            var x = new Suites()
             {
                 _id = "pmc" + SessionId,
                 suites = ProfileController.GetProfile(SessionId).Suits.ToArray()

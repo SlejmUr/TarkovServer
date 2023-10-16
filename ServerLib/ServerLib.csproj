@@ -13,8 +13,8 @@
   </ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="L" Version="5.0.0" />
+		<PackageReference Include="ModdableWebServer" Version="1.1.1" />
 		<PackageReference Include="NetCoreServer" Version="6.7.0" />
-		<PackageReference Include="WatsonWebsocket" Version="4.0.9" />
 	</ItemGroup>
 
 	<ItemGroup>
