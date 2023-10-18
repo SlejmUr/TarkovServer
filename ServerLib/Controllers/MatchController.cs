@@ -5,8 +5,8 @@ using ServerLib.Json.Classes.Response;
 using ServerLib.Json.Classes.Websocket;
 using ServerLib.Utilities;
 using ServerLib.Web;
-using static ServerLib.Controllers.MatchController;
-using static ServerLib.Json.Classes.ProfileStatus;
+using ModdableWebServer.Helper;
+using ModdableWebServer;
 
 namespace ServerLib.Controllers
 {
@@ -85,46 +85,43 @@ namespace ServerLib.Controllers
 
         public static void SendStart(string groupId, string Ip, int Port)
         {
-            var ws = WebSocket.GetServer();
-            if (ws != null)
+            var sid = $"{Ip}_{Port}-Match-{Matches.Count}";
+            var match = Matches[groupId];
+            if (match.Ip != Ip)
+                match.Ip = Ip;
+            if (match.Port != Port)
+                match.Port = Port;
+            if (string.IsNullOrEmpty(match.Sid))
+                match.Sid = sid;
+            for (int i = 0; i < match.Users.Count; i++)
             {
-                var sid = $"{Ip}_{Port}-Match-{Matches.Count}";
-                var match = Matches[groupId];
-                if (match.Ip != Ip)
-                    match.Ip = Ip;
-                if (match.Port != Port)
-                    match.Port = Port;
-                if (string.IsNullOrEmpty(match.Sid))
-                    match.Sid = sid;
-                for (int i = 0; i < match.Users.Count; i++)
+                var user = match.Users[i];
+                var token = Utils.CreateNewID();
+                user.profileToken = token;
+                UserConfirmed confirmed = new()
                 {
-                    var user = match.Users[i];
-                    var token = Utils.CreateNewID();
-                    user.profileToken = token;
-                    UserConfirmed confirmed = new()
-                    {
-                        
-                        profileid = "pmc"+user.sessionId,
-                        profileToken = token,
-                        status = "Busy",
-                        ip = match.Ip,
-                        port = match.Port,
-                        sid = match.Sid,
-                        version = "live",
-                        location = match.Location,
-                        mode = "deathmatch",
-                        shortId = "VD0ABA",
-                        raidMode = match.RaidMode.ToString(),
-                        additional_info = new() { }
-                    };
-                    if (match.IsScav)
-                        confirmed.profileid = "scav" + user.sessionId;
-                    ws.MulticastText(JsonConvert.SerializeObject(confirmed));
-                    match.Users[i] = user;
-                }
-                match.IsStarted = true;
-                Matches[match.MatchId] = match;
+
+                    profileid = "pmc" + user.sessionId,
+                    profileToken = token,
+                    status = "Busy",
+                    ip = match.Ip,
+                    port = match.Port,
+                    sid = match.Sid,
+                    version = "live",
+                    location = match.Location,
+                    mode = "deathmatch",
+                    shortId = "VD0ABA",
+                    raidMode = match.RaidMode.ToString(),
+                    additional_info = new() { }
+                };
+                if (match.IsScav)
+                    confirmed.profileid = "scav" + user.sessionId;
+                var socket = WebSocket.GetUser(user.sessionId);
+                socket?.MulticastWebSocketText(JsonConvert.SerializeObject(confirmed));
+                match.Users[i] = user;
             }
+            match.IsStarted = true;
+            Matches[match.MatchId] = match;
         }
     }
 }

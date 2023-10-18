@@ -4,6 +4,8 @@ using ServerLib.Json.Classes;
 using ServerLib.Web;
 using ChatShared;
 using ServerLib.Utilities.Helpers;
+using ModdableWebServer;
+using ModdableWebServer.Helper;
 
 namespace ServerLib.Controllers
 {
@@ -74,10 +76,12 @@ namespace ServerLib.Controllers
 
         public static bool Send(string SessionId, Json.Classes.Notification notification)
         {
-            if (WebSocket.ConnectedSessions.TryGetValue(SessionId, out var ip))
+            var user = WebSocket.GetUser(SessionId);
+            if (user != null)
             {
                 Debug.PrintInfo("Notification Sent!", "Notification");
-                return WebSocket.GetServer().MulticastText(JsonConvert.SerializeObject(notification, Formatting.Indented));
+                user?.MulticastWebSocketText(JsonConvert.SerializeObject(notification, Formatting.Indented));
+                return true;
 
             }
             else

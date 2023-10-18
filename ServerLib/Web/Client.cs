@@ -1,4 +1,5 @@
-﻿using NetCoreServer;
+﻿using ModdableWebServer;
+using NetCoreServer;
 using Newtonsoft.Json;
 using ServerLib.Controllers;
 using ServerLib.Json.Classes;
@@ -6,18 +7,18 @@ using ServerLib.Utilities;
 using ServerLib.Utilities.Helpers;
 using static ServerLib.Json.Classes.Profile;
 using static ServerLib.Json.Converters;
-using static ServerLib.Web.HTTPServer;
+using ModdableWebServer.Attributes;
 
 namespace ServerLib.Web
 {
     public class Client
     {
         [HTTP("POST", "/client/checkVersion")]
-        public static bool ClientCheckVersion(HttpRequest request, HttpsBackendSession session)
+        public static bool ClientCheckVersion(HttpRequest request, ServerStruct serverStruct)
         {
-            Utils.PrintRequest(request, session);
+            Utils.PrintRequest(request, serverStruct);
             string resp;
-            string version = Utils.GetVersion(session.Headers);
+            string version = Utils.GetVersion(serverStruct.Headers);
             var server = ConfigController.Configs.Server;
 
             if (string.IsNullOrWhiteSpace(server.Version))
@@ -35,43 +36,43 @@ namespace ServerLib.Web
                     resp = ResponseControl.GetBody("{ isvalid: false, latestVersion: \"" + server.Version + "\"}");
                 }
             }
-            Utils.SendUnityResponse(session, resp);
+            Utils.SendUnityResponse(request, serverStruct, resp);
             return true;
         }
 
         [HTTP("POST", "/client/repeatalbeQuests/activityPeriods")]
-        public static bool ClientRepeatableQuestsActivityPeriods(HttpRequest request, HttpsBackendSession session)
+        public static bool ClientRepeatableQuestsActivityPeriods(HttpRequest request, ServerStruct serverStruct)
         {
-            Utils.PrintRequest(request, session);
+            Utils.PrintRequest(request, serverStruct);
             string resp = ResponseControl.GetBody("[]");
-            Utils.SendUnityResponse(session, resp);
+            Utils.SendUnityResponse(request, serverStruct, resp);
             return true;
         }
 
         [HTTP("POST", "/client/WebSocketAddress")]
-        public static bool ClientWebSocketAddress(HttpRequest request, HttpsBackendSession session)
+        public static bool ClientWebSocketAddress(HttpRequest request, ServerStruct serverStruct)
         {
             Console.WriteLine("WebSocketAddress!!!!!!!");
-            Utils.PrintRequest(request, session);
-            string SessionId = Utils.GetSessionId(session.Headers);
-            Utils.SendUnityResponse(session, WebSocket.IpPort + SessionId);
+            Utils.PrintRequest(request, serverStruct);
+            string SessionId = Utils.GetSessionId(serverStruct.Headers);
+            Utils.SendUnityResponse(request, serverStruct, ServerManager.IpPort + SessionId);
             return true;
         }
 
         [HTTP("POST", "/client/notifier/channel/create")]
-        public static bool ClientNotifier(HttpRequest request, HttpsBackendSession session)
+        public static bool ClientNotifier(HttpRequest request, ServerStruct serverStruct)
         {
-            Utils.PrintRequest(request, session);
-            string SessionId = Utils.GetSessionId(session.Headers);
+            Utils.PrintRequest(request, serverStruct);
+            string SessionId = Utils.GetSessionId(serverStruct.Headers);
             string resp = ResponseControl.GetBody(JsonConvert.SerializeObject(ResponseControl.GetNotifier(SessionId)));
-            Utils.SendUnityResponse(session, resp);
+            Utils.SendUnityResponse(request, serverStruct, resp); ;
             return true;
         }
 
         [HTTP("POST", "/client/chatServer/list")]
-        public static bool ClientChatServerList(HttpRequest request, HttpsBackendSession session)
+        public static bool ClientChatServerList(HttpRequest request, ServerStruct serverStruct)
         {
-            Utils.PrintRequest(request, session);
+            Utils.PrintRequest(request, serverStruct);
             Json.Classes.ChatServer.Base chatServerList = new()
             { 
                 _id = Utils.CreateNewID(),
@@ -92,14 +93,14 @@ namespace ServerLib.Web
                 }
             };
             string resp = ResponseControl.GetBody(JsonConvert.SerializeObject(chatServerList));
-            Utils.SendUnityResponse(session, resp);
+            Utils.SendUnityResponse(request, serverStruct, resp);
             return true;
         }
 
         [HTTP("POST", "/client/server/list")]
-        public static bool ClientServerList(HttpRequest request, HttpsBackendSession session)
+        public static bool ClientServerList(HttpRequest request, ServerStruct serverStruct)
         {
-            Utils.PrintRequest(request, session);
+            Utils.PrintRequest(request, serverStruct);
             var server = ConfigController.Configs.Server;
             List<Server> servers = new()
             { 
@@ -110,14 +111,14 @@ namespace ServerLib.Web
                 }
             };
             string resp = ResponseControl.GetBody(JsonConvert.SerializeObject(servers));
-            Utils.SendUnityResponse(session, resp);
+            Utils.SendUnityResponse(request, serverStruct, resp);
             return true;
         }
 
         [HTTP("POST", "/client/quest/list")]
-        public static bool ClientQuestList(HttpRequest request, HttpsBackendSession session)
+        public static bool ClientQuestList(HttpRequest request, ServerStruct serverStruct)
         {
-            Utils.PrintRequest(request, session);
+            Utils.PrintRequest(request, serverStruct);
             try
             {
                 var quests = Controllers.QuestController.GetQuests();
@@ -125,7 +126,7 @@ namespace ServerLib.Web
                     {
                     QuestTargetConverter.Singleton
                     }));
-                Utils.SendUnityResponse(session, resp);
+                Utils.SendUnityResponse(request, serverStruct, resp);
             }
             catch (Exception ex)
             {
@@ -136,96 +137,96 @@ namespace ServerLib.Web
         }
 
         [HTTP("POST", "/client/items")]
-        public static bool ClientItems(HttpRequest request, HttpsBackendSession session)
+        public static bool ClientItems(HttpRequest request, ServerStruct serverStruct)
         {
-            Utils.PrintRequest(request, session);
+            Utils.PrintRequest(request, serverStruct);
             string resp = ResponseControl.GetBody(File.ReadAllText("Files/others/items.json"));
-            Utils.SendUnityResponse(session, resp);
+            Utils.SendUnityResponse(request, serverStruct, resp);
             return true;
         }
 
         [HTTP("POST", "/client/customization")]
-        public static bool ClientCustomization(HttpRequest request, HttpsBackendSession session)
+        public static bool ClientCustomization(HttpRequest request, ServerStruct serverStruct)
         {
-            Utils.PrintRequest(request, session);
+            Utils.PrintRequest(request, serverStruct);
             string resp = ResponseControl.GetBody(File.ReadAllText("Files/others/customization.json"));
-            Utils.SendUnityResponse(session, resp);
+            Utils.SendUnityResponse(request, serverStruct, resp);
             return true;
         }
 
         [HTTP("POST", "/client/globals")]
-        public static bool ClientGlobals(HttpRequest request, HttpsBackendSession session)
+        public static bool ClientGlobals(HttpRequest request, ServerStruct serverStruct)
         {
-            Utils.PrintRequest(request, session);
+            Utils.PrintRequest(request, serverStruct);
             var rsp = ResponseControl.GetBody(File.ReadAllText("Files/static/globals.json"));
-            Utils.SendUnityResponse(session, rsp);
+            Utils.SendUnityResponse(request, serverStruct, rsp);
             return true;
         }
 
         [HTTP("POST", "/client/settings")]
-        public static bool ClientSettings(HttpRequest request, HttpsBackendSession session)
+        public static bool ClientSettings(HttpRequest request, ServerStruct serverStruct)
         {
-            Utils.PrintRequest(request, session);
+            Utils.PrintRequest(request, serverStruct);
             var rsp = File.ReadAllText("Files/static/client.settings.json");
-            Utils.SendUnityResponse(session, rsp);
+            Utils.SendUnityResponse(request, serverStruct, rsp);
             return true;
         }
 
         [HTTP("POST", "/client/weather")]
-        public static bool ClientWeather(HttpRequest request, HttpsBackendSession session)
+        public static bool ClientWeather(HttpRequest request, ServerStruct serverStruct)
         {
-            Utils.PrintRequest(request, session);
+            Utils.PrintRequest(request, serverStruct);
 
             string resp = ResponseControl.GetBody(DatabaseController.DataBase.Weather["sun"]);
-            Utils.SendUnityResponse(session, resp);
+            Utils.SendUnityResponse(request, serverStruct, resp);
             return true;
         }
 
         [HTTP("POST", "/client/locations")]
-        public static bool ClientLocations(HttpRequest request, HttpsBackendSession session)
+        public static bool ClientLocations(HttpRequest request, ServerStruct serverStruct)
         {
-            Utils.PrintRequest(request, session);
+            Utils.PrintRequest(request, serverStruct);
             var json = JsonConvert.SerializeObject(LocationController.GetAllLocation());
             string resp = ResponseControl.GetBody(json);
-            Utils.SendUnityResponse(session, resp);
+            Utils.SendUnityResponse(request, serverStruct, resp);
             return true;
         }
 
         [HTTP("POST", "/client/location/getLocalloot")]
-        public static bool ClientLocationLocalLoot(HttpRequest request, HttpsBackendSession session)
+        public static bool ClientLocationLocalLoot(HttpRequest request, ServerStruct serverStruct)
         {
-            Utils.PrintRequest(request, session);
+            Utils.PrintRequest(request, serverStruct);
             var jsonreq = JsonConvert.DeserializeObject<GetLocation>(ResponseControl.DeCompressReq(request.BodyBytes));
             var location =  LocationController.GetLocationLoot(jsonreq);
             string resp = ResponseControl.GetBody(JsonConvert.SerializeObject(location));
-            Utils.SendUnityResponse(session, resp);
+            Utils.SendUnityResponse(request, serverStruct, resp);
             return true;
         }
 
         [HTTP("POST", "/client/account/customization")]
-        public static bool ClientAccountCustomization(HttpRequest request, HttpsBackendSession session)
+        public static bool ClientAccountCustomization(HttpRequest request, ServerStruct serverStruct)
         {
-            Utils.PrintRequest(request, session);
+            Utils.PrintRequest(request, serverStruct);
             string resp = ResponseControl.GetBody(JsonConvert.SerializeObject(CustomizationController.GetAccountCustomization()));
-            Utils.SendUnityResponse(session, resp);
+            Utils.SendUnityResponse(request, serverStruct, resp);
             return true;
         }
 
         [HTTP("POST", "/client/handbook/templates")]
-        public static bool ClientHandbookTemplates(HttpRequest request, HttpsBackendSession session)
+        public static bool ClientHandbookTemplates(HttpRequest request, ServerStruct serverStruct)
         {
-            Utils.PrintRequest(request, session);
-            string SessionId = Utils.GetSessionId(session.Headers);
+            Utils.PrintRequest(request, serverStruct);
+            string SessionId = Utils.GetSessionId(serverStruct.Headers);
             string resp = ResponseControl.GetBody(JsonConvert.SerializeObject(DatabaseController.DataBase.Others.Templates));
-            Utils.SendUnityResponse(session, resp);
+            Utils.SendUnityResponse(request, serverStruct, resp);
             return true;
         }
 
         [HTTP("POST", "/client/handbook/builds/my/list")]
-        public static bool ClientHandbookBuildsMyList(HttpRequest request, HttpsBackendSession session)
+        public static bool ClientHandbookBuildsMyList(HttpRequest request, ServerStruct serverStruct)
         {
-            Utils.PrintRequest(request, session);
-            string SessionId = Utils.GetSessionId(session.Headers);
+            Utils.PrintRequest(request, serverStruct);
+            string SessionId = Utils.GetSessionId(serverStruct.Headers);
 
             List<WeaponBuild> ret = new();
             var profile = ProfileController.GetProfile(SessionId);
@@ -235,28 +236,28 @@ namespace ServerLib.Web
             }
 
             string resp = ResponseControl.GetBody(JsonConvert.SerializeObject(ret));
-            Utils.SendUnityResponse(session, resp);
+            Utils.SendUnityResponse(request, serverStruct, resp);
             return true;
         }
 
         [HTTP("POST", "/client/getMetricsConfig")]
-        public static bool ClientGetMetricsConfig(HttpRequest request, HttpsBackendSession session)
+        public static bool ClientGetMetricsConfig(HttpRequest request, ServerStruct serverStruct)
         {
-            Utils.PrintRequest(request, session);
-            string SessionId = Utils.GetSessionId(session.Headers);
+            Utils.PrintRequest(request, serverStruct);
+            string SessionId = Utils.GetSessionId(serverStruct.Headers);
             string resp = File.ReadAllText("Files/static/metrics.json");
-            Utils.SendUnityResponse(session, resp);
+            Utils.SendUnityResponse(request, serverStruct, resp);
             return true;
         }
 
         [HTTP("POST", "/client/putMetrics")]
-        public static bool ClientPutMetrics(HttpRequest request, HttpsBackendSession session)
+        public static bool ClientPutMetrics(HttpRequest request, ServerStruct serverStruct)
         {
-            Utils.PrintRequest(request, session);
-            string SessionId = Utils.GetSessionId(session.Headers);
+            Utils.PrintRequest(request, serverStruct);
+            string SessionId = Utils.GetSessionId(serverStruct.Headers);
             File.WriteAllText("PutMetrics.json", ResponseControl.DeCompressReq(request.BodyBytes));
             string resp = ResponseControl.NullResponse();
-            Utils.SendUnityResponse(session, resp);
+            Utils.SendUnityResponse(request, serverStruct, resp);
             return true;
         }
     }

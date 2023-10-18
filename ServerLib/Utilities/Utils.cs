@@ -1,7 +1,8 @@
 ﻿using EFT;
+using ModdableWebServer;
+using ModdableWebServer.Helper;
 using NetCoreServer;
 using ServerLib.Web;
-using static ServerLib.Web.HTTPServer;
 
 namespace ServerLib.Utilities
 {
@@ -9,36 +10,48 @@ namespace ServerLib.Utilities
     {
         #region Session Stuff
         internal static int ReqId = 0;
-        public static bool SendUnityResponse(HttpsBackendSession session, string resp)
+        public static bool SendUnityResponse(HttpRequest req, ServerStruct serverStruct, string resp)
         {
-            var url = session.LastRequest().Url.Replace("/","_");
-            string SessionId = GetSessionId(session.Headers);
+            var url = req.Url.Replace("/","_");
+            string SessionId = GetSessionId(serverStruct.Headers);
             File.WriteAllText("ServerResponses/" + ReqId + "_" + SessionId + url + ".json", resp); 
             ReqId++;
-            return SendUnityResponse(session, ResponseControl.CompressRsp(resp));
+            return SendUnityResponse(serverStruct, ResponseControl.CompressRsp(resp));
         }
 
-        public static bool SendUnityResponse(HttpsBackendSession session, byte[] resp)
+        public static bool SendUnityResponse(ServerStruct serverStruct, byte[] resp)
         {
-            var rsp = session.Response.MakeGetResponse(resp, "application/json");
-            session.SendResponse(rsp);
+            serverStruct.Response.MakeGetResponse(resp, "application/json");
+            serverStruct.SendResponse();
             Debug.PrintDebug("WE SENT UNITY RESPONSE!");
             return true;
         }
 
-        public static void PrintRequest(HttpRequest req, HttpsBackendSession session)
+        public static void PrintRequest(HttpRequest req, ServerStruct serverStruct)
         {
-            Dictionary<string, string> Headers = new();
-            for (int i = 0; i < req.Headers; i++)
-            {
-                var headerpart = req.Header(i);
-                Headers.Add(headerpart.Item1, headerpart.Item2);
-            }
             string time = DateTime.UtcNow.ToString();
             string fullurl = req.Url;
-            string from_ip = session.Socket.RemoteEndPoint.ToString();
-            string SessionId = GetSessionId(Headers);
+            string from_ip = GetFromIP(serverStruct);
+            string SessionId = GetSessionId(serverStruct.Headers);
             Console.WriteLine("[" + time + "] " + from_ip + " | " + SessionId + " = " + fullurl);
+        }
+
+
+        public static string GetFromIP(ServerStruct serverStruct)
+        {
+            switch (serverStruct.Enum)
+            {
+                case ServerEnum.HTTP:
+                    return serverStruct.HTTP_Session.Socket.RemoteEndPoint.ToString();
+                case ServerEnum.HTTPS:
+                    return serverStruct.HTTPS_Session.Socket.RemoteEndPoint.ToString();
+                case ServerEnum.WS:
+                    return serverStruct.WS_Session.Socket.RemoteEndPoint.ToString();
+                case ServerEnum.WSS:
+                    return serverStruct.WSS_Session.Socket.RemoteEndPoint.ToString();
+                default:
+                    return "NoIP";
+            }
         }
 
         public static string GetSessionId(Dictionary<string, string> HttpHeaders)

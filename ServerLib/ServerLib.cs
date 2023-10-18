@@ -3,7 +3,6 @@ using ServerLib.Handlers;
 using ServerLib.Utilities.Helpers;
 using ServerLib.Web;
 using System.Net;
-using static ServerLib.Web.HTTPServer;
 
 namespace ServerLib
 {
@@ -39,8 +38,7 @@ namespace ServerLib
             Controllers.DialogueController.Init();
             AccountController.Init();
             CharacterController.Init();
-            Start(Ip, port);
-            WebSocket.Start(Ip, port + 1);
+            ServerManager.Start(Ip, port);
             if (!ArgumentHandler.DontLoadPlugin)
             {
                 PluginLoader.LoadPlugins();
@@ -74,21 +72,11 @@ namespace ServerLib
             AccountController.Init();
             CharacterController.Init();
             Controllers.QuestController.Init();
-            Start(Ip, port);
-            WebSocket.Start(Ip, port + 1);
+            ServerManager.Start(Ip, port);
             if (!ArgumentHandler.DontLoadPlugin)
             {
                 PluginLoader.LoadPlugins();
             }
-        }
-
-        /// <summary>
-        /// Get the running Webserver
-        /// </summary>
-        /// <returns>Webserver</returns>
-        public static HttpsBackendServer? GetWebServer()
-        {
-            return GetServer();
         }
 
         /// <summary>
@@ -100,8 +88,7 @@ namespace ServerLib
                 return;
             PluginLoader.UnloadPlugins();
             ConfigController.Save();
-            HTTPServer.Stop();
-            WebSocket.Stop();
+            ServerManager.Stop();
             IsAlreadyQuited = true;
         }
     }

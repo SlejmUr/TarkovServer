@@ -54,7 +54,7 @@ namespace ServerLib.Utilities.Helpers
             var crt = Convert.ToBase64String(exportData, Base64FormattingOptions.InsertLineBreaks);
             File.WriteAllText(certFilename, CRT_HEADER + crt + CRT_FOOTER);
 
-            File.WriteAllBytes("cert/cert.pfx", certificate.Export(X509ContentType.Pfx));
+            File.WriteAllBytes("cert/cert.pfx", certificate.Export(X509ContentType.Pfx,"cert"));
 
             X509Store x509Store = new(StoreName.Root, StoreLocation.LocalMachine);
             x509Store.Open(OpenFlags.MaxAllowed);
@@ -63,13 +63,6 @@ namespace ServerLib.Utilities.Helpers
                 x509Store.Add(certificate);
             }
             x509Store.Close();
-        }
-
-        public static X509Certificate GetCert()
-        {
-
-            X509Certificate2 cert = new(File.ReadAllBytes($"cert/cert.pfx"));
-            return cert;
         }
     }
 }

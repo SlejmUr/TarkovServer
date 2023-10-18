@@ -1,20 +1,21 @@
-﻿using NetCoreServer;
+﻿using ModdableWebServer;
+using NetCoreServer;
 using Newtonsoft.Json;
 using ServerLib.Controllers;
 using ServerLib.Utilities;
 using ServerLib.Utilities.Helpers;
-using static ServerLib.Web.HTTPServer;
+using ModdableWebServer.Attributes;
 
 namespace ServerLib.Web
 {
     public class ClientGame
     {
         [HTTP("POST", "/client/game/start")]
-        public static bool GameStart(HttpRequest request, HttpsBackendSession session)
+        public static bool GameStart(HttpRequest request, ServerStruct serverStruct)
         {
             //REQ stuff
-            string SessionId = Utils.GetSessionId(session.Headers);
-            Utils.PrintRequest(request, session);
+            string SessionId = Utils.GetSessionId(serverStruct.Headers);
+            Utils.PrintRequest(request, serverStruct);
             string resp;
             // RPS
             var TimeThingy = TimeHelper.UnixTimeNow_Int();
@@ -26,17 +27,17 @@ namespace ServerLib.Web
             {
                 resp = ResponseControl.GetBody("{\"utc_time\":" + TimeThingy + "}", 999, "Profile Not Found!!");
             }
-            Utils.SendUnityResponse(session, resp);
+            Utils.SendUnityResponse(request, serverStruct, resp);
             return true;
         }
 
         [HTTP("POST", "/client/game/keepalive")]
-        public static bool GameKeepalive(HttpRequest request, HttpsBackendSession session)
+        public static bool GameKeepalive(HttpRequest request, ServerStruct serverStruct)
         {
             //REQ stuff
             string resp;
-            Utils.PrintRequest(request, session);
-            string SessionId = Utils.GetSessionId(session.Headers);
+            Utils.PrintRequest(request, serverStruct);
+            string SessionId = Utils.GetSessionId(serverStruct.Headers);
             var TimeThingy = TimeHelper.UnixTimeNow_Int();
             if (SessionId == null)
             {
@@ -47,17 +48,17 @@ namespace ServerLib.Web
                 KeepAliveController.Main(SessionId);
                 resp = ResponseControl.GetBody("{\"msg\":\"OK\", \"utc_time\":" + TimeThingy + "}");
             }
-            Utils.SendUnityResponse(session, resp);
+            Utils.SendUnityResponse(request, serverStruct, resp);
             return true;
         }
         [HTTP("POST", "/client/game/version/validate")]
-        public static bool GameVersionValidate(HttpRequest request, HttpsBackendSession session)
+        public static bool GameVersionValidate(HttpRequest request, ServerStruct serverStruct)
         {
             //REQ stuff
             string resp;
-            Utils.PrintRequest(request, session);
-            string SessionId = Utils.GetSessionId(session.Headers);
-            string version = Utils.GetVersion(session.Headers);
+            Utils.PrintRequest(request, serverStruct);
+            string SessionId = Utils.GetSessionId(serverStruct.Headers);
+            string version = Utils.GetVersion(serverStruct.Headers);
             if (AccountController.FindAccount(SessionId) != null)
             {
                 Debug.PrintDebug($"User ({SessionId}) connected with client version {version}");
@@ -67,17 +68,17 @@ namespace ServerLib.Web
                 Debug.PrintDebug($"Unknown User connected with client version {version}");
             }
             var rsp = ResponseControl.NullResponse();
-            Utils.SendUnityResponse(session, rsp);
+            Utils.SendUnityResponse(request, serverStruct, rsp);
             return true;
         }
 
         [HTTP("POST", "/client/game/config")]
-        public static bool GameConfig(HttpRequest request, HttpsBackendSession session)
+        public static bool GameConfig(HttpRequest request, ServerStruct serverStruct)
         {
             //REQ stuff
             string resp;
-            Utils.PrintRequest(request, session);
-            string SessionId = Utils.GetSessionId(session.Headers);
+            Utils.PrintRequest(request, serverStruct);
+            string SessionId = Utils.GetSessionId(serverStruct.Headers);
             var serverips = ConfigController.Configs.Server.ServerIPs;
             Json.Classes.GameConfig.Backend backend = new();
             if (serverips.Enable)
@@ -118,32 +119,32 @@ namespace ServerLib.Web
             };
 
             var rsp = ResponseControl.GetBody(JsonConvert.SerializeObject(game));
-            Utils.SendUnityResponse(session, rsp);
+            Utils.SendUnityResponse(request, serverStruct, rsp);
             return true;
         }
 
         [HTTP("POST", "/client/game/logout")]
-        public static bool GameLogout(HttpRequest request, HttpsBackendSession session)
+        public static bool GameLogout(HttpRequest request, ServerStruct serverStruct)
         {
             //REQ stuff
-            Utils.PrintRequest(request, session);
-            string SessionId = Utils.GetSessionId(session.Headers);
+            Utils.PrintRequest(request, serverStruct);
+            string SessionId = Utils.GetSessionId(serverStruct.Headers);
             AccountController.SessionLogout(SessionId);
             var rsp = ResponseControl.GetBody("{status: \"ok\"}");
-            Utils.SendUnityResponse(session, rsp);
+            Utils.SendUnityResponse(request, serverStruct, rsp);
             return true;
         }
 
         [HTTP("POST", "/client/game/bot/generate")]
-        public static bool BotGenerate(HttpRequest request, HttpsBackendSession session)
+        public static bool BotGenerate(HttpRequest request, ServerStruct serverStruct)
         {
-            Utils.PrintRequest(request, session);
-            string SessionId = Utils.GetSessionId(session.Headers);
+            Utils.PrintRequest(request, serverStruct);
+            string SessionId = Utils.GetSessionId(serverStruct.Headers);
             string Uncompressed = ResponseControl.DeCompressReq(request.BodyBytes);
             var conditions = JsonConvert.DeserializeObject<List<WaveInfo>>(Uncompressed);
             // RPS
             var rsp = "{}";
-            Utils.SendUnityResponse(session, rsp);
+            Utils.SendUnityResponse(request, serverStruct, rsp);
             return true;
         }
     }

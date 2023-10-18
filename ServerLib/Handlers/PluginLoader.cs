@@ -1,9 +1,7 @@
-﻿using NetCoreServer;
-using ServerLib.Controllers;
+﻿using ServerLib.Controllers;
 using ServerLib.Json.Classes;
 using ServerLib.Utilities;
 using System.Reflection;
-using static ServerLib.Web.HTTPServer;
 
 namespace ServerLib.Handlers
 {
@@ -98,42 +96,6 @@ namespace ServerLib.Handlers
 
         }
 
-        public static Dictionary<string, MethodInfo> UrlLoader(Assembly assembly)
-        {
-            Dictionary<string, MethodInfo> ret = new();
-            var methods = assembly.GetTypes().SelectMany(x => x.GetMethods()).ToArray();
-            var basemethods = methods.Where(x => x.GetCustomAttribute<HTTPAttribute>() != null && x.ReturnType == typeof(bool)).ToArray();
-            methods = basemethods.Where(x => x.GetCustomAttribute<HTTPAttribute>().method.Contains("GET")).ToArray();
-            foreach (var method in methods)
-            {
-                if (method == null)
-                    continue;
-                var url = method.GetCustomAttribute<HTTPAttribute>().url;
-                Debug.PrintDebug(method.Name + $" ({url}) is added as an URL", "HTTPServer/Plugin");
-                ret.Add(url, method);
-            }
-            methods = basemethods.Where(x => x.GetCustomAttribute<HTTPAttribute>().method.Contains("POST")).ToArray();
-            foreach (var method in methods)
-            {
-                if (method == null)
-                    continue;
-                var url = method.GetCustomAttribute<HTTPAttribute>().url;
-                Debug.PrintDebug(method.Name + $" ({url}) is added as an URL", "HTTPServer/Plugin");
-                ret.Add(url, method);
-            }
-            return ret;
-        }
-
-        public static List<bool> PluginHttpRequest(HttpRequest request, HttpsBackendSession session)
-        {
-            List<bool> boolret = new();
-            foreach (var plugin in pluginsList)
-            {
-                boolret.Add(plugin.Value.Plugin.HttpRequest(request, session));
-            }
-            return boolret;
-        }
-
         public static void UnloadPlugins()
         {
             foreach (var plugin in pluginsList)
@@ -144,6 +106,7 @@ namespace ServerLib.Handlers
             }
             pluginsList.Clear();
         }
+
         public static void ManualLoadPlugin(string DllName)
         {
 

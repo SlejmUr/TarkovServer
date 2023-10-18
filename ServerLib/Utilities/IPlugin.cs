@@ -1,7 +1,4 @@
-﻿using NetCoreServer;
-using static ServerLib.Web.HTTPServer;
-
-namespace ServerLib.Utilities
+﻿namespace ServerLib.Utilities
 {
     public interface IPlugin : IDisposable
     {
@@ -11,7 +8,6 @@ namespace ServerLib.Utilities
         string Description { get; }
         List<string> Dependencies { get; }
         void Initialize();
-        bool HttpRequest(HttpRequest request, HttpsBackendSession session);
         void ShutDown();
     }
 }
