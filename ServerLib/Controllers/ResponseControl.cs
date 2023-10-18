@@ -44,7 +44,7 @@ namespace ServerLib.Web
                 channel_id = SessionId,
                 url = "",
                 notifierServer = ServerLib.IP + "/notifierServer/" + SessionId,
-                ws = ServerManager.IpPort + SessionId
+                ws = ServerManager.IpPort_WS + SessionId
             };
 
             return notifier;

@@ -1,6 +1,7 @@
-﻿using NetCoreServer;
-using ServerLib.Utilities;
-using static ServerLib.Web.HTTPServer;
+﻿using ModdableWebServer.Attributes;
+using ModdableWebServer;
+using NetCoreServer;
+using ModdableWebServer.Helper;
 
 namespace TestPlugin
 {
@@ -15,18 +16,20 @@ namespace TestPlugin
         }
 
         [HTTP("GET", "/test")]
-        public static bool Test(HttpRequest request, HttpsBackendSession session)
+        public static bool Test(HttpRequest request, ServerStruct serverStruct)
         {
             string resp = "OVERRIDED!";
-            session.SendResponse(session.Response.MakeGetResponse(resp));
+            serverStruct.Response.MakeGetResponse(resp);
+            serverStruct.SendResponse();
             return true;
         }
 
         [HTTP("GET", "/test2")]
-        public static bool Test2(HttpRequest request, HttpsBackendSession session)
+        public static bool Test2(HttpRequest request, ServerStruct serverStruct)
         {
             string resp = "test2 from a Plugin!";
-            session.SendResponse(session.Response.MakeGetResponse(resp));
+            serverStruct.Response.MakeGetResponse(resp);
+            serverStruct.SendResponse();
             return true;
         }
 

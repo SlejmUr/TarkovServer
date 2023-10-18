@@ -1,17 +1,14 @@
 ﻿using ExtCommands;
-using NetCoreServer;
-using ServerLib.Handlers;
 using ServerLib.Utilities;
+using ServerLib.Web;
 using System.Composition;
 using System.Reflection;
-using static ServerLib.Web.HTTPServer;
 
 namespace Plugin
 {
     [Export(typeof(IPlugin))]
     public class Plugin : IPlugin, IDisposable
     {
-        public static Dictionary<string, MethodInfo> HttpServerThingy = new();
         public void Dispose()
         {
         }
@@ -33,23 +30,12 @@ namespace Plugin
         public void Initialize()
         {
             var assembly = this.GetType().Assembly;
-            HttpServerThingy = PluginLoader.UrlLoader(assembly);
+            ServerManager.AddRoutes(assembly);
         }
         public void ShutDown()
         {
-            HttpServerThingy.Clear();
-        }
-
-        public bool HttpRequest(HttpRequest request, HttpsBackendSession session)
-        {
-            string url = request.Url;
-            url = Uri.UnescapeDataString(url);
-            if (HttpServerThingy.TryGetValue(url, out var method))
-            {
-                var ret = method.Invoke(this, new object[] { request, session });
-                return (bool)ret;
-            }
-            return false;
+            var assembly = this.GetType().Assembly;
+            ServerManager.RemoveRoutes(assembly);
         }
     }
 }

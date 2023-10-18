@@ -1,10 +1,8 @@
-﻿using NetCoreServer;
-using ServerLib.Controllers;
+﻿using ServerLib.Controllers;
 using ServerLib.Utilities;
 using System.Composition;
 using System.Net;
 using TestServer;
-using static ServerLib.Web.HTTPServer;
 
 namespace Plugin
 {
@@ -37,11 +35,6 @@ namespace Plugin
         public void ShutDown()
         {
             gameServer.Stop();
-        }
-
-        public bool HttpRequest(HttpRequest request, HttpsBackendSession session)
-        {
-            return false;
         }
     }
 }

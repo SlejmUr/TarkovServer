@@ -55,7 +55,7 @@ namespace ServerLib.Web
             Console.WriteLine("WebSocketAddress!!!!!!!");
             Utils.PrintRequest(request, serverStruct);
             string SessionId = Utils.GetSessionId(serverStruct.Headers);
-            Utils.SendUnityResponse(request, serverStruct, ServerManager.IpPort + SessionId);
+            Utils.SendUnityResponse(request, serverStruct, ServerManager.IpPort_WS + SessionId);
             return true;
         }
 
