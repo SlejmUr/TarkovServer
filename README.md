@@ -1,30 +1,14 @@
 # Tarkov Server
-This server is discontinued!
-
-Reason:\
-Because I couldn't managed to make through matchmaking with just simple battleye and file check disable there are no reason to continue this project.\
-There will be so much to add that are not currently in and to adapt or look at akis solution to straight up copy or thing for custom solution, so I just discontinue this project.
+This server is back!
 
 # Other
 Tarkov Server on C# (.NET 6)
 
-This is my attempt to port existing JavaScript code to C#.\
+This is my attempt to port existing JavaScript/Go/Typescript code to C#.\
 Because I am not want and familiar with JS and his funny stuffs.
 
 And possibly easier to make a nice Server UI with this (Xaml, or just Winform).\
 Still in early phase, in development!
-
-## References
-Assembly-CSharp.dll\
-bsg.componentace.compression.libs.zlib.dll\
-bsg.console.core\
-bsg.microsoft.extensions.objectpool.dll\
-bsg.system.buffers.dll\
-Newtonsoft.Json\
-UnityEngine.dll\
-UnityEngine.CoreModule.dll
-
-(Just put all in there you didn't miss much)
 
 ## Credits
 - TheMaoci for official Research and Dump Tutorials
@@ -36,8 +20,7 @@ UnityEngine.CoreModule.dll
 - SlejmUr for the Original Idea
 
 ## Build
-Make a Ref folder next to TarkovServer.sln and paste the References.\
-Open SLN in Visual Studio.\
+Open TarkovServer.sln\
 Build=>(Re-)Build Solution
 
 ## Linux Support
@@ -53,8 +36,14 @@ You can check TestPlugin for some of the changes.
 You can add you own idea or anything, make a PR and I will check it. Feel free to import something you like.
 
 ## Releases
-Release will come if everything works as intended it should work.\
-It need most of the Managed dll's and the two dll you find in the _Ref folder!\
-When using the ConsoleApp it will create a path.txt\
-Edit that to a directory where the managed dlls are + the two dll from _Ref folder\
-I suggest copy all dll's from the Managed folder and paste into a folder that says in the path.txt [Ref folder]
+Use ConsoleApp! Only this is done.\
+it will create a path.txt file, open and should be path to the Managed dll's.
+You can download dlls from here, since it necessary to build the project.
+
+# Multiplayer
+Currently working on Unity 2019.4.39 version of server. \
+decompiling the code and cleaning it. \
+https://github.com/SlejmUr/U19_TarkovServer\
+tarkov 0.13.5.3.x will be the LTS version!\
+if unity 21 version of tarkov released will gonna check what changed,\
+but it shouldn't change much.
