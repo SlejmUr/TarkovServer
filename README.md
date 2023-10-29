@@ -43,7 +43,7 @@ You can download dlls from here, since it necessary to build the project.
 # Multiplayer
 Currently working on Unity 2019.4.39 version of server. \
 decompiling the code and cleaning it. \
-https://github.com/SlejmUr/U19_TarkovServer\
+https://github.com/SlejmUr/U19_TarkovServer \
 tarkov 0.13.5.3.x will be the LTS version!\
 if unity 21 version of tarkov released will gonna check what changed,\
 but it shouldn't change much.
