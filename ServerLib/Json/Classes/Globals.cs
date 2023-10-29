@@ -16,6 +16,9 @@ namespace ServerLib.Json.Classes
             public List<BotPreset> bot_presets { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
+            public AudioSettings AudioSettings { get; set; }
+
+            [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public List<BotWeaponScattering> BotWeaponScatterings { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
@@ -86,6 +89,9 @@ namespace ServerLib.Json.Classes
             public int GlobalLootChanceModifier { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
+            public GraphicSettings GraphicSettings { get; set; }
+
+            [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public int TimeBeforeDeploy { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
@@ -95,10 +101,10 @@ namespace ServerLib.Json.Classes
             public int TradingSetting { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public ITradingSettings TradingSettings { get; set; }
+            public TradingSettings TradingSettings { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public IItemsCommonSettings ItemsCommonSettings { get; set; }
+            public ItemsCommonSettings ItemsCommonSettings { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public int LoadTimeSpeedProgress { get; set; }
@@ -122,7 +128,7 @@ namespace ServerLib.Json.Classes
             public bool BotsEnabled { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public IBufferZone BufferZone { get; set; }
+            public BufferZone BufferZone { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public ArmorMaterials ArmorMaterials { get; set; }
@@ -215,7 +221,7 @@ namespace ServerLib.Json.Classes
             public xyz SprintSpeed { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public ISquadSettings SquadSettings { get; set; }
+            public SquadSettings SquadSettings { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public int SkillEnduranceWeightThreshold { get; set; }
@@ -234,6 +240,9 @@ namespace ServerLib.Json.Classes
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public xyz WallContusionAbsorption { get; set; }
+
+            [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
+            public WeaponFastDrawSettings WeaponFastDrawSettings { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public SkillsSettings SkillsSettings { get; set; }
@@ -266,8 +275,40 @@ namespace ServerLib.Json.Classes
             public RepairSettings RepairSettings { get; set; }
 
         }
-        public class IBufferZone
+        public class WeaponFastDrawSettings
+        {
+            [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
+            public int HandShakeCurveFrequency { get; set; }
 
+            [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
+            public int HandShakeCurventensity { get; set; }
+
+            [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
+            public int HandShakeMaxDuration { get; set; }
+
+            [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
+            public int HandShakeTremorntensity { get; set; }
+
+            [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
+            public int WeaponFastSwitchMaxSpeedMult { get; set; }
+
+            [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
+            public int WeaponFastSwitchMinSpeedMult { get; set; }
+
+            [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
+            public int WeaponPistolFastSwitchMaxSpeedMult { get; set; }
+
+            [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
+            public int WeaponPistolFastSwitchMinSpeedMult { get; set; }
+
+        }
+        public class GraphicSettings
+        {
+            [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
+            public bool ExperimentalFognCity { get; set; }
+
+        }
+        public class BufferZone
         {
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public int CustomerAccessTime { get; set; }
@@ -279,22 +320,19 @@ namespace ServerLib.Json.Classes
             public int CustomerKickNotifTime { get; set; }
 
         }
-        public class IItemsCommonSettings
-
+        public class ItemsCommonSettings
         {
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public int ItemRemoveAfterInterruptionTime { get; set; }
 
         }
-        public class ITradingSettings
-
+        public class TradingSettings
         {
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public IBuyoutRestrictions BuyoutRestrictions { get; set; }
+            public BuyoutRestrictions BuyoutRestrictions { get; set; }
 
         }
-        public class IBuyoutRestrictions
-
+        public class BuyoutRestrictions
         {
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public int MinDurability { get; set; }
@@ -414,7 +452,19 @@ namespace ServerLib.Json.Classes
             public int bloodLossToLitre { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
+            public int botExpOnDamageAllHealth { get; set; }
+
+            [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
+            public int botHeadShotMult { get; set; }
+
+            [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public int victimBotLevelExp { get; set; }
+
+            [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
+            public int pmcExpOnDamageAllHealth { get; set; }
+
+            [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
+            public int pmcHeadShotMult { get; set; }
 
         }
         public class Combo
@@ -945,10 +995,10 @@ namespace ServerLib.Json.Classes
             public SandingScreen SandingScreen { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public IMusclePainEffect MildMusclePain { get; set; }
+            public MusclePainEffect MildMusclePain { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public IMusclePainEffect SevereMusclePain { get; set; }
+            public MusclePainEffect SevereMusclePain { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public Stimulator Stimulator { get; set; }
@@ -960,13 +1010,13 @@ namespace ServerLib.Json.Classes
             public ChronicStaminaFatigue ChronicStaminaFatigue { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public Fracture2 Fracture { get; set; }
+            public Fracture Fracture { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public HeavyBleeding2 HeavyBleeding { get; set; }
+            public HeavyBleeding HeavyBleeding { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public LightBleeding2 LightBleeding { get; set; }
+            public LightBleeding LightBleeding { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public BodyTemperature BodyTemperature { get; set; }
@@ -1290,8 +1340,7 @@ namespace ServerLib.Json.Classes
             public int Dummy { get; set; }
 
         }
-        public class IMusclePainEffect
-
+        public class MusclePainEffect
         {
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public int GymEffectivity { get; set; }
@@ -1489,7 +1538,7 @@ namespace ServerLib.Json.Classes
             public int EnergyRatePerStack { get; set; }
 
         }
-        public class Fracture2
+        public class Fracture
         {
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public int DefaultDelay { get; set; }
@@ -1519,7 +1568,7 @@ namespace ServerLib.Json.Classes
             public Probability FallingProbability { get; set; }
 
         }
-        public class HeavyBleeding2
+        public class HeavyBleeding
         {
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public int DefaultDelay { get; set; }
@@ -1585,7 +1634,7 @@ namespace ServerLib.Json.Classes
             public int Threshold { get; set; }
 
         }
-        public class LightBleeding2
+        public class LightBleeding
         {
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public int DefaultDelay { get; set; }
@@ -1774,7 +1823,7 @@ namespace ServerLib.Json.Classes
             public bool avgEarnings { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public bool kills { get; set; }
+            public bool pmcKills { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public bool raidCount { get; set; }
@@ -1795,7 +1844,7 @@ namespace ServerLib.Json.Classes
         public class Tournament
         {
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public Categories2 categories { get; set; }
+            public TournamentCategories categories { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public int limit { get; set; }
@@ -1804,7 +1853,7 @@ namespace ServerLib.Json.Classes
             public int levelRequired { get; set; }
 
         }
-        public class Categories2
+        public class TournamentCategories
         {
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public bool dogtags { get; set; }
@@ -2035,6 +2084,9 @@ namespace ServerLib.Json.Classes
             public int WalkVisualEffectMultiplier { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
+            public int WeaponFastSwitchConsumption { get; set; }
+
+            [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public int HandsCapacity { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
@@ -2167,7 +2219,7 @@ namespace ServerLib.Json.Classes
             public int Value { get; set; }
 
         }
-        public class ISquadSettings
+        public class SquadSettings
         {
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public int CountOfRequestsToOnePlayer { get; set; }
@@ -2218,7 +2270,7 @@ namespace ServerLib.Json.Classes
             public Vitality Vitality { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public Health2 Health { get; set; }
+            public HealthSkillProgress Health { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public StressResistance StressResistance { get; set; }
@@ -2260,7 +2312,7 @@ namespace ServerLib.Json.Classes
             public List<object> AttachedLauncher { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public IMeleeSkill Melee { get; set; }
+            public MeleeSkill Melee { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public WeaponSkills DMR { get; set; }
@@ -2389,24 +2441,22 @@ namespace ServerLib.Json.Classes
             public TroubleShooting TroubleShooting { get; set; }
 
         }
-        public class IMeleeSkill
-
+        public class MeleeSkill
         {
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public IBuffSettings BuffSettings { get; set; }
+            public BuffSettings BuffSettings { get; set; }
 
         }
         public class ArmorSkills
-
         {
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public int BuffMaxCount { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public IBuffSettings BuffSettings { get; set; }
+            public BuffSettings BuffSettings { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public IArmorCounters Counters { get; set; }
+            public ArmorCounters Counters { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public int MoveSpeedPenaltyReductionHVestsReducePerLevel { get; set; }
@@ -2433,11 +2483,10 @@ namespace ServerLib.Json.Classes
             public int WearChanceRepairLVestsReduceEliteLevel { get; set; }
 
         }
-        public class IArmorCounters
-
+        public class ArmorCounters
         {
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public ISkillCounter armorDurability { get; set; }
+            public SkillCounter armorDurability { get; set; }
 
         }
         public class HideoutManagement
@@ -2584,11 +2633,17 @@ namespace ServerLib.Json.Classes
             public int GainPerFatigueStack { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
+            	public List<DependentSkillRatio> DependentSkillRatios { get; set; }
+
+	        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public Dictionary<string, Dictionary<string, double>> QTELevelMultipliers { get; set; }
 
         }
         public class Strength
         {
+            [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
+	        public List<DependentSkillRatio> DependentSkillRatios { get; set; }
+
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public int SprintActionMin { get; set; }
 
@@ -2608,7 +2663,7 @@ namespace ServerLib.Json.Classes
             public int PushUpMax { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public List<IQTELevelMultiplier> QTELevelMultipliers { get; set; }
+            public List<QTELevelMultiplier> QTELevelMultipliers { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public int FistfightAction { get; set; }
@@ -2617,8 +2672,16 @@ namespace ServerLib.Json.Classes
             public int ThrowAction { get; set; }
 
         }
-        public class IQTELevelMultiplier
+        public class DependentSkillRatio
+        {
+            [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
+            public int Ratio { get; set; }
 
+            [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
+            public string Skilld { get; set; }
+
+        }
+        public class QTELevelMultiplier
         {
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public int Level { get; set; }
@@ -2636,7 +2699,7 @@ namespace ServerLib.Json.Classes
             public int HealthNegativeEffect { get; set; }
 
         }
-        public class Health2
+        public class HealthSkillProgress
         {
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public int SkillProgress { get; set; }
@@ -2702,10 +2765,10 @@ namespace ServerLib.Json.Classes
             public int BuffMaxCount { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public IBuffSettings BuffSettings { get; set; }
+            public BuffSettings BuffSettings { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public IWeaponTreatmentCounters Counters { get; set; }
+            public WeaponTreatmentCounters Counters { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public int DurLossReducePerLevel { get; set; }
@@ -2723,15 +2786,13 @@ namespace ServerLib.Json.Classes
             public int WearChanceRepairGunsReduceEliteLevel { get; set; }
 
         }
-        public class IWeaponTreatmentCounters
-
+        public class WeaponTreatmentCounters
         {
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public ISkillCounter firearmsDurability { get; set; }
+            public SkillCounter firearmsDurability { get; set; }
 
         }
-        public class IBuffSettings
-
+        public class BuffSettings
         {
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public int CommonBuffChanceLevelBonus { get; set; }
@@ -2767,7 +2828,7 @@ namespace ServerLib.Json.Classes
         public class Perception
         {
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public List<ISkillRatio> DependentSkillRatios { get; set; }
+            public List<SkillRatio> DependentSkillRatios { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public int OnlineAction { get; set; }
@@ -2776,8 +2837,7 @@ namespace ServerLib.Json.Classes
             public int UniqueLoot { get; set; }
 
         }
-        public class ISkillRatio
-
+        public class SkillRatio
         {
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public int Ratio { get; set; }
@@ -2789,7 +2849,7 @@ namespace ServerLib.Json.Classes
         public class Intellect
         {
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public IIntellectCounters Counters { get; set; }
+            public IntellectCounters Counters { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public int ExamineAction { get; set; }
@@ -2810,21 +2870,20 @@ namespace ServerLib.Json.Classes
             public int RepairPointsCostReduction { get; set; }
 
         }
-        public class IIntellectCounters
+        public class IntellectCounters
 
         {
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public ISkillCounter armorDurability { get; set; }
+            public SkillCounter armorDurability { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public ISkillCounter firearmsDurability { get; set; }
+            public SkillCounter firearmsDurability { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public ISkillCounter meleeWeaponDurability { get; set; }
+            public SkillCounter meleeWeaponDurability { get; set; }
 
         }
-        public class ISkillCounter
-
+        public class SkillCounter
         {
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public int divisor { get; set; }
@@ -2836,7 +2895,7 @@ namespace ServerLib.Json.Classes
         public class Attention
         {
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public List<ISkillRatio> DependentSkillRatios { get; set; }
+            public List<SkillRatio> DependentSkillRatios { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public int ExamineWithInstruction { get; set; }
@@ -2851,10 +2910,10 @@ namespace ServerLib.Json.Classes
         public class Charisma
         {
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public IBonusSettings BonusSettings { get; set; }
+            public BonusSettings BonusSettings { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public ICharismaSkillCounters Counters { get; set; }
+            public CharismaSkillCounters Counters { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public int SkillProgressInt { get; set; }
@@ -2866,37 +2925,35 @@ namespace ServerLib.Json.Classes
             public int SkillProgressPer { get; set; }
 
         }
-        public class ICharismaSkillCounters
+        public class CharismaSkillCounters
 
         {
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public ISkillCounter insuranceCost { get; set; }
+            public SkillCounter insuranceCost { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public ISkillCounter repairCost { get; set; }
+            public SkillCounter repairCost { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public ISkillCounter repeatableQuestCompleteCount { get; set; }
+            public SkillCounter repeatableQuestCompleteCount { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public ISkillCounter restoredHealthCost { get; set; }
+            public SkillCounter restoredHealthCost { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public ISkillCounter scavCaseCost { get; set; }
+            public SkillCounter scavCaseCost { get; set; }
 
         }
-        public class IBonusSettings
-
+        public class BonusSettings
         {
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public IEliteBonusSettings EliteBonusSettings { get; set; }
+            public EliteBonusSettings EliteBonusSettings { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public ILevelBonusSettings LevelBonusSettings { get; set; }
+            public LevelBonusSettings LevelBonusSettings { get; set; }
 
         }
-        public class IEliteBonusSettings
-
+        public class EliteBonusSettings
         {
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public int FenceStandingLossDiscount { get; set; }
@@ -2908,8 +2965,7 @@ namespace ServerLib.Json.Classes
             public int ScavCaseDiscount { get; set; }
 
         }
-        public class ILevelBonusSettings
-
+        public class LevelBonusSettings
         {
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public int HealthRestoreDiscount { get; set; }
@@ -3244,6 +3300,21 @@ namespace ServerLib.Json.Classes
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public int AvailableExits { get; set; }
 
+            [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
+            public int BotApplySilenceChance { get; set; }
+
+            [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
+            public int BotGetnCoverChance { get; set; }
+
+            [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
+            public int BotHelpChance { get; set; }
+
+            [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
+            public int BotSpreadoutChance { get; set; }
+
+            [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
+            public int BotStopChance { get; set; }
+
         }
         public class Inertia
         {
@@ -3362,18 +3433,6 @@ namespace ServerLib.Json.Classes
             public xyz MaxMovementAccelerationRangeRight { get; set; }
 
         }
-        public class xyz
-        {
-            [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public int x { get; set; }
-
-            [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public int y { get; set; }
-
-            [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public int z { get; set; }
-
-        }
         public class Ballistic
         {
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
@@ -3381,16 +3440,15 @@ namespace ServerLib.Json.Classes
 
         }
         public class RepairSettings
-
         {
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public IItemEnhancementSettings ItemEnhancementSettings { get; set; }
+            public ItemEnhancementSettings ItemEnhancementSettings { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public int MinimumLevelToApplyBuff { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public IRepairStrategies RepairStrategies { get; set; }
+            public RepairStrategies RepairStrategies { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public int armorClassDivisor { get; set; }
@@ -3402,38 +3460,34 @@ namespace ServerLib.Json.Classes
             public int durabilityPointCostGuns { get; set; }
 
         }
-        public class IItemEnhancementSettings
-
+        public class ItemEnhancementSettings
         {
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public IPriceModifier DamageReduction { get; set; }
+            public CPriceModifier DamageReduction { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public IPriceModifier MalfunctionProtections { get; set; }
+            public CPriceModifier MalfunctionProtections { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public IPriceModifier WeaponSpread { get; set; }
+            public CPriceModifier WeaponSpread { get; set; }
 
         }
-        public class IPriceModifier
-
+        public class CPriceModifier
         {
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public int PriceModifier { get; set; }
 
         }
-        public class IRepairStrategies
-
+        public class RepairStrategies
         {
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public IRepairStrategy Armor { get; set; }
+            public RepairStrategy Armor { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public IRepairStrategy Firearms { get; set; }
+            public RepairStrategy Firearms { get; set; }
 
         }
-        public class IRepairStrategy
-
+        public class RepairStrategy
         {
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public List<string> BuffTypes { get; set; }
@@ -3476,6 +3530,41 @@ namespace ServerLib.Json.Classes
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public int COEF_IF_MOVE { get; set; }
+        }
+        public class AudioSettings
+        {
+            [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
+            public List<AudioGroupPreset> AudioGroupPresets { get; set; }
+
+        }
+        public class AudioGroupPreset
+        {
+            [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
+            public int AngleToAllowBinaural { get; set; }
+
+            [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
+            public bool DisabledBinauralByDistance { get; set; }
+
+            [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
+            public int DistanceToAllowBinaural { get; set; }
+
+            [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
+            public int GroupType { get; set; }
+
+            [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
+            public int HeightToAllowBinaural { get; set; }
+
+            [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
+            public string Name { get; set; }
+
+            [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
+            public bool OcclusionEnabled { get; set; }
+
+            [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
+            public int OcclusionIntensity { get; set; }
+
+            [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
+            public int OverallVolume { get; set; }
 
         }
         public class BotWeaponScattering

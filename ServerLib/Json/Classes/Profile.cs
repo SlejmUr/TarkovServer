@@ -142,7 +142,7 @@ namespace ServerLib.Json.Classes
             public int Level { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public EMemberCategory MemberCategory { get; set; }
+            public int MemberCategory { get; set; }
 
         }
 

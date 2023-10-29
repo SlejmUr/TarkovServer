@@ -171,7 +171,8 @@
         "609e8540d5c319764c2bc2e9": 18,
         "5b44d0de86f774503d30cba8": 18,
         "5b44cf1486f77431723e3d05": 7,
-        "5fd4c474dd870108a754b241": 7
+        "5fd4c474dd870108a754b241": 7,
+        "64abd93857958b4249003418": 1
       },
       "Eyewear": {
         "5d6d2ef3a4b93618084f58bd": 1,
@@ -193,7 +194,9 @@
         "5df8a42886f77412640e2e75": 1,
         "5f5f41f56760b4138443b352": 1,
         "5b44cad286f77402a54ae7e5": 1,
-        "60a3c68c37ea821725773ef5": 1
+        "60a3c68c37ea821725773ef5": 1,
+        "64a5366719bab53bd203bf33": 1,
+        "64be7095047e826eae02b0c1": 1
       },
       "Backpack": {
         "6034d2d697633951dc245ea6": 1,
@@ -243,11 +246,13 @@
         "59e690b686f7746c9f75e848": 1
       },
       "Caliber9x19PARA": {
-        "56d59d3ad2720bdb418b4577": 1
+        "56d59d3ad2720bdb418b4577": 1,
+        "64b7bbb74b75259c590fa897": 1
       },
       "Caliber762x39": {
         "59e0d99486f7744a32234762": 1,
-        "5656d7c34bdc2d9d198b4587": 1
+        "5656d7c34bdc2d9d198b4587": 1,
+        "64b7af5a8532cf95ee0a0dbd": 1
       },
       "Caliber545x39": {
         "56dff3afd2720bba668b4567": 1,
@@ -262,7 +267,8 @@
         "5e023e88277cce2b522ff2b1": 1
       },
       "Caliber762x35": {
-        "5fbe3ffdf8b6a877a729ea82": 1
+        "5fbe3ffdf8b6a877a729ea82": 1,
+        "64b8725c4b75259c590fa899": 1
       }
     },
     "mods": {
@@ -873,7 +879,8 @@
           "5df916dfbb49d91fb446d6b9"
         ],
         "mod_scope": [
-          "57aca93d2459771f2c7e26db"
+          "57aca93d2459771f2c7e26db",
+          "626bb8532c923541184624b4"
         ]
       },
       "5df917564a9f347bc92edca3": {
@@ -1021,7 +1028,9 @@
         "mod_scope": [
           "591c4efa86f7741030027726",
           "5c0a2cec0db834001b7ce47d",
-          "5b30b0dc5acfc400153b7124"
+          "5b30b0dc5acfc400153b7124",
+          "64785e7c19d732620e045e15",
+          "6477772ea8a38bb2050ed4db"
         ]
       },
       "5bb20d92d4351e00853263eb": {
@@ -1045,6 +1054,11 @@
       "609269c3b0e443224b421cc1": {
         "mod_muzzle": [
           "60926df0132d4d12c81fd9df"
+        ]
+      },
+      "5df916dfbb49d91fb446d6b9": {
+        "mod_foregrip": [
+          "57cffcd624597763133760c5"
         ]
       },
       "5a7033908dc32e000a311392": {
@@ -1105,11 +1119,6 @@
       "5b099a765acfc47a8607efe3": {
         "mod_muzzle": [
           "5b7d693d5acfc43bca706a3d"
-        ]
-      },
-      "5df916dfbb49d91fb446d6b9": {
-        "mod_foregrip": [
-          "57cffcd624597763133760c5"
         ]
       },
       "606587252535c57a13424cfd": {
@@ -1255,8 +1264,8 @@
         "5df8a72c86f77412640e2e83",
         "5c5db6742e2216000f1b2852",
         "59e61eb386f77440d64f5daf",
-        "5a1ead28fcdbcb001912fa9f",
         "590c651286f7741e566b6461",
+        "5a1ead28fcdbcb001912fa9f",
         "59faf7ca86f7740dbe19f6c2",
         "5d0a29ead7ad1a0026013f27",
         "56ea6fafd2720b844b8b4593",
@@ -1269,15 +1278,15 @@
         "5c0e531d86f7747fa23f4d42",
         "5894a42086f77426d2590762",
         "5c0e533786f7747fa23f4d47",
+        "5f745ee30acaeb0d490d8c5b",
         "55d480c04bdc2d1d4e8b456a",
         "6130c3dffaa1272e43151c7d",
         "5d235a5986f77443f6329bc6",
         "5f647d9f8499b57dc40ddb93",
-        "5f745ee30acaeb0d490d8c5b",
+        "5c0e530286f7747fa1419862",
         "58d2946c86f7744e271174b5",
         "5926c3b286f774640d189b6b",
         "5ed515e03a40a50460332579",
-        "5c0e530286f7747fa1419862",
         "59e3658a86f7741776641ac4",
         "61840d85568c120fdd2962a5",
         "5addc7ac5acfc400194dbd90",
@@ -1291,8 +1300,8 @@
         "59f9d81586f7744c7506ee62",
         "57fd23e32459772d0805bcf1",
         "59c63b4486f7747afb151c1c",
-        "5b30b0dc5acfc400153b7124",
         "5abcd472d8ce8700166032ae",
+        "5b30b0dc5acfc400153b7124",
         "5c0e531286f7747fa54205c2",
         "590c645c86f77412b01304d9",
         "61816df1d3a39d50044c139e",
@@ -1322,10 +1331,10 @@
         "5a37cb10c4a282329a73b4e7",
         "6196255558ef8c428c287d1c",
         "5b1fd4e35acfc40018633c39",
-        "5bfd36ad0db834001c38ef66",
-        "606587bd6d0bd7580617bacc",
         "637b6179104668754b72f8f5",
         "5fca138c2a7b221b2852a5c6",
+        "5bfd36ad0db834001c38ef66",
+        "606587bd6d0bd7580617bacc",
         "59e5f5a486f7746c530b3ce2",
         "618167528004cc50514c34f9",
         "5fbbaa86f9986c4cff3fe5f6",
@@ -1364,13 +1373,13 @@
         "5734758f24597738025ee253",
         "59f99a7d86f7745b134aa97b",
         "5ed51652f6c34d2cc26336a1",
-        "5e848d51e4dbc5266a4ec63b",
-        "5c0505e00db834001b735073",
         "5a27b281c4a28200741e1e52",
         "5a69a2ed8dc32e000d46d1f1",
         "5c6165902e22160010261b28",
         "59d64fc686f774171b243fe2",
         "637b612fb7afa97bfc3d7005",
+        "5e848d51e4dbc5266a4ec63b",
+        "5c0505e00db834001b735073",
         "5fbcc429900b1d5091531dd7",
         "5998517986f7746017232f7e",
         "5d44334ba4b9362b346d1948",
@@ -1382,9 +1391,9 @@
         "5d122e7bd7ad1a07102d6d7f",
         "560838c94bdc2d77798b4569",
         "5ed515f6915ec335206e4152",
-        "5ef35d2ac64c5d0dfc0571b0",
         "588226dd24597767ad33f789",
         "5a7882dcc5856700177af662",
+        "5ef35d2ac64c5d0dfc0571b0",
         "5f2aa49f9b44de6b1b4e68d4",
         "5649aa744bdc2ded0b8b457e",
         "57e3dba62459770f0c32322b",
@@ -1404,7 +1413,123 @@
         "564ca9df4bdc2d35148b4569",
         "5ab372a310e891001717f0d8",
         "62a0a16d0b9d3c46de5b6e97",
-        "5c18b9192e2216398b5a8104"
+        "5c18b9192e2216398b5a8104",
+        "5afd7e095acfc40017541f61",
+        "571a28e524597720b4066567",
+        "5cff9e84d7ad1a049e54ed55",
+        "5a7afa25e899ef00135e31b0",
+        "5a7b4960e899ef197b331a2d",
+        "5d25a7b88abbc3054f3e60bc",
+        "5cf4e3f3d7f00c06595bc7f0",
+        "5ea17bbc09aa976f2e7a51cd",
+        "5c07c5ed0db834001b73571c",
+        "5a0abb6e1526d8000a025282",
+        "5bfea7ad0db834001c38f1ee",
+        "5df8f541c41b2312ea3335e3",
+        "5ef366938cef260c0642acad",
+        "5c07a8770db8340023300450",
+        "59fafc9386f774067d462453",
+        "5c87ca002e221600114cb150",
+        "571a279b24597720b4066566",
+        "6386120cd6baa055ad1e201c",
+        "5a7ad74e51dfba0015068f45",
+        "5a33cae9c4a28232980eb086",
+        "544a37c44bdc2d25388b4567",
+        "5cdd7685d7f00c000f260ed2",
+        "57c9a89124597704ee6faec1",
+        "612e0d3767085e45ef14057f",
+        "55d35ee94bdc2d61338b4568",
+        "5c0fafb6d174af02a96260ba",
+        "5cde739cd7f00c0010373bd3",
+        "5b07dd285acfc4001754240d",
+        "5b3b6dc75acfc47a8773fb1e",
+        "60a23797a37c940de7062d02",
+        "57c55f112459772d28133310",
+        "5bfe86df0db834001b734685",
+        "5a351711c4a282000b1521a4",
+        "5bfe7fb30db8340018089fed",
+        "57cffcdd24597763f5110006",
+        "5b363e1b5acfc4771e1c5e80",
+        "5c05413a0db834001c390617",
+        "5c0e2f94d174af029f650d56",
+        "5eea21647547d6330471b3c9",
+        "5a787ebcc5856700142fdd98",
+        "618ba91477b82356f91ae0e8",
+        "5b222d335acfc4771e1be099",
+        "638de3603a1a4031d8260b8c",
+        "5bb20df1d4351e00347787d5",
+        "637b60c3b7afa97bfc3d7001",
+        "57616a9e2459773c7a400234",
+        "57c55efc2459772d2c6271e7",
+        "6477772ea8a38bb2050ed4db",
+        "5b099ac65acfc400186331e1",
+        "5943ee5a86f77413872d25ec",
+        "58d2947e86f77447aa070d53",
+        "5f2aa4559b44de6b1b4e68d1",
+        "5aaa5e60e5b5b000140293d6",
+        "5d024f5cd7ad1a04a067e91a",
+        "5926f2e086f7745aae644231",
+        "5afd7ded5acfc40017541f5e",
+        "6194f5722d2c397d6600348f",
+        "612e0d81290d254f5e6b291a",
+        "55d48a634bdc2d8b2f8b456a",
+        "5a7c74b3e899ef0014332c29",
+        "617131a4568c120fdd29482d",
+        "602a97060ddce744014caf6f",
+        "5d2369418abbc306c62e0c80",
+        "56e05b06d2720bb2668b4586",
+        "5a9d6d13a2750c00164f6b03",
+        "58d2664f86f7747fec5834f6",
+        "59ecc3dd86f7746dc827481c",
+        "5c7954d52e221600106f4cc7",
+        "5c0009510db834001966907f",
+        "618168dc8004cc50514c34fc",
+        "57dbb57e2459774673234890",
+        "5fc4b992187fea44d52edaa9",
+        "5addbb825acfc408fb139400",
+        "618b9643526131765025ab35",
+        "57c5ac0824597754771e88a9",
+        "5bc09a30d4351e00367fb7c8",
+        "5aa66a9be5b5b0214e506e89",
+        "59d6272486f77466146386ff",
+        "57d17c5e2459775a5c57d17d",
+        "6113cce3d92c473c770200c7",
+        "56ea7293d2720b8d4b8b45ba",
+        "5a9e81fba2750c00164f6b11",
+        "5b7be4575acfc400161d0832",
+        "62e7e7bbe6da9612f743f1e0",
+        "618b9682a3884f56c957ca78",
+        "5649d9a14bdc2d79388b4580",
+        "55d3632e4bdc2d972f8b4569",
+        "5943eeeb86f77412d6384f6b",
+        "5e2192a498a36665e8337386",
+        "6405ff6bd4578826ec3e377a",
+        "5b363dd25acfc4001a598fd2",
+        "5a788068c5856700137e4c8f",
+        "5dfe14f30b92095fd441edaf",
+        "5f3e7801153b8571434a924c",
+        "607ffb988900dc2d9a55b6e4",
+        "5ea034eb5aad6446a939737b",
+        "624c29ce09cd027dff2f8cd7",
+        "5bb20da5d4351e0035629dbf",
+        "5dfa3cd1b33c0951220c079b",
+        "5ea172e498dacb342978818e",
+        "5c010a700db834001d23ef5d",
+        "61659f79d92c473c770213ee",
+        "55d45f484bdc2d972f8b456d",
+        "61714b2467085e45ef140b2c",
+        "644a3df63b0b6f03e101e065",
+        "5a702d198dc32e000b452fc3",
+        "5a16b93dfcdbcbcae6687261",
+        "5fc3e466187fea44d52eda90",
+        "5fc0f9b5d724d907e2077d82",
+        "606f263a8900dc2d9a55b68d",
+        "5c1267ee86f77416ec610f72",
+        "5fca13ca637ee0341a484f46",
+        "5ef1b9f0c64c5d0dfc0571a1",
+        "5cbda392ae92155f3c17c39f",
+        "57ee59b42459771c7b045da5",
+        "5c6d7b3d2e221600114c9b7d"
       ],
       "SecuredContainer": [
         "59e68f6f86f7746c9f75e846",
@@ -1422,7 +1547,10 @@
         "5fbe3ffdf8b6a877a729ea82",
         "5e023e53d4353e3302577c4c",
         "5e023e88277cce2b522ff2b1",
-        "59e690b686f7746c9f75e848"
+        "59e690b686f7746c9f75e848",
+        "64b7bbb74b75259c590fa897",
+        "64b7af5a8532cf95ee0a0dbd",
+        "64b8725c4b75259c590fa899"
       ],
       "SpecialLoot": []
     }
@@ -1474,14 +1602,14 @@
     "Jeff",
     "Nevada",
     "Juggernaut",
+    "Handsome",
+    "Nine-hole",
+    "Boogerman",
+    "Afraid",
+    "Meldon",
     "Coyote",
     "Melo",
     "Sherman",
-    "Handsome",
-    "Afraid",
-    "Meldon",
-    "Nine-hole",
-    "Boogerman",
     "Cougar",
     "Woodrow",
     "Rage",
@@ -1513,14 +1641,14 @@
     "Father",
     "Stamper",
     "Weasel",
-    "Iowa",
-    "Trickster",
-    "Enzo",
-    "Justkilo",
+    "Zero-zero",
     "Striker",
     "RoughDog",
+    "Iowa",
+    "Enzo",
     "Whitemane",
-    "Zero-zero",
+    "Trickster",
+    "Justkilo",
     "Shifty",
     "Nukem",
     "Rib-eye",
@@ -1544,14 +1672,14 @@
     "Lancaster",
     "Spyke",
     "Snake",
-    "Rock",
-    "John",
-    "Beverly",
     "Rassler",
+    "Beverly",
     "Whisky",
     "Bison",
     "Crooked",
     "Deceit",
+    "Rock",
+    "John",
     "Scar",
     "Wrath",
     "Duke",
@@ -1563,12 +1691,12 @@
     "Scottsdale",
     "Aimbotkin",
     "Kentucky",
-    "Corsair",
-    "Whale-Eye",
     "Marooner",
     "Baddie",
-    "Arizona",
+    "Corsair",
+    "Whale-Eye",
     "Shadow",
+    "Arizona",
     "Instructor",
     "Bullet",
     "Grim",
@@ -3554,11 +3682,11 @@
   },
   "chances": {
     "equipment": {
-      "Headwear": 82,
-      "Earpiece": 43,
-      "FaceCover": 63,
-      "ArmorVest": 24,
-      "Eyewear": 73,
+      "Headwear": 83,
+      "Earpiece": 44,
+      "FaceCover": 62,
+      "ArmorVest": 20,
+      "Eyewear": 74,
       "ArmBand": 0,
       "TacticalVest": 100,
       "Backpack": 37,
@@ -3575,25 +3703,25 @@
       "mod_sight_rear": 81,
       "mod_muzzle": 88,
       "mod_launcher": 0,
-      "mod_mount_000": 68,
+      "mod_mount_000": 69,
       "mod_mount_001": 67,
-      "mod_mount_002": 3,
+      "mod_mount_002": 2,
       "mod_tactical_000": 26,
       "mod_foregrip": 58,
       "mod_sight_front": 74,
       "mod_stock_000": 100,
       "mod_tactical": 20,
       "mod_reciever": 100,
-      "mod_charge": 31,
+      "mod_charge": 32,
       "mod_stock": 100,
-      "mod_nvg": 24,
+      "mod_nvg": 22,
       "mod_tactical_002": 56,
-      "mod_mount": 0,
+      "mod_mount": 1,
       "mod_tactical_001": 0,
       "mod_stock_002": 100,
       "mod_mount_003": 0,
-      "mod_equipment_000": 5,
-      "mod_tactical_2": 10,
+      "mod_equipment_000": 4,
+      "mod_tactical_2": 11,
       "mod_tactical_003": 27,
       "mod_handguard": 100,
       "mod_flashlight": 100,
@@ -3602,7 +3730,7 @@
       "mod_tactical001": 100,
       "mod_tactical002": 0,
       "mod_equipment_001": 0,
-      "mod_muzzle_000": 54,
+      "mod_muzzle_000": 50,
       "mod_muzzle_001": 0,
       "mod_stock_001": 100
     }
@@ -3610,32 +3738,86 @@
   "generation": {
     "items": {
       "specialItems": {
-        "min": 0,
-        "max": 0
+        "weights": {
+          "0": 0
+        },
+        "whitelist": []
       },
       "healing": {
-        "min": 1,
-        "max": 2
+        "weights": {
+          "0": 1,
+          "1": 1,
+          "2": 2
+        },
+        "whitelist": []
       },
       "drugs": {
-        "min": 0,
-        "max": 1
+        "weights": {
+          "0": 1,
+          "1": 2
+        },
+        "whitelist": []
       },
       "stims": {
-        "min": 0,
-        "max": 1
+        "weights": {
+          "0": 5,
+          "1": 1
+        },
+        "whitelist": []
       },
-      "looseLoot": {
-        "min": 2,
-        "max": 4
+      "backpackLoot": {
+        "weights": {
+          "0": 1,
+          "1": 2,
+          "2": 5,
+          "3": 3,
+          "4": 1,
+          "5": 1,
+          "6": 1,
+          "7": 0
+        },
+        "whitelist": []
+      },
+      "pocketLoot": {
+        "weights": {
+          "0": 1,
+          "1": 7,
+          "2": 4,
+          "3": 1,
+          "4": 1
+        },
+        "whitelist": []
+      },
+      "vestLoot": {
+        "weights": {
+          "0": 1,
+          "1": 3,
+          "2": 5,
+          "3": 1,
+          "4": 1
+        },
+        "whitelist": []
       },
       "magazines": {
-        "min": 2,
-        "max": 4
+        "weights": {
+          "0": 0,
+          "1": 0,
+          "2": 1,
+          "3": 2,
+          "4": 3
+        },
+        "whitelist": []
       },
       "grenades": {
-        "min": 0,
-        "max": 5
+        "weights": {
+          "0": 1,
+          "1": 1,
+          "2": 3,
+          "3": 2,
+          "4": 2,
+          "5": 1
+        },
+        "whitelist": []
       }
     }
   }

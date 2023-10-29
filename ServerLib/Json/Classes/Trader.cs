@@ -239,7 +239,7 @@ namespace ServerLib.Json.Classes
             public int profileLevel { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public int standing { get; set; }
+            public double standing { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public List<string> skillRequirements { get; set; }

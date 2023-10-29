@@ -1,5 +1,4 @@
-﻿using EFT.Quests;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using ServerLib.Json.Enums;
 
 namespace ServerLib.Json.Classes
@@ -13,7 +12,7 @@ namespace ServerLib.Json.Classes
             public string Id { get; set; }
 
             [JsonProperty("aid", NullValueHandling = NullValueHandling.Ignore)]
-            public string Aid { get; set; }
+            public int Aid { get; set; }
 
             [JsonProperty("savage", DefaultValueHandling = DefaultValueHandling.Ignore)]
             public string Savage { get; set; }
@@ -72,6 +71,9 @@ namespace ServerLib.Json.Classes
             [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
             public _Notes Notes { get; set; }
 
+            [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
+            public string SurvivorClass { get; set; } //ENUM!
+
             [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
             public List<string> WishList { get; set; }
 
@@ -97,6 +99,9 @@ namespace ServerLib.Json.Classes
             [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
             public string Side { get; set; }
 
+            [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
+            public bool SquadnviteRestriction { get; set; }
+
             [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
             public string Voice { get; set; }
 
@@ -116,7 +121,7 @@ namespace ServerLib.Json.Classes
             public int AccountType { get; set; }
 
             [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public EMemberCategory MemberCategory { get; set; }
+            public int MemberCategory { get; set; } //ENUM!
 
             [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
             public bool lockedMoveCommands { get; set; }
@@ -331,6 +336,12 @@ namespace ServerLib.Json.Classes
         }
 
         public class Stats
+        {	
+            [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
+	        public EftStats Eft { get; set; }
+
+        }
+        public class EftStats
         {
             [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
             public List<string> CarriedQuestItems { get; set; }
@@ -376,6 +387,9 @@ namespace ServerLib.Json.Classes
 
             [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
             public int TotalInGameTime { get; set; }
+            
+            [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
+            public string SurvivorClass { get; set; }
 
         }
         public class DroppedItem
@@ -600,7 +614,6 @@ namespace ServerLib.Json.Classes
 
         }
         public class LastPlayerState
-
         {
             [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
             public LastPlayerStateInfo Info { get; set; }
@@ -660,6 +673,9 @@ namespace ServerLib.Json.Classes
             [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
             public Dictionary<string, HideoutImprovement> Improvements { get; set; }
 
+            [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
+            public int Seed { get; set; }
+
             [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
             public int sptUpdateLastRunTimestamp { get; set; }
 
@@ -678,9 +694,6 @@ namespace ServerLib.Json.Classes
         public class Productive
         {
             [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public string RecipeId { get; set; }
-
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
             public List<Product> Products { get; set; }
 
             [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
@@ -698,11 +711,37 @@ namespace ServerLib.Json.Classes
             [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
             public int ProductionTime { get; set; }
 
-            [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
-            public bool sptIsScavCase { get; set; }
+            [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
+            public List<string> GiventemsnStart { get; set; }
+
+            [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
+            public bool Interrupted { get; set; }
+
+            [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
+            public bool needFuelForAllProductionTime { get; set; }
+
+            [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
+            public bool NeedFuelForAllProductionTime { get; set; }
 
         }
+        public class Production:  Productive
+        {
+            [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
+            public string Reciped { get; set; }
 
+            [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
+            public int SkipTime { get; set; }
+
+            [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
+            public int ProductionTime { get; set; }
+
+        }
+        public class ScavCase: Productive
+        {
+            [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
+            public string Reciped { get; set; }
+
+        }
         public class Product
         {
             [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]
@@ -770,7 +809,6 @@ namespace ServerLib.Json.Classes
             public List<Note> Notes { get; set; }
 
         }
-
         public class Quest
         {
             [JsonProperty( NullValueHandling = NullValueHandling.Ignore)]

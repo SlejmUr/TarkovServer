@@ -73,11 +73,18 @@
         "path": "CONTENT/banners/banner_scavraider.jpg",
         "rcid": ""
       }
+    },
+    {
+      "id": "64c0ad6af99768b777048f4e",
+      "pic": {
+        "path": "CONTENT/banners/banner_emissary.jpg",
+        "rcid": ""
+      }
     }
   ],
   "BossLocationSpawn": [
     {
-      "BossChance": 25,
+      "BossChance": 35,
       "BossDifficult": "normal",
       "BossEscortAmount": "2",
       "BossEscortDifficult": "normal",
@@ -112,20 +119,20 @@
       "Time": -1
     },
     {
-      "BossChance": 30,
+      "BossChance": 35,
       "BossDifficult": "normal",
       "BossEscortAmount": "4",
       "BossEscortDifficult": "normal",
       "BossEscortType": "followerBully",
       "BossName": "bossBully",
       "BossPlayer": false,
-      "BossZone": "ZoneDormitory,ZoneGasStation",
+      "BossZone": "ZoneDormitory",
       "RandomTimeSpawn": false,
       "Supports": null,
       "Time": -1
     },
     {
-      "BossChance": 12,
+      "BossChance": 15,
       "BossDifficult": "normal",
       "BossEscortAmount": "4",
       "BossEscortDifficult": "normal",
@@ -133,6 +140,19 @@
       "BossName": "sectantPriest",
       "BossPlayer": false,
       "BossZone": "ZoneScavBase",
+      "RandomTimeSpawn": false,
+      "Supports": null,
+      "Time": -1
+    },
+    {
+      "BossChance": 5,
+      "BossDifficult": "normal",
+      "BossEscortAmount": "3,4",
+      "BossEscortDifficult": "normal",
+      "BossEscortType": "arenaFighterEvent",
+      "BossName": "arenaFighterEvent",
+      "BossPlayer": false,
+      "BossZone": "ZoneFactoryCenter,ZoneScavBase",
       "RandomTimeSpawn": false,
       "Supports": null,
       "Time": -1
@@ -155,24 +175,28 @@
     "VisibleDistance": 1
   },
   "BotMarksman": 20,
-  "BotMax": 13,
+  "BotMax": 17,
   "BotMaxPlayer": 9,
   "BotMaxTimePlayer": 1000,
   "BotNormal": 50,
+  "BotSpawnCountStep": 4,
+  "BotSpawnPeriodCheck": 15,
   "BotSpawnTimeOffMax": 30,
   "BotSpawnTimeOffMin": 20,
   "BotSpawnTimeOnMax": 320,
   "BotSpawnTimeOnMin": 260,
-  "BotStart": 120,
+  "BotStart": 20,
+  "BotStartPlayer": 210,
   "BotStop": 1500,
   "Description": "Very Big Map",
   "DisabledForScav": false,
   "DisabledScavExits": "",
+  "EnableCoop": true,
   "Enabled": true,
-  "EnabledCoop": false,
   "EscapeTimeLimit": 40,
   "EscapeTimeLimitCoop": 25,
   "GenerateLocalLootCache": true,
+  "GlobalContainerChanceModifier": 1,
   "GlobalLootChanceModifier": 0.8,
   "IconX": 456,
   "IconY": 443,
@@ -181,12 +205,42 @@
   "IsSecret": false,
   "Locked": false,
   "Loot": [],
+  "MatchMakerMinPlayersByWaitTime": [
+    {
+      "minPlayers": 7,
+      "time": 60
+    },
+    {
+      "minPlayers": 6,
+      "time": 70
+    },
+    {
+      "minPlayers": 5,
+      "time": 120
+    },
+    {
+      "minPlayers": 4,
+      "time": 180
+    },
+    {
+      "minPlayers": 3,
+      "time": 250
+    },
+    {
+      "minPlayers": 2,
+      "time": 330
+    },
+    {
+      "minPlayers": 1,
+      "time": 420
+    }
+  ],
   "MaxBotPerZone": 4,
   "MaxCoopGroup": 12,
-  "MaxDistToFreePoint": 300,
+  "MaxDistToFreePoint": 200,
   "MaxPlayers": 12,
   "MinDistToExitPoint": 30,
-  "MinDistToFreePoint": 80,
+  "MinDistToFreePoint": 60,
   "MinMaxBots": [
     {
       "WildSpawnType": "marksman",
@@ -194,19 +248,29 @@
       "min": 2
     }
   ],
-  "MinPlayers": 9,
+  "MinPlayerLvlAccessKeys": 0,
+  "MinPlayers": 10,
   "Name": "Customs",
   "NewSpawn": true,
+  "NonWaveGroupScenario": {
+    "Chance": 50,
+    "Enabled": true,
+    "MaxToBeGroup": 3,
+    "MinToBeGroup": 2
+  },
   "OcculsionCullingEnabled": false,
+  "OfflineNewSpawn": true,
+  "OfflineOldSpawn": false,
   "OldSpawn": false,
   "OpenZones": "ZoneBrige,ZoneCrossRoad,ZoneDormitory,ZoneGasStation,ZoneFactoryCenter,ZoneFactorySide,ZoneOldAZS,ZoneSnipeBrige,ZoneSnipeTower,ZoneSnipeFactory,ZoneBlockPost,ZoneBlockPostSniper,ZoneBlockPostSniper3,ZoneBlockPost,ZoneTankSquare,ZoneWade,ZoneCustoms",
+  "PlayersRequestCount": -1,
   "PmcMaxPlayersInGroup": 5,
   "Preview": {
     "path": "",
     "rcid": ""
   },
-  "RequiredPlayerLevelMin": 0,
   "RequiredPlayerLevelMax": 100,
+  "RequiredPlayerLevelMin": 0,
   "Rules": "AvoidAllPmc",
   "SafeLocation": false,
   "ScavMaxPlayersInGroup": 4,
@@ -7246,35 +7310,6 @@
         "z": -119.5414
       },
       "Rotation": 4.26114464,
-      "Sides": [
-        "Savage"
-      ]
-    },
-    {
-      "BotZoneName": "ZoneFactoryCenter",
-      "Categories": [
-        "Bot"
-      ],
-      "ColliderParams": {
-        "_parent": "SpawnSphereParams",
-        "_props": {
-          "Center": {
-            "x": 0,
-            "y": 0,
-            "z": 0
-          },
-          "Radius": 50
-        }
-      },
-      "DelayToCanSpawnSec": 5,
-      "Id": "e269db37-96ee-48a1-9ed8-0938be9f9cf4",
-      "Infiltration": "",
-      "Position": {
-        "x": 454.29303,
-        "y": 2.67591476,
-        "z": -81.5390244
-      },
-      "Rotation": 89.51053,
       "Sides": [
         "Savage"
       ]

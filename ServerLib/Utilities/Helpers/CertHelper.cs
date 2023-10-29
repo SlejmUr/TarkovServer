@@ -56,13 +56,19 @@ namespace ServerLib.Utilities.Helpers
 
             File.WriteAllBytes("cert/cert.pfx", certificate.Export(X509ContentType.Pfx,"cert"));
 
-            X509Store x509Store = new(StoreName.Root, StoreLocation.LocalMachine);
-            x509Store.Open(OpenFlags.MaxAllowed);
-            if (!x509Store.Certificates.Contains(certificate))
+            try
             {
-                x509Store.Add(certificate);
+                X509Store x509Store = new(StoreName.Root, StoreLocation.LocalMachine);
+                x509Store.Open(OpenFlags.MaxAllowed);
+                if (!x509Store.Certificates.Contains(certificate))
+                {
+                    x509Store.Add(certificate);
+                }
+                x509Store.Close();
             }
-            x509Store.Close();
+            catch
+            {
+            }
         }
     }
 }

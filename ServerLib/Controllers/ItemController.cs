@@ -1,5 +1,6 @@
 ﻿using ServerLib.Utilities;
 using ServerLib.Json.Classes;
+using ServerLib.Utilities.Helpers;
 
 namespace ServerLib.Controllers
 {
@@ -44,7 +45,7 @@ namespace ServerLib.Controllers
         {
             return new Item.Base()
             {
-                Id = Utils.CreateNewID(),
+                Id = AIDHelper.CreateNewID(),
                 Tpl = ItemId
             };
         }
@@ -53,7 +54,7 @@ namespace ServerLib.Controllers
         {
             return new Item.Base()
             {
-                Id = Utils.CreateNewID(),
+                Id = AIDHelper.CreateNewID(),
                 Tpl = ItemId,
                 ParentId = ParentId
             };

@@ -74,11 +74,11 @@ namespace ServerLib.Controllers
             account.Wipe = false;
             SaveHandler.SaveAccount(SessionId, account);
             var character = DatabaseController.DataBase.Characters.CharacterBase[createReq.Side.ToLower()];
-            var ID = Utils.CreateNewID();
+            var ID = AIDHelper.CreateNewID();
             var time = TimeHelper.UnixTimeNow_Int();
 
             character.Id = "pmc" + ID;
-            character.Aid = SessionId;
+            character.Aid = AIDHelper.ToAID(SessionId);
             character.Savage = "scav" + ID;
             character.Info.Side = createReq.Side;
             character.Info.Nickname = createReq.Nickname;
@@ -170,7 +170,7 @@ namespace ServerLib.Controllers
             if (!AccountController.IsWiped(SessionId))
             {
                 var scav = JsonHelper.ToCharacterBase("Files/bot/playerScav.json");
-                scav.Aid = SessionId;
+                scav.Aid = AIDHelper.ToAID(SessionId);
                 scav.Id = "scav" + SessionId;
                 scav.Info.RegistrationDate = TimeHelper.UnixTimeNow_Int();
                 /*

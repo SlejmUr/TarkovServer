@@ -43,7 +43,7 @@ namespace ServerLib.Json.Classes
             public string Id { get; set; }
 
             [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-            public bool IsStatic { get; set; }
+            public bool IsContainer { get; set; }
 
             [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
             public bool useGravity { get; set; }
@@ -52,10 +52,13 @@ namespace ServerLib.Json.Classes
             public bool randomRotation { get; set; }
 
             [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-            public Xyz Position { get; set; }
+            public xyz Position { get; set; }
 
             [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-            public Xyz Rotation { get; set; }
+            public xyz Rotation { get; set; }
+
+            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
+            public bool IsAlwaysSpawn { get; set; }
 
             [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
             public bool IsGroupPosition { get; set; }
@@ -83,18 +86,6 @@ namespace ServerLib.Json.Classes
 
             [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
             public List<ItemDistribution> itemDistribution { get; set; }
-
-        }
-        public class Xyz
-        {
-            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-            public int x { get; set; }
-
-            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-            public int y { get; set; }
-
-            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-            public int z { get; set; }
 
         }
         public class ItemDistribution

@@ -1,8 +1,9 @@
 ﻿using NetCoreServer;
 using ServerLib.Controllers;
-using ServerLib.Utilities;
+using ServerLib.Utilities.Helpers;
 using ModdableWebServer;
 using ModdableWebServer.Attributes;
+using ServerLib.Utilities;
 
 namespace ServerLib.Web
 {
@@ -12,9 +13,9 @@ namespace ServerLib.Web
         public static bool GameLang(HttpRequest request, ServerStruct serverStruct)
         {
             //REQ stuff
-            Utils.PrintRequest(request, serverStruct);
+            ServerHelper.PrintRequest(request, serverStruct);
             var rsp = ResponseControl.GetBody(LocaleController.GetLanguages());
-            Utils.SendUnityResponse(request, serverStruct, rsp);
+            ServerHelper.SendUnityResponse(request, serverStruct, rsp);
             return true;
         }
 
@@ -23,11 +24,11 @@ namespace ServerLib.Web
         {
             string locale = serverStruct.Parameters["locale"];
             //REQ stuff
-            string SessionId = Utils.GetSessionId(serverStruct.Headers);
-            Utils.PrintRequest(request, serverStruct);
+            string SessionId = serverStruct.Headers.GetSessionId();
+            ServerHelper.PrintRequest(request, serverStruct);
             Debug.PrintDebug("Locale: " + locale);
             var resp = ResponseControl.GetBody(LocaleController.GetMenu(locale, SessionId));
-            Utils.SendUnityResponse(request, serverStruct, resp);
+            ServerHelper.SendUnityResponse(request, serverStruct, resp);
             return true;
         }
 
@@ -36,10 +37,10 @@ namespace ServerLib.Web
         {
             string locale = serverStruct.Parameters["locale"];
             //REQ stuff
-            string SessionId = Utils.GetSessionId(serverStruct.Headers);
-            Utils.PrintRequest(request, serverStruct);
+            string SessionId = serverStruct.Headers.GetSessionId();
+            ServerHelper.PrintRequest(request, serverStruct);
             var resp = ResponseControl.GetBody(LocaleController.GetLocale(locale, SessionId));
-            Utils.SendUnityResponse(request, serverStruct, resp);
+            ServerHelper.SendUnityResponse(request, serverStruct, resp);
             return true;
 
         }

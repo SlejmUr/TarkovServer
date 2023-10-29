@@ -99,7 +99,7 @@ namespace ServerLib.Controllers
             }
             if (ID == null)
             {
-                string AccountID = Utils.CreateNewID();
+                string AccountID = AIDHelper.CreateNewID();
                 Profile.Info account = new()
                 {
                     Id = AccountID,

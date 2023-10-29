@@ -15,6 +15,7 @@
         "slots": 0,
         "constructionTime": 0,
         "description": "",
+        "container": "",
         "autoUpgrade": false,
         "displayInterface": true,
         "improvements": []
@@ -38,6 +39,7 @@
         ],
         "bonuses": [
           {
+            "id": "64f5b9e5fa34f11b380756ac",
             "value": 4,
             "passive": true,
             "production": false,
@@ -48,6 +50,7 @@
         "slots": 0,
         "constructionTime": 0,
         "description": "",
+        "container": "",
         "autoUpgrade": false,
         "displayInterface": true,
         "improvements": []
@@ -100,6 +103,7 @@
         ],
         "bonuses": [
           {
+            "id": "64f5b9e5fa34f11b380756ae",
             "value": 8,
             "passive": true,
             "production": false,
@@ -110,6 +114,7 @@
         "slots": 0,
         "constructionTime": 7200,
         "description": "",
+        "container": "",
         "autoUpgrade": false,
         "displayInterface": true,
         "improvements": []
@@ -167,6 +172,7 @@
         ],
         "bonuses": [
           {
+            "id": "64f5b9e5fa34f11b380756b1",
             "value": 12,
             "passive": true,
             "production": false,
@@ -174,6 +180,7 @@
             "type": "EnergyRegeneration"
           },
           {
+            "id": "64f5b9e5fa34f11b380756b2",
             "value": -50,
             "passive": true,
             "production": false,
@@ -184,6 +191,7 @@
         "slots": 0,
         "constructionTime": 28800,
         "description": "",
+        "container": "",
         "autoUpgrade": false,
         "displayInterface": true,
         "improvements": []
@@ -207,6 +215,7 @@
         "slots": 0,
         "constructionTime": 0,
         "description": "",
+        "container": "",
         "autoUpgrade": false,
         "displayInterface": true,
         "improvements": []
@@ -235,6 +244,7 @@
         ],
         "bonuses": [
           {
+            "id": "64f5b9e5fa34f11b380756b4",
             "value": 2,
             "passive": true,
             "production": false,
@@ -250,6 +260,7 @@
         "slots": 0,
         "constructionTime": 0,
         "description": "",
+        "container": "",
         "autoUpgrade": false,
         "displayInterface": true,
         "improvements": []
@@ -302,6 +313,7 @@
         ],
         "bonuses": [
           {
+            "id": "64f5b9e5fa34f11b380756b6",
             "value": 2,
             "passive": true,
             "production": false,
@@ -317,6 +329,7 @@
         "slots": 0,
         "constructionTime": 18000,
         "description": "",
+        "container": "",
         "autoUpgrade": false,
         "displayInterface": true,
         "improvements": []
@@ -381,6 +394,7 @@
         ],
         "bonuses": [
           {
+            "id": "64f5b9e5fa34f11b380756b8",
             "value": 2,
             "passive": true,
             "production": false,
@@ -396,6 +410,7 @@
         "slots": 0,
         "constructionTime": 57600,
         "description": "",
+        "container": "",
         "autoUpgrade": false,
         "displayInterface": true,
         "improvements": []
@@ -419,6 +434,7 @@
         "slots": 0,
         "constructionTime": 0,
         "description": "",
+        "container": "",
         "autoUpgrade": false,
         "displayInterface": true,
         "improvements": []
@@ -437,6 +453,7 @@
         "slots": 0,
         "constructionTime": 0,
         "description": "",
+        "container": "",
         "autoUpgrade": false,
         "displayInterface": true,
         "improvements": []
@@ -481,6 +498,7 @@
         "slots": 0,
         "constructionTime": 10800,
         "description": "",
+        "container": "",
         "autoUpgrade": false,
         "displayInterface": true,
         "improvements": []
@@ -542,6 +560,7 @@
         "slots": 0,
         "constructionTime": 36000,
         "description": "",
+        "container": "",
         "autoUpgrade": false,
         "displayInterface": true,
         "improvements": []
@@ -565,6 +584,7 @@
         "slots": 0,
         "constructionTime": 0,
         "description": "",
+        "container": "",
         "autoUpgrade": false,
         "displayInterface": true,
         "improvements": []
@@ -590,6 +610,7 @@
         "slots": 0,
         "constructionTime": 0,
         "description": "",
+        "container": "",
         "autoUpgrade": false,
         "displayInterface": true,
         "improvements": []
@@ -644,6 +665,7 @@
         "slots": 0,
         "constructionTime": 10800,
         "description": "",
+        "container": "",
         "autoUpgrade": false,
         "displayInterface": true,
         "improvements": []
@@ -698,6 +720,7 @@
         "slots": 0,
         "constructionTime": 61200,
         "description": "",
+        "container": "",
         "autoUpgrade": false,
         "displayInterface": true,
         "improvements": []
@@ -721,6 +744,7 @@
         "slots": 0,
         "constructionTime": 0,
         "description": "",
+        "container": "",
         "autoUpgrade": false,
         "displayInterface": true,
         "improvements": []
@@ -765,6 +789,7 @@
         ],
         "bonuses": [
           {
+            "id": "64f5b9e5fa34f11b380756ba",
             "value": 1,
             "passive": true,
             "production": false,
@@ -775,6 +800,7 @@
         "slots": 0,
         "constructionTime": 0,
         "description": "",
+        "container": "",
         "autoUpgrade": false,
         "displayInterface": true,
         "improvements": []
@@ -834,6 +860,7 @@
         ],
         "bonuses": [
           {
+            "id": "64f5b9e5fa34f11b380756bc",
             "value": 3,
             "passive": true,
             "production": false,
@@ -844,6 +871,7 @@
         "slots": 0,
         "constructionTime": 10800,
         "description": "",
+        "container": "",
         "autoUpgrade": false,
         "displayInterface": true,
         "improvements": []
@@ -896,6 +924,7 @@
         ],
         "bonuses": [
           {
+            "id": "64f5b9e5fa34f11b380756be",
             "value": 6,
             "passive": true,
             "production": false,
@@ -906,6 +935,7 @@
         "slots": 0,
         "constructionTime": 25200,
         "description": "",
+        "container": "",
         "autoUpgrade": false,
         "displayInterface": true,
         "improvements": []
@@ -929,6 +959,7 @@
         "slots": 0,
         "constructionTime": 0,
         "description": "",
+        "container": "",
         "autoUpgrade": false,
         "displayInterface": true,
         "improvements": []
@@ -937,6 +968,7 @@
         "requirements": [],
         "bonuses": [
           {
+            "id": "64f5b9e5fa34f11b380756c0",
             "value": 0,
             "passive": true,
             "production": false,
@@ -948,6 +980,7 @@
         "slots": 0,
         "constructionTime": 0,
         "description": "",
+        "container": "",
         "autoUpgrade": false,
         "displayInterface": true,
         "improvements": []
@@ -1002,6 +1035,7 @@
         ],
         "bonuses": [
           {
+            "id": "64f5b9e5fa34f11b380756c2",
             "value": 0,
             "passive": true,
             "production": false,
@@ -1013,6 +1047,7 @@
         "slots": 0,
         "constructionTime": 86400,
         "description": "",
+        "container": "",
         "autoUpgrade": false,
         "displayInterface": true,
         "improvements": []
@@ -1075,6 +1110,7 @@
         ],
         "bonuses": [
           {
+            "id": "64f5b9e5fa34f11b380756c4",
             "value": 0,
             "passive": true,
             "production": false,
@@ -1086,6 +1122,7 @@
         "slots": 0,
         "constructionTime": 172800,
         "description": "",
+        "container": "",
         "autoUpgrade": false,
         "displayInterface": true,
         "improvements": []
@@ -1165,6 +1202,7 @@
         ],
         "bonuses": [
           {
+            "id": "64f5b9e5fa34f11b380756c6",
             "value": 0,
             "passive": true,
             "production": false,
@@ -1176,6 +1214,7 @@
         "slots": 0,
         "constructionTime": 345600,
         "description": "",
+        "container": "",
         "autoUpgrade": false,
         "displayInterface": true,
         "improvements": []
@@ -1199,6 +1238,7 @@
         "slots": 0,
         "constructionTime": 0,
         "description": "",
+        "container": "",
         "autoUpgrade": false,
         "displayInterface": true,
         "improvements": []
@@ -1241,6 +1281,7 @@
         ],
         "bonuses": [
           {
+            "id": "64f5b9e5fa34f11b380756c8",
             "value": 10,
             "passive": true,
             "production": false,
@@ -1251,6 +1292,7 @@
         "slots": 0,
         "constructionTime": 7200,
         "description": "",
+        "container": "",
         "autoUpgrade": false,
         "displayInterface": true,
         "improvements": []
@@ -1308,6 +1350,7 @@
         ],
         "bonuses": [
           {
+            "id": "64f5b9e5fa34f11b380756ca",
             "value": 20,
             "passive": true,
             "production": false,
@@ -1318,6 +1361,7 @@
         "slots": 0,
         "constructionTime": 28800,
         "description": "",
+        "container": "",
         "autoUpgrade": false,
         "displayInterface": true,
         "improvements": []
@@ -1375,6 +1419,7 @@
         ],
         "bonuses": [
           {
+            "id": "64f5b9e5fa34f11b380756cd",
             "value": 30,
             "passive": true,
             "production": false,
@@ -1382,6 +1427,7 @@
             "type": "HydrationRegeneration"
           },
           {
+            "id": "64f5b9e5fa34f11b380756ce",
             "value": 1,
             "passive": true,
             "production": false,
@@ -1392,11 +1438,11 @@
             "type": "AdditionalSlots"
           },
           {
+            "id": "5d836517a57db3778f31fde7",
             "value": 0,
             "passive": true,
             "production": false,
             "visible": true,
-            "id": "5d836517a57db3778f31fde7",
             "icon": "/files/Hideout/icon_hideout_createitem_generic.png",
             "type": "TextBonus"
           }
@@ -1404,6 +1450,7 @@
         "slots": 0,
         "constructionTime": 57600,
         "description": "",
+        "container": "",
         "autoUpgrade": false,
         "displayInterface": true,
         "improvements": []
@@ -1427,6 +1474,7 @@
         "slots": 0,
         "constructionTime": 0,
         "description": "",
+        "container": "",
         "autoUpgrade": false,
         "displayInterface": true,
         "improvements": []
@@ -1471,6 +1519,7 @@
         ],
         "bonuses": [
           {
+            "id": "64f5b9e5fa34f11b380756d0",
             "value": 6,
             "passive": true,
             "production": false,
@@ -1478,11 +1527,11 @@
             "type": "HealthRegeneration"
           },
           {
+            "id": "5d8b89addfc57a648453e89d",
             "value": 0,
             "passive": true,
             "production": false,
             "visible": true,
-            "id": "5d8b89addfc57a648453e89d",
             "icon": "/files/Hideout/icon_hideout_createitem_meds.png",
             "type": "TextBonus"
           }
@@ -1490,6 +1539,7 @@
         "slots": 0,
         "constructionTime": 0,
         "description": "",
+        "container": "",
         "autoUpgrade": false,
         "displayInterface": true,
         "improvements": []
@@ -1554,6 +1604,7 @@
         ],
         "bonuses": [
           {
+            "id": "64f5b9e5fa34f11b380756d2",
             "value": 12,
             "passive": true,
             "production": false,
@@ -1564,6 +1615,7 @@
         "slots": 0,
         "constructionTime": 10800,
         "description": "",
+        "container": "",
         "autoUpgrade": false,
         "displayInterface": true,
         "improvements": []
@@ -1631,6 +1683,7 @@
         ],
         "bonuses": [
           {
+            "id": "64f5b9e5fa34f11b380756d4",
             "value": 20,
             "passive": true,
             "production": false,
@@ -1641,6 +1694,7 @@
         "slots": 0,
         "constructionTime": 43200,
         "description": "",
+        "container": "",
         "autoUpgrade": false,
         "displayInterface": true,
         "improvements": []
@@ -1664,6 +1718,7 @@
         "slots": 0,
         "constructionTime": 0,
         "description": "",
+        "container": "",
         "autoUpgrade": false,
         "displayInterface": true,
         "improvements": []
@@ -1706,6 +1761,7 @@
         ],
         "bonuses": [
           {
+            "id": "64f5b9e5fa34f11b380756d6",
             "value": 10,
             "passive": true,
             "production": false,
@@ -1716,6 +1772,7 @@
         "slots": 0,
         "constructionTime": 0,
         "description": "",
+        "container": "",
         "autoUpgrade": false,
         "displayInterface": true,
         "improvements": []
@@ -1763,6 +1820,7 @@
         ],
         "bonuses": [
           {
+            "id": "64f5b9e5fa34f11b380756d9",
             "value": 20,
             "passive": true,
             "production": false,
@@ -1770,6 +1828,7 @@
             "type": "EnergyRegeneration"
           },
           {
+            "id": "64f5b9e5fa34f11b380756da",
             "value": 7,
             "passive": true,
             "production": false,
@@ -1780,6 +1839,7 @@
         "slots": 0,
         "constructionTime": 14400,
         "description": "",
+        "container": "",
         "autoUpgrade": false,
         "displayInterface": true,
         "improvements": []
@@ -1842,6 +1902,7 @@
         ],
         "bonuses": [
           {
+            "id": "64f5b9e5fa34f11b380756dd",
             "value": 30,
             "passive": true,
             "production": false,
@@ -1849,6 +1910,7 @@
             "type": "EnergyRegeneration"
           },
           {
+            "id": "64f5b9e5fa34f11b380756de",
             "value": 20,
             "passive": true,
             "production": false,
@@ -1859,6 +1921,7 @@
         "slots": 0,
         "constructionTime": 50400,
         "description": "",
+        "container": "",
         "autoUpgrade": false,
         "displayInterface": true,
         "improvements": []
@@ -1882,6 +1945,7 @@
         "slots": 0,
         "constructionTime": 0,
         "description": "",
+        "container": "",
         "autoUpgrade": false,
         "displayInterface": true,
         "improvements": []
@@ -1917,6 +1981,7 @@
         ],
         "bonuses": [
           {
+            "id": "64f5b9e5fa34f11b380756e0",
             "value": -10,
             "passive": true,
             "production": false,
@@ -1927,6 +1992,7 @@
         "slots": 0,
         "constructionTime": 0,
         "description": "",
+        "container": "",
         "autoUpgrade": false,
         "displayInterface": true,
         "improvements": []
@@ -1984,6 +2050,7 @@
         ],
         "bonuses": [
           {
+            "id": "64f5b9e5fa34f11b380756e3",
             "value": 5,
             "passive": true,
             "production": false,
@@ -1991,6 +2058,7 @@
             "type": "EnergyRegeneration"
           },
           {
+            "id": "64f5b9e5fa34f11b380756e4",
             "value": 5,
             "passive": true,
             "production": false,
@@ -2001,6 +2069,7 @@
         "slots": 0,
         "constructionTime": 7200,
         "description": "",
+        "container": "",
         "autoUpgrade": false,
         "displayInterface": true,
         "improvements": []
@@ -2058,6 +2127,7 @@
         ],
         "bonuses": [
           {
+            "id": "64f5b9e5fa34f11b380756e7",
             "value": 10,
             "passive": true,
             "production": false,
@@ -2065,6 +2135,7 @@
             "type": "HealthRegeneration"
           },
           {
+            "id": "64f5b9e5fa34f11b380756e8",
             "value": 10,
             "passive": true,
             "production": false,
@@ -2075,221 +2146,7 @@
         "slots": 0,
         "constructionTime": 36000,
         "description": "",
-        "autoUpgrade": false,
-        "displayInterface": true,
-        "improvements": []
-      }
-    },
-    "enableAreaRequirements": false
-  },
-  {
-    "_id": "5d484fda654e7600681d9315",
-    "type": 10,
-    "enabled": true,
-    "needsFuel": true,
-    "takeFromSlotLocked": false,
-    "craftGivesExp": true,
-    "displayLevel": true,
-    "requirements": [],
-    "stages": {
-      "0": {
-        "requirements": [],
-        "bonuses": [],
-        "slots": 0,
-        "constructionTime": 0,
-        "description": "",
-        "autoUpgrade": false,
-        "displayInterface": true,
-        "improvements": []
-      },
-      "1": {
-        "requirements": [
-          {
-            "templateId": "57347c77245977448d35f6e2",
-            "count": 2,
-            "isFunctional": false,
-            "isEncoded": false,
-            "type": "Item"
-          },
-          {
-            "templateId": "57347c5b245977448d35f6e1",
-            "count": 2,
-            "isFunctional": false,
-            "isEncoded": false,
-            "type": "Item"
-          },
-          {
-            "templateId": "544fb5454bdc2df8738b456a",
-            "count": 1,
-            "isFunctional": false,
-            "isEncoded": false,
-            "type": "Item"
-          }
-        ],
-        "bonuses": [
-          {
-            "value": 1,
-            "passive": true,
-            "production": false,
-            "visible": false,
-            "type": "UnlockWeaponModification"
-          },
-          {
-            "value": 0,
-            "passive": true,
-            "production": false,
-            "visible": true,
-            "id": "5d78c1461d79cb822a38b5f7",
-            "icon": "/files/Hideout/icon_hideout_unlocked.png",
-            "type": "TextBonus"
-          },
-          {
-            "value": 1,
-            "passive": true,
-            "production": false,
-            "visible": true,
-            "type": "UnlockWeaponRepair"
-          }
-        ],
-        "slots": 0,
-        "constructionTime": 0,
-        "description": "",
-        "autoUpgrade": false,
-        "displayInterface": true,
-        "improvements": []
-      },
-      "2": {
-        "requirements": [
-          {
-            "areaType": 15,
-            "requiredLevel": 2,
-            "type": "Area"
-          },
-          {
-            "templateId": "590c2e1186f77425357b6124",
-            "count": 3,
-            "isFunctional": false,
-            "isEncoded": false,
-            "type": "Item"
-          },
-          {
-            "templateId": "59e35de086f7741778269d84",
-            "count": 2,
-            "isFunctional": false,
-            "isEncoded": false,
-            "type": "Item"
-          },
-          {
-            "templateId": "57347c5b245977448d35f6e1",
-            "count": 6,
-            "isFunctional": false,
-            "isEncoded": false,
-            "type": "Item"
-          },
-          {
-            "traderId": "5a7c2eca46aef81a7ca2145d",
-            "loyaltyLevel": 2,
-            "type": "TraderLoyalty"
-          },
-          {
-            "areaType": 10,
-            "requiredLevel": 1,
-            "type": "Area"
-          },
-          {
-            "templateId": "5d1c819a86f774771b0acd6c",
-            "count": 3,
-            "isFunctional": false,
-            "isEncoded": false,
-            "type": "Item"
-          },
-          {
-            "templateId": "62a0a0bb621468534a797ad5",
-            "count": 1,
-            "isFunctional": false,
-            "isEncoded": false,
-            "type": "Item"
-          }
-        ],
-        "bonuses": [
-          {
-            "value": 3,
-            "passive": true,
-            "production": false,
-            "visible": true,
-            "type": "RepairWeaponBonus"
-          }
-        ],
-        "slots": 0,
-        "constructionTime": 10800,
-        "description": "",
-        "autoUpgrade": false,
-        "displayInterface": true,
-        "improvements": []
-      },
-      "3": {
-        "requirements": [
-          {
-            "areaType": 4,
-            "requiredLevel": 2,
-            "type": "Area"
-          },
-          {
-            "areaType": 3,
-            "requiredLevel": 2,
-            "type": "Area"
-          },
-          {
-            "templateId": "5449016a4bdc2d6f028b456f",
-            "count": 395000,
-            "isFunctional": false,
-            "isEncoded": false,
-            "type": "Item"
-          },
-          {
-            "traderId": "5a7c2eca46aef81a7ca2145d",
-            "loyaltyLevel": 3,
-            "type": "TraderLoyalty"
-          },
-          {
-            "areaType": 10,
-            "requiredLevel": 2,
-            "type": "Area"
-          },
-          {
-            "templateId": "5af04b6486f774195a3ebb49",
-            "count": 2,
-            "isFunctional": false,
-            "isEncoded": false,
-            "type": "Item"
-          },
-          {
-            "templateId": "5bc9b355d4351e6d1509862a",
-            "count": 1,
-            "isFunctional": false,
-            "isEncoded": false,
-            "type": "Item"
-          },
-          {
-            "templateId": "60391a8b3364dc22b04d0ce5",
-            "count": 2,
-            "isFunctional": false,
-            "isEncoded": false,
-            "type": "Item"
-          }
-        ],
-        "bonuses": [
-          {
-            "value": 6,
-            "passive": true,
-            "production": false,
-            "visible": true,
-            "type": "RepairWeaponBonus"
-          }
-        ],
-        "slots": 0,
-        "constructionTime": 39600,
-        "description": "",
+        "container": "",
         "autoUpgrade": false,
         "displayInterface": true,
         "improvements": []
@@ -2313,6 +2170,7 @@
         "slots": 0,
         "constructionTime": 0,
         "description": "",
+        "container": "",
         "autoUpgrade": false,
         "displayInterface": true,
         "improvements": []
@@ -2353,6 +2211,7 @@
         ],
         "bonuses": [
           {
+            "id": "64f5b9e5fa34f11b380756eb",
             "value": -15,
             "passive": true,
             "production": false,
@@ -2360,6 +2219,7 @@
             "type": "ScavCooldownTimer"
           },
           {
+            "id": "64f5b9e5fa34f11b380756ec",
             "value": 5,
             "passive": true,
             "production": false,
@@ -2370,6 +2230,7 @@
         "slots": 0,
         "constructionTime": 0,
         "description": "",
+        "container": "",
         "autoUpgrade": false,
         "displayInterface": true,
         "improvements": []
@@ -2437,6 +2298,7 @@
         ],
         "bonuses": [
           {
+            "id": "64f5b9e5fa34f11b380756ef",
             "value": 10,
             "passive": true,
             "production": false,
@@ -2444,6 +2306,7 @@
             "type": "QuestMoneyReward"
           },
           {
+            "id": "64f5b9e5fa34f11b380756f0",
             "value": -20,
             "passive": true,
             "production": false,
@@ -2454,6 +2317,7 @@
         "slots": 0,
         "constructionTime": 21600,
         "description": "",
+        "container": "",
         "autoUpgrade": false,
         "displayInterface": true,
         "improvements": []
@@ -2525,6 +2389,7 @@
         ],
         "bonuses": [
           {
+            "id": "64f5b9e5fa34f11b380756f3",
             "value": -20,
             "passive": true,
             "production": false,
@@ -2532,6 +2397,7 @@
             "type": "ScavCooldownTimer"
           },
           {
+            "id": "64f5b9e5fa34f11b380756f4",
             "value": -30,
             "passive": true,
             "production": false,
@@ -2542,6 +2408,1208 @@
         "slots": 0,
         "constructionTime": 86400,
         "description": "",
+        "container": "",
+        "autoUpgrade": false,
+        "displayInterface": true,
+        "improvements": []
+      }
+    },
+    "enableAreaRequirements": false
+  },
+  {
+    "_id": "5d494a0e5b56502f18c98a02",
+    "type": 13,
+    "enabled": true,
+    "needsFuel": true,
+    "takeFromSlotLocked": false,
+    "craftGivesExp": true,
+    "displayLevel": true,
+    "requirements": [],
+    "stages": {
+      "0": {
+        "requirements": [],
+        "bonuses": [],
+        "slots": 0,
+        "constructionTime": 0,
+        "description": "",
+        "container": "",
+        "autoUpgrade": false,
+        "displayInterface": true,
+        "improvements": []
+      },
+      "1": {
+        "requirements": [
+          {
+            "areaType": 9,
+            "requiredLevel": 3,
+            "type": "Area"
+          },
+          {
+            "templateId": "5449016a4bdc2d6f028b456f",
+            "count": 400000,
+            "isFunctional": false,
+            "isEncoded": false,
+            "type": "Item"
+          },
+          {
+            "skillName": "Memory",
+            "skillLevel": 8,
+            "type": "Skill"
+          },
+          {
+            "templateId": "573478bc24597738002c6175",
+            "count": 1,
+            "isFunctional": false,
+            "isEncoded": false,
+            "type": "Item"
+          },
+          {
+            "templateId": "573474f924597738002c6174",
+            "count": 2,
+            "isFunctional": false,
+            "isEncoded": false,
+            "type": "Item"
+          },
+          {
+            "templateId": "590c639286f774151567fa95",
+            "count": 5,
+            "isFunctional": false,
+            "isEncoded": false,
+            "type": "Item"
+          },
+          {
+            "templateId": "590c645c86f77412b01304d9",
+            "count": 2,
+            "isFunctional": false,
+            "isEncoded": false,
+            "type": "Item"
+          },
+          {
+            "templateId": "590c651286f7741e566b6461",
+            "count": 2,
+            "isFunctional": false,
+            "isEncoded": false,
+            "type": "Item"
+          },
+          {
+            "templateId": "62a09e73af34e73a266d932a",
+            "count": 1,
+            "isFunctional": false,
+            "isEncoded": false,
+            "type": "Item"
+          }
+        ],
+        "bonuses": [
+          {
+            "id": "64f5b9e5fa34f11b380756f7",
+            "value": 15,
+            "passive": true,
+            "production": false,
+            "visible": true,
+            "type": "ExperienceRate"
+          },
+          {
+            "id": "64f5b9e5fa34f11b380756f8",
+            "value": 30,
+            "passive": true,
+            "production": false,
+            "visible": true,
+            "skillType": "Practical",
+            "type": "SkillGroupLevelingBoost"
+          }
+        ],
+        "slots": 0,
+        "constructionTime": 194400,
+        "description": "",
+        "container": "",
+        "autoUpgrade": false,
+        "displayInterface": true,
+        "improvements": []
+      }
+    },
+    "enableAreaRequirements": false
+  },
+  {
+    "_id": "5d494a175b56502f18c98a04",
+    "type": 14,
+    "enabled": true,
+    "needsFuel": false,
+    "takeFromSlotLocked": false,
+    "craftGivesExp": false,
+    "displayLevel": true,
+    "requirements": [],
+    "stages": {
+      "0": {
+        "requirements": [],
+        "bonuses": [],
+        "slots": 0,
+        "constructionTime": 0,
+        "description": "",
+        "container": "",
+        "autoUpgrade": false,
+        "displayInterface": true,
+        "improvements": []
+      },
+      "1": {
+        "requirements": [
+          {
+            "areaType": 11,
+            "requiredLevel": 2,
+            "type": "Area"
+          },
+          {
+            "templateId": "59e3639286f7741777737013",
+            "count": 3,
+            "isFunctional": false,
+            "isEncoded": false,
+            "type": "Item"
+          },
+          {
+            "templateId": "5d235a5986f77443f6329bc6",
+            "count": 6,
+            "isFunctional": false,
+            "isEncoded": false,
+            "type": "Item"
+          },
+          {
+            "templateId": "5734758f24597738025ee253",
+            "count": 8,
+            "isFunctional": false,
+            "isEncoded": false,
+            "type": "Item"
+          },
+          {
+            "templateId": "59faf7ca86f7740dbe19f6c2",
+            "count": 4,
+            "isFunctional": false,
+            "isEncoded": false,
+            "type": "Item"
+          },
+          {
+            "templateId": "5d1b376e86f774252519444e",
+            "count": 3,
+            "isFunctional": false,
+            "isEncoded": false,
+            "type": "Item"
+          },
+          {
+            "templateId": "5b7c710788a4506dec015957",
+            "count": 1,
+            "isFunctional": false,
+            "isEncoded": false,
+            "type": "Item"
+          },
+          {
+            "templateId": "5bc9bc53d4351e00367fbcee",
+            "count": 1,
+            "isFunctional": false,
+            "isEncoded": false,
+            "type": "Item"
+          }
+        ],
+        "bonuses": [
+          {
+            "id": "5d6282d64e7f7ccdcb940567",
+            "value": 0,
+            "passive": true,
+            "production": false,
+            "visible": true,
+            "icon": "/files/Hideout/icon_hideout_scavitem.png",
+            "type": "TextBonus"
+          }
+        ],
+        "slots": 0,
+        "constructionTime": 288000,
+        "description": "",
+        "container": "",
+        "autoUpgrade": false,
+        "displayInterface": true,
+        "improvements": []
+      }
+    },
+    "enableAreaRequirements": false
+  },
+  {
+    "_id": "5d494a205b56502f18c98a06",
+    "type": 15,
+    "enabled": true,
+    "needsFuel": true,
+    "takeFromSlotLocked": false,
+    "craftGivesExp": false,
+    "displayLevel": true,
+    "requirements": [],
+    "stages": {
+      "0": {
+        "requirements": [],
+        "bonuses": [],
+        "slots": 0,
+        "constructionTime": 0,
+        "description": "",
+        "container": "",
+        "autoUpgrade": false,
+        "displayInterface": true,
+        "improvements": []
+      },
+      "1": {
+        "requirements": [
+          {
+            "templateId": "5449016a4bdc2d6f028b456f",
+            "count": 10000,
+            "isFunctional": false,
+            "isEncoded": false,
+            "type": "Item"
+          },
+          {
+            "templateId": "56742c284bdc2d98058b456d",
+            "count": 1,
+            "isFunctional": false,
+            "isEncoded": false,
+            "type": "Item"
+          }
+        ],
+        "bonuses": [],
+        "slots": 0,
+        "constructionTime": 0,
+        "description": "",
+        "container": "",
+        "autoUpgrade": false,
+        "displayInterface": true,
+        "improvements": []
+      },
+      "2": {
+        "requirements": [
+          {
+            "templateId": "5d1b392c86f77425243e98fe",
+            "count": 14,
+            "isFunctional": false,
+            "isEncoded": false,
+            "type": "Item"
+          },
+          {
+            "templateId": "5c06779c86f77426e00dd782",
+            "count": 10,
+            "isFunctional": false,
+            "isEncoded": false,
+            "type": "Item"
+          },
+          {
+            "areaType": 4,
+            "requiredLevel": 1,
+            "type": "Area"
+          },
+          {
+            "areaType": 15,
+            "requiredLevel": 1,
+            "type": "Area"
+          }
+        ],
+        "bonuses": [],
+        "slots": 0,
+        "constructionTime": 0,
+        "description": "",
+        "container": "",
+        "autoUpgrade": false,
+        "displayInterface": true,
+        "improvements": []
+      },
+      "3": {
+        "requirements": [
+          {
+            "areaType": 4,
+            "requiredLevel": 2,
+            "type": "Area"
+          },
+          {
+            "areaType": 10,
+            "requiredLevel": 1,
+            "type": "Area"
+          },
+          {
+            "areaType": 15,
+            "requiredLevel": 2,
+            "type": "Area"
+          },
+          {
+            "traderId": "5a7c2eca46aef81a7ca2145d",
+            "loyaltyLevel": 2,
+            "type": "TraderLoyalty"
+          },
+          {
+            "templateId": "5449016a4bdc2d6f028b456f",
+            "count": 50000,
+            "isFunctional": false,
+            "isEncoded": false,
+            "type": "Item"
+          },
+          {
+            "templateId": "5c06782b86f77426df5407d2",
+            "count": 7,
+            "isFunctional": false,
+            "isEncoded": false,
+            "type": "Item"
+          },
+          {
+            "templateId": "5c06779c86f77426e00dd782",
+            "count": 6,
+            "isFunctional": false,
+            "isEncoded": false,
+            "type": "Item"
+          },
+          {
+            "templateId": "590a3cd386f77436f20848cb",
+            "count": 12,
+            "isFunctional": false,
+            "isEncoded": false,
+            "type": "Item"
+          }
+        ],
+        "bonuses": [],
+        "slots": 0,
+        "constructionTime": 21600,
+        "description": "",
+        "container": "",
+        "autoUpgrade": false,
+        "displayInterface": true,
+        "improvements": []
+      }
+    },
+    "enableAreaRequirements": false
+  },
+  {
+    "_id": "5d494a315b56502f18c98a0a",
+    "type": 17,
+    "enabled": true,
+    "needsFuel": true,
+    "takeFromSlotLocked": false,
+    "craftGivesExp": true,
+    "displayLevel": true,
+    "requirements": [],
+    "stages": {
+      "0": {
+        "requirements": [],
+        "bonuses": [],
+        "slots": 0,
+        "constructionTime": 0,
+        "description": "",
+        "container": "",
+        "autoUpgrade": false,
+        "displayInterface": true,
+        "improvements": []
+      },
+      "1": {
+        "requirements": [
+          {
+            "areaType": 4,
+            "requiredLevel": 3,
+            "type": "Area"
+          },
+          {
+            "areaType": 0,
+            "requiredLevel": 3,
+            "type": "Area"
+          },
+          {
+            "templateId": "5696686a4bdc2da3298b456a",
+            "count": 25000,
+            "isFunctional": false,
+            "isEncoded": false,
+            "type": "Item"
+          },
+          {
+            "traderId": "58330581ace78e27b8b10cee",
+            "loyaltyLevel": 3,
+            "type": "TraderLoyalty"
+          },
+          {
+            "templateId": "5d0378d486f77420421a5ff4",
+            "count": 5,
+            "isFunctional": false,
+            "isEncoded": false,
+            "type": "Item"
+          },
+          {
+            "templateId": "590c595c86f7747884343ad7",
+            "count": 5,
+            "isFunctional": false,
+            "isEncoded": false,
+            "type": "Item"
+          },
+          {
+            "templateId": "619cbf476b8a1b37a54eebf8",
+            "count": 3,
+            "isFunctional": false,
+            "isEncoded": false,
+            "type": "Item"
+          }
+        ],
+        "bonuses": [
+          {
+            "id": "64f5b9e5fa34f11b380756fb",
+            "value": 40,
+            "passive": false,
+            "production": true,
+            "visible": true,
+            "skillType": "Physical",
+            "type": "SkillGroupLevelingBoost"
+          },
+          {
+            "id": "64f5b9e5fa34f11b380756fc",
+            "value": 3,
+            "passive": true,
+            "production": false,
+            "visible": false,
+            "filter": [
+              "5d1b2f3f86f774252167a52c"
+            ],
+            "type": "AdditionalSlots"
+          }
+        ],
+        "slots": 0,
+        "constructionTime": 172800,
+        "description": "",
+        "container": "",
+        "autoUpgrade": false,
+        "displayInterface": true,
+        "improvements": []
+      }
+    },
+    "enableAreaRequirements": false
+  },
+  {
+    "_id": "5d494a385b56502f18c98a0c",
+    "type": 18,
+    "enabled": true,
+    "needsFuel": false,
+    "takeFromSlotLocked": false,
+    "craftGivesExp": false,
+    "displayLevel": true,
+    "requirements": [],
+    "stages": {
+      "0": {
+        "requirements": [],
+        "bonuses": [],
+        "slots": 0,
+        "constructionTime": 0,
+        "description": "",
+        "container": "",
+        "autoUpgrade": false,
+        "displayInterface": true,
+        "improvements": []
+      },
+      "1": {
+        "requirements": [
+          {
+            "areaType": 4,
+            "requiredLevel": 3,
+            "type": "Area"
+          },
+          {
+            "areaType": 10,
+            "requiredLevel": 3,
+            "type": "Area"
+          },
+          {
+            "templateId": "569668774bdc2da2298b4568",
+            "count": 25000,
+            "isFunctional": false,
+            "isEncoded": false,
+            "type": "Item"
+          },
+          {
+            "traderId": "5935c25fb3acc3127c3d8cd9",
+            "loyaltyLevel": 4,
+            "type": "TraderLoyalty"
+          },
+          {
+            "templateId": "5d0375ff86f774186372f685",
+            "count": 10,
+            "isFunctional": false,
+            "isEncoded": false,
+            "type": "Item"
+          },
+          {
+            "templateId": "5d03775b86f774203e7e0c4b",
+            "count": 4,
+            "isFunctional": false,
+            "isEncoded": false,
+            "type": "Item"
+          },
+          {
+            "templateId": "5d0378d486f77420421a5ff4",
+            "count": 10,
+            "isFunctional": false,
+            "isEncoded": false,
+            "type": "Item"
+          },
+          {
+            "templateId": "5d1b304286f774253763a528",
+            "count": 3,
+            "isFunctional": false,
+            "isEncoded": false,
+            "type": "Item"
+          },
+          {
+            "templateId": "6389c85357baa773a825b356",
+            "count": 1,
+            "isFunctional": false,
+            "isEncoded": false,
+            "type": "Item"
+          }
+        ],
+        "bonuses": [
+          {
+            "id": "64f5b9e5fa34f11b380756fe",
+            "value": -50,
+            "passive": true,
+            "production": false,
+            "visible": true,
+            "type": "FuelConsumption"
+          }
+        ],
+        "slots": 0,
+        "constructionTime": 259200,
+        "description": "",
+        "container": "",
+        "autoUpgrade": false,
+        "displayInterface": true,
+        "improvements": []
+      }
+    },
+    "enableAreaRequirements": false
+  },
+  {
+    "_id": "5d494a3f5b56502f18c98a0e",
+    "type": 19,
+    "enabled": true,
+    "needsFuel": true,
+    "takeFromSlotLocked": false,
+    "craftGivesExp": true,
+    "displayLevel": true,
+    "requirements": [],
+    "stages": {
+      "0": {
+        "requirements": [],
+        "bonuses": [],
+        "slots": 0,
+        "constructionTime": 0,
+        "description": "",
+        "container": "",
+        "autoUpgrade": false,
+        "displayInterface": true,
+        "improvements": []
+      },
+      "1": {
+        "requirements": [
+          {
+            "areaType": 6,
+            "requiredLevel": 3,
+            "type": "Area"
+          },
+          {
+            "areaType": 8,
+            "requiredLevel": 3,
+            "type": "Area"
+          },
+          {
+            "templateId": "5d1b39a386f774252339976f",
+            "count": 4,
+            "isFunctional": false,
+            "isEncoded": false,
+            "type": "Item"
+          },
+          {
+            "templateId": "5d1b32c186f774252167a530",
+            "count": 2,
+            "isFunctional": false,
+            "isEncoded": false,
+            "type": "Item"
+          },
+          {
+            "templateId": "5d1b327086f7742525194449",
+            "count": 2,
+            "isFunctional": false,
+            "isEncoded": false,
+            "type": "Item"
+          },
+          {
+            "templateId": "59e35cbb86f7741778269d83",
+            "count": 5,
+            "isFunctional": false,
+            "isEncoded": false,
+            "type": "Item"
+          },
+          {
+            "templateId": "619cbfccbedcde2f5b3f7bdd",
+            "count": 1,
+            "isFunctional": false,
+            "isEncoded": false,
+            "type": "Item"
+          },
+          {
+            "templateId": "5d1c774f86f7746d6620f8db",
+            "count": 3,
+            "isFunctional": false,
+            "isEncoded": false,
+            "type": "Item"
+          },
+          {
+            "templateId": "61bf7b6302b3924be92fa8c3",
+            "count": 2,
+            "isFunctional": false,
+            "isEncoded": false,
+            "type": "Item"
+          }
+        ],
+        "bonuses": [
+          {
+            "id": "5d8b82b854358e8b7383cf4f",
+            "value": 0,
+            "passive": true,
+            "production": false,
+            "visible": true,
+            "icon": "/files/Hideout/icon_hideout_createitem_generic.png",
+            "type": "TextBonus"
+          }
+        ],
+        "slots": 0,
+        "constructionTime": 172800,
+        "description": "",
+        "container": "",
+        "autoUpgrade": false,
+        "displayInterface": true,
+        "improvements": []
+      }
+    },
+    "enableAreaRequirements": false
+  },
+  {
+    "_id": "5d494a445b56502f18c98a10",
+    "type": 20,
+    "enabled": true,
+    "needsFuel": true,
+    "takeFromSlotLocked": false,
+    "craftGivesExp": true,
+    "displayLevel": true,
+    "requirements": [],
+    "stages": {
+      "0": {
+        "requirements": [],
+        "bonuses": [],
+        "slots": 0,
+        "constructionTime": 0,
+        "description": "",
+        "container": "",
+        "autoUpgrade": false,
+        "displayInterface": true,
+        "improvements": []
+      },
+      "1": {
+        "requirements": [
+          {
+            "areaType": 11,
+            "requiredLevel": 2,
+            "type": "Area"
+          },
+          {
+            "templateId": "5734779624597737e04bf329",
+            "count": 15,
+            "isFunctional": false,
+            "isEncoded": false,
+            "type": "Item"
+          },
+          {
+            "templateId": "57347c2e24597744902c94a1",
+            "count": 10,
+            "isFunctional": false,
+            "isEncoded": false,
+            "type": "Item"
+          },
+          {
+            "templateId": "59e36c6f86f774176c10a2a7",
+            "count": 10,
+            "isFunctional": false,
+            "isEncoded": false,
+            "type": "Item"
+          },
+          {
+            "templateId": "5c05300686f7746dce784e5d",
+            "count": 1,
+            "isFunctional": false,
+            "isEncoded": false,
+            "type": "Item"
+          },
+          {
+            "templateId": "57347cd0245977445a2d6ff1",
+            "count": 5,
+            "isFunctional": false,
+            "isEncoded": false,
+            "type": "Item"
+          }
+        ],
+        "bonuses": [
+          {
+            "id": "64f5b9e5fa34f11b38075700",
+            "value": 10,
+            "passive": true,
+            "production": false,
+            "visible": true,
+            "filter": [
+              "57347ca924597744596b4e71"
+            ],
+            "icon": "/files/Hideout/icon_hideout_videocardslots.png",
+            "type": "AdditionalSlots"
+          },
+          {
+            "id": "5d8b8310270eff88e1f47beb",
+            "value": 0,
+            "passive": true,
+            "production": false,
+            "visible": true,
+            "icon": "/files/Hideout/icon_hideout_createitem_bitcoin.png",
+            "type": "TextBonus"
+          }
+        ],
+        "slots": 0,
+        "constructionTime": 122400,
+        "description": "",
+        "container": "",
+        "autoUpgrade": false,
+        "displayInterface": true,
+        "improvements": []
+      },
+      "2": {
+        "requirements": [
+          {
+            "areaType": 20,
+            "requiredLevel": 1,
+            "type": "Area"
+          },
+          {
+            "areaType": 4,
+            "requiredLevel": 3,
+            "type": "Area"
+          },
+          {
+            "templateId": "5734779624597737e04bf329",
+            "count": 15,
+            "isFunctional": false,
+            "isEncoded": false,
+            "type": "Item"
+          },
+          {
+            "templateId": "57347c2e24597744902c94a1",
+            "count": 10,
+            "isFunctional": false,
+            "isEncoded": false,
+            "type": "Item"
+          },
+          {
+            "templateId": "590a3b0486f7743954552bdb",
+            "count": 15,
+            "isFunctional": false,
+            "isEncoded": false,
+            "type": "Item"
+          },
+          {
+            "templateId": "5d1b313086f77425227d1678",
+            "count": 5,
+            "isFunctional": false,
+            "isEncoded": false,
+            "type": "Item"
+          },
+          {
+            "templateId": "5d0378d486f77420421a5ff4",
+            "count": 2,
+            "isFunctional": false,
+            "isEncoded": false,
+            "type": "Item"
+          }
+        ],
+        "bonuses": [
+          {
+            "id": "64f5b9e5fa34f11b38075702",
+            "value": 15,
+            "passive": true,
+            "production": false,
+            "visible": true,
+            "filter": [
+              "57347ca924597744596b4e71"
+            ],
+            "icon": "/files/Hideout/icon_hideout_videocardslots.png",
+            "type": "AdditionalSlots"
+          }
+        ],
+        "slots": 0,
+        "constructionTime": 180000,
+        "description": "",
+        "container": "",
+        "autoUpgrade": false,
+        "displayInterface": true,
+        "improvements": []
+      },
+      "3": {
+        "requirements": [
+          {
+            "areaType": 20,
+            "requiredLevel": 2,
+            "type": "Area"
+          },
+          {
+            "areaType": 18,
+            "requiredLevel": 1,
+            "type": "Area"
+          },
+          {
+            "areaType": 6,
+            "requiredLevel": 3,
+            "type": "Area"
+          },
+          {
+            "templateId": "5734779624597737e04bf329",
+            "count": 25,
+            "isFunctional": false,
+            "isEncoded": false,
+            "type": "Item"
+          },
+          {
+            "templateId": "5d1b39a386f774252339976f",
+            "count": 15,
+            "isFunctional": false,
+            "isEncoded": false,
+            "type": "Item"
+          },
+          {
+            "templateId": "5d1b2fa286f77425227d1674",
+            "count": 10,
+            "isFunctional": false,
+            "isEncoded": false,
+            "type": "Item"
+          },
+          {
+            "templateId": "5d1b327086f7742525194449",
+            "count": 10,
+            "isFunctional": false,
+            "isEncoded": false,
+            "type": "Item"
+          },
+          {
+            "templateId": "5d03794386f77420415576f5",
+            "count": 1,
+            "isFunctional": false,
+            "isEncoded": false,
+            "type": "Item"
+          }
+        ],
+        "bonuses": [
+          {
+            "id": "64f5b9e5fa34f11b38075704",
+            "value": 25,
+            "passive": true,
+            "production": false,
+            "visible": true,
+            "filter": [
+              "57347ca924597744596b4e71"
+            ],
+            "icon": "/files/Hideout/icon_hideout_unlocked.png",
+            "type": "AdditionalSlots"
+          }
+        ],
+        "slots": 0,
+        "constructionTime": 381600,
+        "description": "",
+        "container": "",
+        "autoUpgrade": false,
+        "displayInterface": true,
+        "improvements": []
+      }
+    },
+    "enableAreaRequirements": false
+  },
+  {
+    "_id": "5df8a81f8f77747fcf5f5702",
+    "type": 21,
+    "enabled": true,
+    "needsFuel": true,
+    "takeFromSlotLocked": false,
+    "craftGivesExp": true,
+    "displayLevel": true,
+    "requirements": [],
+    "stages": {
+      "0": {
+        "requirements": [],
+        "bonuses": [],
+        "slots": 0,
+        "constructionTime": 0,
+        "description": "",
+        "container": "",
+        "autoUpgrade": false,
+        "displayInterface": true,
+        "improvements": []
+      },
+      "1": {
+        "requirements": [
+          {
+            "areaType": 4,
+            "requiredLevel": 1,
+            "type": "Area"
+          },
+          {
+            "templateId": "5449016a4bdc2d6f028b456f",
+            "count": 10000,
+            "isFunctional": false,
+            "isEncoded": false,
+            "type": "Item"
+          },
+          {
+            "templateId": "5df8a77486f77412672a1e3f",
+            "count": 1,
+            "isFunctional": false,
+            "isEncoded": false,
+            "type": "Item"
+          },
+          {
+            "templateId": "5df8a72c86f77412640e2e83",
+            "count": 1,
+            "isFunctional": false,
+            "isEncoded": false,
+            "type": "Item"
+          },
+          {
+            "templateId": "5df8a6a186f77412640e2e80",
+            "count": 1,
+            "isFunctional": false,
+            "isEncoded": false,
+            "type": "Item"
+          }
+        ],
+        "bonuses": [],
+        "slots": 0,
+        "constructionTime": 0,
+        "description": "",
+        "container": "",
+        "autoUpgrade": false,
+        "displayInterface": true,
+        "improvements": []
+      }
+    },
+    "enableAreaRequirements": false
+  },
+  {
+    "_id": "5d484fda654e7600681d9315",
+    "type": 10,
+    "enabled": true,
+    "needsFuel": true,
+    "takeFromSlotLocked": false,
+    "craftGivesExp": true,
+    "displayLevel": true,
+    "requirements": [],
+    "stages": {
+      "0": {
+        "requirements": [],
+        "bonuses": [],
+        "slots": 0,
+        "constructionTime": 0,
+        "description": "",
+        "container": "",
+        "autoUpgrade": false,
+        "displayInterface": true,
+        "improvements": []
+      },
+      "1": {
+        "requirements": [
+          {
+            "templateId": "57347c77245977448d35f6e2",
+            "count": 2,
+            "isFunctional": false,
+            "isEncoded": false,
+            "type": "Item"
+          },
+          {
+            "templateId": "57347c5b245977448d35f6e1",
+            "count": 2,
+            "isFunctional": false,
+            "isEncoded": false,
+            "type": "Item"
+          },
+          {
+            "templateId": "544fb5454bdc2df8738b456a",
+            "count": 1,
+            "isFunctional": false,
+            "isEncoded": false,
+            "type": "Item"
+          }
+        ],
+        "bonuses": [
+          {
+            "id": "64f5b9e5fa34f11b38075707",
+            "value": 1,
+            "passive": true,
+            "production": false,
+            "visible": false,
+            "type": "UnlockWeaponModification"
+          },
+          {
+            "id": "5d78c1461d79cb822a38b5f7",
+            "value": 0,
+            "passive": true,
+            "production": false,
+            "visible": true,
+            "icon": "/files/Hideout/icon_hideout_unlocked.png",
+            "type": "TextBonus"
+          },
+          {
+            "id": "64f5b9e5fa34f11b38075708",
+            "value": 1,
+            "passive": true,
+            "production": false,
+            "visible": true,
+            "type": "UnlockWeaponRepair"
+          }
+        ],
+        "slots": 0,
+        "constructionTime": 0,
+        "description": "",
+        "container": "",
+        "autoUpgrade": false,
+        "displayInterface": true,
+        "improvements": []
+      },
+      "2": {
+        "requirements": [
+          {
+            "areaType": 15,
+            "requiredLevel": 2,
+            "type": "Area"
+          },
+          {
+            "templateId": "590c2e1186f77425357b6124",
+            "count": 3,
+            "isFunctional": false,
+            "isEncoded": false,
+            "type": "Item"
+          },
+          {
+            "templateId": "59e35de086f7741778269d84",
+            "count": 2,
+            "isFunctional": false,
+            "isEncoded": false,
+            "type": "Item"
+          },
+          {
+            "templateId": "57347c5b245977448d35f6e1",
+            "count": 6,
+            "isFunctional": false,
+            "isEncoded": false,
+            "type": "Item"
+          },
+          {
+            "traderId": "5a7c2eca46aef81a7ca2145d",
+            "loyaltyLevel": 2,
+            "type": "TraderLoyalty"
+          },
+          {
+            "areaType": 10,
+            "requiredLevel": 1,
+            "type": "Area"
+          },
+          {
+            "templateId": "5d1c819a86f774771b0acd6c",
+            "count": 3,
+            "isFunctional": false,
+            "isEncoded": false,
+            "type": "Item"
+          },
+          {
+            "templateId": "62a0a0bb621468534a797ad5",
+            "count": 1,
+            "isFunctional": false,
+            "isEncoded": false,
+            "type": "Item"
+          }
+        ],
+        "bonuses": [
+          {
+            "id": "64f5b9e5fa34f11b3807570a",
+            "value": 3,
+            "passive": true,
+            "production": false,
+            "visible": true,
+            "type": "RepairWeaponBonus"
+          }
+        ],
+        "slots": 0,
+        "constructionTime": 10800,
+        "description": "",
+        "container": "",
+        "autoUpgrade": false,
+        "displayInterface": true,
+        "improvements": []
+      },
+      "3": {
+        "requirements": [
+          {
+            "areaType": 4,
+            "requiredLevel": 2,
+            "type": "Area"
+          },
+          {
+            "areaType": 3,
+            "requiredLevel": 2,
+            "type": "Area"
+          },
+          {
+            "templateId": "5449016a4bdc2d6f028b456f",
+            "count": 395000,
+            "isFunctional": false,
+            "isEncoded": false,
+            "type": "Item"
+          },
+          {
+            "traderId": "5a7c2eca46aef81a7ca2145d",
+            "loyaltyLevel": 3,
+            "type": "TraderLoyalty"
+          },
+          {
+            "areaType": 10,
+            "requiredLevel": 2,
+            "type": "Area"
+          },
+          {
+            "templateId": "5af04b6486f774195a3ebb49",
+            "count": 2,
+            "isFunctional": false,
+            "isEncoded": false,
+            "type": "Item"
+          },
+          {
+            "templateId": "5bc9b355d4351e6d1509862a",
+            "count": 1,
+            "isFunctional": false,
+            "isEncoded": false,
+            "type": "Item"
+          },
+          {
+            "templateId": "60391a8b3364dc22b04d0ce5",
+            "count": 2,
+            "isFunctional": false,
+            "isEncoded": false,
+            "type": "Item"
+          }
+        ],
+        "bonuses": [
+          {
+            "id": "64f5b9e5fa34f11b3807570c",
+            "value": 6,
+            "passive": true,
+            "production": false,
+            "visible": true,
+            "type": "RepairWeaponBonus"
+          }
+        ],
+        "slots": 0,
+        "constructionTime": 39600,
+        "description": "",
+        "container": "",
         "autoUpgrade": false,
         "displayInterface": true,
         "improvements": []
@@ -2565,6 +3633,7 @@
         "slots": 0,
         "constructionTime": 0,
         "description": "",
+        "container": "",
         "autoUpgrade": false,
         "displayInterface": true,
         "improvements": []
@@ -2573,47 +3642,33 @@
         "requirements": [
           {
             "areaType": 15,
-            "requiredLevel": 2,
+            "requiredLevel": 1,
             "type": "Area"
           },
           {
-            "templateId": "590c31c586f774245e3141b2",
-            "count": 4,
-            "isFunctional": false,
-            "isEncoded": false,
-            "type": "Item"
-          },
-          {
             "templateId": "57347c77245977448d35f6e2",
-            "count": 5,
+            "count": 1,
             "isFunctional": false,
             "isEncoded": false,
             "type": "Item"
           },
           {
             "templateId": "57347c5b245977448d35f6e1",
-            "count": 5,
-            "isFunctional": false,
-            "isEncoded": false,
-            "type": "Item"
-          },
-          {
-            "templateId": "57347c1124597737fb1379e3",
-            "count": 3,
-            "isFunctional": false,
-            "isEncoded": false,
-            "type": "Item"
-          },
-          {
-            "templateId": "59e35ef086f7741777737012",
-            "count": 2,
+            "count": 1,
             "isFunctional": false,
             "isEncoded": false,
             "type": "Item"
           },
           {
             "templateId": "61bf7b6302b3924be92fa8c3",
-            "count": 2,
+            "count": 1,
+            "isFunctional": false,
+            "isEncoded": false,
+            "type": "Item"
+          },
+          {
+            "templateId": "5449016a4bdc2d6f028b456f",
+            "count": 20000,
             "isFunctional": false,
             "isEncoded": false,
             "type": "Item"
@@ -2621,11 +3676,11 @@
         ],
         "bonuses": [
           {
+            "id": "5d6282a3b9c45949bb2992d6",
             "value": 0,
             "passive": true,
             "production": false,
             "visible": true,
-            "id": "5d6282a3b9c45949bb2992d6",
             "icon": "/files/Hideout/icon_hideout_shootingrangeunlock.png",
             "type": "TextBonus"
           }
@@ -2633,6 +3688,7 @@
         "slots": 0,
         "constructionTime": 3600,
         "description": "",
+        "container": "",
         "autoUpgrade": false,
         "displayInterface": true,
         "improvements": []
@@ -2724,6 +3780,7 @@
         "slots": 0,
         "constructionTime": 86400,
         "description": "",
+        "container": "",
         "autoUpgrade": false,
         "displayInterface": true,
         "improvements": []
@@ -2796,6 +3853,7 @@
         ],
         "bonuses": [
           {
+            "id": "64f5b9e5fa34f11b3807570e",
             "value": 10,
             "passive": true,
             "production": false,
@@ -2807,956 +3865,7 @@
         "slots": 0,
         "constructionTime": 86400,
         "description": "",
-        "autoUpgrade": false,
-        "displayInterface": true,
-        "improvements": []
-      }
-    },
-    "enableAreaRequirements": false
-  },
-  {
-    "_id": "5d494a0e5b56502f18c98a02",
-    "type": 13,
-    "enabled": true,
-    "needsFuel": true,
-    "takeFromSlotLocked": false,
-    "craftGivesExp": true,
-    "displayLevel": true,
-    "requirements": [],
-    "stages": {
-      "0": {
-        "requirements": [],
-        "bonuses": [],
-        "slots": 0,
-        "constructionTime": 0,
-        "description": "",
-        "autoUpgrade": false,
-        "displayInterface": true,
-        "improvements": []
-      },
-      "1": {
-        "requirements": [
-          {
-            "areaType": 9,
-            "requiredLevel": 3,
-            "type": "Area"
-          },
-          {
-            "templateId": "5449016a4bdc2d6f028b456f",
-            "count": 400000,
-            "isFunctional": false,
-            "isEncoded": false,
-            "type": "Item"
-          },
-          {
-            "skillName": "Memory",
-            "skillLevel": 8,
-            "type": "Skill"
-          },
-          {
-            "templateId": "573478bc24597738002c6175",
-            "count": 1,
-            "isFunctional": false,
-            "isEncoded": false,
-            "type": "Item"
-          },
-          {
-            "templateId": "573474f924597738002c6174",
-            "count": 2,
-            "isFunctional": false,
-            "isEncoded": false,
-            "type": "Item"
-          },
-          {
-            "templateId": "590c639286f774151567fa95",
-            "count": 5,
-            "isFunctional": false,
-            "isEncoded": false,
-            "type": "Item"
-          },
-          {
-            "templateId": "590c645c86f77412b01304d9",
-            "count": 2,
-            "isFunctional": false,
-            "isEncoded": false,
-            "type": "Item"
-          },
-          {
-            "templateId": "590c651286f7741e566b6461",
-            "count": 2,
-            "isFunctional": false,
-            "isEncoded": false,
-            "type": "Item"
-          },
-          {
-            "templateId": "62a09e73af34e73a266d932a",
-            "count": 1,
-            "isFunctional": false,
-            "isEncoded": false,
-            "type": "Item"
-          }
-        ],
-        "bonuses": [
-          {
-            "value": 15,
-            "passive": true,
-            "production": false,
-            "visible": true,
-            "type": "ExperienceRate"
-          },
-          {
-            "value": 30,
-            "passive": true,
-            "production": false,
-            "visible": true,
-            "skillType": "Practical",
-            "type": "SkillGroupLevelingBoost"
-          }
-        ],
-        "slots": 0,
-        "constructionTime": 194400,
-        "description": "",
-        "autoUpgrade": false,
-        "displayInterface": true,
-        "improvements": []
-      }
-    },
-    "enableAreaRequirements": false
-  },
-  {
-    "_id": "5d494a175b56502f18c98a04",
-    "type": 14,
-    "enabled": true,
-    "needsFuel": false,
-    "takeFromSlotLocked": false,
-    "craftGivesExp": false,
-    "displayLevel": true,
-    "requirements": [],
-    "stages": {
-      "0": {
-        "requirements": [],
-        "bonuses": [],
-        "slots": 0,
-        "constructionTime": 0,
-        "description": "",
-        "autoUpgrade": false,
-        "displayInterface": true,
-        "improvements": []
-      },
-      "1": {
-        "requirements": [
-          {
-            "areaType": 11,
-            "requiredLevel": 2,
-            "type": "Area"
-          },
-          {
-            "templateId": "59e3639286f7741777737013",
-            "count": 3,
-            "isFunctional": false,
-            "isEncoded": false,
-            "type": "Item"
-          },
-          {
-            "templateId": "5d235a5986f77443f6329bc6",
-            "count": 6,
-            "isFunctional": false,
-            "isEncoded": false,
-            "type": "Item"
-          },
-          {
-            "templateId": "5734758f24597738025ee253",
-            "count": 8,
-            "isFunctional": false,
-            "isEncoded": false,
-            "type": "Item"
-          },
-          {
-            "templateId": "59faf7ca86f7740dbe19f6c2",
-            "count": 4,
-            "isFunctional": false,
-            "isEncoded": false,
-            "type": "Item"
-          },
-          {
-            "templateId": "5d1b376e86f774252519444e",
-            "count": 3,
-            "isFunctional": false,
-            "isEncoded": false,
-            "type": "Item"
-          },
-          {
-            "templateId": "5b7c710788a4506dec015957",
-            "count": 1,
-            "isFunctional": false,
-            "isEncoded": false,
-            "type": "Item"
-          },
-          {
-            "templateId": "5bc9bc53d4351e00367fbcee",
-            "count": 1,
-            "isFunctional": false,
-            "isEncoded": false,
-            "type": "Item"
-          }
-        ],
-        "bonuses": [
-          {
-            "value": 0,
-            "passive": true,
-            "production": false,
-            "visible": true,
-            "id": "5d6282d64e7f7ccdcb940567",
-            "icon": "/files/Hideout/icon_hideout_scavitem.png",
-            "type": "TextBonus"
-          }
-        ],
-        "slots": 0,
-        "constructionTime": 288000,
-        "description": "",
-        "autoUpgrade": false,
-        "displayInterface": true,
-        "improvements": []
-      }
-    },
-    "enableAreaRequirements": false
-  },
-  {
-    "_id": "5d494a205b56502f18c98a06",
-    "type": 15,
-    "enabled": true,
-    "needsFuel": true,
-    "takeFromSlotLocked": false,
-    "craftGivesExp": false,
-    "displayLevel": true,
-    "requirements": [],
-    "stages": {
-      "0": {
-        "requirements": [],
-        "bonuses": [],
-        "slots": 0,
-        "constructionTime": 0,
-        "description": "",
-        "autoUpgrade": false,
-        "displayInterface": true,
-        "improvements": []
-      },
-      "1": {
-        "requirements": [
-          {
-            "templateId": "5449016a4bdc2d6f028b456f",
-            "count": 10000,
-            "isFunctional": false,
-            "isEncoded": false,
-            "type": "Item"
-          },
-          {
-            "templateId": "56742c284bdc2d98058b456d",
-            "count": 1,
-            "isFunctional": false,
-            "isEncoded": false,
-            "type": "Item"
-          }
-        ],
-        "bonuses": [],
-        "slots": 0,
-        "constructionTime": 0,
-        "description": "",
-        "autoUpgrade": false,
-        "displayInterface": true,
-        "improvements": []
-      },
-      "2": {
-        "requirements": [
-          {
-            "templateId": "5d1b392c86f77425243e98fe",
-            "count": 14,
-            "isFunctional": false,
-            "isEncoded": false,
-            "type": "Item"
-          },
-          {
-            "templateId": "5c06779c86f77426e00dd782",
-            "count": 10,
-            "isFunctional": false,
-            "isEncoded": false,
-            "type": "Item"
-          },
-          {
-            "areaType": 4,
-            "requiredLevel": 1,
-            "type": "Area"
-          },
-          {
-            "areaType": 15,
-            "requiredLevel": 1,
-            "type": "Area"
-          }
-        ],
-        "bonuses": [],
-        "slots": 0,
-        "constructionTime": 0,
-        "description": "",
-        "autoUpgrade": false,
-        "displayInterface": true,
-        "improvements": []
-      },
-      "3": {
-        "requirements": [
-          {
-            "areaType": 4,
-            "requiredLevel": 2,
-            "type": "Area"
-          },
-          {
-            "areaType": 10,
-            "requiredLevel": 1,
-            "type": "Area"
-          },
-          {
-            "areaType": 15,
-            "requiredLevel": 2,
-            "type": "Area"
-          },
-          {
-            "traderId": "5a7c2eca46aef81a7ca2145d",
-            "loyaltyLevel": 2,
-            "type": "TraderLoyalty"
-          },
-          {
-            "templateId": "5449016a4bdc2d6f028b456f",
-            "count": 50000,
-            "isFunctional": false,
-            "isEncoded": false,
-            "type": "Item"
-          },
-          {
-            "templateId": "5c06782b86f77426df5407d2",
-            "count": 7,
-            "isFunctional": false,
-            "isEncoded": false,
-            "type": "Item"
-          },
-          {
-            "templateId": "5c06779c86f77426e00dd782",
-            "count": 6,
-            "isFunctional": false,
-            "isEncoded": false,
-            "type": "Item"
-          },
-          {
-            "templateId": "590a3cd386f77436f20848cb",
-            "count": 12,
-            "isFunctional": false,
-            "isEncoded": false,
-            "type": "Item"
-          }
-        ],
-        "bonuses": [],
-        "slots": 0,
-        "constructionTime": 21600,
-        "description": "",
-        "autoUpgrade": false,
-        "displayInterface": true,
-        "improvements": []
-      }
-    },
-    "enableAreaRequirements": false
-  },
-  {
-    "_id": "5d494a315b56502f18c98a0a",
-    "type": 17,
-    "enabled": true,
-    "needsFuel": true,
-    "takeFromSlotLocked": false,
-    "craftGivesExp": true,
-    "displayLevel": true,
-    "requirements": [],
-    "stages": {
-      "0": {
-        "requirements": [],
-        "bonuses": [],
-        "slots": 0,
-        "constructionTime": 0,
-        "description": "",
-        "autoUpgrade": false,
-        "displayInterface": true,
-        "improvements": []
-      },
-      "1": {
-        "requirements": [
-          {
-            "areaType": 4,
-            "requiredLevel": 3,
-            "type": "Area"
-          },
-          {
-            "areaType": 0,
-            "requiredLevel": 3,
-            "type": "Area"
-          },
-          {
-            "templateId": "5696686a4bdc2da3298b456a",
-            "count": 25000,
-            "isFunctional": false,
-            "isEncoded": false,
-            "type": "Item"
-          },
-          {
-            "traderId": "58330581ace78e27b8b10cee",
-            "loyaltyLevel": 3,
-            "type": "TraderLoyalty"
-          },
-          {
-            "templateId": "5d0378d486f77420421a5ff4",
-            "count": 5,
-            "isFunctional": false,
-            "isEncoded": false,
-            "type": "Item"
-          },
-          {
-            "templateId": "590c595c86f7747884343ad7",
-            "count": 5,
-            "isFunctional": false,
-            "isEncoded": false,
-            "type": "Item"
-          },
-          {
-            "templateId": "619cbf476b8a1b37a54eebf8",
-            "count": 3,
-            "isFunctional": false,
-            "isEncoded": false,
-            "type": "Item"
-          }
-        ],
-        "bonuses": [
-          {
-            "value": 40,
-            "passive": false,
-            "production": true,
-            "visible": true,
-            "skillType": "Physical",
-            "type": "SkillGroupLevelingBoost"
-          },
-          {
-            "value": 3,
-            "passive": true,
-            "production": false,
-            "visible": false,
-            "filter": [
-              "5d1b2f3f86f774252167a52c"
-            ],
-            "type": "AdditionalSlots"
-          }
-        ],
-        "slots": 0,
-        "constructionTime": 172800,
-        "description": "",
-        "autoUpgrade": false,
-        "displayInterface": true,
-        "improvements": []
-      }
-    },
-    "enableAreaRequirements": false
-  },
-  {
-    "_id": "5d494a385b56502f18c98a0c",
-    "type": 18,
-    "enabled": true,
-    "needsFuel": false,
-    "takeFromSlotLocked": false,
-    "craftGivesExp": false,
-    "displayLevel": true,
-    "requirements": [],
-    "stages": {
-      "0": {
-        "requirements": [],
-        "bonuses": [],
-        "slots": 0,
-        "constructionTime": 0,
-        "description": "",
-        "autoUpgrade": false,
-        "displayInterface": true,
-        "improvements": []
-      },
-      "1": {
-        "requirements": [
-          {
-            "areaType": 4,
-            "requiredLevel": 3,
-            "type": "Area"
-          },
-          {
-            "areaType": 10,
-            "requiredLevel": 3,
-            "type": "Area"
-          },
-          {
-            "templateId": "569668774bdc2da2298b4568",
-            "count": 25000,
-            "isFunctional": false,
-            "isEncoded": false,
-            "type": "Item"
-          },
-          {
-            "traderId": "5935c25fb3acc3127c3d8cd9",
-            "loyaltyLevel": 4,
-            "type": "TraderLoyalty"
-          },
-          {
-            "templateId": "5d0375ff86f774186372f685",
-            "count": 10,
-            "isFunctional": false,
-            "isEncoded": false,
-            "type": "Item"
-          },
-          {
-            "templateId": "5d03775b86f774203e7e0c4b",
-            "count": 4,
-            "isFunctional": false,
-            "isEncoded": false,
-            "type": "Item"
-          },
-          {
-            "templateId": "5d0378d486f77420421a5ff4",
-            "count": 10,
-            "isFunctional": false,
-            "isEncoded": false,
-            "type": "Item"
-          },
-          {
-            "templateId": "5d1b304286f774253763a528",
-            "count": 3,
-            "isFunctional": false,
-            "isEncoded": false,
-            "type": "Item"
-          },
-          {
-            "templateId": "6389c85357baa773a825b356",
-            "count": 1,
-            "isFunctional": false,
-            "isEncoded": false,
-            "type": "Item"
-          }
-        ],
-        "bonuses": [
-          {
-            "value": -50,
-            "passive": true,
-            "production": false,
-            "visible": true,
-            "type": "FuelConsumption"
-          }
-        ],
-        "slots": 0,
-        "constructionTime": 259200,
-        "description": "",
-        "autoUpgrade": false,
-        "displayInterface": true,
-        "improvements": []
-      }
-    },
-    "enableAreaRequirements": false
-  },
-  {
-    "_id": "5d494a3f5b56502f18c98a0e",
-    "type": 19,
-    "enabled": true,
-    "needsFuel": true,
-    "takeFromSlotLocked": false,
-    "craftGivesExp": true,
-    "displayLevel": true,
-    "requirements": [],
-    "stages": {
-      "0": {
-        "requirements": [],
-        "bonuses": [],
-        "slots": 0,
-        "constructionTime": 0,
-        "description": "",
-        "autoUpgrade": false,
-        "displayInterface": true,
-        "improvements": []
-      },
-      "1": {
-        "requirements": [
-          {
-            "areaType": 6,
-            "requiredLevel": 3,
-            "type": "Area"
-          },
-          {
-            "areaType": 8,
-            "requiredLevel": 3,
-            "type": "Area"
-          },
-          {
-            "templateId": "5d1b39a386f774252339976f",
-            "count": 4,
-            "isFunctional": false,
-            "isEncoded": false,
-            "type": "Item"
-          },
-          {
-            "templateId": "5d1b32c186f774252167a530",
-            "count": 2,
-            "isFunctional": false,
-            "isEncoded": false,
-            "type": "Item"
-          },
-          {
-            "templateId": "5d1b327086f7742525194449",
-            "count": 2,
-            "isFunctional": false,
-            "isEncoded": false,
-            "type": "Item"
-          },
-          {
-            "templateId": "59e35cbb86f7741778269d83",
-            "count": 5,
-            "isFunctional": false,
-            "isEncoded": false,
-            "type": "Item"
-          },
-          {
-            "templateId": "619cbfccbedcde2f5b3f7bdd",
-            "count": 1,
-            "isFunctional": false,
-            "isEncoded": false,
-            "type": "Item"
-          },
-          {
-            "templateId": "5d1c774f86f7746d6620f8db",
-            "count": 3,
-            "isFunctional": false,
-            "isEncoded": false,
-            "type": "Item"
-          },
-          {
-            "templateId": "61bf7b6302b3924be92fa8c3",
-            "count": 2,
-            "isFunctional": false,
-            "isEncoded": false,
-            "type": "Item"
-          }
-        ],
-        "bonuses": [
-          {
-            "value": 0,
-            "passive": true,
-            "production": false,
-            "visible": true,
-            "id": "5d8b82b854358e8b7383cf4f",
-            "icon": "/files/Hideout/icon_hideout_createitem_generic.png",
-            "type": "TextBonus"
-          }
-        ],
-        "slots": 0,
-        "constructionTime": 172800,
-        "description": "",
-        "autoUpgrade": false,
-        "displayInterface": true,
-        "improvements": []
-      }
-    },
-    "enableAreaRequirements": false
-  },
-  {
-    "_id": "5d494a445b56502f18c98a10",
-    "type": 20,
-    "enabled": true,
-    "needsFuel": true,
-    "takeFromSlotLocked": false,
-    "craftGivesExp": true,
-    "displayLevel": true,
-    "requirements": [],
-    "stages": {
-      "0": {
-        "requirements": [],
-        "bonuses": [],
-        "slots": 0,
-        "constructionTime": 0,
-        "description": "",
-        "autoUpgrade": false,
-        "displayInterface": true,
-        "improvements": []
-      },
-      "1": {
-        "requirements": [
-          {
-            "areaType": 11,
-            "requiredLevel": 2,
-            "type": "Area"
-          },
-          {
-            "templateId": "5734779624597737e04bf329",
-            "count": 15,
-            "isFunctional": false,
-            "isEncoded": false,
-            "type": "Item"
-          },
-          {
-            "templateId": "57347c2e24597744902c94a1",
-            "count": 10,
-            "isFunctional": false,
-            "isEncoded": false,
-            "type": "Item"
-          },
-          {
-            "templateId": "59e36c6f86f774176c10a2a7",
-            "count": 10,
-            "isFunctional": false,
-            "isEncoded": false,
-            "type": "Item"
-          },
-          {
-            "templateId": "5c05300686f7746dce784e5d",
-            "count": 1,
-            "isFunctional": false,
-            "isEncoded": false,
-            "type": "Item"
-          },
-          {
-            "templateId": "57347cd0245977445a2d6ff1",
-            "count": 5,
-            "isFunctional": false,
-            "isEncoded": false,
-            "type": "Item"
-          }
-        ],
-        "bonuses": [
-          {
-            "value": 10,
-            "passive": true,
-            "production": false,
-            "visible": true,
-            "filter": [
-              "57347ca924597744596b4e71"
-            ],
-            "icon": "/files/Hideout/icon_hideout_videocardslots.png",
-            "type": "AdditionalSlots"
-          },
-          {
-            "value": 0,
-            "passive": true,
-            "production": false,
-            "visible": true,
-            "id": "5d8b8310270eff88e1f47beb",
-            "icon": "/files/Hideout/icon_hideout_createitem_bitcoin.png",
-            "type": "TextBonus"
-          }
-        ],
-        "slots": 0,
-        "constructionTime": 122400,
-        "description": "",
-        "autoUpgrade": false,
-        "displayInterface": true,
-        "improvements": []
-      },
-      "2": {
-        "requirements": [
-          {
-            "areaType": 20,
-            "requiredLevel": 1,
-            "type": "Area"
-          },
-          {
-            "areaType": 4,
-            "requiredLevel": 3,
-            "type": "Area"
-          },
-          {
-            "templateId": "5734779624597737e04bf329",
-            "count": 15,
-            "isFunctional": false,
-            "isEncoded": false,
-            "type": "Item"
-          },
-          {
-            "templateId": "57347c2e24597744902c94a1",
-            "count": 10,
-            "isFunctional": false,
-            "isEncoded": false,
-            "type": "Item"
-          },
-          {
-            "templateId": "590a3b0486f7743954552bdb",
-            "count": 15,
-            "isFunctional": false,
-            "isEncoded": false,
-            "type": "Item"
-          },
-          {
-            "templateId": "5d1b313086f77425227d1678",
-            "count": 5,
-            "isFunctional": false,
-            "isEncoded": false,
-            "type": "Item"
-          },
-          {
-            "templateId": "5d0378d486f77420421a5ff4",
-            "count": 2,
-            "isFunctional": false,
-            "isEncoded": false,
-            "type": "Item"
-          }
-        ],
-        "bonuses": [
-          {
-            "value": 15,
-            "passive": true,
-            "production": false,
-            "visible": true,
-            "filter": [
-              "57347ca924597744596b4e71"
-            ],
-            "icon": "/files/Hideout/icon_hideout_videocardslots.png",
-            "type": "AdditionalSlots"
-          }
-        ],
-        "slots": 0,
-        "constructionTime": 180000,
-        "description": "",
-        "autoUpgrade": false,
-        "displayInterface": true,
-        "improvements": []
-      },
-      "3": {
-        "requirements": [
-          {
-            "areaType": 20,
-            "requiredLevel": 2,
-            "type": "Area"
-          },
-          {
-            "areaType": 18,
-            "requiredLevel": 1,
-            "type": "Area"
-          },
-          {
-            "areaType": 6,
-            "requiredLevel": 3,
-            "type": "Area"
-          },
-          {
-            "templateId": "5734779624597737e04bf329",
-            "count": 25,
-            "isFunctional": false,
-            "isEncoded": false,
-            "type": "Item"
-          },
-          {
-            "templateId": "5d1b39a386f774252339976f",
-            "count": 15,
-            "isFunctional": false,
-            "isEncoded": false,
-            "type": "Item"
-          },
-          {
-            "templateId": "5d1b2fa286f77425227d1674",
-            "count": 10,
-            "isFunctional": false,
-            "isEncoded": false,
-            "type": "Item"
-          },
-          {
-            "templateId": "5d1b327086f7742525194449",
-            "count": 10,
-            "isFunctional": false,
-            "isEncoded": false,
-            "type": "Item"
-          },
-          {
-            "templateId": "5d03794386f77420415576f5",
-            "count": 1,
-            "isFunctional": false,
-            "isEncoded": false,
-            "type": "Item"
-          }
-        ],
-        "bonuses": [
-          {
-            "value": 25,
-            "passive": true,
-            "production": false,
-            "visible": true,
-            "filter": [
-              "57347ca924597744596b4e71"
-            ],
-            "icon": "/files/Hideout/icon_hideout_unlocked.png",
-            "type": "AdditionalSlots"
-          }
-        ],
-        "slots": 0,
-        "constructionTime": 381600,
-        "description": "",
-        "autoUpgrade": false,
-        "displayInterface": true,
-        "improvements": []
-      }
-    },
-    "enableAreaRequirements": false
-  },
-  {
-    "_id": "5df8a81f8f77747fcf5f5702",
-    "type": 21,
-    "enabled": true,
-    "needsFuel": true,
-    "takeFromSlotLocked": false,
-    "craftGivesExp": true,
-    "displayLevel": true,
-    "requirements": [],
-    "stages": {
-      "0": {
-        "requirements": [],
-        "bonuses": [],
-        "slots": 0,
-        "constructionTime": 0,
-        "description": "",
-        "autoUpgrade": false,
-        "displayInterface": true,
-        "improvements": []
-      },
-      "1": {
-        "requirements": [
-          {
-            "areaType": 4,
-            "requiredLevel": 1,
-            "type": "Area"
-          },
-          {
-            "templateId": "5449016a4bdc2d6f028b456f",
-            "count": 10000,
-            "isFunctional": false,
-            "isEncoded": false,
-            "type": "Item"
-          },
-          {
-            "templateId": "5df8a77486f77412672a1e3f",
-            "count": 1,
-            "isFunctional": false,
-            "isEncoded": false,
-            "type": "Item"
-          },
-          {
-            "templateId": "5df8a72c86f77412640e2e83",
-            "count": 1,
-            "isFunctional": false,
-            "isEncoded": false,
-            "type": "Item"
-          },
-          {
-            "templateId": "5df8a6a186f77412640e2e80",
-            "count": 1,
-            "isFunctional": false,
-            "isEncoded": false,
-            "type": "Item"
-          }
-        ],
-        "bonuses": [],
-        "slots": 0,
-        "constructionTime": 0,
-        "description": "",
+        "container": "",
         "autoUpgrade": false,
         "displayInterface": true,
         "improvements": []
@@ -3786,6 +3895,7 @@
         "slots": 0,
         "constructionTime": 0,
         "description": "",
+        "container": "",
         "autoUpgrade": false,
         "displayInterface": true,
         "improvements": []
@@ -3840,12 +3950,23 @@
             "isFunctional": false,
             "isEncoded": false,
             "type": "Item"
+          },
+          {
+            "areaType": 15,
+            "requiredLevel": 2,
+            "type": "Area"
+          },
+          {
+            "areaType": 0,
+            "requiredLevel": 2,
+            "type": "Area"
           }
         ],
         "bonuses": [],
         "slots": 0,
         "constructionTime": 14400,
         "description": "",
+        "container": "",
         "autoUpgrade": false,
         "displayInterface": true,
         "improvements": []
@@ -3869,14 +3990,38 @@
         "slots": 0,
         "constructionTime": 0,
         "description": "",
+        "container": "",
         "autoUpgrade": false,
         "displayInterface": false,
         "improvements": []
       },
       "1": {
+        "requirements": [
+          {
+            "areaType": 7,
+            "requiredLevel": 1,
+            "type": "Area"
+          },
+          {
+            "areaType": 6,
+            "requiredLevel": 1,
+            "type": "Area"
+          }
+        ],
+        "bonuses": [],
+        "slots": 0,
+        "constructionTime": 0,
+        "description": "",
+        "container": "",
+        "autoUpgrade": true,
+        "displayInterface": true,
+        "improvements": []
+      },
+      "2": {
         "requirements": [],
         "bonuses": [
           {
+            "id": "64f5b9e5fa34f11b3807571e",
             "value": 5,
             "passive": true,
             "production": false,
@@ -3884,6 +4029,7 @@
             "type": "FuelConsumption"
           },
           {
+            "id": "64f5b9e5fa34f11b3807571f",
             "value": -5,
             "passive": true,
             "production": false,
@@ -3891,6 +4037,7 @@
             "type": "EnergyRegeneration"
           },
           {
+            "id": "64f5b9e5fa34f11b38075720",
             "value": -5,
             "passive": true,
             "production": false,
@@ -3898,6 +4045,7 @@
             "type": "HealthRegeneration"
           },
           {
+            "id": "64f5b9e5fa34f11b38075721",
             "value": -3,
             "passive": true,
             "production": false,
@@ -3905,6 +4053,7 @@
             "type": "ExperienceRate"
           },
           {
+            "id": "64f5b9e5fa34f11b38075722",
             "value": -3,
             "passive": true,
             "production": false,
@@ -3916,6 +4065,7 @@
         "slots": 0,
         "constructionTime": 43200,
         "description": "",
+        "container": "",
         "autoUpgrade": true,
         "displayInterface": true,
         "improvements": [
@@ -3932,6 +4082,7 @@
             ],
             "bonuses": [
               {
+                "id": "64f5b9e5fa34f11b38075719",
                 "value": -2,
                 "passive": true,
                 "production": false,
@@ -3939,6 +4090,7 @@
                 "type": "FuelConsumption"
               },
               {
+                "id": "64f5b9e5fa34f11b3807571a",
                 "value": 2,
                 "passive": true,
                 "production": false,
@@ -3946,6 +4098,7 @@
                 "type": "EnergyRegeneration"
               },
               {
+                "id": "64f5b9e5fa34f11b3807571b",
                 "value": 2,
                 "passive": true,
                 "production": false,
@@ -3953,6 +4106,7 @@
                 "type": "HealthRegeneration"
               },
               {
+                "id": "64f5b9e5fa34f11b3807571c",
                 "value": 2,
                 "passive": true,
                 "production": false,
@@ -3960,68 +4114,7 @@
                 "type": "ExperienceRate"
               },
               {
-                "value": 2,
-                "passive": true,
-                "production": false,
-                "visible": true,
-                "skillType": "Physical",
-                "type": "SkillGroupLevelingBoost"
-              }
-            ],
-            "improvementTime": 120
-          }
-        ]
-      },
-      "2": {
-        "requirements": [],
-        "bonuses": [],
-        "slots": 0,
-        "constructionTime": 43200,
-        "description": "",
-        "autoUpgrade": true,
-        "displayInterface": true,
-        "improvements": [
-          {
-            "id": "639199277a9178252d38c98f",
-            "requirements": [
-              {
-                "templateId": "5e2af47786f7746d404f3aaa",
-                "count": 1,
-                "isFunctional": false,
-                "isEncoded": false,
-                "type": "Item"
-              }
-            ],
-            "bonuses": [
-              {
-                "value": -2,
-                "passive": true,
-                "production": false,
-                "visible": true,
-                "type": "FuelConsumption"
-              },
-              {
-                "value": 2,
-                "passive": true,
-                "production": false,
-                "visible": true,
-                "type": "EnergyRegeneration"
-              },
-              {
-                "value": 2,
-                "passive": true,
-                "production": false,
-                "visible": true,
-                "type": "HealthRegeneration"
-              },
-              {
-                "value": 2,
-                "passive": true,
-                "production": false,
-                "visible": true,
-                "type": "ExperienceRate"
-              },
-              {
+                "id": "64f5b9e5fa34f11b3807571d",
                 "value": 2,
                 "passive": true,
                 "production": false,
@@ -4038,6 +4131,7 @@
         "requirements": [],
         "bonuses": [
           {
+            "id": "64f5b9e5fa34f11b38075732",
             "value": 5,
             "passive": true,
             "production": false,
@@ -4045,6 +4139,7 @@
             "type": "FuelConsumption"
           },
           {
+            "id": "64f5b9e5fa34f11b38075733",
             "value": -5,
             "passive": true,
             "production": false,
@@ -4052,6 +4147,7 @@
             "type": "EnergyRegeneration"
           },
           {
+            "id": "64f5b9e5fa34f11b38075734",
             "value": -5,
             "passive": true,
             "production": false,
@@ -4059,6 +4155,7 @@
             "type": "HealthRegeneration"
           },
           {
+            "id": "64f5b9e5fa34f11b38075735",
             "value": -3,
             "passive": true,
             "production": false,
@@ -4066,6 +4163,7 @@
             "type": "ExperienceRate"
           },
           {
+            "id": "64f5b9e5fa34f11b38075736",
             "value": -3,
             "passive": true,
             "production": false,
@@ -4077,6 +4175,7 @@
         "slots": 0,
         "constructionTime": 86400,
         "description": "",
+        "container": "",
         "autoUpgrade": true,
         "displayInterface": true,
         "improvements": [
@@ -4093,6 +4192,7 @@
             ],
             "bonuses": [
               {
+                "id": "64f5b9e5fa34f11b3807572d",
                 "value": -5,
                 "passive": true,
                 "production": false,
@@ -4100,6 +4200,7 @@
                 "type": "FuelConsumption"
               },
               {
+                "id": "64f5b9e5fa34f11b3807572e",
                 "value": 5,
                 "passive": true,
                 "production": false,
@@ -4107,6 +4208,7 @@
                 "type": "EnergyRegeneration"
               },
               {
+                "id": "64f5b9e5fa34f11b3807572f",
                 "value": 5,
                 "passive": true,
                 "production": false,
@@ -4114,6 +4216,7 @@
                 "type": "HealthRegeneration"
               },
               {
+                "id": "64f5b9e5fa34f11b38075730",
                 "value": 3,
                 "passive": true,
                 "production": false,
@@ -4121,6 +4224,7 @@
                 "type": "ExperienceRate"
               },
               {
+                "id": "64f5b9e5fa34f11b38075731",
                 "value": 3,
                 "passive": true,
                 "production": false,
@@ -4145,6 +4249,7 @@
         ],
         "bonuses": [
           {
+            "id": "64f5b9e5fa34f11b38075746",
             "value": 5,
             "passive": true,
             "production": false,
@@ -4152,6 +4257,7 @@
             "type": "FuelConsumption"
           },
           {
+            "id": "64f5b9e5fa34f11b38075747",
             "value": -5,
             "passive": true,
             "production": false,
@@ -4159,6 +4265,7 @@
             "type": "EnergyRegeneration"
           },
           {
+            "id": "64f5b9e5fa34f11b38075748",
             "value": -5,
             "passive": true,
             "production": false,
@@ -4166,6 +4273,7 @@
             "type": "HealthRegeneration"
           },
           {
+            "id": "64f5b9e5fa34f11b38075749",
             "value": -3,
             "passive": true,
             "production": false,
@@ -4173,6 +4281,7 @@
             "type": "ExperienceRate"
           },
           {
+            "id": "64f5b9e5fa34f11b3807574a",
             "value": -3,
             "passive": true,
             "production": false,
@@ -4184,6 +4293,7 @@
         "slots": 0,
         "constructionTime": 10800,
         "description": "",
+        "container": "",
         "autoUpgrade": false,
         "displayInterface": true,
         "improvements": [
@@ -4200,6 +4310,7 @@
             ],
             "bonuses": [
               {
+                "id": "64f5b9e5fa34f11b38075741",
                 "value": -8,
                 "passive": true,
                 "production": false,
@@ -4207,6 +4318,7 @@
                 "type": "FuelConsumption"
               },
               {
+                "id": "64f5b9e5fa34f11b38075742",
                 "value": 8,
                 "passive": true,
                 "production": false,
@@ -4214,6 +4326,7 @@
                 "type": "EnergyRegeneration"
               },
               {
+                "id": "64f5b9e5fa34f11b38075743",
                 "value": 8,
                 "passive": true,
                 "production": false,
@@ -4221,6 +4334,7 @@
                 "type": "HealthRegeneration"
               },
               {
+                "id": "64f5b9e5fa34f11b38075744",
                 "value": 5,
                 "passive": true,
                 "production": false,
@@ -4228,6 +4342,7 @@
                 "type": "ExperienceRate"
               },
               {
+                "id": "64f5b9e5fa34f11b38075745",
                 "value": 5,
                 "passive": true,
                 "production": false,
@@ -4259,6 +4374,7 @@
         ],
         "bonuses": [
           {
+            "id": "64f5b9e5fa34f11b3807575a",
             "value": 5,
             "passive": true,
             "production": false,
@@ -4266,6 +4382,7 @@
             "type": "FuelConsumption"
           },
           {
+            "id": "64f5b9e5fa34f11b3807575b",
             "value": -5,
             "passive": true,
             "production": false,
@@ -4273,6 +4390,7 @@
             "type": "EnergyRegeneration"
           },
           {
+            "id": "64f5b9e5fa34f11b3807575c",
             "value": -5,
             "passive": true,
             "production": false,
@@ -4280,6 +4398,7 @@
             "type": "HealthRegeneration"
           },
           {
+            "id": "64f5b9e5fa34f11b3807575d",
             "value": -3,
             "passive": true,
             "production": false,
@@ -4287,6 +4406,7 @@
             "type": "ExperienceRate"
           },
           {
+            "id": "64f5b9e5fa34f11b3807575e",
             "value": -3,
             "passive": true,
             "production": false,
@@ -4298,6 +4418,7 @@
         "slots": 0,
         "constructionTime": 10800,
         "description": "",
+        "container": "",
         "autoUpgrade": false,
         "displayInterface": true,
         "improvements": [
@@ -4314,6 +4435,7 @@
             ],
             "bonuses": [
               {
+                "id": "64f5b9e5fa34f11b38075755",
                 "value": -10,
                 "passive": true,
                 "production": false,
@@ -4321,6 +4443,7 @@
                 "type": "FuelConsumption"
               },
               {
+                "id": "64f5b9e5fa34f11b38075756",
                 "value": 10,
                 "passive": true,
                 "production": false,
@@ -4328,6 +4451,7 @@
                 "type": "EnergyRegeneration"
               },
               {
+                "id": "64f5b9e5fa34f11b38075757",
                 "value": 10,
                 "passive": true,
                 "production": false,
@@ -4335,6 +4459,7 @@
                 "type": "HealthRegeneration"
               },
               {
+                "id": "64f5b9e5fa34f11b38075758",
                 "value": 6,
                 "passive": true,
                 "production": false,
@@ -4342,6 +4467,7 @@
                 "type": "ExperienceRate"
               },
               {
+                "id": "64f5b9e5fa34f11b38075759",
                 "value": 6,
                 "passive": true,
                 "production": false,
@@ -4414,6 +4540,7 @@
         ],
         "bonuses": [
           {
+            "id": "64f5b9e5fa34f11b38075764",
             "value": -20,
             "passive": true,
             "production": false,
@@ -4421,6 +4548,7 @@
             "type": "FuelConsumption"
           },
           {
+            "id": "64f5b9e5fa34f11b38075765",
             "value": 20,
             "passive": true,
             "production": false,
@@ -4428,6 +4556,7 @@
             "type": "EnergyRegeneration"
           },
           {
+            "id": "64f5b9e5fa34f11b38075766",
             "value": 20,
             "passive": true,
             "production": false,
@@ -4435,6 +4564,7 @@
             "type": "HealthRegeneration"
           },
           {
+            "id": "64f5b9e5fa34f11b38075767",
             "value": 12,
             "passive": true,
             "production": false,
@@ -4442,6 +4572,7 @@
             "type": "ExperienceRate"
           },
           {
+            "id": "64f5b9e5fa34f11b38075768",
             "value": 12,
             "passive": true,
             "production": false,
@@ -4453,11 +4584,366 @@
         "slots": 0,
         "constructionTime": 43200,
         "description": "",
+        "container": "",
         "autoUpgrade": false,
         "displayInterface": false,
         "improvements": []
       }
     },
     "enableAreaRequirements": false
+  },
+  {
+    "_id": "63db64cbf9963741dc0d741f",
+    "type": 24,
+    "enabled": true,
+    "needsFuel": true,
+    "takeFromSlotLocked": false,
+    "craftGivesExp": true,
+    "displayLevel": true,
+    "requirements": [],
+    "stages": {
+      "0": {
+        "requirements": [],
+        "bonuses": [],
+        "slots": 0,
+        "constructionTime": 0,
+        "description": "",
+        "container": "",
+        "autoUpgrade": false,
+        "displayInterface": true,
+        "improvements": []
+      },
+      "1": {
+        "requirements": [
+          {
+            "templateId": "5d1b317c86f7742523398392",
+            "count": 1,
+            "isFunctional": false,
+            "isEncoded": false,
+            "type": "Item"
+          },
+          {
+            "templateId": "5d40419286f774318526545f",
+            "count": 1,
+            "isFunctional": false,
+            "isEncoded": false,
+            "type": "Item"
+          },
+          {
+            "templateId": "590a3cd386f77436f20848cb",
+            "count": 5,
+            "isFunctional": false,
+            "isEncoded": false,
+            "type": "Item"
+          },
+          {
+            "templateId": "590c346786f77423e50ed342",
+            "count": 3,
+            "isFunctional": false,
+            "isEncoded": false,
+            "type": "Item"
+          },
+          {
+            "templateId": "57347c5b245977448d35f6e1",
+            "count": 15,
+            "isFunctional": false,
+            "isEncoded": false,
+            "type": "Item"
+          },
+          {
+            "templateId": "5734795124597738002c6176",
+            "count": 5,
+            "isFunctional": false,
+            "isEncoded": false,
+            "type": "Item"
+          },
+          {
+            "templateId": "590c31c586f774245e3141b2",
+            "count": 5,
+            "isFunctional": false,
+            "isEncoded": false,
+            "type": "Item"
+          },
+          {
+            "areaType": 15,
+            "requiredLevel": 3,
+            "type": "Area"
+          },
+          {
+            "traderId": "5a7c2eca46aef81a7ca2145d",
+            "loyaltyLevel": 2,
+            "type": "TraderLoyalty"
+          },
+          {
+            "areaType": 3,
+            "requiredLevel": 2,
+            "type": "Area"
+          }
+        ],
+        "bonuses": [],
+        "slots": 0,
+        "constructionTime": 43200,
+        "description": "",
+        "container": "6401c7b213d9b818bf0e7dd7",
+        "autoUpgrade": false,
+        "displayInterface": true,
+        "improvements": []
+      },
+      "2": {
+        "requirements": [
+          {
+            "templateId": "59e35de086f7741778269d84",
+            "count": 1,
+            "isFunctional": false,
+            "isEncoded": false,
+            "type": "Item"
+          },
+          {
+            "templateId": "62a0a0bb621468534a797ad5",
+            "count": 1,
+            "isFunctional": false,
+            "isEncoded": false,
+            "type": "Item"
+          },
+          {
+            "templateId": "590a3cd386f77436f20848cb",
+            "count": 10,
+            "isFunctional": false,
+            "isEncoded": false,
+            "type": "Item"
+          },
+          {
+            "templateId": "59e35ef086f7741777737012",
+            "count": 10,
+            "isFunctional": false,
+            "isEncoded": false,
+            "type": "Item"
+          },
+          {
+            "templateId": "57347c1124597737fb1379e3",
+            "count": 5,
+            "isFunctional": false,
+            "isEncoded": false,
+            "type": "Item"
+          },
+          {
+            "templateId": "5c06779c86f77426e00dd782",
+            "count": 10,
+            "isFunctional": false,
+            "isEncoded": false,
+            "type": "Item"
+          },
+          {
+            "templateId": "61bf7b6302b3924be92fa8c3",
+            "count": 5,
+            "isFunctional": false,
+            "isEncoded": false,
+            "type": "Item"
+          },
+          {
+            "templateId": "5d1c819a86f774771b0acd6c",
+            "count": 5,
+            "isFunctional": false,
+            "isEncoded": false,
+            "type": "Item"
+          },
+          {
+            "templateId": "5e2af22086f7746d3f3c33fa",
+            "count": 3,
+            "isFunctional": false,
+            "isEncoded": false,
+            "type": "Item"
+          },
+          {
+            "areaType": 12,
+            "requiredLevel": 2,
+            "type": "Area"
+          },
+          {
+            "areaType": 10,
+            "requiredLevel": 2,
+            "type": "Area"
+          },
+          {
+            "areaType": 3,
+            "requiredLevel": 3,
+            "type": "Area"
+          },
+          {
+            "traderId": "5a7c2eca46aef81a7ca2145d",
+            "loyaltyLevel": 3,
+            "type": "TraderLoyalty"
+          }
+        ],
+        "bonuses": [],
+        "slots": 0,
+        "constructionTime": 64800,
+        "description": "",
+        "container": "64381b582bb1c5dedd0fc925",
+        "autoUpgrade": false,
+        "displayInterface": true,
+        "improvements": []
+      },
+      "3": {
+        "requirements": [
+          {
+            "templateId": "59e35de086f7741778269d84",
+            "count": 1,
+            "isFunctional": false,
+            "isEncoded": false,
+            "type": "Item"
+          },
+          {
+            "templateId": "590a3cd386f77436f20848cb",
+            "count": 15,
+            "isFunctional": false,
+            "isEncoded": false,
+            "type": "Item"
+          },
+          {
+            "templateId": "61bf7b6302b3924be92fa8c3",
+            "count": 10,
+            "isFunctional": false,
+            "isEncoded": false,
+            "type": "Item"
+          },
+          {
+            "templateId": "5e2af29386f7746d4159f077",
+            "count": 5,
+            "isFunctional": false,
+            "isEncoded": false,
+            "type": "Item"
+          },
+          {
+            "templateId": "5c06779c86f77426e00dd782",
+            "count": 15,
+            "isFunctional": false,
+            "isEncoded": false,
+            "type": "Item"
+          },
+          {
+            "templateId": "590c35a486f774273531c822",
+            "count": 3,
+            "isFunctional": false,
+            "isEncoded": false,
+            "type": "Item"
+          },
+          {
+            "templateId": "590c639286f774151567fa95",
+            "count": 1,
+            "isFunctional": false,
+            "isEncoded": false,
+            "type": "Item"
+          },
+          {
+            "templateId": "5bc9b355d4351e6d1509862a",
+            "count": 1,
+            "isFunctional": false,
+            "isEncoded": false,
+            "type": "Item"
+          },
+          {
+            "traderId": "5a7c2eca46aef81a7ca2145d",
+            "loyaltyLevel": 4,
+            "type": "TraderLoyalty"
+          },
+          {
+            "areaType": 12,
+            "requiredLevel": 3,
+            "type": "Area"
+          },
+          {
+            "areaType": 10,
+            "requiredLevel": 3,
+            "type": "Area"
+          }
+        ],
+        "bonuses": [],
+        "slots": 0,
+        "constructionTime": 86400,
+        "description": "",
+        "container": "64381b6e44b37a080d0245b9",
+        "autoUpgrade": false,
+        "displayInterface": true,
+        "improvements": []
+      }
+    },
+    "enableAreaRequirements": false
+  },
+  {
+    "_id": "640b2d867f4185aa520d08ba",
+    "type": 25,
+    "enabled": true,
+    "needsFuel": false,
+    "takeFromSlotLocked": false,
+    "craftGivesExp": false,
+    "displayLevel": false,
+    "requirements": [],
+    "stages": {
+      "0": {
+        "requirements": [],
+        "bonuses": [],
+        "slots": 0,
+        "constructionTime": 0,
+        "description": "",
+        "container": "",
+        "autoUpgrade": false,
+        "displayInterface": false,
+        "improvements": []
+      },
+      "1": {
+        "requirements": [
+          {
+            "areaType": 24,
+            "requiredLevel": 1,
+            "type": "Area"
+          }
+        ],
+        "bonuses": [],
+        "slots": 0,
+        "constructionTime": 0,
+        "description": "",
+        "container": "6401c7b213d9b818bf0e7dd7",
+        "autoUpgrade": true,
+        "displayInterface": false,
+        "improvements": []
+      },
+      "2": {
+        "requirements": [
+          {
+            "areaType": 24,
+            "requiredLevel": 2,
+            "type": "Area"
+          }
+        ],
+        "bonuses": [],
+        "slots": 0,
+        "constructionTime": 0,
+        "description": "",
+        "container": "64381b582bb1c5dedd0fc925",
+        "autoUpgrade": true,
+        "displayInterface": false,
+        "improvements": []
+      },
+      "3": {
+        "requirements": [
+          {
+            "areaType": 24,
+            "requiredLevel": 3,
+            "type": "Area"
+          }
+        ],
+        "bonuses": [],
+        "slots": 0,
+        "constructionTime": 0,
+        "description": "",
+        "container": "64381b6e44b37a080d0245b9",
+        "autoUpgrade": true,
+        "displayInterface": false,
+        "improvements": []
+      }
+    },
+    "enableAreaRequirements": false,
+    "parentArea": "63db64cbf9963741dc0d741f"
   }
 ]

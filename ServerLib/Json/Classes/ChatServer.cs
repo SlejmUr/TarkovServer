@@ -25,17 +25,13 @@ namespace ServerLib.Json.Classes
             public int DateTime { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public List<IChat> Chats { get; set; }
+            public List<Chat> Chats { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public List<string> Regions { get; set; }
-
-            [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public bool IsDeveloper { get; set; }
-
         }
 
-        public class IChat
+        public class Chat
         {
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public string _id { get; set; }

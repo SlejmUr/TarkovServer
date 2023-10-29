@@ -59,11 +59,18 @@
         "path": "CONTENT/banners/banner_scavraider.jpg",
         "rcid": ""
       }
+    },
+    {
+      "id": "64c0ad6af99768b777048f4e",
+      "pic": {
+        "path": "CONTENT/banners/banner_emissary.jpg",
+        "rcid": ""
+      }
     }
   ],
   "BossLocationSpawn": [
     {
-      "BossChance": 24,
+      "BossChance": 30,
       "BossDifficult": "normal",
       "BossEscortAmount": "0",
       "BossEscortDifficult": "normal",
@@ -72,6 +79,7 @@
       "BossPlayer": false,
       "BossZone": "BotZone",
       "RandomTimeSpawn": false,
+      "Supports": null,
       "Time": -1
     }
   ],
@@ -96,20 +104,24 @@
   "BotMaxPlayer": 0,
   "BotMaxTimePlayer": 0,
   "BotNormal": 0,
+  "BotSpawnCountStep": 3,
+  "BotSpawnPeriodCheck": 15,
   "BotSpawnTimeOffMax": 0,
   "BotSpawnTimeOffMin": 0,
   "BotSpawnTimeOnMax": 0,
   "BotSpawnTimeOnMin": 0,
   "BotStart": 0,
+  "BotStartPlayer": 0,
   "BotStop": 0,
   "Description": "The industrial estate and facilities of the chemical plant No.16 that were rented out illegally to the TerraGroup company. ",
   "DisabledForScav": false,
   "DisabledScavExits": "Cellars,Gate 0",
+  "EnableCoop": true,
   "Enabled": true,
-  "EnabledCoop": false,
   "EscapeTimeLimit": 20,
   "EscapeTimeLimitCoop": 15,
   "GenerateLocalLootCache": true,
+  "GlobalContainerChanceModifier": 1,
   "GlobalLootChanceModifier": 0.2,
   "IconX": 318,
   "IconY": 359,
@@ -118,6 +130,24 @@
   "IsSecret": false,
   "Locked": false,
   "Loot": [],
+  "MatchMakerMinPlayersByWaitTime": [
+    {
+      "minPlayers": 4,
+      "time": 60
+    },
+    {
+      "minPlayers": 3,
+      "time": 120
+    },
+    {
+      "minPlayers": 2,
+      "time": 250
+    },
+    {
+      "minPlayers": 1,
+      "time": 330
+    }
+  ],
   "MaxBotPerZone": 4,
   "MaxCoopGroup": 6,
   "MaxDistToFreePoint": 900,
@@ -125,19 +155,29 @@
   "MinDistToExitPoint": 30,
   "MinDistToFreePoint": 10,
   "MinMaxBots": [],
-  "MinPlayers": 4,
+  "MinPlayerLvlAccessKeys": 0,
+  "MinPlayers": 5,
   "Name": "Factory",
   "NewSpawn": false,
+  "NonWaveGroupScenario": {
+    "Chance": 50,
+    "Enabled": true,
+    "MaxToBeGroup": 3,
+    "MinToBeGroup": 2
+  },
   "OcculsionCullingEnabled": true,
+  "OfflineNewSpawn": false,
+  "OfflineOldSpawn": true,
   "OldSpawn": true,
   "OpenZones": "BotZone",
+  "PlayersRequestCount": -1,
   "PmcMaxPlayersInGroup": 5,
   "Preview": {
     "path": "",
     "rcid": ""
   },
-  "RequiredPlayerLevelMin": 0,
   "RequiredPlayerLevelMax": 100,
+  "RequiredPlayerLevelMin": 0,
   "Rules": "AvoidOwnPmc",
   "SafeLocation": false,
   "ScavMaxPlayersInGroup": 4,
@@ -202,8 +242,7 @@
       },
       "Rotation": 3.0047307,
       "Sides": [
-        "Usec",
-        "Bear"
+        "Pmc"
       ]
     },
     {
@@ -233,8 +272,7 @@
       },
       "Rotation": 96.73777,
       "Sides": [
-        "Usec",
-        "Bear"
+        "Pmc"
       ]
     },
     {
@@ -351,8 +389,7 @@
       },
       "Rotation": 269.225647,
       "Sides": [
-        "Usec",
-        "Bear"
+        "Pmc"
       ]
     },
     {
@@ -382,8 +419,7 @@
       },
       "Rotation": 269.225647,
       "Sides": [
-        "Usec",
-        "Bear"
+        "Pmc"
       ]
     },
     {
@@ -471,8 +507,7 @@
       },
       "Rotation": 96.73777,
       "Sides": [
-        "Usec",
-        "Bear"
+        "Pmc"
       ]
     },
     {
@@ -531,8 +566,7 @@
       },
       "Rotation": 96.73777,
       "Sides": [
-        "Usec",
-        "Bear"
+        "Pmc"
       ]
     },
     {
@@ -649,8 +683,7 @@
       },
       "Rotation": 96.73777,
       "Sides": [
-        "Usec",
-        "Bear"
+        "Pmc"
       ]
     },
     {
@@ -680,8 +713,7 @@
       },
       "Rotation": 269.225647,
       "Sides": [
-        "Usec",
-        "Bear"
+        "Pmc"
       ]
     },
     {
@@ -711,8 +743,7 @@
       },
       "Rotation": 269.225647,
       "Sides": [
-        "Usec",
-        "Bear"
+        "Pmc"
       ]
     },
     {
@@ -945,8 +976,7 @@
       },
       "Rotation": 269.225647,
       "Sides": [
-        "Usec",
-        "Bear"
+        "Pmc"
       ]
     },
     {
@@ -1034,8 +1064,7 @@
       },
       "Rotation": 269.225647,
       "Sides": [
-        "Usec",
-        "Bear"
+        "Pmc"
       ]
     },
     {
@@ -1065,8 +1094,7 @@
       },
       "Rotation": 269.225647,
       "Sides": [
-        "Usec",
-        "Bear"
+        "Pmc"
       ]
     },
     {
@@ -1096,8 +1124,7 @@
       },
       "Rotation": 269.225647,
       "Sides": [
-        "Usec",
-        "Bear"
+        "Pmc"
       ]
     },
     {
@@ -1127,8 +1154,7 @@
       },
       "Rotation": 3.0047307,
       "Sides": [
-        "Usec",
-        "Bear"
+        "Pmc"
       ]
     },
     {
@@ -1187,8 +1213,7 @@
       },
       "Rotation": 96.73777,
       "Sides": [
-        "Usec",
-        "Bear"
+        "Pmc"
       ]
     },
     {
@@ -1363,8 +1388,7 @@
       },
       "Rotation": 96.73777,
       "Sides": [
-        "Usec",
-        "Bear"
+        "Pmc"
       ]
     },
     {
@@ -1394,8 +1418,7 @@
       },
       "Rotation": 3.0047307,
       "Sides": [
-        "Usec",
-        "Bear"
+        "Pmc"
       ]
     },
     {
@@ -1483,8 +1506,7 @@
       },
       "Rotation": 269.225647,
       "Sides": [
-        "Usec",
-        "Bear"
+        "Pmc"
       ]
     },
     {
@@ -1663,8 +1685,7 @@
       },
       "Rotation": 269.225647,
       "Sides": [
-        "Usec",
-        "Bear"
+        "Pmc"
       ]
     },
     {
@@ -1814,8 +1835,7 @@
       },
       "Rotation": 3.0047307,
       "Sides": [
-        "Usec",
-        "Bear"
+        "Pmc"
       ]
     },
     {
@@ -1932,8 +1952,7 @@
       },
       "Rotation": 3.0047307,
       "Sides": [
-        "Usec",
-        "Bear"
+        "Pmc"
       ]
     },
     {
@@ -2166,8 +2185,7 @@
       },
       "Rotation": 96.73777,
       "Sides": [
-        "Usec",
-        "Bear"
+        "Pmc"
       ]
     },
     {
@@ -2230,8 +2248,7 @@
       },
       "Rotation": 269.225647,
       "Sides": [
-        "Usec",
-        "Bear"
+        "Pmc"
       ]
     },
     {
@@ -2261,8 +2278,7 @@
       },
       "Rotation": 96.73777,
       "Sides": [
-        "Usec",
-        "Bear"
+        "Pmc"
       ]
     },
     {
@@ -2321,8 +2337,7 @@
       },
       "Rotation": 3.0047307,
       "Sides": [
-        "Usec",
-        "Bear"
+        "Pmc"
       ]
     },
     {
@@ -2468,8 +2483,7 @@
       },
       "Rotation": 3.0047307,
       "Sides": [
-        "Usec",
-        "Bear"
+        "Pmc"
       ]
     },
     {
@@ -2499,8 +2513,7 @@
       },
       "Rotation": 269.225647,
       "Sides": [
-        "Usec",
-        "Bear"
+        "Pmc"
       ]
     },
     {
@@ -2617,8 +2630,7 @@
       },
       "Rotation": 269.225647,
       "Sides": [
-        "Usec",
-        "Bear"
+        "Pmc"
       ]
     },
     {
@@ -2735,8 +2747,7 @@
       },
       "Rotation": 269.225647,
       "Sides": [
-        "Usec",
-        "Bear"
+        "Pmc"
       ]
     },
     {
@@ -2940,8 +2951,7 @@
       },
       "Rotation": 3.0047307,
       "Sides": [
-        "Usec",
-        "Bear"
+        "Pmc"
       ]
     },
     {
@@ -3120,8 +3130,7 @@
       },
       "Rotation": 269.225647,
       "Sides": [
-        "Usec",
-        "Bear"
+        "Pmc"
       ]
     },
     {
@@ -3151,8 +3160,7 @@
       },
       "Rotation": 96.73777,
       "Sides": [
-        "Usec",
-        "Bear"
+        "Pmc"
       ]
     },
     {
@@ -3215,8 +3223,7 @@
       },
       "Rotation": 269.225647,
       "Sides": [
-        "Usec",
-        "Bear"
+        "Pmc"
       ]
     },
     {
@@ -3246,8 +3253,7 @@
       },
       "Rotation": 269.225647,
       "Sides": [
-        "Usec",
-        "Bear"
+        "Pmc"
       ]
     },
     {
@@ -3277,8 +3283,7 @@
       },
       "Rotation": 269.225647,
       "Sides": [
-        "Usec",
-        "Bear"
+        "Pmc"
       ]
     },
     {
@@ -3308,8 +3313,7 @@
       },
       "Rotation": 96.73777,
       "Sides": [
-        "Usec",
-        "Bear"
+        "Pmc"
       ]
     },
     {
@@ -3397,8 +3401,7 @@
       },
       "Rotation": 269.225647,
       "Sides": [
-        "Usec",
-        "Bear"
+        "Pmc"
       ]
     },
     {
@@ -3544,8 +3547,7 @@
       },
       "Rotation": 96.73777,
       "Sides": [
-        "Usec",
-        "Bear"
+        "Pmc"
       ]
     },
     {
@@ -3633,8 +3635,7 @@
       },
       "Rotation": 269.225647,
       "Sides": [
-        "Usec",
-        "Bear"
+        "Pmc"
       ]
     },
     {
@@ -3664,8 +3665,7 @@
       },
       "Rotation": 3.0047307,
       "Sides": [
-        "Usec",
-        "Bear"
+        "Pmc"
       ]
     },
     {
@@ -3695,8 +3695,7 @@
       },
       "Rotation": 3.0047307,
       "Sides": [
-        "Usec",
-        "Bear"
+        "Pmc"
       ]
     },
     {
@@ -3824,8 +3823,8 @@
       "WildSpawnType": "assault",
       "isPlayers": true,
       "number": 2,
-      "slots_max": 3,
-      "slots_min": 1,
+      "slots_max": 4,
+      "slots_min": 2,
       "time_max": 300,
       "time_min": 210
     },
@@ -3836,8 +3835,8 @@
       "WildSpawnType": "assault",
       "isPlayers": true,
       "number": 3,
-      "slots_max": 3,
-      "slots_min": 0,
+      "slots_max": 4,
+      "slots_min": 2,
       "time_max": 350,
       "time_min": 260
     },
@@ -3848,7 +3847,7 @@
       "WildSpawnType": "assault",
       "isPlayers": true,
       "number": 4,
-      "slots_max": 3,
+      "slots_max": 4,
       "slots_min": 2,
       "time_max": 500,
       "time_min": 410
@@ -3860,8 +3859,8 @@
       "WildSpawnType": "assault",
       "isPlayers": true,
       "number": 5,
-      "slots_max": 3,
-      "slots_min": 1,
+      "slots_max": 4,
+      "slots_min": 3,
       "time_max": 510,
       "time_min": 460
     },

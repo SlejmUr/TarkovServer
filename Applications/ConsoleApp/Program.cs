@@ -33,6 +33,7 @@ namespace ConsoleApp
 
         static void Main(string[] args)
         {
+
             Console.Clear();
             if (!File.Exists("path.txt"))
             {
@@ -43,7 +44,7 @@ namespace ConsoleApp
             AppDomain.CurrentDomain.AssemblyLoad += CurrentDomain_AssemblyLoad;
 
             Console.OutputEncoding = Encoding.UTF8;
-            Console.Title = $"MTGA - SharpServer [{Version.LoadVersion}]";
+            Console.Title = $"TarkovServer - [{Version.LoadVersion}]";
             ServerInfo();
 
             SLH.ArgumentHandler.MainArg(args);
@@ -62,7 +63,6 @@ namespace ConsoleApp
                 Console.WriteLine(SLH.ArgumentHandler.LoadMyPlugin);
                 SLH.PluginLoader.ManualLoadPlugin(SLH.ArgumentHandler.LoadMyPlugin);
             }
-
             SL.ServerLib.Init();
             LogDetailed("Initialization Done!");
             Console.WriteLine("Commands are starting with !. Like !help");

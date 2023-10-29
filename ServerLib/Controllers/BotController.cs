@@ -12,7 +12,7 @@ namespace ServerLib.Controllers
         public static Character.Base GenerateDogtag(Character.Base bot)
         {
             Item.Base item = new();
-            item.Id = Utils.CreateNewID();
+            item.Id = AIDHelper.CreateNewID();
             item.Tpl = bot.Info.Side == "Usec" ? "59f32c3b86f77472a31742f0" : "59f32bb586f774757e1e8442";
             item.ParentId = bot.Inventory.Equipment;
             item.SlotId = "Dogtag";

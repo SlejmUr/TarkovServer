@@ -1,10 +1,10 @@
 ﻿using NetCoreServer;
 using Newtonsoft.Json;
 using ServerLib.Controllers;
-using ServerLib.Utilities;
 using ModdableWebServer;
 using ModdableWebServer.Attributes;
 using ModdableWebServer.Helper;
+using ServerLib.Utilities.Helpers;
 
 namespace ServerLib.Web
 {
@@ -14,7 +14,7 @@ namespace ServerLib.Web
         public static bool LauncherLogin(HttpRequest request, ServerStruct serverStruct)
         {
             //REQ stuff
-            Utils.PrintRequest(request, serverStruct);
+            ServerHelper.PrintRequest(request, serverStruct);
             string Uncompressed = ResponseControl.DeCompressReq(request.BodyBytes);
             // RPS
             string resp = AccountController.Login(JsonConvert.DeserializeObject<Json.Classes.Login>(Uncompressed));
@@ -28,7 +28,7 @@ namespace ServerLib.Web
         public static bool LauncherRegister(HttpRequest request, ServerStruct serverStruct)
         {
             //REQ stuff
-            Utils.PrintRequest(request, serverStruct);
+            ServerHelper.PrintRequest(request, serverStruct);
             string Uncompressed = ResponseControl.DeCompressReq(request.BodyBytes);
 
             // RPS
@@ -43,7 +43,7 @@ namespace ServerLib.Web
         public static bool LauncherGet(HttpRequest request, ServerStruct serverStruct)
         {
             //REQ stuff
-            Utils.PrintRequest(request, serverStruct);
+            ServerHelper.PrintRequest(request, serverStruct);
             string Uncompressed = ResponseControl.DeCompressReq(request.BodyBytes);
 
             // RPS
@@ -58,7 +58,7 @@ namespace ServerLib.Web
         public static bool LauncherServerConnect(HttpRequest request, ServerStruct serverStruct)
         {
             //REQ stuff
-            Utils.PrintRequest(request, serverStruct);
+            ServerHelper.PrintRequest(request, serverStruct);
             string Uncompressed = ResponseControl.DeCompressReq(request.BodyBytes);
             // RPS
             var server = ConfigController.Configs.Server;
@@ -73,7 +73,7 @@ namespace ServerLib.Web
         public static bool LauncherRemove(HttpRequest request, ServerStruct serverStruct)
         {
             //REQ stuff
-            Utils.PrintRequest(request, serverStruct);
+            ServerHelper.PrintRequest(request, serverStruct);
             string Uncompressed = ResponseControl.DeCompressReq(request.BodyBytes);
 
             // RPS
@@ -89,7 +89,7 @@ namespace ServerLib.Web
         public static bool LauncherChangePassword(HttpRequest request, ServerStruct serverStruct)
         {
             //REQ stuff
-            Utils.PrintRequest(request, serverStruct);
+            ServerHelper.PrintRequest(request, serverStruct);
             string Uncompressed = ResponseControl.DeCompressReq(request.BodyBytes);
 
             // RPS
@@ -105,7 +105,7 @@ namespace ServerLib.Web
         public static bool LauncherChangeWipe(HttpRequest request, ServerStruct serverStruct)
         {
             //REQ stuff
-            Utils.PrintRequest(request, serverStruct);
+            ServerHelper.PrintRequest(request, serverStruct);
             string Uncompressed = ResponseControl.DeCompressReq(request.BodyBytes);
 
             // RPS

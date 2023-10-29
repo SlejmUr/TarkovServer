@@ -1,0 +1,895 @@
+{
+  "containers": {
+    "00525": {
+      "groupId": "weapon_crate_outdoors"
+    },
+    "00526": {
+      "groupId": "weapon_crate_outdoors"
+    },
+    "00527": {
+      "groupId": "tool&others_crate_outdoors"
+    },
+    "00528": {
+      "groupId": "weapon_crate_outdoors"
+    },
+    "00529": {
+      "groupId": "outdoors_bags"
+    },
+    "00530": {
+      "groupId": "outdoors_bags"
+    },
+    "00531": {
+      "groupId": "outdoors_bags"
+    },
+    "00532": {
+      "groupId": "outdoors_bags"
+    },
+    "00533": {
+      "groupId": "outdoors_bags"
+    },
+    "00534": {
+      "groupId": "outdoors_bags"
+    },
+    "00535": {
+      "groupId": "outdoors_bags"
+    },
+    "00536": {
+      "groupId": "outdoors_bags"
+    },
+    "00537": {
+      "groupId": "outdoors_bags"
+    },
+    "00538": {
+      "groupId": "outdoors_bags"
+    },
+    "00539": {
+      "groupId": "outdoors_bags"
+    },
+    "00540": {
+      "groupId": "outdoors_bags"
+    },
+    "00541": {
+      "groupId": "weapon_crate_outdoors"
+    },
+    "00542": {
+      "groupId": "weapon_crate_outdoors"
+    },
+    "00543": {
+      "groupId": "weapon_crate_closed"
+    },
+    "00544": {
+      "groupId": "outdoors_bags"
+    },
+    "00545": {
+      "groupId": "weapon_crate_outdoors"
+    },
+    "00546": {
+      "groupId": ""
+    },
+    "00547": {
+      "groupId": "tool&others_crate_outdoors"
+    },
+    "00548": {
+      "groupId": "outdoors_bags"
+    },
+    "00549": {
+      "groupId": "outdoors_bags"
+    },
+    "00550": {
+      "groupId": "weapon_crate_outdoors"
+    },
+    "00551": {
+      "groupId": "outdoors_bags"
+    },
+    "00552": {
+      "groupId": "weapon_crate_closed"
+    },
+    "00553": {
+      "groupId": "outdoors_bags"
+    },
+    "00554": {
+      "groupId": "outdoors_bags"
+    },
+    "00555": {
+      "groupId": "weapon_crate_outdoors"
+    },
+    "00556": {
+      "groupId": "outdoors_bags"
+    },
+    "00557": {
+      "groupId": "tool&others_crate_outdoors"
+    },
+    "00558": {
+      "groupId": "tool&others_crate_outdoors"
+    },
+    "00559": {
+      "groupId": "tool&others_crate_outdoors"
+    },
+    "00560": {
+      "groupId": "outdoors_bags"
+    },
+    "00561": {
+      "groupId": "outdoors_bags"
+    },
+    "00562": {
+      "groupId": "outdoors_bags"
+    },
+    "00563": {
+      "groupId": "weapon_crate_outdoors"
+    },
+    "00564": {
+      "groupId": "outdoors_bags"
+    },
+    "00565": {
+      "groupId": "weapon_crate_closed"
+    },
+    "00566": {
+      "groupId": "weapon_crate_outdoors"
+    },
+    "00567": {
+      "groupId": "weapon_crate_outdoors"
+    },
+    "00568": {
+      "groupId": "weapon_crate_outdoors"
+    },
+    "00569": {
+      "groupId": "weapon_crate_outdoors"
+    },
+    "00570": {
+      "groupId": "weapon_crate_outdoors"
+    },
+    "00571": {
+      "groupId": "weapon_crate_outdoors"
+    },
+    "00572": {
+      "groupId": "weapon_crate_outdoors"
+    },
+    "00573": {
+      "groupId": "weapon_crate_outdoors"
+    },
+    "00574": {
+      "groupId": "outdoors_bags"
+    },
+    "00575": {
+      "groupId": "weapon_crate_outdoors"
+    },
+    "00576": {
+      "groupId": "weapon_crate_outdoors"
+    },
+    "00577": {
+      "groupId": "tool&others_crate_outdoors"
+    },
+    "00578": {
+      "groupId": "weapon_crate_outdoors"
+    },
+    "00579": {
+      "groupId": "tool&others_crate_outdoors"
+    },
+    "00580": {
+      "groupId": "weapon_crate_closed"
+    },
+    "00581": {
+      "groupId": "weapon_crate_closed"
+    },
+    "00582": {
+      "groupId": "tool&others_crate_outdoors"
+    },
+    "00583": {
+      "groupId": "tool&others_crate_outdoors"
+    },
+    "00584": {
+      "groupId": "weapon_crate_closed"
+    },
+    "00585": {
+      "groupId": "weapon_crate_closed"
+    },
+    "00586": {
+      "groupId": "weapon_crate_closed"
+    },
+    "00587": {
+      "groupId": "weapon_crate_closed"
+    },
+    "00588": {
+      "groupId": "tool&others_crate_outdoors"
+    },
+    "00589": {
+      "groupId": "weapon_crate_outdoors"
+    },
+    "00590": {
+      "groupId": "tool&others_crate_outdoors"
+    },
+    "00591": {
+      "groupId": "tool&others_crate_outdoors"
+    },
+    "00592": {
+      "groupId": "tool&others_crate_outdoors"
+    },
+    "00593": {
+      "groupId": "weapon_crate_outdoors"
+    },
+    "00594": {
+      "groupId": "weapon_crate_outdoors"
+    },
+    "00595": {
+      "groupId": "tool&others_crate_outdoors"
+    },
+    "00596": {
+      "groupId": "weapon_crate_outdoors"
+    },
+    "00597": {
+      "groupId": "tool&others_crate_outdoors"
+    },
+    "00598": {
+      "groupId": "tool&others_crate_outdoors"
+    },
+    "00599": {
+      "groupId": "weapon_crate_outdoors"
+    },
+    "00600": {
+      "groupId": "outdoors_bags"
+    },
+    "00601": {
+      "groupId": "tool&others_crate_outdoors"
+    },
+    "00602": {
+      "groupId": "weapon_crate_outdoors"
+    },
+    "00603": {
+      "groupId": "weapon_crate_outdoors"
+    },
+    "00604": {
+      "groupId": "tool&others_crate_outdoors"
+    },
+    "00605": {
+      "groupId": "outdoors_bags"
+    },
+    "00606": {
+      "groupId": ""
+    },
+    "00607": {
+      "groupId": "weapon_crate_closed"
+    },
+    "00608": {
+      "groupId": "weapon_crate_closed"
+    },
+    "00609": {
+      "groupId": ""
+    },
+    "00610": {
+      "groupId": ""
+    },
+    "00611": {
+      "groupId": ""
+    },
+    "00612": {
+      "groupId": ""
+    },
+    "00613": {
+      "groupId": ""
+    },
+    "00614": {
+      "groupId": ""
+    },
+    "00615": {
+      "groupId": ""
+    },
+    "00616": {
+      "groupId": ""
+    },
+    "00617": {
+      "groupId": ""
+    },
+    "00618": {
+      "groupId": ""
+    },
+    "00619": {
+      "groupId": ""
+    },
+    "00620": {
+      "groupId": ""
+    },
+    "00621": {
+      "groupId": ""
+    },
+    "00622": {
+      "groupId": ""
+    },
+    "00623": {
+      "groupId": ""
+    },
+    "00624": {
+      "groupId": ""
+    },
+    "00625": {
+      "groupId": ""
+    },
+    "00626": {
+      "groupId": ""
+    },
+    "00627": {
+      "groupId": ""
+    },
+    "00628": {
+      "groupId": ""
+    },
+    "00629": {
+      "groupId": ""
+    },
+    "00630": {
+      "groupId": ""
+    },
+    "00631": {
+      "groupId": ""
+    },
+    "00632": {
+      "groupId": ""
+    },
+    "00633": {
+      "groupId": ""
+    },
+    "00634": {
+      "groupId": ""
+    },
+    "00635": {
+      "groupId": ""
+    },
+    "00636": {
+      "groupId": ""
+    },
+    "00637": {
+      "groupId": ""
+    },
+    "00638": {
+      "groupId": ""
+    },
+    "00639": {
+      "groupId": ""
+    },
+    "00640": {
+      "groupId": ""
+    },
+    "00641": {
+      "groupId": ""
+    },
+    "00642": {
+      "groupId": ""
+    },
+    "00643": {
+      "groupId": ""
+    },
+    "00644": {
+      "groupId": ""
+    },
+    "00645": {
+      "groupId": ""
+    },
+    "00646": {
+      "groupId": ""
+    },
+    "00647": {
+      "groupId": ""
+    },
+    "00648": {
+      "groupId": ""
+    },
+    "00649": {
+      "groupId": ""
+    },
+    "00650": {
+      "groupId": ""
+    },
+    "00651": {
+      "groupId": ""
+    },
+    "00652": {
+      "groupId": ""
+    },
+    "00653": {
+      "groupId": ""
+    },
+    "00654": {
+      "groupId": ""
+    },
+    "00655": {
+      "groupId": ""
+    },
+    "00656": {
+      "groupId": ""
+    },
+    "00657": {
+      "groupId": ""
+    },
+    "00658": {
+      "groupId": ""
+    },
+    "00659": {
+      "groupId": ""
+    },
+    "00660": {
+      "groupId": ""
+    },
+    "00661": {
+      "groupId": ""
+    },
+    "00662": {
+      "groupId": ""
+    },
+    "00663": {
+      "groupId": ""
+    },
+    "00664": {
+      "groupId": ""
+    },
+    "00665": {
+      "groupId": ""
+    },
+    "00666": {
+      "groupId": ""
+    },
+    "00667": {
+      "groupId": ""
+    },
+    "00668": {
+      "groupId": ""
+    },
+    "00669": {
+      "groupId": ""
+    },
+    "00670": {
+      "groupId": ""
+    },
+    "00671": {
+      "groupId": ""
+    },
+    "00672": {
+      "groupId": ""
+    },
+    "00673": {
+      "groupId": ""
+    },
+    "00674": {
+      "groupId": ""
+    },
+    "00675": {
+      "groupId": ""
+    },
+    "00676": {
+      "groupId": ""
+    },
+    "00677": {
+      "groupId": ""
+    },
+    "00678": {
+      "groupId": ""
+    },
+    "00679": {
+      "groupId": ""
+    },
+    "00680": {
+      "groupId": ""
+    },
+    "00681": {
+      "groupId": ""
+    },
+    "00682": {
+      "groupId": ""
+    },
+    "00683": {
+      "groupId": ""
+    },
+    "00684": {
+      "groupId": ""
+    },
+    "00685": {
+      "groupId": ""
+    },
+    "00686": {
+      "groupId": ""
+    },
+    "00687": {
+      "groupId": ""
+    },
+    "00688": {
+      "groupId": ""
+    },
+    "00689": {
+      "groupId": ""
+    },
+    "00690": {
+      "groupId": ""
+    },
+    "00691": {
+      "groupId": ""
+    },
+    "00692": {
+      "groupId": ""
+    },
+    "00693": {
+      "groupId": ""
+    },
+    "00694": {
+      "groupId": ""
+    },
+    "00695": {
+      "groupId": ""
+    },
+    "00696": {
+      "groupId": ""
+    },
+    "00697": {
+      "groupId": ""
+    },
+    "00698": {
+      "groupId": ""
+    },
+    "00699": {
+      "groupId": ""
+    },
+    "00700": {
+      "groupId": ""
+    },
+    "00701": {
+      "groupId": ""
+    },
+    "00702": {
+      "groupId": ""
+    },
+    "00703": {
+      "groupId": ""
+    },
+    "00704": {
+      "groupId": ""
+    },
+    "00705": {
+      "groupId": ""
+    },
+    "00706": {
+      "groupId": ""
+    },
+    "00707": {
+      "groupId": ""
+    },
+    "00708": {
+      "groupId": ""
+    },
+    "00709": {
+      "groupId": ""
+    },
+    "00710": {
+      "groupId": ""
+    },
+    "00711": {
+      "groupId": ""
+    },
+    "00712": {
+      "groupId": ""
+    },
+    "00713": {
+      "groupId": ""
+    },
+    "00714": {
+      "groupId": ""
+    },
+    "00715": {
+      "groupId": "tool&others_crate_outdoors"
+    },
+    "container_Laboratory_DesignStuff_00001": {
+      "groupId": "outdoors_bags"
+    },
+    "container_Laboratory_DesignStuff_00002": {
+      "groupId": "outdoors_bags"
+    },
+    "container_Laboratory_DesignStuff_00003": {
+      "groupId": "outdoors_bags"
+    },
+    "container_Laboratory_DesignStuff_00004": {
+      "groupId": "outdoors_bags"
+    },
+    "container_Laboratory_DesignStuff_00005": {
+      "groupId": "outdoors_bags"
+    },
+    "container_Laboratory_DesignStuff_00006": {
+      "groupId": "outdoors_bags"
+    },
+    "container_Laboratory_DesignStuff_00007": {
+      "groupId": "outdoors_bags"
+    },
+    "container_Laboratory_DesignStuff_00008": {
+      "groupId": "outdoors_bags"
+    },
+    "container_Laboratory_DesignStuff_00009": {
+      "groupId": "outdoors_bags"
+    },
+    "container_Laboratory_DesignStuff_00010": {
+      "groupId": "outdoors_bags"
+    },
+    "container_Laboratory_DesignStuff_00011": {
+      "groupId": "outdoors_bags"
+    },
+    "container_Laboratory_DesignStuff_00012": {
+      "groupId": "outdoors_bags"
+    },
+    "container_Laboratory_DesignStuff_00013": {
+      "groupId": "outdoors_bags"
+    },
+    "container_Laboratory_DesignStuff_00014": {
+      "groupId": "outdoors_bags"
+    },
+    "container_Laboratory_DesignStuff_00015": {
+      "groupId": "outdoors_bags"
+    },
+    "container_Laboratory_DesignStuff_00016": {
+      "groupId": "outdoors_bags"
+    },
+    "container_Laboratory_DesignStuff_00017": {
+      "groupId": "outdoors_bags"
+    },
+    "container_Laboratory_DesignStuff_00018": {
+      "groupId": "outdoors_bags"
+    },
+    "container_Laboratory_DesignStuff_00019": {
+      "groupId": "outdoors_bags"
+    },
+    "container_Laboratory_DesignStuff_00020": {
+      "groupId": "outdoors_bags"
+    },
+    "container_Laboratory_DesignStuff_00021": {
+      "groupId": "outdoors_bags"
+    },
+    "container_Laboratory_DesignStuff_00022": {
+      "groupId": "outdoors_bags"
+    },
+    "container_Laboratory_DesignStuff_00023": {
+      "groupId": "outdoors_bags"
+    },
+    "container_Laboratory_DesignStuff_00024": {
+      "groupId": "outdoors_bags"
+    },
+    "container_Laboratory_DesignStuff_00025": {
+      "groupId": "outdoors_bags"
+    },
+    "container_Laboratory_DesignStuff_00026": {
+      "groupId": "outdoors_bags"
+    },
+    "container_Laboratory_DesignStuff_00027": {
+      "groupId": "outdoors_bags"
+    },
+    "container_Laboratory_DesignStuff_00028": {
+      "groupId": "outdoors_bags"
+    },
+    "container_Laboratory_DesignStuff_00029": {
+      "groupId": "outdoors_bags"
+    },
+    "container_Laboratory_DesignStuff_00030": {
+      "groupId": "outdoors_bags"
+    },
+    "container_Laboratory_DesignStuff_00031": {
+      "groupId": "outdoors_bags"
+    },
+    "container_Laboratory_DesignStuff_00032": {
+      "groupId": "outdoors_bags"
+    },
+    "container_Laboratory_DesignStuff_00033": {
+      "groupId": "outdoors_bags"
+    },
+    "container_Laboratory_DesignStuff_00034": {
+      "groupId": "outdoors_bags"
+    },
+    "container_Laboratory_DesignStuff_00035": {
+      "groupId": "outdoors_bags"
+    },
+    "container_Laboratory_DesignStuff_00036": {
+      "groupId": "outdoors_bags"
+    },
+    "container_Laboratory_DesignStuff_00037": {
+      "groupId": "outdoors_bags"
+    },
+    "container_Laboratory_DesignStuff_00038": {
+      "groupId": "outdoors_bags"
+    },
+    "container_Laboratory_DesignStuff_00039": {
+      "groupId": "outdoors_bags"
+    },
+    "container_Laboratory_DesignStuff_00040": {
+      "groupId": "outdoors_bags"
+    },
+    "container_Laboratory_DesignStuff_00041": {
+      "groupId": "outdoors_bags"
+    },
+    "container_Laboratory_DesignStuff_00042": {
+      "groupId": "outdoors_bags"
+    },
+    "container_Laboratory_DesignStuff_00043": {
+      "groupId": "outdoors_bags"
+    },
+    "container_Laboratory_DesignStuff_00044": {
+      "groupId": "weapon_crate_closed"
+    },
+    "container_Laboratory_DesignStuff_00045": {
+      "groupId": "weapon_crate_closed"
+    },
+    "container_Laboratory_DesignStuff_00046": {
+      "groupId": "weapon_crate_closed"
+    },
+    "container_Laboratory_DesignStuff_00047": {
+      "groupId": "weapon_crate_closed"
+    },
+    "container_Laboratory_DesignStuff_00048": {
+      "groupId": "weapon_crate_closed"
+    },
+    "container_Laboratory_DesignStuff_00049": {
+      "groupId": "weapon_crate_closed"
+    },
+    "container_Laboratory_DesignStuff_00050": {
+      "groupId": "weapon_crate_closed"
+    },
+    "container_Laboratory_DesignStuff_00051": {
+      "groupId": "weapon_crate_closed"
+    },
+    "container_Laboratory_DesignStuff_00052": {
+      "groupId": "weapon_crate_closed"
+    },
+    "container_Laboratory_DesignStuff_00053": {
+      "groupId": "weapon_crate_closed"
+    },
+    "container_Laboratory_DesignStuff_00054": {
+      "groupId": "weapon_crate_closed"
+    },
+    "container_Laboratory_DesignStuff_00055": {
+      "groupId": "weapon_crate_outdoors"
+    },
+    "container_Laboratory_DesignStuff_00056": {
+      "groupId": "weapon_crate_outdoors"
+    },
+    "container_Laboratory_DesignStuff_00057": {
+      "groupId": "weapon_crate_outdoors"
+    },
+    "container_Laboratory_DesignStuff_00058": {
+      "groupId": "weapon_crate_outdoors"
+    },
+    "container_Laboratory_DesignStuff_00059": {
+      "groupId": "weapon_crate_outdoors"
+    },
+    "container_Laboratory_DesignStuff_00060": {
+      "groupId": "weapon_crate_outdoors"
+    },
+    "container_Laboratory_DesignStuff_00061": {
+      "groupId": "weapon_crate_outdoors"
+    },
+    "container_Laboratory_DesignStuff_00062": {
+      "groupId": "weapon_crate_outdoors"
+    },
+    "container_Laboratory_DesignStuff_00063": {
+      "groupId": "weapon_crate_outdoors"
+    },
+    "container_Laboratory_DesignStuff_00064": {
+      "groupId": "weapon_crate_outdoors"
+    },
+    "container_Laboratory_DesignStuff_00065": {
+      "groupId": "weapon_crate_outdoors"
+    },
+    "container_Laboratory_DesignStuff_00066": {
+      "groupId": "weapon_crate_outdoors"
+    },
+    "container_Laboratory_DesignStuff_00067": {
+      "groupId": "weapon_crate_outdoors"
+    },
+    "container_Laboratory_DesignStuff_00068": {
+      "groupId": "weapon_crate_outdoors"
+    },
+    "container_Laboratory_DesignStuff_00069": {
+      "groupId": "weapon_crate_outdoors"
+    },
+    "container_Laboratory_DesignStuff_00070": {
+      "groupId": "weapon_crate_outdoors"
+    },
+    "container_Laboratory_DesignStuff_00071": {
+      "groupId": "weapon_crate_outdoors"
+    },
+    "container_Laboratory_DesignStuff_00072": {
+      "groupId": "weapon_crate_outdoors"
+    },
+    "container_Laboratory_DesignStuff_00073": {
+      "groupId": "weapon_crate_outdoors"
+    },
+    "container_Laboratory_DesignStuff_00074": {
+      "groupId": "weapon_crate_outdoors"
+    },
+    "container_Laboratory_DesignStuff_00075": {
+      "groupId": "weapon_crate_outdoors"
+    },
+    "container_Laboratory_DesignStuff_00076": {
+      "groupId": "weapon_crate_outdoors"
+    },
+    "container_Laboratory_DesignStuff_00077": {
+      "groupId": "weapon_crate_outdoors"
+    },
+    "container_Laboratory_DesignStuff_00078": {
+      "groupId": "weapon_crate_outdoors"
+    },
+    "container_Laboratory_DesignStuff_00079": {
+      "groupId": "weapon_crate_outdoors"
+    },
+    "container_Laboratory_DesignStuff_00080": {
+      "groupId": "weapon_crate_outdoors"
+    },
+    "container_Laboratory_DesignStuff_00081": {
+      "groupId": "weapon_crate_outdoors"
+    },
+    "container_Laboratory_DesignStuff_00082": {
+      "groupId": "tool&others_crate_outdoors"
+    },
+    "container_Laboratory_DesignStuff_00083": {
+      "groupId": "tool&others_crate_outdoors"
+    },
+    "container_Laboratory_DesignStuff_00084": {
+      "groupId": "tool&others_crate_outdoors"
+    },
+    "container_Laboratory_DesignStuff_00085": {
+      "groupId": "tool&others_crate_outdoors"
+    },
+    "container_Laboratory_DesignStuff_00086": {
+      "groupId": "tool&others_crate_outdoors"
+    },
+    "container_Laboratory_DesignStuff_00087": {
+      "groupId": "tool&others_crate_outdoors"
+    },
+    "container_Laboratory_DesignStuff_00088": {
+      "groupId": "tool&others_crate_outdoors"
+    },
+    "container_Laboratory_DesignStuff_00089": {
+      "groupId": "tool&others_crate_outdoors"
+    },
+    "container_Laboratory_DesignStuff_00090": {
+      "groupId": "tool&others_crate_outdoors"
+    },
+    "container_Laboratory_DesignStuff_00091": {
+      "groupId": "tool&others_crate_outdoors"
+    },
+    "container_Laboratory_DesignStuff_00092": {
+      "groupId": "tool&others_crate_outdoors"
+    },
+    "container_Laboratory_DesignStuff_00093": {
+      "groupId": "tool&others_crate_outdoors"
+    },
+    "container_Laboratory_DesignStuff_00094": {
+      "groupId": "tool&others_crate_outdoors"
+    },
+    "container_Laboratory_DesignStuff_00095": {
+      "groupId": "tool&others_crate_outdoors"
+    },
+    "container_Laboratory_DesignStuff_00096": {
+      "groupId": "tool&others_crate_outdoors"
+    },
+    "container_Laboratory_DesignStuff_00097": {
+      "groupId": "tool&others_crate_outdoors"
+    },
+    "container_Laboratory_DesignStuff_00098": {
+      "groupId": "tool&others_crate_outdoors"
+    },
+    "container_Laboratory_DesignStuff_00099": {
+      "groupId": "tool&others_crate_outdoors"
+    },
+    "container_Laboratory_DesignStuff_00100": {
+      "groupId": "tool&others_crate_outdoors"
+    }
+  },
+  "containersGroups": {
+    "outdoors_bags": {
+      "maxContainers": 25,
+      "minContainers": 23
+    },
+    "tool&others_crate_outdoors": {
+      "maxContainers": 20,
+      "minContainers": 19
+    },
+    "weapon_crate_closed": {
+      "maxContainers": 12,
+      "minContainers": 10
+    },
+    "weapon_crate_outdoors": {
+      "maxContainers": 27,
+      "minContainers": 25
+    }
+  }
+}

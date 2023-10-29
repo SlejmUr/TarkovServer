@@ -110,7 +110,9 @@
         "5ca2151486f774244a3b8d30": 1,
         "5b44cf1486f77431723e3d05": 1,
         "545cdb794bdc2d3a198b456a": 1,
-        "6038b4ca92ec1c3103795a0d": 1
+        "6038b4ca92ec1c3103795a0d": 1,
+        "64be79c487d1510151095552": 1,
+        "64be79e2bf8412471d0d9bcc": 1
       },
       "Eyewear": {
         "5aa2b923e5b5b000137b7589": 1,
@@ -157,7 +159,8 @@
       "Caliber556x45NATO": {
         "59e6906286f7746c9f75e847": 1,
         "5c0d5ae286f7741e46554302": 1,
-        "54527a984bdc2d4e668b4567": 1
+        "54527a984bdc2d4e668b4567": 1,
+        "59e6920f86f77411d82aa167": 1
       },
       "Caliber366TKM": {
         "5f0596629e22f464da6bbdd9": 1,
@@ -165,7 +168,8 @@
       },
       "Caliber762x39": {
         "59e4cf5286f7741778269d8a": 1,
-        "59e0d99486f7744a32234762": 1
+        "59e0d99486f7744a32234762": 1,
+        "64b7af434b75259c590fa893": 1
       }
     },
     "mods": {
@@ -234,7 +238,8 @@
         "patron_in_weapon": [
           "59e6906286f7746c9f75e847",
           "5c0d5ae286f7741e46554302",
-          "54527a984bdc2d4e668b4567"
+          "54527a984bdc2d4e668b4567",
+          "59e6920f86f77411d82aa167"
         ]
       },
       "5c0e2f26d174af02a9625114": {
@@ -433,7 +438,8 @@
         "5bc9bdb8d4351e003562b8a1",
         "59e3658a86f7741776641ac4",
         "5734758f24597738025ee253",
-        "5bc9bc53d4351e00367fbcee"
+        "5bc9bc53d4351e00367fbcee",
+        "59faf7ca86f7740dbe19f6c2"
       ],
       "SecuredContainer": [
         "56dff061d2720bb5668b4567",
@@ -444,7 +450,9 @@
         "5c0d5ae286f7741e46554302",
         "59e6658b86f77411d949b250",
         "54527a984bdc2d4e668b4567",
-        "59e0d99486f7744a32234762"
+        "59e0d99486f7744a32234762",
+        "64b7af434b75259c590fa893",
+        "59e6920f86f77411d82aa167"
       ],
       "SpecialLoot": []
     }
@@ -2400,12 +2408,12 @@
     "equipment": {
       "Headwear": 83,
       "Earpiece": 0,
-      "FaceCover": 16,
+      "FaceCover": 15,
       "ArmorVest": 77,
-      "Eyewear": 62,
+      "Eyewear": 63,
       "ArmBand": 0,
       "TacticalVest": 100,
-      "Backpack": 24,
+      "Backpack": 22,
       "FirstPrimaryWeapon": 100,
       "SecondPrimaryWeapon": 0,
       "Holster": 0,
@@ -2415,55 +2423,114 @@
     },
     "mods": {
       "mod_launcher": 0,
-      "mod_muzzle": 88,
+      "mod_muzzle": 87,
       "mod_reciever": 100,
-      "mod_sight_rear": 26,
+      "mod_sight_rear": 27,
       "mod_stock": 100,
       "mod_magazine": 100,
-      "mod_mount_000": 9,
-      "mod_charge": 73,
-      "mod_foregrip": 31,
+      "mod_mount_000": 10,
+      "mod_charge": 72,
+      "mod_foregrip": 32,
       "mod_scope": 39,
-      "mod_tactical_002": 75,
+      "mod_tactical_002": 74,
       "mod_stock_000": 100,
-      "mod_equipment": 15,
+      "mod_equipment": 14,
       "mod_sight_front": 0,
       "mod_mount_001": 0,
       "mod_mount_002": 66,
       "mod_mount": 0,
       "mod_nvg": 0,
-      "mod_tactical": 68
+      "mod_tactical": 67
     }
   },
   "generation": {
     "items": {
       "specialItems": {
-        "min": 0,
-        "max": 0
+        "weights": {
+          "0": 1,
+          "1": 0
+        },
+        "whitelist": []
       },
       "healing": {
-        "min": 1,
-        "max": 2
+        "weights": {
+          "0": 1,
+          "1": 2,
+          "2": 1
+        },
+        "whitelist": []
       },
       "drugs": {
-        "min": 0,
-        "max": 1
+        "weights": {
+          "0": 1,
+          "1": 2,
+          "2": 0
+        },
+        "whitelist": []
       },
       "stims": {
-        "min": 0,
-        "max": 1
+        "weights": {
+          "0": 2,
+          "1": 1,
+          "2": 0
+        },
+        "whitelist": []
       },
-      "looseLoot": {
-        "min": 1,
-        "max": 4
+      "backpackLoot": {
+        "weights": {
+          "0": 1,
+          "1": 1,
+          "2": 2,
+          "3": 1,
+          "4": 1,
+          "5": 1,
+          "6": 1,
+          "7": 0
+        },
+        "whitelist": []
+      },
+      "pocketLoot": {
+        "weights": {
+          "0": 1,
+          "1": 6,
+          "2": 3,
+          "3": 1,
+          "4": 1
+        },
+        "whitelist": []
+      },
+      "vestLoot": {
+        "weights": {
+          "0": 1,
+          "1": 1,
+          "2": 2,
+          "3": 1,
+          "4": 0,
+          "5": 0,
+          "6": 0
+        },
+        "whitelist": []
       },
       "magazines": {
-        "min": 2,
-        "max": 4
+        "weights": {
+          "0": 0,
+          "1": 0,
+          "2": 1,
+          "3": 3,
+          "4": 1
+        },
+        "whitelist": []
       },
       "grenades": {
-        "min": 0,
-        "max": 5
+        "weights": {
+          "0": 1,
+          "1": 2,
+          "2": 1,
+          "3": 1,
+          "4": 0,
+          "5": 0
+        },
+        "whitelist": []
       }
     }
   }

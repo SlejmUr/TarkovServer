@@ -3,6 +3,7 @@ using ServerLib.Utilities;
 using ModdableWebServer;
 using ModdableWebServer.Attributes;
 using ModdableWebServer.Helper;
+using ServerLib.Utilities.Helpers;
 
 namespace ServerLib.Web
 {
@@ -12,7 +13,7 @@ namespace ServerLib.Web
         [HTTP("GET", "/files/trader/avatar/{avatar}")]
         public static bool GetFilesAvatar(HttpRequest request, ServerStruct serverStruct)
         {
-            Utils.PrintRequest(request, serverStruct);
+            ServerHelper.PrintRequest(request, serverStruct);
             string avatar = serverStruct.Parameters["avatar"].Replace("jpg", "png");
             byte[] rsp;
             if (!File.Exists($"Files/res/trader/{avatar}"))
@@ -31,7 +32,7 @@ namespace ServerLib.Web
         [HTTP("GET", "/files/handbook/{handbook}")]
         public static bool GetFilesHandbook(HttpRequest request, ServerStruct serverStruct)
         {
-            Utils.PrintRequest(request, serverStruct);
+            ServerHelper.PrintRequest(request, serverStruct);
             string handbook = serverStruct.Parameters["handbook"].Replace("jpg", "png");
             byte[] rsp;
             if (!File.Exists($"Files/res/handbook/{handbook}"))
@@ -50,7 +51,7 @@ namespace ServerLib.Web
         [HTTP("GET", "/files/Hideout/{Hideout}")]
         public static bool GetFilesHideout(HttpRequest request, ServerStruct serverStruct)
         {
-            Utils.PrintRequest(request, serverStruct);
+            ServerHelper.PrintRequest(request, serverStruct);
             string Hideout = serverStruct.Parameters["Hideout"].Replace("jpg", "png");
             byte[] rsp;
             if (!File.Exists($"Files/res/hideout/{Hideout}"))
@@ -69,7 +70,7 @@ namespace ServerLib.Web
         [HTTP("GET", "/files/quest/icon/{quest}")]
         public static bool GetFilesQuestIcon(HttpRequest request, ServerStruct serverStruct)
         {
-            Utils.PrintRequest(request, serverStruct);
+            ServerHelper.PrintRequest(request, serverStruct);
             string quest = serverStruct.Parameters["quest"].Replace("jpg", "png");
             byte[] rsp;
             if (!File.Exists($"Files/res/quest/{quest}"))

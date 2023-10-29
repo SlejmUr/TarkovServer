@@ -7,6 +7,7 @@ using ServerLib.Utilities;
 using ServerLib.Web;
 using ModdableWebServer.Helper;
 using ModdableWebServer;
+using ServerLib.Utilities.Helpers;
 
 namespace ServerLib.Controllers
 {
@@ -46,7 +47,7 @@ namespace ServerLib.Controllers
                 if (item.CreatorId == ProfileId)
                     return (item, false);
             }
-            var id = Utils.CreateNewID();
+            var id = AIDHelper.CreateNewID();
             var match = new MatchData() { CreatorId = ProfileId, MatchId = id, Users = new() { new() { sessionId = ProfileId } } };
             Matches.Add(id, match);
             return (match, true);
@@ -96,7 +97,7 @@ namespace ServerLib.Controllers
             for (int i = 0; i < match.Users.Count; i++)
             {
                 var user = match.Users[i];
-                var token = Utils.CreateNewID();
+                var token = AIDHelper.CreateNewID();
                 user.profileToken = token;
                 UserConfirmed confirmed = new()
                 {

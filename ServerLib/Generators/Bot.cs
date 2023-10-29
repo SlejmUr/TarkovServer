@@ -90,9 +90,9 @@ namespace ServerLib.Generators
 
         public static Base GenerateNewID(Base bot)
         {
-            var ID = Utils.CreateNewID();
+            var ID = AIDHelper.CreateNewID();
             bot.Id = ID;
-            bot.Aid = ID;
+            bot.Aid = AIDHelper.ToAID(ID);
             return bot;
         }
 
@@ -254,7 +254,7 @@ namespace ServerLib.Generators
                     }
                     itemsByParentHash[item.ParentId].Append(item);
                 }
-                string newID = Utils.CreateNewID();
+                string newID = AIDHelper.CreateNewID();
                 inventoryItemHash[InventoryID].Id = newID;
                 bot.Inventory.Equipment = newID;
 

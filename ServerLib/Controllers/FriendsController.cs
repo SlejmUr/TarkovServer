@@ -144,7 +144,7 @@ namespace ServerLib.Controllers
             var account = ProfileAddonsDict[SessionId];
             var friend = ProfileAddonsDict[addId];
 
-            var rId = Utils.CreateNewID();
+            var rId = AIDHelper.CreateNewID();
 
             var reqFrom = MakeRequest(rId, SessionId, addId);
             var reqTo = MakeRequest(rId, addId, SessionId);
@@ -261,9 +261,9 @@ namespace ServerLib.Controllers
             GetAddonList();
             var account = ProfileAddonsDict[SessionId];
             var friend = ProfileAddonsDict[FriendId];
-            if (account.Friends.Friends.Where(x => x.Id == FriendId || x.Aid == FriendId).Any())
+            if (account.Friends.Friends.Where(x => x.Id == FriendId).Any())
             {
-                if (friend.Friends.Friends.Where(x => x.Id == SessionId || x.Aid == SessionId).Any())
+                if (friend.Friends.Friends.Where(x => x.Id == SessionId).Any())
                 {
                     return true;
                 }
@@ -282,7 +282,7 @@ namespace ServerLib.Controllers
             GetAddonList();
             var account = ProfileAddonsDict[SessionId];
 
-            if (account.Friends.Friends.Where(x => x.Id == FriendId || x.Aid == FriendId).Any())
+            if (account.Friends.Friends.Where(x => x.Id == FriendId).Any())
             {
                 return true;
             }

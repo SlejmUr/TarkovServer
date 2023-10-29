@@ -13,11 +13,11 @@ namespace ServerLib.Controllers
     {
         public static Profile.Dialogue GetDialog(string SessionId, EMessageType messageType, Profile.UserDialogInfo dialogInfo)
         {
-            var key = (dialogInfo.info.MemberCategory == EMemberCategory.Trader) ? dialogInfo._id : dialogInfo.info.Nickname;
+            var key = (dialogInfo.info.MemberCategory == 4) ? dialogInfo._id : dialogInfo.info.Nickname;
             if (!DialogueController.Dialogs[SessionId].TryGetValue(key, out var dialog))
             {
                 List<Profile.UserDialogInfo> users = new();
-                if (dialogInfo.info.MemberCategory != EMemberCategory.Trader)
+                if (dialogInfo.info.MemberCategory != 4)
                 {
                     users.Add(dialogInfo);
                 }
@@ -43,7 +43,7 @@ namespace ServerLib.Controllers
             dialog.New += 1;
             Profile.Message message = new()
             { 
-                _id = Utils.CreateNewID(),
+                _id = AIDHelper.CreateNewID(),
                 uid = dialog._id,
                 type = messageType,
                 dt = TimeHelper.UnixTimeNow_Int(),

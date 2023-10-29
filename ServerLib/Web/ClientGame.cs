@@ -14,8 +14,8 @@ namespace ServerLib.Web
         public static bool GameStart(HttpRequest request, ServerStruct serverStruct)
         {
             //REQ stuff
-            string SessionId = Utils.GetSessionId(serverStruct.Headers);
-            Utils.PrintRequest(request, serverStruct);
+            string SessionId = serverStruct.Headers.GetSessionId();
+            ServerHelper.PrintRequest(request, serverStruct);
             string resp;
             // RPS
             var TimeThingy = TimeHelper.UnixTimeNow_Int();
@@ -27,7 +27,7 @@ namespace ServerLib.Web
             {
                 resp = ResponseControl.GetBody("{\"utc_time\":" + TimeThingy + "}", 999, "Profile Not Found!!");
             }
-            Utils.SendUnityResponse(request, serverStruct, resp);
+            ServerHelper.SendUnityResponse(request, serverStruct, resp);
             return true;
         }
 
@@ -36,8 +36,8 @@ namespace ServerLib.Web
         {
             //REQ stuff
             string resp;
-            Utils.PrintRequest(request, serverStruct);
-            string SessionId = Utils.GetSessionId(serverStruct.Headers);
+            ServerHelper.PrintRequest(request, serverStruct);
+            string SessionId = serverStruct.Headers.GetSessionId();
             var TimeThingy = TimeHelper.UnixTimeNow_Int();
             if (SessionId == null)
             {
@@ -48,7 +48,7 @@ namespace ServerLib.Web
                 KeepAliveController.Main(SessionId);
                 resp = ResponseControl.GetBody("{\"msg\":\"OK\", \"utc_time\":" + TimeThingy + "}");
             }
-            Utils.SendUnityResponse(request, serverStruct, resp);
+            ServerHelper.SendUnityResponse(request, serverStruct, resp);
             return true;
         }
         [HTTP("POST", "/client/game/version/validate")]
@@ -56,9 +56,9 @@ namespace ServerLib.Web
         {
             //REQ stuff
             string resp;
-            Utils.PrintRequest(request, serverStruct);
-            string SessionId = Utils.GetSessionId(serverStruct.Headers);
-            string version = Utils.GetVersion(serverStruct.Headers);
+            ServerHelper.PrintRequest(request, serverStruct);
+            string SessionId = serverStruct.Headers.GetSessionId();
+            string version = serverStruct.Headers.GetVersion();
             if (AccountController.FindAccount(SessionId) != null)
             {
                 Debug.PrintDebug($"User ({SessionId}) connected with client version {version}");
@@ -68,7 +68,7 @@ namespace ServerLib.Web
                 Debug.PrintDebug($"Unknown User connected with client version {version}");
             }
             var rsp = ResponseControl.NullResponse();
-            Utils.SendUnityResponse(request, serverStruct, rsp);
+            ServerHelper.SendUnityResponse(request, serverStruct, rsp);
             return true;
         }
 
@@ -77,8 +77,8 @@ namespace ServerLib.Web
         {
             //REQ stuff
             string resp;
-            Utils.PrintRequest(request, serverStruct);
-            string SessionId = Utils.GetSessionId(serverStruct.Headers);
+            ServerHelper.PrintRequest(request, serverStruct);
+            string SessionId = serverStruct.Headers.GetSessionId();
             var serverips = ConfigController.Configs.Server.ServerIPs;
             Json.Classes.GameConfig.Backend backend = new();
             if (serverips.Enable)
@@ -119,7 +119,7 @@ namespace ServerLib.Web
             };
 
             var rsp = ResponseControl.GetBody(JsonConvert.SerializeObject(game));
-            Utils.SendUnityResponse(request, serverStruct, rsp);
+            ServerHelper.SendUnityResponse(request, serverStruct, rsp);
             return true;
         }
 
@@ -127,24 +127,24 @@ namespace ServerLib.Web
         public static bool GameLogout(HttpRequest request, ServerStruct serverStruct)
         {
             //REQ stuff
-            Utils.PrintRequest(request, serverStruct);
-            string SessionId = Utils.GetSessionId(serverStruct.Headers);
+            ServerHelper.PrintRequest(request, serverStruct);
+            string SessionId = serverStruct.Headers.GetSessionId();
             AccountController.SessionLogout(SessionId);
             var rsp = ResponseControl.GetBody("{status: \"ok\"}");
-            Utils.SendUnityResponse(request, serverStruct, rsp);
+            ServerHelper.SendUnityResponse(request, serverStruct, rsp);
             return true;
         }
 
         [HTTP("POST", "/client/game/bot/generate")]
         public static bool BotGenerate(HttpRequest request, ServerStruct serverStruct)
         {
-            Utils.PrintRequest(request, serverStruct);
-            string SessionId = Utils.GetSessionId(serverStruct.Headers);
+            ServerHelper.PrintRequest(request, serverStruct);
+            string SessionId = serverStruct.Headers.GetSessionId();
             string Uncompressed = ResponseControl.DeCompressReq(request.BodyBytes);
             var conditions = JsonConvert.DeserializeObject<List<WaveInfo>>(Uncompressed);
             // RPS
             var rsp = "{}";
-            Utils.SendUnityResponse(request, serverStruct, rsp);
+            ServerHelper.SendUnityResponse(request, serverStruct, rsp);
             return true;
         }
     }

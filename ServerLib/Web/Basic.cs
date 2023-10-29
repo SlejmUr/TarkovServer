@@ -4,6 +4,7 @@ using NetCoreServer;
 using ServerLib.Controllers;
 using ModdableWebServer.Helper;
 using ServerLib.Utilities;
+using ServerLib.Utilities.Helpers;
 
 namespace ServerLib.Web
 {
@@ -30,9 +31,9 @@ namespace ServerLib.Web
         [HTTP("GET", "/getBundleList")]
         public static bool GetBundeList(HttpRequest request, ServerStruct serverStruct)
         {
-            Utils.PrintRequest(request, serverStruct);
+            ServerHelper.PrintRequest(request, serverStruct);
             string resp = "[]"; //Need better handling on bundles
-            return Utils.SendUnityResponse(request, serverStruct, resp);
+            return ServerHelper.SendUnityResponse(request, serverStruct, resp);
         }
 
         [HTTP("GET", "/ServerInternalIPAddress")]

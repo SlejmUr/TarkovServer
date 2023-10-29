@@ -7,7 +7,7 @@ namespace ServerLib.Web
     {
         public static string NoBody(string Data)
         {
-            return Utilities.Utils.ClearString(Data);
+            return ClearString(Data);
         }
         public static string GetBody(string Data, int errorcode = 0, string errormsg = "null")
         {
@@ -34,6 +34,11 @@ namespace ServerLib.Web
         public static string DeCompressReq(byte[] data)
         {
             return SimpleZlib.Decompress(data);
+        }
+
+        public static string ClearString(string data)
+        {
+            return data.Replace("\b", "").Replace("\f", "").Replace("\n", "").Replace("\r", "").Replace("\t", "").Replace("\\", "");
         }
 
         public static NotifierChannel GetNotifier(string SessionId)
