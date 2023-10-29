@@ -285,31 +285,31 @@ namespace ServerLib.Json.Classes
         public class Elimination : Base
         {
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public EliminationConditions conditions { get; set; }
+            public new EliminationConditions conditions { get; set; }
 
         }
         public class EliminationConditions : Conditions
         {
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public List<EliminationAvailableFor> AvailableForFinish { get; set; }
+            public new List<EliminationAvailableFor> AvailableForFinish { get; set; }
 
         }
         public class EliminationAvailableFor : AvailableFor
         {
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public EliminationAvailableForProps _props { get; set; }
+            public new EliminationAvailableForProps _props { get; set; }
 
         }
         public class EliminationAvailableForProps : AvailableForPropsCounter
         {
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public EliminationCounter counter { get; set; }
+            public new EliminationCounter counter { get; set; }
 
         }
         public class EliminationCounter : Counter
         {
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public List<EliminationCondition> conditions { get; set; }
+            public new List<EliminationCondition> conditions { get; set; }
 
         }
         public class EliminationCondition : Condition
@@ -325,31 +325,31 @@ namespace ServerLib.Json.Classes
         public class Exploration : Base
         {
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public ExplorationConditions conditions { get; set; }
+            public new ExplorationConditions conditions { get; set; }
 
         }
         public class ExplorationConditions : Conditions
         {
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public List<ExplorationAvailableFor> AvailableForFinish { get; set; }
+            public new List<ExplorationAvailableFor> AvailableForFinish { get; set; }
 
         }
         public class ExplorationAvailableFor : AvailableFor
         {
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public ExplorationAvailableForProps _props { get; set; }
+            public new ExplorationAvailableForProps _props { get; set; }
 
         }
         public class ExplorationAvailableForProps : AvailableForPropsCounter
         {
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public ExplorationCounter counter { get; set; }
+            public new ExplorationCounter counter { get; set; }
 
         }
         public class ExplorationCounter : Counter
         {
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public List<ExplorationCondition> conditions { get; set; }
+            public new List<ExplorationCondition> conditions { get; set; }
 
         }
 
@@ -369,19 +369,19 @@ namespace ServerLib.Json.Classes
         public class Completion : Base
         {
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public CompletionConditions conditions { get; set; }
+            public new CompletionConditions conditions { get; set; }
 
         }
         public class CompletionConditions : Conditions
         {
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public List<CompletionAvailableFor> AvailableForFinish { get; set; }
+            public new List<CompletionAvailableFor> AvailableForFinish { get; set; }
 
         }
         public class CompletionAvailableFor : AvailableFor
         {
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public CompletionAvailableForProps _props { get; set; }
+            public new CompletionAvailableForProps _props { get; set; }
 
         }
         public class CompletionAvailableForProps : AvailableForProps

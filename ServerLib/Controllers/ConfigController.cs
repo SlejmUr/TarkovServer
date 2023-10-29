@@ -9,7 +9,6 @@ namespace ServerLib.Controllers
 
         /// <summary>
         /// Initialize the configs. 
-        /// <br>Same as Controllers/ConfigController.js@func=Init()</br>
         /// </summary>
         public static void Init()
         {
@@ -19,7 +18,6 @@ namespace ServerLib.Controllers
 
         /// <summary>
         /// Rebuild Every config from the owns base Json.
-        /// <br>Same as Controllers/ConfigController.js@func=RebuildFromBaseConfigs()</br>
         /// </summary>
         public static void RebuildFromBaseConfigs()
         {

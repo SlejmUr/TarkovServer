@@ -108,7 +108,7 @@ namespace ServerLib.Controllers
             //Todo, make reward items a new Json thingy
             //rewards = HelperController.ReplaceIDs(null,rewards);
 
-            if (rewards.ToString().Length > 0)
+            if (rewards.data.Count > 0)
             {
                 string stashId = AIDHelper.CreateNewID();
                 stashItems.stash = stashId;
@@ -135,7 +135,7 @@ namespace ServerLib.Controllers
                 dt = TimeHelper.UnixTimeNow_Int(),
                 templateId = content.templateId,
                 text = content.text,
-                hasRewards = stashItems.ToString().Length > 0,
+                hasRewards = stashItems.data.Count > 0,
                 rewardCollected = false,
                 items = stashItems,
                 maxStorageTime = content.maxStorageTime,

@@ -1,12 +1,51 @@
-﻿using ServerLib.Handlers;
+﻿using EFT.Visual;
+using ServerLib.Handlers;
 using ServerLib.Json;
 using ServerLib.Json.Classes;
 using ServerLib.Utilities;
+using System;
+using static ServerLib.Controllers.InventoryController;
 
 namespace ServerLib.Controllers
 {
     public class InventoryController
     {
+        #region Classes
+        public class InventoryContainer
+        {
+            public Stash Stash;
+            public Lookup Lookup;
+        }
+
+        public class Lookup
+        {
+            public Dictionary<string, int> Forward;
+            public Dictionary<int, string> Reverse;
+        }
+
+        public class Stash
+        {
+            public string SlotId;
+            public Map Container;
+        }
+
+        public class Map
+        {
+            public int Width;
+            public int Height;
+            public List<string> ContainerMap;
+            public Dictionary<string, FlatMapLookup> FlatMap;
+        }
+
+        public class FlatMapLookup
+        {
+            public int Width;
+            public int Height;
+            public int StartX;
+            public int EndX;
+            public List<int> Coordinates;
+        }
+        #endregion
 
         public static Character.Inventory? GetInventory(string SessionId)
         {
@@ -17,46 +56,6 @@ namespace ServerLib.Controllers
                 return null;
             }
             return character.Inventory;
-        }
-
-        public static string? GetStashContainer(string SessionId)
-        {
-            var inventory = GetInventory(SessionId);
-            if (inventory == null)
-            {
-                return null;
-            }
-            return inventory.Stash;
-        }
-
-        public static string? GetSortingTableContainer(string SessionId)
-        {
-            var inventory = GetInventory(SessionId);
-            if (inventory == null)
-            {
-                return null;
-            }
-            return inventory.SortingTable;
-        }
-
-        public static string? GetQuestRaidItemsContainer(string SessionId)
-        {
-            var inventory = GetInventory(SessionId);
-            if (inventory == null)
-            {
-                return null;
-            }
-            return inventory.QuestRaidItems;
-        }
-
-        public static string? GetQuestStashItemsContainer(string SessionId)
-        {
-            var inventory = GetInventory(SessionId);
-            if (inventory == null)
-            {
-                return null;
-            }
-            return inventory.QuestStashItems;
         }
 
         public static Item.Base? GetInventoryItemByID(string SessionId, string ItemId)
@@ -99,167 +98,229 @@ namespace ServerLib.Controllers
             return inventory.Items.FindAll(item => item.ParentId == parentId);
         }
 
-        public static List<Item.Base> AddItemToInventory(string SessionId, Item.Base container, string ParentId, TemplateItem.Base itemData, int amountToBeAdded, List<Item.Base>? childrens)
+        public static InventoryContainer SetInventoryContainer(Character.Inventory inventory)
         {
-            List<Item.Base> ret = new();
-            var character = CharacterController.GetPmcCharacter(SessionId);
-            if (character == null)
-                return ret;
-            while (amountToBeAdded > 0)
-            {
-                var containerMap = ItemController.GenerateContainerMap(container, character.Inventory.Items);
-
-                var item = CreateItemForPurchase(itemData, container);
-
-                var adjust = AdjustStackSize(item, itemData, amountToBeAdded);
-
-                amountToBeAdded = adjust.stackSize;
-                item = adjust.item;
-
-                var itemSize = ItemController.GetSize(item, childrens);
-                var freeslot = ItemController.GetFreeSlot(containerMap, itemSize);
-
-                if (freeslot == null && freeslot.Equals(new Others.FreeSlot()))
-                {
-                    Debug.PrintError($"Unable to add item {item.Tpl}. No space!", "AddItemToInventory");
-                    return ret;
-                }
-
-                item.SlotId = freeslot.SlotId;
-                Item._Location itemLocation = new()
-                {
-                    X = freeslot.X,
-                    Y = freeslot.Y,
-                    R = freeslot.R
-                };
-
-                if (ItemController.IsSearchableItem(itemData))
-                {
-                    itemLocation.IsSearched = (bool)ConfigController.Configs.Gameplay.Items.AllExamined.Enabled;
-                }
-                Converters.Location location = new();
-                location.ItemLocation = itemLocation;
-
-                item.Location = location;
-                ret = (AdjustItemForPurchase(ret, item, itemData, ItemController.PrepareChildrenForAddItem(ParentId, childrens)));
-            }
-            character.Inventory.Items.AddRange(ret);
-            SaveHandler.SaveCharacter(SessionId, character);
-            return ret;
+            InventoryContainer container = new();
+            container = SetInventoryIndex(inventory, container);
+            container = SetInventoryStash(inventory, container);
+            return container;
         }
 
-        public static List<Item.Base> AdjustItemForPurchase(List<Item.Base> newItemsToBeAdded, Item.Base item, TemplateItem.Base itemData, List<Item.Base>? childrens)
+        public static InventoryContainer SetInventoryIndex(Character.Inventory inventory, InventoryContainer container)
         {
-            List<Item.Base> ret = newItemsToBeAdded;
-            if (itemData._parent == "543be5cb4bdc2deb348b4568")
+            container.Lookup = new()
             {
-                if (itemData._props.StackSlots == null)
-                    Debug.PrintWarn($"AmmoBox {item.Tpl} does not have StackSlots", "AdjustItemForPurchase");
-
-                ret.AddRange(ItemController.HandleAmmoBoxes(item.Id, itemData));
+                Forward = new(),
+                Reverse = new()
+            };
+            for (int i = 0; i < inventory.Items.Count; i++)
+            {
+                var item = inventory.Items[i];
+                container.Lookup.Forward.Add(item.Id, i);
+                container.Lookup.Reverse.Add(i, item.Id);
             }
+            return container;
+        }
 
-            if (childrens != null && childrens.Count > 0)
+        public static InventoryContainer SetInventoryStash(Character.Inventory inventory, InventoryContainer ic)
+        {
+            if (ic.Stash == null)
             {
-                foreach (var child in childrens)
+                ic.Stash = new();
+                var grids = ItemController.GetItemGrids(ItemController.Get(inventory.Items[ic.Lookup.Forward[inventory.Stash]].Tpl));
+                foreach (var grid in grids)
                 {
-                    ret.AddRange(AddItemToParent(item, child.Tpl, child.SlotId, 1, child.Upd, child.Children));
+                    ic.Stash.SlotId = grid.Key;
+
+                    int h = (int)grid.Value._props.cellsV;
+                    int w = (int)grid.Value._props.cellsH;
+
+                    var arraySize = h * w;
+                    ic.Stash.Container = new() 
+                    { 
+                        Width = w,
+                        Height = h,
+                        FlatMap = new(),
+                        ContainerMap = new(arraySize)
+                    };
                 }
             }
 
-            ret.Add(item);
-            return ret;
+            var containerMap = ic.Stash.Container.ContainerMap;
+            var containerFlatMap = ic.Stash.Container.FlatMap;
+            var stride = ic.Stash.Container.Width;
+
+            foreach (var item in ic.Lookup.Reverse)
+            {
+                var itemInInventory = inventory.Items[item.Key];
+
+                if (itemInInventory.ParentId == "" || itemInInventory.ParentId != inventory.Stash || itemInInventory.SlotId != "hideout" || itemInInventory.Location.ItemLocation == null)
+                    continue;
+
+                var (height, width) = MeasureItemForInventoryMapping(inventory.Items, itemInInventory.Id, ic);
+
+                if (height == -1 && width == -1)
+                    continue;
+
+                var flatmap = CreateFlatMapLookup(height, width, itemInInventory, ic);
+                containerFlatMap.Add(itemInInventory.Id, new());
+                if (flatmap.Height == 0 && flatmap.Width == 0)
+                {
+                    var itemId = containerMap[flatmap.StartX];
+                    if (itemId != null || string.IsNullOrWhiteSpace(itemId))
+                        throw new Exception("Flat Map Index of " + flatmap.StartX + " is trying to be filled by " + itemInInventory.Id + " but is occupied by " + ic.Stash.Container.ContainerMap[flatmap.StartX]);
+                    containerMap[flatmap.StartX] = itemInInventory.Id;
+                    flatmap.Coordinates.Add(flatmap.StartX);
+                    containerFlatMap[itemInInventory.Id] = flatmap;
+                    continue;
+                }
+
+                for (int column = flatmap.StartX; column <= flatmap.EndX; column++)
+                {
+                    var itemId = containerMap[column];
+                    if (itemId != null || string.IsNullOrWhiteSpace(itemId))
+                        throw new Exception("Flat Map Index of X position " + column + " is trying to be filled by " + itemInInventory.Id + " but is occupied by " + ic.Stash.Container.ContainerMap[column]);
+
+                    containerMap[column] = itemInInventory.Id;
+                    flatmap.Coordinates.Add(column);
+
+
+                    for (int row = 1; row <= flatmap.Height; row++)
+                    {
+                        var coordinate = row * stride + column;
+                        itemId = containerMap[coordinate];
+                        if (itemId != null || string.IsNullOrWhiteSpace(itemId))
+                            throw new Exception("Flat Map Index of Y position " + column + " is trying to be filled by " + itemInInventory.Id + " but is occupied by " + ic.Stash.Container.ContainerMap[column]);
+
+                        containerMap[coordinate] = itemInInventory.Id;
+                        flatmap.Coordinates.Add(coordinate);
+                    }
+                }
+                containerFlatMap[itemInInventory.Id] = flatmap;
+            }
+
+
+            ic.Stash.Container.ContainerMap = containerMap;
+            ic.Stash.Container.FlatMap = containerFlatMap;
+            return ic;
         }
 
-        public static List<Item.Base> AddItemToParent(Item.Base parent, string ItemId, string SlotId, int amount, Item._Upd? customupd, List<Item.Base>? childrens)
+        public static (int height, int width) MeasureItemForInventoryMapping(List<Item.Base> items, string parent, InventoryContainer container)
         {
-            List<Item.Base> ret = new();
+            var id = container.Lookup.Forward[parent];
+            var itemInInventory = items[id];
+            var itemInDatabase = ItemController.Get(itemInInventory.Tpl);
+            var size = ItemController.GetItemSize(itemInDatabase);
+            int height = (int)size.Height;
+            int width = (int)size.Width;
+            if (itemInDatabase._parent == "5448e53e4bdc2d60728b4567" || itemInDatabase._parent == "566168634bdc2d144c8b456c" || itemInDatabase._parent == "5795f317245977243854e041")
+                return (height, width);
 
-            var itemTemplate = ItemController.Get(ItemId);
-            if (itemTemplate == null)
-                return ret;
+            bool parentFolded = ItemController.IsFolded(itemInInventory);
 
-            var newItem = ItemController.CreateNew(ItemId, parent.Id);
-            newItem.SlotId = SlotId;
+            var canFold = itemInDatabase._props.Foldable;
+            var foldedSlotID = itemInDatabase._props.FoldedSlot;
+            if ((canFold != null && canFold) && foldedSlotID != null && parentFolded)
+            {
+                var sizeReduceRight = itemInDatabase._props.SizeReduceRight;
+                if (sizeReduceRight != null)
+                    width -= (int)sizeReduceRight;
+            }
 
-            if (customupd != null)
-                newItem.Upd = customupd;
+            var family = GetInventoryItemFamilyTreeIDs(items, parent);
+            var famL = family.Count - 1;
+            if (famL == 1)
+                return (height, width);
+
+            Others.Sizes sizes = new()
+            { 
+                ForcedDown = 0,
+                ForcedLeft = 0,
+                ForcedUp = 0,
+                ForcedRight = 0,
+                SizeDown = 0,
+                SizeLeft = 0,
+                SizeRight = 0,
+                SizeUp = 0
+            };
+
+            for (int i = 0; i < famL; i++)
+            {
+                var member = family[i];
+                var index = container.Lookup.Forward[member];
+                itemInInventory = items[index];
+                var childFolded  = ItemController.IsFolded(itemInInventory);
+                if (parentFolded || childFolded)
+                    continue;
+                else if ((canFold != null && canFold) && foldedSlotID != null && itemInInventory.SlotId == foldedSlotID && (parentFolded || childFolded))
+                    continue;
+
+                sizes = ItemController.GetItemForcedSize(ItemController.Get(itemInInventory.Tpl), sizes);
+            }
+
+            height += sizes.SizeUp + sizes.SizeDown + sizes.ForcedDown + sizes.ForcedUp;
+            width += sizes.SizeLeft + sizes.SizeRight + sizes.ForcedRight + sizes.ForcedLeft;
+            return (height, width);
+        }
+
+        public static FlatMapLookup CreateFlatMapLookup(int height, int width, Item.Base item, InventoryContainer container)
+        {
+            FlatMapLookup ret = new();
+
+            if (width != 0) width--;
+            if (height != 0) height--;
+
+            if (item.Location.ItemLocation.R == 1)
+            {
+                ret.Height = width;
+                ret.Width = height;
+            }
             else
-                newItem.Upd = new();
-
-            newItem.Upd.StackObjectsCount = (amount > 1 && amount <= itemTemplate._props.StackMaxSize) ? amount : (int)itemTemplate._props.StackMaxSize;
-
-            if (childrens != null && childrens.Count > 0)
             {
-                foreach (var child in childrens)
-                {
-                    ret.AddRange(AddItemToParent(newItem, child.Tpl, child.SlotId, 1, child.Upd, child.Children));
-                }
+                ret.Height = height;
+                ret.Width = width;
             }
-
-            ret.Add(newItem);
+            int row = item.Location.ItemLocation.Y * container.Stash.Container.Width;
+            ret.StartX = item.Location.ItemLocation.X + row;
+            ret.EndX = ret.StartX + ret.Width;
             return ret;
         }
 
-        public static Item.Base CreateItemForPurchase(TemplateItem.Base itemData, Item.Base container)
-        {
-            var Item = ItemController.CreateNew(itemData._parent, container.Id);
-            var freshupd = ItemController.CreateFreshBaseItemUpd(itemData._id);
-            Item.Upd = freshupd;
-            Item.Upd.SpawnedInSession = (bool)ConfigController.Configs.Gameplay.Trading.TradePurchasedIsFoundInRaid;
-            return Item;
-        }
 
-        public static (int stackSize, Item.Base item) AdjustStackSize(Item.Base item, TemplateItem.Base itemData, int itemStackToAdd)
+        public static List<string> GetInventoryItemFamilyTreeIDs(List<Item.Base> items, string parent)
         {
-            if (itemStackToAdd >= (int)itemData._props.StackMaxSize)
+            List<string> ret = new();
+
+            foreach (var item in items)
             {
-                itemStackToAdd -= (int)itemData._props.StackMaxSize;
-                if (itemData._props.StackMaxSize > 1)
+                if (item.ParentId == "" || string.IsNullOrEmpty(item.ParentId))
+                    continue;
+
+                if (item.ParentId == parent)
                 {
-                    item.Upd.StackObjectsCount = (int)itemData._props.StackMaxSize;
+                    ret.AddRange(GetInventoryItemFamilyTreeIDs(items, item.Id));
                 }
             }
-            else
-            {
-                item.Upd.StackObjectsCount = itemStackToAdd;
-                itemStackToAdd -= itemStackToAdd;
-            }
-
-            return (itemStackToAdd, item);
-        }
-
-        public static List<Item.Base> RemoveInventoryItemByID(string SessionId, string itemId)
-        {
-            List<Item.Base> ret = new();
-            var character = CharacterController.GetPmcCharacter(SessionId);
-            if (character == null)
-                return ret;
-
-            var item = GetInventoryItemByID(SessionId, itemId);
-            character.Inventory.Items.Remove(item);
-            SaveHandler.SaveCharacter(SessionId, character);
+            ret.Add(parent);
             return ret;
         }
 
 
         /*
-        removeItem
-        moveItems
-        retrieveRewardItems //Not exist??
-        moveItemIntoProfile
-        moveItem
-        moveItemWithinProfile
-        splitItem
-        tagItem
-        mergeItem
-        removeItems
-        toggleItem
-        bindItem
-        swapItem
-        foldItem
-        transferItem
-        examineItem
+         TODO:
+        ResetItemSizeInContainer
+        GenerateCoordinatesFromLocation
+        UpdateItemFlatMapLookup
+        ClearItemFromContainerMap
+        AddItemFromContainerMap
+        ClearItemFromContainer
+        GetValidLocationForItem
+        ConvertAssortItemsToInventoryItem
+        AssignNewIDs
+        AddItemToContainer
+        SetSingleInventoryIndex
+        GetIndexOfItemByUID
+        MeasurePurchaseForInventoryMapping
          */
     }
 }

@@ -71,8 +71,9 @@ namespace ServerLib.Web
         {
             if (IsSsl && WSS_Server != null)
             {
-                HTTP_Plugins.Add(assembly.FullName, AttributeMethodHelper.UrlHTTPLoader(assembly));
-                WS_Plugins.Add(assembly.FullName, AttributeMethodHelper.UrlWSLoader(assembly));
+                var name = assembly.GetName().FullName;
+                HTTP_Plugins.Add(name, AttributeMethodHelper.UrlHTTPLoader(assembly));
+                WS_Plugins.Add(name, AttributeMethodHelper.UrlWSLoader(assembly));
                 WSS_Server.WS_AttributeToMethods.Merge(assembly);
                 WSS_Server.HTTP_AttributeToMethods.Merge(assembly);
             }
@@ -85,15 +86,16 @@ namespace ServerLib.Web
 
         public static void RemoveRoutes(Assembly assembly)
         {
-            HTTP_Plugins.Remove(assembly.FullName);
-            WS_Plugins.Remove(assembly.FullName);
+            var name = assembly.GetName().FullName;
+            HTTP_Plugins.Remove(name);
+            WS_Plugins.Remove(name);
             if (IsSsl && WSS_Server != null)
             {
                 WSS_Server.HTTP_AttributeToMethods = Main_HTTP;
                 WSS_Server.WS_AttributeToMethods = Main_WS;
                 foreach (var plugin in HTTP_Plugins)
                 {
-                    if (plugin.Key == assembly.FullName)
+                    if (plugin.Key == name)
                         return;
 
                     foreach (var item in plugin.Value)
@@ -103,7 +105,7 @@ namespace ServerLib.Web
                 }
                 foreach (var plugin in WS_Plugins)
                 {
-                    if (plugin.Key == assembly.FullName)
+                    if (plugin.Key == name)
                         return;
 
                     foreach (var item in plugin.Value)
@@ -118,7 +120,7 @@ namespace ServerLib.Web
                 WS_Server.WS_AttributeToMethods = Main_WS;
                 foreach (var plugin in HTTP_Plugins)
                 {
-                    if (plugin.Key == assembly.FullName)
+                    if (plugin.Key == name)
                         return;
 
                     foreach (var item in plugin.Value)
@@ -128,7 +130,7 @@ namespace ServerLib.Web
                 }
                 foreach (var plugin in WS_Plugins)
                 {
-                    if (plugin.Key == assembly.FullName)
+                    if (plugin.Key == name)
                         return;
 
                     foreach (var item in plugin.Value)

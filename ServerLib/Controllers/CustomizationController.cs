@@ -4,7 +4,6 @@ namespace ServerLib.Controllers
 {
     public class CustomizationController
     {
-
         public static string GetAllCustomizationString()
         {
             return File.ReadAllText("Files/others/customization.json");
@@ -18,20 +17,17 @@ namespace ServerLib.Controllers
         public static List<string> GetAccountCustomization()
         {
             List<string> list = new();
-            foreach (var keyValue in DatabaseController.DataBase.Others.Customization)
+            foreach (var keyValue in GetAllCustomization())
             {
-                var customization = DatabaseController.DataBase.Others.Customization[keyValue.Key];
+                var customization = keyValue.Value;
 
-                if (customization != null)
+                if (customization._props.Side == null || customization._props.Side.Count == 0)
                 {
-                    if (customization._props.Side == null || customization._props.Side.Count == 0)
-                    {
-                        continue;
-                    }
-                    else
-                    {
-                        list.Add(customization._id);
-                    }
+                    continue;
+                }
+                else
+                {
+                    list.Add(keyValue.Key);
                 }
             }
             return list;
@@ -39,28 +35,25 @@ namespace ServerLib.Controllers
 
         public static string GetCustomizationName(string Id)
         {
-            foreach (var keyValue in DatabaseController.DataBase.Others.Customization)
-            {
-                var customization = DatabaseController.DataBase.Others.Customization[keyValue.Key];
-                if (customization._id == Id)
-                {
-                    return customization._name;
-                }
-            }
+            var custom = GetCustomization(Id);
+            if (custom != null)
+                return custom._name;
             return "";
         }
 
-        public static CustomizationItem.Base GetCustomization(string Id)
+        public static CustomizationItem.Base? GetCustomization(string Id)
         {
-            foreach (var keyValue in DatabaseController.DataBase.Others.Customization)
+            if (GetAllCustomization().TryGetValue(Id, out var value))
             {
-                var customization = DatabaseController.DataBase.Others.Customization[keyValue.Key];
-                if (customization._id == Id)
-                {
-                    return customization;
-                }
+                return value;
             }
-            return new();
+            return null;
+        }
+
+
+        public static void AddCustomization(CustomizationItem.Base @base)
+        {
+            DatabaseController.DataBase.Others.Customization.Add(@base._id, @base);
         }
     }
 }

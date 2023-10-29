@@ -22,11 +22,11 @@ namespace ServerLib.Controllers
 
         public static void Init()
         {
-            GetCharacters();
+            ReloadCharacters();
             Debug.PrintInfo("Initialization Done!", "CHARACTER");
         }
 
-        public static void GetCharacters()
+        public static void ReloadCharacters()
         {
             ProfileController.ReloadProfiles();
             foreach (var prof in ProfileController.ProfilesDict)
@@ -49,10 +49,12 @@ namespace ServerLib.Controllers
         /// <param name="SessionId">SessionId/AccountId</param>
         public static void LoadCharacter(string SessionId)
         {
-            ProfileController.ReloadProfiles();
-            var profile = ProfileController.ProfilesDict[SessionId];
-            Characters.TryAdd(SessionId + "_pmc", profile.Characters.Pmc);
-            Characters.TryAdd(SessionId + "_scav", profile.Characters.Scav);
+            ReloadCharacters();
+            if (ProfileController.ProfilesDict.TryGetValue(SessionId, out var profile))
+            {
+                Characters.TryAdd(SessionId + "_pmc", profile.Characters.Pmc);
+                Characters.TryAdd(SessionId + "_scav", profile.Characters.Scav);
+            }
         }
 
         public static void CreateCharacter(string SessionId, string JSON)
