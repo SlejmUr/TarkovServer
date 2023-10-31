@@ -1,0 +1,950 @@
+{
+  "containersGroups": {
+    "Sawmill": {
+      "minContainers": 23,
+      "maxContainers": 27
+    },
+    "Radio": {
+      "minContainers": 10,
+      "maxContainers": 14
+    },
+    "Other": {
+      "minContainers": 10,
+      "maxContainers": 12
+    },
+    "SouthRoad": {
+      "minContainers": 5,
+      "maxContainers": 7
+    },
+    "UsecCamp": {
+      "minContainers": 12,
+      "maxContainers": 16
+    },
+    "Rocks": {
+      "minContainers": 7,
+      "maxContainers": 9
+    },
+    "MesCamp": {
+      "minContainers": 17,
+      "maxContainers": 21
+    },
+    "Forrest": {
+      "minContainers": 11,
+      "maxContainers": 15
+    },
+    "DestroedVilage": {
+      "minContainers": 4,
+      "maxContainers": 6
+    },
+    "Village": {
+      "minContainers": 25,
+      "maxContainers": 29
+    },
+    "Stashes": {
+      "minContainers": 35,
+      "maxContainers": 37
+    }
+  },
+  "containers": {
+    "container_woods_design_stuff_00104": {
+      "groupId": "SouthRoad"
+    },
+    "container_woods_design_stuff_00085": {
+      "groupId": "Forrest"
+    },
+    "container_woods_design_stuff_00084": {
+      "groupId": "Forrest"
+    },
+    "container_woods_design_stuff_00082": {
+      "groupId": "Forrest"
+    },
+    "container_woods_design_stuff_00083": {
+      "groupId": "Forrest"
+    },
+    "container_woods_design_stuff_00087": {
+      "groupId": "Forrest"
+    },
+    "container_woods_design_stuff_00060": {
+      "groupId": "Village"
+    },
+    "woods_design_stuff_00051": {
+      "groupId": "SouthRoad"
+    },
+    "woods_combined_00078": {
+      "groupId": "MesCamp"
+    },
+    "woods_design_stuff_00052": {
+      "groupId": "Rocks"
+    },
+    "woods_design_stuff_00024": {
+      "groupId": "SouthRoad"
+    },
+    "container_woods_design_stuff_00014": {
+      "groupId": "MesCamp"
+    },
+    "container_woods_design_stuff_00105": {
+      "groupId": "SouthRoad"
+    },
+    "woods_combined_00088": {
+      "groupId": "Radio"
+    },
+    "woods_design_stuff_00120": {
+      "groupId": "Village"
+    },
+    "woods_design_stuff_00032": {
+      "groupId": "Sawmill"
+    },
+    "container_woods_design_stuff_00062": {
+      "groupId": "Village"
+    },
+    "woods_design_stuff_00082": {
+      "groupId": "MesCamp"
+    },
+    "woods_design_stuff_00123": {
+      "groupId": "Village"
+    },
+    "woods_design_stuff_00023": {
+      "groupId": "Sawmill"
+    },
+    "container_woods_design_stuff_00094": {
+      "groupId": "Forrest"
+    },
+    "woods_design_stuff_00031": {
+      "groupId": "Sawmill"
+    },
+    "container_woods_design_stuff_00006": {
+      "groupId": "Rocks"
+    },
+    "container_woods_design_stuff_00007": {
+      "groupId": "MesCamp"
+    },
+    "woods_design_stuff_00078": {
+      "groupId": "MesCamp"
+    },
+    "woods_design_stuff_00033": {
+      "groupId": "Sawmill"
+    },
+    "woods_design_stuff_00034": {
+      "groupId": "Sawmill"
+    },
+    "woods_design_stuff_00049": {
+      "groupId": "Sawmill"
+    },
+    "container_woods_design_stuff_00047": {
+      "groupId": "UsecCamp"
+    },
+    "woods_combined_00093": {
+      "groupId": "Village"
+    },
+    "woods_design_stuff_00073": {
+      "groupId": "Sawmill"
+    },
+    "woods_combined_00079": {
+      "groupId": "MesCamp"
+    },
+    "woods_design_stuff_00081": {
+      "groupId": "MesCamp"
+    },
+    "woods_design_stuff_00043": {
+      "groupId": "Forrest"
+    },
+    "woods_design_stuff_00045": {
+      "groupId": "Sawmill"
+    },
+    "woods_design_stuff_00044": {
+      "groupId": "Sawmill"
+    },
+    "container_woods_design_stuff_00008": {
+      "groupId": "MesCamp"
+    },
+    "container_woods_design_stuff_00056": {
+      "groupId": "Village"
+    },
+    "woods_combined_00083": {
+      "groupId": "UsecCamp"
+    },
+    "woods_design_stuff_00114": {
+      "groupId": "Village"
+    },
+    "woods_design_stuff_00048": {
+      "groupId": "Forrest"
+    },
+    "container_woods_design_stuff_00101": {
+      "groupId": "Radio"
+    },
+    "woods_combined_00089": {
+      "groupId": "Radio"
+    },
+    "woods_design_stuff_00054": {
+      "groupId": "Forrest"
+    },
+    "woods_design_stuff_00161": {
+      "groupId": "Village"
+    },
+    "container_woods_design_stuff_00045": {
+      "groupId": "UsecCamp"
+    },
+    "woods_design_stuff_00006": {
+      "groupId": "Forrest"
+    },
+    "woods_design_stuff_00003": {
+      "groupId": "Forrest"
+    },
+    "container_woods_design_stuff_00044": {
+      "groupId": "MesCamp"
+    },
+    "woods_design_stuff_00004": {
+      "groupId": "Other"
+    },
+    "container_woods_design_stuff_00041": {
+      "groupId": "MesCamp"
+    },
+    "woods_design_stuff_00080": {
+      "groupId": "MesCamp"
+    },
+    "container_woods_design_stuff_00073": {
+      "groupId": "Village"
+    },
+    "container_woods_design_stuff_00063": {
+      "groupId": "Village"
+    },
+    "woods_design_stuff_00047": {
+      "groupId": "Sawmill"
+    },
+    "woods_combined_00086": {
+      "groupId": "UsecCamp"
+    },
+    "woods_design_stuff_00005": {
+      "groupId": "Sawmill"
+    },
+    "container_woods_design_stuff_00093": {
+      "groupId": "Forrest"
+    },
+    "woods_design_stuff_00107": {
+      "groupId": "UsecCamp"
+    },
+    "container_woods_design_stuff_00026": {
+      "groupId": "Sawmill"
+    },
+    "woods_design_stuff_00122": {
+      "groupId": "Village"
+    },
+    "container_woods_design_stuff_00090": {
+      "groupId": "Forrest"
+    },
+    "woods_design_stuff_00098": {
+      "groupId": "Radio"
+    },
+    "container_woods_design_stuff_00080": {
+      "groupId": "Forrest"
+    },
+    "woods_design_stuff_00030": {
+      "groupId": "Forrest"
+    },
+    "container_woods_design_stuff_00039": {
+      "groupId": "Sawmill"
+    },
+    "woods_design_stuff_00071": {
+      "groupId": "Sawmill"
+    },
+    "woods_design_stuff_00029": {
+      "groupId": "Sawmill"
+    },
+    "woods_design_stuff_00089": {
+      "groupId": "Forrest"
+    },
+    "container_woods_design_stuff_00001": {
+      "groupId": "Rocks"
+    },
+    "woods_design_stuff_00027": {
+      "groupId": "Other"
+    },
+    "woods_design_stuff_00058": {
+      "groupId": "Sawmill"
+    },
+    "container_woods_design_stuff_00074": {
+      "groupId": "Village"
+    },
+    "container_woods_design_stuff_00042": {
+      "groupId": "MesCamp"
+    },
+    "container_woods_design_stuff_00058": {
+      "groupId": "Village"
+    },
+    "container_woods_design_stuff_00091": {
+      "groupId": "Forrest"
+    },
+    "container_woods_design_stuff_00010": {
+      "groupId": "MesCamp"
+    },
+    "woods_design_stuff_00063": {
+      "groupId": "Sawmill"
+    },
+    "container_woods_design_stuff_00054": {
+      "groupId": "UsecCamp"
+    },
+    "container_woods_design_stuff_00015": {
+      "groupId": "MesCamp"
+    },
+    "woods_design_stuff_00131": {
+      "groupId": "Rocks"
+    },
+    "container_woods_design_stuff_00102": {
+      "groupId": "SouthRoad"
+    },
+    "woods_combined_00000": {
+      "groupId": "Sawmill"
+    },
+    "container_woods_design_stuff_00038": {
+      "groupId": "Sawmill"
+    },
+    "woods_combined_00098": {
+      "groupId": "Rocks"
+    },
+    "container_woods_design_stuff_00031": {
+      "groupId": "Sawmill"
+    },
+    "woods_design_stuff_00067": {
+      "groupId": "Other"
+    },
+    "woods_design_stuff_00065": {
+      "groupId": "Other"
+    },
+    "container_woods_design_stuff_00059": {
+      "groupId": "Village"
+    },
+    "container_woods_design_stuff_00095": {
+      "groupId": "Radio"
+    },
+    "container_woods_design_stuff_00013": {
+      "groupId": "MesCamp"
+    },
+    "woods_combined_00094": {
+      "groupId": "Village"
+    },
+    "container_woods_design_stuff_00004": {
+      "groupId": "Rocks"
+    },
+    "woods_design_stuff_00020": {
+      "groupId": "Forrest"
+    },
+    "woods_design_stuff_00066": {
+      "groupId": "Other"
+    },
+    "woods_design_stuff_00014": {
+      "groupId": "MesCamp"
+    },
+    "woods_combined_00077": {
+      "groupId": "MesCamp"
+    },
+    "woods_design_stuff_00064": {
+      "groupId": "Sawmill"
+    },
+    "container_woods_design_stuff_00009": {
+      "groupId": "MesCamp"
+    },
+    "woods_design_stuff_00106": {
+      "groupId": "Radio"
+    },
+    "woods_design_stuff_00074": {
+      "groupId": "Sawmill"
+    },
+    "container_woods_design_stuff_00046": {
+      "groupId": "UsecCamp"
+    },
+    "woods_design_stuff_00092": {
+      "groupId": "Village"
+    },
+    "woods_combined_00076": {
+      "groupId": "MesCamp"
+    },
+    "woods_design_stuff_00086": {
+      "groupId": "MesCamp"
+    },
+    "container_woods_design_stuff_00096": {
+      "groupId": "Radio"
+    },
+    "container_woods_design_stuff_00005": {
+      "groupId": "Rocks"
+    },
+    "woods_design_stuff_00116": {
+      "groupId": "Village"
+    },
+    "container_woods_design_stuff_00022": {
+      "groupId": "Sawmill"
+    },
+    "container_woods_design_stuff_00057": {
+      "groupId": "Village"
+    },
+    "container_woods_design_stuff_00092": {
+      "groupId": "Forrest"
+    },
+    "woods_design_stuff_00088": {
+      "groupId": ""
+    },
+    "woods_combined_00085": {
+      "groupId": "UsecCamp"
+    },
+    "woods_design_stuff_00160": {
+      "groupId": "Radio"
+    },
+    "woods_design_stuff_00101": {
+      "groupId": "Radio"
+    },
+    "woods_design_stuff_00009": {
+      "groupId": "Other"
+    },
+    "container_woods_design_stuff_00023": {
+      "groupId": "Sawmill"
+    },
+    "container_woods_design_stuff_00103": {
+      "groupId": "SouthRoad"
+    },
+    "woods_combined_00081": {
+      "groupId": "UsecCamp"
+    },
+    "woods_combined_00075": {
+      "groupId": "MesCamp"
+    },
+    "container_woods_design_stuff_00061": {
+      "groupId": "Village"
+    },
+    "container_woods_design_stuff_00024": {
+      "groupId": "Sawmill"
+    },
+    "woods_combined_00080": {
+      "groupId": "MesCamp"
+    },
+    "woods_design_stuff_00008": {
+      "groupId": "SouthRoad"
+    },
+    "container_woods_design_stuff_00075": {
+      "groupId": "DestroedVilage"
+    },
+    "container_woods_design_stuff_00030": {
+      "groupId": "Sawmill"
+    },
+    "container_woods_design_stuff_00029": {
+      "groupId": "Sawmill"
+    },
+    "container_woods_design_stuff_00027": {
+      "groupId": "Sawmill"
+    },
+    "container_woods_design_stuff_00028": {
+      "groupId": "Sawmill"
+    },
+    "container_woods_design_stuff_00100": {
+      "groupId": "Radio"
+    },
+    "container_woods_design_stuff_00097": {
+      "groupId": "Radio"
+    },
+    "woods_design_stuff_00095": {
+      "groupId": "DestroedVilage"
+    },
+    "container_woods_design_stuff_00049": {
+      "groupId": "UsecCamp"
+    },
+    "woods_design_stuff_00103": {
+      "groupId": "Radio"
+    },
+    "container_woods_design_stuff_00025": {
+      "groupId": "Sawmill"
+    },
+    "woods_design_stuff_00007": {
+      "groupId": "Forrest"
+    },
+    "woods_design_stuff_00121": {
+      "groupId": "Village"
+    },
+    "container_woods_design_stuff_00081": {
+      "groupId": "Forrest"
+    },
+    "woods_design_stuff_00016": {
+      "groupId": "Forrest"
+    },
+    "woods_design_stuff_00017": {
+      "groupId": "Forrest"
+    },
+    "woods_design_stuff_00019": {
+      "groupId": "Forrest"
+    },
+    "woods_design_stuff_00018": {
+      "groupId": "Forrest"
+    },
+    "container_woods_design_stuff_00011": {
+      "groupId": "MesCamp"
+    },
+    "container_woods_design_stuff_00043": {
+      "groupId": "MesCamp"
+    },
+    "woods_combined_00082": {
+      "groupId": "UsecCamp"
+    },
+    "woods_design_stuff_00013": {
+      "groupId": "SouthRoad"
+    },
+    "woods_design_stuff_00087": {
+      "groupId": "Village"
+    },
+    "container_woods_design_stuff_00012": {
+      "groupId": "MesCamp"
+    },
+    "woods_design_stuff_00015": {
+      "groupId": "Other"
+    },
+    "woods_design_stuff_00077": {
+      "groupId": "MesCamp"
+    },
+    "container_woods_design_stuff_00048": {
+      "groupId": "UsecCamp"
+    },
+    "woods_design_stuff_00056": {
+      "groupId": "Sawmill"
+    },
+    "woods_design_stuff_00057": {
+      "groupId": "Sawmill"
+    },
+    "woods_design_stuff_00105": {
+      "groupId": "Radio"
+    },
+    "container_woods_design_stuff_00089": {
+      "groupId": "Forrest"
+    },
+    "woods_design_stuff_00127": {
+      "groupId": "Rocks"
+    },
+    "container_woods_design_stuff_00055": {
+      "groupId": "Village"
+    },
+    "woods_design_stuff_00062": {
+      "groupId": "Sawmill"
+    },
+    "woods_design_stuff_00061": {
+      "groupId": "Sawmill"
+    },
+    "woods_design_stuff_00059": {
+      "groupId": "Sawmill"
+    },
+    "woods_design_stuff_00060": {
+      "groupId": "Sawmill"
+    },
+    "woods_design_stuff_00100": {
+      "groupId": "Radio"
+    },
+    "container_woods_design_stuff_00086": {
+      "groupId": "Forrest"
+    },
+    "container_woods_design_stuff_00050": {
+      "groupId": "UsecCamp"
+    },
+    "woods_design_stuff_00075": {
+      "groupId": ""
+    },
+    "woods_design_stuff_00028": {
+      "groupId": "Forrest"
+    },
+    "woods_combined_00096": {
+      "groupId": "UsecCamp"
+    },
+    "woods_design_stuff_00079": {
+      "groupId": "MesCamp"
+    },
+    "container_woods_design_stuff_00019": {
+      "groupId": "MesCamp"
+    },
+    "woods_design_stuff_00076": {
+      "groupId": "MesCamp"
+    },
+    "woods_design_stuff_00083": {
+      "groupId": "MesCamp"
+    },
+    "container_woods_design_stuff_00021": {
+      "groupId": "MesCamp"
+    },
+    "container_woods_design_stuff_00020": {
+      "groupId": "MesCamp"
+    },
+    "woods_design_stuff_00026": {
+      "groupId": "Forrest"
+    },
+    "container_woods_design_stuff_00098": {
+      "groupId": "Radio"
+    },
+    "woods_design_stuff_00099": {
+      "groupId": "Radio"
+    },
+    "woods_design_stuff_00124": {
+      "groupId": "Village"
+    },
+    "woods_design_stuff_00104": {
+      "groupId": "Radio"
+    },
+    "woods_design_stuff_00159": {
+      "groupId": "Village"
+    },
+    "woods_design_stuff_00042": {
+      "groupId": "Sawmill"
+    },
+    "container_woods_design_stuff_00040": {
+      "groupId": "Sawmill"
+    },
+    "woods_design_stuff_00119": {
+      "groupId": "Village"
+    },
+    "woods_design_stuff_00126": {
+      "groupId": "Rocks"
+    },
+    "container_woods_design_stuff_00076": {
+      "groupId": "DestroedVilage"
+    },
+    "container_woods_design_stuff_00066": {
+      "groupId": "Village"
+    },
+    "container_woods_design_stuff_00069": {
+      "groupId": "Village"
+    },
+    "woods_design_stuff_00096": {
+      "groupId": "DestroedVilage"
+    },
+    "woods_design_stuff_00128": {
+      "groupId": "DestroedVilage"
+    },
+    "container_woods_design_stuff_00070": {
+      "groupId": "Village"
+    },
+    "woods_design_stuff_00094": {
+      "groupId": "DestroedVilage"
+    },
+    "woods_design_stuff_00115": {
+      "groupId": "Village"
+    },
+    "container_woods_design_stuff_00077": {
+      "groupId": "DestroedVilage"
+    },
+    "woods_design_stuff_00102": {
+      "groupId": "Radio"
+    },
+    "woods_design_stuff_00129": {
+      "groupId": "Village"
+    },
+    "container_woods_design_stuff_00072": {
+      "groupId": "Village"
+    },
+    "woods_design_stuff_00093": {
+      "groupId": "Village"
+    },
+    "woods_design_stuff_00118": {
+      "groupId": "Village"
+    },
+    "container_woods_design_stuff_00099": {
+      "groupId": "Radio"
+    },
+    "container_woods_design_stuff_00068": {
+      "groupId": "Village"
+    },
+    "container_woods_design_stuff_00002": {
+      "groupId": "Rocks"
+    },
+    "container_woods_design_stuff_00067": {
+      "groupId": "Village"
+    },
+    "container_woods_design_stuff_00078": {
+      "groupId": "DestroedVilage"
+    },
+    "container_woods_design_stuff_00003": {
+      "groupId": "Rocks"
+    },
+    "woods_design_stuff_00091": {
+      "groupId": "Village"
+    },
+    "woods_design_stuff_00097": {
+      "groupId": "DestroedVilage"
+    },
+    "woods_combined_00084": {
+      "groupId": "Village"
+    },
+    "container_woods_design_stuff_00079": {
+      "groupId": "DestroedVilage"
+    },
+    "woods_design_stuff_00130": {
+      "groupId": "Rocks"
+    },
+    "woods_design_stuff_00125": {
+      "groupId": "Village"
+    },
+    "container_woods_design_stuff_00071": {
+      "groupId": "Village"
+    },
+    "container_woods_design_stuff_00064": {
+      "groupId": "Village"
+    },
+    "woods_design_stuff_00132": {
+      "groupId": "Village"
+    },
+    "container_woods_design_stuff_00034": {
+      "groupId": "Sawmill"
+    },
+    "container_woods_design_stuff_00033": {
+      "groupId": "Sawmill"
+    },
+    "container_woods_design_stuff_00032": {
+      "groupId": "Sawmill"
+    },
+    "woods_design_stuff_00036": {
+      "groupId": "Forrest"
+    },
+    "container_woods_design_stuff_00051": {
+      "groupId": "UsecCamp"
+    },
+    "woods_design_stuff_00111": {
+      "groupId": "UsecCamp"
+    },
+    "woods_design_stuff_00069": {
+      "groupId": "Sawmill"
+    },
+    "woods_design_stuff_00039": {
+      "groupId": "Sawmill"
+    },
+    "woods_design_stuff_00011": {
+      "groupId": "SouthRoad"
+    },
+    "woods_design_stuff_00117": {
+      "groupId": "Village"
+    },
+    "container_woods_design_stuff_00088": {
+      "groupId": "Forrest"
+    },
+    "woods_design_stuff_00038": {
+      "groupId": "Sawmill"
+    },
+    "container_woods_design_stuff_00037": {
+      "groupId": "Sawmill"
+    },
+    "woods_design_stuff_00068": {
+      "groupId": "Sawmill"
+    },
+    "woods_design_stuff_00112": {
+      "groupId": "UsecCamp"
+    },
+    "woods_design_stuff_00133": {
+      "groupId": "Village"
+    },
+    "woods_combined_00097": {
+      "groupId": "Village"
+    },
+    "woods_design_stuff_00108": {
+      "groupId": "UsecCamp"
+    },
+    "woods_combined_00074": {
+      "groupId": "Other"
+    },
+    "woods_combined_00090": {
+      "groupId": "Other"
+    },
+    "woods_combined_00092": {
+      "groupId": "Other"
+    },
+    "container_Lighthouse_Bus_Stop_00001": {
+      "groupId": ""
+    },
+    "container_woods_design_stuff_00016": {
+      "groupId": "MesCamp"
+    },
+    "woods_design_stuff_00025": {
+      "groupId": "MesCamp"
+    },
+    "container_woods_design_stuff_00053": {
+      "groupId": "UsecCamp"
+    },
+    "woods_design_stuff_00113": {
+      "groupId": "UsecCamp"
+    },
+    "woods_design_stuff_00090": {
+      "groupId": "Village"
+    },
+    "woods_design_stuff_00070": {
+      "groupId": "Sawmill"
+    },
+    "container_woods_design_stuff_00052": {
+      "groupId": "UsecCamp"
+    },
+    "container_woods_design_stuff_00018": {
+      "groupId": "MesCamp"
+    },
+    "container_woods_design_stuff_00017": {
+      "groupId": "MesCamp"
+    },
+    "container_woods_design_stuff_00036": {
+      "groupId": "Sawmill"
+    },
+    "woods_design_stuff_00085": {
+      "groupId": "MesCamp"
+    },
+    "woods_design_stuff_00110": {
+      "groupId": "UsecCamp"
+    },
+    "woods_design_stuff_00084": {
+      "groupId": "MesCamp"
+    },
+    "container_woods_design_stuff_00035": {
+      "groupId": "Sawmill"
+    },
+    "woods_design_stuff_00109": {
+      "groupId": "UsecCamp"
+    },
+    "woods_design_stuff_00021": {
+      "groupId": "Sawmill"
+    },
+    "container_woods_design_stuff_00065": {
+      "groupId": "Village"
+    },
+    "woods_combined_00087": {
+      "groupId": "Village"
+    },
+    "woods_combined_00073": {
+      "groupId": "Other"
+    },
+    "woods_combined_00091": {
+      "groupId": "Other"
+    },
+    "woods_design_stuff_00050": {
+      "groupId": "Other"
+    },
+    "woods_combined_00095": {
+      "groupId": "UsecCamp"
+    },
+    "woods_design_stuff_00046": {
+      "groupId": "Other"
+    },
+    "woods_design_stuff_00010": {
+      "groupId": "SouthRoad"
+    },
+    "woods_design_stuff_00144": {
+      "groupId": "Stashes"
+    },
+    "woods_design_stuff_00134": {
+      "groupId": "Stashes"
+    },
+    "woods_design_stuff_00055": {
+      "groupId": "Stashes"
+    },
+    "woods_design_stuff_00136": {
+      "groupId": "Stashes"
+    },
+    "container_woods_design_stuff_00109": {
+      "groupId": "Stashes"
+    },
+    "woods_design_stuff_00138": {
+      "groupId": "Stashes"
+    },
+    "woods_design_stuff_00072": {
+      "groupId": "Stashes"
+    },
+    "woods_design_stuff_00137": {
+      "groupId": "Stashes"
+    },
+    "woods_design_stuff_00140": {
+      "groupId": "Stashes"
+    },
+    "woods_design_stuff_00053": {
+      "groupId": "Stashes"
+    },
+    "woods_design_stuff_00135": {
+      "groupId": "Stashes"
+    },
+    "woods_design_stuff_00145": {
+      "groupId": "Stashes"
+    },
+    "woods_design_stuff_00037": {
+      "groupId": "Stashes"
+    },
+    "woods_design_stuff_00141": {
+      "groupId": "Stashes"
+    },
+    "container_woods_design_stuff_00110": {
+      "groupId": "Stashes"
+    },
+    "woods_design_stuff_00001": {
+      "groupId": "Stashes"
+    },
+    "woods_design_stuff_00000": {
+      "groupId": "Stashes"
+    },
+    "woods_design_stuff_00143": {
+      "groupId": "Stashes"
+    },
+    "woods_design_stuff_00142": {
+      "groupId": "Stashes"
+    },
+    "woods_design_stuff_00146": {
+      "groupId": "Stashes"
+    },
+    "woods_design_stuff_00139": {
+      "groupId": "Stashes"
+    },
+    "woods_design_stuff_00155": {
+      "groupId": "Stashes"
+    },
+    "woods_design_stuff_00150": {
+      "groupId": "Stashes"
+    },
+    "woods_design_stuff_00035": {
+      "groupId": "Stashes"
+    },
+    "woods_design_stuff_00147": {
+      "groupId": "Stashes"
+    },
+    "woods_design_stuff_00157": {
+      "groupId": "Stashes"
+    },
+    "container_woods_design_stuff_00106": {
+      "groupId": "Stashes"
+    },
+    "woods_design_stuff_00012": {
+      "groupId": "Stashes"
+    },
+    "woods_design_stuff_00152": {
+      "groupId": "Stashes"
+    },
+    "woods_design_stuff_00002": {
+      "groupId": "Stashes"
+    },
+    "woods_design_stuff_00154": {
+      "groupId": "Stashes"
+    },
+    "woods_design_stuff_00151": {
+      "groupId": "Stashes"
+    },
+    "container_woods_design_stuff_00108": {
+      "groupId": "Stashes"
+    },
+    "woods_design_stuff_00158": {
+      "groupId": "Stashes"
+    },
+    "woods_design_stuff_00041": {
+      "groupId": "Stashes"
+    },
+    "woods_design_stuff_00149": {
+      "groupId": "Stashes"
+    },
+    "woods_design_stuff_00156": {
+      "groupId": "Stashes"
+    },
+    "woods_design_stuff_00148": {
+      "groupId": "Stashes"
+    },
+    "container_woods_design_stuff_00107": {
+      "groupId": "Stashes"
+    },
+    "woods_design_stuff_00153": {
+      "groupId": "Stashes"
+    },
+    "woods_design_stuff_00040": {
+      "groupId": "Stashes"
+    },
+    "woods_design_stuff_00022": {
+      "groupId": ""
+    }
+  }
+}

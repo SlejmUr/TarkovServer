@@ -1,0 +1,1649 @@
+{
+  "containersGroups": {
+    "Rocks": {
+      "minContainers": 6,
+      "maxContainers": 8
+    },
+    "Other": {
+      "minContainers": 5,
+      "maxContainers": 6
+    },
+    "Chalet": {
+      "minContainers": 38,
+      "maxContainers": 42
+    },
+    "DestroedVillage": {
+      "minContainers": 4,
+      "maxContainers": 5
+    },
+    "Lighthouse": {
+      "minContainers": 55,
+      "maxContainers": 70
+    },
+    "Stashes": {
+      "minContainers": 19,
+      "maxContainers": 21
+    },
+    "Longroad": {
+      "minContainers": 13,
+      "maxContainers": 15
+    },
+    "Beach": {
+      "minContainers": 14,
+      "maxContainers": 16
+    },
+    "Stock": {
+      "minContainers": 10,
+      "maxContainers": 14
+    },
+    "Village": {
+      "minContainers": 34,
+      "maxContainers": 36
+    },
+    "Treatment": {
+      "minContainers": 110,
+      "maxContainers": 140
+    }
+  },
+  "containers": {
+    "container_Lighthouse_DesignStuff_00102": {
+      "groupId": "Village"
+    },
+    "container_Reserve_Base_BunkersBig_00001": {
+      "groupId": "Lighthouse"
+    },
+    "Lighthouse_WaterStation_00110": {
+      "groupId": "Treatment"
+    },
+    "Lighthouse_SwampVillage_00023": {
+      "groupId": "Village"
+    },
+    "Lighthouse_SwampVillage_00073": {
+      "groupId": "Village"
+    },
+    "Lighthouse_WaterStation_00115": {
+      "groupId": "Treatment"
+    },
+    "Lighthouse_WaterStation_00095": {
+      "groupId": "Treatment"
+    },
+    "container_Lighthouse_Extension_00033": {
+      "groupId": "Lighthouse"
+    },
+    "container_Lighthouse_DesignStuff_00053": {
+      "groupId": "Treatment"
+    },
+    "container_Lighthouse_Extension_00089": {
+      "groupId": "Treatment"
+    },
+    "container_Lighthouse_Extension_00090": {
+      "groupId": "Treatment"
+    },
+    "container_Lighthouse_Extension_00091": {
+      "groupId": "Treatment"
+    },
+    "Lighthouse_WaterStation_00103": {
+      "groupId": "Treatment"
+    },
+    "container_Lighthouse_Extension_Denis_00008": {
+      "groupId": "Lighthouse"
+    },
+    "container_Lighthouse_Extension_Denis_00007": {
+      "groupId": "Lighthouse"
+    },
+    "container_Lighthouse_Extension_Denis_00006": {
+      "groupId": "Lighthouse"
+    },
+    "container_Lighthouse_Extension_Denis_00009": {
+      "groupId": "Lighthouse"
+    },
+    "container_Lighthouse_Extension_00081": {
+      "groupId": "Treatment"
+    },
+    "container_Lighthouse_Small_RLS_base_00006": {
+      "groupId": "Lighthouse"
+    },
+    "container_Lighthouse_Small_RLS_base_00007": {
+      "groupId": "Lighthouse"
+    },
+    "container_Lighthouse_Small_RLS_base_00005": {
+      "groupId": "Lighthouse"
+    },
+    "container_Lighthouse_Small_RLS_base_00004": {
+      "groupId": "Lighthouse"
+    },
+    "Lighthouse_TrainStation_00020": {
+      "groupId": ""
+    },
+    "container_Lighthouse_Extension_00066": {
+      "groupId": "Treatment"
+    },
+    "container_Lighthouse_DesignStuff_00100": {
+      "groupId": "Village"
+    },
+    "Lighthouse_Roads_00069": {
+      "groupId": "Longroad"
+    },
+    "Lootable_00000": {
+      "groupId": "Treatment"
+    },
+    "container_Lighthouse_Extension_Bogdan_00001": {
+      "groupId": "Treatment"
+    },
+    "container_Lighthouse_Small_RLS_base_00011": {
+      "groupId": "Lighthouse"
+    },
+    "container_Lighthouse_Small_RLS_base_00010": {
+      "groupId": "Lighthouse"
+    },
+    "container_Lighthouse_Small_RLS_base_00008": {
+      "groupId": "Lighthouse"
+    },
+    "container_Lighthouse_Small_RLS_base_00009": {
+      "groupId": "Lighthouse"
+    },
+    "Lighthouse_SwampVillage_00065": {
+      "groupId": "Village"
+    },
+    "container_Lighthouse_DesignStuff_00086": {
+      "groupId": "Longroad"
+    },
+    "container_Lighthouse_DesignStuff_00031": {
+      "groupId": "Treatment"
+    },
+    "container_Lighthouse_DesignStuff_00030": {
+      "groupId": "Treatment"
+    },
+    "container_Lighthouse_DesignStuff_00032": {
+      "groupId": "Treatment"
+    },
+    "container_Lighthouse_DesignStuff_00033": {
+      "groupId": "Treatment"
+    },
+    "Lighthouse_Abadonned_pier_00018": {
+      "groupId": "Beach"
+    },
+    "container_Lighthouse_Loot_00052": {
+      "groupId": "Other"
+    },
+    "Lootable_00006": {
+      "groupId": "Treatment"
+    },
+    "Lootable_00005": {
+      "groupId": "Treatment"
+    },
+    "container_Lighthouse_DesignStuff_00025": {
+      "groupId": "Lighthouse"
+    },
+    "Lighthouse_WaterStation_00105": {
+      "groupId": "Treatment"
+    },
+    "container_Lighthouse_Extension_00010": {
+      "groupId": "Lighthouse"
+    },
+    "container_Lighthouse_Extension_00032": {
+      "groupId": "Lighthouse"
+    },
+    "Lootable_00002": {
+      "groupId": "Treatment"
+    },
+    "Lighthouse_SwampVillage_00080": {
+      "groupId": "Village"
+    },
+    "container_Lighthouse_Loot_00057": {
+      "groupId": "Village"
+    },
+    "Lighthouse_WaterStation_00119": {
+      "groupId": "Treatment"
+    },
+    "container_Lighthouse_Extension_00073": {
+      "groupId": "Treatment"
+    },
+    "container_Lighthouse_DesignStuff_00082": {
+      "groupId": "Beach"
+    },
+    "00952": {
+      "groupId": "Lighthouse"
+    },
+    "container_Lighthouse_Extension_00030": {
+      "groupId": "Lighthouse"
+    },
+    "container_Lighthouse_DesignStuff_00081": {
+      "groupId": "Beach"
+    },
+    "container_Lighthouse_DesignStuff_00018": {
+      "groupId": "Lighthouse"
+    },
+    "container_Lighthouse_Extension_00002": {
+      "groupId": "Lighthouse"
+    },
+    "Lighthouse_WaterStation_00118": {
+      "groupId": "Treatment"
+    },
+    "Lighthouse_SwampVillage_00063": {
+      "groupId": "Village"
+    },
+    "Lighthouse_WaterStation_00082": {
+      "groupId": "Treatment"
+    },
+    "container_Lighthouse_Loot_00027": {
+      "groupId": "Treatment"
+    },
+    "container_Lighthouse_Extension_00102": {
+      "groupId": "Treatment"
+    },
+    "Lighthouse_Logistics_Terminal_00021": {
+      "groupId": "Stock"
+    },
+    "container_Lighthouse_DesignStuff_00039": {
+      "groupId": "Treatment"
+    },
+    "container_Lighthouse_DesignStuff_00085": {
+      "groupId": "Longroad"
+    },
+    "Lighthouse_WaterStation_00098": {
+      "groupId": "Treatment"
+    },
+    "container_Lighthouse_Extension_00100": {
+      "groupId": "Treatment"
+    },
+    "container_Lighthouse_Extension_00018": {
+      "groupId": "Lighthouse"
+    },
+    "container_Lighthouse_Extension_00017": {
+      "groupId": "Lighthouse"
+    },
+    "container_Lighthouse_Extension_00019": {
+      "groupId": "Lighthouse"
+    },
+    "container_Lighthouse_Extension_00020": {
+      "groupId": "Lighthouse"
+    },
+    "Lootable_00011": {
+      "groupId": "Treatment"
+    },
+    "Lighthouse_WaterStation_00126": {
+      "groupId": "Treatment"
+    },
+    "container_Lighthouse_Extension_00048": {
+      "groupId": "Lighthouse"
+    },
+    "Lootable_00004": {
+      "groupId": "Lighthouse"
+    },
+    "container_Lighthouse_DesignStuff_00014": {
+      "groupId": "Lighthouse"
+    },
+    "container_Lighthouse_DesignStuff_00015": {
+      "groupId": "Lighthouse"
+    },
+    "container_Lighthouse_DesignStuff_00017": {
+      "groupId": "Lighthouse"
+    },
+    "container_Lighthouse_DesignStuff_00016": {
+      "groupId": "Lighthouse"
+    },
+    "container_Lighthouse_SwampVillage_00001": {
+      "groupId": "Lighthouse"
+    },
+    "container_Lighthouse_DesignStuff_00051": {
+      "groupId": "Treatment"
+    },
+    "Lighthouse_WaterStation_00094": {
+      "groupId": "Treatment"
+    },
+    "Lighthouse_WaterStation_00116": {
+      "groupId": "Treatment"
+    },
+    "container_Lighthouse_Extension_00065": {
+      "groupId": "Treatment"
+    },
+    "container_Lighthouse_Extension_00064": {
+      "groupId": "Treatment"
+    },
+    "container_Lighthouse_Extension_00063": {
+      "groupId": "Treatment"
+    },
+    "container_Lighthouse_DesignStuff_00029": {
+      "groupId": "Treatment"
+    },
+    "Lighthouse_SwampVillage_00069": {
+      "groupId": "Village"
+    },
+    "Lighthouse_WaterStation_00111": {
+      "groupId": "Treatment"
+    },
+    "container_Lighthouse_Extension_Denis_00001": {
+      "groupId": "Lighthouse"
+    },
+    "container_Lighthouse_Extension_00085": {
+      "groupId": "Treatment"
+    },
+    "container_Lighthouse_Extension_00084": {
+      "groupId": "Treatment"
+    },
+    "container_Lighthouse_Extension_00086": {
+      "groupId": "Treatment"
+    },
+    "container_Lighthouse_Extension_00087": {
+      "groupId": "Treatment"
+    },
+    "Lighthouse_WaterStation_00070": {
+      "groupId": "Treatment"
+    },
+    "Lighthouse_WaterStation_00069": {
+      "groupId": "Treatment"
+    },
+    "Lighthouse_WaterStation_00067": {
+      "groupId": "Treatment"
+    },
+    "Lighthouse_WaterStation_00068": {
+      "groupId": "Treatment"
+    },
+    "Lighthouse_Fisher_Village_00003": {
+      "groupId": "Beach"
+    },
+    "container_Lighthouse_Extension_00014": {
+      "groupId": "Lighthouse"
+    },
+    "n1": {
+      "groupId": "Treatment"
+    },
+    "container_Lighthouse_DesignStuff_00006": {
+      "groupId": "Lighthouse"
+    },
+    "container_Lighthouse_Extension_00076": {
+      "groupId": "Treatment"
+    },
+    "container_Lighthouse_Extension_00077": {
+      "groupId": "Treatment"
+    },
+    "container_Lighthouse_Extension_00079": {
+      "groupId": "Treatment"
+    },
+    "container_Lighthouse_Extension_00078": {
+      "groupId": "Treatment"
+    },
+    "Lighthouse_Chalet_00051": {
+      "groupId": "Chalet"
+    },
+    "container_Lighthouse_Extension_00031": {
+      "groupId": "Lighthouse"
+    },
+    "Lighthouse_SummerHotel_00054": {
+      "groupId": "Chalet"
+    },
+    "container_Lighthouse_Extension_00003": {
+      "groupId": "Lighthouse"
+    },
+    "Lighthouse_Complex_00004": {
+      "groupId": "Lighthouse"
+    },
+    "Lighthouse_Chalet_00041": {
+      "groupId": "Chalet"
+    },
+    "Lighthouse_SwampVillage_00066": {
+      "groupId": "Village"
+    },
+    "container_Lighthouse_DesignStuff_00088": {
+      "groupId": "Longroad"
+    },
+    "container_Lighthouse_Extension_00028": {
+      "groupId": "Lighthouse"
+    },
+    "container_Lighthouse_Extension_00027": {
+      "groupId": "Lighthouse"
+    },
+    "container_Lighthouse_Extension_00025": {
+      "groupId": "Lighthouse"
+    },
+    "container_Lighthouse_Extension_00026": {
+      "groupId": "Lighthouse"
+    },
+    "Lighthouse_Scripts_00001": {
+      "groupId": "Treatment"
+    },
+    "container_Lighthouse_Loot_00016": {
+      "groupId": "Village"
+    },
+    "container_Lighthouse_Loot_00031": {
+      "groupId": "Beach"
+    },
+    "Lighthouse_SwampVillage_00079": {
+      "groupId": "Village"
+    },
+    "Lighthouse_WaterStation_00106": {
+      "groupId": "Treatment"
+    },
+    "container_Lighthouse_DesignStuff_00115": {
+      "groupId": "DestroedVillage"
+    },
+    "container_Lighthouse_Extension_00013": {
+      "groupId": "Lighthouse"
+    },
+    "Lighthouse_Scripts_00000": {
+      "groupId": "Treatment"
+    },
+    "Lighthouse_SwampVillage_00072": {
+      "groupId": "Village"
+    },
+    "Lighthouse_Chalet_00037": {
+      "groupId": "Chalet"
+    },
+    "Lootable_00003": {
+      "groupId": "Treatment"
+    },
+    "Lighthouse_Logistics_Terminal_00026": {
+      "groupId": "Stock"
+    },
+    "Lighthouse_Roads_00076": {
+      "groupId": "Longroad"
+    },
+    "container_Lighthouse_Extension_00009": {
+      "groupId": "Lighthouse"
+    },
+    "container_Lighthouse_DesignStuff_00097": {
+      "groupId": "Village"
+    },
+    "container_Lighthouse_Loot_00037": {
+      "groupId": "Longroad"
+    },
+    "Lighthouse_WaterStation_00078": {
+      "groupId": "Treatment"
+    },
+    "container_Lighthouse_Extension_00088": {
+      "groupId": "Treatment"
+    },
+    "container_Lighthouse_DesignStuff_00013": {
+      "groupId": "Lighthouse"
+    },
+    "Lighthouse_WaterStation_00096": {
+      "groupId": "Treatment"
+    },
+    "container_Lighthouse_Loot_00039": {
+      "groupId": "Beach"
+    },
+    "container_Lighthouse_Extension_00098": {
+      "groupId": "Treatment"
+    },
+    "container_Lighthouse_DesignStuff_00116": {
+      "groupId": "DestroedVillage"
+    },
+    "Lighthouse_WaterStation_00112": {
+      "groupId": "Treatment"
+    },
+    "container_Lighthouse_Loot_00042": {
+      "groupId": "Beach"
+    },
+    "container_Lighthouse_Loot_00028": {
+      "groupId": "Other"
+    },
+    "container_Lighthouse_DesignStuff_00004": {
+      "groupId": "Lighthouse"
+    },
+    "Lighthouse_Roads_00077": {
+      "groupId": "Longroad"
+    },
+    "container_Lighthouse_Extension_00011": {
+      "groupId": "Lighthouse"
+    },
+    "container_Lighthouse_DesignStuff_00009": {
+      "groupId": "Lighthouse"
+    },
+    "container_Lighthouse_DesignStuff_00101": {
+      "groupId": "Village"
+    },
+    "Lighthouse_WaterStation_00075": {
+      "groupId": "Treatment"
+    },
+    "Lighthouse_SummerHotel_00056": {
+      "groupId": "Chalet"
+    },
+    "container_Lighthouse_Extension_00040": {
+      "groupId": "Lighthouse"
+    },
+    "container_Lighthouse_Extension_00068": {
+      "groupId": "Treatment"
+    },
+    "container_Lighthouse_Extension_00069": {
+      "groupId": "Treatment"
+    },
+    "container_Lighthouse_Extension_00067": {
+      "groupId": "Treatment"
+    },
+    "container_Lighthouse_Extension_00012": {
+      "groupId": "Lighthouse"
+    },
+    "Lighthouse_SwampVillage_00083": {
+      "groupId": "Village"
+    },
+    "container_Lighthouse_DesignStuff_00038": {
+      "groupId": "Treatment"
+    },
+    "container_Lighthouse_DesignStuff_00093": {
+      "groupId": "Rocks"
+    },
+    "container_Lighthouse_Loot_00015": {
+      "groupId": "Longroad"
+    },
+    "container_Lighthouse_DesignStuff_00080": {
+      "groupId": "Beach"
+    },
+    "Lighthouse_Roads_00066": {
+      "groupId": "Rocks"
+    },
+    "container_Lighthouse_Loot_00035": {
+      "groupId": "Village"
+    },
+    "container_Lighthouse_Extension_00045": {
+      "groupId": "Lighthouse"
+    },
+    "container_Lighthouse_Loot_00007": {
+      "groupId": "Beach"
+    },
+    "Lighthouse_SwampVillage_00088": {
+      "groupId": "DestroedVillage"
+    },
+    "container_Lighthouse_Extension_00007": {
+      "groupId": "Lighthouse"
+    },
+    "container_Lighthouse_Extension_00056": {
+      "groupId": "Lighthouse"
+    },
+    "Lighthouse_SummerHotel_00058": {
+      "groupId": "Chalet"
+    },
+    "container_Lighthouse_Loot_00058": {
+      "groupId": "Village"
+    },
+    "Lighthouse_SwampVillage_00077": {
+      "groupId": "Village"
+    },
+    "Lighthouse_Bus_Stop_00016": {
+      "groupId": "Village"
+    },
+    "container_Lighthouse_DesignStuff_00024": {
+      "groupId": "Lighthouse"
+    },
+    "container_Lighthouse_Loot_00018": {
+      "groupId": "Longroad"
+    },
+    "container_Lighthouse_Loot_00038": {
+      "groupId": "Longroad"
+    },
+    "container_Lighthouse_DesignStuff_00121": {
+      "groupId": "Stock"
+    },
+    "00012": {
+      "groupId": "Treatment"
+    },
+    "container_Lighthouse_DesignStuff_00036": {
+      "groupId": "Treatment"
+    },
+    "container_Lighthouse_DesignStuff_00037": {
+      "groupId": "Treatment"
+    },
+    "container_Lighthouse_DesignStuff_00035": {
+      "groupId": "Treatment"
+    },
+    "container_Lighthouse_DesignStuff_00034": {
+      "groupId": "Treatment"
+    },
+    "container_Lighthouse_DesignStuff_00052": {
+      "groupId": "Treatment"
+    },
+    "container_Lighthouse_Loot_00005": {
+      "groupId": "Other"
+    },
+    "container_Lighthouse_Loot_00014": {
+      "groupId": "Beach"
+    },
+    "Lighthouse_WaterStation_00091": {
+      "groupId": "Treatment"
+    },
+    "Lighthouse_WaterStation_00090": {
+      "groupId": "Treatment"
+    },
+    "Lighthouse_WaterStation_00088": {
+      "groupId": "Treatment"
+    },
+    "Lighthouse_WaterStation_00089": {
+      "groupId": "Treatment"
+    },
+    "container_Lighthouse_Extension_Denis_00010": {
+      "groupId": "Lighthouse"
+    },
+    "container_Lighthouse_Extension_Denis_00005": {
+      "groupId": "Lighthouse"
+    },
+    "container_Lighthouse_Extension_Denis_00003": {
+      "groupId": "Lighthouse"
+    },
+    "container_Lighthouse_Extension_Denis_00004": {
+      "groupId": "Lighthouse"
+    },
+    "container_Lighthouse_Loot_00029": {
+      "groupId": "Treatment"
+    },
+    "Lighthouse_WaterStation_00084": {
+      "groupId": "Treatment"
+    },
+    "Lighthouse_WaterStation_00085": {
+      "groupId": "Treatment"
+    },
+    "Lighthouse_WaterStation_00087": {
+      "groupId": "Treatment"
+    },
+    "Lighthouse_WaterStation_00086": {
+      "groupId": "Treatment"
+    },
+    "container_Lighthouse_Extension_00038": {
+      "groupId": "Lighthouse"
+    },
+    "Lootable_00007": {
+      "groupId": "Treatment"
+    },
+    "Lootable_00008": {
+      "groupId": "Treatment"
+    },
+    "container_Lighthouse_Extension_00094": {
+      "groupId": "Treatment"
+    },
+    "container_Lighthouse_Extension_00095": {
+      "groupId": "Treatment"
+    },
+    "container_Lighthouse_DesignStuff_00050": {
+      "groupId": "Treatment"
+    },
+    "container_Lighthouse_Extension_00093": {
+      "groupId": "Treatment"
+    },
+    "container_Lighthouse_Loot_00036": {
+      "groupId": "Beach"
+    },
+    "container_Lighthouse_Extension_00024": {
+      "groupId": "Lighthouse"
+    },
+    "container_Lighthouse_Extension_00023": {
+      "groupId": "Lighthouse"
+    },
+    "container_Lighthouse_Extension_00021": {
+      "groupId": "Lighthouse"
+    },
+    "container_Lighthouse_Extension_00022": {
+      "groupId": "Lighthouse"
+    },
+    "container_Lighthouse_Extension_00055": {
+      "groupId": "Lighthouse"
+    },
+    "Lighthouse_WaterStation_00081": {
+      "groupId": "Treatment"
+    },
+    "container_Lighthouse_DesignStuff_00003": {
+      "groupId": ""
+    },
+    "container_Lighthouse_DesignStuff_00099": {
+      "groupId": "Village"
+    },
+    "Lighthouse_Abadonned_pier_00017": {
+      "groupId": "Beach"
+    },
+    "container_Lighthouse_Extension_00061": {
+      "groupId": "Treatment"
+    },
+    "Lighthouse_WaterStation_00077": {
+      "groupId": "Treatment"
+    },
+    "container_Lighthouse_DesignStuff_00098": {
+      "groupId": "Village"
+    },
+    "Lighthouse_SummerHotel_00049": {
+      "groupId": "Chalet"
+    },
+    "container_Lighthouse_Extension_00060": {
+      "groupId": "Lighthouse"
+    },
+    "Lighthouse_Water_filter_facility_02_00021": {
+      "groupId": "Treatment"
+    },
+    "Lootable_00009": {
+      "groupId": "Lighthouse"
+    },
+    "container_Lighthouse_Loot_00056": {
+      "groupId": "Village"
+    },
+    "Lighthouse_Fisher_Village_00004": {
+      "groupId": "Beach"
+    },
+    "container_Lighthouse_Extension_00106": {
+      "groupId": "Treatment"
+    },
+    "Lighthouse_SummerHotel_00041": {
+      "groupId": "Other"
+    },
+    "container_Lighthouse_DesignStuff_00083": {
+      "groupId": "Beach"
+    },
+    "Lighthouse_Roads_00025": {
+      "groupId": ""
+    },
+    "Lighthouse_Chalet_00049": {
+      "groupId": "Chalet"
+    },
+    "container_Lighthouse_DesignStuff_00057": {
+      "groupId": "Chalet"
+    },
+    "container_Lighthouse_DesignStuff_00076": {
+      "groupId": "Chalet"
+    },
+    "container_Lighthouse_DesignStuff_00075": {
+      "groupId": "Chalet"
+    },
+    "container_Lighthouse_DesignStuff_00074": {
+      "groupId": "Chalet"
+    },
+    "container_Lighthouse_Loot_00048": {
+      "groupId": "Longroad"
+    },
+    "container_Lighthouse_Loot_00034": {
+      "groupId": "Chalet"
+    },
+    "container_Lighthouse_Extension_Ksenia_00003": {
+      "groupId": "Lighthouse"
+    },
+    "container_Lighthouse_DesignStuff_00008": {
+      "groupId": "Lighthouse"
+    },
+    "container_Lighthouse_Loot_00041": {
+      "groupId": "Beach"
+    },
+    "container_Lighthouse_DesignStuff_00084": {
+      "groupId": "Beach"
+    },
+    "container_Lighthouse_Extension_00105": {
+      "groupId": "Treatment"
+    },
+    "container_Lighthouse_DesignStuff_00023": {
+      "groupId": "Lighthouse"
+    },
+    "container_Lighthouse_Extension_00111": {
+      "groupId": "Treatment"
+    },
+    "container_Lighthouse_Extension_00054": {
+      "groupId": "Lighthouse"
+    },
+    "container_Lighthouse_DesignStuff_00049": {
+      "groupId": "Treatment"
+    },
+    "Lighthouse_Chalet_00052": {
+      "groupId": ""
+    },
+    "Lighthouse_Logistics_Terminal_00025": {
+      "groupId": "Stock"
+    },
+    "container_Lighthouse_Extension_00072": {
+      "groupId": "Treatment"
+    },
+    "Lighthouse_SwampVillage_00086": {
+      "groupId": "Village"
+    },
+    "container_Lighthouse_DesignStuff_00056": {
+      "groupId": "Treatment"
+    },
+    "container_Lighthouse_DesignStuff_00124": {
+      "groupId": "Stock"
+    },
+    "Lighthouse_Chalet_00039": {
+      "groupId": "Chalet"
+    },
+    "Lighthouse_WaterStation_00080": {
+      "groupId": "Treatment"
+    },
+    "container_Lighthouse_DesignStuff_00078": {
+      "groupId": "Chalet"
+    },
+    "container_Lighthouse_Loot_00047": {
+      "groupId": "Beach"
+    },
+    "container_Lighthouse_DesignStuff_00128": {
+      "groupId": "Stock"
+    },
+    "container_Lighthouse_Extension_00057": {
+      "groupId": "Lighthouse"
+    },
+    "container_Lighthouse_DesignStuff_00112": {
+      "groupId": "Village"
+    },
+    "container_Lighthouse_Small_RLS_base_00003": {
+      "groupId": "Lighthouse"
+    },
+    "container_Lighthouse_DesignStuff_00079": {
+      "groupId": "Chalet"
+    },
+    "container_Lighthouse_WaterStation_00002": {
+      "groupId": "Treatment"
+    },
+    "container_Lighthouse_DesignStuff_00127": {
+      "groupId": "Stock"
+    },
+    "Lighthouse_WaterStation_00099": {
+      "groupId": "Treatment"
+    },
+    "container_Lighthouse_Loot_00055": {
+      "groupId": "Treatment"
+    },
+    "container_Lighthouse_DesignStuff_00095": {
+      "groupId": "Rocks"
+    },
+    "Lighthouse_WaterStation_00120": {
+      "groupId": "Treatment"
+    },
+    "container_Lighthouse_Loot_00043": {
+      "groupId": "Rocks"
+    },
+    "container_Lighthouse_Extension_00080": {
+      "groupId": "Treatment"
+    },
+    "Lighthouse_SwampVillage_00067": {
+      "groupId": "Village"
+    },
+    "container_Lighthouse_Loot_00003": {
+      "groupId": "Stock"
+    },
+    "container_Lighthouse_DesignStuff_00054": {
+      "groupId": "Treatment"
+    },
+    "Lighthouse_Chalet_00047": {
+      "groupId": "Chalet"
+    },
+    "container_Lighthouse_Loot_00011": {
+      "groupId": "Stock"
+    },
+    "container_Lighthouse_Small_RLS_base_00001": {
+      "groupId": "Lighthouse"
+    },
+    "container_Lighthouse_DesignStuff_00109": {
+      "groupId": "Village"
+    },
+    "container_Lighthouse_DesignStuff_00113": {
+      "groupId": "Village"
+    },
+    "container_Lighthouse_Loot_00017": {
+      "groupId": "Treatment"
+    },
+    "container_Lighthouse_DesignStuff_00126": {
+      "groupId": "Stock"
+    },
+    "container_Lighthouse_Loot_00013": {
+      "groupId": "Stock"
+    },
+    "container_Lighthouse_Loot_00002": {
+      "groupId": "Stock"
+    },
+    "container_Lighthouse_DesignStuff_00132": {
+      "groupId": "Stock"
+    },
+    "Lighthouse_SwampVillage_00085": {
+      "groupId": "Village"
+    },
+    "container_Lighthouse_Loot_00049": {
+      "groupId": "Other"
+    },
+    "container_Lighthouse_Extension_00015": {
+      "groupId": "Lighthouse"
+    },
+    "container_Lighthouse_DesignStuff_00055": {
+      "groupId": "Treatment"
+    },
+    "container_Lighthouse_Extension_00034": {
+      "groupId": "Lighthouse"
+    },
+    "container_Lighthouse_DesignStuff_00129": {
+      "groupId": "Stock"
+    },
+    "Lighthouse_Water_filter_facility_01_00019": {
+      "groupId": "Treatment"
+    },
+    "container_Lighthouse_Loot_00044": {
+      "groupId": "Rocks"
+    },
+    "container_Lighthouse_Loot_00054": {
+      "groupId": "Treatment"
+    },
+    "container_Lighthouse_DesignStuff_00096": {
+      "groupId": "Rocks"
+    },
+    "container_Lighthouse_Loot_00040": {
+      "groupId": "Beach"
+    },
+    "container_Lighthouse_DesignStuff_00111": {
+      "groupId": "Village"
+    },
+    "container_Lighthouse_DesignStuff_00114": {
+      "groupId": "Village"
+    },
+    "container_Lighthouse_Loot_00053": {
+      "groupId": "Treatment"
+    },
+    "container_Lighthouse_DesignStuff_00028": {
+      "groupId": "Lighthouse"
+    },
+    "Lighthouse_Chalet_00050": {
+      "groupId": "Chalet"
+    },
+    "Lighthouse_WaterStation_00125": {
+      "groupId": "Treatment"
+    },
+    "Lighthouse_SwampVillage_00082": {
+      "groupId": "Village"
+    },
+    "container_Lighthouse_DesignStuff_00130": {
+      "groupId": "Stock"
+    },
+    "container_Lighthouse_DesignStuff_00108": {
+      "groupId": "Village"
+    },
+    "Lighthouse_Logistics_Terminal_00027": {
+      "groupId": "Stock"
+    },
+    "container_Lighthouse_DesignStuff_00110": {
+      "groupId": "Village"
+    },
+    "container_Lighthouse_Small_RLS_base_00000": {
+      "groupId": "Lighthouse"
+    },
+    "container_Lighthouse_Loot_00019": {
+      "groupId": "Village"
+    },
+    "Lighthouse_SwampVillage_00078": {
+      "groupId": "Village"
+    },
+    "container_Lighthouse_DesignStuff_00131": {
+      "groupId": "Stock"
+    },
+    "container_Lighthouse_DesignStuff_00077": {
+      "groupId": "Chalet"
+    },
+    "container_Lighthouse_Extension_00042": {
+      "groupId": "Lighthouse"
+    },
+    "container_Lighthouse_Loot_00009": {
+      "groupId": "Beach"
+    },
+    "container_Lighthouse_Extension_00113": {
+      "groupId": "Treatment"
+    },
+    "container_Lighthouse_Loot_00001": {
+      "groupId": "Stock"
+    },
+    "container_Lighthouse_Extension_00046": {
+      "groupId": "Lighthouse"
+    },
+    "container_Lighthouse_DesignStuff_00027": {
+      "groupId": "Lighthouse"
+    },
+    "Lighthouse_WaterStation_00114": {
+      "groupId": "Treatment"
+    },
+    "container_Lighthouse_Extension_00099": {
+      "groupId": "Treatment"
+    },
+    "container_Lighthouse_Loot_00050": {
+      "groupId": "Treatment"
+    },
+    "container_Lighthouse_Loot_00004": {
+      "groupId": "Stock"
+    },
+    "Lighthouse_WaterStation_00104": {
+      "groupId": "Treatment"
+    },
+    "Lighthouse_SummerHotel_00057": {
+      "groupId": "Chalet"
+    },
+    "container_Lighthouse_DesignStuff_00125": {
+      "groupId": "Stock"
+    },
+    "Lighthouse_SummerHotel_00047": {
+      "groupId": "Chalet"
+    },
+    "container_Lighthouse_Loot_00026": {
+      "groupId": "Treatment"
+    },
+    "container_Lighthouse_DesignStuff_00091": {
+      "groupId": "Rocks"
+    },
+    "container_Lighthouse_DesignStuff_00019": {
+      "groupId": "Lighthouse"
+    },
+    "container_Lighthouse_DesignStuff_00005": {
+      "groupId": "Lighthouse"
+    },
+    "container_Lighthouse_DesignStuff_00001": {
+      "groupId": "Lighthouse"
+    },
+    "container_Lighthouse_Loot_00046": {
+      "groupId": "Rocks"
+    },
+    "container_Lighthouse_Loot_00010": {
+      "groupId": "Stock"
+    },
+    "container_Lighthouse_Extension_00071": {
+      "groupId": "Treatment"
+    },
+    "Lighthouse_Chalet_00046": {
+      "groupId": "Chalet"
+    },
+    "container_Lighthouse_Loot_00023": {
+      "groupId": "Treatment"
+    },
+    "container_Lighthouse_Extension_00097": {
+      "groupId": "Treatment"
+    },
+    "container_Lighthouse_DesignStuff_00043": {
+      "groupId": "Treatment"
+    },
+    "container_Lighthouse_DesignStuff_00044": {
+      "groupId": "Treatment"
+    },
+    "Lighthouse_WaterStation_00093": {
+      "groupId": "Treatment"
+    },
+    "Lighthouse_Chalet_00045": {
+      "groupId": "Chalet"
+    },
+    "container_Lighthouse_Extension_00035": {
+      "groupId": "Lighthouse"
+    },
+    "Lighthouse_WaterStation_00128": {
+      "groupId": "Treatment"
+    },
+    "container_Lighthouse_DesignStuff_00061": {
+      "groupId": "Chalet"
+    },
+    "container_Lighthouse_DesignStuff_00059": {
+      "groupId": "Chalet"
+    },
+    "container_Lighthouse_Loot_00051": {
+      "groupId": "Chalet"
+    },
+    "container_Lighthouse_Loot_00012": {
+      "groupId": "Treatment"
+    },
+    "container_Lighthouse_DesignStuff_00010": {
+      "groupId": "Lighthouse"
+    },
+    "container_Lighthouse_Extension_00051": {
+      "groupId": "Lighthouse"
+    },
+    "container_Lighthouse_Loot_00032": {
+      "groupId": "Treatment"
+    },
+    "Lighthouse_WaterStation_00121": {
+      "groupId": "Treatment"
+    },
+    "Lighthouse_SummerHotel_00045": {
+      "groupId": "Chalet"
+    },
+    "container_Lighthouse_DesignStuff_00060": {
+      "groupId": "Chalet"
+    },
+    "container_Lighthouse_Loot_00000": {
+      "groupId": "Treatment"
+    },
+    "Lighthouse_WaterStation_00109": {
+      "groupId": "Treatment"
+    },
+    "container_Lighthouse_DesignStuff_00122": {
+      "groupId": "Stock"
+    },
+    "Lighthouse_Chalet_00038": {
+      "groupId": "Chalet"
+    },
+    "container_Lighthouse_Loot_00025": {
+      "groupId": "Treatment"
+    },
+    "container_Lighthouse_DesignStuff_00000": {
+      "groupId": "Treatment"
+    },
+    "container_Lighthouse_Loot_00030": {
+      "groupId": "Lighthouse"
+    },
+    "container_Lighthouse_DesignStuff_00068": {
+      "groupId": "Chalet"
+    },
+    "container_Lighthouse_Extension_00044": {
+      "groupId": "Lighthouse"
+    },
+    "container_Lighthouse_DesignStuff_00011": {
+      "groupId": "Lighthouse"
+    },
+    "container_Lighthouse_DesignStuff_00048": {
+      "groupId": "Treatment"
+    },
+    "container_Lighthouse_Extension_00053": {
+      "groupId": "Lighthouse"
+    },
+    "Lighthouse_WaterStation_00014": {
+      "groupId": "Treatment"
+    },
+    "container_Lighthouse_DesignStuff_00022": {
+      "groupId": "Lighthouse"
+    },
+    "Lighthouse_TrainStation_00018": {
+      "groupId": ""
+    },
+    "container_Lighthouse_Extension_00082": {
+      "groupId": "Treatment"
+    },
+    "container_Lighthouse_Extension_00037": {
+      "groupId": "Lighthouse"
+    },
+    "Lootable_00065": {
+      "groupId": "Treatment"
+    },
+    "container_Lighthouse_Extension_00096": {
+      "groupId": "Treatment"
+    },
+    "container_Lighthouse_DesignStuff_00041": {
+      "groupId": "Treatment"
+    },
+    "container_Lighthouse_Extension_00016": {
+      "groupId": "Lighthouse"
+    },
+    "container_Lighthouse_Extension_00103": {
+      "groupId": "Treatment"
+    },
+    "container_Lighthouse_Extension_00029": {
+      "groupId": "Lighthouse"
+    },
+    "container_Lighthouse_Extension_00062": {
+      "groupId": "Treatment"
+    },
+    "container_Lighthouse_Extension_00008": {
+      "groupId": "Lighthouse"
+    },
+    "container_Lighthouse_Extension_00039": {
+      "groupId": "Lighthouse"
+    },
+    "container_Lighthouse_Extension_00006": {
+      "groupId": "Lighthouse"
+    },
+    "container_Lighthouse_Extension_Ksenia_00002": {
+      "groupId": "Lighthouse"
+    },
+    "container_Lighthouse_Extension_Denis_00002": {
+      "groupId": "Lighthouse"
+    },
+    "container_Lighthouse_Extension_00083": {
+      "groupId": "Treatment"
+    },
+    "container_Lighthouse_Extension_00101": {
+      "groupId": "Treatment"
+    },
+    "container_Lighthouse_DesignStuff_00042": {
+      "groupId": "Treatment"
+    },
+    "container_Lighthouse_Small_RLS_base_00002": {
+      "groupId": "Lighthouse"
+    },
+    "container_Lighthouse_DesignStuff_00087": {
+      "groupId": "Longroad"
+    },
+    "container_Lighthouse_DesignStuff_00103": {
+      "groupId": "Village"
+    },
+    "Lighthouse_Roads_00013": {
+      "groupId": "Longroad"
+    },
+    "container_Lighthouse_DesignStuff_00058": {
+      "groupId": "Chalet"
+    },
+    "Lighthouse_Bus_Stop_00017": {
+      "groupId": "Village"
+    },
+    "Lighthouse_SummerHotel_00048": {
+      "groupId": "Chalet"
+    },
+    "Lighthouse_Roads_00065": {
+      "groupId": "Rocks"
+    },
+    "Lighthouse_Roads_00008": {
+      "groupId": "Longroad"
+    },
+    "container_Lighthouse_DesignStuff_00089": {
+      "groupId": "Longroad"
+    },
+    "container_Lighthouse_Loot_00024": {
+      "groupId": "Treatment"
+    },
+    "container_Lighthouse_DesignStuff_00064": {
+      "groupId": "Chalet"
+    },
+    "container_Lighthouse_Extension_00047": {
+      "groupId": "Lighthouse"
+    },
+    "container_Lighthouse_DesignStuff_00002": {
+      "groupId": "Lighthouse"
+    },
+    "container_Lighthouse_DesignStuff_00047": {
+      "groupId": "Treatment"
+    },
+    "container_Lighthouse_DesignStuff_00123": {
+      "groupId": "Stock"
+    },
+    "Lighthouse_Chalet_00015": {
+      "groupId": "Chalet"
+    },
+    "container_Lighthouse_DesignStuff_00067": {
+      "groupId": "Chalet"
+    },
+    "Lighthouse_WaterStation_00107": {
+      "groupId": "Treatment"
+    },
+    "Lighthouse_Chalet_00040": {
+      "groupId": "Chalet"
+    },
+    "container_Lighthouse_DesignStuff_00063": {
+      "groupId": "Chalet"
+    },
+    "container_Lighthouse_Loot_00006": {
+      "groupId": "Stock"
+    },
+    "Lighthouse_SummerHotel_00050": {
+      "groupId": "Chalet"
+    },
+    "container_Lighthouse_Loot_00021": {
+      "groupId": "Treatment"
+    },
+    "container_Lighthouse_Extension_00104": {
+      "groupId": "Treatment"
+    },
+    "container_Lighthouse_Loot_00045": {
+      "groupId": "Longroad"
+    },
+    "container_Lighthouse_Extension_00110": {
+      "groupId": "Treatment"
+    },
+    "container_Lighthouse_Extension_00092": {
+      "groupId": "Treatment"
+    },
+    "Lighthouse_Water_filter_facility_02_00022": {
+      "groupId": "Treatment"
+    },
+    "container_Lighthouse_Loot_00008": {
+      "groupId": "Beach"
+    },
+    "container_Lighthouse_DesignStuff_00066": {
+      "groupId": "Chalet"
+    },
+    "container_Lighthouse_DesignStuff_00065": {
+      "groupId": "Chalet"
+    },
+    "Lighthouse_Chalet_00034": {
+      "groupId": "Chalet"
+    },
+    "container_Lighthouse_DesignStuff_00046": {
+      "groupId": "Treatment"
+    },
+    "container_Lighthouse_Loot_00020": {
+      "groupId": "Treatment"
+    },
+    "container_Lighthouse_Loot_00022": {
+      "groupId": "Treatment"
+    },
+    "container_Lighthouse_Extension_Denis_00011": {
+      "groupId": "Lighthouse"
+    },
+    "container_Lighthouse_Extension_00075": {
+      "groupId": "Treatment"
+    },
+    "Lighthouse_Chalet_00016": {
+      "groupId": "Chalet"
+    },
+    "container_Lighthouse_DesignStuff_00007": {
+      "groupId": "Lighthouse"
+    },
+    "Lighthouse_WaterStation_00097": {
+      "groupId": "Treatment"
+    },
+    "container_Lighthouse_DesignStuff_00021": {
+      "groupId": "Lighthouse"
+    },
+    "container_Lighthouse_Extension_00070": {
+      "groupId": "Treatment"
+    },
+    "Lighthouse_SwampVillage_00087": {
+      "groupId": "DestroedVillage"
+    },
+    "Lighthouse_SwampVillage_00081": {
+      "groupId": "Village"
+    },
+    "container_Lighthouse_DesignStuff_00104": {
+      "groupId": "Village"
+    },
+    "container_Lighthouse_DesignStuff_00120": {
+      "groupId": "DestroedVillage"
+    },
+    "Lighthouse_SwampVillage_00071": {
+      "groupId": "Village"
+    },
+    "container_Lighthouse_DesignStuff_00107": {
+      "groupId": "Village"
+    },
+    "Lighthouse_SwampVillage_00084": {
+      "groupId": "Village"
+    },
+    "Lighthouse_SwampVillage_00070": {
+      "groupId": "Village"
+    },
+    "container_Lighthouse_DesignStuff_00106": {
+      "groupId": "Village"
+    },
+    "container_Lighthouse_DesignStuff_00105": {
+      "groupId": "Village"
+    },
+    "Lighthouse_SwampVillage_00076": {
+      "groupId": "Village"
+    },
+    "container_Lighthouse_DesignStuff_00119": {
+      "groupId": "DestroedVillage"
+    },
+    "container_Lighthouse_Extension_00107": {
+      "groupId": "Treatment"
+    },
+    "Lighthouse_Water_filter_facility_03_00017": {
+      "groupId": "Treatment"
+    },
+    "container_Lighthouse_DesignStuff_00040": {
+      "groupId": "Treatment"
+    },
+    "Lighthouse_Chalet_00048": {
+      "groupId": "Chalet"
+    },
+    "Lighthouse_Chalet_00044": {
+      "groupId": "Chalet"
+    },
+    "Lighthouse_Bus_Stop_00018": {
+      "groupId": "Village"
+    },
+    "Lighthouse_Main_00036": {
+      "groupId": "Rocks"
+    },
+    "Lighthouse_SummerHotel_00044": {
+      "groupId": "Chalet"
+    },
+    "container_Lighthouse_DesignStuff_00094": {
+      "groupId": "Rocks"
+    },
+    "container_Lighthouse_Extension_00109": {
+      "groupId": "Treatment"
+    },
+    "container_Lighthouse_Extension_00050": {
+      "groupId": "Lighthouse"
+    },
+    "Lighthouse_WaterStation_00123": {
+      "groupId": "Treatment"
+    },
+    "Lighthouse_WaterStation_00063": {
+      "groupId": "Other"
+    },
+    "container_Lighthouse_Extension_Denis_00012": {
+      "groupId": "Lighthouse"
+    },
+    "container_Lighthouse_DesignStuff_00045": {
+      "groupId": "Treatment"
+    },
+    "Lighthouse_WaterStation_00016": {
+      "groupId": "Treatment"
+    },
+    "container_Lighthouse_DesignStuff_00062": {
+      "groupId": "Chalet"
+    },
+    "container_Lighthouse_SummerHotel_00000": {
+      "groupId": "Chalet"
+    },
+    "container_Lighthouse_Loot_00033": {
+      "groupId": "Treatment"
+    },
+    "container_Lighthouse_DesignStuff_00020": {
+      "groupId": "Lighthouse"
+    },
+    "container_Lighthouse_Extension_00052": {
+      "groupId": "Lighthouse"
+    },
+    "Lighthouse_WaterStation_00092": {
+      "groupId": "Treatment"
+    },
+    "Lighthouse_SummerHotel_00043": {
+      "groupId": "Chalet"
+    },
+    "Lighthouse_DesignStuff_00021": {
+      "groupId": "Stashes"
+    },
+    "Lighthouse_WaterStation_00008": {
+      "groupId": "Stashes"
+    },
+    "Lighthouse_DesignStuff_00006": {
+      "groupId": "Stashes"
+    },
+    "Lighthouse_DesignStuff_00019": {
+      "groupId": "Stashes"
+    },
+    "container_Lighthouse_DesignStuff_00134": {
+      "groupId": "Stashes"
+    },
+    "Lighthouse_DesignStuff_00008": {
+      "groupId": "Stashes"
+    },
+    "Lighthouse_DesignStuff_00000": {
+      "groupId": "Stashes"
+    },
+    "container_Lighthouse_DesignStuff_00133": {
+      "groupId": "Stashes"
+    },
+    "Lighthouse_DesignStuff_00015": {
+      "groupId": "Stashes"
+    },
+    "Lighthouse_DesignStuff_00010": {
+      "groupId": "Stashes"
+    },
+    "Lighthouse_DesignStuff_00016": {
+      "groupId": "Stashes"
+    },
+    "Lighthouse_DesignStuff_00011": {
+      "groupId": "Stashes"
+    },
+    "Lighthouse_WaterStation_00117": {
+      "groupId": "Treatment"
+    },
+    "container_Lighthouse_DesignStuff_00072": {
+      "groupId": "Chalet"
+    },
+    "Lighthouse_Roads_00009": {
+      "groupId": "Longroad"
+    },
+    "container_Lighthouse_DesignStuff_00090": {
+      "groupId": "Longroad"
+    },
+    "Lighthouse_WaterStation_00102": {
+      "groupId": "Treatment"
+    },
+    "container_Lighthouse_Extension_Ksenia_00001": {
+      "groupId": "Lighthouse"
+    },
+    "container_Lighthouse_DesignStuff_00026": {
+      "groupId": "Lighthouse"
+    },
+    "Lighthouse_Terrain_00001": {
+      "groupId": "Chalet"
+    },
+    "Lighthouse_WaterStation_00127": {
+      "groupId": "Treatment"
+    },
+    "container_Lighthouse_DesignStuff_00073": {
+      "groupId": "Chalet"
+    },
+    "Lighthouse_WaterStation_00108": {
+      "groupId": "Treatment"
+    },
+    "Lighthouse_WaterStation_00122": {
+      "groupId": "Treatment"
+    },
+    "container_Lighthouse_Extension_00058": {
+      "groupId": "Lighthouse"
+    },
+    "Lighthouse_Terrain_00010": {
+      "groupId": "Treatment"
+    },
+    "container_Lighthouse_Extension_00049": {
+      "groupId": "Lighthouse"
+    },
+    "container_Lighthouse_Extension_00036": {
+      "groupId": "Lighthouse"
+    },
+    "Lighthouse_Terrain_00005": {
+      "groupId": "Chalet"
+    },
+    "Lighthouse_Terrain_00006": {
+      "groupId": "Chalet"
+    },
+    "Lighthouse_WaterStation_00124": {
+      "groupId": "Treatment"
+    },
+    "Lighthouse_Terrain_00002": {
+      "groupId": "Chalet"
+    },
+    "Lighthouse_Terrain_00008": {
+      "groupId": "Other"
+    },
+    "Lighthouse_WaterStation_00113": {
+      "groupId": "Treatment"
+    },
+    "Lighthouse_Terrain_00004": {
+      "groupId": "Chalet"
+    },
+    "Lighthouse_Terrain_00000": {
+      "groupId": "Chalet"
+    },
+    "Lighthouse_Terrain_00009": {
+      "groupId": "Village"
+    },
+    "container_Lighthouse_DesignStuff_00070": {
+      "groupId": "Chalet"
+    },
+    "Lighthouse_Terrain_00007": {
+      "groupId": "Village"
+    },
+    "container_Lighthouse_DesignStuff_00071": {
+      "groupId": "Chalet"
+    },
+    "container_Lighthouse_Extension_00074": {
+      "groupId": "Treatment"
+    },
+    "Lighthouse_Terrain_00003": {
+      "groupId": "Longroad"
+    },
+    "container_Lighthouse_Extension_00043": {
+      "groupId": "Lighthouse"
+    },
+    "Lighthouse_Chalet_00042": {
+      "groupId": "Chalet"
+    },
+    "Lighthouse_WaterStation_00079": {
+      "groupId": "Treatment"
+    },
+    "container_Lighthouse_Extension_00108": {
+      "groupId": "Treatment"
+    },
+    "container_Lighthouse_Extension_00059": {
+      "groupId": "Lighthouse"
+    },
+    "Lighthouse_SwampVillage_00075": {
+      "groupId": "Village"
+    },
+    "Lighthouse_Chalet_00053": {
+      "groupId": "Chalet"
+    },
+    "Lighthouse_SummerHotel_00055": {
+      "groupId": "Chalet"
+    },
+    "Lighthouse_SwampVillage_00068": {
+      "groupId": "Village"
+    },
+    "container_Lighthouse_Extension_00041": {
+      "groupId": "Lighthouse"
+    },
+    "Lighthouse_DesignStuff_00012": {
+      "groupId": "Stashes"
+    },
+    "Lighthouse_DesignStuff_00001": {
+      "groupId": "Stashes"
+    },
+    "container_Lighthouse_DesignStuff_00136": {
+      "groupId": "Stashes"
+    },
+    "container_Lighthouse_DesignStuff_00135": {
+      "groupId": "Stashes"
+    },
+    "Lighthouse_DesignStuff_00007": {
+      "groupId": "Stashes"
+    },
+    "Lighthouse_DesignStuff_00013": {
+      "groupId": "Stashes"
+    },
+    "Lighthouse_DesignStuff_00020": {
+      "groupId": "Stashes"
+    },
+    "Lighthouse_DesignStuff_00025": {
+      "groupId": "Stashes"
+    },
+    "Lighthouse_DesignStuff_00017": {
+      "groupId": "Stashes"
+    },
+    "Lighthouse_DesignStuff_00018": {
+      "groupId": "Stashes"
+    },
+    "Lighthouse_DesignStuff_00009": {
+      "groupId": "Stashes"
+    },
+    "Lighthouse_DesignStuff_00014": {
+      "groupId": "Stashes"
+    },
+    "Lighthouse_Terrain_00011": {
+      "groupId": ""
+    },
+    "container_Lighthouse_DesignStuff_00117": {
+      "groupId": "DestroedVillage"
+    },
+    "container_Lighthouse_DesignStuff_00069": {
+      "groupId": "Chalet"
+    },
+    "container_Lighthouse_DesignStuff_00118": {
+      "groupId": "DestroedVillage"
+    },
+    "Lighthouse_WaterStation_00013": {
+      "groupId": "Treatment"
+    },
+    "Lighthouse_Terrain_00013": {
+      "groupId": "Treatment"
+    },
+    "Lighthouse_Terrain_00012": {
+      "groupId": "Treatment"
+    },
+    "Lighthouse_SwampVillage_00089": {
+      "groupId": "DestroedVillage"
+    },
+    "container_Lighthouse_DesignStuff_00092": {
+      "groupId": "Rocks"
+    },
+    "Lighthouse_SummerHotel_00042": {
+      "groupId": "Chalet"
+    },
+    "Lighthouse_Main_00035": {
+      "groupId": "Rocks"
+    },
+    "Lighthouse_WaterStation_00083": {
+      "groupId": "Treatment"
+    }
+  }
+}

@@ -18,7 +18,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServerApp", "Applications\S
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExtCommands", "Plugins\ExtCommands\ExtCommands.csproj", "{320F8CF8-E4E8-4464-8FD6-FFB9C7E0A312}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestServer", "Plugins\TestServer\TestServer.csproj", "{9D4345B0-13ED-4590-8ED8-3D1143DE36EA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestServer", "Plugins\TestServer\TestServer.csproj", "{9D4345B0-13ED-4590-8ED8-3D1143DE36EA}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "ServerFiles", "ServerFiles\ServerFiles.shproj", "{A36DA3F1-070C-4D45-B0BB-4652AE0E3DAD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -56,5 +58,11 @@ Global
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B8FD124D-B478-48DB-AB34-F31D824078DF}
+	EndGlobalSection
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		ServerFiles\Shared.projitems*{04857310-dbe1-4591-b962-8f6e52dadc2b}*SharedItemsImports = 5
+		ServerFiles\Shared.projitems*{234aae88-6f31-46d6-a3dd-3ebfc50c3b90}*SharedItemsImports = 5
+		ServerFiles\Shared.projitems*{a36da3f1-070c-4d45-b0bb-4652ae0e3dad}*SharedItemsImports = 13
+		Shared\Shared.projitems*{dabbb05f-8940-431e-80e1-4b3cad365816}*SharedItemsImports = 5
 	EndGlobalSection
 EndGlobal

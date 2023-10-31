@@ -4,8 +4,6 @@ using System.Text;
 using SL = ServerLib;
 using SLH = ServerLib.Handlers;
 using SLU = ServerLib.Utilities;
-using SLC = ServerLib.Controllers;
-using SLW = ServerLib.Web;
 using ServerLib.Controllers;
 using ServerLib.Utilities;
 
@@ -16,7 +14,7 @@ namespace ConsoleApp
         static CVersion Version = new CVersion();
         static void LogDetailed(string text) 
         {
-            SLU.Debug.PrintInfo(text);
+            Debug.PrintInfo(text);
         }
         static void ConsoleSpacer()
         {
@@ -70,7 +68,7 @@ namespace ConsoleApp
             string endCheck = "not";
             while (endCheck.ToLower() != "exit")
             {
-                endCheck = Console.ReadLine();
+                endCheck = Console.ReadLine()!;
                 if (endCheck.StartsWith("!"))
                 {
                     CommandsController.Run(endCheck);
@@ -90,7 +88,7 @@ namespace ConsoleApp
             Debug.PrintDebug(args.LoadedAssembly.FullName, "AssemblyLoad");
         }
 
-        internal static Assembly AssemblyResolveEvent(object sender, ResolveEventArgs args)
+        internal static Assembly AssemblyResolveEvent(object? sender, ResolveEventArgs args)
         {
             var _FileName = "";
             try
@@ -98,18 +96,19 @@ namespace ConsoleApp
                 var assembly = new AssemblyName(args.Name).Name;
                 Debug.PrintDebug(assembly, "AssemblyResolveEvent");
                 _FileName = Path.Combine(File.ReadAllText("path.txt"), $"{assembly}.dll");
+                /*
+                 * This cannot happen!
                 // resources are embedded inside assembly
                 if (_FileName.Contains("resources"))
                 {
                     return null;
-                }
+                }*/
                 return Assembly.LoadFrom(_FileName);
             }
             catch (Exception e)
             {
                  Console.WriteLine(
-                    $"Cannot find a file(or file is not unlocked) named:\r\n{_FileName}\r\nWith an exception: {e.Message}\r\nApplication will close after pressing OK.",
-                    "File load error!");
+                    $"Cannot find a file(or file is not unlocked) named:\r\n{_FileName}\r\nWith an exception: {e.Message}\r\nApplication will close!");
                 Console.ReadLine();
             }
             return null;

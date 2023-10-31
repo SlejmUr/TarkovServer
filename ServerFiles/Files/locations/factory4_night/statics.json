@@ -1,0 +1,389 @@
+{
+  "containersGroups": {
+    "bad_sportN1_2_factory": {
+      "minContainers": 0,
+      "maxContainers": 2
+    },
+    "MedKitN1_2_factory": {
+      "minContainers": 0,
+      "maxContainers": 2
+    },
+    "weapon_box_N13_2_factory": {
+      "minContainers": 0,
+      "maxContainers": 2
+    },
+    "WoodenBoxN1_3_factory": {
+      "minContainers": 0,
+      "maxContainers": 2
+    },
+    "NearWithExit_2_factory": {
+      "minContainers": 0,
+      "maxContainers": 2
+    },
+    "scontainer_toolbox_N11_2_factory": {
+      "minContainers": 0,
+      "maxContainers": 2
+    },
+    "weapon_box_N6_2_factory": {
+      "minContainers": 0,
+      "maxContainers": 2
+    },
+    "CaseN3_factory": {
+      "minContainers": 0,
+      "maxContainers": 2
+    },
+    "WoodenBox_N3_3_factory": {
+      "minContainers": 0,
+      "maxContainers": 2
+    },
+    "weapon_box_N3_4_factory": {
+      "minContainers": 0,
+      "maxContainers": 2
+    },
+    "Factory_nearBalloon_2": {
+      "minContainers": 0,
+      "maxContainers": 2
+    },
+    "weapon_box_N8_2_factory": {
+      "minContainers": 0,
+      "maxContainers": 2
+    },
+    "Plastic_suitcase_N10_2_factory": {
+      "minContainers": 0,
+      "maxContainers": 2
+    },
+    "weapon_box_N9_2_factory": {
+      "minContainers": 0,
+      "maxContainers": 2
+    },
+    "weapon_box_N12_2_factory": {
+      "minContainers": 0,
+      "maxContainers": 2
+    },
+    "weapon_box_N4_2_factory": {
+      "minContainers": 0,
+      "maxContainers": 2
+    },
+    "weapon_box_N5_2_factory": {
+      "minContainers": 0,
+      "maxContainers": 2
+    },
+    "ToolkitboxN1_2_factory": {
+      "minContainers": 0,
+      "maxContainers": 2
+    },
+    "WoodeenBoxN2_2_factory": {
+      "minContainers": 0,
+      "maxContainers": 2
+    },
+    "weapon_box_N7_2_factory": {
+      "minContainers": 0,
+      "maxContainers": 2
+    },
+    "WoodenBoxN2_3_factory": {
+      "minContainers": 0,
+      "maxContainers": 2
+    },
+    "scontainer_ammo_grenade_N14_2_factory": {
+      "minContainers": 0,
+      "maxContainers": 2
+    },
+    "CasesN2_2_factory": {
+      "minContainers": 0,
+      "maxContainers": 2
+    }
+  },
+  "containers": {
+    "00158": {
+      "groupId": "weapon_box_N8_2_factory"
+    },
+    "container_Factory_DesignStuff_00026": {
+      "groupId": "weapon_box_N13_2_factory"
+    },
+    "00170": {
+      "groupId": ""
+    },
+    "00174": {
+      "groupId": ""
+    },
+    "00156": {
+      "groupId": "weapon_box_N7_2_factory"
+    },
+    "00190": {
+      "groupId": ""
+    },
+    "00176": {
+      "groupId": ""
+    },
+    "00149": {
+      "groupId": "WoodenBoxN1_3_factory"
+    },
+    "00157": {
+      "groupId": "weapon_box_N6_2_factory"
+    },
+    "container_Factory_DesignStuff_00012": {
+      "groupId": "weapon_box_N13_2_factory"
+    },
+    "00159": {
+      "groupId": "weapon_box_N9_2_factory"
+    },
+    "00185": {
+      "groupId": ""
+    },
+    "container_Factory_DesignStuff_00011": {
+      "groupId": "weapon_box_N5_2_factory"
+    },
+    "00151": {
+      "groupId": "weapon_box_N3_4_factory"
+    },
+    "container_Factory_DesignStuff_00034": {
+      "groupId": "bad_sportN1_2_factory"
+    },
+    "00184": {
+      "groupId": "WoodeenBoxN2_2_factory"
+    },
+    "container_Factory_DesignStuff_00043": {
+      "groupId": "weapon_box_N7_2_factory"
+    },
+    "container_Factory_DesignStuff_00005": {
+      "groupId": "WoodenBoxN1_3_factory"
+    },
+    "container_Factory_DesignStuff_00006": {
+      "groupId": "WoodenBoxN1_3_factory"
+    },
+    "00177": {
+      "groupId": ""
+    },
+    "container_Factory_DesignStuff_00015": {
+      "groupId": "weapon_box_N9_2_factory"
+    },
+    "container_Factory_DesignStuff_00010": {
+      "groupId": "weapon_box_N3_4_factory"
+    },
+    "00180": {
+      "groupId": "WoodenBox_N3_3_factory"
+    },
+    "container_Factory_DesignStuff_00007": {
+      "groupId": "WoodenBoxN2_3_factory"
+    },
+    "00165": {
+      "groupId": ""
+    },
+    "00166": {
+      "groupId": ""
+    },
+    "00168": {
+      "groupId": ""
+    },
+    "00167": {
+      "groupId": ""
+    },
+    "00169": {
+      "groupId": ""
+    },
+    "00160": {
+      "groupId": ""
+    },
+    "00181": {
+      "groupId": "bad_sportN1_2_factory"
+    },
+    "00171": {
+      "groupId": ""
+    },
+    "container_Factory_DesignStuff_00020": {
+      "groupId": "bad_sportN1_2_factory"
+    },
+    "00152": {
+      "groupId": "weapon_box_N4_2_factory"
+    },
+    "00154": {
+      "groupId": "weapon_box_N5_2_factory"
+    },
+    "00150": {
+      "groupId": "WoodenBoxN2_3_factory"
+    },
+    "00172": {
+      "groupId": ""
+    },
+    "container_Factory_DesignStuff_00014": {
+      "groupId": "weapon_box_N8_2_factory"
+    },
+    "00153": {
+      "groupId": "weapon_box_N3_4_factory"
+    },
+    "container_Factory_DesignStuff_00035": {
+      "groupId": "WoodeenBoxN2_2_factory"
+    },
+    "container_Factory_DesignStuff_00019": {
+      "groupId": "WoodenBox_N3_3_factory"
+    },
+    "00187": {
+      "groupId": "weapon_box_N12_2_factory"
+    },
+    "container_Factory_DesignStuff_00046": {
+      "groupId": "weapon_box_N9_2_factory"
+    },
+    "container_Factory_DesignStuff_00038": {
+      "groupId": "weapon_box_N4_2_factory"
+    },
+    "container_Factory_DesignStuff_00009": {
+      "groupId": "weapon_box_N3_4_factory"
+    },
+    "container_Factory_DesignStuff_00018": {
+      "groupId": "WoodenBox_N3_3_factory"
+    },
+    "container_Factory_DesignStuff_00040": {
+      "groupId": "weapon_box_N5_2_factory"
+    },
+    "container_Factory_DesignStuff_00045": {
+      "groupId": "weapon_box_N8_2_factory"
+    },
+    "00173": {
+      "groupId": ""
+    },
+    "00189": {
+      "groupId": ""
+    },
+    "container_Factory_DesignStuff_00039": {
+      "groupId": "weapon_box_N4_2_factory"
+    },
+    "00186": {
+      "groupId": ""
+    },
+    "container_Factory_DesignStuff_00041": {
+      "groupId": "weapon_box_N6_2_factory"
+    },
+    "container_Factory_DesignStuff_00013": {
+      "groupId": "weapon_box_N7_2_factory"
+    },
+    "container_Factory_DesignStuff_00008": {
+      "groupId": "WoodenBoxN2_3_factory"
+    },
+    "container_Factory_DesignStuff_00044": {
+      "groupId": "weapon_box_N7_2_factory"
+    },
+    "00155": {
+      "groupId": "weapon_box_N6_2_factory"
+    },
+    "container_Factory_DesignStuff_00022": {
+      "groupId": "weapon_box_N4_2_factory"
+    },
+    "container_Factory_DesignStuff_00042": {
+      "groupId": "weapon_box_N6_2_factory"
+    },
+    "container_Factory_DesignStuff_00021": {
+      "groupId": "WoodeenBoxN2_2_factory"
+    },
+    "container_Factory_DesignStuff_00025": {
+      "groupId": "weapon_box_N12_2_factory"
+    },
+    "container_Factory_DesignStuff_00049": {
+      "groupId": "weapon_box_N12_2_factory"
+    },
+    "container_Factory_DesignStuff_00036": {
+      "groupId": "WoodeenBoxN2_2_factory"
+    },
+    "00163": {
+      "groupId": ""
+    },
+    "00164": {
+      "groupId": ""
+    },
+    "00162": {
+      "groupId": ""
+    },
+    "00161": {
+      "groupId": ""
+    },
+    "container_Factory_DesignStuff_00037": {
+      "groupId": "weapon_box_N3_4_factory"
+    },
+    "container_Factory_DesignStuff_00050": {
+      "groupId": "weapon_box_N13_2_factory"
+    },
+    "00175": {
+      "groupId": ""
+    },
+    "00179": {
+      "groupId": "MedKitN1_2_factory"
+    },
+    "container_Factory_DesignStuff_00017": {
+      "groupId": "MedKitN1_2_factory"
+    },
+    "container_Factory_DesignStuff_00033": {
+      "groupId": "MedKitN1_2_factory"
+    },
+    "00188": {
+      "groupId": "scontainer_ammo_grenade_N14_2_factory"
+    },
+    "container_Factory_DesignStuff_00051": {
+      "groupId": "scontainer_ammo_grenade_N14_2_factory"
+    },
+    "container_Factory_DesignStuff_00027": {
+      "groupId": "scontainer_ammo_grenade_N14_2_factory"
+    },
+    "container_Factory_DesignStuff_00016": {
+      "groupId": "ToolkitboxN1_2_factory"
+    },
+    "00178": {
+      "groupId": "ToolkitboxN1_2_factory"
+    },
+    "container_Factory_DesignStuff_00024": {
+      "groupId": "scontainer_toolbox_N11_2_factory"
+    },
+    "container_Factory_DesignStuff_00032": {
+      "groupId": "ToolkitboxN1_2_factory"
+    },
+    "container_Factory_DesignStuff_00048": {
+      "groupId": "scontainer_toolbox_N11_2_factory"
+    },
+    "container_Factory_DesignStuff_00031": {
+      "groupId": "ToolkitboxN1_2_factory"
+    },
+    "00183": {
+      "groupId": "scontainer_toolbox_N11_2_factory"
+    },
+    "container_Factory_DesignStuff_00004": {
+      "groupId": "CaseN3_factory"
+    },
+    "00148": {
+      "groupId": "CaseN3_factory"
+    },
+    "container_Factory_DesignStuff_00030": {
+      "groupId": "CasesN2_2_factory"
+    },
+    "container_Factory_DesignStuff_00028": {
+      "groupId": "Factory_nearBalloon_2"
+    },
+    "container_Factory_DesignStuff_00002": {
+      "groupId": "NearWithExit_2_factory"
+    },
+    "container_Factory_DesignStuff_00047": {
+      "groupId": "Plastic_suitcase_N10_2_factory"
+    },
+    "00147": {
+      "groupId": "CasesN2_2_factory"
+    },
+    "container_Factory_DesignStuff_00003": {
+      "groupId": "CasesN2_2_factory"
+    },
+    "00182": {
+      "groupId": "Plastic_suitcase_N10_2_factory"
+    },
+    "container_Factory_DesignStuff_00001": {
+      "groupId": "Factory_nearBalloon_2"
+    },
+    "container_Factory_DesignStuff_00029": {
+      "groupId": "Factory_nearBalloon_2"
+    },
+    "00146": {
+      "groupId": "NearWithExit_2_factory"
+    },
+    "container_Factory_DesignStuff_00023": {
+      "groupId": "Plastic_suitcase_N10_2_factory"
+    },
+    "00145": {
+      "groupId": "Factory_nearBalloon_2"
+    }
+  }
+}

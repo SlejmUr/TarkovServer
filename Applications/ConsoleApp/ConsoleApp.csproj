@@ -8,7 +8,7 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <AssemblyVersion>1.0</AssemblyVersion>
     <FileVersion>1.0</FileVersion>
-    <Copyright>(c)2022 SlejmUr</Copyright>
+    <Copyright>(c)2023 SlejmUr</Copyright>
     <Product>Tarkov Server</Product>
     <Description>Tarkov Server in C#</Description>
     <Authors>SlejmUr</Authors>
@@ -22,34 +22,6 @@
     <ProjectReference Include="..\..\ServerLib\ServerLib.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-	<Reference Include="Assembly-CSharp">
-      <HintPath>..\..\Ref\Assembly-CSharp.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="bsg.componentace.compression.libs.zlib">
-      <HintPath>..\..\Ref\bsg.componentace.compression.libs.zlib.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="bsg.microsoft.extensions.objectpool">
-      <HintPath>..\..\Ref\bsg.microsoft.extensions.objectpool.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="bsg.system.buffers">
-      <HintPath>..\..\Ref\bsg.system.buffers.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\..\Ref\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine">
-      <HintPath>..\..\Ref\UnityEngine.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEngine.CoreModule">
-      <HintPath>..\..\Ref\UnityEngine.CoreModule.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-  </ItemGroup>
+  <Import Project="..\..\ServerFiles\Shared.projitems" Label="Shared" />
 
 </Project>

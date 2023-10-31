@@ -8,4 +8,10 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\ServerLib\ServerLib.csproj" />
+  </ItemGroup>
+
+  <Import Project="..\..\ServerFiles\Shared.projitems" Label="Shared" />
+
 </Project>

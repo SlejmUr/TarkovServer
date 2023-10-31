@@ -1,0 +1,1536 @@
+{
+  "containersGroups": {
+    "BagSport_N3_3_custom": {
+      "minContainers": 0,
+      "maxContainers": 2
+    },
+    "supplyBoxFood_N2_2_custom": {
+      "minContainers": 0,
+      "maxContainers": 2
+    },
+    "BagSport_N5_2_custom": {
+      "minContainers": 0,
+      "maxContainers": 2
+    },
+    "PlasticSuitcase_N13_2_custom": {
+      "minContainers": 0,
+      "maxContainers": 2
+    },
+    "WeapnoBox_N3_2_custom": {
+      "minContainers": 0,
+      "maxContainers": 2
+    },
+    "WeapnoBox_N7_2_custom": {
+      "minContainers": 0,
+      "maxContainers": 2
+    },
+    "BagSport_N19_3_custom": {
+      "minContainers": 0,
+      "maxContainers": 2
+    },
+    "WeapnoBox_N17_2_custom": {
+      "minContainers": 0,
+      "maxContainers": 2
+    },
+    "PlasticSuitcase_N22_2_custom": {
+      "minContainers": 0,
+      "maxContainers": 2
+    },
+    "BagSport_N20_2_custom": {
+      "minContainers": 0,
+      "maxContainers": 2
+    },
+    "WeapnoBox_N9_3_custom": {
+      "minContainers": 0,
+      "maxContainers": 2
+    },
+    "PlasticSuitcase_N5_2_custom": {
+      "minContainers": 0,
+      "maxContainers": 2
+    },
+    "BagSport_N16_3_custom": {
+      "minContainers": 0,
+      "maxContainers": 2
+    },
+    "PlasticSuitcase_N17_2_custom": {
+      "minContainers": 0,
+      "maxContainers": 2
+    },
+    "PlasticSuitcase_N16_2_custom": {
+      "minContainers": 0,
+      "maxContainers": 2
+    },
+    "BagSport_N12_2_custom": {
+      "minContainers": 0,
+      "maxContainers": 2
+    },
+    "PlasticSuitcase_N1_2_custom": {
+      "minContainers": 0,
+      "maxContainers": 2
+    },
+    "PlasticSuitcase_N20_2_custom": {
+      "minContainers": 0,
+      "maxContainers": 2
+    },
+    "BagSport_N11_2_custom": {
+      "minContainers": 0,
+      "maxContainers": 2
+    },
+    "WeapnoBox_N2_2_custom": {
+      "minContainers": 0,
+      "maxContainers": 2
+    },
+    "WeapnoBox_N8_2_custom": {
+      "minContainers": 0,
+      "maxContainers": 2
+    },
+    "BagSport_N4_2_custom": {
+      "minContainers": 0,
+      "maxContainers": 2
+    },
+    "BagSport_N6_2_custom": {
+      "minContainers": 0,
+      "maxContainers": 2
+    },
+    "BagSport_N7_2_custom": {
+      "minContainers": 0,
+      "maxContainers": 2
+    },
+    "PlasticSuitcase_N7_2_custom": {
+      "minContainers": 0,
+      "maxContainers": 2
+    },
+    "BagSport_N2_3_custom": {
+      "minContainers": 0,
+      "maxContainers": 2
+    },
+    "BagSport_N9_2_custom": {
+      "minContainers": 0,
+      "maxContainers": 2
+    },
+    "Blue_Barrel_customs": {
+      "minContainers": 12,
+      "maxContainers": 16
+    },
+    "PlasticSuitcase_N19_2_custom": {
+      "minContainers": 0,
+      "maxContainers": 2
+    },
+    "supplyBoxFood_N1_2_custom": {
+      "minContainers": 0,
+      "maxContainers": 2
+    },
+    "BagSport_N8_2_custom": {
+      "minContainers": 0,
+      "maxContainers": 2
+    },
+    "WeapnoBox_N15_2_custom": {
+      "minContainers": 0,
+      "maxContainers": 2
+    },
+    "PlasticSuitcase_N24_2_custom": {
+      "minContainers": 0,
+      "maxContainers": 2
+    },
+    "supplyBoxTools_N4_2_custom": {
+      "minContainers": 0,
+      "maxContainers": 2
+    },
+    "BagSport_N17_2_custom": {
+      "minContainers": 0,
+      "maxContainers": 2
+    },
+    "BagSport_N14_2_custom": {
+      "minContainers": 0,
+      "maxContainers": 2
+    },
+    "Medbag_N1_2_custom": {
+      "minContainers": 0,
+      "maxContainers": 2
+    },
+    "PlasticSuitcase_N6_2_custom": {
+      "minContainers": 0,
+      "maxContainers": 2
+    },
+    "PlasticSuitcase_N2_2_custom": {
+      "minContainers": 0,
+      "maxContainers": 2
+    },
+    "PlasticSuitcase_N11_2_custom": {
+      "minContainers": 0,
+      "maxContainers": 2
+    },
+    "PlasticSuitcase_N10_2_custom": {
+      "minContainers": 0,
+      "maxContainers": 2
+    },
+    "WeapnoBox_N5_2_custom": {
+      "minContainers": 0,
+      "maxContainers": 2
+    },
+    "PlasticSuitcase_N14_2_custom": {
+      "minContainers": 0,
+      "maxContainers": 2
+    },
+    "BagSport_N15_2_custom": {
+      "minContainers": 0,
+      "maxContainers": 2
+    },
+    "BagSport_N13_2_custom": {
+      "minContainers": 0,
+      "maxContainers": 2
+    },
+    "BagSport_N10_2_custom": {
+      "minContainers": 0,
+      "maxContainers": 2
+    },
+    "PlasticSuitcase_N18_2_custom": {
+      "minContainers": 0,
+      "maxContainers": 2
+    },
+    "PlasticSuitcase_N23_2_custom": {
+      "minContainers": 0,
+      "maxContainers": 2
+    },
+    "supplyBoxMedicine_N2_2_custom": {
+      "minContainers": 0,
+      "maxContainers": 2
+    },
+    "ContainerGrenade_N2_2_custom": {
+      "minContainers": 0,
+      "maxContainers": 2
+    },
+    "WeapnoBox_N11_3_custom": {
+      "minContainers": 0,
+      "maxContainers": 2
+    },
+    "PlasticSuitcase_N25_2_custom": {
+      "minContainers": 0,
+      "maxContainers": 2
+    },
+    "WeapnoBox_N1_2_custom": {
+      "minContainers": 0,
+      "maxContainers": 2
+    },
+    "PlasticSuitcase_N15_2_custom": {
+      "minContainers": 0,
+      "maxContainers": 2
+    },
+    "PlasticSuitcase_N3_2_custom": {
+      "minContainers": 0,
+      "maxContainers": 2
+    },
+    "WeapnoBox_N18_2_custom": {
+      "minContainers": 0,
+      "maxContainers": 2
+    },
+    "PlasticSuitcase_N9_2_custom": {
+      "minContainers": 0,
+      "maxContainers": 2
+    },
+    "WeapnoBox_N12_3_custom": {
+      "minContainers": 0,
+      "maxContainers": 2
+    },
+    "supplyBoxTools_N3_2_custom": {
+      "minContainers": 0,
+      "maxContainers": 2
+    },
+    "PlasticSuitcase_N21_2_custom": {
+      "minContainers": 0,
+      "maxContainers": 2
+    },
+    "WeapnoBox_N13_2_custom": {
+      "minContainers": 0,
+      "maxContainers": 2
+    },
+    "WeapnoBox_N6_2_custom": {
+      "minContainers": 0,
+      "maxContainers": 2
+    },
+    "WeapnoBox_N16_2_custom": {
+      "minContainers": 0,
+      "maxContainers": 2
+    },
+    "BagSport_N18_3_custom": {
+      "minContainers": 0,
+      "maxContainers": 2
+    },
+    "WeapnoBox_N10_2_custom": {
+      "minContainers": 0,
+      "maxContainers": 2
+    },
+    "BagSport_N1_2_custom": {
+      "minContainers": 0,
+      "maxContainers": 2
+    },
+    "WeapnoBox_N4_2_custom": {
+      "minContainers": 0,
+      "maxContainers": 2
+    },
+    "PlasticSuitcase_N12_2_custom": {
+      "minContainers": 0,
+      "maxContainers": 2
+    },
+    "ContainerGrenade_N1_2_custom": {
+      "minContainers": 0,
+      "maxContainers": 2
+    },
+    "PlasticSuitcase_N4_2_custom": {
+      "minContainers": 0,
+      "maxContainers": 2
+    },
+    "PlasticSuitcase_N8_2_custom": {
+      "minContainers": 0,
+      "maxContainers": 2
+    },
+    "WeapnoBox_N14_2_custom": {
+      "minContainers": 0,
+      "maxContainers": 2
+    }
+  },
+  "containers": {
+    "custom_Garage_00019": {
+      "groupId": ""
+    },
+    "custom_TrailerPark_00019": {
+      "groupId": ""
+    },
+    "custom_DesignStuff_00079": {
+      "groupId": ""
+    },
+    "Custom_Expansion_00008": {
+      "groupId": "supplyBoxTools_N4_2_custom"
+    },
+    "container_custom_DesignStuff_00070": {
+      "groupId": "WeapnoBox_N9_3_custom"
+    },
+    "custom_factoryStorageZone_00023": {
+      "groupId": ""
+    },
+    "custom_AZS_00047": {
+      "groupId": ""
+    },
+    "container_custom_DesignStuff_00069": {
+      "groupId": "WeapnoBox_N9_3_custom"
+    },
+    "container_custom_DesignStuff_00075": {
+      "groupId": "WeapnoBox_N12_3_custom"
+    },
+    "custom_Abandoned_Lab_00014": {
+      "groupId": ""
+    },
+    "container_custom_DesignStuff_00064": {
+      "groupId": "WeapnoBox_N4_2_custom"
+    },
+    "Custom_Expansion_00007": {
+      "groupId": ""
+    },
+    "custom_Obshezhitie_1_indoor_00069": {
+      "groupId": ""
+    },
+    "custom_Obshezhitie_1_indoor_00061": {
+      "groupId": ""
+    },
+    "custom_Tamozhnya_00006": {
+      "groupId": ""
+    },
+    "custom_Tamozhnya_00019": {
+      "groupId": ""
+    },
+    "custom_Tamozhnya_00018": {
+      "groupId": ""
+    },
+    "custom_Tamozhnya_00016": {
+      "groupId": ""
+    },
+    "custom_Tamozhnya_00017": {
+      "groupId": ""
+    },
+    "custom_Obshezhitie_2_indoor_00071": {
+      "groupId": "WeapnoBox_N12_3_custom"
+    },
+    "custom_multiScene_00068": {
+      "groupId": ""
+    },
+    "custom_Tamozhnya_00021": {
+      "groupId": ""
+    },
+    "custom_Tamozhnya_00022": {
+      "groupId": ""
+    },
+    "custom_Tamozhnya_00024": {
+      "groupId": ""
+    },
+    "custom_Tamozhnya_00023": {
+      "groupId": ""
+    },
+    "container_custom_DesignStuff_00062": {
+      "groupId": "WeapnoBox_N2_2_custom"
+    },
+    "custom_Obshezhitie_2_indoor_00082": {
+      "groupId": ""
+    },
+    "custom_Obshezhitie_2_indoor_00084": {
+      "groupId": ""
+    },
+    "custom_factoryStorageZone_00021": {
+      "groupId": "WeapnoBox_N14_2_custom"
+    },
+    "custom_Garage_00024": {
+      "groupId": "WeapnoBox_N8_2_custom"
+    },
+    "custom_Tamozhnya_00014": {
+      "groupId": ""
+    },
+    "custom_factoryStorageZone_00020": {
+      "groupId": ""
+    },
+    "custom_factoryStorageZone_00019": {
+      "groupId": ""
+    },
+    "custom_factoryStorageZone_00017": {
+      "groupId": ""
+    },
+    "custom_factoryStorageZone_00018": {
+      "groupId": ""
+    },
+    "custom_Obshezhitie_1_indoor_00037": {
+      "groupId": ""
+    },
+    "custom_Obshezhitie_1_indoor_00032": {
+      "groupId": "WeapnoBox_N13_2_custom"
+    },
+    "Custom_Construction_Factory_00002": {
+      "groupId": "supplyBoxTools_N3_2_custom"
+    },
+    "custom_TrailerPark_00018": {
+      "groupId": ""
+    },
+    "custom_AZS_00050": {
+      "groupId": ""
+    },
+    "custom_mazuto_00029": {
+      "groupId": ""
+    },
+    "container_custom_DesignStuff_00076": {
+      "groupId": "WeapnoBox_N13_2_custom"
+    },
+    "custom_mazuto_00041": {
+      "groupId": "WeapnoBox_N15_2_custom"
+    },
+    "custom_multiScene_00072": {
+      "groupId": "WeapnoBox_N11_3_custom"
+    },
+    "custom_Obshezhitie_2_indoor_00069": {
+      "groupId": ""
+    },
+    "custom_Obshezhitie_1_indoor_00041": {
+      "groupId": ""
+    },
+    "container_custom_DesignStuff_00071": {
+      "groupId": "WeapnoBox_N10_2_custom"
+    },
+    "custom_multiScene_00066": {
+      "groupId": ""
+    },
+    "custom_multiScene_00069": {
+      "groupId": "WeapnoBox_N17_2_custom"
+    },
+    "container_custom_DesignStuff_00080": {
+      "groupId": "WeapnoBox_N17_2_custom"
+    },
+    "container_custom_DesignStuff_00081": {
+      "groupId": "WeapnoBox_N18_2_custom"
+    },
+    "custom_Obshezhitie_1_indoor_00067": {
+      "groupId": ""
+    },
+    "custom_Obshezhitie_2_indoor_00086": {
+      "groupId": ""
+    },
+    "custom_Obshezhitie_1_indoor_00039": {
+      "groupId": ""
+    },
+    "Custom_ChemicalFactory_00011": {
+      "groupId": ""
+    },
+    "custom_factoryStorageZone_00022": {
+      "groupId": ""
+    },
+    "custom_mazuto_00039": {
+      "groupId": ""
+    },
+    "Custom_Construction_Factory_00001": {
+      "groupId": ""
+    },
+    "custom_Obshezhitie_2_indoor_00072": {
+      "groupId": ""
+    },
+    "Custom_Expansion_00012": {
+      "groupId": ""
+    },
+    "custom_Obshezhitie_1_indoor_00068": {
+      "groupId": ""
+    },
+    "custom_Obshezhitie_1_indoor_00034": {
+      "groupId": ""
+    },
+    "custom_Obshezhitie_1_indoor_00035": {
+      "groupId": ""
+    },
+    "custom_DesignStuff_00074": {
+      "groupId": "WeapnoBox_N5_2_custom"
+    },
+    "container_custom_DesignStuff_00073": {
+      "groupId": "WeapnoBox_N11_3_custom"
+    },
+    "custom_AZS_old_00009": {
+      "groupId": ""
+    },
+    "custom_AZS_00051": {
+      "groupId": "WeapnoBox_N10_2_custom"
+    },
+    "custom_Abandoned_Lab_00028": {
+      "groupId": ""
+    },
+    "custom_Abandoned_Lab_00027": {
+      "groupId": ""
+    },
+    "custom_Abandoned_Lab_00025": {
+      "groupId": ""
+    },
+    "custom_Abandoned_Lab_00026": {
+      "groupId": ""
+    },
+    "custom_Obshezhitie_2_indoor_00089": {
+      "groupId": ""
+    },
+    "container_custom_DesignStuff_00072": {
+      "groupId": "WeapnoBox_N11_3_custom"
+    },
+    "custom_Obshezhitie_2_indoor_00059": {
+      "groupId": ""
+    },
+    "custom_Obshezhitie_2_indoor_00087": {
+      "groupId": ""
+    },
+    "custom_Tamozhnya_00025": {
+      "groupId": ""
+    },
+    "container_custom_DesignStuff_00078": {
+      "groupId": "WeapnoBox_N15_2_custom"
+    },
+    "Custom_Construction_Factory_00004": {
+      "groupId": "supplyBoxFood_N1_2_custom"
+    },
+    "custom_Obshezhitie_2_indoor_00088": {
+      "groupId": ""
+    },
+    "custom_Abandoned_Lab_00013": {
+      "groupId": ""
+    },
+    "custom_Obshezhitie_2_indoor_00090": {
+      "groupId": "WeapnoBox_N18_2_custom"
+    },
+    "container_custom_DesignStuff_00003": {
+      "groupId": "supplyBoxTools_N3_2_custom"
+    },
+    "custom_AZS_00052": {
+      "groupId": "WeapnoBox_N3_2_custom"
+    },
+    "custom_Obshezhitie_2_indoor_00064": {
+      "groupId": ""
+    },
+    "custom_Obshezhitie_2_indoor_00063": {
+      "groupId": ""
+    },
+    "custom_Obshezhitie_2_indoor_00061": {
+      "groupId": ""
+    },
+    "custom_Obshezhitie_2_indoor_00062": {
+      "groupId": ""
+    },
+    "custom_DesignStuff_00083": {
+      "groupId": ""
+    },
+    "container_custom_DesignStuff_00068": {
+      "groupId": "WeapnoBox_N8_2_custom"
+    },
+    "custom_Obshezhitie_1_indoor_00045": {
+      "groupId": ""
+    },
+    "custom_Obshezhitie_2_indoor_00068": {
+      "groupId": ""
+    },
+    "custom_Obshezhitie_2_indoor_00067": {
+      "groupId": ""
+    },
+    "custom_Obshezhitie_2_indoor_00065": {
+      "groupId": ""
+    },
+    "custom_Obshezhitie_2_indoor_00066": {
+      "groupId": ""
+    },
+    "container_custom_DesignStuff_00032": {
+      "groupId": "supplyBoxFood_N2_2_custom"
+    },
+    "container_custom_DesignStuff_00066": {
+      "groupId": "WeapnoBox_N6_2_custom"
+    },
+    "custom_Obshezhitie_2_indoor_00055": {
+      "groupId": ""
+    },
+    "custom_Obshezhitie_1_indoor_00046": {
+      "groupId": ""
+    },
+    "custom_multiScene_00070": {
+      "groupId": ""
+    },
+    "custom_Obshezhitie_2_indoor_00054": {
+      "groupId": ""
+    },
+    "custom_Obshezhitie_2_indoor_00053": {
+      "groupId": ""
+    },
+    "custom_Obshezhitie_2_indoor_00051": {
+      "groupId": ""
+    },
+    "custom_Obshezhitie_2_indoor_00052": {
+      "groupId": ""
+    },
+    "container_custom_DesignStuff_00074": {
+      "groupId": "WeapnoBox_N12_3_custom"
+    },
+    "custom_mazuto_00030": {
+      "groupId": ""
+    },
+    "custom_Obshezhitie_00034": {
+      "groupId": ""
+    },
+    "custom_Obshezhitie_1_indoor_00053": {
+      "groupId": ""
+    },
+    "custom_Obshezhitie_1_indoor_00054": {
+      "groupId": ""
+    },
+    "custom_Obshezhitie_1_indoor_00056": {
+      "groupId": ""
+    },
+    "custom_Obshezhitie_1_indoor_00055": {
+      "groupId": ""
+    },
+    "custom_Obshezhitie_2_indoor_00056": {
+      "groupId": ""
+    },
+    "custom_Obshezhitie_2_indoor_00079": {
+      "groupId": ""
+    },
+    "custom_Tamozhnya_00015": {
+      "groupId": ""
+    },
+    "container_custom_DesignStuff_00067": {
+      "groupId": "WeapnoBox_N7_2_custom"
+    },
+    "custom_multiScene_00054": {
+      "groupId": ""
+    },
+    "custom_Tamozhnya_00012": {
+      "groupId": "WeapnoBox_N2_2_custom"
+    },
+    "custom_Pump_Station_00008": {
+      "groupId": ""
+    },
+    "custom_Obshezhitie_2_indoor_00078": {
+      "groupId": ""
+    },
+    "custom_Obshezhitie_1_indoor_00066": {
+      "groupId": ""
+    },
+    "custom_Obshezhitie_1_indoor_00057": {
+      "groupId": ""
+    },
+    "custom_mazuto_00032": {
+      "groupId": ""
+    },
+    "custom_Obshezhitie_2_indoor_00070": {
+      "groupId": ""
+    },
+    "Custom_Construction_Factory_00003": {
+      "groupId": "supplyBoxMedicine_N2_2_custom"
+    },
+    "custom_mazuto_00031": {
+      "groupId": "WeapnoBox_N1_2_custom"
+    },
+    "custom_AZS_00049": {
+      "groupId": ""
+    },
+    "custom_Abandoned_Lab_00017": {
+      "groupId": ""
+    },
+    "custom_Abandoned_Lab_00018": {
+      "groupId": ""
+    },
+    "custom_Abandoned_Lab_00020": {
+      "groupId": ""
+    },
+    "custom_Abandoned_Lab_00019": {
+      "groupId": ""
+    },
+    "custom_Obshezhitie_2_indoor_00057": {
+      "groupId": ""
+    },
+    "custom_Obshezhitie_2_indoor_00075": {
+      "groupId": ""
+    },
+    "custom_Abandoned_Lab_00024": {
+      "groupId": ""
+    },
+    "custom_Abandoned_Lab_00023": {
+      "groupId": ""
+    },
+    "custom_Abandoned_Lab_00021": {
+      "groupId": ""
+    },
+    "custom_Abandoned_Lab_00022": {
+      "groupId": ""
+    },
+    "custom_multiScene_00065": {
+      "groupId": ""
+    },
+    "custom_multiScene_00062": {
+      "groupId": "WeapnoBox_N4_2_custom"
+    },
+    "custom_Tamozhnya_00011": {
+      "groupId": ""
+    },
+    "container_custom_DesignStuff_00063": {
+      "groupId": "WeapnoBox_N3_2_custom"
+    },
+    "Custom_Expansion_00009": {
+      "groupId": ""
+    },
+    "custom_Obshezhitie_1_indoor_00058": {
+      "groupId": ""
+    },
+    "container_custom_DesignStuff_00001": {
+      "groupId": "supplyBoxFood_N1_2_custom"
+    },
+    "container_custom_DesignStuff_00079": {
+      "groupId": "WeapnoBox_N16_2_custom"
+    },
+    "custom_DesignStuff_00081": {
+      "groupId": "WeapnoBox_N9_3_custom"
+    },
+    "custom_Obshezhitie_2_indoor_00073": {
+      "groupId": ""
+    },
+    "custom_Obshezhitie_1_indoor_00060": {
+      "groupId": ""
+    },
+    "custom_Pump_Station_00005": {
+      "groupId": ""
+    },
+    "custom_Obshezhitie_1_indoor_00044": {
+      "groupId": ""
+    },
+    "custom_AZS_00044": {
+      "groupId": ""
+    },
+    "container_custom_DesignStuff_00004": {
+      "groupId": "supplyBoxTools_N4_2_custom"
+    },
+    "custom_Obshezhitie_2_indoor_00081": {
+      "groupId": ""
+    },
+    "Custom_Expansion_00005": {
+      "groupId": ""
+    },
+    "custom_multiScene_00060": {
+      "groupId": ""
+    },
+    "container_custom_DesignStuff_00061": {
+      "groupId": "WeapnoBox_N1_2_custom"
+    },
+    "custom_factoryStorageZone_00016": {
+      "groupId": ""
+    },
+    "custom_AZS_00048": {
+      "groupId": ""
+    },
+    "custom_mazuto_00033": {
+      "groupId": ""
+    },
+    "custom_Obshezhitie_1_indoor_00050": {
+      "groupId": ""
+    },
+    "custom_Obshezhitie_1_indoor_00049": {
+      "groupId": ""
+    },
+    "custom_Obshezhitie_1_indoor_00051": {
+      "groupId": ""
+    },
+    "custom_Obshezhitie_1_indoor_00052": {
+      "groupId": ""
+    },
+    "custom_Obshezhitie_2_indoor_00085": {
+      "groupId": ""
+    },
+    "custom_Garage_00018": {
+      "groupId": ""
+    },
+    "custom_Garage_00025": {
+      "groupId": "WeapnoBox_N16_2_custom"
+    },
+    "container_custom_DesignStuff_00065": {
+      "groupId": "WeapnoBox_N5_2_custom"
+    },
+    "custom_TrailerPark_00020": {
+      "groupId": ""
+    },
+    "container_custom_DesignStuff_00077": {
+      "groupId": "WeapnoBox_N14_2_custom"
+    },
+    "custom_multiScene_00061": {
+      "groupId": ""
+    },
+    "custom_Obshezhitie_1_indoor_00038": {
+      "groupId": ""
+    },
+    "custom_Obshezhitie_1_indoor_00063": {
+      "groupId": ""
+    },
+    "custom_Obshezhitie_1_indoor_00062": {
+      "groupId": ""
+    },
+    "custom_Obshezhitie_1_indoor_00064": {
+      "groupId": ""
+    },
+    "custom_Obshezhitie_1_indoor_00065": {
+      "groupId": ""
+    },
+    "custom_Obshezhitie_2_indoor_00058": {
+      "groupId": ""
+    },
+    "custom_multiScene_00075": {
+      "groupId": "supplyBoxFood_N2_2_custom"
+    },
+    "custom_Abandoned_Lab_00015": {
+      "groupId": ""
+    },
+    "custom_Obshezhitie_2_indoor_00074": {
+      "groupId": ""
+    },
+    "custom_DesignStuff_00076": {
+      "groupId": "WeapnoBox_N7_2_custom"
+    },
+    "custom_multiScene_00057": {
+      "groupId": "WeapnoBox_N6_2_custom"
+    },
+    "custom_DesignStuff_00078": {
+      "groupId": ""
+    },
+    "custom_multiScene_00063": {
+      "groupId": ""
+    },
+    "container_custom_DesignStuff_00002": {
+      "groupId": "supplyBoxMedicine_N2_2_custom"
+    },
+    "custom_Obshezhitie_1_indoor_00048": {
+      "groupId": ""
+    },
+    "custom_Abandoned_Lab_00012": {
+      "groupId": ""
+    },
+    "custom_Garage_00021": {
+      "groupId": ""
+    },
+    "Custom_Expansion_00011": {
+      "groupId": ""
+    },
+    "custom_AZS_old_00010": {
+      "groupId": ""
+    },
+    "custom_Garage_00023": {
+      "groupId": ""
+    },
+    "custom_mazuto_00037": {
+      "groupId": "Medbag_N1_2_custom"
+    },
+    "custom_AZS_00046": {
+      "groupId": ""
+    },
+    "container_custom_DesignStuff_00060": {
+      "groupId": "Medbag_N1_2_custom"
+    },
+    "custom_Obshezhitie_2_indoor_00077": {
+      "groupId": ""
+    },
+    "custom_mazuto_00043": {
+      "groupId": ""
+    },
+    "custom_DesignStuff_00046": {
+      "groupId": ""
+    },
+    "custom_DesignStuff_00080": {
+      "groupId": ""
+    },
+    "custom_DesignStuff_00048": {
+      "groupId": ""
+    },
+    "custom_Obshezhitie_1_indoor_00047": {
+      "groupId": ""
+    },
+    "custom_DesignStuff_00049": {
+      "groupId": ""
+    },
+    "custom_mazuto_00038": {
+      "groupId": ""
+    },
+    "custom_DesignStuff_00064": {
+      "groupId": ""
+    },
+    "custom_mazuto_00036": {
+      "groupId": ""
+    },
+    "custom_DesignStuff_00071": {
+      "groupId": ""
+    },
+    "custom_DesignStuff_00082": {
+      "groupId": ""
+    },
+    "custom_DesignStuff_00070": {
+      "groupId": "PlasticSuitcase_N12_2_custom"
+    },
+    "container_custom_DesignStuff_00014": {
+      "groupId": "PlasticSuitcase_N10_2_custom"
+    },
+    "custom_DesignStuff_00051": {
+      "groupId": "PlasticSuitcase_N7_2_custom"
+    },
+    "container_custom_DesignStuff_00016": {
+      "groupId": "PlasticSuitcase_N12_2_custom"
+    },
+    "custom_DesignStuff_00059": {
+      "groupId": "PlasticSuitcase_N11_2_custom"
+    },
+    "container_custom_DesignStuff_00013": {
+      "groupId": "PlasticSuitcase_N9_2_custom"
+    },
+    "container_custom_DesignStuff_00015": {
+      "groupId": "PlasticSuitcase_N11_2_custom"
+    },
+    "container_custom_DesignStuff_00005": {
+      "groupId": "PlasticSuitcase_N1_2_custom"
+    },
+    "container_custom_DesignStuff_00010": {
+      "groupId": "PlasticSuitcase_N6_2_custom"
+    },
+    "custom_mazuto_00040": {
+      "groupId": "PlasticSuitcase_N9_2_custom"
+    },
+    "custom_DesignStuff_00038": {
+      "groupId": "PlasticSuitcase_N2_2_custom"
+    },
+    "container_custom_DesignStuff_00011": {
+      "groupId": "PlasticSuitcase_N7_2_custom"
+    },
+    "custom_DesignStuff_00053": {
+      "groupId": "PlasticSuitcase_N8_2_custom"
+    },
+    "custom_DesignStuff_00058": {
+      "groupId": "PlasticSuitcase_N10_2_custom"
+    },
+    "custom_DesignStuff_00043": {
+      "groupId": "PlasticSuitcase_N3_2_custom"
+    },
+    "custom_DesignStuff_00067": {
+      "groupId": ""
+    },
+    "custom_DesignStuff_00045": {
+      "groupId": "PlasticSuitcase_N6_2_custom"
+    },
+    "container_custom_DesignStuff_00008": {
+      "groupId": "PlasticSuitcase_N4_2_custom"
+    },
+    "container_custom_DesignStuff_00007": {
+      "groupId": "PlasticSuitcase_N3_2_custom"
+    },
+    "custom_DesignStuff_00040": {
+      "groupId": "PlasticSuitcase_N5_2_custom"
+    },
+    "container_custom_DesignStuff_00009": {
+      "groupId": "PlasticSuitcase_N5_2_custom"
+    },
+    "container_custom_DesignStuff_00006": {
+      "groupId": "PlasticSuitcase_N2_2_custom"
+    },
+    "container_custom_DesignStuff_00012": {
+      "groupId": "PlasticSuitcase_N8_2_custom"
+    },
+    "custom_DesignStuff_00036": {
+      "groupId": "PlasticSuitcase_N1_2_custom"
+    },
+    "custom_DesignStuff_00075": {
+      "groupId": ""
+    },
+    "custom_DesignStuff_00039": {
+      "groupId": "PlasticSuitcase_N4_2_custom"
+    },
+    "custom_Obshezhitie_1_indoor_00036": {
+      "groupId": ""
+    },
+    "container_custom_DesignStuff_00029": {
+      "groupId": "PlasticSuitcase_N25_2_custom"
+    },
+    "container_custom_DesignStuff_00026": {
+      "groupId": "PlasticSuitcase_N23_2_custom"
+    },
+    "container_custom_DesignStuff_00027": {
+      "groupId": "PlasticSuitcase_N24_2_custom"
+    },
+    "custom_DesignStuff_00041": {
+      "groupId": "PlasticSuitcase_N23_2_custom"
+    },
+    "container_custom_DesignStuff_00025": {
+      "groupId": "PlasticSuitcase_N22_2_custom"
+    },
+    "custom_DesignStuff_00072": {
+      "groupId": "PlasticSuitcase_N25_2_custom"
+    },
+    "custom_DesignStuff_00050": {
+      "groupId": "PlasticSuitcase_N24_2_custom"
+    },
+    "custom_DesignStuff_00035": {
+      "groupId": "PlasticSuitcase_N22_2_custom"
+    },
+    "custom_DesignStuff_00060": {
+      "groupId": ""
+    },
+    "custom_Tamozhnya_00007": {
+      "groupId": ""
+    },
+    "custom_Obshezhitie_1_indoor_00042": {
+      "groupId": ""
+    },
+    "custom_Tamozhnya_00008": {
+      "groupId": ""
+    },
+    "custom_Tamozhnya_00009": {
+      "groupId": ""
+    },
+    "custom_mazuto_00034": {
+      "groupId": ""
+    },
+    "custom_Obshezhitie_2_indoor_00060": {
+      "groupId": ""
+    },
+    "custom_mazuto_00047": {
+      "groupId": ""
+    },
+    "custom_Pump_Station_00006": {
+      "groupId": ""
+    },
+    "custom_mazuto_00035": {
+      "groupId": ""
+    },
+    "custom_Pump_Station_00007": {
+      "groupId": ""
+    },
+    "custom_mazuto_00046": {
+      "groupId": ""
+    },
+    "custom_Obshezhitie_2_indoor_00080": {
+      "groupId": ""
+    },
+    "custom_multiScene_00074": {
+      "groupId": ""
+    },
+    "custom_multiScene_00058": {
+      "groupId": ""
+    },
+    "custom_Abandoned_Lab_00016": {
+      "groupId": ""
+    },
+    "container_custom_DesignStuff_00021": {
+      "groupId": "PlasticSuitcase_N18_2_custom"
+    },
+    "custom_DesignStuff_00077": {
+      "groupId": "PlasticSuitcase_N21_2_custom"
+    },
+    "custom_DesignStuff_00061": {
+      "groupId": "PlasticSuitcase_N19_2_custom"
+    },
+    "container_custom_DesignStuff_00017": {
+      "groupId": "PlasticSuitcase_N13_2_custom"
+    },
+    "container_custom_DesignStuff_00019": {
+      "groupId": "PlasticSuitcase_N15_2_custom"
+    },
+    "custom_DesignStuff_00037": {
+      "groupId": "PlasticSuitcase_N13_2_custom"
+    },
+    "custom_DesignStuff_00042": {
+      "groupId": "PlasticSuitcase_N15_2_custom"
+    },
+    "custom_DesignStuff_00054": {
+      "groupId": ""
+    },
+    "container_custom_DesignStuff_00024": {
+      "groupId": "PlasticSuitcase_N21_2_custom"
+    },
+    "Custom_Expansion_00006": {
+      "groupId": "PlasticSuitcase_N14_2_custom"
+    },
+    "custom_DesignStuff_00052": {
+      "groupId": "PlasticSuitcase_N17_2_custom"
+    },
+    "container_custom_DesignStuff_00020": {
+      "groupId": "PlasticSuitcase_N16_2_custom"
+    },
+    "container_custom_DesignStuff_00018": {
+      "groupId": "PlasticSuitcase_N14_2_custom"
+    },
+    "container_custom_DesignStuff_00082": {
+      "groupId": "PlasticSuitcase_N17_2_custom"
+    },
+    "custom_DesignStuff_00065": {
+      "groupId": ""
+    },
+    "container_custom_DesignStuff_00023": {
+      "groupId": "PlasticSuitcase_N20_2_custom"
+    },
+    "custom_DesignStuff_00044": {
+      "groupId": "PlasticSuitcase_N16_2_custom"
+    },
+    "container_custom_DesignStuff_00022": {
+      "groupId": "PlasticSuitcase_N19_2_custom"
+    },
+    "custom_DesignStuff_00057": {
+      "groupId": "PlasticSuitcase_N18_2_custom"
+    },
+    "custom_DesignStuff_00066": {
+      "groupId": "PlasticSuitcase_N20_2_custom"
+    },
+    "Custom_Expansion_00010": {
+      "groupId": ""
+    },
+    "custom_mazuto_00042": {
+      "groupId": ""
+    },
+    "custom_multiScene_00064": {
+      "groupId": ""
+    },
+    "custom_DesignStuff_00068": {
+      "groupId": ""
+    },
+    "custom_DesignStuff_00062": {
+      "groupId": ""
+    },
+    "custom_AZS_00045": {
+      "groupId": ""
+    },
+    "custom_DesignStuff_00047": {
+      "groupId": ""
+    },
+    "custom_Obshezhitie_1_indoor_00043": {
+      "groupId": ""
+    },
+    "custom_DesignStuff_00055": {
+      "groupId": ""
+    },
+    "custom_DesignStuff_00073": {
+      "groupId": ""
+    },
+    "custom_DesignStuff_00063": {
+      "groupId": ""
+    },
+    "custom_DesignStuff_00069": {
+      "groupId": ""
+    },
+    "custom_mazuto_00045": {
+      "groupId": ""
+    },
+    "custom_mazuto_00044": {
+      "groupId": ""
+    },
+    "container_custom_DesignStuff_00099": {
+      "groupId": "Blue_Barrel_customs"
+    },
+    "container_custom_DesignStuff_00095": {
+      "groupId": "Blue_Barrel_customs"
+    },
+    "container_custom_DesignStuff_00089": {
+      "groupId": "Blue_Barrel_customs"
+    },
+    "container_custom_DesignStuff_00122": {
+      "groupId": "Blue_Barrel_customs"
+    },
+    "container_custom_DesignStuff_00103": {
+      "groupId": "Blue_Barrel_customs"
+    },
+    "container_custom_DesignStuff_00100": {
+      "groupId": "Blue_Barrel_customs"
+    },
+    "container_custom_DesignStuff_00090": {
+      "groupId": "Blue_Barrel_customs"
+    },
+    "container_custom_DesignStuff_00112": {
+      "groupId": "Blue_Barrel_customs"
+    },
+    "custom_DesignStuff_00099": {
+      "groupId": "Blue_Barrel_customs"
+    },
+    "container_custom_DesignStuff_00086": {
+      "groupId": "Blue_Barrel_customs"
+    },
+    "container_custom_DesignStuff_00094": {
+      "groupId": "Blue_Barrel_customs"
+    },
+    "custom_DesignStuff_00101": {
+      "groupId": "Blue_Barrel_customs"
+    },
+    "container_custom_DesignStuff_00104": {
+      "groupId": "Blue_Barrel_customs"
+    },
+    "custom_DesignStuff_00096": {
+      "groupId": "Blue_Barrel_customs"
+    },
+    "container_custom_DesignStuff_00085": {
+      "groupId": "Blue_Barrel_customs"
+    },
+    "container_custom_DesignStuff_00093": {
+      "groupId": "Blue_Barrel_customs"
+    },
+    "container_custom_DesignStuff_00108": {
+      "groupId": "Blue_Barrel_customs"
+    },
+    "container_custom_DesignStuff_00116": {
+      "groupId": "Blue_Barrel_customs"
+    },
+    "container_custom_DesignStuff_00092": {
+      "groupId": "Blue_Barrel_customs"
+    },
+    "container_custom_DesignStuff_00097": {
+      "groupId": "Blue_Barrel_customs"
+    },
+    "container_custom_DesignStuff_00096": {
+      "groupId": "Blue_Barrel_customs"
+    },
+    "custom_DesignStuff_00103": {
+      "groupId": "Blue_Barrel_customs"
+    },
+    "container_custom_DesignStuff_00088": {
+      "groupId": "Blue_Barrel_customs"
+    },
+    "container_custom_DesignStuff_00106": {
+      "groupId": "Blue_Barrel_customs"
+    },
+    "custom_DesignStuff_00098": {
+      "groupId": "Blue_Barrel_customs"
+    },
+    "container_custom_DesignStuff_00123": {
+      "groupId": "Blue_Barrel_customs"
+    },
+    "container_custom_DesignStuff_00117": {
+      "groupId": "Blue_Barrel_customs"
+    },
+    "custom_DesignStuff_00110": {
+      "groupId": "Blue_Barrel_customs"
+    },
+    "custom_DesignStuff_00112": {
+      "groupId": "Blue_Barrel_customs"
+    },
+    "container_custom_DesignStuff_00115": {
+      "groupId": "Blue_Barrel_customs"
+    },
+    "container_custom_DesignStuff_00102": {
+      "groupId": "Blue_Barrel_customs"
+    },
+    "container_custom_DesignStuff_00091": {
+      "groupId": "Blue_Barrel_customs"
+    },
+    "container_custom_DesignStuff_00107": {
+      "groupId": "Blue_Barrel_customs"
+    },
+    "container_custom_DesignStuff_00083": {
+      "groupId": "Blue_Barrel_customs"
+    },
+    "container_custom_DesignStuff_00098": {
+      "groupId": "Blue_Barrel_customs"
+    },
+    "custom_DesignStuff_00109": {
+      "groupId": "Blue_Barrel_customs"
+    },
+    "custom_DesignStuff_00114": {
+      "groupId": "Blue_Barrel_customs"
+    },
+    "custom_DesignStuff_00097": {
+      "groupId": "Blue_Barrel_customs"
+    },
+    "custom_DesignStuff_00116": {
+      "groupId": "Blue_Barrel_customs"
+    },
+    "container_custom_DesignStuff_00110": {
+      "groupId": "Blue_Barrel_customs"
+    },
+    "container_custom_DesignStuff_00120": {
+      "groupId": "Blue_Barrel_customs"
+    },
+    "container_custom_DesignStuff_00119": {
+      "groupId": "Blue_Barrel_customs"
+    },
+    "container_custom_DesignStuff_00087": {
+      "groupId": "Blue_Barrel_customs"
+    },
+    "custom_DesignStuff_00105": {
+      "groupId": "Blue_Barrel_customs"
+    },
+    "container_custom_DesignStuff_00121": {
+      "groupId": "Blue_Barrel_customs"
+    },
+    "container_custom_DesignStuff_00124": {
+      "groupId": "Blue_Barrel_customs"
+    },
+    "container_custom_DesignStuff_00113": {
+      "groupId": "Blue_Barrel_customs"
+    },
+    "container_custom_DesignStuff_00111": {
+      "groupId": "Blue_Barrel_customs"
+    },
+    "container_custom_DesignStuff_00114": {
+      "groupId": "Blue_Barrel_customs"
+    },
+    "custom_DesignStuff_00113": {
+      "groupId": "Blue_Barrel_customs"
+    },
+    "container_custom_DesignStuff_00101": {
+      "groupId": "Blue_Barrel_customs"
+    },
+    "container_custom_DesignStuff_00084": {
+      "groupId": "Blue_Barrel_customs"
+    },
+    "container_custom_DesignStuff_00109": {
+      "groupId": "Blue_Barrel_customs"
+    },
+    "container_custom_DesignStuff_00105": {
+      "groupId": "Blue_Barrel_customs"
+    },
+    "custom_DesignStuff_00094": {
+      "groupId": "Blue_Barrel_customs"
+    },
+    "container_custom_DesignStuff_00118": {
+      "groupId": "Blue_Barrel_customs"
+    },
+    "container_custom_DesignStuff_00053": {
+      "groupId": "BagSport_N16_3_custom"
+    },
+    "custom_multiScene_00071": {
+      "groupId": ""
+    },
+    "custom_DesignStuff_00085": {
+      "groupId": "BagSport_N20_2_custom"
+    },
+    "custom_Obshezhitie_2_indoor_00050": {
+      "groupId": "BagSport_N10_2_custom"
+    },
+    "custom_Garage_00020": {
+      "groupId": "BagSport_N6_2_custom"
+    },
+    "custom_multiScene_00076": {
+      "groupId": "BagSport_N2_3_custom"
+    },
+    "container_custom_DesignStuff_00040": {
+      "groupId": "BagSport_N6_2_custom"
+    },
+    "custom_Tamozhnya_00020": {
+      "groupId": "BagSport_N14_2_custom"
+    },
+    "container_custom_DesignStuff_00048": {
+      "groupId": "BagSport_N12_2_custom"
+    },
+    "custom_DesignStuff_00090": {
+      "groupId": ""
+    },
+    "custom_AZS_00043": {
+      "groupId": "BagSport_N17_2_custom"
+    },
+    "custom_DesignStuff_00088": {
+      "groupId": "BagSport_N1_2_custom"
+    },
+    "container_custom_DesignStuff_00042": {
+      "groupId": "BagSport_N8_2_custom"
+    },
+    "container_custom_DesignStuff_00047": {
+      "groupId": ""
+    },
+    "custom_multiScene_00056": {
+      "groupId": ""
+    },
+    "custom_multiScene_00059": {
+      "groupId": ""
+    },
+    "custom_Obshezhitie_1_indoor_00040": {
+      "groupId": "BagSport_N4_2_custom"
+    },
+    "container_custom_DesignStuff_00057": {
+      "groupId": "BagSport_N19_3_custom"
+    },
+    "container_custom_DesignStuff_00038": {
+      "groupId": "BagSport_N4_2_custom"
+    },
+    "container_custom_DesignStuff_00058": {
+      "groupId": "BagSport_N19_3_custom"
+    },
+    "container_custom_DesignStuff_00059": {
+      "groupId": "BagSport_N20_2_custom"
+    },
+    "container_custom_DesignStuff_00036": {
+      "groupId": "BagSport_N3_3_custom"
+    },
+    "custom_Tamozhnya_00013": {
+      "groupId": "BagSport_N16_3_custom"
+    },
+    "custom_DesignStuff_00089": {
+      "groupId": "BagSport_N11_2_custom"
+    },
+    "container_custom_DesignStuff_00034": {
+      "groupId": "BagSport_N2_3_custom"
+    },
+    "container_custom_DesignStuff_00033": {
+      "groupId": "BagSport_N1_2_custom"
+    },
+    "custom_DesignStuff_00091": {
+      "groupId": "BagSport_N3_3_custom"
+    },
+    "container_custom_DesignStuff_00037": {
+      "groupId": "BagSport_N3_3_custom"
+    },
+    "custom_DesignStuff_00092": {
+      "groupId": "BagSport_N8_2_custom"
+    },
+    "container_custom_DesignStuff_00039": {
+      "groupId": "BagSport_N5_2_custom"
+    },
+    "custom_multiScene_00055": {
+      "groupId": ""
+    },
+    "container_custom_DesignStuff_00049": {
+      "groupId": "BagSport_N13_2_custom"
+    },
+    "custom_multiScene_00073": {
+      "groupId": ""
+    },
+    "container_custom_DesignStuff_00043": {
+      "groupId": "BagSport_N8_2_custom"
+    },
+    "container_custom_DesignStuff_00035": {
+      "groupId": "BagSport_N2_3_custom"
+    },
+    "container_custom_DesignStuff_00052": {
+      "groupId": "BagSport_N15_2_custom"
+    },
+    "custom_Garage_00022": {
+      "groupId": ""
+    },
+    "custom_DesignStuff_00087": {
+      "groupId": "BagSport_N9_2_custom"
+    },
+    "custom_Obshezhitie_1_indoor_00033": {
+      "groupId": "BagSport_N12_2_custom"
+    },
+    "custom_DesignStuff_00093": {
+      "groupId": "BagSport_N19_3_custom"
+    },
+    "container_custom_DesignStuff_00046": {
+      "groupId": "BagSport_N11_2_custom"
+    },
+    "container_custom_DesignStuff_00056": {
+      "groupId": "BagSport_N18_3_custom"
+    },
+    "container_custom_DesignStuff_00054": {
+      "groupId": "BagSport_N16_3_custom"
+    },
+    "custom_DesignStuff_00086": {
+      "groupId": "BagSport_N13_2_custom"
+    },
+    "custom_Obshezhitie_2_indoor_00076": {
+      "groupId": ""
+    },
+    "custom_TrailerPark_00021": {
+      "groupId": "BagSport_N7_2_custom"
+    },
+    "container_custom_DesignStuff_00051": {
+      "groupId": ""
+    },
+    "container_custom_DesignStuff_00050": {
+      "groupId": "BagSport_N14_2_custom"
+    },
+    "container_custom_DesignStuff_00044": {
+      "groupId": "BagSport_N9_2_custom"
+    },
+    "custom_Obshezhitie_1_indoor_00059": {
+      "groupId": "BagSport_N15_2_custom"
+    },
+    "container_custom_DesignStuff_00045": {
+      "groupId": "BagSport_N10_2_custom"
+    },
+    "container_custom_DesignStuff_00041": {
+      "groupId": "BagSport_N7_2_custom"
+    },
+    "container_custom_DesignStuff_00055": {
+      "groupId": "BagSport_N17_2_custom"
+    },
+    "custom_Obshezhitie_2_indoor_00083": {
+      "groupId": "BagSport_N5_2_custom"
+    },
+    "custom_Tamozhnya_00010": {
+      "groupId": "BagSport_N18_3_custom"
+    },
+    "custom_DesignStuff_00095": {
+      "groupId": ""
+    },
+    "custom_DesignStuff_00106": {
+      "groupId": ""
+    },
+    "custom_DesignStuff_00108": {
+      "groupId": ""
+    },
+    "custom_DesignStuff_00107": {
+      "groupId": ""
+    },
+    "custom_DesignStuff_00104": {
+      "groupId": ""
+    },
+    "custom_DesignStuff_00111": {
+      "groupId": ""
+    },
+    "custom_DesignStuff_00102": {
+      "groupId": ""
+    },
+    "custom_DesignStuff_00100": {
+      "groupId": ""
+    },
+    "custom_DesignStuff_00115": {
+      "groupId": ""
+    },
+    "custom_Obshezhitie_00035": {
+      "groupId": ""
+    },
+    "container_custom_DesignStuff_00030": {
+      "groupId": "ContainerGrenade_N2_2_custom"
+    },
+    "container_custom_DesignStuff_00028": {
+      "groupId": "ContainerGrenade_N1_2_custom"
+    },
+    "custom_DesignStuff_00084": {
+      "groupId": "ContainerGrenade_N2_2_custom"
+    },
+    "container_custom_DesignStuff_00031": {
+      "groupId": "ContainerGrenade_N2_2_custom"
+    },
+    "custom_multiScene_00067": {
+      "groupId": "ContainerGrenade_N1_2_custom"
+    }
+  }
+}

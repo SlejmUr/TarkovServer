@@ -5,12 +5,6 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
-
-  <ItemGroup>
-    <Content Include="Files\**">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="L" Version="5.0.0" />
 		<PackageReference Include="ModdableWebServer" Version="1.1.1" />
@@ -40,6 +34,7 @@
 		</Reference>
 		<Reference Include="com.unity.multiplayer-hlapi.Runtime">
 		  <HintPath>..\Ref\com.unity.multiplayer-hlapi.Runtime.dll</HintPath>
+		  <Private>False</Private>
 		</Reference>
 		<Reference Include="Newtonsoft.Json">
 			<HintPath>..\Ref\Newtonsoft.Json.dll</HintPath>

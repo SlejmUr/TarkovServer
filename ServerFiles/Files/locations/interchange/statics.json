@@ -1,0 +1,2539 @@
+{
+  "containersGroups": {
+    "KibaArms": {
+      "minContainers": 1,
+      "maxContainers": 3
+    },
+    "LockedSeaContainer": {
+      "minContainers": 2,
+      "maxContainers": 3
+    },
+    "Goshan": {
+      "minContainers": 19,
+      "maxContainers": 23
+    },
+    "PowerStation": {
+      "minContainers": 16,
+      "maxContainers": 20
+    },
+    "Parking": {
+      "minContainers": 7,
+      "maxContainers": 11
+    },
+    "OLI": {
+      "minContainers": 35,
+      "maxContainers": 39
+    },
+    "MedicalShops": {
+      "minContainers": 14,
+      "maxContainers": 18
+    },
+    "Other": {
+      "minContainers": 9,
+      "maxContainers": 10
+    },
+    "ClothingShops": {
+      "minContainers": 14,
+      "maxContainers": 18
+    },
+    "Ultra": {
+      "minContainers": 45,
+      "maxContainers": 49
+    },
+    "UndergroundParking": {
+      "minContainers": 44,
+      "maxContainers": 52
+    },
+    "BackLoadingSquare": {
+      "minContainers": 8,
+      "maxContainers": 12
+    },
+    "Stashes_Shopping_mall": {
+      "minContainers": 17,
+      "maxContainers": 19
+    },
+    "IDEA": {
+      "minContainers": 10,
+      "maxContainers": 14
+    },
+    "LoadingRooms": {
+      "minContainers": 20,
+      "maxContainers": 24
+    },
+    "Road": {
+      "minContainers": 8,
+      "maxContainers": 10
+    }
+  },
+  "containers": {
+    "container_Shopping_Mall_DesignStuff_00270": {
+      "groupId": "Ultra"
+    },
+    "container_Shopping_Mall_Shops_00032": {
+      "groupId": "Ultra"
+    },
+    "container_Shopping_Mall_Shops_00033": {
+      "groupId": "Ultra"
+    },
+    "container_Shopping_Mall_Shops_00031": {
+      "groupId": "Ultra"
+    },
+    "container_Shopping_Mall_Shops_00030": {
+      "groupId": "Ultra"
+    },
+    "container_Shopping_Mall_DesignStuff_00026": {
+      "groupId": "LoadingRooms"
+    },
+    "container_Shopping_Mall_Shops_00040": {
+      "groupId": "ClothingShops"
+    },
+    "Shopping_Mall_DesignStuff_00138": {
+      "groupId": "PowerStation"
+    },
+    "container_Shopping_Mall_Shops_00047": {
+      "groupId": "ClothingShops"
+    },
+    "container_Shopping_Mall_DesignStuff_00100": {
+      "groupId": "UndergroundParking"
+    },
+    "container_Shopping_Mall_DesignStuff_00039": {
+      "groupId": "Parking"
+    },
+    "container_Shopping_Mall_Shops_00034": {
+      "groupId": "Ultra"
+    },
+    "container_Shopping_Mall_DesignStuff_00082": {
+      "groupId": "UndergroundParking"
+    },
+    "container_Shopping_Mall_DesignStuff_00045": {
+      "groupId": "Parking"
+    },
+    "Shopping_Mall_Shops_Floor2_00113": {
+      "groupId": ""
+    },
+    "Shopping_Mall_2_00153": {
+      "groupId": "PowerStation"
+    },
+    "Shopping_Mall_DesignStuff_00122": {
+      "groupId": "LoadingRooms"
+    },
+    "container_Shopping_Mall_DesignStuff_00103": {
+      "groupId": "UndergroundParking"
+    },
+    "container_Shopping_Mall_DesignStuff_00142": {
+      "groupId": "ClothingShops"
+    },
+    "container_Shopping_Mall_DesignStuff_00101": {
+      "groupId": "UndergroundParking"
+    },
+    "Shopping_Mall_Shops_Floor2_00112": {
+      "groupId": ""
+    },
+    "Shopping_Mall_2_00155": {
+      "groupId": "Parking"
+    },
+    "Shopping_Mall_DesignStuff_00149": {
+      "groupId": "Goshan"
+    },
+    "Shopping_Mall_DesignStuff_00114": {
+      "groupId": "Goshan"
+    },
+    "container_Shopping_Mall_Shops_00010": {
+      "groupId": "MedicalShops"
+    },
+    "container_Shopping_Mall_DesignStuff_00079": {
+      "groupId": "PowerStation"
+    },
+    "container_Shopping_Mall_DesignStuff_00078": {
+      "groupId": "PowerStation"
+    },
+    "container_Shopping_Mall_DesignStuff_00076": {
+      "groupId": "PowerStation"
+    },
+    "container_Shopping_Mall_DesignStuff_00077": {
+      "groupId": "PowerStation"
+    },
+    "container_Shopping_Mall_Shops_00037": {
+      "groupId": "ClothingShops"
+    },
+    "container_Shopping_Mall_Shops_00035": {
+      "groupId": ""
+    },
+    "Shopping_Mall_DesignStuff_00142": {
+      "groupId": "PowerStation"
+    },
+    "Shopping_Mall_DesignStuff_00174": {
+      "groupId": "Ultra"
+    },
+    "container_Shopping_Mall_DesignStuff_00269": {
+      "groupId": "Ultra"
+    },
+    "Shopping_Mall_DesignStuff_00217": {
+      "groupId": "IDEA"
+    },
+    "container_Shopping_Mall_Shops_00036": {
+      "groupId": ""
+    },
+    "Shopping_Mall_DesignStuff_00159": {
+      "groupId": "Road"
+    },
+    "container_Shopping_Mall_DesignStuff_00290": {
+      "groupId": "Ultra"
+    },
+    "container_Shopping_Mall_DesignStuff_00289": {
+      "groupId": "Ultra"
+    },
+    "container_Shopping_Mall_DesignStuff_00291": {
+      "groupId": "Ultra"
+    },
+    "container_Shopping_Mall_DesignStuff_00292": {
+      "groupId": "Ultra"
+    },
+    "Shopping_Mall_DesignStuff_00212": {
+      "groupId": "Road"
+    },
+    "container_Shopping_Mall_DesignStuff_00059": {
+      "groupId": "Road"
+    },
+    "container_Shopping_Mall_DesignStuff_00037": {
+      "groupId": "Parking"
+    },
+    "Shopping_Mall_DesignStuff_00140": {
+      "groupId": "PowerStation"
+    },
+    "Shopping_Mall_2_00150": {
+      "groupId": "PowerStation"
+    },
+    "Shopping_Mall_2_00149": {
+      "groupId": "PowerStation"
+    },
+    "Shopping_Mall_2_00147": {
+      "groupId": "PowerStation"
+    },
+    "Shopping_Mall_2_00148": {
+      "groupId": "PowerStation"
+    },
+    "container_Shopping_Mall_Shops_00017": {
+      "groupId": "Ultra"
+    },
+    "Shopping_Mall_DesignStuff_00154": {
+      "groupId": "Parking"
+    },
+    "container_Shopping_Mall_DesignStuff_00044": {
+      "groupId": "Parking"
+    },
+    "container_Shopping_Mall_Shops_00039": {
+      "groupId": "ClothingShops"
+    },
+    "container_Shopping_Mall_DesignStuff_00209": {
+      "groupId": "IDEA"
+    },
+    "container_Shopping_Mall_DesignStuff_00040": {
+      "groupId": "Parking"
+    },
+    "container_Shopping_Mall_DesignStuff_00191": {
+      "groupId": "Goshan"
+    },
+    "Shopping_Mall_DesignStuff_00090": {
+      "groupId": "Goshan"
+    },
+    "container_Shopping_Mall_DesignStuff_00046": {
+      "groupId": "Parking"
+    },
+    "Shopping_Mall_DesignStuff_00157": {
+      "groupId": "Parking"
+    },
+    "container_Shopping_Mall_Shops_00024": {
+      "groupId": "Ultra"
+    },
+    "container_Shopping_Mall_Shops_00025": {
+      "groupId": "Ultra"
+    },
+    "container_Shopping_Mall_Shops_00023": {
+      "groupId": "Ultra"
+    },
+    "container_Shopping_Mall_Shops_00022": {
+      "groupId": "Ultra"
+    },
+    "Shopping_Mall_indoor_00004": {
+      "groupId": "Ultra"
+    },
+    "container_Shopping_Mall_DesignStuff_00189": {
+      "groupId": "Goshan"
+    },
+    "container_Shopping_Mall_DesignStuff_00038": {
+      "groupId": "Parking"
+    },
+    "container_Shopping_Mall_Shops_00018": {
+      "groupId": "Ultra"
+    },
+    "container_Shopping_Mall_Shops_00019": {
+      "groupId": "Ultra"
+    },
+    "container_Shopping_Mall_Shops_00021": {
+      "groupId": "Ultra"
+    },
+    "container_Shopping_Mall_Shops_00020": {
+      "groupId": "Ultra"
+    },
+    "container_Shopping_Mall_Shops_00011": {
+      "groupId": "MedicalShops"
+    },
+    "Shopping_Mall_DesignStuff_00153": {
+      "groupId": "Parking"
+    },
+    "Shopping_Mall_DesignStuff_00155": {
+      "groupId": "Road"
+    },
+    "Shopping_Mall_DesignStuff_00098": {
+      "groupId": "UndergroundParking"
+    },
+    "container_Shopping_Mall_DesignStuff_00061": {
+      "groupId": "Road"
+    },
+    "container_Shopping_Mall_DesignStuff_00102": {
+      "groupId": "UndergroundParking"
+    },
+    "container_Shopping_Mall_DesignStuff_00288": {
+      "groupId": "Ultra"
+    },
+    "container_Shopping_Mall_DesignStuff_00287": {
+      "groupId": "Ultra"
+    },
+    "container_Shopping_Mall_DesignStuff_00285": {
+      "groupId": "Ultra"
+    },
+    "container_Shopping_Mall_DesignStuff_00286": {
+      "groupId": "Ultra"
+    },
+    "container_Shopping_Mall_DesignStuff_00057": {
+      "groupId": "Road"
+    },
+    "container_Shopping_Mall_DesignStuff_00081": {
+      "groupId": "UndergroundParking"
+    },
+    "container_Shopping_Mall_DesignStuff_00042": {
+      "groupId": "Parking"
+    },
+    "container_Shopping_Mall_DesignStuff_00210": {
+      "groupId": "IDEA"
+    },
+    "container_Shopping_Mall_DesignStuff_00062": {
+      "groupId": "Road"
+    },
+    "container_Shopping_Mall_Shops_00038": {
+      "groupId": "ClothingShops"
+    },
+    "Shopping_Mall_DesignStuff_00141": {
+      "groupId": "PowerStation"
+    },
+    "container_Shopping_Mall_DesignStuff_00041": {
+      "groupId": "Parking"
+    },
+    "container_Shopping_Mall_Shops_00029": {
+      "groupId": "Ultra"
+    },
+    "container_Shopping_Mall_Shops_00028": {
+      "groupId": "Ultra"
+    },
+    "container_Shopping_Mall_Shops_00026": {
+      "groupId": "Ultra"
+    },
+    "container_Shopping_Mall_Shops_00027": {
+      "groupId": "Ultra"
+    },
+    "container_Shopping_Mall_DesignStuff_00058": {
+      "groupId": "Road"
+    },
+    "Shopping_Mall_DesignStuff_00200": {
+      "groupId": "PowerStation"
+    },
+    "Shopping_Mall_DesignStuff_00150": {
+      "groupId": "UndergroundParking"
+    },
+    "container_Shopping_Mall_DesignStuff_00294": {
+      "groupId": "Ultra"
+    },
+    "container_Shopping_Mall_DesignStuff_00293": {
+      "groupId": "Ultra"
+    },
+    "container_Shopping_Mall_DesignStuff_00295": {
+      "groupId": "Ultra"
+    },
+    "container_Shopping_Mall_DesignStuff_00296": {
+      "groupId": "Ultra"
+    },
+    "Shopping_Mall_DesignStuff_00100": {
+      "groupId": "UndergroundParking"
+    },
+    "container_Shopping_Mall_DesignStuff_00027": {
+      "groupId": "LoadingRooms"
+    },
+    "container_Shopping_Mall_Shops_00015": {
+      "groupId": "Ultra"
+    },
+    "container_Shopping_Mall_DesignStuff_00188": {
+      "groupId": "Goshan"
+    },
+    "container_Shopping_Mall_DesignStuff_00190": {
+      "groupId": "Goshan"
+    },
+    "Shopping_Mall_2_00156": {
+      "groupId": "Other"
+    },
+    "Shopping_Mall_DesignStuff_00163": {
+      "groupId": "Ultra"
+    },
+    "container_Shopping_Mall_DesignStuff_00043": {
+      "groupId": "Parking"
+    },
+    "container_Shopping_Mall_DesignStuff_00060": {
+      "groupId": "Road"
+    },
+    "Shopping_Mall_Shops_Floor2_00127": {
+      "groupId": ""
+    },
+    "container_Shopping_Mall_Shops_00009": {
+      "groupId": "MedicalShops"
+    },
+    "Shopping_Mall_indoor_00005": {
+      "groupId": "Ultra"
+    },
+    "Shopping_Mall_DesignStuff_00151": {
+      "groupId": "Parking"
+    },
+    "container_Shopping_Mall_Shops_00016": {
+      "groupId": "Ultra"
+    },
+    "Shopping_Mall_IDEA_00042": {
+      "groupId": ""
+    },
+    "Shopping_Mall_IDEA_00040": {
+      "groupId": ""
+    },
+    "Shopping_Mall_IDEA_00036": {
+      "groupId": ""
+    },
+    "Shopping_Mall_IDEA_00038": {
+      "groupId": ""
+    },
+    "Shopping_Mall_IDEA_00044": {
+      "groupId": ""
+    },
+    "Shopping_Mall_IDEA_00030": {
+      "groupId": ""
+    },
+    "Shopping_Mall_IDEA_00026": {
+      "groupId": ""
+    },
+    "Shopping_Mall_IDEA_00028": {
+      "groupId": ""
+    },
+    "Shopping_Mall_IDEA_00034": {
+      "groupId": ""
+    },
+    "Shopping_Mall_IDEA_00032": {
+      "groupId": ""
+    },
+    "Shopping_Mall_GOSHAN_00045": {
+      "groupId": ""
+    },
+    "Shopping_Mall_indoor_00006": {
+      "groupId": ""
+    },
+    "Shopping_Mall_indoor_00003": {
+      "groupId": "Ultra"
+    },
+    "container_Shopping_Mall_DesignStuff_00297": {
+      "groupId": "Ultra"
+    },
+    "Shopping_Mall_parking_work_00062": {
+      "groupId": "UndergroundParking"
+    },
+    "container_Shopping_Mall_DesignStuff_00118": {
+      "groupId": "UndergroundParking"
+    },
+    "container_Shopping_Mall_DesignStuff_00153": {
+      "groupId": "MedicalShops"
+    },
+    "Shopping_Mall_DesignStuff_00105": {
+      "groupId": "UndergroundParking"
+    },
+    "Shopping_Mall_DesignStuff_00081": {
+      "groupId": "MedicalShops"
+    },
+    "container_Shopping_Mall_DesignStuff_00156": {
+      "groupId": "MedicalShops"
+    },
+    "Shopping_Mall_DesignStuff_00179": {
+      "groupId": "MedicalShops"
+    },
+    "container_Shopping_Mall_DesignStuff_00152": {
+      "groupId": "MedicalShops"
+    },
+    "Shopping_Mall_DesignStuff_00079": {
+      "groupId": "MedicalShops"
+    },
+    "container_Shopping_Mall_DesignStuff_00151": {
+      "groupId": "MedicalShops"
+    },
+    "container_Shopping_Mall_DesignStuff_00155": {
+      "groupId": "MedicalShops"
+    },
+    "container_Shopping_Mall_DesignStuff_00150": {
+      "groupId": "MedicalShops"
+    },
+    "container_Shopping_Mall_DesignStuff_00084": {
+      "groupId": "UndergroundParking"
+    },
+    "container_Shopping_Mall_DesignStuff_00083": {
+      "groupId": "UndergroundParking"
+    },
+    "container_Shopping_Mall_DesignStuff_00157": {
+      "groupId": "MedicalShops"
+    },
+    "Shopping_Mall_DesignStuff_00078": {
+      "groupId": "MedicalShops"
+    },
+    "container_Shopping_Mall_DesignStuff_00154": {
+      "groupId": "MedicalShops"
+    },
+    "container_Shopping_Mall_DesignStuff_00066": {
+      "groupId": "PowerStation"
+    },
+    "Shopping_Mall_DesignStuff_00129": {
+      "groupId": "LoadingRooms"
+    },
+    "Shopping_Mall_DesignStuff_00109": {
+      "groupId": "Ultra"
+    },
+    "Shopping_Mall_DesignStuff_00136": {
+      "groupId": "LoadingRooms"
+    },
+    "Shopping_Mall_DesignStuff_00071": {
+      "groupId": "PowerStation"
+    },
+    "container_Shopping_Mall_DesignStuff_00009": {
+      "groupId": "LoadingRooms"
+    },
+    "container_Shopping_Mall_DesignStuff_00170": {
+      "groupId": "OLI"
+    },
+    "container_Shopping_Mall_DesignStuff_00231": {
+      "groupId": "Ultra"
+    },
+    "container_Shopping_Mall_DesignStuff_00171": {
+      "groupId": "OLI"
+    },
+    "Shopping_Mall_DesignStuff_00068": {
+      "groupId": "PowerStation"
+    },
+    "container_Shopping_Mall_DesignStuff_00013": {
+      "groupId": "LoadingRooms"
+    },
+    "container_Shopping_Mall_DesignStuff_00017": {
+      "groupId": "LoadingRooms"
+    },
+    "container_Shopping_Mall_DesignStuff_00230": {
+      "groupId": "Ultra"
+    },
+    "container_Shopping_Mall_DesignStuff_00073": {
+      "groupId": "PowerStation"
+    },
+    "Shopping_Mall_DesignStuff_00072": {
+      "groupId": "PowerStation"
+    },
+    "Shopping_Mall_DesignStuff_00093": {
+      "groupId": "LoadingRooms"
+    },
+    "Shopping_Mall_DesignStuff_00181": {
+      "groupId": "Ultra"
+    },
+    "container_Shopping_Mall_DesignStuff_00236": {
+      "groupId": "Ultra"
+    },
+    "container_Shopping_Mall_DesignStuff_00071": {
+      "groupId": "PowerStation"
+    },
+    "container_Shopping_Mall_DesignStuff_00068": {
+      "groupId": "PowerStation"
+    },
+    "container_Shopping_Mall_DesignStuff_00014": {
+      "groupId": "LoadingRooms"
+    },
+    "Shopping_Mall_DesignStuff_00095": {
+      "groupId": "IDEA"
+    },
+    "container_Shopping_Mall_DesignStuff_00169": {
+      "groupId": "OLI"
+    },
+    "Shopping_Mall_DesignStuff_00130": {
+      "groupId": "LoadingRooms"
+    },
+    "container_Shopping_Mall_DesignStuff_00167": {
+      "groupId": "OLI"
+    },
+    "Shopping_Mall_DesignStuff_00069": {
+      "groupId": "PowerStation"
+    },
+    "container_Shopping_Mall_DesignStuff_00069": {
+      "groupId": "PowerStation"
+    },
+    "container_Shopping_Mall_DesignStuff_00065": {
+      "groupId": "PowerStation"
+    },
+    "container_Shopping_Mall_DesignStuff_00212": {
+      "groupId": "IDEA"
+    },
+    "container_Shopping_Mall_DesignStuff_00067": {
+      "groupId": "PowerStation"
+    },
+    "container_Shopping_Mall_DesignStuff_00298": {
+      "groupId": "BackLoadingSquare"
+    },
+    "Shopping_Mall_DesignStuff_00074": {
+      "groupId": "BackLoadingSquare"
+    },
+    "Shopping_Mall_DesignStuff_00128": {
+      "groupId": "LoadingRooms"
+    },
+    "container_Shopping_Mall_DesignStuff_00234": {
+      "groupId": "Ultra"
+    },
+    "container_Shopping_Mall_DesignStuff_00168": {
+      "groupId": "OLI"
+    },
+    "container_Shopping_Mall_DesignStuff_00008": {
+      "groupId": "LoadingRooms"
+    },
+    "Shopping_Mall_DesignStuff_00186": {
+      "groupId": "Ultra"
+    },
+    "Shopping_Mall_DesignStuff_00070": {
+      "groupId": "PowerStation"
+    },
+    "container_Shopping_Mall_DesignStuff_00232": {
+      "groupId": "Ultra"
+    },
+    "container_Shopping_Mall_DesignStuff_00064": {
+      "groupId": "PowerStation"
+    },
+    "Shopping_Mall_DesignStuff_00134": {
+      "groupId": "LoadingRooms"
+    },
+    "container_Shopping_Mall_DesignStuff_00070": {
+      "groupId": "PowerStation"
+    },
+    "Shopping_Mall_DesignStuff_00091": {
+      "groupId": "IDEA"
+    },
+    "Shopping_Mall_DesignStuff_00096": {
+      "groupId": "MedicalShops"
+    },
+    "container_Shopping_Mall_DesignStuff_00002": {
+      "groupId": "LoadingRooms"
+    },
+    "Shopping_Mall_DesignStuff_00170": {
+      "groupId": "OLI"
+    },
+    "container_Shopping_Mall_DesignStuff_00010": {
+      "groupId": "LoadingRooms"
+    },
+    "container_Shopping_Mall_DesignStuff_00235": {
+      "groupId": "Ultra"
+    },
+    "Shopping_Mall_DesignStuff_00094": {
+      "groupId": "LoadingRooms"
+    },
+    "Shopping_Mall_DesignStuff_00092": {
+      "groupId": "LoadingRooms"
+    },
+    "container_Shopping_Mall_DesignStuff_00214": {
+      "groupId": "IDEA"
+    },
+    "Shopping_Mall_DesignStuff_00171": {
+      "groupId": "OLI"
+    },
+    "container_Shopping_Mall_DesignStuff_00072": {
+      "groupId": "PowerStation"
+    },
+    "container_Shopping_Mall_DesignStuff_00229": {
+      "groupId": "Ultra"
+    },
+    "Shopping_Mall_DesignStuff_00172": {
+      "groupId": "OLI"
+    },
+    "container_Shopping_Mall_DesignStuff_00007": {
+      "groupId": "LoadingRooms"
+    },
+    "container_Shopping_Mall_DesignStuff_00004": {
+      "groupId": "LoadingRooms"
+    },
+    "container_Shopping_Mall_DesignStuff_00145": {
+      "groupId": "MedicalShops"
+    },
+    "container_Shopping_Mall_DesignStuff_00012": {
+      "groupId": "LoadingRooms"
+    },
+    "container_Shopping_Mall_DesignStuff_00166": {
+      "groupId": "OLI"
+    },
+    "Shopping_Mall_DesignStuff_00284": {
+      "groupId": "Ultra"
+    },
+    "container_Shopping_Mall_DesignStuff_00233": {
+      "groupId": "Ultra"
+    },
+    "container_Shopping_Mall_DesignStuff_00144": {
+      "groupId": "MedicalShops"
+    },
+    "container_Shopping_Mall_DesignStuff_00213": {
+      "groupId": "IDEA"
+    },
+    "container_Shopping_Mall_DesignStuff_00015": {
+      "groupId": "LoadingRooms"
+    },
+    "container_Shopping_Mall_DesignStuff_00005": {
+      "groupId": "LoadingRooms"
+    },
+    "container_Shopping_Mall_DesignStuff_00211": {
+      "groupId": "IDEA"
+    },
+    "container_Shopping_Mall_DesignStuff_00006": {
+      "groupId": "LoadingRooms"
+    },
+    "container_Shopping_Mall_DesignStuff_00016": {
+      "groupId": "LoadingRooms"
+    },
+    "container_Shopping_Mall_DesignStuff_00011": {
+      "groupId": "LoadingRooms"
+    },
+    "Shopping_Mall_DesignStuff_00084": {
+      "groupId": "Ultra"
+    },
+    "Shopping_Mall_DesignStuff_00113": {
+      "groupId": "UndergroundParking"
+    },
+    "container_Shopping_Mall_DesignStuff_00036": {
+      "groupId": "LoadingRooms"
+    },
+    "Shopping_Mall_DesignStuff_00124": {
+      "groupId": "LoadingRooms"
+    },
+    "container_Shopping_Mall_DesignStuff_00120": {
+      "groupId": "UndergroundParking"
+    },
+    "Shopping_Mall_DesignStuff_00228": {
+      "groupId": "Other"
+    },
+    "Shopping_Mall_DesignStuff_00080": {
+      "groupId": "Other"
+    },
+    "container_Shopping_Mall_DesignStuff_00282": {
+      "groupId": "Ultra"
+    },
+    "Shopping_Mall_DesignStuff_00230": {
+      "groupId": "PowerStation"
+    },
+    "Shopping_Mall_DesignStuff_00210": {
+      "groupId": "LockedSeaContainer"
+    },
+    "Shopping_Mall_DesignStuff_00116": {
+      "groupId": "UndergroundParking"
+    },
+    "container_Shopping_Mall_DesignStuff_00201": {
+      "groupId": "Goshan"
+    },
+    "Shopping_Mall_DesignStuff_00110": {
+      "groupId": "UndergroundParking"
+    },
+    "Shopping_Mall_DesignStuff_00076": {
+      "groupId": "IDEA"
+    },
+    "Shopping_Mall_DesignStuff_00277": {
+      "groupId": "LoadingRooms"
+    },
+    "container_Shopping_Mall_DesignStuff_00121": {
+      "groupId": "UndergroundParking"
+    },
+    "container_Shopping_Mall_DesignStuff_00309": {
+      "groupId": "Other"
+    },
+    "container_Shopping_Mall_DesignStuff_00202": {
+      "groupId": "Goshan"
+    },
+    "Shopping_Mall_DesignStuff_00139": {
+      "groupId": "UndergroundParking"
+    },
+    "Shopping_Mall_DesignStuff_00125": {
+      "groupId": "Goshan"
+    },
+    "container_Shopping_Mall_DesignStuff_00003": {
+      "groupId": "KibaArms"
+    },
+    "container_Shopping_Mall_DesignStuff_00280": {
+      "groupId": "Ultra"
+    },
+    "Shopping_Mall_DesignStuff_00089": {
+      "groupId": "Ultra"
+    },
+    "container_Shopping_Mall_DesignStuff_00308": {
+      "groupId": "BackLoadingSquare"
+    },
+    "container_Shopping_Mall_DesignStuff_00279": {
+      "groupId": "Ultra"
+    },
+    "container_Shopping_Mall_DesignStuff_00141": {
+      "groupId": "ClothingShops"
+    },
+    "Shopping_Mall_DesignStuff_00160": {
+      "groupId": "Ultra"
+    },
+    "container_Shopping_Mall_DesignStuff_00283": {
+      "groupId": "Ultra"
+    },
+    "container_Shopping_Mall_DesignStuff_00281": {
+      "groupId": "Ultra"
+    },
+    "Shopping_Mall_DesignStuff_00144": {
+      "groupId": "KibaArms"
+    },
+    "container_Shopping_Mall_DesignStuff_00080": {
+      "groupId": "PowerStation"
+    },
+    "container_Shopping_Mall_DesignStuff_00140": {
+      "groupId": "ClothingShops"
+    },
+    "Shopping_Mall_DesignStuff_00214": {
+      "groupId": "Ultra"
+    },
+    "Shopping_Mall_DesignStuff_00077": {
+      "groupId": "PowerStation"
+    },
+    "Shopping_Mall_DesignStuff_00177": {
+      "groupId": "ClothingShops"
+    },
+    "Shopping_Mall_DesignStuff_00082": {
+      "groupId": "ClothingShops"
+    },
+    "Shopping_Mall_DesignStuff_00166": {
+      "groupId": "OLI"
+    },
+    "Shopping_Mall_DesignStuff_00103": {
+      "groupId": "UndergroundParking"
+    },
+    "container_Shopping_Mall_DesignStuff_00225": {
+      "groupId": "IDEA"
+    },
+    "Shopping_Mall_DesignStuff_00288": {
+      "groupId": "Other"
+    },
+    "container_Shopping_Mall_DesignStuff_00185": {
+      "groupId": "OLI"
+    },
+    "container_Shopping_Mall_DesignStuff_00123": {
+      "groupId": "UndergroundParking"
+    },
+    "Shopping_Mall_DesignStuff_00178": {
+      "groupId": "Ultra"
+    },
+    "container_Shopping_Mall_DesignStuff_00122": {
+      "groupId": "UndergroundParking"
+    },
+    "container_Shopping_Mall_DesignStuff_00119": {
+      "groupId": "UndergroundParking"
+    },
+    "Shopping_Mall_DesignStuff_00249": {
+      "groupId": "BackLoadingSquare"
+    },
+    "container_Shopping_Mall_DesignStuff_00284": {
+      "groupId": "Ultra"
+    },
+    "Shopping_Mall_DesignStuff_00175": {
+      "groupId": "Ultra"
+    },
+    "Shopping_Mall_IDEA_00031": {
+      "groupId": ""
+    },
+    "Shopping_Mall_IDEA_00033": {
+      "groupId": ""
+    },
+    "Shopping_Mall_IDEA_00027": {
+      "groupId": ""
+    },
+    "Shopping_Mall_IDEA_00025": {
+      "groupId": ""
+    },
+    "Shopping_Mall_IDEA_00029": {
+      "groupId": ""
+    },
+    "Shopping_Mall_IDEA_00043": {
+      "groupId": ""
+    },
+    "Shopping_Mall_IDEA_00037": {
+      "groupId": ""
+    },
+    "Shopping_Mall_IDEA_00035": {
+      "groupId": ""
+    },
+    "Shopping_Mall_IDEA_00041": {
+      "groupId": ""
+    },
+    "Shopping_Mall_IDEA_00039": {
+      "groupId": ""
+    },
+    "Shopping_Mall_OLI_00080": {
+      "groupId": ""
+    },
+    "Shopping_Mall_OLI_00072": {
+      "groupId": ""
+    },
+    "Shopping_Mall_OLI_00082": {
+      "groupId": ""
+    },
+    "Shopping_Mall_OLI_00070": {
+      "groupId": ""
+    },
+    "Shopping_Mall_OLI_00084": {
+      "groupId": ""
+    },
+    "Shopping_Mall_OLI_00078": {
+      "groupId": ""
+    },
+    "Shopping_Mall_OLI_00074": {
+      "groupId": ""
+    },
+    "Shopping_Mall_OLI_00076": {
+      "groupId": ""
+    },
+    "Shopping_Mall_OLI_00068": {
+      "groupId": ""
+    },
+    "Shopping_Mall_DesignStuff_00263": {
+      "groupId": "LockedSeaContainer"
+    },
+    "container_Shopping_Mall_DesignStuff_00184": {
+      "groupId": "OLI"
+    },
+    "container_Shopping_Mall_DesignStuff_00113": {
+      "groupId": "UndergroundParking"
+    },
+    "Shopping_Mall_DesignStuff_00222": {
+      "groupId": "UndergroundParking"
+    },
+    "container_Shopping_Mall_DesignStuff_00032": {
+      "groupId": "LoadingRooms"
+    },
+    "Shopping_Mall_DesignStuff_00085": {
+      "groupId": "UndergroundParking"
+    },
+    "Shopping_Mall_DesignStuff_00197": {
+      "groupId": "Goshan"
+    },
+    "container_Shopping_Mall_DesignStuff_00114": {
+      "groupId": "UndergroundParking"
+    },
+    "Shopping_Mall_DesignStuff_00216": {
+      "groupId": "UndergroundParking"
+    },
+    "container_Shopping_Mall_DesignStuff_00271": {
+      "groupId": "Ultra"
+    },
+    "Shopping_Mall_DesignStuff_00225": {
+      "groupId": "UndergroundParking"
+    },
+    "container_Shopping_Mall_DesignStuff_00273": {
+      "groupId": "Ultra"
+    },
+    "Shopping_Mall_DesignStuff_00183": {
+      "groupId": "Ultra"
+    },
+    "Shopping_Mall_DesignStuff_00227": {
+      "groupId": "OLI"
+    },
+    "container_Shopping_Mall_DesignStuff_00117": {
+      "groupId": "UndergroundParking"
+    },
+    "container_Shopping_Mall_DesignStuff_00033": {
+      "groupId": "LoadingRooms"
+    },
+    "Shopping_Mall_DesignStuff_00173": {
+      "groupId": "OLI"
+    },
+    "Shopping_Mall_DesignStuff_00086": {
+      "groupId": "UndergroundParking"
+    },
+    "Shopping_Mall_DesignStuff_00106": {
+      "groupId": "UndergroundParking"
+    },
+    "container_Shopping_Mall_DesignStuff_00272": {
+      "groupId": "Ultra"
+    },
+    "Shopping_Mall_DesignStuff_00104": {
+      "groupId": "UndergroundParking"
+    },
+    "Shopping_Mall_DesignStuff_00126": {
+      "groupId": "LoadingRooms"
+    },
+    "Shopping_Mall_DesignStuff_00112": {
+      "groupId": "UndergroundParking"
+    },
+    "container_Shopping_Mall_DesignStuff_00198": {
+      "groupId": "Goshan"
+    },
+    "Shopping_Mall_DesignStuff_00209": {
+      "groupId": "Ultra"
+    },
+    "container_Shopping_Mall_DesignStuff_00183": {
+      "groupId": "OLI"
+    },
+    "container_Shopping_Mall_DesignStuff_00115": {
+      "groupId": "UndergroundParking"
+    },
+    "container_Shopping_Mall_DesignStuff_00116": {
+      "groupId": "UndergroundParking"
+    },
+    "Shopping_Mall_DesignStuff_00278": {
+      "groupId": "Other"
+    },
+    "Shopping_Mall_DesignStuff_00147": {
+      "groupId": "Ultra"
+    },
+    "Shopping_Mall_DesignStuff_00131": {
+      "groupId": "LoadingRooms"
+    },
+    "container_Shopping_Mall_DesignStuff_00112": {
+      "groupId": "UndergroundParking"
+    },
+    "Shopping_Mall_OLI_00061": {
+      "groupId": "OLI"
+    },
+    "Shopping_Mall_GOSHAN_00082": {
+      "groupId": "Goshan"
+    },
+    "Shopping_Mall_IDEA_00047": {
+      "groupId": "IDEA"
+    },
+    "container_Shopping_Mall_DesignStuff_00208": {
+      "groupId": "Goshan"
+    },
+    "Shopping_Mall_Shops_Floor2_00109": {
+      "groupId": "MedicalShops"
+    },
+    "container_Shopping_Mall_DesignStuff_00205": {
+      "groupId": "Goshan"
+    },
+    "Shopping_Mall_GOSHAN_00078": {
+      "groupId": "Goshan"
+    },
+    "container_Shopping_Mall_DesignStuff_00203": {
+      "groupId": "Goshan"
+    },
+    "Shopping_Mall_OLI_00065": {
+      "groupId": "OLI"
+    },
+    "Shopping_Mall_2_00152": {
+      "groupId": "PowerStation"
+    },
+    "Shopping_Mall_GOSHAN_00074": {
+      "groupId": "Goshan"
+    },
+    "Shopping_Mall_GOSHAN_00072": {
+      "groupId": "Goshan"
+    },
+    "Shopping_Mall_OLI_00045": {
+      "groupId": "OLI"
+    },
+    "Shopping_Mall_GOSHAN_00079": {
+      "groupId": "Goshan"
+    },
+    "container_Shopping_Mall_DesignStuff_00227": {
+      "groupId": "IDEA"
+    },
+    "Shopping_Mall_OLI_00052": {
+      "groupId": "OLI"
+    },
+    "Shopping_Mall_IDEA_00046": {
+      "groupId": "IDEA"
+    },
+    "Shopping_Mall_2_00151": {
+      "groupId": "PowerStation"
+    },
+    "Shopping_Mall_GOSHAN_00073": {
+      "groupId": "Goshan"
+    },
+    "Shopping_Mall_IDEA_00045": {
+      "groupId": "IDEA"
+    },
+    "Shopping_Mall_OLI_00058": {
+      "groupId": "OLI"
+    },
+    "Shopping_Mall_OLI_00044": {
+      "groupId": "OLI"
+    },
+    "Shopping_Mall_GOSHAN_00077": {
+      "groupId": "Goshan"
+    },
+    "container_Shopping_Mall_DesignStuff_00206": {
+      "groupId": "Goshan"
+    },
+    "Shopping_Mall_OLI_00066": {
+      "groupId": "OLI"
+    },
+    "Shopping_Mall_OLI_00056": {
+      "groupId": "OLI"
+    },
+    "Shopping_Mall_GOSHAN_00076": {
+      "groupId": "Goshan"
+    },
+    "container_Shopping_Mall_DesignStuff_00207": {
+      "groupId": "Goshan"
+    },
+    "Shopping_Mall_GOSHAN_00080": {
+      "groupId": "Goshan"
+    },
+    "Shopping_Mall_OLI_00047": {
+      "groupId": "OLI"
+    },
+    "container_Shopping_Mall_DesignStuff_00204": {
+      "groupId": "Goshan"
+    },
+    "Shopping_Mall_OLI_00057": {
+      "groupId": "OLI"
+    },
+    "Shopping_Mall_OLI_00086": {
+      "groupId": "OLI"
+    },
+    "Shopping_Mall_OLI_00046": {
+      "groupId": "OLI"
+    },
+    "Shopping_Mall_OLI_00051": {
+      "groupId": "OLI"
+    },
+    "Shopping_Mall_OLI_00049": {
+      "groupId": "OLI"
+    },
+    "Shopping_Mall_OLI_00062": {
+      "groupId": "OLI"
+    },
+    "Shopping_Mall_2_00146": {
+      "groupId": "PowerStation"
+    },
+    "Shopping_Mall_OLI_00048": {
+      "groupId": "OLI"
+    },
+    "Shopping_Mall_OLI_00064": {
+      "groupId": "OLI"
+    },
+    "Shopping_Mall_GOSHAN_00075": {
+      "groupId": "Goshan"
+    },
+    "Shopping_Mall_OLI_00053": {
+      "groupId": "OLI"
+    },
+    "container_Shopping_Mall_DesignStuff_00226": {
+      "groupId": "IDEA"
+    },
+    "Shopping_Mall_GOSHAN_00081": {
+      "groupId": "Goshan"
+    },
+    "Shopping_Mall_OLI_00085": {
+      "groupId": "OLI"
+    },
+    "container_Shopping_Mall_DesignStuff_00186": {
+      "groupId": "OLI"
+    },
+    "Shopping_Mall_OLI_00060": {
+      "groupId": "OLI"
+    },
+    "Shopping_Mall_OLI_00054": {
+      "groupId": "OLI"
+    },
+    "Shopping_Mall_OLI_00055": {
+      "groupId": "OLI"
+    },
+    "container_Shopping_Mall_DesignStuff_00228": {
+      "groupId": "IDEA"
+    },
+    "Shopping_Mall_OLI_00050": {
+      "groupId": "OLI"
+    },
+    "Shopping_Mall_OLI_00063": {
+      "groupId": "OLI"
+    },
+    "container_Shopping_Mall_DesignStuff_00187": {
+      "groupId": "OLI"
+    },
+    "Shopping_Mall_OLI_00059": {
+      "groupId": "OLI"
+    },
+    "container_Shopping_Mall_DesignStuff_00051": {
+      "groupId": "Parking"
+    },
+    "Shopping_Mall_2_00154": {
+      "groupId": "Parking"
+    },
+    "container_Shopping_Mall_DesignStuff_00048": {
+      "groupId": "Parking"
+    },
+    "container_Shopping_Mall_DesignStuff_00054": {
+      "groupId": "Road"
+    },
+    "container_Shopping_Mall_DesignStuff_00055": {
+      "groupId": "Road"
+    },
+    "container_Shopping_Mall_DesignStuff_00050": {
+      "groupId": "Parking"
+    },
+    "Shopping_Mall_DesignStuff_00252": {
+      "groupId": "Parking"
+    },
+    "container_Shopping_Mall_DesignStuff_00001": {
+      "groupId": "Road"
+    },
+    "container_Shopping_Mall_DesignStuff_00053": {
+      "groupId": "Road"
+    },
+    "container_Shopping_Mall_DesignStuff_00056": {
+      "groupId": "Road"
+    },
+    "container_Shopping_Mall_DesignStuff_00049": {
+      "groupId": "Parking"
+    },
+    "Shopping_Mall_DesignStuff_00213": {
+      "groupId": "Road"
+    },
+    "Shopping_Mall_DesignStuff_00231": {
+      "groupId": "Road"
+    },
+    "container_Shopping_Mall_DesignStuff_00047": {
+      "groupId": "Parking"
+    },
+    "Shopping_Mall_DesignStuff_00220": {
+      "groupId": "Parking"
+    },
+    "Shopping_Mall_DesignStuff_00208": {
+      "groupId": "Road"
+    },
+    "Shopping_Mall_Shops_Floor2_00106": {
+      "groupId": ""
+    },
+    "container_Shopping_Mall_Shops_00014": {
+      "groupId": ""
+    },
+    "Shopping_Mall_Shops_Floor2_00099": {
+      "groupId": ""
+    },
+    "Shopping_Mall_Shops_Floor2_00100": {
+      "groupId": ""
+    },
+    "container_Shopping_Mall_Shops_00044": {
+      "groupId": ""
+    },
+    "Shopping_Mall_Shops_Floor2_00096": {
+      "groupId": ""
+    },
+    "Shopping_Mall_Shops_Floor2_00110": {
+      "groupId": ""
+    },
+    "Shopping_Mall_Shops_Floor2_00104": {
+      "groupId": ""
+    },
+    "Shopping_Mall_GOSHAN_00071": {
+      "groupId": ""
+    },
+    "Shopping_Mall_GOSHAN_00069": {
+      "groupId": ""
+    },
+    "container_Shopping_Mall_Shops_00002": {
+      "groupId": ""
+    },
+    "container_Shopping_Mall_Shops_00005": {
+      "groupId": ""
+    },
+    "Shopping_Mall_GOSHAN_00070": {
+      "groupId": ""
+    },
+    "Shopping_Mall_Shops_Floor2_00116": {
+      "groupId": ""
+    },
+    "container_Shopping_Mall_Shops_00043": {
+      "groupId": ""
+    },
+    "Shopping_Mall_IDEA_00050": {
+      "groupId": ""
+    },
+    "Shopping_Mall_Shops_Floor2_00101": {
+      "groupId": ""
+    },
+    "Shopping_Mall_Shops_Floor2_00121": {
+      "groupId": ""
+    },
+    "Shopping_Mall_GOSHAN_00083": {
+      "groupId": ""
+    },
+    "Shopping_Mall_Shops_Floor2_00098": {
+      "groupId": ""
+    },
+    "Shopping_Mall_Shops_Floor2_00094": {
+      "groupId": ""
+    },
+    "Shopping_Mall_Shops_Floor2_00111": {
+      "groupId": ""
+    },
+    "Shopping_Mall_Shops_Floor2_00120": {
+      "groupId": ""
+    },
+    "Shopping_Mall_IDEA_00048": {
+      "groupId": ""
+    },
+    "Shopping_Mall_IDEA_00049": {
+      "groupId": ""
+    },
+    "container_Shopping_Mall_Shops_00001": {
+      "groupId": ""
+    },
+    "container_Shopping_Mall_Shops_00048": {
+      "groupId": ""
+    },
+    "container_Shopping_Mall_Shops_00012": {
+      "groupId": ""
+    },
+    "container_Shopping_Mall_Shops_00042": {
+      "groupId": ""
+    },
+    "container_Shopping_Mall_Shops_00008": {
+      "groupId": ""
+    },
+    "Shopping_Mall_Shops_Floor2_00105": {
+      "groupId": ""
+    },
+    "Shopping_Mall_Shops_Floor2_00095": {
+      "groupId": ""
+    },
+    "Shopping_Mall_Shops_Floor2_00126": {
+      "groupId": ""
+    },
+    "Shopping_Mall_Shops_Floor2_00123": {
+      "groupId": ""
+    },
+    "Shopping_Mall_Shops_Floor2_00124": {
+      "groupId": ""
+    },
+    "Shopping_Mall_Shops_Floor2_00103": {
+      "groupId": ""
+    },
+    "Shopping_Mall_Shops_Floor2_00093": {
+      "groupId": ""
+    },
+    "Shopping_Mall_Shops_Floor2_00125": {
+      "groupId": ""
+    },
+    "Shopping_Mall_Shops_Floor2_00108": {
+      "groupId": ""
+    },
+    "container_Shopping_Mall_Shops_00041": {
+      "groupId": ""
+    },
+    "Shopping_Mall_Shops_Floor2_00102": {
+      "groupId": ""
+    },
+    "container_Shopping_Mall_Shops_00013": {
+      "groupId": ""
+    },
+    "container_Shopping_Mall_Shops_00000": {
+      "groupId": ""
+    },
+    "Shopping_Mall_Shops_Floor2_00115": {
+      "groupId": ""
+    },
+    "container_Shopping_Mall_Shops_00049": {
+      "groupId": ""
+    },
+    "Shopping_Mall_Shops_Floor2_00097": {
+      "groupId": ""
+    },
+    "Shopping_Mall_Shops_Floor2_00119": {
+      "groupId": ""
+    },
+    "container_Shopping_Mall_Shops_00046": {
+      "groupId": ""
+    },
+    "Shopping_Mall_Shops_Floor2_00114": {
+      "groupId": ""
+    },
+    "Shopping_Mall_Shops_Floor2_00117": {
+      "groupId": ""
+    },
+    "container_Shopping_Mall_Shops_00003": {
+      "groupId": ""
+    },
+    "container_Shopping_Mall_Shops_00004": {
+      "groupId": ""
+    },
+    "Shopping_Mall_Shops_Floor2_00107": {
+      "groupId": ""
+    },
+    "Shopping_Mall_Shops_Floor2_00122": {
+      "groupId": ""
+    },
+    "container_Shopping_Mall_Shops_00006": {
+      "groupId": ""
+    },
+    "container_Shopping_Mall_Shops_00007": {
+      "groupId": ""
+    },
+    "Shopping_Mall_Shops_Floor2_00118": {
+      "groupId": ""
+    },
+    "container_Shopping_Mall_Shops_00045": {
+      "groupId": ""
+    },
+    "Shopping_Mall_IDEA_00051": {
+      "groupId": ""
+    },
+    "Shopping_Mall_DesignStuff_00199": {
+      "groupId": "Ultra"
+    },
+    "container_Shopping_Mall_DesignStuff_00306": {
+      "groupId": "BackLoadingSquare"
+    },
+    "container_Shopping_Mall_DesignStuff_00124": {
+      "groupId": "UndergroundParking"
+    },
+    "Shopping_Mall_DesignStuff_00075": {
+      "groupId": "UndergroundParking"
+    },
+    "Shopping_Mall_DesignStuff_00107": {
+      "groupId": "UndergroundParking"
+    },
+    "Shopping_Mall_DesignStuff_00088": {
+      "groupId": "Ultra"
+    },
+    "Shopping_Mall_DesignStuff_00215": {
+      "groupId": "Ultra"
+    },
+    "container_Shopping_Mall_DesignStuff_00128": {
+      "groupId": "UndergroundParking"
+    },
+    "container_Shopping_Mall_DesignStuff_00063": {
+      "groupId": "Road"
+    },
+    "container_Shopping_Mall_DesignStuff_00139": {
+      "groupId": "ClothingShops"
+    },
+    "Shopping_Mall_DesignStuff_00265": {
+      "groupId": "Other"
+    },
+    "container_Shopping_Mall_DesignStuff_00137": {
+      "groupId": "ClothingShops"
+    },
+    "container_Shopping_Mall_DesignStuff_00126": {
+      "groupId": "UndergroundParking"
+    },
+    "Shopping_Mall_DesignStuff_00240": {
+      "groupId": "LockedSeaContainer"
+    },
+    "container_Shopping_Mall_DesignStuff_00307": {
+      "groupId": "BackLoadingSquare"
+    },
+    "container_Shopping_Mall_DesignStuff_00034": {
+      "groupId": "LoadingRooms"
+    },
+    "Shopping_Mall_DesignStuff_00101": {
+      "groupId": "UndergroundParking"
+    },
+    "Shopping_Mall_DesignStuff_00127": {
+      "groupId": "LoadingRooms"
+    },
+    "container_Shopping_Mall_DesignStuff_00052": {
+      "groupId": "Parking"
+    },
+    "container_Shopping_Mall_DesignStuff_00035": {
+      "groupId": "LoadingRooms"
+    },
+    "container_Shopping_Mall_DesignStuff_00304": {
+      "groupId": "BackLoadingSquare"
+    },
+    "Shopping_Mall_DesignStuff_00121": {
+      "groupId": "BackLoadingSquare"
+    },
+    "Shopping_Mall_DesignStuff_00137": {
+      "groupId": "BackLoadingSquare"
+    },
+    "container_Shopping_Mall_DesignStuff_00274": {
+      "groupId": "Ultra"
+    },
+    "Shopping_Mall_DesignStuff_00132": {
+      "groupId": "LoadingRooms"
+    },
+    "Shopping_Mall_DesignStuff_00087": {
+      "groupId": "Goshan"
+    },
+    "Shopping_Mall_DesignStuff_00162": {
+      "groupId": "Ultra"
+    },
+    "Shopping_Mall_DesignStuff_00146": {
+      "groupId": "Ultra"
+    },
+    "container_Shopping_Mall_DesignStuff_00277": {
+      "groupId": "Ultra"
+    },
+    "Shopping_Mall_DesignStuff_00180": {
+      "groupId": "Ultra"
+    },
+    "Shopping_Mall_DesignStuff_00143": {
+      "groupId": "UndergroundParking"
+    },
+    "container_Shopping_Mall_DesignStuff_00278": {
+      "groupId": "Ultra"
+    },
+    "Shopping_Mall_DesignStuff_00198": {
+      "groupId": "Goshan"
+    },
+    "Shopping_Mall_DesignStuff_00083": {
+      "groupId": "ClothingShops"
+    },
+    "Shopping_Mall_DesignStuff_00148": {
+      "groupId": "ClothingShops"
+    },
+    "container_Shopping_Mall_DesignStuff_00275": {
+      "groupId": "Ultra"
+    },
+    "Shopping_Mall_DesignStuff_00221": {
+      "groupId": "Parking"
+    },
+    "Shopping_Mall_DesignStuff_00102": {
+      "groupId": "UndergroundParking"
+    },
+    "container_Shopping_Mall_DesignStuff_00129": {
+      "groupId": "UndergroundParking"
+    },
+    "Shopping_Mall_DesignStuff_00120": {
+      "groupId": "Road"
+    },
+    "Shopping_Mall_DesignStuff_00097": {
+      "groupId": "BackLoadingSquare"
+    },
+    "Shopping_Mall_DesignStuff_00108": {
+      "groupId": "UndergroundParking"
+    },
+    "Shopping_Mall_DesignStuff_00115": {
+      "groupId": "UndergroundParking"
+    },
+    "Shopping_Mall_DesignStuff_00117": {
+      "groupId": "UndergroundParking"
+    },
+    "Shopping_Mall_DesignStuff_00123": {
+      "groupId": "LoadingRooms"
+    },
+    "container_Shopping_Mall_DesignStuff_00143": {
+      "groupId": "LockedSeaContainer"
+    },
+    "Shopping_Mall_DesignStuff_00118": {
+      "groupId": "UndergroundParking"
+    },
+    "container_Shopping_Mall_DesignStuff_00127": {
+      "groupId": "UndergroundParking"
+    },
+    "Shopping_Mall_DesignStuff_00111": {
+      "groupId": "UndergroundParking"
+    },
+    "container_Shopping_Mall_DesignStuff_00125": {
+      "groupId": "UndergroundParking"
+    },
+    "container_Shopping_Mall_DesignStuff_00200": {
+      "groupId": "Goshan"
+    },
+    "container_Shopping_Mall_DesignStuff_00276": {
+      "groupId": "Ultra"
+    },
+    "Shopping_Mall_DesignStuff_00099": {
+      "groupId": "UndergroundParking"
+    },
+    "Shopping_Mall_DesignStuff_00119": {
+      "groupId": "UndergroundParking"
+    },
+    "container_Shopping_Mall_DesignStuff_00305": {
+      "groupId": "BackLoadingSquare"
+    },
+    "Shopping_Mall_DesignStuff_00219": {
+      "groupId": "UndergroundParking"
+    },
+    "container_Shopping_Mall_DesignStuff_00138": {
+      "groupId": "ClothingShops"
+    },
+    "container_Shopping_Mall_DesignStuff_00199": {
+      "groupId": "Goshan"
+    },
+    "container_Shopping_Mall_DesignStuff_00148": {
+      "groupId": "MedicalShops"
+    },
+    "container_Shopping_Mall_DesignStuff_00149": {
+      "groupId": "MedicalShops"
+    },
+    "Shopping_Mall_DesignStuff_00073": {
+      "groupId": "MedicalShops"
+    },
+    "Shopping_Mall_DesignStuff_00164": {
+      "groupId": "MedicalShops"
+    },
+    "container_Shopping_Mall_DesignStuff_00146": {
+      "groupId": "MedicalShops"
+    },
+    "container_Shopping_Mall_DesignStuff_00147": {
+      "groupId": "MedicalShops"
+    },
+    "Shopping_Mall_OLI_00073": {
+      "groupId": ""
+    },
+    "Shopping_Mall_OLI_00067": {
+      "groupId": ""
+    },
+    "Shopping_Mall_OLI_00075": {
+      "groupId": ""
+    },
+    "Shopping_Mall_OLI_00077": {
+      "groupId": ""
+    },
+    "Shopping_Mall_OLI_00079": {
+      "groupId": ""
+    },
+    "Shopping_Mall_OLI_00071": {
+      "groupId": ""
+    },
+    "Shopping_Mall_OLI_00081": {
+      "groupId": ""
+    },
+    "Shopping_Mall_OLI_00069": {
+      "groupId": ""
+    },
+    "Shopping_Mall_OLI_00083": {
+      "groupId": ""
+    },
+    "Shopping_Mall_GOSHAN_00042": {
+      "groupId": ""
+    },
+    "Shopping_Mall_GOSHAN_00048": {
+      "groupId": ""
+    },
+    "Shopping_Mall_GOSHAN_00046": {
+      "groupId": ""
+    },
+    "Shopping_Mall_GOSHAN_00058": {
+      "groupId": ""
+    },
+    "Shopping_Mall_GOSHAN_00049": {
+      "groupId": ""
+    },
+    "Shopping_Mall_GOSHAN_00055": {
+      "groupId": ""
+    },
+    "Shopping_Mall_GOSHAN_00057": {
+      "groupId": ""
+    },
+    "Shopping_Mall_GOSHAN_00056": {
+      "groupId": ""
+    },
+    "Shopping_Mall_GOSHAN_00052": {
+      "groupId": ""
+    },
+    "Shopping_Mall_GOSHAN_00059": {
+      "groupId": ""
+    },
+    "Shopping_Mall_GOSHAN_00050": {
+      "groupId": ""
+    },
+    "Shopping_Mall_GOSHAN_00066": {
+      "groupId": ""
+    },
+    "Shopping_Mall_GOSHAN_00068": {
+      "groupId": ""
+    },
+    "Shopping_Mall_GOSHAN_00043": {
+      "groupId": ""
+    },
+    "Shopping_Mall_GOSHAN_00065": {
+      "groupId": ""
+    },
+    "Shopping_Mall_GOSHAN_00062": {
+      "groupId": ""
+    },
+    "Shopping_Mall_GOSHAN_00053": {
+      "groupId": ""
+    },
+    "Shopping_Mall_GOSHAN_00047": {
+      "groupId": ""
+    },
+    "Shopping_Mall_GOSHAN_00067": {
+      "groupId": ""
+    },
+    "Shopping_Mall_GOSHAN_00060": {
+      "groupId": ""
+    },
+    "Shopping_Mall_GOSHAN_00063": {
+      "groupId": ""
+    },
+    "Shopping_Mall_GOSHAN_00054": {
+      "groupId": ""
+    },
+    "Shopping_Mall_GOSHAN_00051": {
+      "groupId": ""
+    },
+    "Shopping_Mall_GOSHAN_00061": {
+      "groupId": ""
+    },
+    "Shopping_Mall_GOSHAN_00064": {
+      "groupId": ""
+    },
+    "Shopping_Mall_GOSHAN_00044": {
+      "groupId": ""
+    },
+    "Shopping_Mall_DesignStuff_00067": {
+      "groupId": "UndergroundParking"
+    },
+    "Shopping_Mall_DesignStuff_00287": {
+      "groupId": "Other"
+    },
+    "Shopping_Mall_DesignStuff_00145": {
+      "groupId": "KibaArms"
+    },
+    "container_Shopping_Mall_DesignStuff_00378": {
+      "groupId": "Stashes_Shopping_mall"
+    },
+    "container_Shopping_Mall_DesignStuff_00340": {
+      "groupId": "Stashes_Shopping_mall"
+    },
+    "container_Shopping_Mall_DesignStuff_00365": {
+      "groupId": "Stashes_Shopping_mall"
+    },
+    "container_Shopping_Mall_DesignStuff_00360": {
+      "groupId": "Stashes_Shopping_mall"
+    },
+    "container_Shopping_Mall_DesignStuff_00352": {
+      "groupId": "Stashes_Shopping_mall"
+    },
+    "container_Shopping_Mall_DesignStuff_00353": {
+      "groupId": "Stashes_Shopping_mall"
+    },
+    "container_Shopping_Mall_DesignStuff_00334": {
+      "groupId": "Stashes_Shopping_mall"
+    },
+    "container_Shopping_Mall_DesignStuff_00354": {
+      "groupId": "Stashes_Shopping_mall"
+    },
+    "container_Shopping_Mall_DesignStuff_00336": {
+      "groupId": "Stashes_Shopping_mall"
+    },
+    "container_Shopping_Mall_DesignStuff_00349": {
+      "groupId": "Stashes_Shopping_mall"
+    },
+    "container_Shopping_Mall_DesignStuff_00344": {
+      "groupId": "Stashes_Shopping_mall"
+    },
+    "Shopping_Mall_DesignStuff_00262": {
+      "groupId": "Stashes_Shopping_mall"
+    },
+    "container_Shopping_Mall_DesignStuff_00363": {
+      "groupId": "Stashes_Shopping_mall"
+    },
+    "container_Shopping_Mall_DesignStuff_00366": {
+      "groupId": "Stashes_Shopping_mall"
+    },
+    "Shopping_Mall_DesignStuff_00273": {
+      "groupId": "Stashes_Shopping_mall"
+    },
+    "container_Shopping_Mall_DesignStuff_00361": {
+      "groupId": "Stashes_Shopping_mall"
+    },
+    "Shopping_Mall_DesignStuff_00268": {
+      "groupId": "Stashes_Shopping_mall"
+    },
+    "container_Shopping_Mall_DesignStuff_00351": {
+      "groupId": "Stashes_Shopping_mall"
+    },
+    "container_Shopping_Mall_DesignStuff_00333": {
+      "groupId": "Stashes_Shopping_mall"
+    },
+    "container_Shopping_Mall_DesignStuff_00314": {
+      "groupId": "Stashes_Shopping_mall"
+    },
+    "container_Shopping_Mall_DesignStuff_00345": {
+      "groupId": "Stashes_Shopping_mall"
+    },
+    "container_Shopping_Mall_DesignStuff_00350": {
+      "groupId": "Stashes_Shopping_mall"
+    },
+    "Shopping_Mall_DesignStuff_00245": {
+      "groupId": "Stashes_Shopping_mall"
+    },
+    "container_Shopping_Mall_DesignStuff_00339": {
+      "groupId": "Stashes_Shopping_mall"
+    },
+    "container_Shopping_Mall_DesignStuff_00348": {
+      "groupId": "Stashes_Shopping_mall"
+    },
+    "container_Shopping_Mall_DesignStuff_00367": {
+      "groupId": "Stashes_Shopping_mall"
+    },
+    "container_Shopping_Mall_DesignStuff_00338": {
+      "groupId": "Stashes_Shopping_mall"
+    },
+    "container_Shopping_Mall_DesignStuff_00358": {
+      "groupId": "Stashes_Shopping_mall"
+    },
+    "Shopping_Mall_DesignStuff_00218": {
+      "groupId": "Stashes_Shopping_mall"
+    },
+    "Shopping_Mall_DesignStuff_00233": {
+      "groupId": "Stashes_Shopping_mall"
+    },
+    "container_Shopping_Mall_DesignStuff_00343": {
+      "groupId": "Stashes_Shopping_mall"
+    },
+    "Shopping_Mall_DesignStuff_00294": {
+      "groupId": "Stashes_Shopping_mall"
+    },
+    "container_Shopping_Mall_DesignStuff_00356": {
+      "groupId": "Stashes_Shopping_mall"
+    },
+    "container_Shopping_Mall_DesignStuff_00342": {
+      "groupId": "Stashes_Shopping_mall"
+    },
+    "container_Shopping_Mall_DesignStuff_00379": {
+      "groupId": "Stashes_Shopping_mall"
+    },
+    "Shopping_Mall_DesignStuff_00256": {
+      "groupId": "Stashes_Shopping_mall"
+    },
+    "Shopping_Mall_DesignStuff_00259": {
+      "groupId": "Stashes_Shopping_mall"
+    },
+    "Shopping_Mall_DesignStuff_00267": {
+      "groupId": "Stashes_Shopping_mall"
+    },
+    "container_Shopping_Mall_DesignStuff_00347": {
+      "groupId": "Stashes_Shopping_mall"
+    },
+    "container_Shopping_Mall_DesignStuff_00364": {
+      "groupId": "Stashes_Shopping_mall"
+    },
+    "container_Shopping_Mall_DesignStuff_00346": {
+      "groupId": "Stashes_Shopping_mall"
+    },
+    "container_Shopping_Mall_DesignStuff_00355": {
+      "groupId": "Stashes_Shopping_mall"
+    },
+    "container_Shopping_Mall_DesignStuff_00313": {
+      "groupId": "Stashes_Shopping_mall"
+    },
+    "container_Shopping_Mall_DesignStuff_00357": {
+      "groupId": "Stashes_Shopping_mall"
+    },
+    "Shopping_Mall_DesignStuff_00176": {
+      "groupId": "Stashes_Shopping_mall"
+    },
+    "container_Shopping_Mall_DesignStuff_00359": {
+      "groupId": "Stashes_Shopping_mall"
+    },
+    "container_Shopping_Mall_DesignStuff_00335": {
+      "groupId": "Stashes_Shopping_mall"
+    },
+    "container_Shopping_Mall_DesignStuff_00362": {
+      "groupId": "Stashes_Shopping_mall"
+    },
+    "container_Shopping_Mall_DesignStuff_00337": {
+      "groupId": "Stashes_Shopping_mall"
+    },
+    "Shopping_Mall_DesignStuff_00187": {
+      "groupId": "Stashes_Shopping_mall"
+    },
+    "container_Shopping_Mall_DesignStuff_00341": {
+      "groupId": "Stashes_Shopping_mall"
+    },
+    "container_Shopping_Mall_DesignStuff_00368": {
+      "groupId": "Stashes_Shopping_mall"
+    },
+    "container_Shopping_Mall_DesignStuff_00380": {
+      "groupId": "Stashes_Shopping_mall"
+    },
+    "container_Shopping_Mall_DesignStuff_00175": {
+      "groupId": "OLI"
+    },
+    "container_Shopping_Mall_DesignStuff_00260": {
+      "groupId": "Ultra"
+    },
+    "container_Shopping_Mall_DesignStuff_00134": {
+      "groupId": "ClothingShops"
+    },
+    "container_Shopping_Mall_DesignStuff_00075": {
+      "groupId": "PowerStation"
+    },
+    "container_Shopping_Mall_DesignStuff_00300": {
+      "groupId": "BackLoadingSquare"
+    },
+    "container_Shopping_Mall_DesignStuff_00256": {
+      "groupId": "Ultra"
+    },
+    "Shopping_Mall_DesignStuff_00270": {
+      "groupId": "Ultra"
+    },
+    "Shopping_Mall_DesignStuff_00202": {
+      "groupId": "MedicalShops"
+    },
+    "container_Shopping_Mall_DesignStuff_00097": {
+      "groupId": "UndergroundParking"
+    },
+    "container_Shopping_Mall_DesignStuff_00131": {
+      "groupId": "ClothingShops"
+    },
+    "Shopping_Mall_DesignStuff_00158": {
+      "groupId": "MedicalShops"
+    },
+    "Shopping_Mall_DesignStuff_00258": {
+      "groupId": "LoadingRooms"
+    },
+    "container_Shopping_Mall_DesignStuff_00096": {
+      "groupId": "UndergroundParking"
+    },
+    "Shopping_Mall_DesignStuff_00169": {
+      "groupId": "Ultra"
+    },
+    "container_Shopping_Mall_DesignStuff_00164": {
+      "groupId": "MedicalShops"
+    },
+    "Shopping_Mall_DesignStuff_00285": {
+      "groupId": "ClothingShops"
+    },
+    "Shopping_Mall_DesignStuff_00168": {
+      "groupId": "IDEA"
+    },
+    "Shopping_Mall_DesignStuff_00261": {
+      "groupId": "ClothingShops"
+    },
+    "container_Shopping_Mall_DesignStuff_00180": {
+      "groupId": "OLI"
+    },
+    "Shopping_Mall_DesignStuff_00167": {
+      "groupId": "UndergroundParking"
+    },
+    "container_Shopping_Mall_DesignStuff_00163": {
+      "groupId": "MedicalShops"
+    },
+    "container_Shopping_Mall_DesignStuff_00258": {
+      "groupId": "Ultra"
+    },
+    "Shopping_Mall_DesignStuff_00223": {
+      "groupId": "Ultra"
+    },
+    "container_Shopping_Mall_DesignStuff_00194": {
+      "groupId": "Goshan"
+    },
+    "Shopping_Mall_DesignStuff_00185": {
+      "groupId": "IDEA"
+    },
+    "Shopping_Mall_DesignStuff_00242": {
+      "groupId": "Ultra"
+    },
+    "container_Shopping_Mall_DesignStuff_00243": {
+      "groupId": "Ultra"
+    },
+    "container_Shopping_Mall_DesignStuff_00192": {
+      "groupId": "Goshan"
+    },
+    "container_Shopping_Mall_DesignStuff_00177": {
+      "groupId": "OLI"
+    },
+    "Shopping_Mall_DesignStuff_00295": {
+      "groupId": "ClothingShops"
+    },
+    "Shopping_Mall_DesignStuff_00237": {
+      "groupId": "UndergroundParking"
+    },
+    "container_Shopping_Mall_DesignStuff_00240": {
+      "groupId": "Ultra"
+    },
+    "container_Shopping_Mall_DesignStuff_00093": {
+      "groupId": "UndergroundParking"
+    },
+    "container_Shopping_Mall_DesignStuff_00257": {
+      "groupId": "Ultra"
+    },
+    "Shopping_Mall_DesignStuff_00205": {
+      "groupId": "Other"
+    },
+    "container_Shopping_Mall_DesignStuff_00136": {
+      "groupId": "ClothingShops"
+    },
+    "container_Shopping_Mall_DesignStuff_00195": {
+      "groupId": "Goshan"
+    },
+    "Shopping_Mall_DesignStuff_00182": {
+      "groupId": "Goshan"
+    },
+    "Shopping_Mall_DesignStuff_00235": {
+      "groupId": "Goshan"
+    },
+    "Shopping_Mall_DesignStuff_00248": {
+      "groupId": "BackLoadingSquare"
+    },
+    "container_Shopping_Mall_DesignStuff_00251": {
+      "groupId": "Ultra"
+    },
+    "container_Shopping_Mall_DesignStuff_00221": {
+      "groupId": "IDEA"
+    },
+    "container_Shopping_Mall_DesignStuff_00223": {
+      "groupId": "IDEA"
+    },
+    "Shopping_Mall_DesignStuff_00289": {
+      "groupId": "ClothingShops"
+    },
+    "container_Shopping_Mall_DesignStuff_00303": {
+      "groupId": "BackLoadingSquare"
+    },
+    "container_Shopping_Mall_DesignStuff_00092": {
+      "groupId": "UndergroundParking"
+    },
+    "container_Shopping_Mall_DesignStuff_00299": {
+      "groupId": "BackLoadingSquare"
+    },
+    "Shopping_Mall_DesignStuff_00184": {
+      "groupId": "Ultra"
+    },
+    "Shopping_Mall_DesignStuff_00192": {
+      "groupId": "MedicalShops"
+    },
+    "Shopping_Mall_DesignStuff_00272": {
+      "groupId": "LoadingRooms"
+    },
+    "Shopping_Mall_DesignStuff_00194": {
+      "groupId": "Ultra"
+    },
+    "Shopping_Mall_DesignStuff_00253": {
+      "groupId": "Ultra"
+    },
+    "Shopping_Mall_DesignStuff_00229": {
+      "groupId": "UndergroundParking"
+    },
+    "container_Shopping_Mall_DesignStuff_00247": {
+      "groupId": "Ultra"
+    },
+    "container_Shopping_Mall_DesignStuff_00087": {
+      "groupId": "UndergroundParking"
+    },
+    "container_Shopping_Mall_DesignStuff_00218": {
+      "groupId": "IDEA"
+    },
+    "container_Shopping_Mall_DesignStuff_00160": {
+      "groupId": "MedicalShops"
+    },
+    "container_Shopping_Mall_DesignStuff_00088": {
+      "groupId": "UndergroundParking"
+    },
+    "container_Shopping_Mall_DesignStuff_00241": {
+      "groupId": "Ultra"
+    },
+    "container_Shopping_Mall_DesignStuff_00262": {
+      "groupId": "Ultra"
+    },
+    "container_Shopping_Mall_DesignStuff_00310": {
+      "groupId": "Other"
+    },
+    "container_Shopping_Mall_DesignStuff_00023": {
+      "groupId": "LoadingRooms"
+    },
+    "container_Shopping_Mall_DesignStuff_00165": {
+      "groupId": "MedicalShops"
+    },
+    "Shopping_Mall_DesignStuff_00269": {
+      "groupId": "Ultra"
+    },
+    "container_Shopping_Mall_DesignStuff_00302": {
+      "groupId": "BackLoadingSquare"
+    },
+    "Shopping_Mall_DesignStuff_00203": {
+      "groupId": "BackLoadingSquare"
+    },
+    "container_Shopping_Mall_DesignStuff_00085": {
+      "groupId": "UndergroundParking"
+    },
+    "container_Shopping_Mall_DesignStuff_00216": {
+      "groupId": "IDEA"
+    },
+    "Shopping_Mall_DesignStuff_00251": {
+      "groupId": "LoadingRooms"
+    },
+    "Shopping_Mall_DesignStuff_00257": {
+      "groupId": "LoadingRooms"
+    },
+    "container_Shopping_Mall_DesignStuff_00246": {
+      "groupId": "Ultra"
+    },
+    "container_Shopping_Mall_DesignStuff_00089": {
+      "groupId": "UndergroundParking"
+    },
+    "container_Shopping_Mall_DesignStuff_00091": {
+      "groupId": "UndergroundParking"
+    },
+    "container_Shopping_Mall_DesignStuff_00263": {
+      "groupId": "Ultra"
+    },
+    "container_Shopping_Mall_DesignStuff_00245": {
+      "groupId": "Ultra"
+    },
+    "container_Shopping_Mall_DesignStuff_00197": {
+      "groupId": "Goshan"
+    },
+    "container_Shopping_Mall_DesignStuff_00174": {
+      "groupId": "OLI"
+    },
+    "container_Shopping_Mall_DesignStuff_00237": {
+      "groupId": "Ultra"
+    },
+    "container_Shopping_Mall_DesignStuff_00248": {
+      "groupId": "Ultra"
+    },
+    "container_Shopping_Mall_DesignStuff_00021": {
+      "groupId": "LoadingRooms"
+    },
+    "Shopping_Mall_DesignStuff_00255": {
+      "groupId": "UndergroundParking"
+    },
+    "container_Shopping_Mall_DesignStuff_00161": {
+      "groupId": "MedicalShops"
+    },
+    "Shopping_Mall_DesignStuff_00226": {
+      "groupId": "Ultra"
+    },
+    "Shopping_Mall_DesignStuff_00254": {
+      "groupId": "BackLoadingSquare"
+    },
+    "container_Shopping_Mall_DesignStuff_00238": {
+      "groupId": "Ultra"
+    },
+    "Shopping_Mall_DesignStuff_00207": {
+      "groupId": "PowerStation"
+    },
+    "container_Shopping_Mall_DesignStuff_00268": {
+      "groupId": "Ultra"
+    },
+    "container_Shopping_Mall_DesignStuff_00224": {
+      "groupId": "IDEA"
+    },
+    "Shopping_Mall_DesignStuff_00190": {
+      "groupId": "Ultra"
+    },
+    "Shopping_Mall_DesignStuff_00189": {
+      "groupId": "IDEA"
+    },
+    "container_Shopping_Mall_DesignStuff_00259": {
+      "groupId": "Ultra"
+    },
+    "Shopping_Mall_DesignStuff_00283": {
+      "groupId": "OLI"
+    },
+    "Shopping_Mall_DesignStuff_00204": {
+      "groupId": "Other"
+    },
+    "Shopping_Mall_DesignStuff_00281": {
+      "groupId": "OLI"
+    },
+    "container_Shopping_Mall_DesignStuff_00255": {
+      "groupId": "Ultra"
+    },
+    "container_Shopping_Mall_DesignStuff_00239": {
+      "groupId": "Ultra"
+    },
+    "Shopping_Mall_DesignStuff_00232": {
+      "groupId": "BackLoadingSquare"
+    },
+    "Shopping_Mall_DesignStuff_00193": {
+      "groupId": "Ultra"
+    },
+    "container_Shopping_Mall_DesignStuff_00162": {
+      "groupId": "MedicalShops"
+    },
+    "Shopping_Mall_DesignStuff_00236": {
+      "groupId": "UndergroundParking"
+    },
+    "container_Shopping_Mall_DesignStuff_00264": {
+      "groupId": "Ultra"
+    },
+    "container_Shopping_Mall_DesignStuff_00074": {
+      "groupId": "PowerStation"
+    },
+    "Shopping_Mall_DesignStuff_00293": {
+      "groupId": "Ultra"
+    },
+    "container_Shopping_Mall_DesignStuff_00244": {
+      "groupId": "Ultra"
+    },
+    "container_Shopping_Mall_DesignStuff_00094": {
+      "groupId": "UndergroundParking"
+    },
+    "Shopping_Mall_DesignStuff_00196": {
+      "groupId": "MedicalShops"
+    },
+    "container_Shopping_Mall_DesignStuff_00193": {
+      "groupId": "Goshan"
+    },
+    "container_Shopping_Mall_DesignStuff_00301": {
+      "groupId": "BackLoadingSquare"
+    },
+    "Shopping_Mall_DesignStuff_00250": {
+      "groupId": "UndergroundParking"
+    },
+    "Shopping_Mall_DesignStuff_00297": {
+      "groupId": "Ultra"
+    },
+    "container_Shopping_Mall_DesignStuff_00254": {
+      "groupId": "Ultra"
+    },
+    "container_Shopping_Mall_DesignStuff_00020": {
+      "groupId": "LoadingRooms"
+    },
+    "container_Shopping_Mall_DesignStuff_00179": {
+      "groupId": "OLI"
+    },
+    "container_Shopping_Mall_DesignStuff_00176": {
+      "groupId": "OLI"
+    },
+    "Shopping_Mall_DesignStuff_00211": {
+      "groupId": "ClothingShops"
+    },
+    "container_Shopping_Mall_DesignStuff_00265": {
+      "groupId": "Ultra"
+    },
+    "Shopping_Mall_DesignStuff_00244": {
+      "groupId": "UndergroundParking"
+    },
+    "Shopping_Mall_DesignStuff_00291": {
+      "groupId": "ClothingShops"
+    },
+    "container_Shopping_Mall_DesignStuff_00159": {
+      "groupId": "MedicalShops"
+    },
+    "Shopping_Mall_DesignStuff_00234": {
+      "groupId": "BackLoadingSquare"
+    },
+    "container_Shopping_Mall_DesignStuff_00267": {
+      "groupId": "Ultra"
+    },
+    "container_Shopping_Mall_DesignStuff_00133": {
+      "groupId": "ClothingShops"
+    },
+    "container_Shopping_Mall_DesignStuff_00249": {
+      "groupId": "Ultra"
+    },
+    "container_Shopping_Mall_DesignStuff_00261": {
+      "groupId": "Ultra"
+    },
+    "container_Shopping_Mall_DesignStuff_00196": {
+      "groupId": "Goshan"
+    },
+    "Shopping_Mall_DesignStuff_00195": {
+      "groupId": "Ultra"
+    },
+    "container_Shopping_Mall_DesignStuff_00130": {
+      "groupId": "ClothingShops"
+    },
+    "container_Shopping_Mall_DesignStuff_00024": {
+      "groupId": "LoadingRooms"
+    },
+    "container_Shopping_Mall_DesignStuff_00252": {
+      "groupId": "Ultra"
+    },
+    "Shopping_Mall_DesignStuff_00188": {
+      "groupId": "ClothingShops"
+    },
+    "container_Shopping_Mall_DesignStuff_00090": {
+      "groupId": "UndergroundParking"
+    },
+    "container_Shopping_Mall_DesignStuff_00019": {
+      "groupId": "LoadingRooms"
+    },
+    "Shopping_Mall_DesignStuff_00275": {
+      "groupId": "OLI"
+    },
+    "container_Shopping_Mall_DesignStuff_00025": {
+      "groupId": "LoadingRooms"
+    },
+    "Shopping_Mall_DesignStuff_00206": {
+      "groupId": "OLI"
+    },
+    "Shopping_Mall_DesignStuff_00201": {
+      "groupId": "Other"
+    },
+    "container_Shopping_Mall_DesignStuff_00018": {
+      "groupId": "LoadingRooms"
+    },
+    "container_Shopping_Mall_DesignStuff_00098": {
+      "groupId": "UndergroundParking"
+    },
+    "container_Shopping_Mall_DesignStuff_00220": {
+      "groupId": "IDEA"
+    },
+    "container_Shopping_Mall_DesignStuff_00215": {
+      "groupId": "IDEA"
+    },
+    "Shopping_Mall_DesignStuff_00279": {
+      "groupId": "OLI"
+    },
+    "container_Shopping_Mall_DesignStuff_00086": {
+      "groupId": "UndergroundParking"
+    },
+    "container_Shopping_Mall_DesignStuff_00099": {
+      "groupId": "UndergroundParking"
+    },
+    "container_Shopping_Mall_DesignStuff_00132": {
+      "groupId": "ClothingShops"
+    },
+    "container_Shopping_Mall_DesignStuff_00217": {
+      "groupId": "IDEA"
+    },
+    "Shopping_Mall_DesignStuff_00133": {
+      "groupId": "IDEA"
+    },
+    "container_Shopping_Mall_DesignStuff_00219": {
+      "groupId": "IDEA"
+    },
+    "container_Shopping_Mall_DesignStuff_00158": {
+      "groupId": "MedicalShops"
+    },
+    "container_Shopping_Mall_DesignStuff_00222": {
+      "groupId": "IDEA"
+    },
+    "container_Shopping_Mall_DesignStuff_00253": {
+      "groupId": "Ultra"
+    },
+    "Shopping_Mall_DesignStuff_00135": {
+      "groupId": "MedicalShops"
+    },
+    "Shopping_Mall_DesignStuff_00165": {
+      "groupId": "UndergroundParking"
+    },
+    "container_Shopping_Mall_DesignStuff_00242": {
+      "groupId": "Ultra"
+    },
+    "container_Shopping_Mall_DesignStuff_00178": {
+      "groupId": "OLI"
+    },
+    "container_Shopping_Mall_DesignStuff_00022": {
+      "groupId": "LoadingRooms"
+    },
+    "Shopping_Mall_DesignStuff_00264": {
+      "groupId": "Goshan"
+    },
+    "container_Shopping_Mall_DesignStuff_00173": {
+      "groupId": "OLI"
+    },
+    "container_Shopping_Mall_DesignStuff_00172": {
+      "groupId": "OLI"
+    },
+    "container_Shopping_Mall_DesignStuff_00095": {
+      "groupId": "UndergroundParking"
+    },
+    "Shopping_Mall_DesignStuff_00239": {
+      "groupId": "UndergroundParking"
+    },
+    "container_Shopping_Mall_DesignStuff_00250": {
+      "groupId": "Ultra"
+    },
+    "container_Shopping_Mall_DesignStuff_00266": {
+      "groupId": "Ultra"
+    },
+    "Shopping_Mall_DesignStuff_00247": {
+      "groupId": "UndergroundParking"
+    },
+    "Shopping_Mall_DesignStuff_00152": {
+      "groupId": "IDEA"
+    },
+    "Shopping_Mall_DesignStuff_00246": {
+      "groupId": "UndergroundParking"
+    },
+    "Shopping_Mall_DesignStuff_00243": {
+      "groupId": "Ultra"
+    },
+    "Shopping_Mall_DesignStuff_00191": {
+      "groupId": "Ultra"
+    },
+    "container_Shopping_Mall_DesignStuff_00135": {
+      "groupId": "ClothingShops"
+    },
+    "container_Shopping_Mall_DesignStuff_00324": {
+      "groupId": "Stashes_Shopping_mall"
+    },
+    "container_Shopping_Mall_DesignStuff_00321": {
+      "groupId": "Stashes_Shopping_mall"
+    },
+    "container_Shopping_Mall_DesignStuff_00373": {
+      "groupId": "Stashes_Shopping_mall"
+    },
+    "container_Shopping_Mall_DesignStuff_00315": {
+      "groupId": "Stashes_Shopping_mall"
+    },
+    "container_Shopping_Mall_DesignStuff_00327": {
+      "groupId": "Stashes_Shopping_mall"
+    },
+    "container_Shopping_Mall_DesignStuff_00323": {
+      "groupId": "Stashes_Shopping_mall"
+    },
+    "Shopping_Mall_DesignStuff_00260": {
+      "groupId": "Stashes_Shopping_mall"
+    },
+    "container_Shopping_Mall_DesignStuff_00371": {
+      "groupId": "Stashes_Shopping_mall"
+    },
+    "container_Shopping_Mall_DesignStuff_00326": {
+      "groupId": "Stashes_Shopping_mall"
+    },
+    "container_Shopping_Mall_DesignStuff_00320": {
+      "groupId": "Stashes_Shopping_mall"
+    },
+    "Shopping_Mall_DesignStuff_00156": {
+      "groupId": "Stashes_Shopping_mall"
+    },
+    "Shopping_Mall_DesignStuff_00241": {
+      "groupId": "Stashes_Shopping_mall"
+    },
+    "container_Shopping_Mall_DesignStuff_00332": {
+      "groupId": "Stashes_Shopping_mall"
+    },
+    "container_Shopping_Mall_DesignStuff_00370": {
+      "groupId": "Stashes_Shopping_mall"
+    },
+    "Shopping_Mall_DesignStuff_00161": {
+      "groupId": "Stashes_Shopping_mall"
+    },
+    "container_Shopping_Mall_DesignStuff_00377": {
+      "groupId": "Stashes_Shopping_mall"
+    },
+    "container_Shopping_Mall_DesignStuff_00316": {
+      "groupId": "Stashes_Shopping_mall"
+    },
+    "container_Shopping_Mall_DesignStuff_00317": {
+      "groupId": "Stashes_Shopping_mall"
+    },
+    "container_Shopping_Mall_DesignStuff_00318": {
+      "groupId": "Stashes_Shopping_mall"
+    },
+    "container_Shopping_Mall_DesignStuff_00330": {
+      "groupId": "Stashes_Shopping_mall"
+    },
+    "container_Shopping_Mall_DesignStuff_00329": {
+      "groupId": "Stashes_Shopping_mall"
+    },
+    "Shopping_Mall_DesignStuff_00271": {
+      "groupId": "Stashes_Shopping_mall"
+    },
+    "container_Shopping_Mall_DesignStuff_00376": {
+      "groupId": "Stashes_Shopping_mall"
+    },
+    "container_Shopping_Mall_DesignStuff_00311": {
+      "groupId": "Stashes_Shopping_mall"
+    },
+    "container_Shopping_Mall_DesignStuff_00319": {
+      "groupId": "Stashes_Shopping_mall"
+    },
+    "container_Shopping_Mall_DesignStuff_00369": {
+      "groupId": "Stashes_Shopping_mall"
+    },
+    "container_Shopping_Mall_DesignStuff_00372": {
+      "groupId": "Stashes_Shopping_mall"
+    },
+    "container_Shopping_Mall_DesignStuff_00328": {
+      "groupId": "Stashes_Shopping_mall"
+    },
+    "container_Shopping_Mall_DesignStuff_00325": {
+      "groupId": "Stashes_Shopping_mall"
+    },
+    "container_Shopping_Mall_DesignStuff_00331": {
+      "groupId": "Stashes_Shopping_mall"
+    },
+    "container_Shopping_Mall_DesignStuff_00375": {
+      "groupId": "Stashes_Shopping_mall"
+    },
+    "container_Shopping_Mall_DesignStuff_00374": {
+      "groupId": "Stashes_Shopping_mall"
+    },
+    "container_Shopping_Mall_DesignStuff_00312": {
+      "groupId": "Stashes_Shopping_mall"
+    },
+    "Shopping_Mall_DesignStuff_00266": {
+      "groupId": "Stashes_Shopping_mall"
+    },
+    "container_Shopping_Mall_DesignStuff_00322": {
+      "groupId": "Stashes_Shopping_mall"
+    },
+    "Shopping_Mall_DesignStuff_00224": {
+      "groupId": "Stashes_Shopping_mall"
+    },
+    "container_Shopping_Mall_DesignStuff_00030": {
+      "groupId": "LoadingRooms"
+    },
+    "container_Shopping_Mall_DesignStuff_00028": {
+      "groupId": "LoadingRooms"
+    },
+    "container_Shopping_Mall_DesignStuff_00104": {
+      "groupId": "UndergroundParking"
+    },
+    "container_Shopping_Mall_DesignStuff_00029": {
+      "groupId": "LoadingRooms"
+    },
+    "Shopping_Mall_DesignStuff_00276": {
+      "groupId": "OLI"
+    },
+    "container_Shopping_Mall_DesignStuff_00181": {
+      "groupId": "OLI"
+    },
+    "container_Shopping_Mall_DesignStuff_00107": {
+      "groupId": "UndergroundParking"
+    },
+    "Shopping_Mall_DesignStuff_00274": {
+      "groupId": "UndergroundParking"
+    },
+    "container_Shopping_Mall_DesignStuff_00110": {
+      "groupId": "UndergroundParking"
+    },
+    "container_Shopping_Mall_DesignStuff_00106": {
+      "groupId": "UndergroundParking"
+    },
+    "Shopping_Mall_DesignStuff_00296": {
+      "groupId": "LoadingRooms"
+    },
+    "Shopping_Mall_DesignStuff_00292": {
+      "groupId": "UndergroundParking"
+    },
+    "container_Shopping_Mall_DesignStuff_00031": {
+      "groupId": "LoadingRooms"
+    },
+    "container_Shopping_Mall_DesignStuff_00109": {
+      "groupId": "UndergroundParking"
+    },
+    "Shopping_Mall_DesignStuff_00290": {
+      "groupId": "LoadingRooms"
+    },
+    "container_Shopping_Mall_DesignStuff_00105": {
+      "groupId": "UndergroundParking"
+    },
+    "Shopping_Mall_DesignStuff_00280": {
+      "groupId": "UndergroundParking"
+    },
+    "container_Shopping_Mall_DesignStuff_00108": {
+      "groupId": "UndergroundParking"
+    },
+    "container_Shopping_Mall_DesignStuff_00182": {
+      "groupId": "OLI"
+    },
+    "Shopping_Mall_DesignStuff_00282": {
+      "groupId": "UndergroundParking"
+    },
+    "container_Shopping_Mall_DesignStuff_00111": {
+      "groupId": "UndergroundParking"
+    },
+    "Shopping_Mall_DesignStuff_00286": {
+      "groupId": "UndergroundParking"
+    }
+  }
+}
