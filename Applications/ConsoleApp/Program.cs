@@ -24,7 +24,7 @@ namespace ConsoleApp
         {
             LogDetailed("Welcome in Tarkov Server Console!");
             ConsoleSpacer();
-            LogDetailed($"Versions: \n{SLU.Versions.ServerVersion}\n{Version.LoadVersion}");
+            LogDetailed($"Server Version: {Versions.ServerVersion} | Console Version: {Version.LoadVersion} | Tarkov Version: {Versions.TarkovVersion}");
             ConsoleSpacer();
         }
 
