@@ -17,7 +17,9 @@ namespace ServerLib.Web
             ServerHelper.PrintRequest(request, serverStruct);
             string Uncompressed = ResponseControl.DeCompressReq(request.BodyBytes);
             // RPS
-            string resp = AccountController.Login(JsonConvert.DeserializeObject<Json.Classes.Login>(Uncompressed));
+            var req = JsonConvert.DeserializeObject<Json.Classes.Login>(Uncompressed);
+            ArgumentNullException.ThrowIfNull(req);
+            string resp = AccountController.Login(req);
             var rsp = ResponseControl.CompressRsp(resp);
             serverStruct.Response.MakeGetResponse(rsp).SetHeader("Content-Encoding", "deflate");
             serverStruct.SendResponse();
@@ -32,7 +34,9 @@ namespace ServerLib.Web
             string Uncompressed = ResponseControl.DeCompressReq(request.BodyBytes);
 
             // RPS
-            string resp = AccountController.Register(JsonConvert.DeserializeObject<Json.Classes.Login>(Uncompressed));
+            var req = JsonConvert.DeserializeObject<Json.Classes.Login>(Uncompressed);
+            ArgumentNullException.ThrowIfNull(req);
+            string resp = AccountController.Register(req);
             var rsp = ResponseControl.CompressRsp(resp);
             serverStruct.Response.MakeGetResponse(rsp).SetHeader("Content-Encoding", "deflate");
             serverStruct.SendResponse();
@@ -93,7 +97,9 @@ namespace ServerLib.Web
             string Uncompressed = ResponseControl.DeCompressReq(request.BodyBytes);
 
             // RPS
-            string resp = AccountController.ChangePassword(JsonConvert.DeserializeObject<Json.Classes.Change>(Uncompressed));
+            var req = JsonConvert.DeserializeObject<Json.Classes.Change>(Uncompressed);
+            ArgumentNullException.ThrowIfNull(req);
+            string resp = AccountController.ChangePassword(req);
             var rsp = ResponseControl.CompressRsp(resp);
             serverStruct.Response.MakeGetResponse(rsp).SetHeader("Content-Encoding", "deflate");
             serverStruct.SendResponse();

@@ -22,14 +22,19 @@ namespace ServerLib.Json.Helpers
             };
         }
 
-        public static string FromCharacterBase(this Character.Base @base)
+        public static string FromCharacterBase(this Character.Base? @base)
         {
-           return JsonConvert.SerializeObject(@base, new JsonConverter[] { Converters.ItemLocationConverter.Singleton });
+            ArgumentNullException.ThrowIfNull(@base);
+            return JsonConvert.SerializeObject(@base, new JsonConverter[] { Converters.ItemLocationConverter.Singleton });
         }
 
         public static Character.Base ToCharacterBase(this string file)
         {
-            return JsonConvert.DeserializeObject<Character.Base>(File.ReadAllText(file), new JsonConverter[] { Converters.ItemLocationConverter.Singleton });
+            if (!File.Exists(file))
+                throw new FileNotFoundException(file);
+            var ret = JsonConvert.DeserializeObject<Character.Base>(File.ReadAllText(file), new JsonConverter[] { Converters.ItemLocationConverter.Singleton });
+            ArgumentNullException.ThrowIfNull(ret);
+            return ret;
 
         }
     }

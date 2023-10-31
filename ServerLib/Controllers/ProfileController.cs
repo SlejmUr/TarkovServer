@@ -82,16 +82,19 @@ namespace ServerLib.Controllers
                 if (File.Exists($"{dir}/profile.json"))
                 {
                     var pbase = JsonConvert.DeserializeObject<Profile.Base>(File.ReadAllText($"{dir}/profile.json"));
+                    ArgumentNullException.ThrowIfNull(pbase);
                     @base = pbase;
                 }
                 if (File.Exists($"{dir}/others.json"))
                 {
                     var others = JsonConvert.DeserializeObject<ProfileAddon>(File.ReadAllText($"{dir}/others.json"));
+                    ArgumentNullException.ThrowIfNull(others);
                     @base.ProfileAddon = others;
                 }
                 if (File.Exists($"{dir}/account.json"))
                 {
                     var account = JsonConvert.DeserializeObject<Profile.Info>(File.ReadAllText($"{dir}/account.json"));
+                    ArgumentNullException.ThrowIfNull(account);
                     @base.Info = account;
                 }
                 if (File.Exists($"{dir}/character.json"))
@@ -107,11 +110,13 @@ namespace ServerLib.Controllers
                 if (File.Exists($"{dir}/storage.json"))
                 {
                     var storage = JsonConvert.DeserializeObject<List<string>>(File.ReadAllText($"{dir}/storage.json"));
+                    ArgumentNullException.ThrowIfNull(storage);
                     @base.Suits = storage;
                 }
                 if (File.Exists($"{dir}/dialog.json"))
                 {
                     var dialog = JsonConvert.DeserializeObject<Dictionary<string, Profile.Dialogue>>(File.ReadAllText($"{dir}/dialog.json"));
+                    ArgumentNullException.ThrowIfNull(dialog);
                     @base.Dialogues = dialog;
                 }
                 if (!ProfilesDict.ContainsKey(@base.Info.Id))
@@ -138,6 +143,7 @@ namespace ServerLib.Controllers
                 if (dir.Contains(".json"))
                 {
                     var account = JsonConvert.DeserializeObject<Profile.Base>(File.ReadAllText(dir), new JsonConverter[] { Converters.ItemLocationConverter.Singleton });
+                    ArgumentNullException.ThrowIfNull(account);
                     ret.Add(account);
                     if (!ProfilesDict.ContainsKey(account.Info.Id))
                     {
@@ -167,6 +173,7 @@ namespace ServerLib.Controllers
                 if (File.Exists($"{dir}/account.json"))
                 {
                     var account = JsonConvert.DeserializeObject<Profile.Info>(File.ReadAllText($"{dir}/account.json"));
+                    ArgumentNullException.ThrowIfNull(account);
                     if (account.Edition == null | string.IsNullOrEmpty(account.Edition))
                         continue;
                     @base.Info = account;
@@ -183,11 +190,13 @@ namespace ServerLib.Controllers
                 if (File.Exists($"{dir}/storage.json"))
                 {
                     var storage = JsonConvert.DeserializeObject<List<string>>(File.ReadAllText($"{dir}/storage.json"));
+                    ArgumentNullException.ThrowIfNull(storage);
                     @base.Suits = storage;
                 }
                 if (File.Exists($"{dir}/dialog.json"))
                 {
                     var dialog = JsonConvert.DeserializeObject<Dictionary<string, Profile.Dialogue>>(File.ReadAllText($"{dir}/dialog.json"));
+                    ArgumentNullException.ThrowIfNull(dialog);
                     @base.Dialogues = dialog;
                 }
                 if (!ProfilesDict.ContainsKey(@base.Info.Id))

@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using ServerLib.Handlers;
 using ServerLib.Json.Classes;
 
 namespace ServerLib.Controllers
@@ -12,35 +13,33 @@ namespace ServerLib.Controllers
 
         public static Dictionary<string, string> GetDictLanguages()
         {
-            return JsonConvert.DeserializeObject<Dictionary<string,string>>(DatabaseController.DataBase.Locale.Languages);
+            return JsonConvert.DeserializeObject<Dictionary<string,string>>(DatabaseController.DataBase.Locale.Languages)!;
         }
 
-        public static string GetMenu(string url_lang, string sessionId)
+        public static string GetMenu(string url_lang, string SessionId)
         {
-            var Account = AccountController.FindAccount(sessionId);
-            if (Account.Lang != url_lang)
-            {
-                Account.Lang = url_lang;
-            }
+            var acc = AccountController.FindAccount(SessionId);
+            ArgumentNullException.ThrowIfNull(acc);
+            acc.Lang = url_lang;
+            SaveHandler.SaveAccount(SessionId, acc);
             if (!DatabaseController.DataBase.Locale.Locales.TryGetValue(url_lang + "_menu", out var global))
             {
                 return DatabaseController.DataBase.Locale.Locales["en_menu"];
             }
-            return DatabaseController.DataBase.Locale.Locales[url_lang + "_menu"];
+            return global;
         }
 
-        public static string GetLocale(string url_lang, string sessionId)
+        public static string GetLocale(string url_lang, string SessionId)
         {
-            var Account = AccountController.FindAccount(sessionId);
-            if (Account.Lang != url_lang)
-            {
-                Account.Lang = url_lang;
-            }
+            var acc = AccountController.FindAccount(SessionId);
+            ArgumentNullException.ThrowIfNull(acc);
+            acc.Lang = url_lang;
+            SaveHandler.SaveAccount(SessionId, acc);
             if (!DatabaseController.DataBase.Locale.Locales.TryGetValue(url_lang + "_locale", out var global))
             {
                 return DatabaseController.DataBase.Locale.Locales["en_locale"];
             }
-            return DatabaseController.DataBase.Locale.Locales[url_lang + "_locale"];
+            return global;
         }
 
         public static string GetQuestLocales(string lang, string questId)

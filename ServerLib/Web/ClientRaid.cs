@@ -12,8 +12,10 @@ namespace ServerLib.Web
         public static bool ShowMessage(HttpRequest request, ServerStruct serverStruct)
         {
             ServerHelper.PrintRequest(request, serverStruct);
+            string rsp = "False";
             // RPS
-            var rsp = ConfigController.Configs.Gameplay.Raid.InRaid.ShowDeathMessage.ToString();
+            if (ConfigController.Configs.Gameplay.Raid.InRaid.ShowDeathMessage.HasValue)
+                rsp = ConfigController.Configs.Gameplay.Raid.InRaid.ShowDeathMessage.Value.ToString();
             ServerHelper.SendUnityResponse(request, serverStruct, rsp);
             return true;
         }

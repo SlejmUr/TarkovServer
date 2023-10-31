@@ -407,13 +407,13 @@ namespace ServerLib.Json.Classes
             public bool IsShoulderContact { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public bool Foldable { get; set; }
+            public bool? Foldable { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public bool Retractable { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public double SizeReduceRight { get; set; }
+            public double? SizeReduceRight { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public double CenterOfImpact { get; set; }
@@ -611,7 +611,7 @@ namespace ServerLib.Json.Classes
             public Xyz RotationCenterNoStock { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public string FoldedSlot { get; set; }
+            public string? FoldedSlot { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public bool CompactHandling { get; set; }

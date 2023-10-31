@@ -39,16 +39,16 @@ namespace ServerLib.Controllers
                         switch (dir_1)
                         {
                             case "server":
-                                Configs.Server = JsonConvert.DeserializeObject<Json.ServerConfig.Base>(dataraw);
+                                Configs.Server = JsonConvert.DeserializeObject<Json.ServerConfig.Base>(dataraw)!;
                                 break;
                             case "gameplay":
-                                Configs.Gameplay = JsonConvert.DeserializeObject<Json.Classes.GameplayConfig.Base>(dataraw);
+                                Configs.Gameplay = JsonConvert.DeserializeObject<Json.Classes.GameplayConfig.Base>(dataraw)!;
                                 break;
                             case "custom":
-                                Configs.CustomSettings = JsonConvert.DeserializeObject<Json.Classes.CustomConfig.Base>(dataraw);
+                                Configs.CustomSettings = JsonConvert.DeserializeObject<Json.Classes.CustomConfig.Base>(dataraw)!;
                                 break;
                             case "plugin":
-                                Configs.Plugins = JsonConvert.DeserializeObject<List<Json.Classes.Configs.Plugin>>(dataraw);
+                                Configs.Plugins = JsonConvert.DeserializeObject<List<Json.Classes.Configs.Plugin>>(dataraw)!;
                                 break;
                             default:
                                 break;

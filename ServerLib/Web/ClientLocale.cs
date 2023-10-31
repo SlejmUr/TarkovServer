@@ -3,7 +3,6 @@ using ServerLib.Controllers;
 using ServerLib.Utilities.Helpers;
 using ModdableWebServer;
 using ModdableWebServer.Attributes;
-using ServerLib.Utilities;
 
 namespace ServerLib.Web
 {
@@ -24,10 +23,9 @@ namespace ServerLib.Web
         {
             string locale = serverStruct.Parameters["locale"];
             //REQ stuff
-            string SessionId = serverStruct.Headers.GetSessionId();
+            var session = serverStruct.Headers.GetSessionId();
             ServerHelper.PrintRequest(request, serverStruct);
-            Debug.PrintDebug("Locale: " + locale);
-            var resp = ResponseControl.GetBody(LocaleController.GetMenu(locale, SessionId));
+            var resp = ResponseControl.GetBody(LocaleController.GetMenu(locale, session));
             ServerHelper.SendUnityResponse(request, serverStruct, resp);
             return true;
         }
@@ -37,9 +35,9 @@ namespace ServerLib.Web
         {
             string locale = serverStruct.Parameters["locale"];
             //REQ stuff
-            string SessionId = serverStruct.Headers.GetSessionId();
+            var session = serverStruct.Headers.GetSessionId();
             ServerHelper.PrintRequest(request, serverStruct);
-            var resp = ResponseControl.GetBody(LocaleController.GetLocale(locale, SessionId));
+            var resp = ResponseControl.GetBody(LocaleController.GetLocale(locale, session));
             ServerHelper.SendUnityResponse(request, serverStruct, resp);
             return true;
 

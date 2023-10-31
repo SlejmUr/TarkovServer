@@ -11,7 +11,7 @@ namespace ConsoleApp
 {
     internal class Program
     {
-        static CVersion Version = new CVersion();
+        static readonly CVersion Version = new();
         static void LogDetailed(string text) 
         {
             Debug.PrintInfo(text);
@@ -85,7 +85,7 @@ namespace ConsoleApp
 
         private static void CurrentDomain_AssemblyLoad(object? sender, AssemblyLoadEventArgs args)
         {
-            Debug.PrintDebug(args.LoadedAssembly.FullName, "AssemblyLoad");
+            Debug.PrintDebug(args.LoadedAssembly.GetName().FullName, "AssemblyLoad");
         }
 
         internal static Assembly AssemblyResolveEvent(object? sender, ResolveEventArgs args)
@@ -93,7 +93,7 @@ namespace ConsoleApp
             var _FileName = "";
             try
             {
-                var assembly = new AssemblyName(args.Name).Name;
+                var assembly = new AssemblyName(args.Name).Name ?? throw new NullReferenceException();
                 Debug.PrintDebug(assembly, "AssemblyResolveEvent");
                 _FileName = Path.Combine(File.ReadAllText("path.txt"), $"{assembly}.dll");
                 /*
@@ -110,8 +110,8 @@ namespace ConsoleApp
                  Console.WriteLine(
                     $"Cannot find a file(or file is not unlocked) named:\r\n{_FileName}\r\nWith an exception: {e.Message}\r\nApplication will close!");
                 Console.ReadLine();
+                throw;
             }
-            return null;
         }
 
     }

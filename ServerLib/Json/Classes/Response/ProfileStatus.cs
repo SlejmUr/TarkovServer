@@ -15,7 +15,7 @@ namespace ServerLib.Json.Classes
         public class ProfileData
         {
             public string profileid { get; set; }
-            public string profileToken { get; set; }
+            public string? profileToken { get; set; }
             public string status { get; set; }
             public string ip { get; set; }
             public int port { get; set; }

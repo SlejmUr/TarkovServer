@@ -53,16 +53,16 @@ namespace ServerLib.Json.Classes
     public class FriendsReq
     {
         [JsonProperty("request_id")]
-        public string? req_Id { get; set; }
+        public string req_Id { get; set; }
 
         [JsonProperty("to")]
-        public string? toId { get; set; }
+        public string toId { get; set; }
 
         [JsonProperty("requestId")]
-        public string? reqId { get; set; }
+        public string reqId { get; set; }
 
         [JsonProperty("uid")]
-        public string? uid { get; set; }
+        public string uid { get; set; }
     }
 
     public class FriendRequester

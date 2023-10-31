@@ -1,6 +1,4 @@
-﻿using EFT;
-using MirzaBeig.Shaders.ImageEffects;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using ServerLib.Generators;
 using ServerLib.Handlers;
 using ServerLib.Json;
@@ -278,7 +276,7 @@ namespace ServerLib.Controllers
             var raidKilled = JsonConvert.DeserializeObject<Dictionary<string, object>>(json);
             if (raidKilled == null) { return; }
 
-            if (raidKilled["killedByAID"] != null && raidKilled["killedByAID"] == SessionId)
+            if (raidKilled["killedByAID"] != null && raidKilled["killedByAID"].ToString() == SessionId)
             {
                 var character = GetPmcCharacter(SessionId);
                 if (character == null)
@@ -287,15 +285,16 @@ namespace ServerLib.Controllers
                     return;
                 }
 
-                if (raidKilled["diedFaction"] == "Savage" || raidKilled["diedFaction"] == "Scav")
+                if (raidKilled["diedFaction"].ToString() == "Savage" || raidKilled["diedFaction"].ToString() == "Scav")
                 {
-                    character.TradersInfo["_579dc571d53a0658a154fbec"].standing += (int)ConfigController.Configs.Gameplay.Trading.Fence.KillingScavsFenceLevelChange;
+                    if (ConfigController.Configs.Gameplay.Trading.Fence.KillingScavsFenceLevelChange.HasValue)
+                        character.TradersInfo["_579dc571d53a0658a154fbec"].standing += (int)ConfigController.Configs.Gameplay.Trading.Fence.KillingScavsFenceLevelChange;
 
                 }
-                else if (raidKilled["diedFaction"] == "Usec" || raidKilled["diedFaction"] == "Bear")
+                else if (raidKilled["diedFaction"].ToString() == "Usec" || raidKilled["diedFaction"].ToString() == "Bear")
                 {
-                    character.TradersInfo["_579dc571d53a0658a154fbec"].standing += (int)ConfigController.Configs.Gameplay.Trading.Fence.KillingPMCsFenceLevelChange;
-
+                    if (ConfigController.Configs.Gameplay.Trading.Fence.KillingPMCsFenceLevelChange.HasValue)
+                        character.TradersInfo["_579dc571d53a0658a154fbec"].standing += (int)ConfigController.Configs.Gameplay.Trading.Fence.KillingPMCsFenceLevelChange;
                 }
                 SaveHandler.Save(SessionId, "Character", SaveHandler.GetCharacterPath(SessionId), JsonConvert.SerializeObject(character));
             }
@@ -350,19 +349,22 @@ namespace ServerLib.Controllers
         public static void UpdateBackendCounters(string SessionId, string conditionId, string qid, int counter)
         {
             var character = GetPmcCharacter(SessionId);
-            var backend = character.BackendCounters[conditionId];
-            if (backend != null)
-            {
-                backend.value += counter;
+            if (character == null)
                 return;
-            }
 
-            character.BackendCounters[conditionId] = new()
+            if (character.BackendCounters.TryGetValue(conditionId, out var backendCounter))
             {
-                id = conditionId,
-                qid = qid,
-                value = counter,
-            };
+                backendCounter.value += counter;
+            }
+            else
+            {
+                character.BackendCounters.Add(conditionId, new()
+                {
+                    id = conditionId,
+                    qid = qid,
+                    value = counter,
+                });
+            }
             SaveHandler.SaveCharacter(SessionId, character);
         }
     }

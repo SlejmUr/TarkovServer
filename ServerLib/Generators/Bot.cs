@@ -22,15 +22,16 @@ namespace ServerLib.Generators
         }
 
 
-        public static Base GeneratePlayerScav(string SessionId, string role, string difficulty, Bots.BotType botBase)
+        public static Base GeneratePlayerScav(string role, string difficulty, Bots.BotType botBase)
         {
             try
             {
                 var chbase = JsonConvert.DeserializeObject<Base>(DatabaseController.DataBase.Bot.Base);
+                ArgumentNullException.ThrowIfNull(chbase);
                 chbase.Info.Settings.BotDifficulty = difficulty;
                 chbase.Info.Settings.Role = role;
                 chbase.Info.Side = "Savage";
-                BotGenerationDetails botGeneration = new BotGenerationDetails()
+                BotGenerationDetails botGeneration = new()
                 {
                     IsPmc = false,
                     Side = "Savage",
@@ -41,20 +42,20 @@ namespace ServerLib.Generators
                     IsPlayerScav = true,
                     BotDifficulty = difficulty
                 };
-                chbase = GenerateBot(SessionId, chbase, botBase, botGeneration);
+                chbase = GenerateBot(chbase, botBase, botGeneration);
                 return chbase;
 
             }
             catch (Exception ex)
             {
                 Debug.PrintError(ex.ToString());
-                return null;
+                throw;
             }
 
         }
 
 
-        public static Base GenerateBot(string SessionId, Base bot, Bots.BotType type, BotGenerationDetails botGeneration)
+        public static Base GenerateBot(Base bot, Bots.BotType type, BotGenerationDetails botGeneration)
         {
             try
             {
@@ -71,7 +72,7 @@ namespace ServerLib.Generators
                 bot.Customization.Body = MathHelper.GetRandomArray(type.appearance.body.Keys.ToList());
                 bot.Customization.Feet = MathHelper.GetRandomArray(type.appearance.feet.Keys.ToList());
                 bot.Customization.Hands = MathHelper.GetRandomArray(type.appearance.hands);
-                bot.Inventory = JsonConvert.DeserializeObject<Inventory>(File.ReadAllText("Files/bot/basic_inventory.json"));
+                //bot.Inventory = JsonConvert.DeserializeObject<Inventory>(File.ReadAllText("Files/bot/basic_inventory.json"));
 
                 bot = GenerateNewID(bot);
 
@@ -83,7 +84,7 @@ namespace ServerLib.Generators
             catch (Exception ex)
             {
                 Debug.PrintError(ex.ToString());
-                return null;
+                throw;
             }
 
         }
@@ -272,7 +273,7 @@ namespace ServerLib.Generators
             catch (Exception ex)
             {
                 Debug.PrintError(ex.ToString());
-                return null;
+                throw;
             }
 
         }

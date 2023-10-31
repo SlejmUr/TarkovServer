@@ -7,6 +7,8 @@ using static ServerLib.Json.Converters;
 
 namespace ServerLib.Controllers
 {
+#pragma warning disable CS8601 // Possible null reference assignment.
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
     public class DatabaseController
     {
         public static Database DataBase = new();
@@ -28,9 +30,14 @@ namespace ServerLib.Controllers
 
         static void LoadOthers()
         {
-            DataBase.Others = new();
-            DataBase.Others.Templates = new();
+            DataBase.Others = new()
+            {
+                Templates = new()
+            };
+
             DataBase.Others.Templates = JsonConvert.DeserializeObject<Json.Classes.Handbook.Base>(File.ReadAllText("Files/others/handbook.json"));
+
+
             foreach (var item in DataBase.Others.Templates.Items)
             {
                 DataBase.Others.ItemPrices.Add(item.Id, item.Price);
@@ -53,10 +60,12 @@ namespace ServerLib.Controllers
             {
                 CustomizationItemPrefabConverter.Singleton
             });
-            DataBase.Loot = new();
-            DataBase.Loot.staticAmmo = JsonConvert.DeserializeObject<Dictionary<string, List<StaticAmmoDetails>>>(File.ReadAllText("Files/loot/staticAmmo.json"));
-            DataBase.Loot.staticContainers = JsonConvert.DeserializeObject<Dictionary<string, StaticContainerDetails>>(File.ReadAllText("Files/loot/staticContainers.json"));
-            DataBase.Loot.staticLoot = JsonConvert.DeserializeObject<Dictionary<string, StaticLootDetails>>(File.ReadAllText("Files/loot/staticLoot.json"));
+            DataBase.Loot = new()
+            {
+                staticAmmo = JsonConvert.DeserializeObject<Dictionary<string, List<StaticAmmoDetails>>>(File.ReadAllText("Files/loot/staticAmmo.json")),
+                staticContainers = JsonConvert.DeserializeObject<Dictionary<string, StaticContainerDetails>>(File.ReadAllText("Files/loot/staticContainers.json")),
+                staticLoot = JsonConvert.DeserializeObject<Dictionary<string, StaticLootDetails>>(File.ReadAllText("Files/loot/staticLoot.json"))
+            };
             Debug.PrintDebug("Others loaded");
         }
 
@@ -70,37 +79,44 @@ namespace ServerLib.Controllers
         }
         static void LoadBots()
         {
-            DataBase.Bot = new();
-            DataBase.Bot.Base = File.ReadAllText("Files/bot/botBase.json");
-            DataBase.Bot.Appearance = File.ReadAllText("Files/bot/appearance.json");
-            DataBase.Bot.WeaponCache = File.ReadAllText("Files/bot/weaponcache.json");
-            DataBase.Bot.Types = new();
+            DataBase.Bot = new()
+            {
+                Base = File.ReadAllText("Files/bot/botBase.json"),
+                Appearance = File.ReadAllText("Files/bot/appearance.json"),
+                WeaponCache = File.ReadAllText("Files/bot/weaponcache.json"),
+                Types = new()
+            };
             var dirs = Directory.GetFiles("Files/bot/types");
             foreach (var item in dirs)
             {
                 var name = item.Replace("Files/bot/types\\", "").Replace(".json","");
                 Debug.PrintDebug(name);
-                DataBase.Bot.Types.Add(name, JsonConvert.DeserializeObject<Bots.BotType>(File.ReadAllText(item)));
+                var botType = JsonConvert.DeserializeObject<Bots.BotType>(File.ReadAllText(item));
+                if (botType == null)
+                    continue;
+                DataBase.Bot.Types.Add(name, botType);
             }
 
             Debug.PrintDebug("Bots loaded");
         }
         static void LoadHideOut()
         {
-            DataBase.Hideout = new();
-            Database.hideout hideout = new();
-            hideout.Areas = File.ReadAllText("Files/hideout/areas.json");
-            hideout.Production = File.ReadAllText("Files/hideout/production.json");
-            hideout.Qte = File.ReadAllText("Files/hideout/qte.json");
-            hideout.Scavcase = File.ReadAllText("Files/hideout/scavcase.json");
-            hideout.Settings = File.ReadAllText("Files/hideout/settings.json");
-            DataBase.Hideout = hideout;
+            DataBase.Hideout = new()
+            {
+                Areas = File.ReadAllText("Files/hideout/areas.json"),
+                Production = File.ReadAllText("Files/hideout/production.json"),
+                Qte = File.ReadAllText("Files/hideout/qte.json"),
+                Scavcase = File.ReadAllText("Files/hideout/scavcase.json"),
+                Settings = File.ReadAllText("Files/hideout/settings.json")
+            };
             Debug.PrintDebug("Hideout loaded");
         }
         static void LoadLocale()
         {
-            DataBase.Locale = new();
-            DataBase.Locale.Languages = File.ReadAllText("Files/locales/languages.json");
+            DataBase.Locale = new()
+            {
+                Languages = File.ReadAllText("Files/locales/languages.json")
+            };
             string stuff = "Files/locales";
             var dirs = Directory.GetDirectories("Files/locales");
             foreach (var dir in dirs)
@@ -112,16 +128,24 @@ namespace ServerLib.Controllers
                     string localename_add = file.Replace(dir + "\\", "").Replace(".json", "");
                     DataBase.Locale.Locales.Add(localename + "_" + localename_add, File.ReadAllText(file));
                     if (localename_add != "menu")
-                        DataBase.Locale.LocalesDict.Add(localename + "_" + localename_add, JsonConvert.DeserializeObject<Dictionary<string, string>>(File.ReadAllText(file)));
+                    {
+                        var loc = JsonConvert.DeserializeObject<Dictionary<string, string>>(File.ReadAllText(file));
+                        if (loc == null)
+                            continue;
+                        DataBase.Locale.LocalesDict.Add(localename + "_" + localename_add, loc);
+                    }
+                        
                 }
             }
             Debug.PrintDebug("Locales loaded");
         }
         static void LoadLocations()
         {
-            DataBase.Location = new();
-            DataBase.Location.Base = File.ReadAllText("Files/locations/base.json");
-            DataBase.Location.AllLocations = File.ReadAllText("Files/locations/location_all.json");
+            DataBase.Location = new()
+            {
+                Base = File.ReadAllText("Files/locations/base.json"),
+                AllLocations = File.ReadAllText("Files/locations/location_all.json")
+            };
             var dirs = Directory.GetDirectories("Files/locations");
             foreach (var dir in dirs)
             {
@@ -189,7 +213,7 @@ namespace ServerLib.Controllers
         }
         static void LoadCustomConfig()
         {
-            return;
+#if false //Disabling here permanently because custom settings will be updated for future.
             var Custom = ConfigController.Configs.CustomSettings;
             if (Custom.Locale.UseCustomLocale)
             {
@@ -243,6 +267,9 @@ namespace ServerLib.Controllers
                     counter++;
                 }
             }
+#endif
         }
     }
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
+#pragma warning restore CS8601 // Possible null reference assignment.
 }

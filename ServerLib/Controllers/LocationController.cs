@@ -10,8 +10,7 @@ namespace ServerLib.Controllers
         public static Locations.Base GetAllLocation()
         {
             var lbase = JsonConvert.DeserializeObject<Locations.Base>(DatabaseController.DataBase.Location.Base);
-            if (lbase == null)
-                Debug.PrintWarn("No Location Base!", "GetAllLocation");
+            ArgumentNullException.ThrowIfNull(lbase);
 
             foreach (var loc in DatabaseController.DataBase.Location.Locations)
             {
@@ -22,6 +21,7 @@ namespace ServerLib.Controllers
                 if (locbase == null)
                 {
                     Debug.PrintWarn("No Location Value!", "GetAllLocation");
+                    continue;
                 }
                 locbase.UnixDateTime = TimeHelper.UnixTimeNow_Int();
                 locbase.Loot = new();
@@ -34,6 +34,7 @@ namespace ServerLib.Controllers
         {
             Debug.PrintInfo($"Generating loot for location {location.locationId}", "GetLocationLoot");
             var LocationBase = JsonConvert.DeserializeObject<Location.Base>(DatabaseController.DataBase.Location.Locations[location.locationId + "_base"]);
+            ArgumentNullException.ThrowIfNull(LocationBase);
             //var LocationLoot = JsonConvert.DeserializeObject<LooseLoot.Base>(DatabaseController.DataBase.Location.Locations[location.locationId + "_looseLoot"]);
             LocationBase.UnixDateTime = TimeHelper.UnixTimeNow_Int();
 

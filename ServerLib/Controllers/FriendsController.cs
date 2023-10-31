@@ -2,7 +2,6 @@
 using ServerLib.Json.Classes;
 using ServerLib.Utilities;
 using ServerLib.Utilities.Helpers;
-using System.Linq;
 
 namespace ServerLib.Controllers
 {
@@ -80,12 +79,13 @@ namespace ServerLib.Controllers
             var friend = ProfileAddonsDict[FriendId];
             var account_pmc = CharacterController.GetPmcCharacter(SessionId);
             var friend_pmc = CharacterController.GetPmcCharacter(FriendId);
-
+            ArgumentNullException.ThrowIfNull(account_pmc);
+            ArgumentNullException.ThrowIfNull(friend_pmc);
             account.Friends.Friends.Add(friend_pmc);
             friend.Friends.Friends.Add(account_pmc);
 
-            Handlers.SaveHandler.SaveAddon(SessionId, account);
-            Handlers.SaveHandler.SaveAddon(FriendId, friend);
+            SaveHandler.SaveAddon(SessionId, account);
+            SaveHandler.SaveAddon(FriendId, friend);
         }
 
         public static void MuteFriend(string SessionId, string FriendId)
@@ -97,8 +97,8 @@ namespace ServerLib.Controllers
             account.Friends.Ignore.Add(FriendId);
             friend.Friends.InIgnoreList.Add(SessionId);
 
-            Handlers.SaveHandler.SaveAddon(SessionId, account);
-            Handlers.SaveHandler.SaveAddon(FriendId, friend);
+            SaveHandler.SaveAddon(SessionId, account);
+            SaveHandler.SaveAddon(FriendId, friend);
         }
 
         public static void UnMuteFriend(string SessionId, string FriendId)
@@ -110,8 +110,8 @@ namespace ServerLib.Controllers
             account.Friends.Ignore.Remove(FriendId);
             friend.Friends.InIgnoreList.Remove(SessionId);
 
-            Handlers.SaveHandler.SaveAddon(SessionId, account);
-            Handlers.SaveHandler.SaveAddon(FriendId, friend);
+            SaveHandler.SaveAddon(SessionId, account);
+            SaveHandler.SaveAddon(FriendId, friend);
         }
 
         /// <summary>
@@ -128,8 +128,8 @@ namespace ServerLib.Controllers
             account.Friends.Friends.RemoveAll(x => x.Id == FriendId);
             friend.Friends.Friends.RemoveAll(x => x.Id == SessionId);
 
-            Handlers.SaveHandler.SaveAddon(SessionId, account);
-            Handlers.SaveHandler.SaveAddon(FriendId, friend);
+            SaveHandler.SaveAddon(SessionId, account);
+            SaveHandler.SaveAddon(FriendId, friend);
         }
 
         /// <summary>
@@ -152,8 +152,8 @@ namespace ServerLib.Controllers
             account.FriendRequestOutbox.ToList().Add(reqFrom);
             friend.FriendRequestInbox.ToList().Add(reqTo);
 
-            Handlers.SaveHandler.SaveAddon(SessionId, account);
-            Handlers.SaveHandler.SaveAddon(addId, friend);
+            SaveHandler.SaveAddon(SessionId, account);
+            SaveHandler.SaveAddon(addId, friend);
 
             return rId;
         }
@@ -172,16 +172,16 @@ namespace ServerLib.Controllers
             var OutBox = GetFriendsOutbox(SessionId);
 
             var InRequest = InBox.Where(x => x.Id == removeId).FirstOrDefault();
+            ArgumentNullException.ThrowIfNull(InRequest);
             InBox.Remove(InRequest);
             var OutRequest = OutBox.Where(x => x.Id == removeId).FirstOrDefault();
+            ArgumentNullException.ThrowIfNull(OutRequest);
             OutBox.Remove(OutRequest);
 
             acc.FriendRequestInbox = InBox;
             acc.FriendRequestInbox = OutBox;
 
-            Handlers.SaveHandler.SaveAddon(SessionId, acc);
-            //TODO: do the same with other account!
-
+            SaveHandler.SaveAddon(SessionId, acc);
         }
 
         /// <summary>
@@ -215,12 +215,16 @@ namespace ServerLib.Controllers
         /// <returns>New Friend Request</returns>
         public static FriendRequester MakeRequest(string ID, string FromID, string ToID)
         {
-            FriendRequester requester = new();
-            requester.Id = ID;
-            requester.Date = TimeHelper.UnixTimeNow_Int();
-            requester.From = FromID;
-            requester.To = ToID;
-            requester.Profile = CharacterController.GetMiniCharacter(FromID);
+            FriendRequester requester = new()
+            {
+                Id = ID,
+                Date = TimeHelper.UnixTimeNow_Int(),
+                From = FromID,
+                To = ToID
+            };
+            var mini = CharacterController.GetMiniCharacter(FromID);
+            ArgumentNullException.ThrowIfNull(mini);
+            requester.Profile = mini;
             return requester;
         }
 

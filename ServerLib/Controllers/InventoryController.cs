@@ -1,10 +1,6 @@
-﻿using EFT.Visual;
-using ServerLib.Handlers;
-using ServerLib.Json;
-using ServerLib.Json.Classes;
+﻿using ServerLib.Json.Classes;
 using ServerLib.Utilities;
-using System;
-using static ServerLib.Controllers.InventoryController;
+using static ServerLib.Json.Classes.CustomConfig;
 
 namespace ServerLib.Controllers
 {
@@ -47,13 +43,13 @@ namespace ServerLib.Controllers
         }
         #endregion
 
-        public static Character.Inventory? GetInventory(string SessionId)
+        public static Character.Inventory GetInventory(string SessionId)
         {
             var character = CharacterController.GetPmcCharacter(SessionId);
             if (character == null)
             {
                 Debug.PrintError($"Inventory for Character {SessionId} not found!", "InventoryController");
-                return null;
+                ArgumentNullException.ThrowIfNull(character);
             }
             return character.Inventory;
         }
@@ -61,40 +57,24 @@ namespace ServerLib.Controllers
         public static Item.Base? GetInventoryItemByID(string SessionId, string ItemId)
         {
             var inventory = GetInventory(SessionId);
-            if (inventory == null)
-            {
-                return null;
-            }
             return inventory.Items.Find(item => item.Id == ItemId);
         }
 
         public static Item.Base? GetInventoryItemBySlotId(string SessionId, string slotId)
         {
             var inventory = GetInventory(SessionId);
-            if (inventory == null)
-            {
-                return null;
-            }
             return inventory.Items.Find(item => item.SlotId == slotId);
         }
 
         public static List<Item.Base>? GetInventoryItemsByTpl(string SessionId, string itemTpl)
         {
             var inventory = GetInventory(SessionId);
-            if (inventory == null)
-            {
-                return null;
-            }
             return inventory.Items.FindAll(item => item.Tpl == itemTpl);
         }
 
         public static List<Item.Base>? GetInventoryItemsByParent(string SessionId, string parentId)
         {
             var inventory = GetInventory(SessionId);
-            if (inventory == null)
-            {
-                return null;
-            }
             return inventory.Items.FindAll(item => item.ParentId == parentId);
         }
 
@@ -127,7 +107,10 @@ namespace ServerLib.Controllers
             if (ic.Stash == null)
             {
                 ic.Stash = new();
-                var grids = ItemController.GetItemGrids(ItemController.Get(inventory.Items[ic.Lookup.Forward[inventory.Stash]].Tpl));
+                var item = ItemController.Get(inventory.Items[ic.Lookup.Forward[inventory.Stash]].Tpl);
+                ArgumentNullException.ThrowIfNull(item);
+                var grids = ItemController.GetItemGrids(item);
+                ArgumentNullException.ThrowIfNull(grids);
                 foreach (var grid in grids)
                 {
                     ic.Stash.SlotId = grid.Key;
@@ -210,9 +193,10 @@ namespace ServerLib.Controllers
             var id = container.Lookup.Forward[parent];
             var itemInInventory = items[id];
             var itemInDatabase = ItemController.Get(itemInInventory.Tpl);
-            var size = ItemController.GetItemSize(itemInDatabase);
-            int height = (int)size.Height;
-            int width = (int)size.Width;
+            ArgumentNullException.ThrowIfNull(itemInDatabase);
+            var (Height, Width) = ItemController.GetItemSize(itemInDatabase);
+            int height = (int)Height;
+            int width = (int)Width;
             if (itemInDatabase._parent == "5448e53e4bdc2d60728b4567" || itemInDatabase._parent == "566168634bdc2d144c8b456c" || itemInDatabase._parent == "5795f317245977243854e041")
                 return (height, width);
 
@@ -220,7 +204,7 @@ namespace ServerLib.Controllers
 
             var canFold = itemInDatabase._props.Foldable;
             var foldedSlotID = itemInDatabase._props.FoldedSlot;
-            if ((canFold != null && canFold) && foldedSlotID != null && parentFolded)
+            if ((canFold.HasValue && canFold.Value) && foldedSlotID != null && parentFolded)
             {
                 var sizeReduceRight = itemInDatabase._props.SizeReduceRight;
                 if (sizeReduceRight != null)
@@ -252,10 +236,11 @@ namespace ServerLib.Controllers
                 var childFolded  = ItemController.IsFolded(itemInInventory);
                 if (parentFolded || childFolded)
                     continue;
-                else if ((canFold != null && canFold) && foldedSlotID != null && itemInInventory.SlotId == foldedSlotID && (parentFolded || childFolded))
+                else if ((canFold.HasValue && canFold.Value) && foldedSlotID != null && itemInInventory.SlotId == foldedSlotID && (parentFolded || childFolded))
                     continue;
-
-                sizes = ItemController.GetItemForcedSize(ItemController.Get(itemInInventory.Tpl), sizes);
+                var item = ItemController.Get(itemInInventory.Tpl);
+                ArgumentNullException.ThrowIfNull(item);
+                sizes = ItemController.GetItemForcedSize(item, sizes);
             }
 
             height += sizes.SizeUp + sizes.SizeDown + sizes.ForcedDown + sizes.ForcedUp;

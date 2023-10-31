@@ -196,6 +196,7 @@ namespace ServerLib.Web
         {
             ServerHelper.PrintRequest(request, serverStruct);
             var jsonreq = JsonConvert.DeserializeObject<GetLocation>(ResponseControl.DeCompressReq(request.BodyBytes));
+            ArgumentNullException.ThrowIfNull(jsonreq);
             var location =  LocationController.GetLocationLoot(jsonreq);
             string resp = ResponseControl.GetBody(JsonConvert.SerializeObject(location));
             ServerHelper.SendUnityResponse(request, serverStruct, resp);

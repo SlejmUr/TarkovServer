@@ -152,8 +152,7 @@ namespace ServerLib.Controllers
         public static void RemoveDialog(string SessionId, string DialogueId)
         {
             var profile = ProfileController.GetProfile(SessionId);
-            if (profile != null)
-                profile.Dialogues.Remove(DialogueId);
+            profile?.Dialogues.Remove(DialogueId);
         }
 
         /// <summary>
@@ -182,7 +181,7 @@ namespace ServerLib.Controllers
         /// Remove Expired Items from Dialog
         /// </summary>
         /// <param name="SessionId">SessionId/AccountId</param>
-        public static void RemoveExpiredItems(string SessionId, string DialogueId)
+        public static void RemoveExpiredItems(string SessionId)
         {
             GetDialogs(SessionId);
             int curDt = TimeHelper.UnixTimeNow_Int();
@@ -275,8 +274,10 @@ namespace ServerLib.Controllers
 
         public static List<Profile.UserDialogInfo> GetProflesFromMail(string SessionId, List<Profile.UserDialogInfo> users)
         {
-            var pmc = CharacterController.GetPmcCharacter(SessionId);
             List<Profile.UserDialogInfo> ret = new();
+            var pmc = CharacterController.GetPmcCharacter(SessionId);
+            if (pmc == null)
+                return ret;
             if (users != null && users.Count > 0)
             {
                 ret.AddRange(users);
@@ -292,7 +293,6 @@ namespace ServerLib.Controllers
                     }
                 });
             }
-
             return ret;
         }
 
@@ -307,7 +307,9 @@ namespace ServerLib.Controllers
         /// <returns>New Dialog</returns>
         public static Profile.DialogueInfo GetDialogInfo(string SessionId, string DialogueId, bool IsTrader = false)
         {
-            var dialog = ProfileController.GetProfile(SessionId).Dialogues[DialogueId];
+            var Profile = ProfileController.GetProfile(SessionId);
+            ArgumentNullException.ThrowIfNull(Profile);
+            var dialog = Profile.Dialogues[DialogueId];
             List<object> users = new();
             if (dialog.Users.Count > 0)
             {

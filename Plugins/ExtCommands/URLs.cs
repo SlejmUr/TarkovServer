@@ -24,9 +24,10 @@ namespace ExtCommands
         {
             Console.WriteLine($"Command: {request.Body}");
 
-            if (serverStruct.Headers.TryGetValue("Auth", out string authtoken) && JWTHandler.Validate(authtoken))
+            if (serverStruct.Headers.TryGetValue("Auth", out var authtoken) && JWTHandler.Validate(authtoken))
             {
                 var json = JsonConvert.DeserializeObject<jwt_json>(JWTHandler.GetJWTJson(authtoken));
+                ArgumentNullException.ThrowIfNull(json);
                 if (json.Perms == ServerLib.Json.Enums.EPerms.Blocked)
                 {
                     serverStruct.Response.MakeGetResponse("You are Banned!");

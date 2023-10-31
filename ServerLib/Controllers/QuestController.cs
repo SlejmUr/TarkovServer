@@ -1,5 +1,4 @@
 ﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
 using ServerLib.Json.Classes;
 using ServerLib.Utilities;
 using static ServerLib.Json.Converters;
@@ -20,14 +19,17 @@ namespace ServerLib.Controllers
         {
             try
             {
-                Quests = JsonConvert.DeserializeObject<Dictionary<string, Quest.Base>>(DatabaseController.DataBase.Others.Quests, new JsonConverter[]
+                var quests = JsonConvert.DeserializeObject<Dictionary<string, Quest.Base>>(DatabaseController.DataBase.Others.Quests, new JsonConverter[]
                 {
                     QuestTargetConverter.Singleton
                 });
+                ArgumentNullException.ThrowIfNull(quests);
+                Quests = quests;
             }
             catch (Exception ex)
             {
                 Debug.PrintError(ex.ToString());
+                throw;
             }
         }
 
@@ -54,8 +56,8 @@ namespace ServerLib.Controllers
             catch (Exception ex)
             {
                 Debug.PrintError(ex.ToString());
+                throw;
             }
-            return null;
         }
     }
 }

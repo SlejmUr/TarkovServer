@@ -57,24 +57,28 @@ namespace ServerLib.Handlers
         {
             return IndexOfParam(args, param) > -1;
         }
-
+#pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
+#pragma warning disable CS8603 // Possible null reference return.
+#pragma warning disable CS8601 // Possible null reference assignment.
         static T GetParameter<T>(string[] args, string param, T defaultValue = default(T))
+#pragma warning restore CS8601 // Possible null reference assignment.
         {
             var index = IndexOfParam(args, param);
 
             if (index == -1 || index == (args.Length - 1))
                 return defaultValue;
 
-            var strParam = args[index + 1];
+            string strParam = args[index + 1];
 
             var converter = TypeDescriptor.GetConverter(typeof(T));
             if (converter != null)
             {
                 return (T)converter.ConvertFromString(strParam);
             }
-
             return default(T);
         }
+#pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
+#pragma warning restore CS8603 // Possible null reference return.
         #endregion
     }
 }

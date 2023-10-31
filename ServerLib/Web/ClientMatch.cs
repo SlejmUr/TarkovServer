@@ -7,6 +7,7 @@ using static ServerLib.Json.Classes.Response.Matches;
 using ModdableWebServer;
 using ModdableWebServer.Attributes;
 using ServerLib.Utilities.Helpers;
+using static ServerLib.Json.Classes.Dialog;
 
 namespace ServerLib.Web
 {
@@ -48,6 +49,7 @@ namespace ServerLib.Web
 
             var jsonreq = JsonConvert.DeserializeObject<JoinMatchReq>(ResponseControl.DeCompressReq(request.BodyBytes));
             Debug.PrintDebug(JsonConvert.SerializeObject(jsonreq));
+            ArgumentNullException.ThrowIfNull(jsonreq);
             MatchController.JoinMatch(sessionId, jsonreq);
             var match = MatchController.GetMatch(sessionId);
             ProfileStatus.Response response = new()
@@ -83,6 +85,7 @@ namespace ServerLib.Web
             ServerHelper.PrintRequest(request, serverStruct); 
             var sessionId = serverStruct.Headers.GetSessionId();
             var jsonreq = JsonConvert.DeserializeObject<StartGameReq>(ResponseControl.DeCompressReq(request.BodyBytes));
+            ArgumentNullException.ThrowIfNull(jsonreq);
             MatchController.SendStart(jsonreq.groupId, "192.168.1.50",1000);
             var match = MatchController.GetMatch(sessionId);
             var user = match.matchData.Users.Where(x=>x.sessionId == sessionId).FirstOrDefault();
@@ -118,6 +121,7 @@ namespace ServerLib.Web
             ServerHelper.PrintRequest(request, serverStruct);
             var sessionId = serverStruct.Headers.GetSessionId();
             var jsonreq = JsonConvert.DeserializeObject<GetGroupStatus>(ResponseControl.DeCompressReq(request.BodyBytes));
+            ArgumentNullException.ThrowIfNull(jsonreq);
             MatchController.CheckStatus(sessionId, jsonreq);
             ProfileStatus.Response response = new()
             {

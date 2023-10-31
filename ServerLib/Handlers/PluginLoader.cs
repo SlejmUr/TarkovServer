@@ -5,18 +5,17 @@ using System.Reflection;
 
 namespace ServerLib.Handlers
 {
+#pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
+#pragma warning disable CS8604 // Possible null reference argument.
     public class PluginLoader
     {
-        private static Dictionary<string, PluginInfos> pluginsList = new Dictionary<string, PluginInfos>();
+        private static Dictionary<string, PluginInfos> pluginsList = new();
         public static void LoadPlugins()
         {
             string currdir = Directory.GetCurrentDirectory();
 
             var plugins = ConfigController.Configs.Plugins;
-            if (plugins == null ) 
-            {
-                plugins = new();
-            }
+            plugins ??= new();
 
             if (!Directory.Exists(Path.Combine(currdir, "Plugins"))) { Directory.CreateDirectory(Path.Combine(currdir, "Plugins")); }
 
@@ -24,7 +23,7 @@ namespace ServerLib.Handlers
 
             foreach (string file in Directory.GetFiles(Path.Combine(currdir, "Plugins"), "*.dll"))
             {
-                Configs.Plugin plugin = new Configs.Plugin()
+                Configs.Plugin plugin = new()
                 { 
                     ignore = false
                 };
@@ -50,8 +49,11 @@ namespace ServerLib.Handlers
                 if (plugin.ignore)
                     continue;
 
+
                 IPlugin iPlugin = (IPlugin)Activator.CreateInstance(Assembly.LoadFile(file).GetType("Plugin.Plugin"));
 
+                if (iPlugin == null)
+                    continue;
                 plugin.dependencies = iPlugin.Dependencies;
 
                 PluginDependencies.Add(iPlugin, plugin.dependencies);
@@ -109,9 +111,9 @@ namespace ServerLib.Handlers
 
         public static void ManualLoadPlugin(string DllName)
         {
-
             string currdir = Directory.GetCurrentDirectory();
-            IPlugin iPlugin = (IPlugin)Activator.CreateInstance(Assembly.LoadFile(currdir + "/Plugins/" + DllName + ".dll").GetType("Plugin.Plugin"));
+            if (Activator.CreateInstance(Assembly.LoadFile(currdir + "/Plugins/" + DllName + ".dll").GetType("Plugin.Plugin")) is not IPlugin iPlugin)
+                return;
             if (pluginsList.ContainsKey(iPlugin.Name))
             {
                 Console.WriteLine("Plugin already loaded?");
@@ -143,4 +145,6 @@ namespace ServerLib.Handlers
             public IPlugin Plugin;
         }
     }
+#pragma warning restore CS8604 // Possible null reference argument.
+#pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
 }

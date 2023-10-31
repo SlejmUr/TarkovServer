@@ -55,7 +55,6 @@ namespace ServerLib.Web
         public static bool GameVersionValidate(HttpRequest request, ServerStruct serverStruct)
         {
             //REQ stuff
-            string resp;
             ServerHelper.PrintRequest(request, serverStruct);
             string SessionId = serverStruct.Headers.GetSessionId();
             string version = serverStruct.Headers.GetVersion();
@@ -76,7 +75,6 @@ namespace ServerLib.Web
         public static bool GameConfig(HttpRequest request, ServerStruct serverStruct)
         {
             //REQ stuff
-            string resp;
             ServerHelper.PrintRequest(request, serverStruct);
             string SessionId = serverStruct.Headers.GetSessionId();
             var serverips = ConfigController.Configs.Server.ServerIPs;

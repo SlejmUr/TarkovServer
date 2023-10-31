@@ -44,10 +44,12 @@ namespace ServerLib.Web
         {
             ServerHelper.PrintRequest(request, serverStruct);
             string SessionId = serverStruct.Headers.GetSessionId();
+            var profile = ProfileController.GetProfile(SessionId);
+            ArgumentNullException.ThrowIfNull(profile);
             var x = new Suites()
             {
                 _id = "pmc" + SessionId,
-                suites = ProfileController.GetProfile(SessionId).Suits.ToArray()
+                suites = profile.Suits.ToArray()
             };
             string resp = ResponseControl.GetBody(JsonConvert.SerializeObject(x));
             ServerHelper.SendUnityResponse(request, serverStruct, resp);

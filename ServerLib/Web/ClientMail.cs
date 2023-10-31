@@ -29,6 +29,7 @@ namespace ServerLib.Web
             string Uncompressed = ResponseControl.DeCompressReq(request.BodyBytes);
             Console.WriteLine(Uncompressed);
             var mailView = JsonConvert.DeserializeObject<Json.Classes.Dialog.GetMailView>(Uncompressed);
+            ArgumentNullException.ThrowIfNull(mailView);
             var rsp = ResponseControl.GetBody(JsonConvert.SerializeObject(DialogueController.GenerateDialogView(SessionId, mailView.dialogId)));
             ServerHelper.SendUnityResponse(request, serverStruct, rsp);
             return true;
@@ -43,6 +44,7 @@ namespace ServerLib.Web
             string Uncompressed = ResponseControl.DeCompressReq(request.BodyBytes);
             Console.WriteLine(Uncompressed);
             var dialogId = JsonConvert.DeserializeObject<Json.Classes.Dialog.DialogId>(Uncompressed);
+            ArgumentNullException.ThrowIfNull(dialogId);
             var rsp = ResponseControl.GetBody(JsonConvert.SerializeObject(DialogueController.GetAllAttachments(SessionId, dialogId.dialogId)));
             ServerHelper.SendUnityResponse(request, serverStruct, rsp);
             return true;

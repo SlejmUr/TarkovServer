@@ -34,22 +34,20 @@ namespace ServerLib.Utilities.Helpers
             Console.WriteLine("[" + time + "] " + from_ip + " | " + SessionId + " = " + fullurl);
         }
 
-
+#pragma warning disable CS8603 // Possible null reference return.
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
         public static string GetFromIP(ServerStruct serverStruct)
         {
-            switch (serverStruct.Enum)
+            return serverStruct.Enum switch
             {
-                case ServerEnum.HTTP:
-                    return serverStruct.HTTP_Session.Socket.RemoteEndPoint.ToString();
-                case ServerEnum.HTTPS:
-                    return serverStruct.HTTPS_Session.Socket.RemoteEndPoint.ToString();
-                case ServerEnum.WS:
-                    return serverStruct.WS_Session.Socket.RemoteEndPoint.ToString();
-                case ServerEnum.WSS:
-                    return serverStruct.WSS_Session.Socket.RemoteEndPoint.ToString();
-                default:
-                    return "NoIP";
-            }
+                ServerEnum.HTTP => serverStruct.HTTP_Session.Socket.RemoteEndPoint.ToString(),
+                ServerEnum.HTTPS => serverStruct.HTTPS_Session.Socket.RemoteEndPoint.ToString(),
+                ServerEnum.WS => serverStruct.WS_Session.Socket.RemoteEndPoint.ToString(),
+                ServerEnum.WSS => serverStruct.WSS_Session.Socket.RemoteEndPoint.ToString(),
+                _ => "NoIP",
+            };
         }
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
+#pragma warning restore CS8603 // Possible null reference return.
     }
 }

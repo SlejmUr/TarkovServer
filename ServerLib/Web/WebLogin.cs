@@ -1,4 +1,5 @@
-﻿using ModdableWebServer;
+﻿#if ENABLE_WebLogin
+using ModdableWebServer;
 using ModdableWebServer.Helper;
 using NetCoreServer;
 using Newtonsoft.Json;
@@ -14,7 +15,9 @@ namespace ServerLib.Web
         {
             Console.WriteLine(request.Body);
             // RPS
-            string resp = AccountController.Login(JsonConvert.DeserializeObject<Json.Classes.Login>(request.Body));
+            var req  = JsonConvert.DeserializeObject<Json.Classes.Login>(request.Body);
+            ArgumentNullException.ThrowIfNull(req);
+            string resp = AccountController.Login(req);
             Console.WriteLine(resp);
             serverStruct.Response.MakeGetResponse(resp);
             serverStruct.SendResponse();
@@ -26,7 +29,9 @@ namespace ServerLib.Web
         {
             Console.WriteLine(request.Body);
             // RPS
-            string resp = AccountController.Register(JsonConvert.DeserializeObject<Json.Classes.Login>(request.Body));
+            var req = JsonConvert.DeserializeObject<Json.Classes.Login>(request.Body);
+            ArgumentNullException.ThrowIfNull(req);
+            string resp = AccountController.Register(req);
             serverStruct.Response.MakeGetResponse(resp);
             serverStruct.SendResponse();
             return true;
@@ -57,3 +62,4 @@ namespace ServerLib.Web
         }
     }
 }
+#endif

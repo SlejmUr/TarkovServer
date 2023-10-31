@@ -1,5 +1,4 @@
-﻿using Newtonsoft.Json;
-using ServerLib.Handlers;
+﻿using ServerLib.Handlers;
 using ServerLib.Json.Classes;
 using ServerLib.Utilities;
 using ServerLib.Utilities.Helpers;
@@ -63,7 +62,7 @@ namespace ServerLib.Controllers
         /// <returns>AccountId | FAILED</returns>
         public static string Login(Login login)
         {
-            string ID = FindAccountIdByUsernameAndPassword(login.username, login.password);
+            var ID = FindAccountIdByUsernameAndPassword(login.username, login.password);
 
             if (ID == null)
             {
@@ -88,7 +87,7 @@ namespace ServerLib.Controllers
         /// <returns>AccountId | ALREADY_IN_USE</returns>
         public static string Register(Login login)
         {
-            string ID = FindAccountIdByUsernameAndPassword(login.username, login.password);
+            var ID = FindAccountIdByUsernameAndPassword(login.username, login.password);
 
             if (IsNameInUse(login.username))
             {
@@ -128,7 +127,7 @@ namespace ServerLib.Controllers
         /// <param name="name">UserName</param>
         /// <param name="passw">Password</param>
         /// <returns>AccountId | ""</returns>
-        public static string FindAccountIdByUsernameAndPassword(string name, string passw)
+        public static string? FindAccountIdByUsernameAndPassword(string name, string passw)
         {
             GetAccountList();
             foreach (var account in Accounts)
@@ -195,7 +194,7 @@ namespace ServerLib.Controllers
         {
             if (SessionId == null) { throw new Exception("SessionId Null!"); }
             var profile = ProfileController.GetProfile(SessionId);
-            if (profile == null && profile.Info == null)
+            if (profile == null || profile.Info == null)
                 return;
 
             if (Accounts.Where(x=>x.Id != SessionId).Any())
@@ -231,8 +230,7 @@ namespace ServerLib.Controllers
         public static bool IsWiped(string SessionId)
         {
             var Account = FindAccount(SessionId);
-            if (Account == null) { throw new Exception("Account null!"); }
-            return Account.Wipe;
+            return Account == null ? throw new Exception("Account null!") : Account.Wipe;
         }
 
         /// <summary>
@@ -243,8 +241,7 @@ namespace ServerLib.Controllers
         public static string GetReservedNickname(string SessionId)
         {
             var Account = FindAccount(SessionId);
-            if (Account == null) { throw new Exception("Account null!"); }
-            return Account.Username;
+            return Account == null ? throw new Exception("Account null!") : Account.Username;
         }
 
         /// <summary>
@@ -292,8 +289,7 @@ namespace ServerLib.Controllers
         public static string GetAccountLang(string SessionId)
         {
             var Account = FindAccount(SessionId);
-            if (Account == null) { throw new Exception("Account null!"); }
-            return Account.Lang;
+            return Account == null ? throw new Exception("Account null!") : Account.Lang;
         }
 
         /// <summary>
@@ -307,6 +303,7 @@ namespace ServerLib.Controllers
             if (AccountID != "FAILED")
             {
                 var Account = FindAccount(AccountID);
+                ArgumentNullException.ThrowIfNull(Account);
                 if (ConfigController.Configs.CustomSettings.Account.UseSha1)
                     Account.Password = CryptoHelper.Hash(Account.Password);
                 else
@@ -353,9 +350,9 @@ namespace ServerLib.Controllers
         {
             if (Directory.Exists($"user/profiles/{SessionId}"))
             {
-                if (Accounts.Where(x => x.Id == SessionId).Count() > 0)
+                if (Accounts.Where(x => x.Id == SessionId).Any())
                 {
-                    Accounts.Remove(Accounts.Where(x => x.Id == SessionId).FirstOrDefault());
+                    Accounts.Remove(Accounts.Where(x => x.Id == SessionId).First());
                 }
                 if (ActiveAccountIds.Contains(SessionId))
                 {

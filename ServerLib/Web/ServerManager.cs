@@ -14,10 +14,10 @@ namespace ServerLib.Web
         static WSS_Server? WSS_Server = null;
         static WS_Server? WS_Server = null;
         static bool IsSsl = true;
-        static Dictionary<string, Dictionary<(string url, string method), MethodInfo>> HTTP_Plugins;
-        static Dictionary<string, Dictionary<string, MethodInfo>> WS_Plugins;
-        static Dictionary<(string url, string method), MethodInfo> Main_HTTP;
-        static Dictionary<string, MethodInfo> Main_WS;
+        static Dictionary<string, Dictionary<(string url, string method), MethodInfo>> HTTP_Plugins = new();
+        static Dictionary<string, Dictionary<string, MethodInfo>> WS_Plugins = new();
+        static Dictionary<(string url, string method), MethodInfo> Main_HTTP = new();
+        static Dictionary<string, MethodInfo> Main_WS = new();
         public static void Start(string ip, int port, bool ssl = true, bool OnlyWS = false, bool IsCertValidate = false)
         {
             IsSsl = ssl;

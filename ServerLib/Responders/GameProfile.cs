@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using ServerLib.Controllers;
+using ServerLib.Json.Classes;
 using ServerLib.Utilities;
 using static ServerLib.Web.ResponseControl;
 
@@ -7,7 +8,7 @@ namespace ServerLib.Responders
 {
     public static class GameProfile
     {
-        public static string Template(string SessionId)
+        public static string Template(string _)
         {
             return GetBody(JsonConvert.SerializeObject(""));
         }
@@ -17,9 +18,10 @@ namespace ServerLib.Responders
             if (character == null)
             {
                 Debug.PrintError("Character not found!", "ProfileStatus");
+                ArgumentNullException.ThrowIfNull(character);
             }
 
-            Json.Classes.ProfileStatus.Response response = new()
+            ProfileStatus.Response response = new()
             {
                 maxPveCountExceeded = false,
                 profiles = new()
@@ -89,7 +91,9 @@ namespace ServerLib.Responders
 
         public static string ProfileNicknameValidate(string Uncompressed)
         {
-            var nickname = AccountController.ValidateNickname(JsonConvert.DeserializeObject<Json.Classes.Nickname>(Uncompressed));
+            var nick = JsonConvert.DeserializeObject<Nickname>(Uncompressed);
+            ArgumentNullException.ThrowIfNull(nick);
+            var nickname = AccountController.ValidateNickname(nick);
             var resp = GetBody("{status: \"ok\"}");
             if (nickname == "taken")
             {
@@ -110,13 +114,14 @@ namespace ServerLib.Responders
 
         public static string ProfileSearch(string Uncompressed)
         {
-            var nickname = JsonConvert.DeserializeObject<Json.Classes.Nickname>(Uncompressed);
+            var nickname = JsonConvert.DeserializeObject<Nickname>(Uncompressed);
+            ArgumentNullException.ThrowIfNull(nickname);
             var searched = CharacterController.SearchNickname(nickname.nickname);
-            List<Json.Classes.SearchFriend.Response> responses = new();
+            List<SearchFriend.Response> responses = new();
 
             foreach (var search in searched)
             {
-                Json.Classes.SearchFriend.Response rsp = new()
+                SearchFriend.Response rsp = new()
                 {
                     _id = search.Id,
                     Info = new()
@@ -134,7 +139,7 @@ namespace ServerLib.Responders
 
         public static string ProfileSelect(string SessionId)
         {
-            Json.Classes.SelectProfile.Response response = new()
+            SelectProfile.Response response = new()
             { 
                 status = "ok",
                 notifierServer = ServerLib.IP + "/notifierServer/" + SessionId,
@@ -146,7 +151,7 @@ namespace ServerLib.Responders
         public static string ProfileCreate(string SessionId, string Uncompressed)
         {
             CharacterController.CreateCharacter(SessionId, Uncompressed);
-            Json.Classes.UID rsp = new()
+            UID rsp = new()
             {
                 uid = "pmc" + SessionId
             };

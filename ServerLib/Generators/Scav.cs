@@ -10,7 +10,7 @@ namespace ServerLib.Generators
         public static Character.Base Generate(string SessionId)
         {
             var type = DatabaseController.DataBase.Bot.Types["assault"];
-            var scav = Bot.GeneratePlayerScav(SessionId, "assault", "easy", type);
+            var scav = Bot.GeneratePlayerScav("assault", "easy", type);
             scav.Id = "scav" + SessionId;
             scav.Aid = AIDHelper.ToAID(SessionId);
             return scav;
