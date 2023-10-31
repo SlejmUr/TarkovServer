@@ -2,8 +2,8 @@
 {
     public class xyz
     {
-        public int x; 
-        public int y; 
+        public int x;
+        public int y;
         public int z;
     }
 }

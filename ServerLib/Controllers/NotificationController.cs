@@ -1,11 +1,10 @@
-﻿using Newtonsoft.Json;
-using ServerLib.Utilities;
-using ServerLib.Json.Classes;
-using ServerLib.Web;
-using ChatShared;
-using ServerLib.Utilities.Helpers;
-using ModdableWebServer;
+﻿using ChatShared;
 using ModdableWebServer.Helper;
+using Newtonsoft.Json;
+using ServerLib.Json.Classes;
+using ServerLib.Utilities;
+using ServerLib.Utilities.Helpers;
+using ServerLib.Web;
 
 namespace ServerLib.Controllers
 {
@@ -37,17 +36,17 @@ namespace ServerLib.Controllers
             return dialog;
         }
 
-        public static void SendMessageToPlayer(string SessionId, EMessageType messageType, Profile.UserDialogInfo dialogInfo, string messageText )
-        { 
-            var dialog = GetDialog( SessionId, messageType, dialogInfo );
+        public static void SendMessageToPlayer(string SessionId, EMessageType messageType, Profile.UserDialogInfo dialogInfo, string messageText)
+        {
+            var dialog = GetDialog(SessionId, messageType, dialogInfo);
             dialog.New += 1;
             Profile.Message message = new()
-            { 
+            {
                 _id = AIDHelper.CreateNewID(),
                 uid = dialog._id,
                 type = messageType,
                 dt = TimeHelper.UnixTimeNow_Int(),
-                text = messageText        
+                text = messageText
             };
             dialog.messages.Add(message);
             SendNotificationMessage(SessionId, message);

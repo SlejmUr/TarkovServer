@@ -13,7 +13,7 @@ namespace ServerLib.Controllers
 
         public static Dictionary<string, string> GetDictLanguages()
         {
-            return JsonConvert.DeserializeObject<Dictionary<string,string>>(DatabaseController.DataBase.Locale.Languages)!;
+            return JsonConvert.DeserializeObject<Dictionary<string, string>>(DatabaseController.DataBase.Locale.Languages)!;
         }
 
         public static string GetMenu(string url_lang, string SessionId)

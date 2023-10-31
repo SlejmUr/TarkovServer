@@ -1,8 +1,6 @@
-﻿using ServerLib.Utilities;
-using ServerLib.Json.Classes;
+﻿using ServerLib.Json.Classes;
+using ServerLib.Utilities;
 using ServerLib.Utilities.Helpers;
-using Newtonsoft.Json;
-using ServerLib.Web;
 
 namespace ServerLib.Controllers
 {
@@ -60,7 +58,7 @@ namespace ServerLib.Controllers
                 Console.WriteLine(ex);
             }
 
-           
+
             return ret;
         }
 
@@ -172,7 +170,7 @@ namespace ServerLib.Controllers
         /// <param name="SessionId">SessionId/AccountId</param>
         public static void SetRead(string SessionId, string DialogueId)
         {
-            var dialog = GetDialog(SessionId,DialogueId);
+            var dialog = GetDialog(SessionId, DialogueId);
             dialog.New = 0;
             dialog.attachmentsNew = 0;
         }
@@ -208,7 +206,7 @@ namespace ServerLib.Controllers
         public static GetMailDialogView.Response GenerateDialogView(string SessionId, string DialogueId)
         {
             GetMailDialogView.Response response = new()
-            { 
+            {
                 messages = new(),
             };
             if (!string.IsNullOrEmpty(DialogueId))
@@ -243,10 +241,10 @@ namespace ServerLib.Controllers
         public static GetAllAttachments.Response GetAllAttachments(string SessionId, string DialogueId)
         {
             GetAllAttachments.Response response = new()
-            { 
+            {
                 messages = new()
             };
-            var dialogs = GetDialog(SessionId,DialogueId);
+            var dialogs = GetDialog(SessionId, DialogueId);
             dialogs.attachmentsNew = 0;
             var msg = GetActiveMessagesFromDialog(SessionId, DialogueId);
             response.messages.AddRange(GetMessageWithRewards(msg));
@@ -258,7 +256,7 @@ namespace ServerLib.Controllers
         {
             int curDt = TimeHelper.UnixTimeNow_Int();
             var dialogs = GetDialog(SessionId, DialogueId);
-            return dialogs.messages.Where(x=> curDt < ( x.dt + x.maxStorageTime)).ToList();
+            return dialogs.messages.Where(x => curDt < (x.dt + x.maxStorageTime)).ToList();
         }
 
         public static bool HasUncollectedReward(string SessionId, string DialogueId)
@@ -282,10 +280,10 @@ namespace ServerLib.Controllers
             {
                 ret.AddRange(users);
                 ret.Add(new Profile.UserDialogInfo()
-                { 
+                {
                     _id = pmc.Id,
                     info = new()
-                    { 
+                    {
                         Nickname = pmc.Info.Nickname,
                         Side = pmc.Info.Side,
                         Level = pmc.Info.Level,

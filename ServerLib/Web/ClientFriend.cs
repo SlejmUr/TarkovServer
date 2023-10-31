@@ -62,7 +62,7 @@ namespace ServerLib.Web
             string SessionId = serverStruct.Headers.GetSessionId();
             string Uncompressed = ResponseControl.DeCompressReq(request.BodyBytes);
 
-            var rsp = Friend.FriendReqCancel(SessionId,Uncompressed);
+            var rsp = Friend.FriendReqCancel(SessionId, Uncompressed);
             ServerHelper.SendUnityResponse(request, serverStruct, rsp);
             return true;
         }
@@ -119,7 +119,7 @@ namespace ServerLib.Web
             string SessionId = serverStruct.Headers.GetSessionId();
             string Uncompressed = ResponseControl.DeCompressReq(request.BodyBytes);
 
-            var rsp = Friend.FriendMute(SessionId,Uncompressed);
+            var rsp = Friend.FriendMute(SessionId, Uncompressed);
             ServerHelper.SendUnityResponse(request, serverStruct, rsp);
             return true;
         }

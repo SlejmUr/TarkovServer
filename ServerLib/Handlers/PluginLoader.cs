@@ -24,14 +24,14 @@ namespace ServerLib.Handlers
             foreach (string file in Directory.GetFiles(Path.Combine(currdir, "Plugins"), "*.dll"))
             {
                 Configs.Plugin plugin = new()
-                { 
+                {
                     ignore = false
                 };
-                string prettyname = file.Replace(Path.Combine(currdir, "Plugins") + Path.DirectorySeparatorChar,"");;
+                string prettyname = file.Replace(Path.Combine(currdir, "Plugins") + Path.DirectorySeparatorChar, ""); ;
                 if (plugins.Where(x => x.file == prettyname).Any())
                 {
-                    var maybeplugin = plugins.Where(x=>x.file == prettyname).SingleOrDefault();
-                    if (maybeplugin != null) 
+                    var maybeplugin = plugins.Where(x => x.file == prettyname).SingleOrDefault();
+                    if (maybeplugin != null)
                     {
                         plugin = maybeplugin;
                     }
@@ -66,7 +66,7 @@ namespace ServerLib.Handlers
                 plugins.Add(plugin);
             }
 
-            var ordered = PluginDependencies.OrderBy(x=>x.Value.Count);
+            var ordered = PluginDependencies.OrderBy(x => x.Value.Count);
 
             foreach (var item in ordered)
             {

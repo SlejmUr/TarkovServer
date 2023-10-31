@@ -1,8 +1,8 @@
 ﻿using ModdableWebServer;
+using ModdableWebServer.Attributes;
 using NetCoreServer;
 using Newtonsoft.Json;
 using ServerLib.Controllers;
-using ModdableWebServer.Attributes;
 using ServerLib.Utilities.Helpers;
 
 namespace ServerLib.Web

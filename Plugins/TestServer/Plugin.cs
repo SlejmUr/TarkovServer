@@ -29,7 +29,7 @@ namespace Plugin
 
         public void Initialize()
         {
-            gameServer = new(IPAddress.Parse(ConfigController.Configs.Server.Ip),1000);
+            gameServer = new(IPAddress.Parse(ConfigController.Configs.Server.Ip), 1000);
             gameServer.Start();
         }
         public void ShutDown()

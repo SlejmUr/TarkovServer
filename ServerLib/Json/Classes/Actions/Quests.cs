@@ -65,5 +65,5 @@ namespace ServerLib.Json.Classes.Actions
             }
         }
 
-}
+    }
 }

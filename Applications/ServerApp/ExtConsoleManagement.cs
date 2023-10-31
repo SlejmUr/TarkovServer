@@ -17,7 +17,7 @@ namespace ServerApp
 
         static ExtConsoleManagement()
         {
-            handle = GetConsoleWindow(); 
+            handle = GetConsoleWindow();
         }
 
         public static void ChangeConsole()

@@ -39,7 +39,7 @@ namespace ServerLib.Responders
             };
 
             var match = MatchController.GetMatch(SessionId);
-            if (match.IsNew) 
+            if (match.IsNew)
             {
                 MatchController.Matches.Remove(match.matchData.MatchId);
             }
@@ -125,7 +125,7 @@ namespace ServerLib.Responders
                 {
                     _id = search.Id,
                     Info = new()
-                    { 
+                    {
                         Side = search.Info.Side,
                         Level = search.Info.Level,
                         Nickname = search.Info.Nickname
@@ -140,7 +140,7 @@ namespace ServerLib.Responders
         public static string ProfileSelect(string SessionId)
         {
             SelectProfile.Response response = new()
-            { 
+            {
                 status = "ok",
                 notifierServer = ServerLib.IP + "/notifierServer/" + SessionId,
                 notifier = GetNotifier(SessionId)

@@ -1,8 +1,8 @@
-﻿using NetCoreServer;
+﻿using ModdableWebServer;
+using ModdableWebServer.Attributes;
+using NetCoreServer;
 using ServerLib.Controllers;
 using ServerLib.Utilities.Helpers;
-using ModdableWebServer;
-using ModdableWebServer.Attributes;
 
 namespace ServerLib.Web
 {
@@ -39,7 +39,7 @@ namespace ServerLib.Web
         public static bool Settings(HttpRequest request, ServerStruct serverStruct)
         {
             ServerHelper.PrintRequest(request, serverStruct);
-            string resp = ResponseControl.GetBodyCRC(DatabaseController.DataBase.Hideout.Settings,0,"null", 4187301386);
+            string resp = ResponseControl.GetBodyCRC(DatabaseController.DataBase.Hideout.Settings, 0, "null", 4187301386);
             ServerHelper.SendUnityResponse(request, serverStruct, resp);
             return true;
         }

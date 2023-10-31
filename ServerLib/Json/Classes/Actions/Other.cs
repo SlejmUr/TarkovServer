@@ -192,7 +192,7 @@ namespace ServerLib.Json.Classes.Actions
         public List<RepairKitsInfo> repairKitsInfo { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-        public string target {get; set;}
+        public string target { get; set; }
         public class RepairKitsInfo
 
         {

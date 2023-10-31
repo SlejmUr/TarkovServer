@@ -37,7 +37,7 @@ namespace ServerLib.Controllers
 
                 if (!Accounts.Contains(profile.Info))
                 {
-                    Debug.PrintInfo($"(Re)Loaded account data for profile: [{profile.Info.Id}]" , "ACCOUNT");
+                    Debug.PrintInfo($"(Re)Loaded account data for profile: [{profile.Info.Id}]", "ACCOUNT");
                     Accounts.Add(profile.Info);
                 }
             });
@@ -197,7 +197,7 @@ namespace ServerLib.Controllers
             if (profile == null || profile.Info == null)
                 return;
 
-            if (Accounts.Where(x=>x.Id != SessionId).Any())
+            if (Accounts.Where(x => x.Id != SessionId).Any())
             {
                 Debug.PrintInfo($"(Re)Loaded account data for profile: [{profile.Info.Id}]", "ACCOUNT");
                 Accounts.Add(profile.Info);

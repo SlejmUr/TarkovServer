@@ -1,8 +1,4 @@
-﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using System.Globalization;
-
-namespace ServerLib.Json.Classes
+﻿namespace ServerLib.Json.Classes
 {
     public class Database
     {
@@ -13,7 +9,7 @@ namespace ServerLib.Json.Classes
             public string Appearance { get; set; }
             public string WeaponCache { get; set; }
             public Dictionary<string, Bots.BotType> Types { get; set; } = new();
-        
+
         }
         public characters Characters { get; set; } = new();
         public class characters

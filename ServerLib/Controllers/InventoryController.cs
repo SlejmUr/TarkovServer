@@ -1,6 +1,5 @@
 ﻿using ServerLib.Json.Classes;
 using ServerLib.Utilities;
-using static ServerLib.Json.Classes.CustomConfig;
 
 namespace ServerLib.Controllers
 {
@@ -119,8 +118,8 @@ namespace ServerLib.Controllers
                     int w = (int)grid.Value._props.cellsH;
 
                     var arraySize = h * w;
-                    ic.Stash.Container = new() 
-                    { 
+                    ic.Stash.Container = new()
+                    {
                         Width = w,
                         Height = h,
                         FlatMap = new(),
@@ -217,7 +216,7 @@ namespace ServerLib.Controllers
                 return (height, width);
 
             Others.Sizes sizes = new()
-            { 
+            {
                 ForcedDown = 0,
                 ForcedLeft = 0,
                 ForcedUp = 0,
@@ -233,7 +232,7 @@ namespace ServerLib.Controllers
                 var member = family[i];
                 var index = container.Lookup.Forward[member];
                 itemInInventory = items[index];
-                var childFolded  = ItemController.IsFolded(itemInInventory);
+                var childFolded = ItemController.IsFolded(itemInInventory);
                 if (parentFolded || childFolded)
                     continue;
                 else if ((canFold.HasValue && canFold.Value) && foldedSlotID != null && itemInInventory.SlotId == foldedSlotID && (parentFolded || childFolded))

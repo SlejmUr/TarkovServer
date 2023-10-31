@@ -1,8 +1,8 @@
-﻿using NetCoreServer;
+﻿using ModdableWebServer;
+using ModdableWebServer.Attributes;
+using NetCoreServer;
 using ServerLib.Controllers;
 using ServerLib.Utilities.Helpers;
-using ModdableWebServer;
-using ModdableWebServer.Attributes;
 
 namespace ServerLib.Web
 {

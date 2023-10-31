@@ -17,7 +17,7 @@ namespace ServerLib.Json.Classes.Actions
                 public string container { get; set; }
 
                 [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-                public ToLocation location {get; set;}
+                public ToLocation location { get; set; }
 
                 public class ToLocation
                 {
@@ -48,7 +48,7 @@ namespace ServerLib.Json.Classes.Actions
                 public string container { get; set; }
 
                 [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-                public Location location {get; set;}
+                public Location location { get; set; }
             }
 
             public class Location

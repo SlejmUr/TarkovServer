@@ -54,7 +54,7 @@ namespace ServerLib.Utilities.Helpers
             var crt = Convert.ToBase64String(exportData, Base64FormattingOptions.InsertLineBreaks);
             File.WriteAllText(certFilename, CRT_HEADER + crt + CRT_FOOTER);
 
-            File.WriteAllBytes("cert/cert.pfx", certificate.Export(X509ContentType.Pfx,"cert"));
+            File.WriteAllBytes("cert/cert.pfx", certificate.Export(X509ContentType.Pfx, "cert"));
 
             try
             {

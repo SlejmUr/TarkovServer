@@ -8,7 +8,7 @@ namespace ServerLib.Json.Helpers
         public static Login ToLogin(Profile.Info info)
         {
             return new()
-            { 
+            {
                 password = info.Password,
                 username = info.Username
             };

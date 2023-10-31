@@ -1,8 +1,7 @@
-﻿using System.Collections.Generic;
-using System.Reflection;
-using ModdableWebServer.Helper;
+﻿using ModdableWebServer.Helper;
 using ModdableWebServer.Servers;
 using NetCoreServer;
+using System.Reflection;
 
 namespace ServerLib.Web
 {
@@ -39,7 +38,7 @@ namespace ServerLib.Web
                     WSS_Server.HTTP_AttributeToMethods.Merge(Assembly.GetAssembly(typeof(ServerManager)));
                 WSS_Server.Start();
             }
-            else 
+            else
             {
                 WS_Server = new(ip, port);
                 WS_Server.WS_AttributeToMethods.Merge(Assembly.GetAssembly(typeof(ServerManager)));

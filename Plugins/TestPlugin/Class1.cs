@@ -1,7 +1,7 @@
-﻿using ModdableWebServer.Attributes;
-using ModdableWebServer;
-using NetCoreServer;
+﻿using ModdableWebServer;
+using ModdableWebServer.Attributes;
 using ModdableWebServer.Helper;
+using NetCoreServer;
 
 namespace TestPlugin
 {
@@ -46,9 +46,9 @@ namespace TestPlugin
                     Console.WriteLine("yeetteete");
                 }
 
-            
+
             });
-        
+
         }
 
         public static async Task MyBigTask()

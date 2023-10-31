@@ -2633,16 +2633,16 @@ namespace ServerLib.Json.Classes
             public int GainPerFatigueStack { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            	public List<DependentSkillRatio> DependentSkillRatios { get; set; }
+            public List<DependentSkillRatio> DependentSkillRatios { get; set; }
 
-	        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
+            [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public Dictionary<string, Dictionary<string, double>> QTELevelMultipliers { get; set; }
 
         }
         public class Strength
         {
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-	        public List<DependentSkillRatio> DependentSkillRatios { get; set; }
+            public List<DependentSkillRatio> DependentSkillRatios { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public int SprintActionMin { get; set; }

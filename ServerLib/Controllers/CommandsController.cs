@@ -1,8 +1,8 @@
-﻿using ServerLib.Handlers;
-using DB = ServerLib.Utilities.Debug;
-using System.Diagnostics;
+﻿using Newtonsoft.Json;
+using ServerLib.Handlers;
 using ServerLib.Json.Enums;
-using Newtonsoft.Json;
+using System.Diagnostics;
+using DB = ServerLib.Utilities.Debug;
 
 namespace ServerLib.Controllers
 {
@@ -46,7 +46,7 @@ namespace ServerLib.Controllers
             var splitted = CommandName.Split(" ");
             CommandName = splitted[0];
             var Parameter = splitted[1..];
-            Console.WriteLine(string.Join("," , Parameter));
+            Console.WriteLine(string.Join(",", Parameter));
             if (Commands.TryGetValue(CommandName.Replace("!", ""), out var action))
             {
                 action(Parameter);
@@ -124,8 +124,8 @@ namespace ServerLib.Controllers
             {
                 DB.PrintWarn("No User to OP, use: !op <AID>");
                 return;
-            }               
-            var AID = x[x.Length-1];
+            }
+            var AID = x[x.Length - 1];
             var profile = ProfileController.GetProfile(AID);
             if (profile == null)
             {
@@ -133,13 +133,13 @@ namespace ServerLib.Controllers
                 return;
             }
             profile.ProfileAddon.Permission = Json.Enums.EPerms.Admin;
-            SaveHandler.SaveAddon(AID,profile.ProfileAddon);
+            SaveHandler.SaveAddon(AID, profile.ProfileAddon);
             DB.PrintInfo($"User {AID} is now {Json.Enums.EPerms.Admin}");
         }
 
         public static void SetPerm(object obj)
         {
-            var x = (string[])obj; 
+            var x = (string[])obj;
             if (x.Length > 2)
             {
                 DB.PrintWarn("No User or Permission defined. Use: !setpermission <AID>");
@@ -216,7 +216,7 @@ namespace ServerLib.Controllers
             //todo check length:
 
             var registerId = AccountController.Register(new Json.Classes.Login()
-            { 
+            {
                 password = password,
                 username = username
 

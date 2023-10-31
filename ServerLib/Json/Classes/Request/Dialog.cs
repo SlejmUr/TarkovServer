@@ -1,10 +1,5 @@
 ﻿using ChatShared;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ServerLib.Json.Classes
 {
@@ -45,7 +40,7 @@ namespace ServerLib.Json.Classes
             public int limit { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public int time {get; set;}
+            public int time { get; set; }
         }
 
         public class SendMSG

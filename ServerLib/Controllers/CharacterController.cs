@@ -115,7 +115,7 @@ namespace ServerLib.Controllers
                 Characters.Remove(SessionId + "_scav");
                 Characters.Add(SessionId + "_scav", scav);
             }
-            
+
             //Item ReID
             Debug.PrintInfo($"Character Created with Id {SessionId}!", "CHARACTER");
         }
@@ -137,16 +137,16 @@ namespace ServerLib.Controllers
             if (Characters.TryGetValue(SessionId + "_pmc", out var character))
             {
                 return new()
-                { 
-                   Id = character.Id,
-                   Aid = character.Aid,
-                   Info = new()
-                   { 
+                {
+                    Id = character.Id,
+                    Aid = character.Aid,
+                    Info = new()
+                    {
                         Nickname = character.Info.Nickname,
                         Side = character.Info.Side,
                         Level = character.Info.Level,
                         MemberCategory = character.Info.MemberCategory
-                   }               
+                    }
                 };
             }
             Debug.PrintWarn($"Character isnt made for {SessionId}!", "GetPmcCharacter");
@@ -186,7 +186,7 @@ namespace ServerLib.Controllers
                     ouptut.Add(scav);
                 }
 
-                
+
             }
 
             return JsonConvert.SerializeObject(ouptut, new JsonConverter[] { Converters.ItemLocationConverter.Singleton });
@@ -206,7 +206,7 @@ namespace ServerLib.Controllers
                 }
             }
             return ret;
-        
+
         }
 
 

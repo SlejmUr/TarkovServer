@@ -26,7 +26,7 @@ namespace ServerLib.Json.Classes
     {
         public string change { get; set; }
     }
-    
+
     // used for validatenickname and searchfriend!
     public class Nickname
     {
@@ -206,7 +206,7 @@ namespace ServerLib.Json.Classes
     public class SaveProgress
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-        public string exit {get; set;}
+        public string exit { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
         public Character.Base profile { get; set; }

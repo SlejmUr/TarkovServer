@@ -72,9 +72,9 @@ namespace ServerLib.Responders
 
         public static string FriendMute(string SessionId, string Uncompressed)
         {
-            var req = JsonConvert.DeserializeObject<Json.Classes.FriendsReq>(Uncompressed); 
+            var req = JsonConvert.DeserializeObject<Json.Classes.FriendsReq>(Uncompressed);
             ArgumentNullException.ThrowIfNull(req);
-            FriendsController.MuteFriend(SessionId,req.uid);
+            FriendsController.MuteFriend(SessionId, req.uid);
             return NullResponse();
         }
 

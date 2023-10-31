@@ -162,9 +162,9 @@ namespace ServerLib.Generators
                     Maximum = botHealth.Temperature.Max
                 },
                 BodyParts = new()
-                { 
+                {
                     Chest = new()
-                    { 
+                    {
                         Health = new()
                         {
                             Current = MathHelper.GetRandomDoubleInt(bodyPart.Chest.Min, bodyPart.Chest.Max),
@@ -219,7 +219,7 @@ namespace ServerLib.Generators
                             Maximum = Math.Round(bodyPart.RightLeg.Max)
                         }
                     }
-                } 
+                }
             };
         }
 

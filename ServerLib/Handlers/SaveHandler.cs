@@ -13,7 +13,7 @@ namespace ServerLib.Handlers
         /// Save all Session related stuff at once
         /// </summary>
         /// <param name="SessionId">SessionId/AccountId</param>
-        public static void SaveAll(string SessionId,bool IsAki = false)
+        public static void SaveAll(string SessionId, bool IsAki = false)
         {
             Debug.PrintInfo("Saving started...", "SAVE");
             if (IsAki)

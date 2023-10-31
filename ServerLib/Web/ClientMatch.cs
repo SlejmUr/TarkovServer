@@ -1,13 +1,12 @@
-﻿using NetCoreServer;
+﻿using ModdableWebServer;
+using ModdableWebServer.Attributes;
+using NetCoreServer;
 using Newtonsoft.Json;
 using ServerLib.Controllers;
 using ServerLib.Json.Classes;
 using ServerLib.Utilities;
-using static ServerLib.Json.Classes.Response.Matches;
-using ModdableWebServer;
-using ModdableWebServer.Attributes;
 using ServerLib.Utilities.Helpers;
-using static ServerLib.Json.Classes.Dialog;
+using static ServerLib.Json.Classes.Response.Matches;
 
 namespace ServerLib.Web
 {
@@ -23,7 +22,7 @@ namespace ServerLib.Web
             match.matchData.Location = "factory4_day";
             match.matchData.RaidMode = EFT.ERaidMode.Online;
             MatchController.Matches[match.matchData.MatchId] = match.matchData;
-            MatchController.SendStart(match.matchData.MatchId,"192.168.1.50",1000);
+            MatchController.SendStart(match.matchData.MatchId, "192.168.1.50", 1000);
             ServerHelper.SendUnityResponse(request, serverStruct, rsp);
             return true;
         }
@@ -82,13 +81,13 @@ namespace ServerLib.Web
         [HTTP("POST", "/client/match/group/start_game")]
         public static bool StartGame(HttpRequest request, ServerStruct serverStruct)
         {
-            ServerHelper.PrintRequest(request, serverStruct); 
+            ServerHelper.PrintRequest(request, serverStruct);
             var sessionId = serverStruct.Headers.GetSessionId();
             var jsonreq = JsonConvert.DeserializeObject<StartGameReq>(ResponseControl.DeCompressReq(request.BodyBytes));
             ArgumentNullException.ThrowIfNull(jsonreq);
-            MatchController.SendStart(jsonreq.groupId, "192.168.1.50",1000);
+            MatchController.SendStart(jsonreq.groupId, "192.168.1.50", 1000);
             var match = MatchController.GetMatch(sessionId);
-            var user = match.matchData.Users.Where(x=>x.sessionId == sessionId).FirstOrDefault();
+            var user = match.matchData.Users.Where(x => x.sessionId == sessionId).FirstOrDefault();
             ProfileStatus.Response response = new()
             {
                 maxPveCountExceeded = false,
@@ -174,7 +173,7 @@ namespace ServerLib.Web
         {
             ServerHelper.PrintRequest(request, serverStruct);
             CurrentGroup currentGroup = new()
-            { 
+            {
                 squad = new()
             };
             var rsp = ResponseControl.GetBody(JsonConvert.SerializeObject(currentGroup));

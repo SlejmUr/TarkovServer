@@ -42,8 +42,8 @@ namespace ServerLib.Controllers
             {
                 DataBase.Others.ItemPrices.Add(item.Id, item.Price);
             }
-            DataBase.Others.Items = JsonConvert.DeserializeObject<Dictionary<string, TemplateItem.Base>>(File.ReadAllText("Files/others/items.json"), new JsonConverter[] 
-            { 
+            DataBase.Others.Items = JsonConvert.DeserializeObject<Dictionary<string, TemplateItem.Base>>(File.ReadAllText("Files/others/items.json"), new JsonConverter[]
+            {
                 AimSensitivityConverter.Singleton,
                 EffectsHealthUnionConverter.Singleton
 
@@ -71,7 +71,7 @@ namespace ServerLib.Controllers
 
         static void LoadCharacters()
         {
-            DataBase.Characters = new();      
+            DataBase.Characters = new();
             DataBase.Characters.CharacterBase["bear"] = JsonHelper.ToCharacterBase("Files/characters/character_bear.json");
             DataBase.Characters.CharacterBase["usec"] = JsonHelper.ToCharacterBase("Files/characters/character_usec.json");
             DataBase.Characters.CharacterStorage = JsonConvert.DeserializeObject<Dictionary<string, List<string>>>(File.ReadAllText("Files/characters/storage.json"));
@@ -89,7 +89,7 @@ namespace ServerLib.Controllers
             var dirs = Directory.GetFiles("Files/bot/types");
             foreach (var item in dirs)
             {
-                var name = item.Replace("Files/bot/types\\", "").Replace(".json","");
+                var name = item.Replace("Files/bot/types\\", "").Replace(".json", "");
                 Debug.PrintDebug(name);
                 var botType = JsonConvert.DeserializeObject<Bots.BotType>(File.ReadAllText(item));
                 if (botType == null)
@@ -134,7 +134,7 @@ namespace ServerLib.Controllers
                             continue;
                         DataBase.Locale.LocalesDict.Add(localename + "_" + localename_add, loc);
                     }
-                        
+
                 }
             }
             Debug.PrintDebug("Locales loaded");
@@ -185,10 +185,10 @@ namespace ServerLib.Controllers
                             trader.traderbase = JsonConvert.DeserializeObject<Trader.TraderBase>(File.ReadAllText(file));
                             break;
                         case "dialogue":
-                            trader.dialogue = JsonConvert.DeserializeObject<Dictionary<string,List<string>>>(File.ReadAllText(file));
+                            trader.dialogue = JsonConvert.DeserializeObject<Dictionary<string, List<string>>>(File.ReadAllText(file));
                             break;
                         case "questassort":
-                            trader.questassort = JsonConvert.DeserializeObject<Dictionary<string,Dictionary<string, string>>>(File.ReadAllText(file));
+                            trader.questassort = JsonConvert.DeserializeObject<Dictionary<string, Dictionary<string, string>>>(File.ReadAllText(file));
                             break;
                         case "suits":
                             trader.suits = JsonConvert.DeserializeObject<List<Trader.Suit>>(File.ReadAllText(file));

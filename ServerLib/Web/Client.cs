@@ -1,4 +1,5 @@
 ﻿using ModdableWebServer;
+using ModdableWebServer.Attributes;
 using NetCoreServer;
 using Newtonsoft.Json;
 using ServerLib.Controllers;
@@ -7,7 +8,6 @@ using ServerLib.Utilities;
 using ServerLib.Utilities.Helpers;
 using static ServerLib.Json.Classes.Profile;
 using static ServerLib.Json.Converters;
-using ModdableWebServer.Attributes;
 
 namespace ServerLib.Web
 {
@@ -74,7 +74,7 @@ namespace ServerLib.Web
         {
             ServerHelper.PrintRequest(request, serverStruct);
             Json.Classes.ChatServer.Base chatServerList = new()
-            { 
+            {
                 _id = AIDHelper.CreateNewID(),
                 RegistrationId = 20,
                 DateTime = (int)TimeHelper.UnixTimeNow(),
@@ -83,9 +83,9 @@ namespace ServerLib.Web
                 Ip = "",
                 Port = 0,
                 Chats = new()
-                { 
+                {
                     new()
-                    { 
+                    {
                         _id = "0",
                         Members = 0
                     }
@@ -102,9 +102,9 @@ namespace ServerLib.Web
             ServerHelper.PrintRequest(request, serverStruct);
             var server = ConfigController.Configs.Server;
             List<Server> servers = new()
-            { 
+            {
                 new()
-                { 
+                {
                     Address = server.Ip,
                     Port = $"{1000}"
                 }
@@ -197,7 +197,7 @@ namespace ServerLib.Web
             ServerHelper.PrintRequest(request, serverStruct);
             var jsonreq = JsonConvert.DeserializeObject<GetLocation>(ResponseControl.DeCompressReq(request.BodyBytes));
             ArgumentNullException.ThrowIfNull(jsonreq);
-            var location =  LocationController.GetLocationLoot(jsonreq);
+            var location = LocationController.GetLocationLoot(jsonreq);
             string resp = ResponseControl.GetBody(JsonConvert.SerializeObject(location));
             ServerHelper.SendUnityResponse(request, serverStruct, resp);
             return true;

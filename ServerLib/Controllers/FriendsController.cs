@@ -53,7 +53,7 @@ namespace ServerLib.Controllers
                     };
                     SaveHandler.SaveAddon(profile.Key, profile.Value.ProfileAddon);
                 }
-                
+
                 ProfileAddonsDict.TryAdd(profile.Key, profile.Value.ProfileAddon);
                 if (!ProfileAddons.Contains(profile.Value.ProfileAddon))
                     ProfileAddons.Add(profile.Value.ProfileAddon);

@@ -47,7 +47,7 @@ namespace ServerLib.Controllers
                         {
                             QuestTargetConverter.Singleton
                         });
-                        File.WriteAllText("quetst_5936d90786f7742b1420ba5b.json",test);
+                        File.WriteAllText("quetst_5936d90786f7742b1420ba5b.json", test);
                         list.Add(item);
                     }
                 }

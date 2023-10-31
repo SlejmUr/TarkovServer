@@ -7,7 +7,7 @@ namespace ServerLib.Json.Classes
     {
         public class Base
         {
-            [JsonProperty("info",DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
+            [JsonProperty("info", DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public Info Info { get; set; }
 
             [JsonProperty("characters", DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
@@ -50,19 +50,19 @@ namespace ServerLib.Json.Classes
         public class Info
 
         {
-            [JsonProperty("id",DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
+            [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public string Id { get; set; }
 
-            [JsonProperty("username",DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
+            [JsonProperty("username", DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public string Username { get; set; }
 
-            [JsonProperty("password",DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
+            [JsonProperty("password", DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public string Password { get; set; }
 
-            [JsonProperty("wipe",DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
+            [JsonProperty("wipe", DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public bool Wipe { get; set; }
 
-            [JsonProperty("edition",DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
+            [JsonProperty("edition", DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public string Edition { get; set; }
 
             [JsonProperty("lang", DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]

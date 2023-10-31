@@ -1,13 +1,11 @@
 ﻿using EFT;
+using ModdableWebServer.Helper;
 using Newtonsoft.Json;
 using ServerLib.Json.Classes;
-using ServerLib.Json.Classes.Response;
 using ServerLib.Json.Classes.Websocket;
 using ServerLib.Utilities;
-using ServerLib.Web;
-using ModdableWebServer.Helper;
-using ModdableWebServer;
 using ServerLib.Utilities.Helpers;
+using ServerLib.Web;
 
 namespace ServerLib.Controllers
 {
@@ -62,7 +60,7 @@ namespace ServerLib.Controllers
 
         public static void Exit(string ProfileId)
         {
-            
+
             var match = GetMatch(ProfileId);
             Debug.PrintDebug($"Match [{match.matchData.MatchId}] is Deleted", "MatchController");
             Matches.Remove(match.matchData.MatchId);

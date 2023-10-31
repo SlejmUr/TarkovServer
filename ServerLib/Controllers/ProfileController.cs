@@ -4,7 +4,6 @@ using ServerLib.Json;
 using ServerLib.Json.Classes;
 using ServerLib.Json.Helpers;
 using ServerLib.Utilities;
-using static ServerLib.Json.Classes.CustomConfig;
 
 namespace ServerLib.Controllers
 {
@@ -76,9 +75,9 @@ namespace ServerLib.Controllers
             foreach (string dir in dirs)
             {
                 Profile.Base @base = new()
-                { 
+                {
                     Characters = new()
-                }; 
+                };
                 if (File.Exists($"{dir}/profile.json"))
                 {
                     var pbase = JsonConvert.DeserializeObject<Profile.Base>(File.ReadAllText($"{dir}/profile.json"));
@@ -122,7 +121,7 @@ namespace ServerLib.Controllers
                 if (!ProfilesDict.ContainsKey(@base.Info.Id))
                 {
                     Debug.PrintDebug($"Profile Added {@base.Info.Id}", "ConvertFromProfile");
-                    ProfilesDict.Add(@base.Info.Id,@base);
+                    ProfilesDict.Add(@base.Info.Id, @base);
                 }
                 ret.Add(@base);
             }
@@ -182,7 +181,7 @@ namespace ServerLib.Controllers
                 {
                     var character = JsonHelper.ToCharacterBase($"{dir}/character.json");
                     @base.Characters = new()
-                    { 
+                    {
                         Scav = character,
                         Pmc = character
                     };

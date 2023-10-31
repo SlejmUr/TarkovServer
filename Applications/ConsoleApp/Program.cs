@@ -1,18 +1,17 @@
-﻿using System.Reflection;
+﻿using ServerLib.Controllers;
+using ServerLib.Utilities;
+using System.Reflection;
 using System.Text;
-
 using SL = ServerLib;
 using SLH = ServerLib.Handlers;
 using SLU = ServerLib.Utilities;
-using ServerLib.Controllers;
-using ServerLib.Utilities;
 
 namespace ConsoleApp
 {
     internal class Program
     {
         static readonly CVersion Version = new();
-        static void LogDetailed(string text) 
+        static void LogDetailed(string text)
         {
             Debug.PrintInfo(text);
         }
@@ -21,7 +20,7 @@ namespace ConsoleApp
             Console.WriteLine();
         }
 
-        static void ServerInfo() 
+        static void ServerInfo()
         {
             LogDetailed("Welcome in Tarkov Server Console!");
             ConsoleSpacer();
@@ -107,8 +106,8 @@ namespace ConsoleApp
             }
             catch (Exception e)
             {
-                 Console.WriteLine(
-                    $"Cannot find a file(or file is not unlocked) named:\r\n{_FileName}\r\nWith an exception: {e.Message}\r\nApplication will close!");
+                Console.WriteLine(
+                   $"Cannot find a file(or file is not unlocked) named:\r\n{_FileName}\r\nWith an exception: {e.Message}\r\nApplication will close!");
                 Console.ReadLine();
                 throw;
             }
