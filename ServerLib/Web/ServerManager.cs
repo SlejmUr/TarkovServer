@@ -1,6 +1,7 @@
 ﻿using ModdableWebServer.Helper;
 using ModdableWebServer.Servers;
 using NetCoreServer;
+using ServerLib.Utilities;
 using System.Reflection;
 
 namespace ServerLib.Web
@@ -32,7 +33,8 @@ namespace ServerLib.Web
 
                 Main_HTTP = AttributeMethodHelper.UrlHTTPLoader(Assembly.GetAssembly(typeof(ServerManager)));
                 Main_WS = AttributeMethodHelper.UrlWSLoader(Assembly.GetAssembly(typeof(ServerManager)));
-
+                WSS_Server.DoReturn404IfFail = false;
+                WSS_Server.ReceivedFailed += Failed;
                 WSS_Server.WS_AttributeToMethods.Merge(Assembly.GetAssembly(typeof(ServerManager)));
                 if (!OnlyWS)
                     WSS_Server.HTTP_AttributeToMethods.Merge(Assembly.GetAssembly(typeof(ServerManager)));
@@ -44,6 +46,8 @@ namespace ServerLib.Web
                 WS_Server.WS_AttributeToMethods.Merge(Assembly.GetAssembly(typeof(ServerManager)));
                 if (!OnlyWS)
                     WS_Server.HTTP_AttributeToMethods.Merge(Assembly.GetAssembly(typeof(ServerManager)));
+                WS_Server.DoReturn404IfFail = false;
+                WS_Server.ReceivedFailed += Failed;
                 WS_Server.Start();
             }
             IpPort = ssl ? $"https://{ip}:{port}/" : $"http://{ip}:{port}/";
@@ -51,6 +55,14 @@ namespace ServerLib.Web
             IP = $"{ip}:{port}";
             Console.WriteLine("Server started on " + IpPort + " | " + IpPort_WS);
         }
+
+        public static void Failed(object? sender, HttpRequest request)
+        {
+            Debug.PrintWarn("REQUEST FAILED");
+            Debug.PrintWarn(request.Method + " " + request.Url);
+            Debug.PrintWarn(request.Body);
+        }
+
 
         public static void Stop()
         {
