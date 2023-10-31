@@ -1,8 +1,6 @@
-﻿using ServerLib.Controllers;
-using ServerLib.Utilities;
+﻿using ServerLib.Utilities;
 using ServerLib.Web;
 using System.Composition;
-using System.Net;
 
 namespace Plugin
 {
@@ -14,17 +12,18 @@ namespace Plugin
         }
         public Plugin()
         {
-
         }
-        public string Name => "TestServer";
+
+        public string Name => "LauncherSupporter";
 
         public string Author => "SlejmUr";
 
-        public string Version => "0.2";
+        public string Version => "0.1";
 
-        public string Description => "MiddleWare plugin for U19/U21 Tarkov Server";
+        public string Description => "Add Support for wierd launcher on all place.";
 
-        public List<string> Dependencies => new();
+        public List<string> Dependencies => new() { };  //No dependency
+
         public void Initialize()
         {
             var assembly = this.GetType().Assembly;

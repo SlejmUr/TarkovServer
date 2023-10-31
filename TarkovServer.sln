@@ -22,6 +22,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestServer", "Plugins\TestS
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "ServerFiles", "ServerFiles\ServerFiles.shproj", "{A36DA3F1-070C-4D45-B0BB-4652AE0E3DAD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LauncherSupporter", "Plugins\LauncherSupporter\LauncherSupporter.csproj", "{683BBC84-33AD-419B-B5C4-A19FBE448C02}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -52,6 +54,10 @@ Global
 		{9D4345B0-13ED-4590-8ED8-3D1143DE36EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9D4345B0-13ED-4590-8ED8-3D1143DE36EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9D4345B0-13ED-4590-8ED8-3D1143DE36EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{683BBC84-33AD-419B-B5C4-A19FBE448C02}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{683BBC84-33AD-419B-B5C4-A19FBE448C02}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{683BBC84-33AD-419B-B5C4-A19FBE448C02}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{683BBC84-33AD-419B-B5C4-A19FBE448C02}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
