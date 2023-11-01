@@ -20,7 +20,7 @@ namespace Plugin
 
         public string Version => "0.1";
 
-        public string Description => "Add Support for wierd launcher on all place.";
+        public string Description => "Add Support for launchers.";
 
         public List<string> Dependencies => new() { };  //No dependency
 

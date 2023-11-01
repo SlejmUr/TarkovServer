@@ -35,6 +35,14 @@ namespace ServerLib.Web
             return ServerHelper.SendUnityResponse(request, serverStruct, resp);
         }
 
+        [HTTP("GET", "/singleplayer/bundles")]
+        public static bool singleplayerGetBundeList(HttpRequest request, ServerStruct serverStruct)
+        {
+            ServerHelper.PrintRequest(request, serverStruct);
+            string resp = "[]"; //Need better handling on bundles
+            return ServerHelper.SendUnityResponse(request, serverStruct, resp);
+        }
+
         [HTTP("GET", "/ServerInternalIPAddress")]
         public static bool ServerInternalIPAddress(HttpRequest request, ServerStruct serverStruct)
         {

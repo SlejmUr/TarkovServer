@@ -1,5 +1,8 @@
 ﻿using ServerLib.Json.Classes;
 using ServerLib.Utilities;
+using System.Collections.Generic;
+using System.Data.Common;
+using static ServerLib.Controllers.InventoryController;
 
 namespace ServerLib.Controllers
 {
@@ -290,21 +293,191 @@ namespace ServerLib.Controllers
         }
 
 
-        /*
-         TODO:
-        ResetItemSizeInContainer
-        GenerateCoordinatesFromLocation
-        UpdateItemFlatMapLookup
-        ClearItemFromContainerMap
-        AddItemFromContainerMap
-        ClearItemFromContainer
-        GetValidLocationForItem
-        ConvertAssortItemsToInventoryItem
-        AssignNewIDs
-        AddItemToContainer
-        SetSingleInventoryIndex
-        GetIndexOfItemByUID
-        MeasurePurchaseForInventoryMapping
-         */
-    }
+        public static InventoryContainer ResetItemSizeInContainer(Item.Base item, Character.Inventory inventory, InventoryContainer ic)
+        {
+            var (height, width) = MeasureItemForInventoryMapping(inventory.Items, item.Id, ic);
+            var flatMap = CreateFlatMapLookup(height, width, item, ic);
+            var itemFlatMap = ic.Stash.Container.FlatMap[item.Id];
+            List<int> ToDel = new();
+            List<int> ToAdd = new();
+
+            if (flatMap.EndX < itemFlatMap.EndX)
+            {
+                for (int column = flatMap.EndX + 1; column <= itemFlatMap.EndX; column++)
+                {
+                    ic.Stash.Container.ContainerMap[column] = "";
+                    ToDel.Add(column);
+                    if (flatMap.Height < itemFlatMap.Height)
+                    {
+                        for (int row = flatMap.Height + 1; row < itemFlatMap.Height; row++)
+                        {
+                            var coordinate = row * ic.Stash.Container.Width + itemFlatMap.EndX;
+                            ic.Stash.Container.ContainerMap[coordinate] = "";
+                            ToDel.Add(coordinate);
+                        }
+                    }
+                }
+            }
+            else if (flatMap.EndX > itemFlatMap.EndX)
+            {
+                for (int column = itemFlatMap.EndX + 1; column <= flatMap.EndX; column++)
+                {
+                    ic.Stash.Container.ContainerMap[column] = item.Id;
+                    ToAdd.Add(column);
+                    if (flatMap.Height > itemFlatMap.Height)
+                    {
+                        for (int row = itemFlatMap.Height + 1; row < flatMap.Height; row++)
+                        {
+                            var coordinate = row * ic.Stash.Container.Width + itemFlatMap.EndX;
+                            ic.Stash.Container.ContainerMap[coordinate] = item.Id;
+                            ToAdd.Add(coordinate);
+                        }
+                    }
+                }
+            }
+
+            if (ToDel.Count != 0)
+            {
+                List<int> coords = new();
+                foreach (var coord in itemFlatMap.Coordinates)
+                {
+                    if (ToDel.Contains(coord))
+                        continue;
+                    coords.Add(coord);
+                }
+                flatMap.Coordinates = coords;
+            }
+            else if (ToAdd.Count != 0)
+            {
+                List<int> coords = new();
+                coords.AddRange(flatMap.Coordinates);
+                coords.AddRange(ToAdd);
+                flatMap.Coordinates = coords;
+            }
+            ic.Stash.Container.FlatMap[item.Id] = flatMap;
+            if (!ic.Lookup.Forward.ContainsKey(item.Id))
+                ic = SetInventoryIndex(inventory,ic);
+            return ic;
+        }
+
+        public static List<int> GenerateCoordinatesFromLocation(InventoryContainer ic, FlatMapLookup flatMap)
+        {
+            List<int> ret = new();
+
+            for (int i = flatMap.StartX; i <= flatMap.EndX; i++)
+            {
+                ret.Add(i);
+                for (int c = 1; c <= flatMap.Height; c++)
+                {
+                    var coordinate = c * ic.Stash.Container.Width + c;
+                    ret.Add(coordinate);
+                }
+            }
+            return ret;
+        }
+
+        public static InventoryContainer UpdateItemFlatMapLookup(InventoryContainer ic, List<Item.Base> items)
+        {
+
+            var (height, width) = MeasurePurchaseForInventoryMapping(items);
+            var itemInInventory = items[items.Count - 1];
+            var flatMap = CreateFlatMapLookup(height, width, itemInInventory, ic);
+            flatMap.Coordinates = GenerateCoordinatesFromLocation(ic, flatMap);
+            ic.Stash.Container.FlatMap[itemInInventory.Id] = flatMap;
+            return ic;
+        }
+
+        public static InventoryContainer ClearItemFromContainerMap(InventoryContainer ic, string Id)
+        {
+            foreach (var item in ic.Stash.Container.FlatMap[Id].Coordinates)
+            {
+                ic.Stash.Container.ContainerMap[item] = "";
+            }
+            return ic;
+        }
+
+        public static InventoryContainer AddItemFromContainerMap(InventoryContainer ic, string Id)
+        {
+            foreach (var item in ic.Stash.Container.FlatMap[Id].Coordinates)
+            {
+                ic.Stash.Container.ContainerMap[item] = Id;
+            }
+            return ic;
+        }
+
+        public static InventoryContainer ClearItemFromContainer(InventoryContainer ic, string Id)
+        {
+            foreach (var item in ic.Stash.Container.FlatMap[Id].Coordinates)
+            {
+                ic.Stash.Container.ContainerMap[item] = "";
+            }
+            if (ic.Lookup.Forward.ContainsKey(Id))
+            {
+                ic.Lookup.Reverse.Remove(ic.Lookup.Forward[Id]);
+                ic.Lookup.Forward.Remove(Id);
+            }
+            ic.Stash.Container.FlatMap.Remove(Id);
+            return ic;
+        }
+
+        public static (int height, int width) MeasurePurchaseForInventoryMapping(List<Item.Base> items)
+        {
+            var parentItem = items[items.Count - 1];
+            var itemInDatabase = ItemController.Get(parentItem.Tpl);
+            var (Height, Width) = ItemController.GetItemSize(itemInDatabase);
+            int height = (int)Height;
+            int width = (int)Width;
+            if (itemInDatabase._parent == "5448e53e4bdc2d60728b4567" || itemInDatabase._parent == "566168634bdc2d144c8b456c" || itemInDatabase._parent == "5795f317245977243854e041")
+                return (height, width);
+
+            bool parentFolded = ItemController.IsFolded(parentItem);
+
+            var canFold = itemInDatabase._props.Foldable;
+            var foldedSlotID = itemInDatabase._props.FoldedSlot;
+            if ((canFold.HasValue && canFold.Value) && foldedSlotID != null && parentFolded)
+            {
+                var sizeReduceRight = itemInDatabase._props.SizeReduceRight;
+                if (sizeReduceRight != null)
+                    width -= (int)sizeReduceRight;
+            }
+
+            if (items.Count == 1)
+                return (height, width);
+            Others.Sizes sizes = new()
+            {
+                ForcedDown = 0,
+                ForcedLeft = 0,
+                ForcedUp = 0,
+                ForcedRight = 0,
+                SizeDown = 0,
+                SizeLeft = 0,
+                SizeRight = 0,
+                SizeUp = 0
+            };
+
+            foreach (var item in items)
+            {
+                bool childFolded = ItemController.IsFolded(item);
+                if (parentFolded || childFolded)
+                    continue;
+                else if ((canFold.HasValue && canFold.Value) && item.SlotId == foldedSlotID && (parentFolded || childFolded))
+                    continue;
+
+                sizes = ItemController.GetItemForcedSize(ItemController.Get(item.Tpl), sizes);
+            }
+            height += sizes.SizeUp + sizes.SizeDown + sizes.ForcedDown + sizes.ForcedUp;
+            width += sizes.SizeLeft + sizes.SizeRight + sizes.ForcedRight + sizes.ForcedLeft;
+            return (height, width);
+
+        }
+            /*
+             TODO:
+            GetValidLocationForItem
+            ConvertAssortItemsToInventoryItem
+            AssignNewIDs
+            AddItemToContainer
+            SetSingleInventoryIndex
+            GetIndexOfItemByUID
+             */
+        }
 }
