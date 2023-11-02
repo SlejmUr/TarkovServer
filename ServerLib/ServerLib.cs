@@ -2,6 +2,7 @@
 using ServerLib.Handlers;
 using ServerLib.Utilities.Helpers;
 using ServerLib.Web;
+using System.Diagnostics;
 using System.Net;
 
 namespace ServerLib
@@ -51,6 +52,7 @@ namespace ServerLib
         /// <param name="LoadPlugin">Can Load Plugins</param>
         public static void Init()
         {
+
             if (!Directory.Exists("ServerResponses"))
             {
                 Directory.CreateDirectory("ServerResponses");
@@ -60,6 +62,7 @@ namespace ServerLib
                 Directory.Delete("ServerResponses", true);
                 Directory.CreateDirectory("ServerResponses");
             }
+            var sw = Stopwatch.StartNew();
             DatabaseController.Init();
             var Ip = ConfigController.Configs.Server.Ip;
             var port = ConfigController.Configs.Server.Port;
@@ -77,6 +80,8 @@ namespace ServerLib
             {
                 PluginLoader.LoadPlugins();
             }
+            sw.Stop();
+            Utilities.Debug.PrintInfo($"INIT Taken {sw.ElapsedMilliseconds}ms");
         }
 
         /// <summary>

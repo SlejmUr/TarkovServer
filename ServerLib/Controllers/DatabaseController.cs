@@ -2,6 +2,9 @@
 using ServerLib.Json.Classes;
 using ServerLib.Json.Helpers;
 using ServerLib.Utilities;
+using System.Threading.Tasks;
+using System.Xml.Linq;
+using static ServerLib.Json.Classes.Database;
 using static ServerLib.Json.Classes.LootBase;
 using static ServerLib.Json.Converters;
 
@@ -14,8 +17,81 @@ namespace ServerLib.Controllers
         public static Database DataBase = new();
         public static void Init()
         {
+            var sw = System.Diagnostics.Stopwatch.StartNew();
             if (!Directory.Exists("user/profiles")) { Directory.CreateDirectory("user/profiles"); }
             ConfigController.Init();
+            List<Task> tasks = new()
+            {
+                Task.Run(LoadCharacters),
+                Task.Run(LoadBots),
+                Task.Run(LoadHideOut),
+                Task.Run(LoadLocale),
+                //Task.Run(LoadOthers),
+                Task.Run(LoadLocations),
+                Task.Run(LoadTraders),
+                Task.Run(LoadWeater),
+                Task.Run(LoadCustomConfig),
+                                Task.Run(() =>
+            {
+                DataBase.Others = new()
+                {
+                    Templates = JsonConvert.DeserializeObject<Json.Classes.Handbook.Base>(File.ReadAllText("Files/others/handbook.json"))
+                };
+
+                foreach (var item in DataBase.Others.Templates.Items)
+                {
+                    DataBase.Others.ItemPrices.Add(item.Id, item.Price);
+                }
+                 Debug.PrintInfo($"Templates Taken {sw.ElapsedMilliseconds}ms");
+            }),
+                Task.Run(() =>
+                {
+                    
+                    DataBase.Others.Items = JsonConvert.DeserializeObject<Dictionary<string, TemplateItem.Base>>(File.ReadAllText("Files/others/items.json"), new JsonConverter[]
+                    {
+                AimSensitivityConverter.Singleton,
+                EffectsHealthUnionConverter.Singleton
+                    });
+                    
+                     Debug.PrintInfo($"Items Taken {sw.ElapsedMilliseconds}ms");
+                }),
+                Task.Run(() =>
+                {
+                    DataBase.Others.Quests = File.ReadAllText("Files/others/quests.json");
+                     Debug.PrintInfo($"Quests Taken {sw.ElapsedMilliseconds}ms");
+                }),
+                Task.Run(() =>
+                {
+                    DataBase.Others.Resupply = new();
+                    if (File.Exists("Files/others/resupply.json"))
+                    {
+                        DataBase.Others.Resupply = JsonConvert.DeserializeObject<Dictionary<string, int>>(File.ReadAllText("Files/others/resupply.json"));
+                    }
+                     Debug.PrintInfo($"Resupply Taken {sw.ElapsedMilliseconds}ms");
+                }),
+                Task.Run(() =>
+                {
+                    DataBase.Others.Customization = JsonConvert.DeserializeObject<Dictionary<string, CustomizationItem.Base>>(File.ReadAllText("Files/others/customization.json"),
+                    new JsonConverter[]
+                    {
+                CustomizationItemPrefabConverter.Singleton
+                    });
+                     Debug.PrintInfo($"Customization Taken {sw.ElapsedMilliseconds}ms");
+                }),
+                Task.Run(() =>
+                {
+                    DataBase.Loot = new()
+                    {
+                        staticAmmo = JsonConvert.DeserializeObject<Dictionary<string, List<StaticAmmoDetails>>>(File.ReadAllText("Files/loot/staticAmmo.json")),
+                        staticContainers = JsonConvert.DeserializeObject<Dictionary<string, StaticContainerDetails>>(File.ReadAllText("Files/loot/staticContainers.json")),
+                        staticLoot = JsonConvert.DeserializeObject<Dictionary<string, StaticLootDetails>>(File.ReadAllText("Files/loot/staticLoot.json"))
+                    };
+                     Debug.PrintInfo($"Loot Taken {sw.ElapsedMilliseconds}ms");
+                })
+            };
+            Task.WhenAll(tasks.AsParallel().Select(task => task)).Wait();
+            //Task.WhenAll(tasks).Wait();
+            /*
             LoadCharacters();
             LoadBots();
             LoadHideOut();
@@ -25,60 +101,40 @@ namespace ServerLib.Controllers
             LoadTraders();
             LoadWeater();
             LoadCustomConfig();
+            */
+            Debug.PrintInfo($"DatabaseController Taken {sw.Elapsed}ms");
+            Debug.PrintInfo($"DatabaseController Taken {sw.ElapsedMilliseconds}ms");
             Debug.PrintInfo("Initialization Done!", "DATABASE");
         }
 
         static void LoadOthers()
         {
-            DataBase.Others = new()
+            var sw = System.Diagnostics.Stopwatch.StartNew();
+            List<Task> tasks = new()
             {
-                Templates = new()
+
             };
-
-            DataBase.Others.Templates = JsonConvert.DeserializeObject<Json.Classes.Handbook.Base>(File.ReadAllText("Files/others/handbook.json"));
-
-
-            foreach (var item in DataBase.Others.Templates.Items)
-            {
-                DataBase.Others.ItemPrices.Add(item.Id, item.Price);
-            }
-            DataBase.Others.Items = JsonConvert.DeserializeObject<Dictionary<string, TemplateItem.Base>>(File.ReadAllText("Files/others/items.json"), new JsonConverter[]
-            {
-                AimSensitivityConverter.Singleton,
-                EffectsHealthUnionConverter.Singleton
-
-            });
-            DataBase.Others.Quests = File.ReadAllText("Files/others/quests.json");
-            DataBase.Others.Resupply = new();
-            if (File.Exists("Files/others/resupply.json"))
-            {
-                DataBase.Others.Resupply = JsonConvert.DeserializeObject<Dictionary<string, int>>(File.ReadAllText("Files/others/resupply.json"));
-            }
-            DataBase.Others.Customization = new();
-            DataBase.Others.Customization = JsonConvert.DeserializeObject<Dictionary<string, CustomizationItem.Base>>(File.ReadAllText("Files/others/customization.json"),
-            new JsonConverter[]
-            {
-                CustomizationItemPrefabConverter.Singleton
-            });
-            DataBase.Loot = new()
-            {
-                staticAmmo = JsonConvert.DeserializeObject<Dictionary<string, List<StaticAmmoDetails>>>(File.ReadAllText("Files/loot/staticAmmo.json")),
-                staticContainers = JsonConvert.DeserializeObject<Dictionary<string, StaticContainerDetails>>(File.ReadAllText("Files/loot/staticContainers.json")),
-                staticLoot = JsonConvert.DeserializeObject<Dictionary<string, StaticLootDetails>>(File.ReadAllText("Files/loot/staticLoot.json"))
-            };
+            //Task.WhenAll(tasks.AsParallel().Select(task => task)).Wait();
+            Task.WhenAll(tasks).Wait();
+            Debug.PrintInfo($"LoadOthers Taken {sw.Elapsed}ms");
+            Debug.PrintInfo($"LoadOthers Taken {sw.ElapsedMilliseconds}ms");
             Debug.PrintDebug("Others loaded");
         }
 
         static void LoadCharacters()
         {
+            var sw = System.Diagnostics.Stopwatch.StartNew();
             DataBase.Characters = new();
             DataBase.Characters.CharacterBase["bear"] = JsonHelper.ToCharacterBase("Files/characters/character_bear.json");
             DataBase.Characters.CharacterBase["usec"] = JsonHelper.ToCharacterBase("Files/characters/character_usec.json");
             DataBase.Characters.CharacterStorage = JsonConvert.DeserializeObject<Dictionary<string, List<string>>>(File.ReadAllText("Files/characters/storage.json"));
+            Debug.PrintInfo($"LoadCharacters Taken {sw.Elapsed}ms");
+            Debug.PrintInfo($"LoadCharacters Taken {sw.ElapsedMilliseconds}ms");
             Debug.PrintDebug("Characters loaded");
         }
         static void LoadBots()
         {
+            var sw = System.Diagnostics.Stopwatch.StartNew();
             DataBase.Bot = new()
             {
                 Base = File.ReadAllText("Files/bot/botBase.json"),
@@ -89,16 +145,23 @@ namespace ServerLib.Controllers
             var dirs = Directory.GetFiles("Files/bot/types");
             foreach (var item in dirs)
             {
-                var name = item.Replace("Files/bot/types\\", "").Replace(".json", "");
-                Debug.PrintDebug(name);
-                var botType = JsonConvert.DeserializeObject<Bots.BotType>(File.ReadAllText(item));
-                if (botType == null)
-                    continue;
-                DataBase.Bot.Types.Add(name, botType);
+                Task.Run(() => LoadBot(item));
             }
-
+            Debug.PrintInfo($"LoadBots Taken {sw.Elapsed}ms");
+            Debug.PrintInfo($"LoadBots Taken {sw.ElapsedMilliseconds}ms");
             Debug.PrintDebug("Bots loaded");
         }
+
+        static void LoadBot(string item)
+        {
+            var name = item.Replace("Files/bot/types\\", "").Replace(".json", "");
+            Debug.PrintDebug(name);
+            var botType = JsonConvert.DeserializeObject<Bots.BotType>(File.ReadAllText(item));
+            if (botType == null)
+                return;
+            DataBase.Bot.Types.Add(name, botType);
+        }
+
         static void LoadHideOut()
         {
             DataBase.Hideout = new()
@@ -113,17 +176,20 @@ namespace ServerLib.Controllers
         }
         static void LoadLocale()
         {
+            var sw = System.Diagnostics.Stopwatch.StartNew();
             DataBase.Locale = new()
             {
                 Languages = File.ReadAllText("Files/locales/languages.json")
             };
-            string stuff = "Files/locales";
+            //string stuff = "Files/locales";
             var dirs = Directory.GetDirectories("Files/locales");
             foreach (var dir in dirs)
             {
                 var files = Directory.GetFiles(dir);
                 foreach (var file in files)
                 {
+                    Task.Run(() => LocaleBranch(dir, file));
+                    /*
                     string localename = dir.Replace(stuff + "\\", "");
                     string localename_add = file.Replace(dir + "\\", "").Replace(".json", "");
                     DataBase.Locale.Locales.Add(localename + "_" + localename_add, File.ReadAllText(file));
@@ -134,32 +200,69 @@ namespace ServerLib.Controllers
                             continue;
                         DataBase.Locale.LocalesDict.Add(localename + "_" + localename_add, loc);
                     }
-
+                    */
                 }
             }
+            Debug.PrintInfo($"LoadLocale Taken {sw.Elapsed}ms");
+            Debug.PrintInfo($"LoadLocale Taken {sw.ElapsedMilliseconds}ms");
             Debug.PrintDebug("Locales loaded");
         }
+
+        static void LocaleBranch(string dir, string file)
+        {
+            string stuff = "Files/locales";
+            string localename = dir.Replace(stuff + "\\", "");
+            string localename_add = file.Replace(dir + "\\", "").Replace(".json", "");
+            DataBase.Locale.Locales.Add(localename + "_" + localename_add, File.ReadAllText(file));
+            if (localename_add != "menu")
+            {
+                var loc = JsonConvert.DeserializeObject<Dictionary<string, string>>(File.ReadAllText(file));
+                if (loc == null)
+                    return;
+                DataBase.Locale.LocalesDict.Add(localename + "_" + localename_add, loc);
+            }
+        }
+
+
         static void LoadLocations()
         {
-            DataBase.Location = new()
+            var sw = System.Diagnostics.Stopwatch.StartNew();
+            Task.Run(() =>
             {
-                Base = File.ReadAllText("Files/locations/base.json"),
-                AllLocations = File.ReadAllText("Files/locations/location_all.json")
-            };
+                DataBase.Location = new()
+                {
+                    Base = File.ReadAllText("Files/locations/base.json"),
+                    AllLocations = File.ReadAllText("Files/locations/location_all.json")
+                };
+            });
             var dirs = Directory.GetDirectories("Files/locations");
             foreach (var dir in dirs)
             {
-                var dirname = dir.Replace("Files/locations\\", "");
-                var files = Directory.GetFiles(dir);
-                foreach (var file in files)
-                {
-                    string filename = file.Replace("Files/locations\\" + dirname + "\\", "").Replace(".json", "");
-                    Debug.PrintDebug($"Location: {dirname + "_" + filename}", "LoadLocations");
-                    DataBase.Location.Locations.Add(dirname + "_" + filename, File.ReadAllText(file));
-                }
+                Task.Run(() => LoadLocationFromDir(dir));
             }
+            Debug.PrintInfo($"LoadLocations Taken {sw.Elapsed}ms");
+            Debug.PrintInfo($"LoadLocations Taken {sw.ElapsedMilliseconds}ms");
             Debug.PrintDebug("Locations loaded");
         }
+
+        static void LoadLocationFromDir(string dir)
+        {
+            var dirname = dir.Replace("Files/locations\\", "");
+            var files = Directory.GetFiles(dir);
+            foreach (var file in files)
+            {
+                Task.Run(() => LoadLocationFromFile(file, dirname));
+               
+            }
+        }
+
+        static void LoadLocationFromFile(string file, string dirname)
+        {
+            string filename = file.Replace("Files/locations\\" + dirname + "\\", "").Replace(".json", "");
+            Debug.PrintDebug($"Location: {dirname + "_" + filename}", "LoadLocations");
+            DataBase.Location.Locations.Add(dirname + "_" + filename, File.ReadAllText(file));
+        }
+
         static void LoadTraders()
         {
             DataBase.Trader = new();
@@ -171,35 +274,44 @@ namespace ServerLib.Controllers
                 var files = Directory.GetFiles(dir);
                 foreach (var file in files)
                 {
-                    string filename = file.Replace("Files/traders\\" + dirname + "\\", "").Replace(".json", "");
-                    Debug.PrintDebug($"Trader: {dirname + "_" + filename}", "LoadTraders");
-                    //DataBase.Locations.Add(dirname + "_" + filename, File.ReadAllText(file));
-                    switch (filename)
-                    {
-                        default:
-                            break;
-                        case "assort":
-                            trader.assort = JsonConvert.DeserializeObject<Trader.TraderAssort>(File.ReadAllText(file));
-                            break;
-                        case "base":
-                            trader.traderbase = JsonConvert.DeserializeObject<Trader.TraderBase>(File.ReadAllText(file));
-                            break;
-                        case "dialogue":
-                            trader.dialogue = JsonConvert.DeserializeObject<Dictionary<string, List<string>>>(File.ReadAllText(file));
-                            break;
-                        case "questassort":
-                            trader.questassort = JsonConvert.DeserializeObject<Dictionary<string, Dictionary<string, string>>>(File.ReadAllText(file));
-                            break;
-                        case "suits":
-                            trader.suits = JsonConvert.DeserializeObject<List<Trader.Suit>>(File.ReadAllText(file));
-                            break;
-                    }
+                    Task.Run(()=> TraderBranch(file, dirname));
                 }
                 DataBase.Trader.Traders.Add(dirname, trader);
                 trader = new();
             }
             Debug.PrintDebug("Traders loaded");
         }
+
+        static void TraderBranch(string file, string dirname)
+        {
+            Trader.Base trader = new();
+            string filename = file.Replace("Files/traders\\" + dirname + "\\", "").Replace(".json", "");
+            Debug.PrintDebug($"Trader: {dirname + "_" + filename}", "LoadTraders");
+            //DataBase.Locations.Add(dirname + "_" + filename, File.ReadAllText(file));
+            switch (filename)
+            {
+                default:
+                    break;
+                case "assort":
+                    trader.assort = JsonConvert.DeserializeObject<Trader.TraderAssort>(File.ReadAllText(file));
+                    break;
+                case "base":
+                    trader.traderbase = JsonConvert.DeserializeObject<Trader.TraderBase>(File.ReadAllText(file));
+                    break;
+                case "dialogue":
+                    trader.dialogue = JsonConvert.DeserializeObject<Dictionary<string, List<string>>>(File.ReadAllText(file));
+                    break;
+                case "questassort":
+                    trader.questassort = JsonConvert.DeserializeObject<Dictionary<string, Dictionary<string, string>>>(File.ReadAllText(file));
+                    break;
+                case "suits":
+                    trader.suits = JsonConvert.DeserializeObject<List<Trader.Suit>>(File.ReadAllText(file));
+                    break;
+            }
+            DataBase.Trader.Traders.Add(dirname, trader);
+        }
+
+
         static void LoadWeater()
         {
             DataBase.Weather = new();

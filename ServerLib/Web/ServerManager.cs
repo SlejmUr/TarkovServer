@@ -20,6 +20,7 @@ namespace ServerLib.Web
         static Dictionary<string, MethodInfo> Main_WS = new();
         public static void Start(string ip, int port, bool ssl = true, bool OnlyWS = false, bool IsCertValidate = false)
         {
+            var sw = System.Diagnostics.Stopwatch.StartNew();
             IsSsl = ssl;
             if (ssl)
             {
@@ -54,6 +55,7 @@ namespace ServerLib.Web
             IpPort_WS = ssl ? $"wss://{ip}:{port}/socket/" : $"ws://{ip}:{port}/socket/";
             IP = $"{ip}:{port}";
             Console.WriteLine("Server started on " + IpPort + " | " + IpPort_WS);
+            Debug.PrintInfo($"ServerManager Taken {sw.ElapsedMilliseconds}ms");
         }
 
         public static void Failed(object? sender, HttpRequest request)

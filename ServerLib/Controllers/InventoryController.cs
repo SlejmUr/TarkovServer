@@ -424,6 +424,7 @@ namespace ServerLib.Controllers
         {
             var parentItem = items[items.Count - 1];
             var itemInDatabase = ItemController.Get(parentItem.Tpl);
+            ArgumentNullException.ThrowIfNull(itemInDatabase);
             var (Height, Width) = ItemController.GetItemSize(itemInDatabase);
             int height = (int)Height;
             int width = (int)Width;
@@ -462,8 +463,9 @@ namespace ServerLib.Controllers
                     continue;
                 else if ((canFold.HasValue && canFold.Value) && item.SlotId == foldedSlotID && (parentFolded || childFolded))
                     continue;
-
-                sizes = ItemController.GetItemForcedSize(ItemController.Get(item.Tpl), sizes);
+                var tpl_item = ItemController.Get(item.Tpl);
+                ArgumentNullException.ThrowIfNull(tpl_item);
+                sizes = ItemController.GetItemForcedSize(tpl_item, sizes);
             }
             height += sizes.SizeUp + sizes.SizeDown + sizes.ForcedDown + sizes.ForcedUp;
             width += sizes.SizeLeft + sizes.SizeRight + sizes.ForcedRight + sizes.ForcedLeft;
