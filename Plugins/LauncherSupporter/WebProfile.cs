@@ -1,4 +1,4 @@
-﻿namespace ServerLib.Json
+﻿namespace LauncherSupporter
 {
     public class WebProfile
     {

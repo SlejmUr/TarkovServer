@@ -13,6 +13,8 @@ namespace ServerLib.Controllers
         public static void Init()
         {
             RebuildFromBaseConfigs();
+            if (Configs.Server.ServerIPs.Enable)
+                Debug.PrintWarn("This function is not working! Please disable it!","CONFIG");
             Debug.PrintInfo("Initialization Done!", "CONFIG");
         }
 
@@ -61,10 +63,10 @@ namespace ServerLib.Controllers
 
         public static void Save()
         {
-            File.WriteAllText("Files/configs/server.json", JsonConvert.SerializeObject(Configs.Server));
-            File.WriteAllText("Files/configs/gameplay.json", JsonConvert.SerializeObject(Configs.Gameplay));
-            File.WriteAllText("Files/configs/custom.json", JsonConvert.SerializeObject(Configs.CustomSettings));
-            File.WriteAllText("Files/configs/plugin.json", JsonConvert.SerializeObject(Configs.Plugins));
+            File.WriteAllText("Files/configs/server.json", JsonConvert.SerializeObject(Configs.Server, Formatting.Indented));
+            File.WriteAllText("Files/configs/gameplay.json", JsonConvert.SerializeObject(Configs.Gameplay, Formatting.Indented));
+            File.WriteAllText("Files/configs/custom.json", JsonConvert.SerializeObject(Configs.CustomSettings, Formatting.Indented));
+            File.WriteAllText("Files/configs/plugin.json", JsonConvert.SerializeObject(Configs.Plugins, Formatting.Indented));
         }
 
         /// <summary>

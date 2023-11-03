@@ -22,7 +22,7 @@ namespace ServerLib.Web
             match.matchData.Location = "factory4_day";
             match.matchData.RaidMode = EFT.ERaidMode.Online;
             MatchController.Matches[match.matchData.MatchId] = match.matchData;
-            MatchController.SendStart(match.matchData.MatchId, "192.168.1.50", 1000);
+            MatchController.SendStart(match.matchData.MatchId, "192.168.1.50", 7000);
             ServerHelper.SendUnityResponse(request, serverStruct, rsp);
             return true;
         }
@@ -51,27 +51,12 @@ namespace ServerLib.Web
             ArgumentNullException.ThrowIfNull(jsonreq);
             MatchController.JoinMatch(sessionId, jsonreq);
             var match = MatchController.GetMatch(sessionId);
-            ProfileStatus.Response response = new()
+            JoinMatch response = new()
             {
-                maxPveCountExceeded = false,
-                profiles = new()
-                {
-                    new()
-                    {
-                        profileid = "pmc" + sessionId,
-                        profileToken = match.matchData.Users.Where(x => x.sessionId == sessionId).FirstOrDefault().profileToken,
-                        status = "MatchWait",
-                        sid = "",
-                        ip = "",
-                        port = 0,
-                        location = jsonreq.location,
-                        raidMode = "Online",
-                        mode = "deathmatch",
-                        shortId = "",
-                        version = "live",
-                        additional_info = new()
-                    }
-                }
+                ProfileId = sessionId,
+                IpAddress = "192.168.1.50",
+                LocationId = match.matchData.Location,
+                Port = 7000
             };
             var rsp = ResponseControl.GetBody(JsonConvert.SerializeObject(response));
             ServerHelper.SendUnityResponse(request, serverStruct, rsp);
@@ -85,31 +70,17 @@ namespace ServerLib.Web
             var sessionId = serverStruct.Headers.GetSessionId();
             var jsonreq = JsonConvert.DeserializeObject<StartGameReq>(ResponseControl.DeCompressReq(request.BodyBytes));
             ArgumentNullException.ThrowIfNull(jsonreq);
-            MatchController.SendStart(jsonreq.groupId, "192.168.1.50", 1000);
+            MatchController.SendStart(jsonreq.groupId, "192.168.1.50", 7000);
             var match = MatchController.GetMatch(sessionId);
-            var user = match.matchData.Users.Where(x => x.sessionId == sessionId).FirstOrDefault();
-            ProfileStatus.Response response = new()
+            JoinMatch join = new()
             {
-                maxPveCountExceeded = false,
-                profiles = new()
-                {
-                    new()
-                    {
-                        profileid = "pmc" +sessionId,
-                        profileToken = user.profileToken,
-                        status = "MatchWait",
-                        sid = "",
-                        ip = "",
-                        port = 0,
-                        location = match.matchData.Location,
-                        raidMode = "Online",
-                        mode = "deathmatch",
-                        shortId = ""
-                    }
-                }
+                ProfileId = sessionId,
+                IpAddress = "192.168.1.50",
+                LocationId = match.matchData.Location,
+                Port = 7000
             };
-            var rsp = ResponseControl.NullResponse();
-            //var rsp = ResponseControl.GetBody(JsonConvert.SerializeObject(response));
+            //var rsp = ResponseControl.NullResponse();
+            var rsp = ResponseControl.GetBody(JsonConvert.SerializeObject(join));
             ServerHelper.SendUnityResponse(request, serverStruct, rsp);
             return true;
         }

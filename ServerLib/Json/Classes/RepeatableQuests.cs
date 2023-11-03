@@ -92,7 +92,7 @@ namespace ServerLib.Json.Classes
             public string target { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public List<Item> items { get; set; }
+            public List<Item.Base> items { get; set; }
 
         }
         public class RepeatableQuestDatabase

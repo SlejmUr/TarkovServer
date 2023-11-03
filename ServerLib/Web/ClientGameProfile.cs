@@ -3,6 +3,7 @@ using ModdableWebServer.Attributes;
 using NetCoreServer;
 using ServerLib.Controllers;
 using ServerLib.Responders;
+using ServerLib.Utilities;
 using ServerLib.Utilities.Helpers;
 
 namespace ServerLib.Web
@@ -90,20 +91,8 @@ namespace ServerLib.Web
             string SessionId = serverStruct.Headers.GetSessionId();
             ServerHelper.PrintRequest(request, serverStruct);
             string Uncompressed = ResponseControl.DeCompressReq(request.BodyBytes);
-
-            var nickname = CharacterController.ChangeNickname(Uncompressed, SessionId);
-            var resp = ResponseControl.GetBody("{\"status\": 0, \"nicknamechangedate\": " + TimeHelper.UnixTimeNow_Int() + "}");
-            if (nickname == "taken")
-            {
-                resp = ResponseControl.GetBody("null", 255, "The nickname is already in use");
-            }
-
-            if (nickname == "tooshort")
-            {
-                resp = ResponseControl.GetBody("null", 256, "The nickname is too short");
-            }
             // RPS
-            ServerHelper.SendUnityResponse(request, serverStruct, resp);
+            ServerHelper.SendUnityResponse(request, serverStruct, GameProfile.ProfileNickNameChange(Uncompressed, SessionId));
             return true;
         }
 
@@ -140,7 +129,15 @@ namespace ServerLib.Web
             //REQ stuff
             string SessionId = serverStruct.Headers.GetSessionId();
             ServerHelper.PrintRequest(request, serverStruct);
+            if (request.BodyBytes.Length == 0)
+            {
 
+            }
+            else
+            {
+                string Uncompressed = ResponseControl.DeCompressReq(request.BodyBytes);
+                Debug.PrintDebug(Uncompressed);
+            }
             var rsp = GameProfile.ProfileStatus(SessionId);
             ServerHelper.SendUnityResponse(request, serverStruct, rsp);
             return true;

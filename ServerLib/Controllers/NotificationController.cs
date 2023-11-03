@@ -1,7 +1,7 @@
-﻿using ChatShared;
-using ModdableWebServer.Helper;
+﻿using ModdableWebServer.Helper;
 using Newtonsoft.Json;
 using ServerLib.Json.Classes;
+using ServerLib.Json.Enums;
 using ServerLib.Utilities;
 using ServerLib.Utilities.Helpers;
 using ServerLib.Web;

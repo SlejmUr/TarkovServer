@@ -1,5 +1,5 @@
-﻿using EFT;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
+using ServerLib.Json.Enums;
 
 namespace ServerLib.Json.Classes
 {

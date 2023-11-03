@@ -1,8 +1,6 @@
 ﻿using ServerLib.Json.Classes;
 using ServerLib.Utilities;
-using System.Collections.Generic;
-using System.Data.Common;
-using static ServerLib.Controllers.InventoryController;
+using ServerLib.Utilities.Helpers;
 
 namespace ServerLib.Controllers
 {
@@ -42,6 +40,13 @@ namespace ServerLib.Controllers
             public int StartX;
             public int EndX;
             public List<int> Coordinates;
+        }
+
+        public class ValidLocation
+        {
+            public List<int> MapInfo;
+            public int X;
+            public int Y;
         }
         #endregion
 
@@ -472,14 +477,130 @@ namespace ServerLib.Controllers
             return (height, width);
 
         }
-            /*
-             TODO:
-            GetValidLocationForItem
-            ConvertAssortItemsToInventoryItem
-            AssignNewIDs
-            AddItemToContainer
-            SetSingleInventoryIndex
-            GetIndexOfItemByUID
-             */
+
+        public static InventoryContainer AddItemToContainer(InventoryContainer ic, string ItemId, FlatMapLookup flatMap)
+        {
+            foreach (var item in flatMap.Coordinates)
+            {
+                ic.Stash.Container.ContainerMap[item] = ItemId;
+            }
+            ic.Stash.Container.FlatMap[ItemId] = flatMap;
+            return ic;
         }
+
+        public static InventoryContainer SetSingleInventoryIndex(InventoryContainer ic, string ItemId, int Index)
+        {
+            ic.Lookup.Forward[ItemId] = Index;
+            ic.Lookup.Reverse[Index] = ItemId;
+            return ic;
+        }
+
+        public static int GetIndexOfItemByUID(InventoryContainer ic, string ItemId)
+        {
+            if (ic.Lookup.Forward.TryGetValue(ItemId, out var index))
+            {
+                return index;
+            }
+            return -1;
+        }
+
+        public static List<Item.Base> AssignNewIDs(List<Item.Base> items)
+        {
+            List<Item.Base> ret = new();
+            Dictionary<string, string> ConvertedIds = new();
+
+            foreach (var item in items)
+            {
+                string newId = AIDHelper.CreateNewID();
+                ConvertedIds.Add(item.Id, newId);
+                item.Id = newId;
+                ret.Add(item);
+            }
+
+            foreach (var item in ret)
+            {
+                if (ConvertedIds.TryGetValue(item.ParentId, out var CID))
+                {
+                    item.ParentId = CID;
+                }
+            }
+            return ret;
+        }
+
+
+
+        //If null means no valid location
+        public static ValidLocation? GetValidLocationForItem(InventoryContainer ic, int Height, int Width)
+        {
+            if (Height != 0)
+                Height--;
+
+            if (Width != 0)
+                Width--;
+
+            var location = new ValidLocation()
+            { 
+                MapInfo = new()
+            };
+            int counter = 0;
+            var stride = ic.Stash.Container.Width;
+            for (int column = 0; column < ic.Stash.Container.ContainerMap.Count; column++)
+            {
+                if (ic.Stash.Container.ContainerMap[column] == "")
+                {
+                    location.MapInfo = new();
+                    counter = 0;
+                    continue;
+                }
+                location.MapInfo.Add(column);
+               
+
+                for (int row = 1; row  < Height; row ++)
+                {
+                    int coordinate = row * stride + column;
+                    if (ic.Stash.Container.ContainerMap[column] == "")
+                    {
+                        location.MapInfo = new();
+                        counter = 0;
+                        break;
+                    }
+                    location.MapInfo.Add(coordinate);
+                }
+
+                if (counter == Width)
+                {
+                    location.Y = location.MapInfo[0] / stride;
+                    location.X = location.MapInfo[0] % stride;
+
+                    return location;
+                }
+                counter++;
+            }
+
+            return null;
+        }
+
+        public static Character.Inventory ClearInventoryMods(Character.Inventory inventory)
+        {
+            List<Item.Base> cleared = new();
+            int cleaned_count = 0;
+            foreach (var item in inventory.Items)
+            {
+                if (ItemController.Get(item.Tpl) == null)
+                {
+                    cleaned_count++;
+                    continue;
+                }
+                cleared.Add(item);
+            }
+            if (cleaned_count != 0)
+            {
+                inventory.Items = cleared;
+            }
+            return inventory;
+        }
+
+
+        //ConvertAssortItemsToInventoryItem Is skipped because we already using same Item everywhere :)
+    }
 }

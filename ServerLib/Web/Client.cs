@@ -8,6 +8,7 @@ using ServerLib.Utilities;
 using ServerLib.Utilities.Helpers;
 using static ServerLib.Json.Classes.Profile;
 using static ServerLib.Json.Converters;
+using ServerLib.Responders;
 
 namespace ServerLib.Web
 {
@@ -17,26 +18,7 @@ namespace ServerLib.Web
         public static bool ClientCheckVersion(HttpRequest request, ServerStruct serverStruct)
         {
             ServerHelper.PrintRequest(request, serverStruct);
-            string resp;
-            string version = serverStruct.Headers.GetVersion();
-            var server = ConfigController.Configs.Server;
-
-            if (string.IsNullOrWhiteSpace(server.Version))
-            {
-                resp = ResponseControl.GetBody("{ isvalid: true, latestVersion: \"" + server.Version + "\"}");
-            }
-            else
-            {
-                if (server.Version == version)
-                {
-                    resp = ResponseControl.GetBody("{ isvalid: true, latestVersion: \"" + server.Version + "\"}");
-                }
-                else
-                {
-                    resp = ResponseControl.GetBody("{ isvalid: false, latestVersion: \"" + server.Version + "\"}");
-                }
-            }
-            ServerHelper.SendUnityResponse(request, serverStruct, resp);
+            ServerHelper.SendUnityResponse(request, serverStruct, ClientRespond.GetVersion(serverStruct));
             return true;
         }
 
@@ -52,7 +34,6 @@ namespace ServerLib.Web
         [HTTP("POST", "/client/WebSocketAddress")]
         public static bool ClientWebSocketAddress(HttpRequest request, ServerStruct serverStruct)
         {
-            Console.WriteLine("WebSocketAddress!!!!!!!");
             ServerHelper.PrintRequest(request, serverStruct);
             string SessionId = serverStruct.Headers.GetSessionId();
             ServerHelper.SendUnityResponse(request, serverStruct, ServerManager.IpPort_WS + SessionId);
@@ -73,26 +54,7 @@ namespace ServerLib.Web
         public static bool ClientChatServerList(HttpRequest request, ServerStruct serverStruct)
         {
             ServerHelper.PrintRequest(request, serverStruct);
-            Json.Classes.ChatServer.Base chatServerList = new()
-            {
-                _id = AIDHelper.CreateNewID(),
-                RegistrationId = 20,
-                DateTime = (int)TimeHelper.UnixTimeNow(),
-                Regions = new() { "EUR" },
-                VersionId = "bgkidft87ddd",
-                Ip = "",
-                Port = 0,
-                Chats = new()
-                {
-                    new()
-                    {
-                        _id = "0",
-                        Members = 0
-                    }
-                }
-            };
-            string resp = ResponseControl.GetBody(JsonConvert.SerializeObject(chatServerList));
-            ServerHelper.SendUnityResponse(request, serverStruct, resp);
+            ServerHelper.SendUnityResponse(request, serverStruct, ClientRespond.GetChatServerList());
             return true;
         }
 
@@ -100,17 +62,7 @@ namespace ServerLib.Web
         public static bool ClientServerList(HttpRequest request, ServerStruct serverStruct)
         {
             ServerHelper.PrintRequest(request, serverStruct);
-            var server = ConfigController.Configs.Server;
-            List<Server> servers = new()
-            {
-                new()
-                {
-                    Address = server.Ip,
-                    Port = $"{1000}"
-                }
-            };
-            string resp = ResponseControl.GetBody(JsonConvert.SerializeObject(servers));
-            ServerHelper.SendUnityResponse(request, serverStruct, resp);
+            ServerHelper.SendUnityResponse(request, serverStruct, ClientRespond.GetServerList());
             return true;
         }
 
@@ -118,20 +70,7 @@ namespace ServerLib.Web
         public static bool ClientQuestList(HttpRequest request, ServerStruct serverStruct)
         {
             ServerHelper.PrintRequest(request, serverStruct);
-            try
-            {
-                var quests = Controllers.QuestController.GetQuests();
-                string resp = ResponseControl.GetBody(JsonConvert.SerializeObject(quests, new JsonConverter[]
-                    {
-                    QuestTargetConverter.Singleton
-                    }));
-                ServerHelper.SendUnityResponse(request, serverStruct, resp);
-            }
-            catch (Exception ex)
-            {
-                Debug.PrintError(ex.ToString());
-            }
-
+            ServerHelper.SendUnityResponse(request, serverStruct, ClientRespond.GetQuests());
             return true;
         }
 
@@ -256,8 +195,7 @@ namespace ServerLib.Web
             ServerHelper.PrintRequest(request, serverStruct);
             string SessionId = serverStruct.Headers.GetSessionId();
             File.WriteAllText("PutMetrics.json", ResponseControl.DeCompressReq(request.BodyBytes));
-            string resp = ResponseControl.NullResponse();
-            ServerHelper.SendUnityResponse(request, serverStruct, resp);
+            ServerHelper.SendUnityResponse(request, serverStruct, ResponseControl.NullResponse());
             return true;
         }
     }

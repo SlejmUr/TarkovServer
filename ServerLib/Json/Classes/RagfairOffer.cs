@@ -94,7 +94,7 @@ namespace ServerLib.Json.Classes
             public int rating { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public EMemberCategory memberType { get; set; }
+            public int memberType { get; set; } //EMemberCategory
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public string avatar { get; set; }

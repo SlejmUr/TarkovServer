@@ -106,6 +106,5 @@ namespace ServerLib.Json.Classes
             public int multiplier { get; set; }
 
         }
-
     }
 }

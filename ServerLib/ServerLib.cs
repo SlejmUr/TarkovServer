@@ -69,19 +69,20 @@ namespace ServerLib
             string _ip_port = $"https://{Ip}:{port}";
             IP = _ip_port;
             ip_port = $"{Ip}:{port}";
-            CertHelper.Make(IPAddress.Parse(Ip), _ip_port);
+            if (ConfigController.Configs.Server.EnableSSL)
+                CertHelper.Make(IPAddress.Parse(Ip), _ip_port);
             ProfileController.Init();
-            Controllers.DialogueController.Init();
+            DialogueController.Init();
             AccountController.Init();
             CharacterController.Init();
             Controllers.QuestController.Init();
-            ServerManager.Start(Ip, port);
+            ServerManager.Start(Ip, port, ConfigController.Configs.Server.EnableSSL);
             if (!ArgumentHandler.DontLoadPlugin)
             {
                 PluginLoader.LoadPlugins();
             }
             sw.Stop();
-            Utilities.Debug.PrintInfo($"INIT Taken {sw.ElapsedMilliseconds}ms");
+            Utilities.Debug.PrintTime($"Init Taken {sw.ElapsedMilliseconds}ms");
         }
 
         /// <summary>

@@ -144,7 +144,7 @@ namespace ServerLib.Json.Classes
             public QuestTarget? target { get; set; }
 
             [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-            public List<EQuestStatus> status { get; set; }
+            public List<int> status { get; set; } //EQuestStatus
 
             [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
             public int availableAfter { get; set; }

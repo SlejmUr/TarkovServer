@@ -55,7 +55,7 @@ namespace ServerLib.Web
             IpPort_WS = ssl ? $"wss://{ip}:{port}/socket/" : $"ws://{ip}:{port}/socket/";
             IP = $"{ip}:{port}";
             Console.WriteLine("Server started on " + IpPort + " | " + IpPort_WS);
-            Debug.PrintInfo($"ServerManager Taken {sw.ElapsedMilliseconds}ms");
+            Debug.PrintTime($"ServerManager Taken {sw.ElapsedMilliseconds}ms");
         }
 
         public static void Failed(object? sender, HttpRequest request)

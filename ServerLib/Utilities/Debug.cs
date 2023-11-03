@@ -23,6 +23,17 @@ namespace ServerLib.Utilities
             Console.ResetColor();
         }
 
+        public static void PrintTime(string ToPrint, string prefix = "TIME")
+        {
+            if (ArgumentHandler.Timer)
+            {
+                Console.ForegroundColor = GetColorByType("info");
+                Console.WriteLine($"[{prefix}] {ToPrint}");
+                logger.Log(prefix, ToPrint);
+                Console.ResetColor();
+            }
+        }
+
         public static void PrintDebug(string ToPrint, string prefix = "DEBUG")
         {
             if (ArgumentHandler.Debug)

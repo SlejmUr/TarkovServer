@@ -2,9 +2,6 @@
 using ServerLib.Json.Classes;
 using ServerLib.Json.Helpers;
 using ServerLib.Utilities;
-using System.Threading.Tasks;
-using System.Xml.Linq;
-using static ServerLib.Json.Classes.Database;
 using static ServerLib.Json.Classes.LootBase;
 using static ServerLib.Json.Converters;
 
@@ -26,7 +23,6 @@ namespace ServerLib.Controllers
                 Task.Run(LoadBots),
                 Task.Run(LoadHideOut),
                 Task.Run(LoadLocale),
-                //Task.Run(LoadOthers),
                 Task.Run(LoadLocations),
                 Task.Run(LoadTraders),
                 Task.Run(LoadWeater),
@@ -42,7 +38,7 @@ namespace ServerLib.Controllers
                 {
                     DataBase.Others.ItemPrices.Add(item.Id, item.Price);
                 }
-                 Debug.PrintInfo($"Templates Taken {sw.ElapsedMilliseconds}ms");
+                 Debug.PrintTime($"Templates Taken {sw.ElapsedMilliseconds}ms");
             }),
                 Task.Run(() =>
                 {
@@ -53,12 +49,12 @@ namespace ServerLib.Controllers
                 EffectsHealthUnionConverter.Singleton
                     });
                     
-                     Debug.PrintInfo($"Items Taken {sw.ElapsedMilliseconds}ms");
+                     Debug.PrintTime($"Items Taken {sw.ElapsedMilliseconds}ms");
                 }),
                 Task.Run(() =>
                 {
                     DataBase.Others.Quests = File.ReadAllText("Files/others/quests.json");
-                     Debug.PrintInfo($"Quests Taken {sw.ElapsedMilliseconds}ms");
+                     Debug.PrintTime($"Quests Taken {sw.ElapsedMilliseconds}ms");
                 }),
                 Task.Run(() =>
                 {
@@ -67,7 +63,7 @@ namespace ServerLib.Controllers
                     {
                         DataBase.Others.Resupply = JsonConvert.DeserializeObject<Dictionary<string, int>>(File.ReadAllText("Files/others/resupply.json"));
                     }
-                     Debug.PrintInfo($"Resupply Taken {sw.ElapsedMilliseconds}ms");
+                     Debug.PrintTime($"Resupply Taken {sw.ElapsedMilliseconds}ms");
                 }),
                 Task.Run(() =>
                 {
@@ -76,7 +72,7 @@ namespace ServerLib.Controllers
                     {
                 CustomizationItemPrefabConverter.Singleton
                     });
-                     Debug.PrintInfo($"Customization Taken {sw.ElapsedMilliseconds}ms");
+                     Debug.PrintTime($"Customization Taken {sw.ElapsedMilliseconds}ms");
                 }),
                 Task.Run(() =>
                 {
@@ -86,39 +82,12 @@ namespace ServerLib.Controllers
                         staticContainers = JsonConvert.DeserializeObject<Dictionary<string, StaticContainerDetails>>(File.ReadAllText("Files/loot/staticContainers.json")),
                         staticLoot = JsonConvert.DeserializeObject<Dictionary<string, StaticLootDetails>>(File.ReadAllText("Files/loot/staticLoot.json"))
                     };
-                     Debug.PrintInfo($"Loot Taken {sw.ElapsedMilliseconds}ms");
+                     Debug.PrintTime($"Loot Taken {sw.ElapsedMilliseconds}ms");
                 })
             };
             Task.WhenAll(tasks.AsParallel().Select(task => task)).Wait();
-            //Task.WhenAll(tasks).Wait();
-            /*
-            LoadCharacters();
-            LoadBots();
-            LoadHideOut();
-            LoadLocale();
-            LoadOthers();
-            LoadLocations();
-            LoadTraders();
-            LoadWeater();
-            LoadCustomConfig();
-            */
-            Debug.PrintInfo($"DatabaseController Taken {sw.Elapsed}ms");
-            Debug.PrintInfo($"DatabaseController Taken {sw.ElapsedMilliseconds}ms");
+            Debug.PrintTime($"DatabaseController Taken {sw.ElapsedMilliseconds}ms");
             Debug.PrintInfo("Initialization Done!", "DATABASE");
-        }
-
-        static void LoadOthers()
-        {
-            var sw = System.Diagnostics.Stopwatch.StartNew();
-            List<Task> tasks = new()
-            {
-
-            };
-            //Task.WhenAll(tasks.AsParallel().Select(task => task)).Wait();
-            Task.WhenAll(tasks).Wait();
-            Debug.PrintInfo($"LoadOthers Taken {sw.Elapsed}ms");
-            Debug.PrintInfo($"LoadOthers Taken {sw.ElapsedMilliseconds}ms");
-            Debug.PrintDebug("Others loaded");
         }
 
         static void LoadCharacters()
@@ -128,8 +97,7 @@ namespace ServerLib.Controllers
             DataBase.Characters.CharacterBase["bear"] = JsonHelper.ToCharacterBase("Files/characters/character_bear.json");
             DataBase.Characters.CharacterBase["usec"] = JsonHelper.ToCharacterBase("Files/characters/character_usec.json");
             DataBase.Characters.CharacterStorage = JsonConvert.DeserializeObject<Dictionary<string, List<string>>>(File.ReadAllText("Files/characters/storage.json"));
-            Debug.PrintInfo($"LoadCharacters Taken {sw.Elapsed}ms");
-            Debug.PrintInfo($"LoadCharacters Taken {sw.ElapsedMilliseconds}ms");
+            Debug.PrintTime($"LoadCharacters Taken {sw.ElapsedMilliseconds}ms");
             Debug.PrintDebug("Characters loaded");
         }
         static void LoadBots()
@@ -147,8 +115,7 @@ namespace ServerLib.Controllers
             {
                 Task.Run(() => LoadBot(item));
             }
-            Debug.PrintInfo($"LoadBots Taken {sw.Elapsed}ms");
-            Debug.PrintInfo($"LoadBots Taken {sw.ElapsedMilliseconds}ms");
+            Debug.PrintTime($"LoadBots Taken {sw.ElapsedMilliseconds}ms");
             Debug.PrintDebug("Bots loaded");
         }
 
@@ -181,7 +148,6 @@ namespace ServerLib.Controllers
             {
                 Languages = File.ReadAllText("Files/locales/languages.json")
             };
-            //string stuff = "Files/locales";
             var dirs = Directory.GetDirectories("Files/locales");
             foreach (var dir in dirs)
             {
@@ -189,22 +155,9 @@ namespace ServerLib.Controllers
                 foreach (var file in files)
                 {
                     Task.Run(() => LocaleBranch(dir, file));
-                    /*
-                    string localename = dir.Replace(stuff + "\\", "");
-                    string localename_add = file.Replace(dir + "\\", "").Replace(".json", "");
-                    DataBase.Locale.Locales.Add(localename + "_" + localename_add, File.ReadAllText(file));
-                    if (localename_add != "menu")
-                    {
-                        var loc = JsonConvert.DeserializeObject<Dictionary<string, string>>(File.ReadAllText(file));
-                        if (loc == null)
-                            continue;
-                        DataBase.Locale.LocalesDict.Add(localename + "_" + localename_add, loc);
-                    }
-                    */
                 }
             }
-            Debug.PrintInfo($"LoadLocale Taken {sw.Elapsed}ms");
-            Debug.PrintInfo($"LoadLocale Taken {sw.ElapsedMilliseconds}ms");
+            Debug.PrintTime($"LoadLocale Taken {sw.ElapsedMilliseconds}ms");
             Debug.PrintDebug("Locales loaded");
         }
 
@@ -240,8 +193,7 @@ namespace ServerLib.Controllers
             {
                 Task.Run(() => LoadLocationFromDir(dir));
             }
-            Debug.PrintInfo($"LoadLocations Taken {sw.Elapsed}ms");
-            Debug.PrintInfo($"LoadLocations Taken {sw.ElapsedMilliseconds}ms");
+            Debug.PrintTime($"LoadLocations Taken {sw.ElapsedMilliseconds}ms");
             Debug.PrintDebug("Locations loaded");
         }
 

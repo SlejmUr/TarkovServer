@@ -1,18 +1,17 @@
 {
 	"ip": "127.0.0.1",
-	"port": 443,
+	"port": 6969,
 	"name": "Tarkov Server",
 	"discord": "",
 	"website": "",
 	"version": "",
-	"debug": true,
-	"lootDebug": true,
+	"EnableSSL": true,
 	"serverIPs": {
 		"Enable": false,
-		"Trading": "https://127.0.0.1:443",
-		"Messaging": "https://127.0.0.1:443",
-		"Main": "https://127.0.0.1:443",
-		"RagFair": "https://127.0.0.1:443",
-		"Lobby": "https://127.0.0.1:443"
+		"Trading": "https://127.0.0.1:6969",
+		"Messaging": "https://127.0.0.1:6969",
+		"Main": "https://127.0.0.1:6969",
+		"RagFair": "https://127.0.0.1:6969",
+		"Lobby": "https://127.0.0.1:6969"
 	}
 }

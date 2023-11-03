@@ -16,7 +16,7 @@ namespace Plugin
             JWTHandler.CreateRSA();
         }
 
-        public string Name => "ExtCommands";
+        public string Name => "External Commands";
 
         public string Author => "SlejmUr";
 

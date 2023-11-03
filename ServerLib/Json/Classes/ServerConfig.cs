@@ -24,8 +24,8 @@ namespace ServerLib.Json
             [JsonProperty("version")]
             public string Version { get; set; }
 
-            [JsonProperty("debug")]
-            public bool Debug { get; set; }
+            [JsonProperty("EnableSSL")]
+            public bool EnableSSL { get; set; }
 
             [JsonProperty("serverIPs")]
             public ServerIPs ServerIPs { get; set; }

@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using ServerLib.Json.Classes;
 using ServerLib.Utilities;
+using ServerLib.Web;
 using static ServerLib.Json.Converters;
 
 namespace ServerLib.Controllers
@@ -58,6 +59,14 @@ namespace ServerLib.Controllers
                 Debug.PrintError(ex.ToString());
                 throw;
             }
+        }
+
+        public static string GetQuestAsString(List<Quest.Base> quests)
+        {
+            return JsonConvert.SerializeObject(quests, new JsonConverter[]
+            {
+                QuestTargetConverter.Singleton
+            });
         }
     }
 }

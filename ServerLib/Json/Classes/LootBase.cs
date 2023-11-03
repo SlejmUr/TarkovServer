@@ -48,10 +48,10 @@ namespace ServerLib.Json.Classes
             public bool randomRotation { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public Xyz Position { get; set; }
+            public xyz Position { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public Xyz Rotation { get; set; }
+            public xyz Rotation { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public bool IsGroupPosition { get; set; }
@@ -81,10 +81,10 @@ namespace ServerLib.Json.Classes
             public bool randomRotation { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public Xyz Position { get; set; }
+            public xyz Position { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public Xyz Rotation { get; set; }
+            public xyz Rotation { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public bool IsGroupPosition { get; set; }
@@ -97,18 +97,6 @@ namespace ServerLib.Json.Classes
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public List<StaticItem> Items { get; set; }
-
-        }
-        public class Xyz
-        {
-            [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public int x { get; set; }
-
-            [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public int y { get; set; }
-
-            [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public int z { get; set; }
 
         }
         public class StaticItem

@@ -70,9 +70,6 @@ namespace ServerLib.Handlers
 
             foreach (var item in ordered)
             {
-                Console.WriteLine(item.Key.Name);
-                Console.WriteLine(string.Join(", ", item.Value));
-
                 foreach (var dependency in item.Value)
                 {
                     if (!pluginsList.ContainsKey(dependency))
@@ -104,7 +101,7 @@ namespace ServerLib.Handlers
             {
                 plugin.Value.Plugin.ShutDown();
                 plugin.Value.Plugin.Dispose();
-                Console.WriteLine($"Plugin {plugin.Key} is now unloaded!");
+                Debug.PrintInfo($"Plugin {plugin.Key} is now unloaded!");
             }
             pluginsList.Clear();
         }
@@ -132,6 +129,7 @@ namespace ServerLib.Handlers
         private static void PluginInit(IPlugin iPlugin)
         {
             iPlugin.Initialize();
+            Debug.PrintInfo($"Plugin loaded: {iPlugin.Name}");
             Debug.PrintDebug("New Plugin Loaded" +
                 "\nPlugin Name: " + iPlugin.Name +
                 "\nPlugin Version: " + iPlugin.Version +

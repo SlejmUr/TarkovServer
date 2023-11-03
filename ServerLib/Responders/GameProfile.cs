@@ -2,15 +2,28 @@
 using ServerLib.Controllers;
 using ServerLib.Json.Classes;
 using ServerLib.Utilities;
+using ServerLib.Utilities.Helpers;
+using ServerLib.Web;
 using static ServerLib.Web.ResponseControl;
 
 namespace ServerLib.Responders
 {
     public static class GameProfile
     {
-        public static string Template(string _)
+        public static string ProfileNickNameChange(string Uncompressed, string SessionId)
         {
-            return GetBody(JsonConvert.SerializeObject(""));
+            var nickname = CharacterController.ChangeNickname(Uncompressed, SessionId);
+            var resp = GetBody("{\"status\": 0, \"nicknamechangedate\": " + TimeHelper.UnixTimeNow_Int() + "}");
+            if (nickname == "taken")
+            {
+                resp = GetBody("null", 255, "The nickname is already in use");
+            }
+
+            if (nickname == "tooshort")
+            {
+                resp = GetBody("null", 256, "The nickname is too short");
+            }
+            return resp;
         }
         public static string ProfileStatus(string SessionId)
         {

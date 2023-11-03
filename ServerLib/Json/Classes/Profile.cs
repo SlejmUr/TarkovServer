@@ -1,5 +1,5 @@
-﻿using ChatShared;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
+using ServerLib.Json.Enums;
 
 namespace ServerLib.Json.Classes
 {
@@ -348,55 +348,28 @@ namespace ServerLib.Json.Classes
 
         {
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public Head Head { get; set; }
+            public Fracture_Effect Head { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public Chest Chest { get; set; }
+            public Fracture_Effect Chest { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public Stomach Stomach { get; set; }
+            public Fracture_Effect Stomach { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public LeftArm LeftArm { get; set; }
+            public Fracture_Effect LeftArm { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public RightArm RightArm { get; set; }
+            public Fracture_Effect RightArm { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public LeftLeg LeftLeg { get; set; }
+            public Fracture_Effect LeftLeg { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public RightLeg RightLeg { get; set; }
+            public Fracture_Effect RightLeg { get; set; }
 
         }
-        public class Head
-        {
-        }
-        public class Chest
-        {
-        }
-        public class Stomach
-        {
-        }
-        public class LeftArm
-        {
-            [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public int Fracture { get; set; }
-
-        }
-        public class RightArm
-        {
-            [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public int Fracture { get; set; }
-
-        }
-        public class LeftLeg
-        {
-            [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public int Fracture { get; set; }
-
-        }
-        public class RightLeg
+        public class Fracture_Effect
         {
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public int Fracture { get; set; }

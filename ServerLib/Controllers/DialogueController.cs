@@ -1,4 +1,5 @@
 ﻿using ServerLib.Json.Classes;
+using ServerLib.Json.Enums;
 using ServerLib.Utilities;
 using ServerLib.Utilities.Helpers;
 
@@ -316,7 +317,7 @@ namespace ServerLib.Controllers
             return new()
             {
                 _id = DialogueId,
-                type = IsTrader ? dialog.type : ChatShared.EMessageType.NpcTraderMessage,
+                type = IsTrader ? dialog.type : EMessageType.NpcTraderMessage,
                 message = GetMessagePreview(dialog),
                 New = dialog.New,
                 attachmentsNew = dialog.attachmentsNew,

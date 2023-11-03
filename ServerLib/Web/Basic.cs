@@ -3,6 +3,7 @@ using ModdableWebServer.Attributes;
 using ModdableWebServer.Helper;
 using NetCoreServer;
 using ServerLib.Controllers;
+using ServerLib.Responders;
 using ServerLib.Utilities.Helpers;
 
 namespace ServerLib.Web
@@ -31,16 +32,14 @@ namespace ServerLib.Web
         public static bool GetBundeList(HttpRequest request, ServerStruct serverStruct)
         {
             ServerHelper.PrintRequest(request, serverStruct);
-            string resp = "[]"; //Need better handling on bundles
-            return ServerHelper.SendUnityResponse(request, serverStruct, resp);
+            return ServerHelper.SendUnityResponse(request, serverStruct, Bundle.GetBundles());
         }
 
         [HTTP("GET", "/singleplayer/bundles")]
         public static bool singleplayerGetBundeList(HttpRequest request, ServerStruct serverStruct)
         {
             ServerHelper.PrintRequest(request, serverStruct);
-            string resp = "[]"; //Need better handling on bundles
-            return ServerHelper.SendUnityResponse(request, serverStruct, resp);
+            return ServerHelper.SendUnityResponse(request, serverStruct, Bundle.GetBundles());
         }
 
         [HTTP("GET", "/ServerInternalIPAddress")]

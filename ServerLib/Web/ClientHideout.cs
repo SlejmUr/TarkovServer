@@ -39,7 +39,7 @@ namespace ServerLib.Web
         public static bool Settings(HttpRequest request, ServerStruct serverStruct)
         {
             ServerHelper.PrintRequest(request, serverStruct);
-            string resp = ResponseControl.GetBodyCRC(DatabaseController.DataBase.Hideout.Settings, 0, "null", 4187301386);
+            string resp = ResponseControl.GetBody(DatabaseController.DataBase.Hideout.Settings);
             ServerHelper.SendUnityResponse(request, serverStruct, resp);
             return true;
         }
