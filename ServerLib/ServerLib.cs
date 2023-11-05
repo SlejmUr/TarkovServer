@@ -66,11 +66,20 @@ namespace ServerLib
             DatabaseController.Init();
             var Ip = ConfigController.Configs.Server.Ip;
             var port = ConfigController.Configs.Server.Port;
-            string _ip_port = $"https://{Ip}:{port}";
-            IP = _ip_port;
-            ip_port = $"{Ip}:{port}";
             if (ConfigController.Configs.Server.EnableSSL)
+            {
+                string _ip_port = $"https://{Ip}:{port}";
+                IP = _ip_port;
+                ip_port = $"{Ip}:{port}";
                 CertHelper.Make(IPAddress.Parse(Ip), _ip_port);
+            }
+            else
+            {
+                string _ip_port = $"http://{Ip}:{port}";
+                IP = _ip_port;
+                ip_port = $"{Ip}:{port}";
+            }
+
             ProfileController.Init();
             DialogueController.Init();
             AccountController.Init();

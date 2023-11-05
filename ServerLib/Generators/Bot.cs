@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using ServerLib.Controllers;
 using ServerLib.Json.Classes;
+using ServerLib.Json.Helpers;
 using ServerLib.Utilities;
 using ServerLib.Utilities.Helpers;
 using static ServerLib.Json.Classes.Character;
@@ -26,7 +27,7 @@ namespace ServerLib.Generators
         {
             try
             {
-                var chbase = JsonConvert.DeserializeObject<Base>(DatabaseController.DataBase.Bot.Base);
+                var chbase = JsonHelper.ToCharacterBaseAsString(DatabaseController.DataBase.Bot.Base);
                 ArgumentNullException.ThrowIfNull(chbase);
                 chbase.Info.Settings.BotDifficulty = difficulty;
                 chbase.Info.Settings.Role = role;

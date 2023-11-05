@@ -63,6 +63,7 @@ namespace ServerLib.Web
             Debug.PrintWarn("REQUEST FAILED");
             Debug.PrintWarn(request.Method + " " + request.Url);
             Debug.PrintWarn(request.Body);
+            File.WriteAllText("REQUESTED.txt", request.Method + " " + request.Url + "\n" + request.Body + "\n" + request.ToString());
         }
 
 

@@ -237,6 +237,10 @@ namespace ServerLib.Controllers
         static void TraderBranch(string file, string dirname)
         {
             Trader.Base trader = new();
+            if (!DataBase.Trader.Traders.TryGetValue(dirname, out trader))
+            {
+                trader = new();
+            }
             string filename = file.Replace("Files/traders\\" + dirname + "\\", "").Replace(".json", "");
             Debug.PrintDebug($"Trader: {dirname + "_" + filename}", "LoadTraders");
             //DataBase.Locations.Add(dirname + "_" + filename, File.ReadAllText(file));
@@ -260,7 +264,14 @@ namespace ServerLib.Controllers
                     trader.suits = JsonConvert.DeserializeObject<List<Trader.Suit>>(File.ReadAllText(file));
                     break;
             }
-            DataBase.Trader.Traders.Add(dirname, trader);
+            if (!DataBase.Trader.Traders.ContainsKey(dirname))
+            {
+                DataBase.Trader.Traders.Add(dirname, trader);
+            }
+            else
+            {
+                DataBase.Trader.Traders[dirname] = trader;
+            }
         }
 
 

@@ -67,14 +67,15 @@ namespace ServerLib.Controllers
                 { "5935c25fb3acc3127c3d8cd9","Peacekeeper" },
                 { "5a7c2eca46aef81a7ca2145d","Mechanic" },
                 { "5ac3b934156ae10c4430e83c","Ragman" },
-                { "5c0647fdd443bc2504c2d371","Jaeger" }
+                { "5c0647fdd443bc2504c2d371","Jaeger" },
+                { "638f541a29ffd1183d187f57", "caretaker" }
 
             };
             return names[TraderId];
         }
         public static List<TraderBase> GetTradersInfo()
         {
-            List<TraderBase> TraderBase = new List<TraderBase>();
+            List<TraderBase> TraderBase = new();
 
             foreach (var trader in DatabaseController.DataBase.Trader.Traders)
             {

@@ -23,6 +23,7 @@ namespace ServerLib.Web
         {
             ServerHelper.PrintRequest(request, serverStruct);
             string resp = ResponseControl.GetBody(JsonConvert.SerializeObject(TraderController.GetTradersInfo()));
+            Console.WriteLine("traderSettings is OK!");
             ServerHelper.SendUnityResponse(request, serverStruct, resp);
             return true;
         }
@@ -46,10 +47,10 @@ namespace ServerLib.Web
             string SessionId = serverStruct.Headers.GetSessionId();
             var profile = ProfileController.GetProfile(SessionId);
             ArgumentNullException.ThrowIfNull(profile);
-            var x = new Suites()
+            Json.Classes.GetSuits.Response x = new()
             {
                 _id = "pmc" + SessionId,
-                suites = profile.Suits.ToArray()
+                suites = profile.Suits
             };
             string resp = ResponseControl.GetBody(JsonConvert.SerializeObject(x));
             ServerHelper.SendUnityResponse(request, serverStruct, resp);

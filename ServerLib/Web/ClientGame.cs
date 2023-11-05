@@ -21,11 +21,11 @@ namespace ServerLib.Web
             var TimeThingy = TimeHelper.UnixTimeNow_Int();
             if (AccountController.ClientHasProfile(SessionId))
             {
-                resp = ResponseControl.GetBody("{\"utc_time\":" + TimeThingy + "}");
+                 resp = ResponseControl.GetBody("{\"utc_time\":" + TimeThingy + "}");
             }
             else
             {
-                resp = ResponseControl.GetBody("{\"utc_time\":" + TimeThingy + "}", 999, "Profile Not Found!!");
+                resp = ResponseControl.GetBody("{\"utc_time\":" + TimeThingy + "}", 200, "Profile Not Found!!");
             }
             ServerHelper.SendUnityResponse(request, serverStruct, resp);
             return true;

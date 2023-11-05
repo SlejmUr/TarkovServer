@@ -37,5 +37,13 @@ namespace ServerLib.Json.Helpers
             return ret;
 
         }
+
+        public static Character.Base ToCharacterBaseAsString(this string json)
+        {
+            var ret = JsonConvert.DeserializeObject<Character.Base>(json, new JsonConverter[] { Converters.ItemLocationConverter.Singleton });
+            ArgumentNullException.ThrowIfNull(ret);
+            return ret;
+
+        }
     }
 }

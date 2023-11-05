@@ -19,7 +19,11 @@ namespace ServerLib.Utilities.Helpers
 
         public static bool SendUnityResponse(ServerStruct serverStruct, byte[] resp)
         {
-            serverStruct.Response.MakeGetResponse(resp, "application/json");
+            string SessionId = serverStruct.Headers.GetSessionId();
+            ResponseCreator response = new();
+            response.SetHeader("Content-Type", "application/json");
+            response.SetBody(resp);
+            serverStruct.Response = response.GetResponse();
             serverStruct.SendResponse();
             Debug.PrintDebug("WE SENT UNITY RESPONSE!");
             return true;
@@ -27,6 +31,12 @@ namespace ServerLib.Utilities.Helpers
 
         public static void PrintRequest(HttpRequest req, ServerStruct serverStruct)
         {
+            /*
+            foreach (var hd in serverStruct.Headers)
+            {
+                Console.WriteLine(hd.Key + " | " + hd.Value);
+            }
+            */
             string time = DateTime.UtcNow.ToString();
             string fullurl = req.Url;
             string from_ip = GetFromIP(serverStruct);
