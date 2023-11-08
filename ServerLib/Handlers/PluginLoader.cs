@@ -86,12 +86,10 @@ namespace ServerLib.Handlers
                 else
                 {
                     PluginInit(item.Key);
-                    pluginsList.Add(item.Key.Name, new PluginInfos
-                    {
-                        Plugin = item.Key
-                    });
                 }
             }
+
+            ConfigController.Save();
 
         }
 
@@ -113,21 +111,21 @@ namespace ServerLib.Handlers
                 return;
             if (pluginsList.ContainsKey(iPlugin.Name))
             {
-                Console.WriteLine("Plugin already loaded?");
-                iPlugin.ShutDown();
-                iPlugin.Dispose();
+                Debug.PrintWarn("Plugin already loaded?");
+                //iPlugin.ShutDown();
+                //iPlugin.Dispose();
             }
             else
             {
                 PluginInit(iPlugin);
-                pluginsList.Add(iPlugin.Name, new PluginInfos
-                {
-                    Plugin = iPlugin
-                });
             }
         }
         private static void PluginInit(IPlugin iPlugin)
         {
+            pluginsList.Add(iPlugin.Name, new PluginInfos
+                {
+                    Plugin = iPlugin
+                });
             iPlugin.Initialize();
             Debug.PrintInfo($"Plugin loaded: {iPlugin.Name}");
             Debug.PrintDebug("New Plugin Loaded" +
@@ -136,6 +134,7 @@ namespace ServerLib.Handlers
                 "\nPlugin Author: " + iPlugin.Author +
                 "\nPlugin Desc: " + iPlugin.Description
                 , "PLUGIN");
+
         }
 
         internal class PluginInfos
