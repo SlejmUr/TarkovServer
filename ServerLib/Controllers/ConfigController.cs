@@ -1,11 +1,12 @@
-﻿using Newtonsoft.Json;
+﻿using JsonLib.Classes.Configurations;
+using Newtonsoft.Json;
 using ServerLib.Utilities;
 
 namespace ServerLib.Controllers
 {
     public class ConfigController
     {
-        public static Json.Classes.Configs Configs = new();
+        public static BaseConfig Configs = new();
 
         /// <summary>
         /// Initialize the configs. 
@@ -41,16 +42,16 @@ namespace ServerLib.Controllers
                         switch (dir_1)
                         {
                             case "server":
-                                Configs.Server = JsonConvert.DeserializeObject<Json.ServerConfig.Base>(dataraw)!;
+                                Configs.Server = JsonConvert.DeserializeObject<ServerConfig.Base>(dataraw)!;
                                 break;
                             case "gameplay":
-                                Configs.Gameplay = JsonConvert.DeserializeObject<Json.Classes.GameplayConfig.Base>(dataraw)!;
+                                Configs.Gameplay = JsonConvert.DeserializeObject<GameplayConfig.Base>(dataraw)!;
                                 break;
                             case "custom":
-                                Configs.CustomSettings = JsonConvert.DeserializeObject<Json.Classes.CustomConfig.Base>(dataraw)!;
+                                Configs.CustomSettings = JsonConvert.DeserializeObject<CustomConfig.Base>(dataraw)!;
                                 break;
                             case "plugin":
-                                Configs.Plugins = JsonConvert.DeserializeObject<List<Json.Classes.Configs.Plugin>>(dataraw)!;
+                                Configs.Plugins = JsonConvert.DeserializeObject<List<BaseConfig.Plugin>>(dataraw)!;
                                 break;
                             default:
                                 break;

@@ -1,4 +1,5 @@
-﻿using ModdableWebServer;
+﻿using JsonLib.Classes.Response;
+using ModdableWebServer;
 using ModdableWebServer.Attributes;
 using NetCoreServer;
 using Newtonsoft.Json;
@@ -47,7 +48,7 @@ namespace ServerLib.Web
             string SessionId = serverStruct.Headers.GetSessionId();
             var profile = ProfileController.GetProfile(SessionId);
             ArgumentNullException.ThrowIfNull(profile);
-            Json.Classes.GetSuits.Response x = new()
+            GetSuits x = new()
             {
                 _id = "pmc" + SessionId,
                 suites = profile.Suits

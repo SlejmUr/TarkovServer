@@ -1,5 +1,5 @@
-﻿using ServerLib.Controllers;
-using ServerLib.Json.Classes;
+﻿using JsonLib.Classes.Configurations;
+using ServerLib.Controllers;
 using ServerLib.Utilities;
 using System.Reflection;
 
@@ -23,7 +23,7 @@ namespace ServerLib.Handlers
 
             foreach (string file in Directory.GetFiles(Path.Combine(currdir, "Plugins"), "*.dll"))
             {
-                Configs.Plugin plugin = new()
+                BaseConfig.Plugin plugin = new()
                 {
                     ignore = false
                 };

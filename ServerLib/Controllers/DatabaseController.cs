@@ -1,9 +1,11 @@
-﻿using Newtonsoft.Json;
-using ServerLib.Json.Classes;
-using ServerLib.Json.Helpers;
+﻿using JsonLib.Classes.DatabaseRelated;
+using JsonLib.Classes.ItemRelated;
+using JsonLib.Classes.TradeRelated;
+using JsonLib.Classes.LocationRelated;
+using JsonLib.Helpers;
+using Newtonsoft.Json;
 using ServerLib.Utilities;
-using static ServerLib.Json.Classes.LootBase;
-using static ServerLib.Json.Converters;
+using static JsonLib.Converters;
 
 namespace ServerLib.Controllers
 {
@@ -11,7 +13,7 @@ namespace ServerLib.Controllers
 #pragma warning disable CS8602 // Dereference of a possibly null reference.
     public class DatabaseController
     {
-        public static Database DataBase = new();
+        public static DatabaseCore DataBase = new();
         public static void Init()
         {
             var sw = System.Diagnostics.Stopwatch.StartNew();
@@ -31,7 +33,7 @@ namespace ServerLib.Controllers
             {
                 DataBase.Others = new()
                 {
-                    Templates = JsonConvert.DeserializeObject<Json.Classes.Handbook.Base>(File.ReadAllText("Files/others/handbook.json"))
+                    Templates = JsonConvert.DeserializeObject<Handbook.Base>(File.ReadAllText("Files/others/handbook.json"))
                 };
 
                 foreach (var item in DataBase.Others.Templates.Items)
@@ -78,9 +80,9 @@ namespace ServerLib.Controllers
                 {
                     DataBase.Loot = new()
                     {
-                        staticAmmo = JsonConvert.DeserializeObject<Dictionary<string, List<StaticAmmoDetails>>>(File.ReadAllText("Files/loot/staticAmmo.json")),
-                        staticContainers = JsonConvert.DeserializeObject<Dictionary<string, StaticContainerDetails>>(File.ReadAllText("Files/loot/staticContainers.json")),
-                        staticLoot = JsonConvert.DeserializeObject<Dictionary<string, StaticLootDetails>>(File.ReadAllText("Files/loot/staticLoot.json"))
+                        staticAmmo = JsonConvert.DeserializeObject<Dictionary<string, List<LootBase.StaticAmmoDetails>>>(File.ReadAllText("Files/loot/staticAmmo.json")),
+                        staticContainers = JsonConvert.DeserializeObject<Dictionary<string, LootBase.StaticContainerDetails>>(File.ReadAllText("Files/loot/staticContainers.json")),
+                        staticLoot = JsonConvert.DeserializeObject<Dictionary<string, LootBase.StaticLootDetails>>(File.ReadAllText("Files/loot/staticLoot.json"))
                     };
                      Debug.PrintTime($"Loot Taken {sw.ElapsedMilliseconds}ms");
                 })
@@ -180,14 +182,12 @@ namespace ServerLib.Controllers
         static void LoadLocations()
         {
             var sw = System.Diagnostics.Stopwatch.StartNew();
-            Task.Run(() =>
+            DataBase.Location = new()
             {
-                DataBase.Location = new()
-                {
-                    Base = File.ReadAllText("Files/locations/base.json"),
-                    AllLocations = File.ReadAllText("Files/locations/location_all.json")
-                };
-            });
+                Base = File.ReadAllText("Files/locations/base.json"),
+                AllLocations = File.ReadAllText("Files/locations/location_all.json"),
+                Locations = new()
+            };
             var dirs = Directory.GetDirectories("Files/locations");
             foreach (var dir in dirs)
             {
@@ -212,7 +212,8 @@ namespace ServerLib.Controllers
         {
             string filename = file.Replace("Files/locations\\" + dirname + "\\", "").Replace(".json", "");
             Debug.PrintDebug($"Location: {dirname + "_" + filename}", "LoadLocations");
-            DataBase.Location.Locations.Add(dirname + "_" + filename, File.ReadAllText(file));
+            var readed = File.ReadAllText(file);
+            DataBase.Location.Locations.Add(dirname + "_" + filename, readed);
         }
 
         static void LoadTraders()

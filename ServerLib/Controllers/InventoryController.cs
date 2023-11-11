@@ -1,54 +1,14 @@
-﻿using ServerLib.Json.Classes;
+﻿using JsonLib.Classes.InventoryRelated;
+using JsonLib.Classes.ItemRelated;
+using JsonLib.Classes.ProfileRelated;
 using ServerLib.Utilities;
 using ServerLib.Utilities.Helpers;
+using static JsonLib.Classes.Others;
 
 namespace ServerLib.Controllers
 {
     public class InventoryController
     {
-        #region Classes
-        public class InventoryContainer
-        {
-            public Stash Stash;
-            public Lookup Lookup;
-        }
-
-        public class Lookup
-        {
-            public Dictionary<string, int> Forward;
-            public Dictionary<int, string> Reverse;
-        }
-
-        public class Stash
-        {
-            public string SlotId;
-            public Map Container;
-        }
-
-        public class Map
-        {
-            public int Width;
-            public int Height;
-            public List<string> ContainerMap;
-            public Dictionary<string, FlatMapLookup> FlatMap;
-        }
-
-        public class FlatMapLookup
-        {
-            public int Width;
-            public int Height;
-            public int StartX;
-            public int EndX;
-            public List<int> Coordinates;
-        }
-
-        public class ValidLocation
-        {
-            public List<int> MapInfo;
-            public int X;
-            public int Y;
-        }
-        #endregion
 
         public static Character.Inventory GetInventory(string SessionId)
         {
@@ -223,7 +183,7 @@ namespace ServerLib.Controllers
             if (famL == 1)
                 return (height, width);
 
-            Others.Sizes sizes = new()
+            Sizes sizes = new()
             {
                 ForcedDown = 0,
                 ForcedLeft = 0,
@@ -449,7 +409,7 @@ namespace ServerLib.Controllers
 
             if (items.Count == 1)
                 return (height, width);
-            Others.Sizes sizes = new()
+            Sizes sizes = new()
             {
                 ForcedDown = 0,
                 ForcedLeft = 0,
@@ -599,8 +559,5 @@ namespace ServerLib.Controllers
             }
             return inventory;
         }
-
-
-        //ConvertAssortItemsToInventoryItem Is skipped because we already using same Item everywhere :)
     }
 }

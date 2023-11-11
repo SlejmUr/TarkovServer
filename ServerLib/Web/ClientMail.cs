@@ -4,6 +4,7 @@ using NetCoreServer;
 using Newtonsoft.Json;
 using ServerLib.Controllers;
 using ServerLib.Utilities.Helpers;
+using static JsonLib.Classes.Request.Dialog;
 
 namespace ServerLib.Web
 {
@@ -28,7 +29,7 @@ namespace ServerLib.Web
             ServerHelper.PrintRequest(request, serverStruct);
             string Uncompressed = ResponseControl.DeCompressReq(request.BodyBytes);
             Console.WriteLine(Uncompressed);
-            var mailView = JsonConvert.DeserializeObject<Json.Classes.Dialog.GetMailView>(Uncompressed);
+            var mailView = JsonConvert.DeserializeObject<GetMailView>(Uncompressed);
             ArgumentNullException.ThrowIfNull(mailView);
             var rsp = ResponseControl.GetBody(JsonConvert.SerializeObject(DialogueController.GenerateDialogView(SessionId, mailView.dialogId)));
             ServerHelper.SendUnityResponse(request, serverStruct, rsp);
@@ -43,7 +44,7 @@ namespace ServerLib.Web
             ServerHelper.PrintRequest(request, serverStruct);
             string Uncompressed = ResponseControl.DeCompressReq(request.BodyBytes);
             Console.WriteLine(Uncompressed);
-            var dialogId = JsonConvert.DeserializeObject<Json.Classes.Dialog.DialogId>(Uncompressed);
+            var dialogId = JsonConvert.DeserializeObject<DialogId>(Uncompressed);
             ArgumentNullException.ThrowIfNull(dialogId);
             var rsp = ResponseControl.GetBody(JsonConvert.SerializeObject(DialogueController.GetAllAttachments(SessionId, dialogId.dialogId)));
             ServerHelper.SendUnityResponse(request, serverStruct, rsp);

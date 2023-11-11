@@ -14,7 +14,7 @@ namespace ServerLib.Web
             ServerHelper.PrintRequest(request, serverStruct);
             string SessionId = serverStruct.Headers.GetSessionId();
 
-            var rsp = Friend.FriendList(SessionId);
+            var rsp = Friend.GetFriendList(SessionId);
             ServerHelper.SendUnityResponse(request, serverStruct, rsp);
             return true;
         }

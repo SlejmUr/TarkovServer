@@ -10,12 +10,11 @@
 		<PackageReference Include="ModdableWebServer" Version="1.1.1" />
 		<PackageReference Include="NetCoreServer" Version="6.7.0" />
 	</ItemGroup>
+	<ItemGroup>
+	  <ProjectReference Include="..\JsonLib\JsonLib.csproj" />
+	</ItemGroup>
 
 	<ItemGroup>
-		<Reference Include="Assembly-CSharp">
-			<HintPath>..\Ref\Assembly-CSharp.dll</HintPath>
-			<Private>False</Private>
-		</Reference>
 		<Reference Include="bsg.componentace.compression.libs.zlib">
 			<HintPath>..\Ref\bsg.componentace.compression.libs.zlib.dll</HintPath>
 			<Private>False</Private>

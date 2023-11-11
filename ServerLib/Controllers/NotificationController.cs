@@ -1,7 +1,8 @@
-﻿using ModdableWebServer.Helper;
+﻿using JsonLib.Classes.ProfileRelated;
+using JsonLib.Classes.Websocket;
+using JsonLib.Enums;
+using ModdableWebServer.Helper;
 using Newtonsoft.Json;
-using ServerLib.Json.Classes;
-using ServerLib.Json.Enums;
 using ServerLib.Utilities;
 using ServerLib.Utilities.Helpers;
 using ServerLib.Web;
@@ -12,11 +13,11 @@ namespace ServerLib.Controllers
     {
         public static Profile.Dialogue GetDialog(string SessionId, EMessageType messageType, Profile.UserDialogInfo dialogInfo)
         {
-            var key = (dialogInfo.info.MemberCategory == 4) ? dialogInfo._id : dialogInfo.info.Nickname;
+            var key = (dialogInfo.info.MemberCategory == EMemberCategory.Trader) ? dialogInfo._id : dialogInfo.info.Nickname;
             if (!DialogueController.Dialogs[SessionId].TryGetValue(key, out var dialog))
             {
                 List<Profile.UserDialogInfo> users = new();
-                if (dialogInfo.info.MemberCategory != 4)
+                if (dialogInfo.info.MemberCategory != EMemberCategory.Trader)
                 {
                     users.Add(dialogInfo);
                 }
@@ -53,7 +54,7 @@ namespace ServerLib.Controllers
         }
 
 
-        public static Json.Classes.Notification DefaultNotification()
+        public static Notification DefaultNotification()
         {
             return new()
             {
@@ -62,7 +63,7 @@ namespace ServerLib.Controllers
             };
         }
 
-        public static Json.Classes.Notification CreateNewNotification(Profile.Message message)
+        public static Notification CreateNewNotification(Profile.Message message)
         {
             return new()
             {
@@ -73,7 +74,7 @@ namespace ServerLib.Controllers
             };
         }
 
-        public static bool Send(string SessionId, Json.Classes.Notification notification)
+        public static bool Send(string SessionId, Notification notification)
         {
             var user = WebSocket.GetUser(SessionId);
             if (user != null)

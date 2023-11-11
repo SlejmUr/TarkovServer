@@ -3,12 +3,11 @@ using ModdableWebServer.Attributes;
 using NetCoreServer;
 using Newtonsoft.Json;
 using ServerLib.Controllers;
-using ServerLib.Json.Classes;
 using ServerLib.Utilities;
 using ServerLib.Utilities.Helpers;
-using static ServerLib.Json.Classes.Profile;
-using static ServerLib.Json.Converters;
 using ServerLib.Responders;
+using JsonLib.Classes.Request;
+using static JsonLib.Classes.ProfileRelated.Profile;
 
 namespace ServerLib.Web
 {
@@ -167,11 +166,15 @@ namespace ServerLib.Web
             ServerHelper.PrintRequest(request, serverStruct);
             string SessionId = serverStruct.Headers.GetSessionId();
 
-            List<WeaponBuild> ret = new();
+            ProfileBuilds ret = new()
+            { 
+                EquipmentBuilds = new(),
+                WeaponBuilds = new()
+            };
             var profile = ProfileController.GetProfile(SessionId);
-            if (profile != null && profile.Weaponbuilds != null && profile.Weaponbuilds.Count > 0)
+            if (profile != null && profile.Builds != null)
             {
-                ret = profile.Weaponbuilds;
+                ret = profile.Builds;
             }
 
             string resp = ResponseControl.GetBody(JsonConvert.SerializeObject(ret));

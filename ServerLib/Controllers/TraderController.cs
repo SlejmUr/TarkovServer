@@ -1,7 +1,7 @@
-﻿using Newtonsoft.Json;
-using ServerLib.Json.Classes;
+﻿using JsonLib.Classes.ItemRelated;
+using Newtonsoft.Json;
 using ServerLib.Utilities.Helpers;
-using static ServerLib.Json.Classes.Trader;
+using static JsonLib.Classes.TradeRelated.Trader;
 
 namespace ServerLib.Controllers
 {

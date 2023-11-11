@@ -1,8 +1,9 @@
-﻿using EFT;
+﻿using JsonLib.Classes.MatchRelated;
+using JsonLib.Classes.Request;
+using JsonLib.Enums;
+using JsonLib.Websocket;
 using ModdableWebServer.Helper;
 using Newtonsoft.Json;
-using ServerLib.Json.Classes;
-using ServerLib.Json.Classes.Websocket;
 using ServerLib.Utilities;
 using ServerLib.Utilities.Helpers;
 using ServerLib.Web;
@@ -18,26 +19,6 @@ namespace ServerLib.Controllers
         }
 
         public static Dictionary<string, MatchData> Matches;
-
-        public struct MatchData
-        {
-            public string MatchId;
-            public string CreatorId;
-            public bool IsScav;
-            public List<UserStruct> Users;
-            public string Ip;
-            public int Port;
-            public string Location;
-            public string Sid;
-            public ERaidMode RaidMode;
-            public bool IsStarted;
-            public struct UserStruct
-            {
-                public string sessionId;
-                public string profileToken;
-
-            }
-        }
         public static (MatchData matchData, bool IsNew) GetMatch(string ProfileId)
         {
             foreach (var item in Matches.Values)

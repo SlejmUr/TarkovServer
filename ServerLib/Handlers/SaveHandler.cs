@@ -1,7 +1,7 @@
-﻿using Newtonsoft.Json;
+﻿using JsonLib.Classes.ProfileRelated;
+using JsonLib.Helpers;
+using Newtonsoft.Json;
 using ServerLib.Controllers;
-using ServerLib.Json.Classes;
-using ServerLib.Json.Helpers;
 using ServerLib.Utilities;
 
 namespace ServerLib.Handlers

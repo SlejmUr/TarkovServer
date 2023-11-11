@@ -1,12 +1,14 @@
-﻿using ModdableWebServer;
+﻿using JsonLib.Classes.Request;
+using JsonLib.Classes.Response;
+using JsonLib.Enums;
+using ModdableWebServer;
 using ModdableWebServer.Attributes;
 using NetCoreServer;
 using Newtonsoft.Json;
 using ServerLib.Controllers;
-using ServerLib.Json.Classes;
 using ServerLib.Utilities;
 using ServerLib.Utilities.Helpers;
-using static ServerLib.Json.Classes.Response.Matches;
+using static JsonLib.Classes.Response.Matches;
 
 namespace ServerLib.Web
 {
@@ -20,7 +22,7 @@ namespace ServerLib.Web
             var SessionId = serverStruct.Headers.GetSessionId();
             var match = MatchController.GetMatch(SessionId);
             match.matchData.Location = "factory4_day";
-            match.matchData.RaidMode = EFT.ERaidMode.Online;
+            match.matchData.RaidMode = ERaidMode.Online;
             MatchController.Matches[match.matchData.MatchId] = match.matchData;
             MatchController.SendStart(match.matchData.MatchId, "192.168.1.50", 7000);
             ServerHelper.SendUnityResponse(request, serverStruct, rsp);
@@ -93,7 +95,7 @@ namespace ServerLib.Web
             var jsonreq = JsonConvert.DeserializeObject<GetGroupStatus>(ResponseControl.DeCompressReq(request.BodyBytes));
             ArgumentNullException.ThrowIfNull(jsonreq);
             MatchController.CheckStatus(sessionId, jsonreq);
-            ProfileStatus.Response response = new()
+            ProfileStatus response = new()
             {
                 maxPveCountExceeded = false,
                 profiles = new()

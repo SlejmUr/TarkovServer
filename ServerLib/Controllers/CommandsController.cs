@@ -1,6 +1,7 @@
-﻿using Newtonsoft.Json;
+﻿using JsonLib.Classes.Request;
+using JsonLib.Enums;
+using Newtonsoft.Json;
 using ServerLib.Handlers;
-using ServerLib.Json.Enums;
 using System.Diagnostics;
 using DB = ServerLib.Utilities.Debug;
 
@@ -132,9 +133,9 @@ namespace ServerLib.Controllers
                 DB.PrintWarn("Profile null, cannot give OP to non existing profile!");
                 return;
             }
-            profile.ProfileAddon.Permission = Json.Enums.EPerms.Admin;
+            profile.ProfileAddon.Permission = EPerms.Admin;
             SaveHandler.SaveAddon(AID, profile.ProfileAddon);
-            DB.PrintInfo($"User {AID} is now {Json.Enums.EPerms.Admin}");
+            DB.PrintInfo($"User {AID} is now {EPerms.Admin}");
         }
 
         public static void SetPerm(object obj)
@@ -153,9 +154,9 @@ namespace ServerLib.Controllers
                 DB.PrintWarn("Profile null, cannot give OP to non existing profile!");
                 return;
             }
-            profile.ProfileAddon.Permission = (Json.Enums.EPerms)perm;
+            profile.ProfileAddon.Permission = (EPerms)perm;
             SaveHandler.SaveAddon(AID, profile.ProfileAddon);
-            DB.PrintInfo($"User {AID} is now {(Json.Enums.EPerms)perm}");
+            DB.PrintInfo($"User {AID} is now {(EPerms)perm}");
         }
 
         public static void DeOp(object obj)
@@ -173,9 +174,9 @@ namespace ServerLib.Controllers
                 DB.PrintWarn("Profile null, cannot give OP to non existing profile!");
                 return;
             }
-            profile.ProfileAddon.Permission = Json.Enums.EPerms.User;
+            profile.ProfileAddon.Permission = EPerms.User;
             SaveHandler.SaveAddon(AID, profile.ProfileAddon);
-            DB.PrintInfo($"User {AID} is now {Json.Enums.EPerms.User}");
+            DB.PrintInfo($"User {AID} is now {EPerms.User}");
         }
 
         public static void Ban(object obj)
@@ -188,7 +189,7 @@ namespace ServerLib.Controllers
                 DB.PrintWarn("Profile null, cannot give OP to non existing profile!");
                 return;
             }
-            profile.ProfileAddon.Permission = Json.Enums.EPerms.Blocked;
+            profile.ProfileAddon.Permission = EPerms.Blocked;
             SaveHandler.SaveAddon(AID, profile.ProfileAddon);
             DB.PrintInfo($"User {AID} is now Banned");
         }
@@ -203,7 +204,7 @@ namespace ServerLib.Controllers
                 DB.PrintWarn("Profile null, cannot give OP to non existing profile!");
                 return;
             }
-            profile.ProfileAddon.Permission = Json.Enums.EPerms.User;
+            profile.ProfileAddon.Permission = EPerms.User;
             SaveHandler.SaveAddon(AID, profile.ProfileAddon);
             DB.PrintInfo($"User {AID} is now Unbanned");
         }
@@ -215,7 +216,7 @@ namespace ServerLib.Controllers
             var password = x[1];
             //todo check length:
 
-            var registerId = AccountController.Register(new Json.Classes.Login()
+            var registerId = AccountController.Register(new Login()
             {
                 password = password,
                 username = username

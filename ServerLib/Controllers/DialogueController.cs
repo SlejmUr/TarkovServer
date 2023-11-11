@@ -1,5 +1,7 @@
-﻿using ServerLib.Json.Classes;
-using ServerLib.Json.Enums;
+﻿
+using JsonLib.Classes.ProfileRelated;
+using JsonLib.Classes.Response;
+using JsonLib.Enums;
 using ServerLib.Utilities;
 using ServerLib.Utilities.Helpers;
 
@@ -204,9 +206,9 @@ namespace ServerLib.Controllers
         /// <param name="dialogueId">DialogID</param>
         /// <param name="SessionId">SessionId/AccountId</param>
         /// <returns>Serialized Dialog Messages | null</returns>
-        public static GetMailDialogView.Response GenerateDialogView(string SessionId, string DialogueId)
+        public static MailDialogView GenerateDialogView(string SessionId, string DialogueId)
         {
-            GetMailDialogView.Response response = new()
+            MailDialogView response = new()
             {
                 messages = new(),
             };
@@ -239,9 +241,9 @@ namespace ServerLib.Controllers
         /// </summary>
         /// <param name="SessionId">SessionId/AccountId</param>
         /// <returns>Serialized Dialog Messages List</returns>
-        public static GetAllAttachments.Response GetAllAttachments(string SessionId, string DialogueId)
+        public static MailDialogView GetAllAttachments(string SessionId, string DialogueId)
         {
-            GetAllAttachments.Response response = new()
+            MailDialogView response = new()
             {
                 messages = new()
             };

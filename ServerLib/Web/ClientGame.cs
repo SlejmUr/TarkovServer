@@ -1,4 +1,5 @@
-﻿using ModdableWebServer;
+﻿using JsonLib.Classes.Response;
+using ModdableWebServer;
 using ModdableWebServer.Attributes;
 using NetCoreServer;
 using Newtonsoft.Json;
@@ -72,13 +73,13 @@ namespace ServerLib.Web
         }
 
         [HTTP("POST", "/client/game/config")]
-        public static bool GameConfig(HttpRequest request, ServerStruct serverStruct)
+        public static bool ClientGameConfig(HttpRequest request, ServerStruct serverStruct)
         {
             //REQ stuff
             ServerHelper.PrintRequest(request, serverStruct);
             string SessionId = serverStruct.Headers.GetSessionId();
             var serverips = ConfigController.Configs.Server.ServerIPs;
-            Json.Classes.GameConfig.Backend backend = new();
+            GameConfig.Backend backend = new();
             if (serverips.Enable)
             {
                 backend = new()
@@ -101,7 +102,7 @@ namespace ServerLib.Web
                     Lobby = ServerLib.IP,
                 };
             }
-            Json.Classes.GameConfig.Response game = new()
+            GameConfig game = new()
             {
                 aid = SessionId,
                 lang = AccountController.GetAccountLang(SessionId),
@@ -139,7 +140,7 @@ namespace ServerLib.Web
             ServerHelper.PrintRequest(request, serverStruct);
             string SessionId = serverStruct.Headers.GetSessionId();
             string Uncompressed = ResponseControl.DeCompressReq(request.BodyBytes);
-            var conditions = JsonConvert.DeserializeObject<List<WaveInfo>>(Uncompressed);
+           // var conditions = JsonConvert.DeserializeObject<List<WaveInfo>>(Uncompressed);
             // RPS
             var rsp = "{}";
             ServerHelper.SendUnityResponse(request, serverStruct, rsp);

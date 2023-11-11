@@ -1,6 +1,6 @@
-﻿using Newtonsoft.Json;
+﻿using JsonLib.Classes.QuestRelated;
+using Newtonsoft.Json;
 using ServerLib.Handlers;
-using ServerLib.Json.Classes;
 
 namespace ServerLib.Controllers
 {

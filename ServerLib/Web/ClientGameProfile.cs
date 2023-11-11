@@ -117,6 +117,7 @@ namespace ServerLib.Web
             //REQ stuff
             string SessionId = serverStruct.Headers.GetSessionId();
             ServerHelper.PrintRequest(request, serverStruct);
+            Debug.PrintWarn(ResponseControl.DeCompressReq(request.BodyBytes));
             string resp = "";
             // RPS
             ServerHelper.SendUnityResponse(request, serverStruct, resp);
@@ -138,7 +139,7 @@ namespace ServerLib.Web
                 string Uncompressed = ResponseControl.DeCompressReq(request.BodyBytes);
                 Debug.PrintDebug(Uncompressed);
             }
-            var rsp = GameProfile.ProfileStatus(SessionId);
+            var rsp = GameProfile.GetProfileStatus(SessionId);
             ServerHelper.SendUnityResponse(request, serverStruct, rsp);
             return true;
         }

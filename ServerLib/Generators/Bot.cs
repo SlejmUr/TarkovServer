@@ -1,29 +1,20 @@
-﻿using Newtonsoft.Json;
+﻿using JsonLib.Classes.BotRelated;
+using JsonLib.Classes.DatabaseRelated;
+using JsonLib.Classes.ItemRelated;
+using JsonLib.Classes.ProfileRelated;
+using JsonLib.Helpers;
+using Newtonsoft.Json;
 using ServerLib.Controllers;
-using ServerLib.Json.Classes;
-using ServerLib.Json.Helpers;
 using ServerLib.Utilities;
 using ServerLib.Utilities.Helpers;
-using static ServerLib.Json.Classes.Character;
+using static JsonLib.Classes.ProfileRelated.Character;
 
 namespace ServerLib.Generators
 {
-    internal class Bot
+    public class Bot
     {
-        public class BotGenerationDetails
-        {
-            public bool IsPmc;
-            public string Role;
-            public string Side;
-            public int PlayerLevel;
-            public int BotRelativeLevelDeltaMax;
-            public int BotCountToGenerate;
-            public string BotDifficulty;
-            public bool IsPlayerScav;
-        }
 
-
-        public static Base GeneratePlayerScav(string role, string difficulty, Bots.BotType botBase)
+        public static Character.Base GeneratePlayerScav(string role, string difficulty, Bots.BotType botBase)
         {
             try
             {
@@ -56,7 +47,7 @@ namespace ServerLib.Generators
         }
 
 
-        public static Base GenerateBot(Base bot, Bots.BotType type, BotGenerationDetails botGeneration)
+        public static Character.Base GenerateBot(Character.Base bot, Bots.BotType type, BotGenerationDetails botGeneration)
         {
             try
             {
@@ -73,7 +64,7 @@ namespace ServerLib.Generators
                 bot.Customization.Body = MathHelper.GetRandomArray(type.appearance.body.Keys.ToList());
                 bot.Customization.Feet = MathHelper.GetRandomArray(type.appearance.feet.Keys.ToList());
                 bot.Customization.Hands = MathHelper.GetRandomArray(type.appearance.hands);
-                //bot.Inventory = JsonConvert.DeserializeObject<Inventory>(File.ReadAllText("Files/bot/basic_inventory.json"));
+                bot.Inventory = GenerateInventoryBasic();
 
                 bot = GenerateNewID(bot);
 
@@ -90,7 +81,7 @@ namespace ServerLib.Generators
 
         }
 
-        public static Base GenerateNewID(Base bot)
+        public static Character.Base GenerateNewID(Character.Base bot)
         {
             var ID = AIDHelper.CreateNewID();
             bot.Id = ID;
@@ -232,7 +223,7 @@ namespace ServerLib.Generators
                 Dictionary<string, Item.Base[]> itemsByParentHash = new();
                 string InventoryID = "";
 
-                if (bot.Inventory.Items == null)
+                if (bot.Inventory.Items.Count == 0)
                     return bot;
 
                 foreach (var item in bot.Inventory.Items)
@@ -244,7 +235,7 @@ namespace ServerLib.Generators
                         InventoryID = item.Id;
                         continue;
                     }
-                    if (!string.IsNullOrEmpty(item.ParentId))
+                    if (string.IsNullOrEmpty(item.ParentId))
                     {
                         continue;
                     }
@@ -257,9 +248,11 @@ namespace ServerLib.Generators
                     itemsByParentHash[item.ParentId].Append(item);
                 }
                 string newID = AIDHelper.CreateNewID();
-                inventoryItemHash[InventoryID].Id = newID;
-                bot.Inventory.Equipment = newID;
-
+                if (inventoryItemHash.ContainsKey(InventoryID))
+                {
+                    inventoryItemHash[InventoryID].Id = newID;
+                    bot.Inventory.Equipment = newID;
+                }
 
                 if (itemsByParentHash.ContainsKey(InventoryID))
                 {
@@ -277,6 +270,84 @@ namespace ServerLib.Generators
                 throw;
             }
 
+        }
+
+        public static Inventory GenerateInventoryBasic()
+        {
+            try
+            {
+                string SortingTable = AIDHelper.CreateNewID();
+                string Equipment = AIDHelper.CreateNewID();
+                string Stash = AIDHelper.CreateNewID();
+                string QuestRaidItems = AIDHelper.CreateNewID();
+                string QuestStashItems = AIDHelper.CreateNewID();
+                return new()
+                { 
+                    SortingTable = SortingTable,
+                    Equipment = Equipment,
+                    Stash = Stash,
+                    QuestRaidItems = QuestRaidItems,
+                    QuestStashItems = QuestStashItems,
+                    FastPanel = new(),
+                    Items = new()
+                    { 
+                        new()
+                        { 
+                            Id = SortingTable,
+                            Tpl = "602543c13fee350cd564d032"
+                        },
+                        new()
+                        {
+                            Id = Equipment,
+                            Tpl = "55d7217a4bdc2d86028b456d"
+                        },
+                        new()
+                        {
+                            Id = Stash,
+                            Tpl = "566abbc34bdc2d92178b4576"
+                        },
+                        new()
+                        {
+                            Id = QuestRaidItems,
+                            Tpl = "5963866286f7747bf429b572"
+                        },
+                        new()
+                        {
+                            Id = QuestStashItems,
+                            Tpl = "5963866b86f7747bfa1c4462"
+                        }
+                    }
+                };
+            }
+            catch (Exception ex)
+            {
+                Debug.PrintError(ex.ToString());
+                throw;
+            }
+        }
+
+        public static Base GenerateDogtag(Base bot)
+        {
+            Item.Base item = new();
+            item.Id = AIDHelper.CreateNewID();
+            item.Tpl = bot.Info.Side == "Usec" ? "59f32c3b86f77472a31742f0" : "59f32bb586f774757e1e8442";
+            item.ParentId = bot.Inventory.Equipment;
+            item.SlotId = "Dogtag";
+            Item._Dogtag dogtag = new();
+            dogtag.AccountId = bot.Aid.ToString();
+            dogtag.ProfileId = bot.Id;
+            dogtag.Nickname = bot.Info.Nickname;
+            dogtag.Side = bot.Info.Side;
+            dogtag.Level = bot.Info.Level;
+            dogtag.Time = TimeHelper.GetTime();
+            dogtag.Status = "Killed by ";
+            dogtag.KillerAccountId = "Unknown";
+            dogtag.KillerProfileId = "Unknown";
+            dogtag.KillerName = "Unknown";
+            dogtag.WeaponName = "Unknown";
+            item.Upd.Dogtag = dogtag;
+            bot.Inventory.Items.Add(item);
+            return bot;
         }
     }
 }

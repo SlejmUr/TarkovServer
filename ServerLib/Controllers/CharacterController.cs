@@ -1,9 +1,10 @@
-﻿using Newtonsoft.Json;
+﻿using JsonLib;
+using JsonLib.Classes.ProfileRelated;
+using JsonLib.Classes.Request;
+using JsonLib.Helpers;
+using Newtonsoft.Json;
 using ServerLib.Generators;
 using ServerLib.Handlers;
-using ServerLib.Json;
-using ServerLib.Json.Classes;
-using ServerLib.Json.Helpers;
 using ServerLib.Utilities;
 using ServerLib.Utilities.Helpers;
 
@@ -74,12 +75,11 @@ namespace ServerLib.Controllers
             account.Wipe = false;
             SaveHandler.SaveAccount(SessionId, account);
             var character = DatabaseController.DataBase.Characters.CharacterBase[createReq.Side.ToLower()];
-            var ID = AIDHelper.CreateNewID();
             var time = TimeHelper.UnixTimeNow_Int();
 
-            character.Id = "pmc" + ID;
+            character.Id = "pmc" + SessionId;
             character.Aid = AIDHelper.ToAID(SessionId);
-            character.Savage = "scav" + ID;
+            character.Savage = "scav" + SessionId;
             character.Info.Side = createReq.Side;
             character.Info.Nickname = createReq.Nickname;
             character.Info.LowerNickname = createReq.Nickname.ToLower();
@@ -243,7 +243,7 @@ namespace ServerLib.Controllers
                 return;
             }
 
-            var voices = JsonConvert.DeserializeObject<Json.Classes.Voice>(json);
+            var voices = JsonConvert.DeserializeObject<JsonLib.Classes.Request.Voice>(json);
             if (voices == null) { return; }
 
             character.Info.Voice = voices.voice;

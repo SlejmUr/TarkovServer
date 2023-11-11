@@ -1,5 +1,5 @@
 ﻿using ComponentAce.Compression.Libs.zlib;
-using ServerLib.Json.Classes;
+using JsonLib.Classes.Websocket;
 
 namespace ServerLib.Web
 {

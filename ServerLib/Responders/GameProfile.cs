@@ -1,9 +1,9 @@
-﻿using Newtonsoft.Json;
+﻿using JsonLib.Classes.Request;
+using JsonLib.Classes.Response;
+using Newtonsoft.Json;
 using ServerLib.Controllers;
-using ServerLib.Json.Classes;
 using ServerLib.Utilities;
 using ServerLib.Utilities.Helpers;
-using ServerLib.Web;
 using static ServerLib.Web.ResponseControl;
 
 namespace ServerLib.Responders
@@ -25,7 +25,7 @@ namespace ServerLib.Responders
             }
             return resp;
         }
-        public static string ProfileStatus(string SessionId)
+        public static string GetProfileStatus(string SessionId)
         {
             var character = CharacterController.GetPmcCharacter(SessionId);
             if (character == null)
@@ -34,7 +34,7 @@ namespace ServerLib.Responders
                 ArgumentNullException.ThrowIfNull(character);
             }
 
-            ProfileStatus.Response response = new()
+            ProfileStatus response = new()
             {
                 maxPveCountExceeded = false,
                 profiles = new()
@@ -130,11 +130,11 @@ namespace ServerLib.Responders
             var nickname = JsonConvert.DeserializeObject<Nickname>(Uncompressed);
             ArgumentNullException.ThrowIfNull(nickname);
             var searched = CharacterController.SearchNickname(nickname.nickname);
-            List<SearchFriend.Response> responses = new();
+            List<SearchFriend> responses = new();
 
             foreach (var search in searched)
             {
-                SearchFriend.Response rsp = new()
+                SearchFriend rsp = new()
                 {
                     _id = search.Id,
                     Info = new()
@@ -152,7 +152,7 @@ namespace ServerLib.Responders
 
         public static string ProfileSelect(string SessionId)
         {
-            SelectProfile.Response response = new()
+            SelectProfile response = new()
             {
                 status = "ok",
                 notifierServer = ServerLib.IP + "/notifierServer/" + SessionId,

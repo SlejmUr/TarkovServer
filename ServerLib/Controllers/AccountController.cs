@@ -1,5 +1,6 @@
-﻿using ServerLib.Handlers;
-using ServerLib.Json.Classes;
+﻿using JsonLib.Classes.ProfileRelated;
+using JsonLib.Classes.Request;
+using ServerLib.Handlers;
 using ServerLib.Utilities;
 using ServerLib.Utilities.Helpers;
 

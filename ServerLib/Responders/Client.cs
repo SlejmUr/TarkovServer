@@ -1,9 +1,8 @@
-﻿using ModdableWebServer;
+﻿using JsonLib.Classes.Response;
+using ModdableWebServer;
 using Newtonsoft.Json;
 using ServerLib.Controllers;
-using ServerLib.Json.Classes;
 using ServerLib.Utilities.Helpers;
-using ServerLib.Web;
 using static ServerLib.Web.ResponseControl;
 
 namespace ServerLib.Responders
@@ -31,7 +30,7 @@ namespace ServerLib.Responders
 
         public static string GetChatServerList()
         {
-            ChatServer.Base chatServerList = new()
+            ChatServer chatServerList = new()
             {
                 _id = AIDHelper.CreateNewID(),
                 RegistrationId = 20,
@@ -55,13 +54,15 @@ namespace ServerLib.Responders
 
         public static string GetServerList()
         {
-            List<Server> servers = new()
+            List<ServerDetails> servers = new()
             {
+                /*
                 new()
                 {
                     Address = ConfigController.Configs.Server.Ip,
                     Port = $"{7000}"
                 }
+                */
             };
             return GetBody(JsonConvert.SerializeObject(servers));
         }

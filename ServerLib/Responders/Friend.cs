@@ -1,4 +1,6 @@
-﻿using Newtonsoft.Json;
+﻿using JsonLib.Classes.Request;
+using JsonLib.Classes.Response;
+using Newtonsoft.Json;
 using ServerLib.Controllers;
 using static ServerLib.Web.ResponseControl;
 
@@ -6,15 +8,15 @@ namespace ServerLib.Responders
 {
     public static class Friend
     {
-        public static string FriendList(string SessionId)
+        public static string GetFriendList(string SessionId)
         {
-            Json.Classes.FriendList friendsList = FriendsController.GetFriendList(SessionId);
+            FriendList friendsList = FriendsController.GetFriendList(SessionId);
             return GetBody(JsonConvert.SerializeObject(friendsList));
         }
 
         public static string FriendDelete(string SessionId, string Uncompressed)
         {
-            var req = JsonConvert.DeserializeObject<Json.Classes.FriendId>(Uncompressed);
+            var req = JsonConvert.DeserializeObject<FriendId>(Uncompressed);
             ArgumentNullException.ThrowIfNull(req);
             FriendsController.RemoveFriend(SessionId, req.friend_id);
             return NullResponse();
@@ -22,7 +24,7 @@ namespace ServerLib.Responders
 
         public static string FriendReqSend(string SessionId, string Uncompressed)
         {
-            var req = JsonConvert.DeserializeObject<Json.Classes.FriendsReq>(Uncompressed);
+            var req = JsonConvert.DeserializeObject<FriendsReq>(Uncompressed);
             ArgumentNullException.ThrowIfNull(req);
             var reqID = FriendsController.AddRequest(SessionId, req.toId);
             FriendSendJson friendRsp = new()
@@ -36,7 +38,7 @@ namespace ServerLib.Responders
 
         public static string FriendReqDecline(string SessionId, string Uncompressed)
         {
-            var req = JsonConvert.DeserializeObject<Json.Classes.FriendsReq>(Uncompressed);
+            var req = JsonConvert.DeserializeObject<FriendsReq>(Uncompressed);
             ArgumentNullException.ThrowIfNull(req);
             FriendsController.RemoveRequest(SessionId, req.reqId);
             FriendsController.RemoveRequest(req.reqId, SessionId);
@@ -45,7 +47,7 @@ namespace ServerLib.Responders
 
         public static string FriendReqCancel(string SessionId, string Uncompressed)
         {
-            var req = JsonConvert.DeserializeObject<Json.Classes.FriendsReq>(Uncompressed);
+            var req = JsonConvert.DeserializeObject<FriendsReq>(Uncompressed);
             ArgumentNullException.ThrowIfNull(req);
             FriendsController.RemoveRequest(SessionId, req.req_Id);
             FriendsController.RemoveRequest(req.reqId, SessionId);
@@ -72,7 +74,7 @@ namespace ServerLib.Responders
 
         public static string FriendMute(string SessionId, string Uncompressed)
         {
-            var req = JsonConvert.DeserializeObject<Json.Classes.FriendsReq>(Uncompressed);
+            var req = JsonConvert.DeserializeObject<FriendsReq>(Uncompressed);
             ArgumentNullException.ThrowIfNull(req);
             FriendsController.MuteFriend(SessionId, req.uid);
             return NullResponse();
@@ -80,7 +82,7 @@ namespace ServerLib.Responders
 
         public static string FriendUnMute(string SessionId, string Uncompressed)
         {
-            var req = JsonConvert.DeserializeObject<Json.Classes.FriendsReq>(Uncompressed);
+            var req = JsonConvert.DeserializeObject<FriendsReq>(Uncompressed);
             ArgumentNullException.ThrowIfNull(req);
             FriendsController.UnMuteFriend(SessionId, req.uid);
             return NullResponse();
