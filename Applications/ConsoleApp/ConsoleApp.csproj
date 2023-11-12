@@ -19,7 +19,14 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\JsonLib\JsonLib.csproj" />
     <ProjectReference Include="..\..\ServerLib\ServerLib.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\Ref\Newtonsoft.Json.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
   <Import Project="..\..\ServerFiles\Shared.projitems" Label="Shared" />

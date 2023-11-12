@@ -5,7 +5,7 @@ namespace JsonLib.Classes.Actions
     public class OffraidEat : BaseInteraction
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-        public override string Action { get; set; } = "Eat";
+        public override string Action { get => "Eat"; set => base.Action = "Eat"; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
         public string item { get; set; }

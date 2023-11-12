@@ -32,9 +32,6 @@ namespace JsonLib.Classes.Actions
                     public string r { get; set; }
 
                     [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-                    public string rotation { get; set; }
-
-                    [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
                     public bool isSearched { get; set; }
 
                 }

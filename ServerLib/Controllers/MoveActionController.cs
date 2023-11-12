@@ -1,6 +1,12 @@
 ﻿using Newtonsoft.Json;
 using JsonLib.Classes.Response;
 using JsonLib.Classes.Actions;
+using JsonLib.Classes.ProfileRelated;
+using JsonLib.Classes.ItemRelated;
+using ServerLib.Utilities;
+using ServerLib.Handlers;
+using System;
+using JsonLib.Helpers;
 
 namespace ServerLib.Controllers
 {
@@ -89,20 +95,214 @@ namespace ServerLib.Controllers
         public static ProfileChanges CreateNew()
         {
             return new()
-            { 
-            
-            
-            };    
+            {
+                profileChanges = new(),
+                warnings = new()
+            };
         }
 
-        public static ProfileChanges MoveItem(string SessionId, ProfileChanges changes)
+        public static ProfileChanges MoveItem(string SessionId, ProfileChanges changes, Inventory.Move moveAction)
         {
+            if (changes.warnings.Count > 0)
+                return changes;
 
+            var ownerInventoryAction = GetOwnerInventoryAction(SessionId, moveAction);
+            if (!ownerInventoryAction.IsSameInventory)
+            {
+                var itemIdsToMove = InventoryController.GetInventoryItemFamilyTreeIDs(ownerInventoryAction.From, moveAction.item);
+                foreach (var itemId in itemIdsToMove)
+                {
+                    var item = ownerInventoryAction.From.Find(x => x.Id == itemId);
+                    if (item == null)
+                    {
+                        Debug.PrintWarn($"Unable to find item to move: {itemId}");
+                        continue;
+                    }
+                    var FromItemSave = item;
+                    if (itemId == moveAction.item)
+                    {
+                        item.ParentId = moveAction.to.id;
+                        item.SlotId = moveAction.to.container;
+                        if (moveAction.to.location != null)
+                        {
+                            JsonLib.Converters.Location location = new();
+                            int rot = 0;
+                            if (moveAction.to.location.r == "Vertical")
+                                rot = 1;
+                            location.ItemLocation = new()
+                            {
+                                IsSearched = moveAction.to.location.isSearched,
+                                R = rot,
+                                X = moveAction.to.location.x,
+                                Y = moveAction.to.location.y
+                            };
+                            item.Location = location;
+                        }
+                        else
+                        {
+                            item.Location = null;
+                        }
+                        ownerInventoryAction.To.Add(item);
+                        ownerInventoryAction.From.Remove(FromItemSave);
+                    }
 
+                    CharacterController.TryGetCharacter(ownerInventoryAction.FromId, out var FromChar);
+                    FromChar.Inventory.Items = ownerInventoryAction.From;
+                    string id = CharacterController.GetCharacterSessionId(FromChar);
+                    if (id == string.Empty)
+                        Debug.PrintError("From Character Id is not good");
+                    if (CharacterController.IsCharacterScav(FromChar))
+                        SaveHandler.Save(id, "Scav", SaveHandler.GetScavPath(id), JsonHelper.FromCharacterBase(FromChar));
+                    else
+                        SaveHandler.SaveCharacter(id, FromChar);
+                    CharacterController.TryGetCharacter(ownerInventoryAction.ToId, out var ToChar);
+                    ToChar.Inventory.Items = ownerInventoryAction.To;
+                    if (CharacterController.IsCharacterScav(ToChar))
+                        SaveHandler.Save(SessionId, "Scav", SaveHandler.GetScavPath(SessionId), JsonHelper.FromCharacterBase(ToChar));
+                    else
+                        SaveHandler.SaveCharacter(SessionId, ToChar);
+
+                }
+            }
+            else
+            {
+                var item = ownerInventoryAction.From.Find(x => x.Id == moveAction.item);
+                if (item == null)
+                {
+                    changes = AddWarning(changes, $"Unable to move item: {moveAction.item}, cannot find in inventory");
+                    return changes;
+                }
+                if (item.SlotId.Contains("camore_") && moveAction.to.container == "cartridges")
+                    return changes;
+                item.ParentId = moveAction.to.id;
+                item.SlotId = moveAction.to.container;
+                if (moveAction.to.location != null)
+                {
+                    JsonLib.Converters.Location location = new();
+                    int rot = 0;
+                    if (moveAction.to.location.r == "Vertical")
+                        rot = 1;
+                    location.ItemLocation = new()
+                    {
+                        IsSearched = moveAction.to.location.isSearched,
+                        R = rot,
+                        X = moveAction.to.location.x,
+                        Y = moveAction.to.location.y
+                    };
+                    item.Location = location;
+                }
+                else
+                {
+                    item.Location = null;
+                }
+                CharacterController.TryGetCharacter(ownerInventoryAction.FromId, out var FromChar);
+                FromChar.Inventory.Items = ownerInventoryAction.From;
+                if (CharacterController.IsCharacterScav(FromChar))
+                    SaveHandler.Save(SessionId, "Scav", SaveHandler.GetScavPath(SessionId), JsonHelper.FromCharacterBase(FromChar));
+                else
+                    SaveHandler.SaveCharacter(SessionId, FromChar);
+            }
+            return changes;
+        }
+
+        public static ProfileChanges FoldItem(string SessionId, ProfileChanges changes, Inventory.Fold foldAction)
+        {
+            bool IsScav = false;
+            var character = CharacterController.GetPmcCharacter(SessionId);
+            if (foldAction.fromOwner != null && foldAction.fromOwner.type.ToLower() == "profile")
+            {
+                character = CharacterController.GetScavCharacter(SessionId);
+                IsScav = true;
+            }
+            var item = character.Inventory.Items.Find(x => x.Id == foldAction.item);
+
+            item.Upd.Foldable.Folded = foldAction.value;
+
+            if (!IsScav)
+                SaveHandler.SaveCharacter(SessionId, character);
+            else
+            {
+                SaveHandler.Save(SessionId, "Scav", SaveHandler.GetScavPath(SessionId), JsonHelper.FromCharacterBase(character));
+            }
             return changes;
         }
 
 
+
+        public static ProfileChanges AddWarning(ProfileChanges changes, string message, string Code = "0")
+        {
+            changes.warnings.Add(new()
+            {
+                index = 0,
+                errmsg = message,
+                code = Code
+            });
+            return changes;
+        }
+
+        public class OwnerInventoryAction
+        {
+            public List<Item.Base> From;
+            public string FromId;
+            public List<Item.Base> To;
+            public string ToId;
+            public bool IsSameInventory;
+            public bool IsMail;
+
+        }
+
+
+        public static OwnerInventoryAction GetOwnerInventoryAction(string SessionId, BaseInteraction interaction)
+        {
+            var pmc = CharacterController.GetPmcCharacter(SessionId);
+            var scav = CharacterController.GetScavCharacter(SessionId);
+            List<Item.Base> From = pmc.Inventory.Items;
+            string FromId = pmc.Id;
+            List<Item.Base> To = pmc.Inventory.Items;
+            string ToId = pmc.Id;
+            string fromType = "pmc";
+            string toType = "pmc";
+            if (interaction.fromOwner != null)
+            {
+                if (interaction.fromOwner.id == scav.Id)
+                {
+                    FromId = scav.Id;
+                    From = scav.Inventory.Items;
+                    fromType = "scav";
+                }
+                if (interaction.fromOwner.type.ToLower() == "mail")
+                {
+                    FromId = "mail";
+                    //From = Get item from dialog
+                    fromType = "mail";
+                }
+                if (CharacterController.TryGetCharacter(SessionId, out var charbase))
+                {
+                    From = charbase.Inventory.Items;
+                    FromId = charbase.Id;
+                    fromType = "otherCharacter";
+                }
+            }
+            if (interaction.toOwner != null)
+            {
+                if (interaction.toOwner.id == scav.Id)
+                {
+                    To = scav.Inventory.Items;
+                    ToId = scav.Id;
+                    toType = "scav";
+                }
+            }
+
+            return new()
+            { 
+                To = To,
+                From = From,
+                IsSameInventory = (fromType == toType),
+                IsMail = (fromType == "mail"),
+                ToId = ToId,
+                FromId = FromId
+            };
+        }
 
 
         /*

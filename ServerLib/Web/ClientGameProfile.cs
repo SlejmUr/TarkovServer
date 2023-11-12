@@ -1,6 +1,8 @@
-﻿using ModdableWebServer;
+﻿using JsonLib.Classes.Actions;
+using ModdableWebServer;
 using ModdableWebServer.Attributes;
 using NetCoreServer;
+using Newtonsoft.Json;
 using ServerLib.Controllers;
 using ServerLib.Responders;
 using ServerLib.Utilities;
@@ -118,6 +120,28 @@ namespace ServerLib.Web
             string SessionId = serverStruct.Headers.GetSessionId();
             ServerHelper.PrintRequest(request, serverStruct);
             Debug.PrintWarn(ResponseControl.DeCompressReq(request.BodyBytes));
+            var itemEventRouter = JsonConvert.DeserializeObject<ItemEventRouter>(ResponseControl.DeCompressReq(request.BodyBytes));
+            /*
+            var profileChanges = MoveActionController.CreateNew();
+            foreach (var item in itemEventRouter.data)
+            {
+                Debug.PrintWarn(item.ToObject<BaseInteraction>().Action);
+
+                if (item.ToObject<BaseInteraction>().Action == "Move")
+                {
+                    Inventory.Move move = item.ToObject<Inventory.Move>();
+                    if (move != null)
+                    {
+                        Debug.PrintWarn(move.ToString());
+                    }
+                    else
+                    {
+                        Debug.PrintWarn("not worked");
+                    }
+                }
+            }
+            */
+
             string resp = "";
             // RPS
             ServerHelper.SendUnityResponse(request, serverStruct, resp);

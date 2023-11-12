@@ -294,9 +294,6 @@ namespace JsonLib.Classes.ItemRelated
             [JsonProperty("isSearched", DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public bool IsSearched { get; set; }
 
-            [JsonProperty("rotation", DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public bool Rotation { get; set; }
-
         }
 
         public class _SideEffect

@@ -36,8 +36,8 @@ namespace ServerLib.Controllers
                 var characters = val.Characters;
                 if (characters == null)
                     continue;
-                Characters.TryAdd(prof.Key + "_pmc", characters.Pmc);
-                Characters.TryAdd(prof.Key + "_scav", characters.Scav);
+                Characters.TryAdd($"pmc{prof.Key}", characters.Pmc);
+                Characters.TryAdd($"scav{prof.Key}", characters.Scav);
 
             }
         }
@@ -51,8 +51,8 @@ namespace ServerLib.Controllers
             ReloadCharacters();
             if (ProfileController.ProfilesDict.TryGetValue(SessionId, out var profile))
             {
-                Characters.TryAdd(SessionId + "_pmc", profile.Characters.Pmc);
-                Characters.TryAdd(SessionId + "_scav", profile.Characters.Scav);
+                Characters.TryAdd($"pmc{SessionId}", profile.Characters.Pmc);
+                Characters.TryAdd($"scav{SessionId}", profile.Characters.Scav);
             }
         }
 
@@ -95,25 +95,25 @@ namespace ServerLib.Controllers
             SaveHandler.Save(SessionId, "Storage", SaveHandler.GetStoragePath(SessionId), JsonConvert.SerializeObject(storage));
             if (!Characters.ContainsKey(SessionId + "_pmc"))
             {
-                Characters.Add(SessionId + "_pmc", character);
+                Characters.Add(character.Id, character);
             }
             else
             {
-                Characters.Remove(SessionId + "_pmc");
-                Characters.Add(SessionId + "_pmc", character);
+                Characters.Remove(character.Id);
+                Characters.Add(character.Id, character);
             }
 
             //Generate scav
             var scav = Scav.Generate(SessionId);
             SaveHandler.Save(SessionId, "Scav", SaveHandler.GetScavPath(SessionId), JsonHelper.FromCharacterBase(scav));
-            if (!Characters.ContainsKey(SessionId + "_scav"))
+            if (!Characters.ContainsKey(scav.Id))
             {
-                Characters.Add(SessionId + "_scav", scav);
+                Characters.Add(scav.Id, scav);
             }
             else
             {
-                Characters.Remove(SessionId + "_scav");
-                Characters.Add(SessionId + "_scav", scav);
+                Characters.Remove(scav.Id);
+                Characters.Add(scav.Id, scav);
             }
 
             //Item ReID
@@ -123,7 +123,7 @@ namespace ServerLib.Controllers
         public static Character.Base? GetPmcCharacter(string SessionId)
         {
             LoadCharacter(SessionId);
-            if (Characters.TryGetValue(SessionId + "_pmc", out var character))
+            if (Characters.TryGetValue($"pmc{SessionId}", out var character))
             {
                 return character;
             }
@@ -134,7 +134,7 @@ namespace ServerLib.Controllers
         public static Character.Base? GetMiniCharacter(string SessionId)
         {
             LoadCharacter(SessionId);
-            if (Characters.TryGetValue(SessionId + "_pmc", out var character))
+            if (Characters.TryGetValue($"pmc{SessionId}", out var character))
             {
                 return new()
                 {
@@ -156,7 +156,7 @@ namespace ServerLib.Controllers
         public static Character.Base? GetScavCharacter(string SessionId)
         {
             LoadCharacter(SessionId);
-            if (Characters.TryGetValue(SessionId + "_scav", out var character))
+            if (Characters.TryGetValue($"scav{SessionId}", out var character))
             {
                 return character;
             }
@@ -169,21 +169,23 @@ namespace ServerLib.Controllers
             List<Character.Base> ouptut = new();
             if (!AccountController.IsWiped(SessionId))
             {
+                /*
                 var scav = JsonHelper.ToCharacterBase("Files/bot/playerScav.json");
                 scav.Aid = AIDHelper.ToAID(SessionId);
                 scav.Id = "scav" + SessionId;
                 scav.Info.RegistrationDate = TimeHelper.UnixTimeNow_Int();
-                /*
+                */
+                
                 var scav = GetScavCharacter(SessionId);
                 if (scav != null) 
                 {
                     ouptut.Add(scav);
-                }*/
+                }
                 var character = GetPmcCharacter(SessionId);
                 if (character != null)
                 {
                     ouptut.Add(character);
-                    ouptut.Add(scav);
+                    //ouptut.Add(scav);
                 }
 
 
@@ -243,7 +245,7 @@ namespace ServerLib.Controllers
                 return;
             }
 
-            var voices = JsonConvert.DeserializeObject<JsonLib.Classes.Request.Voice>(json);
+            var voices = JsonConvert.DeserializeObject<Voice>(json);
             if (voices == null) { return; }
 
             character.Info.Voice = voices.voice;
@@ -366,6 +368,49 @@ namespace ServerLib.Controllers
                 });
             }
             SaveHandler.SaveCharacter(SessionId, character);
+        }
+
+
+        public static bool TryGetCharacter(string Id, out Character.Base? charbase)
+        {
+            charbase = default;
+            if (Id.Contains("scav") || Id.Contains("pmc"))
+            {
+                return Characters.TryGetValue(Id, out charbase);
+            }
+            else //Auto Fallback to PMC
+            {
+                if (Characters.ContainsKey($"pmc{Id}"))
+                {
+                    charbase = Characters[$"pmc{Id}"];
+                    return true;
+                }
+                else if(Characters.ContainsKey($"scav{Id}"))
+                {
+                    charbase = Characters[$"scav{Id}"];
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public static string GetCharacterSessionId(Character.Base @base)
+        { 
+            if (@base.Id.Contains("pmc"))
+                return @base.Id.Replace("pmc","");
+            if (@base.Id.Contains("scav"))
+                return @base.Id.Replace("scav", "");
+            return string.Empty;
+        }
+
+        public static bool IsCharacterPMC(Character.Base @base)
+        {
+            return @base.Id.Contains("pmc");
+        }
+
+        public static bool IsCharacterScav(Character.Base @base)
+        {
+            return @base.Id.Contains("scav");
         }
     }
 }

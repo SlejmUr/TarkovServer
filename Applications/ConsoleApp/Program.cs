@@ -1,4 +1,6 @@
-﻿using ServerLib.Controllers;
+﻿using JsonLib.Classes.Actions;
+using Newtonsoft.Json;
+using ServerLib.Controllers;
 using ServerLib.Utilities;
 using System.Reflection;
 using System.Text;
@@ -93,15 +95,16 @@ namespace ConsoleApp
             {
                 var assembly = new AssemblyName(args.Name).Name ?? throw new NullReferenceException();
                 Debug.PrintDebug(assembly, "AssemblyResolveEvent");
-                _FileName = Path.Combine(File.ReadAllText("path.txt"), $"{assembly}.dll");
-                /*
-                 * This cannot happen!
-                // resources are embedded inside assembly
-                if (_FileName.Contains("resources"))
+                assembly = assembly.Replace(".resources", "");
+                if (Directory.GetFiles(Directory.GetCurrentDirectory()).Contains(_FileName))
                 {
-                    return null;
-                }*/
-                return Assembly.LoadFrom(_FileName);
+                    Assembly.LoadFrom(_FileName);
+                }
+                else if (Directory.GetFiles(File.ReadAllText("path.txt")).Contains(_FileName))
+                {
+                    Assembly.LoadFrom(_FileName);
+                }
+                return null;
             }
             catch (Exception e)
             {

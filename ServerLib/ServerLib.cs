@@ -63,6 +63,7 @@ namespace ServerLib
                 Directory.CreateDirectory("ServerResponses");
             }
             var sw = Stopwatch.StartNew();
+            Utilities.Debug.PrintInfo(VersionController.GetAll());
             DatabaseController.Init();
             var Ip = ConfigController.Configs.Server.Ip;
             var port = ConfigController.Configs.Server.Port;
