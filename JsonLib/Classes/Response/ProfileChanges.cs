@@ -7,7 +7,7 @@ using Newtonsoft.Json;
 
 namespace JsonLib.Classes.Response
 {
-    public class ProfleChanges
+    public class ProfileChanges
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
         public List<Warning> warnings { get; set; }

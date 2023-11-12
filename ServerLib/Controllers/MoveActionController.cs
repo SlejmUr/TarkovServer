@@ -1,4 +1,6 @@
 ﻿using Newtonsoft.Json;
+using JsonLib.Classes.Response;
+using JsonLib.Classes.Actions;
 
 namespace ServerLib.Controllers
 {
@@ -80,9 +82,26 @@ namespace ServerLib.Controllers
         public class IdCountItems : Id_Count
         {
             public List<Id_Count> items;
-        
+
         }
         #endregion
+
+        public static ProfileChanges CreateNew()
+        {
+            return new()
+            { 
+            
+            
+            };    
+        }
+
+        public static ProfileChanges MoveItem(string SessionId, ProfileChanges changes)
+        {
+
+
+            return changes;
+        }
+
 
 
 

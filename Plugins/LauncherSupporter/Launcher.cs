@@ -4,7 +4,7 @@ using NetCoreServer;
 using Newtonsoft.Json;
 using ServerLib.Controllers;
 using ServerLib.Utilities.Helpers;
-using ServerLib.Json.Classes;
+using JsonLib.Classes.Request;
 
 namespace LauncherSupporter
 {

@@ -4,8 +4,7 @@ using NetCoreServer;
 using Newtonsoft.Json;
 using ServerLib.Controllers;
 using ModdableWebServer.Attributes;
-using ServerLib.Json.Classes;
-using ServerLib.Json;
+using JsonLib.Classes.Request;
 
 namespace LauncherSupporter
 {
