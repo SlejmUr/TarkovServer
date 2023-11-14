@@ -10,7 +10,7 @@
 	
   <ItemGroup>
 	<PackageReference Include="JWT" Version="10.1.1" />
-	<PackageReference Include="System.Composition.AttributedModel" Version="6.0.0" />
+	<PackageReference Include="System.Composition.AttributedModel" Version="8.0.0" />
   </ItemGroup>
 	
   <ItemGroup>
