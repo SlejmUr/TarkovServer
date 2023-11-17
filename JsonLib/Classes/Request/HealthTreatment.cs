@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace JsonLib.Classes.Request
 {
-    public class HealthTreatment : ActionBase
+    public class HealthTreatment : ActionWithTime
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
         public string trader { get; set; }

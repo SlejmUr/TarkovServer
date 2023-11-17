@@ -24,7 +24,9 @@ Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "ServerFiles", "ServerFiles\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LauncherSupporter", "Plugins\LauncherSupporter\LauncherSupporter.csproj", "{683BBC84-33AD-419B-B5C4-A19FBE448C02}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsonLib", "JsonLib\JsonLib.csproj", "{77154809-AC4E-4419-AB8E-06BE86366AD0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JsonLib", "JsonLib\JsonLib.csproj", "{77154809-AC4E-4419-AB8E-06BE86366AD0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BundleSupport", "Plugins\BundleSupport\BundleSupport.csproj", "{5060CFEE-CC9E-42B2-BCB1-02D39088EFC1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -64,6 +66,10 @@ Global
 		{77154809-AC4E-4419-AB8E-06BE86366AD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{77154809-AC4E-4419-AB8E-06BE86366AD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{77154809-AC4E-4419-AB8E-06BE86366AD0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5060CFEE-CC9E-42B2-BCB1-02D39088EFC1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5060CFEE-CC9E-42B2-BCB1-02D39088EFC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5060CFEE-CC9E-42B2-BCB1-02D39088EFC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5060CFEE-CC9E-42B2-BCB1-02D39088EFC1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

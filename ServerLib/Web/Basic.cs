@@ -1,4 +1,5 @@
-﻿using ModdableWebServer;
+﻿
+using ModdableWebServer;
 using ModdableWebServer.Attributes;
 using ModdableWebServer.Helper;
 using NetCoreServer;
@@ -10,6 +11,7 @@ namespace ServerLib.Web
 {
     internal class Basic
     {
+        #if DEBUG
         [HTTP("GET", "/test/{thing}")]
         public static bool TestParam(HttpRequest request, ServerStruct serverStruct)
         {
@@ -27,21 +29,7 @@ namespace ServerLib.Web
             serverStruct.SendResponse();
             return true;
         }
-
-        [HTTP("GET", "/getBundleList")]
-        public static bool GetBundeList(HttpRequest request, ServerStruct serverStruct)
-        {
-            ServerHelper.PrintRequest(request, serverStruct);
-            return ServerHelper.SendUnityResponse(request, serverStruct, Bundle.GetBundles());
-        }
-
-        [HTTP("GET", "/singleplayer/bundles")]
-        public static bool singleplayerGetBundeList(HttpRequest request, ServerStruct serverStruct)
-        {
-            ServerHelper.PrintRequest(request, serverStruct);
-            return ServerHelper.SendUnityResponse(request, serverStruct, Bundle.GetBundles());
-        }
-
+        #endif
         [HTTP("GET", "/ServerInternalIPAddress")]
         public static bool ServerInternalIPAddress(HttpRequest request, ServerStruct serverStruct)
         {

@@ -2,10 +2,8 @@
 
 namespace JsonLib.Classes.Actions
 {
-    public class BaseInteraction
+    public class BaseInteraction : ActionBase
     {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-        public virtual string Action { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
         public virtual OwnerInfo fromOwner { get; set; }

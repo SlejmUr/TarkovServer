@@ -5,7 +5,7 @@ namespace JsonLib.Classes.Actions
     public class OffraidEat : BaseInteraction
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-        public override string Action { get => "Eat"; set => base.Action = "Eat"; }
+        public new string Action { get => "Eat"; set => base.Action = "Eat"; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
         public string item { get; set; }
@@ -21,7 +21,7 @@ namespace JsonLib.Classes.Actions
     public class OffraidHeal : BaseInteraction
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-        public override string Action { get; set; } = "Heal";
+        public new string Action { get; set; } = "Heal";
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
         public string item { get; set; }
@@ -40,7 +40,7 @@ namespace JsonLib.Classes.Actions
     public class Insure : BaseInteraction
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-        public override string Action { get; set; } = "Insure";
+        public new string Action { get; set; } = "Insure";
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
         public string tid { get; set; }

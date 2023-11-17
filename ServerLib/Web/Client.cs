@@ -30,15 +30,6 @@ namespace ServerLib.Web
             return true;
         }
 
-        [HTTP("POST", "/client/WebSocketAddress")]
-        public static bool ClientWebSocketAddress(HttpRequest request, ServerStruct serverStruct)
-        {
-            ServerHelper.PrintRequest(request, serverStruct);
-            string SessionId = serverStruct.Headers.GetSessionId();
-            ServerHelper.SendUnityResponse(request, serverStruct, ServerManager.IpPort_WS + SessionId);
-            return true;
-        }
-
         [HTTP("POST", "/client/notifier/channel/create")]
         public static bool ClientNotifier(HttpRequest request, ServerStruct serverStruct)
         {

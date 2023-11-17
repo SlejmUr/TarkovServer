@@ -5,8 +5,9 @@ using JsonLib.Classes.ProfileRelated;
 using JsonLib.Classes.ItemRelated;
 using ServerLib.Utilities;
 using ServerLib.Handlers;
-using System;
+using Newtonsoft.Json.Linq;
 using JsonLib.Helpers;
+using System;
 
 namespace ServerLib.Controllers
 {
@@ -91,6 +92,12 @@ namespace ServerLib.Controllers
 
         }
         #endregion
+        
+        public static Dictionary<string, Func<string,ProfileChanges, JObject, ProfileChanges>> ItemActions = new()
+        {
+            { "Move", MoveItem },
+            { "Fold", FoldItem }
+        };
 
         public static ProfileChanges CreateNew()
         {
@@ -101,8 +108,9 @@ namespace ServerLib.Controllers
             };
         }
 
-        public static ProfileChanges MoveItem(string SessionId, ProfileChanges changes, Inventory.Move moveAction)
+        public static ProfileChanges MoveItem(string SessionId, ProfileChanges changes, JObject action)
         {
+            Inventory.Move moveAction = action.ToObject<Inventory.Move>();
             if (changes.warnings.Count > 0)
                 return changes;
 
@@ -205,8 +213,9 @@ namespace ServerLib.Controllers
             return changes;
         }
 
-        public static ProfileChanges FoldItem(string SessionId, ProfileChanges changes, Inventory.Fold foldAction)
+        public static ProfileChanges FoldItem(string SessionId, ProfileChanges changes, JObject action)
         {
+            Inventory.Fold foldAction = action.ToObject<Inventory.Fold>();
             bool IsScav = false;
             var character = CharacterController.GetPmcCharacter(SessionId);
             if (foldAction.fromOwner != null && foldAction.fromOwner.type.ToLower() == "profile")

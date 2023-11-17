@@ -4,21 +4,21 @@ namespace JsonLib.Classes.Actions
 {
 
     #region HideoutUpgradeComplete
-    public class HideoutUpgradeComplete : ActionBase
+    public class HideoutUpgradeComplete : ActionWithTime
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
         public int areaType { get; set; }
     }
     #endregion
     #region HideoutContinuousProductionStart
-    public class HideoutContinuousProductionStart : ActionBase
+    public class HideoutContinuousProductionStart : ActionWithTime
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
         public string recipeId { get; set; }
     }
     #endregion
     #region HideoutImproveArea
-    public class HideoutImproveArea : ActionBase
+    public class HideoutImproveArea : ActionWithTime
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
         public string id { get; set; }
@@ -42,7 +42,7 @@ namespace JsonLib.Classes.Actions
     }
     #endregion
     #region HideoutPutItemsInAreaSlots
-    public class HideoutPutItemsInAreaSlots : ActionBase
+    public class HideoutPutItemsInAreaSlots : ActionWithTime
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
         public int areaType { get; set; }
@@ -62,7 +62,7 @@ namespace JsonLib.Classes.Actions
     }
     #endregion
     #region HideoutScavCaseProductionStart
-    public class HideoutScavCaseProductionStart : ActionBase
+    public class HideoutScavCaseProductionStart : ActionWithTime
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
         public string recipeId { get; set; }
@@ -85,7 +85,7 @@ namespace JsonLib.Classes.Actions
     }
     #endregion
     #region HideoutSingleProductionStart
-    public class HideoutSingleProductionStart : ActionBase
+    public class HideoutSingleProductionStart : ActionWithTime
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
         public string recipeId { get; set; }
@@ -105,7 +105,7 @@ namespace JsonLib.Classes.Actions
     }
     #endregion
     #region HideoutTakeItemsFromAreaSlots
-    public class HideoutTakeItemsFromAreaSlots : ActionBase
+    public class HideoutTakeItemsFromAreaSlots : ActionWithTime
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
         public int areaType { get; set; }
@@ -115,14 +115,14 @@ namespace JsonLib.Classes.Actions
     }
     #endregion
     #region HideoutTakeProduction
-    public class HideoutTakeProduction : ActionBase
+    public class HideoutTakeProduction : ActionWithTime
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
         public string recipeId { get; set; }
     }
     #endregion
     #region HideoutToggleArea
-    public class HideoutToggleArea : ActionBase
+    public class HideoutToggleArea : ActionWithTime
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
         public int areaType { get; set; }
@@ -132,7 +132,7 @@ namespace JsonLib.Classes.Actions
     }
     #endregion
     #region HideoutUpgrade
-    public class HideoutUpgrade : ActionBase
+    public class HideoutUpgrade : ActionWithTime
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
         public int areaType { get; set; }
@@ -152,7 +152,7 @@ namespace JsonLib.Classes.Actions
     }
     #endregion
     #region HandleQTEEvent
-    public class HandleQTEEvent : ActionBase
+    public class HandleQTEEvent : ActionWithTime
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
         public List<bool> results { get; set; }

@@ -73,7 +73,7 @@ namespace JsonLib.Classes.Actions
         public class Add : InventoryInteraction
         {
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public override string Action { get; set; } = "Add";
+            public new string Action { get; set; } = "Add";
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public string item { get; set; }
@@ -86,7 +86,7 @@ namespace JsonLib.Classes.Actions
         public class Remove : InventoryInteraction
         {
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public override string Action { get; set; } = "Remove";
+            public new string Action { get; set; } = "Remove";
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public string item { get; set; }
@@ -95,7 +95,7 @@ namespace JsonLib.Classes.Actions
         public class Bind : InventoryInteraction
         {
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public override string Action { get; set; } = "Bind";
+            public new string Action { get; set; } = "Bind";
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public string item { get; set; }
@@ -108,7 +108,7 @@ namespace JsonLib.Classes.Actions
         public class CreateMapMarker : InventoryInteraction
         {
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public override string Action { get; set; } = "CreateMapMarker";
+            public new string Action { get; set; } = "CreateMapMarker";
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public string item { get; set; }
@@ -136,7 +136,7 @@ namespace JsonLib.Classes.Actions
         public class DeleteMapMarker : InventoryInteraction
         {
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public override string Action { get; set; } = "DeleteMapMarker";
+            public new string Action { get; set; } = "DeleteMapMarker";
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public string item { get; set; }
@@ -152,7 +152,7 @@ namespace JsonLib.Classes.Actions
         public class EditMapMarker : InventoryInteraction
         {
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public override string Action { get; set; } = "EditMapMarker";
+            public new string Action { get; set; } = "EditMapMarker";
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public string item { get; set; }
@@ -186,7 +186,7 @@ namespace JsonLib.Classes.Actions
         public class Examine : InventoryInteraction
         {
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public override string Action { get; set; } = "Examine";
+            public new string Action { get; set; } = "Examine";
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public string item { get; set; }
@@ -195,7 +195,7 @@ namespace JsonLib.Classes.Actions
         public class Fold : InventoryInteraction
         {
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public override string Action { get; set; } = "Fold";
+            public new string Action { get; set; } = "Fold";
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public string item { get; set; }
@@ -207,7 +207,7 @@ namespace JsonLib.Classes.Actions
         public class Merge : InventoryInteraction
         {
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public override string Action { get; set; } = "Merge";
+            public new string Action { get; set; } = "Merge";
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public string item { get; set; }
@@ -219,7 +219,7 @@ namespace JsonLib.Classes.Actions
         public class Move : InventoryInteraction
         {
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public override string Action { get; set; } = "Move";
+            public new string Action { get; set; } = "Move";
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public string item { get; set; }
@@ -231,7 +231,7 @@ namespace JsonLib.Classes.Actions
         public class ReadEncyclopedia : InventoryInteraction
         {
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public override string Action { get; set; } = "ReadEncyclopedia";
+            public new string Action { get; set; } = "ReadEncyclopedia";
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public List<string> ids { get; set; }
@@ -241,7 +241,7 @@ namespace JsonLib.Classes.Actions
         public class ApplyInventoryChanges : InventoryInteraction
         {
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public override string Action { get; set; } = "ApplyInventoryChanges";
+            public new string Action { get; set; } = "ApplyInventoryChanges";
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public List<Item.Base> changedItems { get; set; }
@@ -250,7 +250,7 @@ namespace JsonLib.Classes.Actions
         public class Split : InventoryInteraction
         {
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public override string Action { get; set; } = "Split";
+            public new string Action { get; set; } = "Split";
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public string item { get; set; }
@@ -266,7 +266,7 @@ namespace JsonLib.Classes.Actions
         public class Swap : InventoryInteraction
         {
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public override string Action { get; set; } = "Swap";
+            public new string Action { get; set; } = "Swap";
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public string item { get; set; }
@@ -290,7 +290,7 @@ namespace JsonLib.Classes.Actions
         public class Tag : InventoryInteraction
         {
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public override string Action { get; set; } = "Tag";
+            public new string Action { get; set; } = "Tag";
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public string item { get; set; }
@@ -305,7 +305,7 @@ namespace JsonLib.Classes.Actions
         public class Toggle : InventoryInteraction
         {
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public override string Action { get; set; } = "Toggle";
+            public new string Action { get; set; } = "Toggle";
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public string item { get; set; }
@@ -317,7 +317,7 @@ namespace JsonLib.Classes.Actions
         public class Transfer : InventoryInteraction
         {
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public override string Action { get; set; } = "Transfer";
+            public new string Action { get; set; } = "Transfer";
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public string item { get; set; }
@@ -332,7 +332,7 @@ namespace JsonLib.Classes.Actions
         public class OpenRandomLootContainer : InventoryInteraction
         {
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public override string Action { get; set; } = "OpenRandomLootContainer";
+            public new string Action { get; set; } = "OpenRandomLootContainer";
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public string item { get; set; }

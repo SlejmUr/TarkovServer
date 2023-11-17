@@ -119,32 +119,24 @@ namespace ServerLib.Web
             //REQ stuff
             string SessionId = serverStruct.Headers.GetSessionId();
             ServerHelper.PrintRequest(request, serverStruct);
-            Debug.PrintWarn(ResponseControl.DeCompressReq(request.BodyBytes));
-            var itemEventRouter = JsonConvert.DeserializeObject<ItemEventRouter>(ResponseControl.DeCompressReq(request.BodyBytes));
-            /*
+            Debug.PrintDebug(ResponseControl.DeCompressReq(request.BodyBytes));
+            var itemEventRouter = JsonConvert.DeserializeObject<ItemEventRouter>(ResponseControl.DeCompressReq(request.BodyBytes));           
             var profileChanges = MoveActionController.CreateNew();
             foreach (var item in itemEventRouter.data)
             {
-                Debug.PrintWarn(item.ToObject<BaseInteraction>().Action);
-
-                if (item.ToObject<BaseInteraction>().Action == "Move")
+                var action = item.ToObject<ActionBase>().Action;
+                Debug.PrintInfo(action);
+                if (MoveActionController.ItemActions.TryGetValue(action, out var func))
                 {
-                    Inventory.Move move = item.ToObject<Inventory.Move>();
-                    if (move != null)
-                    {
-                        Debug.PrintWarn(move.ToString());
-                    }
-                    else
-                    {
-                        Debug.PrintWarn("not worked");
-                    }
+                    profileChanges = func(SessionId, profileChanges, item);
+                }
+                else
+                {
+                    Debug.PrintWarn("Item Moving not exist!" + action);
                 }
             }
-            */
-
-            string resp = "";
-            // RPS
-            ServerHelper.SendUnityResponse(request, serverStruct, resp);
+            
+            ServerHelper.SendUnityResponse(request, serverStruct, JsonConvert.SerializeObject(profileChanges));
             return true;
         }
 
@@ -156,7 +148,7 @@ namespace ServerLib.Web
             ServerHelper.PrintRequest(request, serverStruct);
             if (request.BodyBytes.Length == 0)
             {
-
+                //some multiplayer shit? idk it was time when i did see this
             }
             else
             {
