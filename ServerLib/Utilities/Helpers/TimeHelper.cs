@@ -10,8 +10,7 @@
 
         public static int UnixTimeNow_Int()
         {
-            var timeSpan = DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0);
-            return (int)timeSpan.TotalSeconds;
+            return (int)UnixTimeNow();
         }
 
         public static string GetTime()

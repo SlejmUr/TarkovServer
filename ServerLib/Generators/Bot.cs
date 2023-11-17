@@ -51,19 +51,19 @@ namespace ServerLib.Generators
         {
             try
             {
-                var name = MathHelper.GetRandomArray(type.firstName) + MathHelper.GetRandomArray(type.lastName);
+                var name = RandomHelper.GetArrayValue(type.firstName) + RandomHelper.GetArrayValue(type.lastName);
                 int lvl = 0;
                 bot.Info.Nickname = name;
                 bot.Info.Experience = lvl;
                 bot.Info.Level = lvl;
-                bot.Info.Settings.Experience = MathHelper.GetRandomDoubleInt(type.experience.reward.Min, type.experience.reward.Max);
-                bot.Info.Voice = MathHelper.GetRandomArray(type.appearance.voice);
+                bot.Info.Settings.Experience = RandomHelper.GetRandomDoubleInt(type.experience.reward.Min, type.experience.reward.Max);
+                bot.Info.Voice = RandomHelper.GetArrayValue(type.appearance.voice);
                 bot.Health = GenerateHealth(type.health, botGeneration.IsPlayerScav);
                 bot.Skills = GenerateSkills(type.skills);
-                bot.Customization.Head = MathHelper.GetRandomArray(type.appearance.head);
-                bot.Customization.Body = MathHelper.GetRandomArray(type.appearance.body.Keys.ToList());
-                bot.Customization.Feet = MathHelper.GetRandomArray(type.appearance.feet.Keys.ToList());
-                bot.Customization.Hands = MathHelper.GetRandomArray(type.appearance.hands);
+                bot.Customization.Head = RandomHelper.GetArrayValue(type.appearance.head);
+                bot.Customization.Body = RandomHelper.GetArrayValue(type.appearance.body.Keys.ToList());
+                bot.Customization.Feet = RandomHelper.GetArrayValue(type.appearance.feet.Keys.ToList());
+                bot.Customization.Hands = RandomHelper.GetArrayValue(type.appearance.hands);
                 bot.Inventory = GenerateInventoryBasic();
 
                 bot = GenerateNewID(bot);
@@ -115,7 +115,7 @@ namespace ServerLib.Generators
                 BaseSkill baseSkill = new()
                 {
                     Id = item,
-                    Progress = MathHelper.GetRandomDoubleInt(skill.min, skill.max)
+                    Progress = RandomHelper.GetRandomDoubleInt(skill.min, skill.max)
                 };
 
                 if (IsCommon)
@@ -140,17 +140,17 @@ namespace ServerLib.Generators
                 UpdateTime = TimeHelper.UnixTimeNow_Int(),
                 Energy = new()
                 {
-                    Current = MathHelper.GetRandomDoubleInt(botHealth.Energy.Min, botHealth.Energy.Max),
+                    Current = RandomHelper.GetRandomDoubleInt(botHealth.Energy.Min, botHealth.Energy.Max),
                     Maximum = botHealth.Energy.Max
                 },
                 Hydration = new()
                 {
-                    Current = MathHelper.GetRandomDoubleInt(botHealth.Hydration.Min, botHealth.Hydration.Max),
+                    Current = RandomHelper.GetRandomDoubleInt(botHealth.Hydration.Min, botHealth.Hydration.Max),
                     Maximum = botHealth.Hydration.Max
                 },
                 Temperature = new()
                 {
-                    Current = MathHelper.GetRandomDoubleInt(botHealth.Temperature.Min, botHealth.Temperature.Max),
+                    Current = RandomHelper.GetRandomDoubleInt(botHealth.Temperature.Min, botHealth.Temperature.Max),
                     Maximum = botHealth.Temperature.Max
                 },
                 BodyParts = new()
@@ -159,7 +159,7 @@ namespace ServerLib.Generators
                     {
                         Health = new()
                         {
-                            Current = MathHelper.GetRandomDoubleInt(bodyPart.Chest.Min, bodyPart.Chest.Max),
+                            Current = RandomHelper.GetRandomDoubleInt(bodyPart.Chest.Min, bodyPart.Chest.Max),
                             Maximum = Math.Round(bodyPart.Chest.Max)
                         }
                     },
@@ -167,7 +167,7 @@ namespace ServerLib.Generators
                     {
                         Health = new()
                         {
-                            Current = MathHelper.GetRandomDoubleInt(bodyPart.Stomach.Min, bodyPart.Stomach.Max),
+                            Current = RandomHelper.GetRandomDoubleInt(bodyPart.Stomach.Min, bodyPart.Stomach.Max),
                             Maximum = Math.Round(bodyPart.Stomach.Max)
                         }
                     },
@@ -175,7 +175,7 @@ namespace ServerLib.Generators
                     {
                         Health = new()
                         {
-                            Current = MathHelper.GetRandomDoubleInt(bodyPart.Head.Min, bodyPart.Head.Max),
+                            Current = RandomHelper.GetRandomDoubleInt(bodyPart.Head.Min, bodyPart.Head.Max),
                             Maximum = Math.Round(bodyPart.Head.Max)
                         }
                     },
@@ -183,7 +183,7 @@ namespace ServerLib.Generators
                     {
                         Health = new()
                         {
-                            Current = MathHelper.GetRandomDoubleInt(bodyPart.LeftArm.Min, bodyPart.LeftArm.Max),
+                            Current = RandomHelper.GetRandomDoubleInt(bodyPart.LeftArm.Min, bodyPart.LeftArm.Max),
                             Maximum = Math.Round(bodyPart.LeftArm.Max)
                         }
                     },
@@ -191,7 +191,7 @@ namespace ServerLib.Generators
                     {
                         Health = new()
                         {
-                            Current = MathHelper.GetRandomDoubleInt(bodyPart.LeftLeg.Min, bodyPart.LeftLeg.Max),
+                            Current = RandomHelper.GetRandomDoubleInt(bodyPart.LeftLeg.Min, bodyPart.LeftLeg.Max),
                             Maximum = Math.Round(bodyPart.LeftLeg.Max)
                         }
                     },
@@ -199,7 +199,7 @@ namespace ServerLib.Generators
                     {
                         Health = new()
                         {
-                            Current = MathHelper.GetRandomDoubleInt(bodyPart.RightArm.Min, bodyPart.RightArm.Max),
+                            Current = RandomHelper.GetRandomDoubleInt(bodyPart.RightArm.Min, bodyPart.RightArm.Max),
                             Maximum = Math.Round(bodyPart.RightArm.Max)
                         }
                     },
@@ -207,7 +207,7 @@ namespace ServerLib.Generators
                     {
                         Health = new()
                         {
-                            Current = MathHelper.GetRandomDoubleInt(bodyPart.RightLeg.Min, bodyPart.RightLeg.Max),
+                            Current = RandomHelper.GetRandomDoubleInt(bodyPart.RightLeg.Min, bodyPart.RightLeg.Max),
                             Maximum = Math.Round(bodyPart.RightLeg.Max)
                         }
                     }

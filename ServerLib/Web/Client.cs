@@ -145,7 +145,6 @@ namespace ServerLib.Web
         public static bool ClientHandbookTemplates(HttpRequest request, ServerStruct serverStruct)
         {
             ServerHelper.PrintRequest(request, serverStruct);
-            string SessionId = serverStruct.Headers.GetSessionId();
             string resp = ResponseControl.GetBody(JsonConvert.SerializeObject(DatabaseController.DataBase.Others.Templates));
             ServerHelper.SendUnityResponse(request, serverStruct, resp);
             return true;

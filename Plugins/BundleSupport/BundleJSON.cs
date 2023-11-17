@@ -15,6 +15,16 @@
                 DependencyKeys = dependencyKeys;
             }
         }
+
+        internal class BundleManifest
+        {
+            public class Bundle
+            {
+                public string key { get; set; }
+                public string[] dependencyKeys { get; }
+            }
+            public Bundle[] manifest;
+        }
         /*
         {
            "key": "MYMOD/BUNDLE1.bundle",

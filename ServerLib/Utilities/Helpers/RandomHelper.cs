@@ -12,5 +12,12 @@
             Random random = new();
             return random.Next(min, max);
         }
+
+        public static int GetRandomDoubleInt(double min = 0, double max = 100)
+        {
+            int imin = (int)min;
+            int imax = (int)max;
+            return GetRandomInt(imin, imax);
+        }
     }
 }

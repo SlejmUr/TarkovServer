@@ -13,7 +13,9 @@ namespace ServerLib.Controllers
         /// </summary>
         public static void Init()
         {
-            RebuildFromBaseConfigs();
+            if (Handlers.ArgumentHandler.ReloadAllConfigs)
+                RebuildFromBaseConfigs();
+            LoadConfigs();
             if (Configs.Server.ServerIPs.Enable)
                 Debug.PrintWarn("This function is not working! Please disable it!","CONFIG");
             Debug.PrintInfo("Initialization Done!", "CONFIG");
@@ -27,40 +29,40 @@ namespace ServerLib.Controllers
             RefreshConfigFromBase("server");
             RefreshConfigFromBase("gameplay");
             RefreshConfigFromBase("custom");
-            RefreshConfigFromBase("plugin");
+            RefreshConfigFromBase("plugin"); 
+        }
+
+
+        public static void LoadConfigs()
+        {
             string[] dirs = Directory.GetFiles("Files/configs");
             foreach (string dir in dirs)
             {
-
                 if (File.Exists(dir))
                 {
                     string dataraw = File.ReadAllText(dir);
-                    if (dataraw != null && dataraw != "")
+                    var dir_1 = dir.Replace("Files/configs\\", "").Replace(".json", "");
+                    switch (dir_1)
                     {
-                        var dir_1 = dir.Replace("Files/configs\\", "");
-                        dir_1 = dir_1.Replace(".json", "");
-                        switch (dir_1)
-                        {
-                            case "server":
-                                Configs.Server = JsonConvert.DeserializeObject<ServerConfig.Base>(dataraw)!;
-                                break;
-                            case "gameplay":
-                                Configs.Gameplay = JsonConvert.DeserializeObject<GameplayConfig.Base>(dataraw)!;
-                                break;
-                            case "custom":
-                                Configs.CustomSettings = JsonConvert.DeserializeObject<CustomConfig.Base>(dataraw)!;
-                                break;
-                            case "plugin":
-                                Configs.Plugins = JsonConvert.DeserializeObject<List<BaseConfig.Plugin>>(dataraw)!;
-                                break;
-                            default:
-                                break;
-                        }
-
+                        case "server":
+                            Configs.Server = JsonConvert.DeserializeObject<ServerConfig.Base>(dataraw)!;
+                            break;
+                        case "gameplay":
+                            Configs.Gameplay = JsonConvert.DeserializeObject<GameplayConfig.Base>(dataraw)!;
+                            break;
+                        case "custom":
+                            Configs.CustomSettings = JsonConvert.DeserializeObject<CustomConfig.Base>(dataraw)!;
+                            break;
+                        case "plugin":
+                            Configs.Plugins = JsonConvert.DeserializeObject<List<BaseConfig.Plugin>>(dataraw)!;
+                            break;
+                        default:
+                            break;
                     }
                 }
             }
         }
+
 
         public static void Save()
         {
@@ -85,10 +87,7 @@ namespace ServerLib.Controllers
 
             if (File.Exists($"Files/configs/{configname}.json"))
             {
-                if (Handlers.ArgumentHandler.ReloadAllConfigs)
-                {
-                    File.WriteAllText($"Files/configs/{configname}.json", configbase);
-                }
+                File.WriteAllText($"Files/configs/{configname}.json", configbase);
             }
         }
     }

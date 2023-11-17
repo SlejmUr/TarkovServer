@@ -1,4 +1,5 @@
 ﻿using BundleSupport;
+using ServerLib.Controllers;
 using ServerLib.Utilities;
 using ServerLib.Web;
 using System.Composition;
@@ -28,9 +29,11 @@ namespace Plugin
 
         public void Initialize()
         {
-            BundleManager.LoadAllBundles();
+            BundleManager.LoadAllBundles("nothing");
             var assembly = this.GetType().Assembly;
             ServerManager.AddRoutes(assembly);
+            CommandsController.Commands.Add("reloadbundle", BundleManager.LoadAllBundles);
+            CommandsController.CommandsPermission.Add("reloadbundle", JsonLib.Enums.EPerms.Mod);
         }
         public void ShutDown()
         {

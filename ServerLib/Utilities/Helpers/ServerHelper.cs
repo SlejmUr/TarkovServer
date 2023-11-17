@@ -19,7 +19,6 @@ namespace ServerLib.Utilities.Helpers
 
         public static bool SendUnityResponse(ServerStruct serverStruct, byte[] resp)
         {
-            string SessionId = serverStruct.Headers.GetSessionId();
             ResponseCreator response = new();
             response.SetHeader("Content-Type", "application/json");
             response.SetBody(resp);
