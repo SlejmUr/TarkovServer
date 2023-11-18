@@ -1,4 +1,6 @@
-﻿namespace ServerLib.Utilities.Helpers
+﻿using static System.Net.Mime.MediaTypeNames;
+
+namespace ServerLib.Utilities.Helpers
 {
     public static class HeadersHelper
     {
@@ -33,6 +35,17 @@
                 return Version;
             }
             return "";
+        }
+
+        public static uint GetCRC(this Dictionary<string, string> HttpHeaders)
+        {
+            if (HttpHeaders.ContainsKey("if-none-match"))
+            {
+                var crc = HttpHeaders["if-none-match"];
+                crc = crc.Replace("\"", "");
+                return Convert.ToUInt32(crc);
+            }
+            return 0;
         }
     }
 }

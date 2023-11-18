@@ -62,6 +62,19 @@ namespace ServerLib.Handlers
             Debug.PrintInfo("Saving ended!", "SAVE");
         }
 
+
+        /// <summary>
+        ///  A separate function for only saving scav
+        /// </summary>
+        /// <param name="SessionId">SessionId/AccountId</param>
+        /// <param name="character">Character</param>
+        public static void SaveScav(string SessionId, Character.Base character)
+        {
+            Debug.PrintInfo("Saving started...", "SAVE");
+            Save(SessionId, "Scav", GetScavPath(SessionId), JsonHelper.FromCharacterBase(character));
+            Debug.PrintInfo("Saving ended!", "SAVE");
+        }
+
         /// <summary>
         /// Saving by parameters
         /// </summary>

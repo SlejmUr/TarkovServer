@@ -24,7 +24,14 @@ namespace ServerLib.Utilities.Helpers
             response.SetBody(resp);
             serverStruct.Response = response.GetResponse();
             serverStruct.SendResponse();
-            Debug.PrintDebug("WE SENT UNITY RESPONSE!");
+            return true;
+        }
+
+        public static bool SendNotModifiedResponse(ServerStruct serverStruct)
+        {
+            ResponseCreator response = new(304);
+            serverStruct.Response = response.GetResponse();
+            serverStruct.SendResponse();
             return true;
         }
 

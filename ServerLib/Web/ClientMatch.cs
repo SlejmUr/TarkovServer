@@ -24,7 +24,7 @@ namespace ServerLib.Web
             match.matchData.Location = "factory4_day";
             match.matchData.RaidMode = ERaidMode.Online;
             MatchController.Matches[match.matchData.MatchId] = match.matchData;
-            MatchController.SendStart(match.matchData.MatchId, "192.168.1.50", 7000);
+            MatchController.SendStart(match.matchData.MatchId, "192.168.1.50", 7777);
             ServerHelper.SendUnityResponse(request, serverStruct, rsp);
             return true;
         }
@@ -72,14 +72,14 @@ namespace ServerLib.Web
             var sessionId = serverStruct.Headers.GetSessionId();
             var jsonreq = JsonConvert.DeserializeObject<StartGameReq>(ResponseControl.DeCompressReq(request.BodyBytes));
             ArgumentNullException.ThrowIfNull(jsonreq);
-            MatchController.SendStart(jsonreq.groupId, "192.168.1.50", 7000);
+            MatchController.SendStart(jsonreq.groupId, "192.168.1.50", 7777);
             var match = MatchController.GetMatch(sessionId);
             JoinMatch join = new()
             {
                 ProfileId = sessionId,
                 IpAddress = "192.168.1.50",
                 LocationId = match.matchData.Location,
-                Port = 7000
+                Port = 7777
             };
             //var rsp = ResponseControl.NullResponse();
             var rsp = ResponseControl.GetBody(JsonConvert.SerializeObject(join));

@@ -3,11 +3,11 @@ using ModdableWebServer.Attributes;
 using NetCoreServer;
 using Newtonsoft.Json;
 using ServerLib.Controllers;
-using ServerLib.Utilities;
 using ServerLib.Utilities.Helpers;
 using ServerLib.Responders;
 using JsonLib.Classes.Request;
 using static JsonLib.Classes.ProfileRelated.Profile;
+using System.Text;
 
 namespace ServerLib.Web
 {
@@ -17,7 +17,16 @@ namespace ServerLib.Web
         public static bool ClientCheckVersion(HttpRequest request, ServerStruct serverStruct)
         {
             ServerHelper.PrintRequest(request, serverStruct);
-            ServerHelper.SendUnityResponse(request, serverStruct, ClientRespond.GetVersion(serverStruct));
+            string SessionId = serverStruct.Headers.GetSessionId();
+            uint crc = serverStruct.Headers.GetCRC();
+            var ifMatch = CRCHelper.CheckIfCRCMatch($"{request.Url}_{SessionId}", crc);
+            if (ifMatch)
+            {
+                ServerHelper.SendNotModifiedResponse(serverStruct);
+                return true;
+            }
+            var resp = ClientRespond.GetVersion(request, serverStruct);
+            ServerHelper.SendUnityResponse(request, serverStruct, resp);
             return true;
         }
 
@@ -35,8 +44,18 @@ namespace ServerLib.Web
         {
             ServerHelper.PrintRequest(request, serverStruct);
             string SessionId = serverStruct.Headers.GetSessionId();
-            string resp = ResponseControl.GetBody(JsonConvert.SerializeObject(ResponseControl.GetNotifier(SessionId)));
-            ServerHelper.SendUnityResponse(request, serverStruct, resp); ;
+            uint crc = serverStruct.Headers.GetCRC();
+            var ifMatch = CRCHelper.CheckIfCRCMatch($"{request.Url}_{SessionId}", crc);
+            if (ifMatch)
+            {
+                ServerHelper.SendNotModifiedResponse(serverStruct);
+                return true;
+            }
+            var rsp = JsonConvert.SerializeObject(ResponseControl.GetNotifier(SessionId));
+            var hash = CRCHelper.Compute(Encoding.UTF8.GetBytes(rsp));
+            CRCHelper.URL_CRC.Add($"{request.Url}_{SessionId}", hash);
+            var resp =  ResponseControl.GetBodyCRC(rsp, 0, "null", hash);
+            ServerHelper.SendUnityResponse(request, serverStruct, resp);
             return true;
         }
 
@@ -44,7 +63,15 @@ namespace ServerLib.Web
         public static bool ClientChatServerList(HttpRequest request, ServerStruct serverStruct)
         {
             ServerHelper.PrintRequest(request, serverStruct);
-            ServerHelper.SendUnityResponse(request, serverStruct, ClientRespond.GetChatServerList());
+            string SessionId = serverStruct.Headers.GetSessionId();
+            uint crc = serverStruct.Headers.GetCRC();
+            var ifMatch = CRCHelper.CheckIfCRCMatch($"{request.Url}_{SessionId}", crc);
+            if (ifMatch)
+            {
+                ServerHelper.SendNotModifiedResponse(serverStruct);
+                return true;
+            }
+            ServerHelper.SendUnityResponse(request, serverStruct, ClientRespond.GetChatServerList(request, serverStruct));
             return true;
         }
 
@@ -52,7 +79,15 @@ namespace ServerLib.Web
         public static bool ClientServerList(HttpRequest request, ServerStruct serverStruct)
         {
             ServerHelper.PrintRequest(request, serverStruct);
-            ServerHelper.SendUnityResponse(request, serverStruct, ClientRespond.GetServerList());
+            string SessionId = serverStruct.Headers.GetSessionId();
+            uint crc = serverStruct.Headers.GetCRC();
+            var ifMatch = CRCHelper.CheckIfCRCMatch($"{request.Url}_{SessionId}", crc);
+            if (ifMatch)
+            {
+                ServerHelper.SendNotModifiedResponse(serverStruct);
+                return true;
+            }
+            ServerHelper.SendUnityResponse(request, serverStruct, ClientRespond.GetServerList(request, serverStruct));
             return true;
         }
 
@@ -60,7 +95,15 @@ namespace ServerLib.Web
         public static bool ClientQuestList(HttpRequest request, ServerStruct serverStruct)
         {
             ServerHelper.PrintRequest(request, serverStruct);
-            ServerHelper.SendUnityResponse(request, serverStruct, ClientRespond.GetQuests());
+            string SessionId = serverStruct.Headers.GetSessionId();
+            uint crc = serverStruct.Headers.GetCRC();
+            var ifMatch = CRCHelper.CheckIfCRCMatch($"{request.Url}_{SessionId}", crc);
+            if (ifMatch)
+            {
+                ServerHelper.SendNotModifiedResponse(serverStruct);
+                return true;
+            }
+            ServerHelper.SendUnityResponse(request, serverStruct, ClientRespond.GetQuests(request, serverStruct));
             return true;
         }
 
@@ -68,7 +111,18 @@ namespace ServerLib.Web
         public static bool ClientItems(HttpRequest request, ServerStruct serverStruct)
         {
             ServerHelper.PrintRequest(request, serverStruct);
-            string resp = ResponseControl.GetBody(File.ReadAllText("Files/others/items.json"));
+            string SessionId = serverStruct.Headers.GetSessionId();
+            uint crc = serverStruct.Headers.GetCRC();
+            var ifMatch = CRCHelper.CheckIfCRCMatch($"{request.Url}_{SessionId}", crc);
+            if (ifMatch)
+            {
+                ServerHelper.SendNotModifiedResponse(serverStruct);
+                return true;
+            }
+            var rsp = File.ReadAllText("Files/others/items.json");
+            var hash = CRCHelper.Compute(Encoding.UTF8.GetBytes(rsp));
+            CRCHelper.URL_CRC.Add($"{request.Url}_{SessionId}", hash);
+            var resp = ResponseControl.GetBodyCRC(rsp, 0, "null", hash);
             ServerHelper.SendUnityResponse(request, serverStruct, resp);
             return true;
         }
@@ -77,7 +131,18 @@ namespace ServerLib.Web
         public static bool ClientCustomization(HttpRequest request, ServerStruct serverStruct)
         {
             ServerHelper.PrintRequest(request, serverStruct);
-            string resp = ResponseControl.GetBody(File.ReadAllText("Files/others/customization.json"));
+            string SessionId = serverStruct.Headers.GetSessionId();
+            uint crc = serverStruct.Headers.GetCRC();
+            var ifMatch = CRCHelper.CheckIfCRCMatch($"{request.Url}_{SessionId}", crc);
+            if (ifMatch)
+            {
+                ServerHelper.SendNotModifiedResponse(serverStruct);
+                return true;
+            }
+            var rsp = File.ReadAllText("Files/others/customization.json");
+            var hash = CRCHelper.Compute(Encoding.UTF8.GetBytes(rsp));
+            CRCHelper.URL_CRC.Add($"{request.Url}_{SessionId}", hash);
+            var resp = ResponseControl.GetBodyCRC(rsp, 0, "null", hash);
             ServerHelper.SendUnityResponse(request, serverStruct, resp);
             return true;
         }
@@ -85,8 +150,19 @@ namespace ServerLib.Web
         [HTTP("POST", "/client/globals")]
         public static bool ClientGlobals(HttpRequest request, ServerStruct serverStruct)
         {
-            ServerHelper.PrintRequest(request, serverStruct);
-            var rsp = ResponseControl.GetBody(File.ReadAllText("Files/static/globals.json"));
+            ServerHelper.PrintRequest(request, serverStruct); 
+            string SessionId = serverStruct.Headers.GetSessionId();
+            uint crc = serverStruct.Headers.GetCRC();
+            var ifMatch = CRCHelper.CheckIfCRCMatch($"{request.Url}_{SessionId}", crc);
+            if (ifMatch)
+            {
+                ServerHelper.SendNotModifiedResponse(serverStruct);
+                return true;
+            }
+            var rsp = File.ReadAllText("Files/static/globals.json");
+            var hash = CRCHelper.Compute(Encoding.UTF8.GetBytes(rsp));
+            CRCHelper.URL_CRC.Add($"{request.Url}_{SessionId}", hash);
+            var resp = ResponseControl.GetBodyCRC(rsp, 0, "null", hash);
             ServerHelper.SendUnityResponse(request, serverStruct, rsp);
             return true;
         }
@@ -95,7 +171,18 @@ namespace ServerLib.Web
         public static bool ClientSettings(HttpRequest request, ServerStruct serverStruct)
         {
             ServerHelper.PrintRequest(request, serverStruct);
+            string SessionId = serverStruct.Headers.GetSessionId();
+            uint crc = serverStruct.Headers.GetCRC();
+            var ifMatch = CRCHelper.CheckIfCRCMatch($"{request.Url}_{SessionId}", crc);
+            if (ifMatch)
+            {
+                ServerHelper.SendNotModifiedResponse(serverStruct);
+                return true;
+            }
             var rsp = File.ReadAllText("Files/static/client.settings.json");
+            var hash = CRCHelper.Compute(Encoding.UTF8.GetBytes(rsp));
+            CRCHelper.URL_CRC.Add($"{request.Url}_{SessionId}", hash);
+            var resp = ResponseControl.GetBodyCRC(rsp, 0, "null", hash);
             ServerHelper.SendUnityResponse(request, serverStruct, rsp);
             return true;
         }

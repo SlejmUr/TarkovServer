@@ -44,8 +44,8 @@ namespace JsonLib
         [JsonConstructor]
         public MongoID([JsonProperty("$value")] string id)
         {
-            this._timeStamp = MongoID.ConvertTimeStamp(id);
-            this._counter = MongoID.ConvertCounter(id);
+            this._timeStamp = ConvertTimeStamp(id);
+            this._counter = ConvertCounter(id);
             this._stringID = id;
             this.method_0();
         }
@@ -66,23 +66,23 @@ namespace JsonLib
             this._stringID = null;
             if (newProcessId)
             {
-                this._counter = MongoID.Counter << 24;
+                this._counter = Counter << 24;
             }
             else
             {
-                MongoID._newIdCounter += 1U;
-                this._counter = (MongoID._processId << 24) + (ulong)MongoID._newIdCounter;
+                _newIdCounter += 1U;
+                this._counter = (_processId << 24) + (ulong)_newIdCounter;
             }
-            this._timeStamp = MongoID.TimeStamp;
+            this._timeStamp = TimeStamp;
             this._stringID = this.GetString();
         }
 
         public MongoID(Character.Base profile)
         {
             this._stringID = null;
-            this._timeStamp = MongoID.TimeStamp;
+            this._timeStamp = TimeStamp;
             uint num = Convert.ToUInt32(profile.Aid);
-            uint num2 = Convert.ToUInt32(MongoID._random.Next(0, 16777215));
+            uint num2 = Convert.ToUInt32(_random.Next(0, 16777215));
             this._counter = (4294967296UL | (ulong)num);
             this._counter <<= 24;
             this._counter |= (ulong)num2;
@@ -91,7 +91,7 @@ namespace JsonLib
 
         private MongoID(MongoID source, int increment, bool newTimestamp)
         {
-            this._timeStamp = (newTimestamp ? MongoID.TimeStamp : source._timeStamp);
+            this._timeStamp = (newTimestamp ? TimeStamp : source._timeStamp);
             this._counter = ((increment > 0) ? (source._counter + (ulong)Convert.ToUInt32(increment)) : (source._counter - (ulong)Convert.ToUInt32(Math.Abs(increment))));
             this._stringID = null;
             this._stringID = this.GetString();
@@ -146,7 +146,7 @@ namespace JsonLib
 
         private string GetString()
         {
-            return MongoID.generate(this._timeStamp, this._counter);
+            return generate(this._timeStamp, this._counter);
         }
 
         public override string ToString()
@@ -168,7 +168,7 @@ namespace JsonLib
             return array;
         }
 
-        public override bool Equals(object obj)
+        public override bool Equals(object? obj)
         {
             if (obj != null)
             {
@@ -242,8 +242,8 @@ namespace JsonLib
         {
             return a == b || a < b;
         }
-        private static System.Random _random = new System.Random();
-        private static readonly ulong _processId = MongoID.Counter;
+        private static Random _random = new Random();
+        private static readonly ulong _processId = Counter;
         private static uint _newIdCounter;
         private readonly uint _timeStamp;
         private readonly ulong _counter;

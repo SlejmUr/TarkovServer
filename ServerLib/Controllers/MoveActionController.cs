@@ -160,13 +160,13 @@ namespace ServerLib.Controllers
                     if (id == string.Empty)
                         Debug.PrintError("From Character Id is not good");
                     if (CharacterController.IsCharacterScav(FromChar))
-                        SaveHandler.Save(id, "Scav", SaveHandler.GetScavPath(id), JsonHelper.FromCharacterBase(FromChar));
+                        SaveHandler.SaveScav(SessionId, FromChar);
                     else
                         SaveHandler.SaveCharacter(id, FromChar);
                     CharacterController.TryGetCharacter(ownerInventoryAction.ToId, out var ToChar);
                     ToChar.Inventory.Items = ownerInventoryAction.To;
                     if (CharacterController.IsCharacterScav(ToChar))
-                        SaveHandler.Save(SessionId, "Scav", SaveHandler.GetScavPath(SessionId), JsonHelper.FromCharacterBase(ToChar));
+                        SaveHandler.SaveScav(SessionId, ToChar);
                     else
                         SaveHandler.SaveCharacter(SessionId, ToChar);
 
@@ -206,7 +206,7 @@ namespace ServerLib.Controllers
                 CharacterController.TryGetCharacter(ownerInventoryAction.FromId, out var FromChar);
                 FromChar.Inventory.Items = ownerInventoryAction.From;
                 if (CharacterController.IsCharacterScav(FromChar))
-                    SaveHandler.Save(SessionId, "Scav", SaveHandler.GetScavPath(SessionId), JsonHelper.FromCharacterBase(FromChar));
+                    SaveHandler.SaveScav(SessionId, FromChar);
                 else
                     SaveHandler.SaveCharacter(SessionId, FromChar);
             }
@@ -230,9 +230,7 @@ namespace ServerLib.Controllers
             if (!IsScav)
                 SaveHandler.SaveCharacter(SessionId, character);
             else
-            {
-                SaveHandler.Save(SessionId, "Scav", SaveHandler.GetScavPath(SessionId), JsonHelper.FromCharacterBase(character));
-            }
+                SaveHandler.SaveScav(SessionId, character);
             return changes;
         }
 
