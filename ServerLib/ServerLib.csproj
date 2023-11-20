@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -22,7 +22,7 @@
 	<ItemGroup>
 		<PackageReference Include="L" Version="5.0.0" />
 		<PackageReference Include="ModdableWebServer" Version="1.1.1" />
-		<PackageReference Include="NetCoreServer" Version="6.7.0" />
+		<PackageReference Include="NetCoreServer" Version="8.0.3" />
 	</ItemGroup>
 	<ItemGroup>
 	  <ProjectReference Include="..\JsonLib\JsonLib.csproj" />
