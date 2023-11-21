@@ -252,27 +252,6 @@ namespace ServerLib.Controllers
             SaveHandler.Save(SessionId, "Character", SaveHandler.GetCharacterPath(SessionId), JsonConvert.SerializeObject(character));
         }
 
-        public static string GetStashType(string SessionId)
-        {
-            var character = GetPmcCharacter(SessionId);
-            if (character == null)
-            {
-                Debug.PrintWarn($"Character not found, check if {SessionId} is correct", "GetStashType");
-                return "";
-            }
-
-            foreach (var item in character.Inventory.Items)
-            {
-                if (item.Id == character.Inventory.Stash)
-                {
-                    return item.Tpl;
-                }
-            }
-
-            Debug.PrintError($"No stash found where stash ID is: {character.Inventory.Stash}");
-            return "";
-        }
-
         public static void RaidKilled(string json, string SessionId)
         {
             var raidKilled = JsonConvert.DeserializeObject<Dictionary<string, object>>(json);
@@ -281,11 +260,7 @@ namespace ServerLib.Controllers
             if (raidKilled["killedByAID"] != null && raidKilled["killedByAID"].ToString() == SessionId)
             {
                 var character = GetPmcCharacter(SessionId);
-                if (character == null)
-                {
-                    Debug.PrintWarn($"Character not found, check if {SessionId} is correct", "RaidKilled");
-                    return;
-                }
+                ArgumentNullException.ThrowIfNull(character);
 
                 if (raidKilled["diedFaction"].ToString() == "Savage" || raidKilled["diedFaction"].ToString() == "Scav")
                 {
@@ -302,50 +277,6 @@ namespace ServerLib.Controllers
             }
         }
 
-        //Move it to raid
-        public static int GetLoyality(string SessionId, string TraderId)
-        {
-            var TraderLoyalityLevels = TraderController.GetBaseByTrader(TraderId).loyaltyLevels;
-            var character = GetPmcCharacter(SessionId);
-            if (character == null)
-            {
-                Debug.PrintWarn($"Character not found, check if {SessionId} is correct", "GetLoyality");
-                return 0;
-            }
-
-            int playerSaleSum = 0, calculatedLoyalty = 0, playerLevel = 0;
-            double playerStanding = 0;
-
-            playerLevel = character.Info.Level;
-            playerSaleSum = character.TradersInfo[TraderId].salesSum;
-            playerStanding = character.TradersInfo[TraderId].standing;
-
-            if (TraderId != "ragfair")
-            {
-                foreach (var loyaltyLevel in TraderLoyalityLevels)
-                {
-                    if (playerSaleSum >= loyaltyLevel.minSalesSum &&
-                        playerStanding >= loyaltyLevel.minStanding &&
-                        playerLevel >= (int)loyaltyLevel.minLevel)
-                    {
-                        calculatedLoyalty++;
-                    }
-                    else
-                    {
-                        if (calculatedLoyalty == 0)
-                        {
-                            calculatedLoyalty = 1;
-                        }
-                        break;
-                    }
-                }
-            }
-            else
-            {
-                return 0;
-            }
-            return (calculatedLoyalty - 1);
-        }
 
 
         public static void UpdateBackendCounters(string SessionId, string conditionId, string qid, int counter)

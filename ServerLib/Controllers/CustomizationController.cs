@@ -4,10 +4,6 @@ namespace ServerLib.Controllers
 {
     public class CustomizationController
     {
-        public static string GetAllCustomizationString()
-        {
-            return File.ReadAllText("Files/others/customization.json");
-        }
 
         public static Dictionary<string, CustomizationItem.Base> GetAllCustomization()
         {

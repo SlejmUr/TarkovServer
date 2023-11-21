@@ -1,6 +1,8 @@
-﻿using JsonLib.Classes.ProfileRelated;
+﻿using JsonLib.Classes.ItemRelated;
+using JsonLib.Classes.ProfileRelated;
 using JsonLib.Classes.Request;
 using Newtonsoft.Json;
+using static JsonLib.Classes.Actions.Inventory;
 
 namespace JsonLib.Helpers
 {
@@ -45,6 +47,29 @@ namespace JsonLib.Helpers
             ArgumentNullException.ThrowIfNull(ret);
             return ret;
 
+        }
+
+        public static Item._Location FromActionLocation(this InventoryInteraction.To.ToLocation location)
+        {
+            return new()
+            {
+                IsSearched = location.isSearched,
+                R = location.r == "Vertical" ? 1 : 0,
+                X = location.x,
+                Y = location.y
+            };
+        }
+
+        public static InventoryInteraction.To.ToLocation ToActionLocation(this Item._Location location)
+        {
+            return new()
+            {
+                isSearched = location.IsSearched,
+                x = location.X,
+                y = location.Y,
+                r = location.R == 1 ? "Vertical" : "Horizontal"
+
+            };
         }
     }
 }

@@ -3,7 +3,7 @@ using JsonLib.Enums;
 using Newtonsoft.Json;
 using ServerLib.Handlers;
 using System.Diagnostics;
-using DB = ServerLib.Utilities.Debug;
+using DBG = ServerLib.Utilities.Debug;
 
 namespace ServerLib.Controllers
 {
@@ -23,7 +23,8 @@ namespace ServerLib.Controllers
             { "debug" , DebugEnable },
             { "listmatches" , ListMatches },
             { "deletematches" , DeleteMatches },
-            { "createuser", CreateUser }
+            { "createuser", CreateUser },
+            { "saveasaki" , SaveAsAki },
         };
         public static Dictionary<string, EPerms> CommandsPermission = new()
         {
@@ -40,6 +41,7 @@ namespace ServerLib.Controllers
             { "listmatches" , EPerms.User },
             { "deletematches" , EPerms.Mod },
             { "createuser" , EPerms.Admin },
+            { "saveasaki" , EPerms.Mod },
         };
 
         public static void Run(string CommandName)
@@ -54,7 +56,7 @@ namespace ServerLib.Controllers
             }
         }
 
-        public static void Nothing()
+        public static void Nothing(object obj)
         {
 
         }
@@ -63,7 +65,7 @@ namespace ServerLib.Controllers
         public static void DebugEnable(object obj)
         {
             ArgumentHandler.Debug = true;
-            DB.PrintInfo("Debug now has been enabled!");
+            DBG.PrintInfo("Debug now has been enabled!");
         }
 
         public static void Restart(object obj)
@@ -105,6 +107,8 @@ namespace ServerLib.Controllers
             */
             Console.WriteLine("Commands List: " + string.Join(", ", Commands.Keys.ToList()));
             Console.WriteLine();
+            Console.WriteLine("Commands that have description:");
+            Console.WriteLine();
             Console.WriteLine("reload:\t\t\t\tStop and Start the server");
             Console.WriteLine("restart:\t\t\tRestart the current app (Console)");
             Console.WriteLine("stop:\t\t\t\tStops the server");
@@ -123,19 +127,19 @@ namespace ServerLib.Controllers
             var x = (string[])obj;
             if (x.Length == 0)
             {
-                DB.PrintWarn("No User to OP, use: !op <AID>");
+                DBG.PrintWarn("No User to OP, use: !op <AID>");
                 return;
             }
             var AID = x[x.Length - 1];
             var profile = ProfileController.GetProfile(AID);
             if (profile == null)
             {
-                DB.PrintWarn("Profile null, cannot give OP to non existing profile!");
+                DBG.PrintWarn("Profile null, cannot give OP to non existing profile!");
                 return;
             }
             profile.ProfileAddon.Permission = EPerms.Admin;
             SaveHandler.SaveAddon(AID, profile.ProfileAddon);
-            DB.PrintInfo($"User {AID} is now {EPerms.Admin}");
+            DBG.PrintInfo($"User {AID} is now {EPerms.Admin}");
         }
 
         public static void SetPerm(object obj)
@@ -143,7 +147,7 @@ namespace ServerLib.Controllers
             var x = (string[])obj;
             if (x.Length > 2)
             {
-                DB.PrintWarn("No User or Permission defined. Use: !setpermission <AID>");
+                DBG.PrintWarn("No User or Permission defined. Use: !setpermission <AID>");
                 return;
             }
             var AID = x[0];
@@ -151,12 +155,12 @@ namespace ServerLib.Controllers
             var profile = ProfileController.GetProfile(AID);
             if (profile == null)
             {
-                DB.PrintWarn("Profile null, cannot give OP to non existing profile!");
+                DBG.PrintWarn("Profile null, cannot give OP to non existing profile!");
                 return;
             }
             profile.ProfileAddon.Permission = (EPerms)perm;
             SaveHandler.SaveAddon(AID, profile.ProfileAddon);
-            DB.PrintInfo($"User {AID} is now {(EPerms)perm}");
+            DBG.PrintInfo($"User {AID} is now {(EPerms)perm}");
         }
 
         public static void DeOp(object obj)
@@ -164,19 +168,19 @@ namespace ServerLib.Controllers
             var x = (string[])obj;
             if (x.Length == 0)
             {
-                DB.PrintWarn("No User to DEOP, use: !deop <AID>");
+                DBG.PrintWarn("No User to DEOP, use: !deop <AID>");
                 return;
             }
             var AID = x[0];
             var profile = ProfileController.GetProfile(AID);
             if (profile == null)
             {
-                DB.PrintWarn("Profile null, cannot give OP to non existing profile!");
+                DBG.PrintWarn("Profile null, cannot give OP to non existing profile!");
                 return;
             }
             profile.ProfileAddon.Permission = EPerms.User;
             SaveHandler.SaveAddon(AID, profile.ProfileAddon);
-            DB.PrintInfo($"User {AID} is now {EPerms.User}");
+            DBG.PrintInfo($"User {AID} is now {EPerms.User}");
         }
 
         public static void Ban(object obj)
@@ -186,12 +190,12 @@ namespace ServerLib.Controllers
             var profile = ProfileController.GetProfile(AID);
             if (profile == null)
             {
-                DB.PrintWarn("Profile null, cannot give OP to non existing profile!");
+                DBG.PrintWarn("Profile null, cannot give OP to non existing profile!");
                 return;
             }
             profile.ProfileAddon.Permission = EPerms.Blocked;
             SaveHandler.SaveAddon(AID, profile.ProfileAddon);
-            DB.PrintInfo($"User {AID} is now Banned");
+            DBG.PrintInfo($"User {AID} is now Banned");
         }
 
         public static void UnBan(object obj)
@@ -201,12 +205,12 @@ namespace ServerLib.Controllers
             var profile = ProfileController.GetProfile(AID);
             if (profile == null)
             {
-                DB.PrintWarn("Profile null, cannot give OP to non existing profile!");
+                DBG.PrintWarn("Profile null, cannot give OP to non existing profile!");
                 return;
             }
             profile.ProfileAddon.Permission = EPerms.User;
             SaveHandler.SaveAddon(AID, profile.ProfileAddon);
-            DB.PrintInfo($"User {AID} is now Unbanned");
+            DBG.PrintInfo($"User {AID} is now Unbanned");
         }
 
         public static void CreateUser(object obj)
@@ -224,21 +228,27 @@ namespace ServerLib.Controllers
             });
             if (registerId == "ALREADY_IN_USE")
             {
-                DB.PrintWarn("Account already in use!");
+                DBG.PrintWarn("Account already in use!");
                 return;
             }
-            DB.PrintInfo($"User {registerId} is now Created");
+            DBG.PrintInfo($"User {registerId} is now Created");
         }
 
         public static void ListMatches(object obj)
         {
             var maches = JsonConvert.SerializeObject(MatchController.Matches);
-            DB.PrintInfo($"Matches: {maches}");
+            DBG.PrintInfo($"Matches: {maches}");
         }
         public static void DeleteMatches(object obj)
         {
             MatchController.Matches.Clear();
-            DB.PrintInfo($"Matches Cleared!");
+            DBG.PrintInfo($"Matches Cleared!");
+        }
+
+        public static void SaveAsAki(object obj)
+        {
+            ProfileController.SaveAsAki();
+            DBG.PrintInfo($"All Characters are converted to AKI!");
         }
     }
 }

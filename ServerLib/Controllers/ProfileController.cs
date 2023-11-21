@@ -4,6 +4,7 @@ using JsonLib.Helpers;
 using Newtonsoft.Json;
 using ServerLib.Handlers;
 using ServerLib.Utilities;
+using static JsonLib.Classes.Configurations.CustomConfig;
 
 namespace ServerLib.Controllers
 {
@@ -37,14 +38,12 @@ namespace ServerLib.Controllers
 
         public static void ReloadProfiles()
         {
-            //Profiles.AddRange(ConvertFromJET());
-            //Profiles.AddRange(ConvertFromAkiProfile());
             Profiles.AddRange(ConvertFromProfile());
         }
 
         public static void ConvertAllProfile()
         {
-            Profiles.AddRange(ConvertFromJET());
+            //Profiles.AddRange(ConvertFromJET());
             Profiles.AddRange(ConvertFromAkiProfile());
             SaveAsProfile();
             File.WriteAllLines("user/converteds.txt", AlreadyConverted);
@@ -99,11 +98,13 @@ namespace ServerLib.Controllers
                 if (File.Exists($"{dir}/character.json"))
                 {
                     var character = JsonHelper.ToCharacterBase($"{dir}/character.json");
+                    ArgumentNullException.ThrowIfNull(character);
                     @base.Characters.Pmc = character;
                 }
                 if (File.Exists($"{dir}/scav.json"))
                 {
                     var scav = JsonHelper.ToCharacterBase($"{dir}/scav.json");
+                    ArgumentNullException.ThrowIfNull(scav);
                     @base.Characters.Scav = scav;
                 }
                 if (File.Exists($"{dir}/storage.json"))
@@ -118,6 +119,8 @@ namespace ServerLib.Controllers
                     ArgumentNullException.ThrowIfNull(dialog);
                     @base.Dialogues = dialog;
                 }
+                if (string.IsNullOrEmpty(@base.Info.Id))    //this means we have no accountId that we could use.
+                    continue;
                 if (!ProfilesDict.ContainsKey(@base.Info.Id))
                 {
                     Debug.PrintDebug($"Profile Added {@base.Info.Id}", "ConvertFromProfile");
@@ -136,21 +139,17 @@ namespace ServerLib.Controllers
         public static List<Profile.Base> ConvertFromAkiProfile()
         {
             List<Profile.Base> ret = new();
-            string[] dirs = Directory.GetFiles("user/profiles");
+            string[] dirs = Directory.GetFiles("user/profiles", "*.json", SearchOption.TopDirectoryOnly);
             foreach (string dir in dirs)
             {
-                if (dir.Contains(".json"))
+                var account = JsonConvert.DeserializeObject<Profile.Base>(File.ReadAllText(dir), new JsonConverter[] { Converters.ItemLocationConverter.Singleton });
+                ArgumentNullException.ThrowIfNull(account);
+                ret.Add(account);
+                if (!ProfilesDict.ContainsKey(account.Info.Id))
                 {
-                    var account = JsonConvert.DeserializeObject<Profile.Base>(File.ReadAllText(dir), new JsonConverter[] { Converters.ItemLocationConverter.Singleton });
-                    ArgumentNullException.ThrowIfNull(account);
-                    ret.Add(account);
-                    if (!ProfilesDict.ContainsKey(account.Info.Id))
-                    {
-                        Debug.PrintDebug($"Profile Added {account.Info.Id}", "ConvertFromAkiProfile");
-                        ProfilesDict.Add(account.Info.Id, account);
-                    }
+                    Debug.PrintDebug($"Profile Added {account.Info.Id}", "ConvertFromAkiProfile");
+                    ProfilesDict.Add(account.Info.Id, account);
                 }
-
             }
             return ret;
         }
@@ -158,6 +157,7 @@ namespace ServerLib.Controllers
         /// <summary>
         /// Convert JET type of versions of profile
         /// </summary>
+        [Obsolete("JET profiles are no longer exist. Might need to edit to make it to ConvertFromMTGA")]
         public static List<Profile.Base> ConvertFromJET()
         {
             List<Profile.Base> ret = new();
@@ -219,12 +219,18 @@ namespace ServerLib.Controllers
             return null;
         }
 
-
+        public static bool TryGetProfile(string SessionId, out Profile.Base? profile)
+        {
+            profile = null;
+            ReloadProfiles();
+            return ProfilesDict.TryGetValue(SessionId, out profile);
+        }
 
 
         /// <summary>
         /// Save Profiles as JET tpye of Profile
         /// </summary>
+        [Obsolete("JET profiles are no longer exist. Might need to edit to make it to SaveAsMTGA")]
         public static void SaveAsJET()
         {
             foreach (var dict in ProfilesDict)

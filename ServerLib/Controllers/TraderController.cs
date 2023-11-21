@@ -1,5 +1,6 @@
 ﻿using JsonLib.Classes.ItemRelated;
 using Newtonsoft.Json;
+using ServerLib.Utilities;
 using ServerLib.Utilities.Helpers;
 using static JsonLib.Classes.TradeRelated.Trader;
 
@@ -117,7 +118,7 @@ namespace ServerLib.Controllers
             }
             else
             {
-                var loyalty = CharacterController.GetLoyality(SessionId, TraderId) + 1;
+                var loyalty = GetLoyality(SessionId, TraderId) + 1;
                 foreach (var item in traderassort.items)
                 {
                     if (traderassort.loyal_level_items[item.Id] <= loyalty)
@@ -213,7 +214,50 @@ namespace ServerLib.Controllers
         }
 
 
+        //Move it to raid
+        public static int GetLoyality(string SessionId, string TraderId)
+        {
+            var TraderLoyalityLevels = GetBaseByTrader(TraderId).loyaltyLevels;
+            var character = CharacterController.GetPmcCharacter(SessionId);
+            if (character == null)
+            {
+                Debug.PrintWarn($"Character not found, check if {SessionId} is correct", "GetLoyality");
+                return 0;
+            }
 
+            int playerSaleSum = 0, calculatedLoyalty = 0, playerLevel = 0;
+            double playerStanding = 0;
+
+            playerLevel = character.Info.Level;
+            playerSaleSum = character.TradersInfo[TraderId].salesSum;
+            playerStanding = character.TradersInfo[TraderId].standing;
+
+            if (TraderId != "ragfair")
+            {
+                foreach (var loyaltyLevel in TraderLoyalityLevels)
+                {
+                    if (playerSaleSum >= loyaltyLevel.minSalesSum &&
+                        playerStanding >= loyaltyLevel.minStanding &&
+                        playerLevel >= (int)loyaltyLevel.minLevel)
+                    {
+                        calculatedLoyalty++;
+                    }
+                    else
+                    {
+                        if (calculatedLoyalty == 0)
+                        {
+                            calculatedLoyalty = 1;
+                        }
+                        break;
+                    }
+                }
+            }
+            else
+            {
+                return 0;
+            }
+            return (calculatedLoyalty - 1);
+        }
 
         public static int GetItemLoyalLevelById(string ItemId, TraderAssort traderAssort)
         {

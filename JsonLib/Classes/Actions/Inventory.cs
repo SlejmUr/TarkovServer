@@ -49,22 +49,10 @@ namespace JsonLib.Classes.Actions
                 public Location location { get; set; }
             }
 
-            public class Location
+            public class Location : To.ToLocation
             {
                 [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-                public int x { get; set; }
-
-                [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-                public int y { get; set; }
-
-                [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-                public string r { get; set; }
-
-                [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
                 public string rotation { get; set; }
-
-                [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-                public bool isSearched { get; set; }
 
             }
         }
