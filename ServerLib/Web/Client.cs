@@ -163,7 +163,7 @@ namespace ServerLib.Web
             var hash = CRCHelper.Compute(Encoding.UTF8.GetBytes(rsp));
             CRCHelper.URL_CRC.Add($"{request.Url}_{SessionId}", hash);
             var resp = ResponseControl.GetBodyCRC(rsp, 0, "null", hash);
-            ServerHelper.SendUnityResponse(request, serverStruct, rsp);
+            ServerHelper.SendUnityResponse(request, serverStruct, resp);
             return true;
         }
 
@@ -183,7 +183,7 @@ namespace ServerLib.Web
             var hash = CRCHelper.Compute(Encoding.UTF8.GetBytes(rsp));
             CRCHelper.URL_CRC.Add($"{request.Url}_{SessionId}", hash);
             var resp = ResponseControl.GetBodyCRC(rsp, 0, "null", hash);
-            ServerHelper.SendUnityResponse(request, serverStruct, rsp);
+            ServerHelper.SendUnityResponse(request, serverStruct, resp);
             return true;
         }
 

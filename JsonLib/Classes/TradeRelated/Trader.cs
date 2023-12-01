@@ -25,8 +25,6 @@ namespace JsonLib.Classes.TradeRelated
         }
         public class TraderBase
         {
-            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-            public bool refreshTraderRagfairOffers { get; set; }
 
             [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
             public string _id { get; set; }
@@ -153,7 +151,7 @@ namespace JsonLib.Classes.TradeRelated
             public int minLevel { get; set; }
 
             [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-            public int minSalesSum { get; set; }
+            public double minSalesSum { get; set; }
 
             [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
             public double minStanding { get; set; }
@@ -180,9 +178,12 @@ namespace JsonLib.Classes.TradeRelated
             public List<object> excluded_id_list { get; set; } = new();
 
             [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-            public double quality { get; set; }
+            public int price_rate { get; set; }
 
+            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
+            public double quality { get; set; }
         }
+
         public class TraderAssort
         {
             [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]

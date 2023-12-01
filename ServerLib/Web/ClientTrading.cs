@@ -24,7 +24,6 @@ namespace ServerLib.Web
         {
             ServerHelper.PrintRequest(request, serverStruct);
             string resp = ResponseControl.GetBody(JsonConvert.SerializeObject(TraderController.GetTradersInfo()));
-            Console.WriteLine("traderSettings is OK!");
             ServerHelper.SendUnityResponse(request, serverStruct, resp);
             return true;
         }

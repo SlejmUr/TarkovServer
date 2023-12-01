@@ -19,8 +19,14 @@ namespace LauncherSupporter
             ArgumentNullException.ThrowIfNull(req);
             string resp = AccountController.Login(req);
             Console.WriteLine(resp);
-            serverStruct.Response.MakeGetResponse(resp);
-            serverStruct.SendResponse();
+            serverStruct.SendRSP(resp);
+            return true;
+        }
+
+        [HTTP("POST", "/webprofile/test")]
+        public static bool GameeTest(HttpRequest request, ServerStruct serverStruct)
+        {
+            serverStruct.SendRSP("test");
             return true;
         }
 
@@ -32,8 +38,8 @@ namespace LauncherSupporter
             var req = JsonConvert.DeserializeObject<Login>(request.Body);
             ArgumentNullException.ThrowIfNull(req);
             string resp = AccountController.Register(req);
-            serverStruct.Response.MakeGetResponse(resp);
-            serverStruct.SendResponse();
+            Console.WriteLine(resp);
+            serverStruct.SendRSP(resp);
             return true;
         }
 
@@ -45,8 +51,7 @@ namespace LauncherSupporter
             ArgumentNullException.ThrowIfNull(WipeProfile);
             // RPS
             string resp = AccountController.SetWipe(WipeProfile.AccountId);
-            serverStruct.Response.MakeGetResponse(resp);
-            serverStruct.SendResponse();
+            serverStruct.SendRSP(resp);
             return true;
         }
 
@@ -58,8 +63,7 @@ namespace LauncherSupporter
             ArgumentNullException.ThrowIfNull(profile);
             // RPS
             string resp = AccountController.DeleteAccount(profile.AccountId);
-            serverStruct.Response.MakeGetResponse(resp);
-            serverStruct.SendResponse();
+            serverStruct.SendRSP(resp);
             return true;
         }
     }

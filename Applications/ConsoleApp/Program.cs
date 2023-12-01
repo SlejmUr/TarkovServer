@@ -1,6 +1,7 @@
 ﻿using JsonLib.Classes.Actions;
 using Newtonsoft.Json;
 using ServerLib.Controllers;
+using ServerLib.Properties;
 using ServerLib.Utilities;
 using System.Reflection;
 using System.Text;
@@ -63,6 +64,7 @@ namespace ConsoleApp
             }
             SL.ServerLib.Init();
             LogDetailed("Initialization Done!");
+
             Console.WriteLine("Commands are starting with !. Like !help");
             Console.WriteLine("Type 'exit' or 'q' to end application");
             string endCheck = "not";
@@ -93,16 +95,20 @@ namespace ConsoleApp
             var _FileName = "";
             try
             {
-                var assembly = new AssemblyName(args.Name).Name ?? throw new NullReferenceException();
+                var assembly = new AssemblyName(args.Name).Name;
                 Debug.PrintDebug(assembly, "AssemblyResolveEvent");
-                assembly = assembly.Replace(".resources", "");
-                if (Directory.GetFiles(Directory.GetCurrentDirectory()).Contains(_FileName))
+                if (assembly == null)
+                    Debug.PrintDebug("Assembly is null!");
+                if (assembly.Contains(".resources"))
+                    assembly = assembly.Replace(".resources", "");
+                _FileName = Path.Combine(File.ReadAllText("path.txt"), $"{assembly}.dll");
+                if (Directory.GetFiles(Directory.GetCurrentDirectory()).Contains(assembly+ " .dll"))
                 {
-                    Assembly.LoadFrom(_FileName);
+                    return Assembly.LoadFrom(assembly + " .dll");
                 }
-                else if (Directory.GetFiles(File.ReadAllText("path.txt")).Contains(_FileName))
+                else if (File.Exists(_FileName))
                 {
-                    Assembly.LoadFrom(_FileName);
+                    return Assembly.LoadFrom(_FileName);
                 }
                 return null;
             }
