@@ -47,12 +47,12 @@ namespace ServerLib.Web
             string SessionId = serverStruct.Headers.GetSessionId();
             var profile = ProfileController.GetProfile(SessionId);
             ArgumentNullException.ThrowIfNull(profile);
-            GetSuits x = new()
+            GetSuits suits = new()
             {
                 _id = "pmc" + SessionId,
                 suites = profile.Suits
             };
-            string resp = ResponseControl.GetBody(JsonConvert.SerializeObject(x));
+            string resp = ResponseControl.GetBody(JsonConvert.SerializeObject(suits));
             ServerHelper.SendUnityResponse(request, serverStruct, resp);
             return true;
         }

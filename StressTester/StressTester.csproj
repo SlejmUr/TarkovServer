@@ -16,4 +16,10 @@
     <ProjectReference Include="..\JsonLib\JsonLib.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Reference Include="bsg.componentace.compression.libs.zlib">
+      <HintPath>..\Ref\bsg.componentace.compression.libs.zlib.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>

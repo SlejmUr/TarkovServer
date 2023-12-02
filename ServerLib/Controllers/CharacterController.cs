@@ -93,7 +93,7 @@ namespace ServerLib.Controllers
             SaveHandler.Save(SessionId, "Character", SaveHandler.GetCharacterPath(SessionId), JsonHelper.FromCharacterBase(character));
             var storage = DatabaseController.DataBase.Characters.CharacterStorage[createReq.Side.ToLower()];
             SaveHandler.Save(SessionId, "Storage", SaveHandler.GetStoragePath(SessionId), JsonConvert.SerializeObject(storage));
-            if (!Characters.ContainsKey(SessionId + "_pmc"))
+            if (!Characters.ContainsKey(character.Id))
             {
                 Characters.Add(character.Id, character);
             }

@@ -11,7 +11,7 @@ namespace ServerLib.Web
 {
     internal class Basic
     {
-        #if DEBUG
+        //#if DEBUG
         [HTTP("GET", "/test/{thing}")]
         public static bool TestParam(HttpRequest request, ServerStruct serverStruct)
         {
@@ -29,7 +29,16 @@ namespace ServerLib.Web
             serverStruct.SendResponse();
             return true;
         }
-        #endif
+
+        [HTTP("GET", "/")]
+        public static bool Root(HttpRequest request, ServerStruct serverStruct)
+        {
+            string resp = "test";
+            serverStruct.Response.MakeGetResponse(resp);
+            serverStruct.SendResponse();
+            return true;
+        }
+        //#endif
         [HTTP("GET", "/ServerInternalIPAddress")]
         public static bool ServerInternalIPAddress(HttpRequest request, ServerStruct serverStruct)
         {
