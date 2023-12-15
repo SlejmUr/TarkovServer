@@ -81,13 +81,13 @@ namespace ServerLib.Controllers
 
         public static void Reload(object obj)
         {
-            ServerLib.Stop();
-            ServerLib.Init();
+            Main.Stop();
+            Main.Init();
         }
 
         public static void Stop(object obj)
         {
-            ServerLib.Stop();
+            Main.Stop();
         }
 
         public static void Help(object obj)

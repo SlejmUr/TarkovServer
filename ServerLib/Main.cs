@@ -7,7 +7,7 @@ using System.Net;
 
 namespace ServerLib
 {
-    public class ServerLib
+    public class Main
     {
         public static bool IsAlreadyQuited = false;
         public static string IP = "https://127.0.0.1:7777";
@@ -19,7 +19,7 @@ namespace ServerLib
         /// <param name="Ip">Server IP</param>
         /// <param name="port">Server Port</param>
         /// <param name="LoadPlugin">Can Load Plugins</param>
-        public static void InitAll(string Ip, int port)
+        public static void InitAll(string Ip, int port, bool ssl = true)
         {
             if (!Directory.Exists("ServerResponses"))
             {
@@ -30,20 +30,37 @@ namespace ServerLib
                 Directory.Delete("ServerResponses", true);
                 Directory.CreateDirectory("ServerResponses");
             }
-            string _ip_port = $"https://{Ip}:{port}";
-            IP = _ip_port;
-            ip_port = $"{Ip}:{port}";
-            CertHelper.Make(IPAddress.Parse(Ip), _ip_port);
+            var sw = Stopwatch.StartNew();
+            Utilities.Debug.PrintInfo(VersionController.GetAll());
             DatabaseController.Init();
+            ConfigController.Configs.Server.Ip = Ip;
+            ConfigController.Configs.Server.Port = port;
+            ConfigController.Configs.Server.EnableSSL = ssl;
+            if (ssl)
+            {
+                string _ip_port = $"https://{Ip}:{port}";
+                IP = _ip_port;
+                ip_port = $"{Ip}:{port}";
+                CertHelper.Make(IPAddress.Parse(Ip), _ip_port);
+            }
+            else
+            {
+                string _ip_port = $"http://{Ip}:{port}";
+                IP = _ip_port;
+                ip_port = $"{Ip}:{port}";
+            }
             ProfileController.Init();
-            Controllers.DialogueController.Init();
+            DialogueController.Init();
             AccountController.Init();
             CharacterController.Init();
-            ServerManager.Start(Ip, port);
+            QuestController.Init();
+            ServerManager.Start(Ip, port, ssl);
             if (!ArgumentHandler.DontLoadPlugin)
             {
                 PluginLoader.LoadPlugins();
             }
+            sw.Stop();
+            Utilities.Debug.PrintTime($"Init Taken {sw.ElapsedMilliseconds}ms");
         }
 
         /// <summary>
@@ -52,7 +69,6 @@ namespace ServerLib
         /// <param name="LoadPlugin">Can Load Plugins</param>
         public static void Init()
         {
-
             if (!Directory.Exists("ServerResponses"))
             {
                 Directory.CreateDirectory("ServerResponses");
@@ -85,7 +101,7 @@ namespace ServerLib
             DialogueController.Init();
             AccountController.Init();
             CharacterController.Init();
-            Controllers.QuestController.Init();
+            QuestController.Init();
             ServerManager.Start(Ip, port, ConfigController.Configs.Server.EnableSSL);
             if (!ArgumentHandler.DontLoadPlugin)
             {

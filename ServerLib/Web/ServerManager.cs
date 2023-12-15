@@ -79,6 +79,7 @@ namespace ServerLib.Web
                 WSS_Server.Stop();
                 WSS_Server = null;
             }
+            Console.WriteLine("Server stopped.");
         }
 
         public static void AddRoutes(Assembly assembly)

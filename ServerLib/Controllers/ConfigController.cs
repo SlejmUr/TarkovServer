@@ -16,6 +16,12 @@ namespace ServerLib.Controllers
             if (Handlers.ArgumentHandler.ReloadAllConfigs)
                 RebuildFromBaseConfigs();
             LoadConfigs();
+            if (Configs.Server == null)
+            {
+                //Ensure it will works!
+                RebuildFromBaseConfigs();
+                LoadConfigs();
+            }
             if (Configs.Server.ServerIPs.Enable)
                 Debug.PrintWarn("This function is not working! Please disable it!","CONFIG");
             Debug.PrintInfo("Initialization Done!", "CONFIG");

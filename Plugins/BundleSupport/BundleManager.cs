@@ -1,18 +1,12 @@
 ﻿using Newtonsoft.Json;
-using ServerLib.Controllers;
 using ServerLib.Utilities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BundleSupport
 {
     internal class BundleManager
     {
         public static List<BundleJSON.Bundle> Bundles = new List<BundleJSON.Bundle>();
-        public static void LoadAllBundles(object nothing)
+        public static void LoadAllBundles(object _)
         { 
             var curDir = Directory.GetCurrentDirectory();
             Debug.PrintInfo(curDir);

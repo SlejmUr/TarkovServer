@@ -155,7 +155,7 @@ namespace ServerLib.Responders
             SelectProfile response = new()
             {
                 status = "ok",
-                notifierServer = ServerLib.IP + "/notifierServer/" + SessionId,
+                notifierServer = Main.IP + "/notifierServer/" + SessionId,
                 notifier = GetNotifier(SessionId)
             };
             return GetBody(JsonConvert.SerializeObject(response));

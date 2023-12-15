@@ -62,7 +62,7 @@ namespace ConsoleApp
                 Console.WriteLine(SLH.ArgumentHandler.LoadMyPlugin);
                 SLH.PluginLoader.ManualLoadPlugin(SLH.ArgumentHandler.LoadMyPlugin);
             }
-            SL.ServerLib.Init();
+            SL.Main.Init();
             LogDetailed("Initialization Done!");
 
             Console.WriteLine("Commands are starting with !. Like !help");
@@ -79,7 +79,7 @@ namespace ConsoleApp
                     break;
             }
 
-            SL.ServerLib.Stop();
+            SL.Main.Stop();
 
             if (SLH.ArgumentHandler.Debug)
                 Console.ReadLine();

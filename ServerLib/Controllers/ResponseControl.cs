@@ -45,10 +45,10 @@ namespace ServerLib.Web
         {
             NotifierChannel notifier = new()
             {
-                server = ServerLib.ip_port,
+                server = Main.ip_port,
                 channel_id = SessionId,
                 url = "",
-                notifierServer = ServerLib.IP + "/notifierServer/" + SessionId,
+                notifierServer = Main.IP + "/notifierServer/" + SessionId,
                 ws = ServerManager.IpPort_WS + SessionId
             };
 

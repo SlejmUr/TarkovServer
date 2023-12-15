@@ -95,11 +95,11 @@ namespace ServerLib.Web
             {
                 backend = new()
                 {
-                    Main = ServerLib.IP,
-                    Messaging = ServerLib.IP,
-                    Trading = ServerLib.IP,
-                    RagFair = ServerLib.IP,
-                    Lobby = ServerLib.IP,
+                    Main = Main.IP,
+                    Messaging = Main.IP,
+                    Trading = Main.IP,
+                    RagFair = Main.IP,
+                    Lobby = Main.IP,
                 };
             }
             GameConfig game = new()
