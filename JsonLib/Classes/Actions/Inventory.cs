@@ -89,7 +89,7 @@ namespace JsonLib.Classes.Actions
             public string item { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public int index { get; set; }
+            public string index { get; set; } //EBoundItem
 
         }
 

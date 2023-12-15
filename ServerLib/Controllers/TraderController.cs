@@ -214,7 +214,6 @@ namespace ServerLib.Controllers
         }
 
 
-        //Move it to raid
         public static int GetLoyality(string SessionId, string TraderId)
         {
             var TraderLoyalityLevels = GetBaseByTrader(TraderId).loyaltyLevels;

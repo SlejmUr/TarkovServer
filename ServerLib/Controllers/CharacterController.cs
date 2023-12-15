@@ -90,6 +90,7 @@ namespace ServerLib.Controllers
             character.Quests = new();
             character.RepeatableQuests = new();
             character.Info.SavageLockTime = 1000000;
+            character.Inventory = InventoryController.AssingInventory(character.Inventory);
             SaveHandler.Save(SessionId, "Character", SaveHandler.GetCharacterPath(SessionId), JsonHelper.FromCharacterBase(character));
             var storage = DatabaseController.DataBase.Characters.CharacterStorage[createReq.Side.ToLower()];
             SaveHandler.Save(SessionId, "Storage", SaveHandler.GetStoragePath(SessionId), JsonConvert.SerializeObject(storage));

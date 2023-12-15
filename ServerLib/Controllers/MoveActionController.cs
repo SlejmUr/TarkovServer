@@ -7,92 +7,11 @@ using ServerLib.Utilities;
 using ServerLib.Handlers;
 using Newtonsoft.Json.Linq;
 using JsonLib.Helpers;
-using System;
-using static ServerLib.Controllers.MoveActionController;
 
 namespace ServerLib.Controllers
 {
     public class MoveActionController
     {
-        #region Classes
-        public class Id_Count
-        {
-            public string id;
-            public int count;
-        }
-        public class RepairItem
-        {
-            [JsonProperty("_id")]
-            public string Id;
-
-            [JsonProperty("count")]
-            public float Count;
-        }
-        public class DifferenceHealth
-        {
-            public readonly Dictionary<int, Part> BodyParts = new(); //EBodyPart
-            public float Energy;
-            public float Hydration;
-
-            public class Part
-            {
-                public float Health;
-                public List<string> Effects;
-            }
-        }
-        public class BarterJson
-        {
-            public string _tpl;
-            public double count;
-            public int level;
-            public int side; //EDogtagExchangeSide
-            public bool onlyFunctional;
-        }
-        public class Reward
-        {
-            public string MessageId;
-            public string EventId;
-        }
-        public class QuestItem
-        {
-            public string _id;
-            public string _tpl;
-
-            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-            public string parentId;
-
-            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-            public string slotId;
-
-            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-            public object location;
-
-            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-            public object upd;
-        }
-        public class OwnerInfo
-        {
-            [JsonProperty("id")]
-            public string Id;
-
-            [JsonProperty("type")]
-            public int Type; //EOwnerType
-        }
-        public class UnpackInfo
-        {
-            [JsonProperty("id")]
-            public string Id;
-        }
-        public class SchemaIdCount : Id_Count
-        {
-            public int scheme_id;
-        }
-        public class IdCountItems : Id_Count
-        {
-            public List<Id_Count> items;
-
-        }
-        #endregion
         
         public static Dictionary<string, Func<string,ProfileChanges, JObject, ProfileChanges>> ItemActions = new()
         {
@@ -100,6 +19,15 @@ namespace ServerLib.Controllers
             { "Fold", FoldItem },
             { "Remove", RemoveItem },
             { "Split", SplitItem },
+            { "Examine", ExamineItem },
+            { "Swap",  SwapItem },
+            { "Transfer", TransferItem },
+            { "ReadEncyclopedia", ReadEncyclopedia },
+            { "Bind", BindItem },
+            { "Tag", TagItem },
+            { "Toggle", ToggleItem },
+            { "ApplyInventoryChanges", ApplyInventory },
+            { "template", Template },
         };
 
         public static ProfileChanges CreateNew()
@@ -109,6 +37,51 @@ namespace ServerLib.Controllers
                 profileChanges = new(),
                 warnings = new()
             };
+        }
+
+        public static ProfileChanges Template(string SessionId, ProfileChanges changes, JObject action)
+        {
+            Inventory.Examine examineAction = action.ToObject<Inventory.Examine>();
+            bool IsScav = false;
+            var character = CharacterController.GetPmcCharacter(SessionId);
+            if (examineAction.fromOwner != null && examineAction.fromOwner.type.ToLower() == "profile")
+            {
+                character = CharacterController.GetScavCharacter(SessionId);
+                IsScav = true;
+            }
+
+
+            if (!IsScav)
+                SaveHandler.SaveCharacter(SessionId, character);
+            else
+                SaveHandler.SaveScav(SessionId, character);
+            return changes;
+        }
+
+        public static ProfileChanges CreateBasicChanges(ProfileChanges changes, string SessionId)
+        {
+            changes.profileChanges.Add(SessionId, new()
+            { 
+                _id = SessionId,
+                skills = new(),
+                builds = new(),
+                health = new(),
+                questsStatus = new(),
+                improvements = new(),
+                items = new()
+                { 
+                    change = new(),
+                    del = new(),
+                    New = new()
+                },
+                production = new(),
+                quests = new(),
+                ragFairOffers = new(),
+                recipeUnlocked = new(),
+                repeatableQuests =  new(),
+                traderRelations = new()
+            });
+            return changes;
         }
 
         public static ProfileChanges MoveItem(string SessionId, ProfileChanges changes, JObject action)
@@ -215,6 +188,53 @@ namespace ServerLib.Controllers
             return changes;
         }
 
+        public static ProfileChanges ExamineItem(string SessionId, ProfileChanges changes, JObject action)
+        {
+            Inventory.Examine examineAction = action.ToObject<Inventory.Examine>();
+            bool IsScav = false;
+            TemplateItem.Base templateItem = null;
+            var character = CharacterController.GetPmcCharacter(SessionId);
+            if (examineAction.fromOwner != null && examineAction.fromOwner.type.ToLower() == "profile")
+            {
+                character = CharacterController.GetScavCharacter(SessionId);
+                IsScav = true;
+            }
+            else if (examineAction.fromOwner != null && examineAction.fromOwner.type.ToLower() != "profile")
+            {
+                switch (examineAction.fromOwner.type.ToLower())
+                {
+                    case "trader":
+                        var assortItem = TraderController.GetAssortItemByID(examineAction.fromOwner.id, examineAction.item);
+                        templateItem = ItemController.Get(assortItem.Tpl);
+                        break;
+                    case "hideoutupgrade":
+                    case "hideoutproduction":
+                    case "scavcase":
+                        // the item is a TPL
+                        templateItem = ItemController.Get(examineAction.item);
+                        break;
+                    default:
+                        Debug.PrintWarn($"FromOwner.Type is currently not supported. ({examineAction.fromOwner.type.ToLower()})", "ExamineItem.WARN");
+                        return changes;
+                }
+
+            }
+            var item = character.Inventory.Items.Find(x => x.Id == examineAction.item);
+            if (item != null && templateItem == null)
+            {
+                templateItem = ItemController.Get(item.Tpl);
+            }
+
+            character.Encyclopedia.Add(templateItem._id,true);
+            character.Info.Experience += (int)templateItem._props.ExamineExperience;
+
+            if (!IsScav)
+                SaveHandler.SaveCharacter(SessionId, character);
+            else
+                SaveHandler.SaveScav(SessionId, character);
+            return changes;
+        }
+
         public static ProfileChanges RemoveItem(string SessionId, ProfileChanges changes, JObject action)
         {
             Inventory.Remove removeAction = action.ToObject<Inventory.Remove>();
@@ -227,45 +247,14 @@ namespace ServerLib.Controllers
             }
             if (changes.profileChanges.TryGetValue(SessionId, out var profileChange))
             {
-                if (profileChange.items == null)
-                    profileChange.items = new()
-                    {
-                        del = new()
-                    };
-                if (profileChange.items.del == null)
+                profileChange.items.del.Add(new()
                 {
-                    profileChange.items.del = new()
-                    {
-                        new()
-                        {
-                        _id = removeAction.item
-                        }
-                    };
-                }
-                else
-                {
-                    profileChange.items.del.Add(new()
-                    {
-                        _id = removeAction.item
-                    });
-                }
-
+                    _id = removeAction.item
+                });
             }
             else
             {
-                changes.profileChanges.Add(SessionId, new()
-                {
-                    items = new()
-                    { 
-                        del = new()
-                        { 
-                            new()
-                            { 
-                                _id = removeAction.item
-                            }
-                        }
-                    }
-                });
+                Debug.PrintWarn("ProfileChanges not exist?", "RemoveItem.WARN");
             }
 
             var toRemoveItems = InventoryController.GetInventoryItemFamilyTreeIDs(character.Inventory.Items, removeAction.item);
@@ -304,29 +293,20 @@ namespace ServerLib.Controllers
             var udp = item.Upd;
             udp.StackObjectsCount = splitAction.count;
             item.Upd.StackObjectsCount -= splitAction.count;
-            if (!changes.profileChanges.TryGetValue(SessionId, out var profileChange))
+            if (changes.profileChanges.TryGetValue(SessionId, out var profileChange))
             {
-                changes.profileChanges.Add(SessionId, new()
+                profileChange.items.New.Add(new()
                 {
-                    items = new()
-                    {
-                        New = new()
-                    }
+                    _id = splitAction.item,
+                    _tpl = item.Tpl,
+                    upd = udp
                 });
             }
             else
             {
-                if (profileChange.items != null)
-                    profileChange.items = new();
-                if (profileChange.items.New == null)
-                    profileChange.items.New = new();
+                Debug.PrintWarn("ProfileChanges not exist?", "SplitItem.WARN");
             }
-            changes.profileChanges[SessionId].items.New.Add(new()
-            { 
-                _id = splitAction.item,
-                _tpl = item.Tpl,
-                upd = udp
-            });
+
             ownerInventory.To.Add(new()
             { 
                 Id = splitAction.item,
@@ -338,22 +318,7 @@ namespace ServerLib.Controllers
             });
 
             //Todo: make a save with these
-
-            CharacterController.TryGetCharacter(ownerInventory.FromId, out var FromChar);
-            FromChar.Inventory.Items = ownerInventory.From;
-            string id = CharacterController.GetCharacterSessionId(FromChar);
-            if (id == string.Empty)
-                Debug.PrintError("From Character Id is not good");
-            if (CharacterController.IsCharacterScav(FromChar))
-                SaveHandler.SaveScav(SessionId, FromChar);
-            else
-                SaveHandler.SaveCharacter(id, FromChar);
-            CharacterController.TryGetCharacter(ownerInventory.ToId, out var ToChar);
-            ToChar.Inventory.Items = ownerInventory.To;
-            if (CharacterController.IsCharacterScav(ToChar))
-                SaveHandler.SaveScav(SessionId, ToChar);
-            else
-                SaveHandler.SaveCharacter(SessionId, ToChar);
+            OwnerActionSaveProfiles(SessionId, ownerInventory);
             return changes;
         }
 
@@ -368,6 +333,241 @@ namespace ServerLib.Controllers
             return changes;
         }
 
+        public static ProfileChanges SwapItem(string SessionId, ProfileChanges changes, JObject action)
+        {
+            Inventory.Swap swapAction = action.ToObject<Inventory.Swap>();
+            bool IsScav = false;
+            TemplateItem.Base templateItem = null;
+            var character = CharacterController.GetPmcCharacter(SessionId);
+            if (swapAction.fromOwner != null && swapAction.fromOwner.type.ToLower() == "profile")
+            {
+                character = CharacterController.GetScavCharacter(SessionId);
+                IsScav = true;
+            }
+
+            var swapItem = character.Inventory.Items.Find(x=>x.Id == swapAction.item);
+            var swapItem2 = character.Inventory.Items.Find(x => x.Id == swapAction.item2);
+
+            if (swapAction.to.location != null)
+            {
+                swapItem.Location = JsonHelper.FromActionLocation(swapAction.to.location);
+            }
+            else
+            {
+                swapItem.Location = null;
+            }
+            swapItem.ParentId = swapAction.to.id;
+            swapItem.SlotId = swapAction.to.container;
+
+            if (swapAction.to2.location != null)
+            {
+                swapItem2.Location = JsonHelper.FromActionLocation(swapAction.to2.location);
+            }
+            else
+            {
+                swapItem2.Location = null;
+            }
+            swapItem2.ParentId = swapAction.to2.id;
+            swapItem2.SlotId = swapAction.to2.container;
+
+
+            if (!IsScav)
+                SaveHandler.SaveCharacter(SessionId, character);
+            else
+                SaveHandler.SaveScav(SessionId, character);
+            return changes;
+        }
+
+        public static ProfileChanges TransferItem(string SessionId, ProfileChanges changes, JObject action)
+        {
+            Inventory.Transfer transferAction = action.ToObject<Inventory.Transfer>();
+            bool IsScav = false;
+            TemplateItem.Base templateItem = null;
+            var character = CharacterController.GetPmcCharacter(SessionId);
+            if (transferAction.fromOwner != null && transferAction.fromOwner.type.ToLower() == "profile")
+            {
+                character = CharacterController.GetScavCharacter(SessionId);
+                IsScav = true;
+            }
+
+            var toMerge = character.Inventory.Items.Find(x=>x.Id == transferAction.item);
+            var mergeWith = character.Inventory.Items.Find(x => x.Id == transferAction.with);
+
+            toMerge.Upd.StackObjectsCount -= transferAction.count;
+            mergeWith.Upd.StackObjectsCount += transferAction.count;
+
+
+            if (!IsScav)
+                SaveHandler.SaveCharacter(SessionId, character);
+            else
+                SaveHandler.SaveScav(SessionId, character);
+            return changes;
+        }
+
+        public static ProfileChanges ReadEncyclopedia(string SessionId, ProfileChanges changes, JObject action)
+        {
+            Inventory.ReadEncyclopedia readEncyclopedia = action.ToObject<Inventory.ReadEncyclopedia>();
+            bool IsScav = false;
+            var character = CharacterController.GetPmcCharacter(SessionId);
+            if (readEncyclopedia.fromOwner != null && readEncyclopedia.fromOwner.type.ToLower() == "profile")
+            {
+                character = CharacterController.GetScavCharacter(SessionId);
+                IsScav = true;
+            }
+
+            foreach (var item in readEncyclopedia.ids)
+            {
+                character.Encyclopedia.Add(item, true);
+            }
+
+            if (!IsScav)
+                SaveHandler.SaveCharacter(SessionId, character);
+            else
+                SaveHandler.SaveScav(SessionId, character);
+            return changes;
+        }
+
+        public static ProfileChanges BindItem(string SessionId, ProfileChanges changes, JObject action)
+        {
+            Inventory.Bind bindAction = action.ToObject<Inventory.Bind>();
+            bool IsScav = false;
+            var character = CharacterController.GetPmcCharacter(SessionId);
+            if (bindAction.fromOwner != null && bindAction.fromOwner.type.ToLower() == "profile")
+            {
+                character = CharacterController.GetScavCharacter(SessionId);
+                IsScav = true;
+            }
+
+            if (character.Inventory.FastPanel.ContainsKey(bindAction.index))
+            {
+                character.Inventory.FastPanel[bindAction.index] = bindAction.item;
+            }
+            else
+            {
+                character.Inventory.FastPanel.Add(bindAction.index, bindAction.item);
+            }
+
+
+            if (!IsScav)
+                SaveHandler.SaveCharacter(SessionId, character);
+            else
+                SaveHandler.SaveScav(SessionId, character);
+            return changes;
+        }
+
+        public static ProfileChanges TagItem(string SessionId, ProfileChanges changes, JObject action)
+        {
+            Inventory.Tag tagAction = action.ToObject<Inventory.Tag>();
+            bool IsScav = false;
+            var character = CharacterController.GetPmcCharacter(SessionId);
+            if (tagAction.fromOwner != null && tagAction.fromOwner.type.ToLower() == "profile")
+            {
+                character = CharacterController.GetScavCharacter(SessionId);
+                IsScav = true;
+            }
+
+            var item = character.Inventory.Items.Find(x=>x.Id == tagAction.item);
+
+            if (item.Upd == null)
+            {
+                item.Upd = new()
+                {
+                    Tag = new()
+                    {
+                        Color = tagAction.TagColor,
+                        Name = tagAction.TagName
+                    }
+                };
+            }
+            else if (item.Upd != null && item.Upd.Tag == null)
+            {
+                item.Upd.Tag = new()
+                {
+                    Color = tagAction.TagColor,
+                    Name = tagAction.TagName
+                };
+            }
+            else
+            {
+                item.Upd.Tag.Color = tagAction.TagColor;
+                item.Upd.Tag.Name = tagAction.TagName;
+            }
+
+            if (!IsScav)
+                SaveHandler.SaveCharacter(SessionId, character);
+            else
+                SaveHandler.SaveScav(SessionId, character);
+            return changes;
+        }
+
+        public static ProfileChanges ToggleItem(string SessionId, ProfileChanges changes, JObject action)
+        {
+            Inventory.Toggle toggleAction = action.ToObject<Inventory.Toggle>();
+            bool IsScav = false;
+            var character = CharacterController.GetPmcCharacter(SessionId);
+            if (toggleAction.fromOwner != null && toggleAction.fromOwner.type.ToLower() == "profile")
+            {
+                character = CharacterController.GetScavCharacter(SessionId);
+                IsScav = true;
+            }
+
+            var item = character.Inventory.Items.Find(x => x.Id == toggleAction.item);
+
+            if (item.Upd == null)
+            {
+                item.Upd = new()
+                {
+                    Togglable = new()
+                    {
+                        On = toggleAction.value
+                    }
+                };
+            }
+            else if (item.Upd != null && item.Upd.Togglable == null)
+            {
+                item.Upd.Togglable = new()
+                {
+                    On = toggleAction.value
+                };
+            }
+            else
+            {
+                item.Upd.Togglable.On = toggleAction.value;
+            }
+
+            if (!IsScav)
+                SaveHandler.SaveCharacter(SessionId, character);
+            else
+                SaveHandler.SaveScav(SessionId, character);
+            return changes;
+        }
+
+        public static ProfileChanges ApplyInventory(string SessionId, ProfileChanges changes, JObject action)
+        {
+            Inventory.ApplyInventoryChanges inventoryChanges = action.ToObject<Inventory.ApplyInventoryChanges>();
+            bool IsScav = false;
+            var character = CharacterController.GetPmcCharacter(SessionId);
+            if (inventoryChanges.fromOwner != null && inventoryChanges.fromOwner.type.ToLower() == "profile")
+            {
+                character = CharacterController.GetScavCharacter(SessionId);
+                IsScav = true;
+            }
+
+            foreach (var item in inventoryChanges.changedItems)
+            {
+                var invItem = character.Inventory.Items.Find(x=>x.Id == item.Id);
+                invItem.ParentId = item.ParentId;
+                invItem.SlotId = item.SlotId;
+                invItem.Location = item.Location;
+            }
+
+            if (!IsScav)
+                SaveHandler.SaveCharacter(SessionId, character);
+            else
+                SaveHandler.SaveScav(SessionId, character);
+            return changes;
+        }
+
         public class OwnerInventoryAction
         {
             public List<Item.Base> From;
@@ -378,7 +578,6 @@ namespace ServerLib.Controllers
             public bool IsMail;
 
         }
-
 
         public static OwnerInventoryAction GetOwnerInventoryAction(string SessionId, BaseInteraction interaction)
         {
@@ -430,6 +629,25 @@ namespace ServerLib.Controllers
                 ToId = ToId,
                 FromId = FromId
             };
+        }
+
+        public static void OwnerActionSaveProfiles(string SessionId, OwnerInventoryAction ownerInventoryAction)
+        {
+            CharacterController.TryGetCharacter(ownerInventoryAction.FromId, out var FromChar);
+            FromChar.Inventory.Items = ownerInventoryAction.From;
+            string id = CharacterController.GetCharacterSessionId(FromChar);
+            if (id == string.Empty)
+                Debug.PrintError("From Character Id is not good");
+            if (CharacterController.IsCharacterScav(FromChar))
+                SaveHandler.SaveScav(SessionId, FromChar);
+            else
+                SaveHandler.SaveCharacter(id, FromChar);
+            CharacterController.TryGetCharacter(ownerInventoryAction.ToId, out var ToChar);
+            ToChar.Inventory.Items = ownerInventoryAction.To;
+            if (CharacterController.IsCharacterScav(ToChar))
+                SaveHandler.SaveScav(SessionId, ToChar);
+            else
+                SaveHandler.SaveCharacter(SessionId, ToChar);
         }
 
 

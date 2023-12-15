@@ -121,7 +121,7 @@ namespace ServerLib.Web
             ServerHelper.PrintRequest(request, serverStruct);
             Debug.PrintDebug(ResponseControl.DeCompressReq(request.BodyBytes));
             var itemEventRouter = JsonConvert.DeserializeObject<ItemEventRouter>(ResponseControl.DeCompressReq(request.BodyBytes));           
-            var profileChanges = MoveActionController.CreateNew();
+            var profileChanges = MoveActionController.CreateBasicChanges(MoveActionController.CreateNew(), SessionId);
             foreach (var item in itemEventRouter.data)
             {
                 var action = item.ToObject<ActionBase>().Action;

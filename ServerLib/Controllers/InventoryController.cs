@@ -45,6 +45,8 @@ namespace ServerLib.Controllers
             return inventory.Items.FindAll(item => item.ParentId == parentId);
         }
 
+        #region InventoryContainer
+
         public static InventoryContainer SetInventoryContainer(Character.Inventory inventory)
         {
             InventoryContainer container = new();
@@ -237,26 +239,6 @@ namespace ServerLib.Controllers
             ret.EndX = ret.StartX + ret.Width;
             return ret;
         }
-
-
-        public static List<string> GetInventoryItemFamilyTreeIDs(List<Item.Base> items, string parent)
-        {
-            List<string> ret = new();
-
-            foreach (var item in items)
-            {
-                if (item.ParentId == "" || string.IsNullOrEmpty(item.ParentId))
-                    continue;
-
-                if (item.ParentId == parent)
-                {
-                    ret.AddRange(GetInventoryItemFamilyTreeIDs(items, item.Id));
-                }
-            }
-            ret.Add(parent);
-            return ret;
-        }
-
 
         public static InventoryContainer ResetItemSizeInContainer(Item.Base item, Character.Inventory inventory, InventoryContainer ic)
         {
@@ -464,31 +446,6 @@ namespace ServerLib.Controllers
             return -1;
         }
 
-        public static List<Item.Base> AssignNewIDs(List<Item.Base> items)
-        {
-            List<Item.Base> ret = new();
-            Dictionary<string, string> ConvertedIds = new();
-
-            foreach (var item in items)
-            {
-                string newId = AIDHelper.CreateNewID();
-                ConvertedIds.Add(item.Id, newId);
-                item.Id = newId;
-                ret.Add(item);
-            }
-
-            foreach (var item in ret)
-            {
-                if (ConvertedIds.TryGetValue(item.ParentId, out var CID))
-                {
-                    item.ParentId = CID;
-                }
-            }
-            return ret;
-        }
-
-
-
         //If null means no valid location
         public static ValidLocation? GetValidLocationForItem(InventoryContainer ic, int Height, int Width)
         {
@@ -539,6 +496,7 @@ namespace ServerLib.Controllers
 
             return null;
         }
+        #endregion
 
         public static Character.Inventory ClearInventoryMods(Character.Inventory inventory)
         {
@@ -559,5 +517,56 @@ namespace ServerLib.Controllers
             }
             return inventory;
         }
+
+
+        public static List<Item.Base> AssignNewIDs(List<Item.Base> items)
+        {
+            List<Item.Base> ret = new();
+            Dictionary<string, string> ConvertedIds = new();
+
+            foreach (var item in items)
+            {
+                string newId = AIDHelper.CreateNewID();
+                ConvertedIds.Add(item.Id, newId);
+                item.Id = newId;
+                ret.Add(item);
+            }
+
+            foreach (var item in ret)
+            {
+                if (ConvertedIds.TryGetValue(item.ParentId, out var CID))
+                {
+                    item.ParentId = CID;
+                }
+            }
+            return ret;
+        }
+
+        public static Character.Inventory AssingInventory(Character.Inventory inventory)
+        {
+            inventory.Items = AssignNewIDs(inventory.Items);
+            inventory.Equipment = inventory.Items.Find(x=>x.Tpl == "55d7217a4bdc2d86028b456d").Id;
+            return inventory;
+        }
+
+        public static List<string> GetInventoryItemFamilyTreeIDs(List<Item.Base> items, string parent)
+        {
+            List<string> ret = new();
+
+            foreach (var item in items)
+            {
+                if (item.ParentId == "" || string.IsNullOrEmpty(item.ParentId))
+                    continue;
+
+                if (item.ParentId == parent)
+                {
+                    ret.AddRange(GetInventoryItemFamilyTreeIDs(items, item.Id));
+                }
+            }
+            ret.Add(parent);
+            return ret;
+        }
+
+
     }
 }
