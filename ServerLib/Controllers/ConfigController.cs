@@ -35,7 +35,6 @@ namespace ServerLib.Controllers
             RefreshConfigFromBase("server");
             RefreshConfigFromBase("gameplay");
             RefreshConfigFromBase("custom");
-            RefreshConfigFromBase("plugin"); 
         }
 
 
@@ -59,9 +58,6 @@ namespace ServerLib.Controllers
                         case "custom":
                             Configs.CustomSettings = JsonConvert.DeserializeObject<CustomConfig.Base>(dataraw)!;
                             break;
-                        case "plugin":
-                            Configs.Plugins = JsonConvert.DeserializeObject<List<BaseConfig.Plugin>>(dataraw)!;
-                            break;
                         default:
                             break;
                     }
@@ -75,7 +71,6 @@ namespace ServerLib.Controllers
             File.WriteAllText("Files/configs/server.json", JsonConvert.SerializeObject(Configs.Server, Formatting.Indented));
             File.WriteAllText("Files/configs/gameplay.json", JsonConvert.SerializeObject(Configs.Gameplay, Formatting.Indented));
             File.WriteAllText("Files/configs/custom.json", JsonConvert.SerializeObject(Configs.CustomSettings, Formatting.Indented));
-            File.WriteAllText("Files/configs/plugin.json", JsonConvert.SerializeObject(Configs.Plugins, Formatting.Indented));
         }
 
         /// <summary>

@@ -1,4 +1,5 @@
 ﻿using JsonLib.Classes.Configurations;
+using JsonLib.Classes.Request;
 using ServerLib.Controllers;
 using ServerLib.Utilities;
 using System.Reflection;
@@ -9,65 +10,23 @@ namespace ServerLib.Handlers
 #pragma warning disable CS8604 // Possible null reference argument.
     public class PluginLoader
     {
-        private static Dictionary<string, PluginInfos> pluginsList = new();
+        private static Dictionary<string, IPlugin> pluginsList = new();
         public static void LoadPlugins()
         {
-            string currdir = Directory.GetCurrentDirectory();
-
-            var plugins = ConfigController.Configs.Plugins;
-            plugins ??= new();
-
-            if (!Directory.Exists(Path.Combine(currdir, "Plugins"))) { Directory.CreateDirectory(Path.Combine(currdir, "Plugins")); }
-
             Dictionary<IPlugin, List<string>> PluginDependencies = new();
-
+            pluginsList.Clear();
+            string currdir = Directory.GetCurrentDirectory();
+            if (!Directory.Exists(Path.Combine(currdir, "Plugins"))) { Directory.CreateDirectory(Path.Combine(currdir, "Plugins")); }
             foreach (string file in Directory.GetFiles(Path.Combine(currdir, "Plugins"), "*.dll"))
             {
-                BaseConfig.Plugin plugin = new()
-                {
-                    ignore = false
-                };
-                string prettyname = file.Replace(Path.Combine(currdir, "Plugins") + Path.DirectorySeparatorChar, ""); ;
-                if (plugins.Where(x => x.file == prettyname).Any())
-                {
-                    var maybeplugin = plugins.Where(x => x.file == prettyname).SingleOrDefault();
-                    if (maybeplugin != null)
-                    {
-                        plugin = maybeplugin;
-                    }
-                }
-                else
-                {
-                    plugin.file = prettyname;
-                }
-
-                if (file.Contains("ignore"))
-                {
-                    plugin.ignore = true;
-                }
-
-                if (plugin.ignore)
-                    continue;
-
-
                 IPlugin iPlugin = (IPlugin)Activator.CreateInstance(Assembly.LoadFile(file).GetType("Plugin.Plugin"));
 
                 if (iPlugin == null)
                     continue;
-                plugin.dependencies = iPlugin.Dependencies;
 
-                PluginDependencies.Add(iPlugin, plugin.dependencies);
-
-                if (plugins.Where(x => x.file == plugin.file).Any())
-                {
-                    var maybeplugin = plugins.Where(x => x.file == prettyname).SingleOrDefault();
-                    plugins.Remove(maybeplugin);
-                }
-                plugins.Add(plugin);
+                PluginDependencies.Add(iPlugin, iPlugin.Dependencies);
             }
-
             var ordered = PluginDependencies.OrderBy(x => x.Value.Count);
-
             foreach (var item in ordered)
             {
                 foreach (var dependency in item.Value)
@@ -88,17 +47,14 @@ namespace ServerLib.Handlers
                     PluginInit(item.Key);
                 }
             }
-
-            ConfigController.Save();
-
         }
 
         public static void UnloadPlugins()
         {
             foreach (var plugin in pluginsList)
             {
-                plugin.Value.Plugin.ShutDown();
-                plugin.Value.Plugin.Dispose();
+                plugin.Value.ShutDown();
+                plugin.Value.Dispose();
                 Debug.PrintInfo($"Plugin {plugin.Key} is now unloaded!");
             }
             pluginsList.Clear();
@@ -108,7 +64,10 @@ namespace ServerLib.Handlers
         {
             string currdir = Directory.GetCurrentDirectory();
             if (Activator.CreateInstance(Assembly.LoadFile(currdir + "/Plugins/" + DllName + ".dll").GetType("Plugin.Plugin")) is not IPlugin iPlugin)
+            {
+                Debug.PrintWarn("Plugin could not be loaded. Are you missing the IPlugin Export?");
                 return;
+            }
             if (pluginsList.ContainsKey(iPlugin.Name))
             {
                 Debug.PrintWarn("Plugin already loaded?");
@@ -122,10 +81,7 @@ namespace ServerLib.Handlers
         }
         private static void PluginInit(IPlugin iPlugin)
         {
-            pluginsList.Add(iPlugin.Name, new PluginInfos
-                {
-                    Plugin = iPlugin
-                });
+            pluginsList.Add(iPlugin.Name, iPlugin);
             iPlugin.Initialize();
             Debug.PrintInfo($"Plugin loaded: {iPlugin.Name}");
             Debug.PrintDebug("New Plugin Loaded" +
@@ -135,11 +91,6 @@ namespace ServerLib.Handlers
                 "\nPlugin Desc: " + iPlugin.Description
                 , "PLUGIN");
 
-        }
-
-        internal class PluginInfos
-        {
-            public IPlugin Plugin;
         }
     }
 #pragma warning restore CS8604 // Possible null reference argument.

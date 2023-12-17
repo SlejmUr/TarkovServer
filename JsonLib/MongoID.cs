@@ -1,5 +1,6 @@
 ﻿using JsonLib.Classes.ProfileRelated;
 using Newtonsoft.Json;
+using System.Diagnostics;
 
 namespace JsonLib
 {
@@ -9,9 +10,17 @@ namespace JsonLib
         {
             get
             {
-                return Convert.ToUInt32((DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc)).TotalSeconds);
+                var utc = DateTime.UtcNow;
+                if (Stopwatch != null)
+                {
+                    utc = utc.AddSeconds(Stopwatch.ElapsedMilliseconds);
+                    Console.WriteLine($"added ms ({Stopwatch.ElapsedMilliseconds})");
+                }
+                return Convert.ToUInt32((utc - new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc)).TotalSeconds);
             }
         }
+
+        public static Stopwatch? Stopwatch = null;
 
         private static ulong Counter
         {
@@ -62,6 +71,7 @@ namespace JsonLib
 
         public MongoID(bool newProcessId)
         {
+            Stopwatch = Stopwatch.StartNew();
             this._timeStamp = 0U;
             this._stringID = null;
             if (newProcessId)
@@ -93,6 +103,7 @@ namespace JsonLib
         {
             this._timeStamp = (newTimestamp ? TimeStamp : source._timeStamp);
             this._counter = ((increment > 0) ? (source._counter + (ulong)Convert.ToUInt32(increment)) : (source._counter - (ulong)Convert.ToUInt32(Math.Abs(increment))));
+            //this._counter =  source._counter + (ulong)increment;
             this._stringID = null;
             this._stringID = this.GetString();
         }

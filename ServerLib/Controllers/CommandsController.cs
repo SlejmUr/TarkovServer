@@ -2,6 +2,7 @@
 using JsonLib.Enums;
 using Newtonsoft.Json;
 using ServerLib.Handlers;
+using ServerLib.Utilities.Helpers;
 using System.Diagnostics;
 using DBG = ServerLib.Utilities.Debug;
 
@@ -25,6 +26,7 @@ namespace ServerLib.Controllers
             { "deletematches" , DeleteMatches },
             { "createuser", CreateUser },
             { "saveasaki" , SaveAsAki },
+            { "crc_clear" , CRC_Clear },
         };
         public static Dictionary<string, EPerms> CommandsPermission = new()
         {
@@ -42,6 +44,7 @@ namespace ServerLib.Controllers
             { "deletematches" , EPerms.Mod },
             { "createuser" , EPerms.Admin },
             { "saveasaki" , EPerms.Mod },
+            { "crc_clear" , EPerms.Mod },
         };
 
         public static void Run(string CommandName)
@@ -59,6 +62,12 @@ namespace ServerLib.Controllers
         public static void Nothing(object obj)
         {
 
+        }
+
+        public static void CRC_Clear(object obj)
+        {
+            CRCHelper.URL_CRC.Clear();
+            DBG.PrintInfo("URL CRC Cleared!");
         }
 
 

@@ -4,6 +4,7 @@ using JsonLib.Classes.ProfileRelated;
 using ServerLib.Utilities;
 using ServerLib.Utilities.Helpers;
 using static JsonLib.Classes.Others;
+using Newtonsoft.Json;
 
 namespace ServerLib.Controllers
 {
@@ -523,22 +524,28 @@ namespace ServerLib.Controllers
         {
             List<Item.Base> ret = new();
             Dictionary<string, string> ConvertedIds = new();
-
+            Dictionary<string, string> OldIds = new();
             foreach (var item in items)
             {
                 string newId = AIDHelper.CreateNewID();
+                OldIds.Add(item.Id, item.Id);
                 ConvertedIds.Add(item.Id, newId);
                 item.Id = newId;
                 ret.Add(item);
             }
-
+            File.WriteAllText("OldIds.json", JsonConvert.SerializeObject(OldIds));
+            File.WriteAllText("AssignNewIDs.json", JsonConvert.SerializeObject(ConvertedIds));
             foreach (var item in ret)
             {
-                if (ConvertedIds.TryGetValue(item.ParentId, out var CID))
+                if (item.ParentId != null)
                 {
-                    item.ParentId = CID;
+                    if (ConvertedIds.TryGetValue(item.ParentId, out var CID))
+                    {
+                        item.ParentId = CID;
+                    }
                 }
             }
+            File.WriteAllText("ret.json", JsonConvert.SerializeObject(ret));
             return ret;
         }
 

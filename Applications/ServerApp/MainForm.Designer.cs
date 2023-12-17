@@ -38,10 +38,10 @@ namespace ServerApp
             stopButton = new ReaLTaiizor.Controls.CrownButton();
             startButton = new ReaLTaiizor.Controls.CrownButton();
             ManagementPage = new TabPage();
+            PluginsPage = new TabPage();
             SettingsPage = new TabPage();
             consoleVisiblityButton = new ReaLTaiizor.Controls.CrownButton();
             serverStatusLabel = new ReaLTaiizor.Controls.CrownLabel();
-            PluginsPage = new TabPage();
             MainTabPage.SuspendLayout();
             MainPage.SuspendLayout();
             SettingsPage.SuspendLayout();
@@ -156,6 +156,15 @@ namespace ServerApp
             ManagementPage.TabIndex = 2;
             ManagementPage.Text = "Management";
             // 
+            // PluginsPage
+            // 
+            PluginsPage.BackColor = Color.FromArgb(50, 63, 74);
+            PluginsPage.Location = new Point(139, 4);
+            PluginsPage.Name = "PluginsPage";
+            PluginsPage.Size = new Size(711, 486);
+            PluginsPage.TabIndex = 3;
+            PluginsPage.Text = "Plugins";
+            // 
             // SettingsPage
             // 
             SettingsPage.BackColor = Color.FromArgb(50, 63, 74);
@@ -186,15 +195,6 @@ namespace ServerApp
             serverStatusLabel.Size = new Size(131, 15);
             serverStatusLabel.TabIndex = 9;
             serverStatusLabel.Text = "Server Status: Unknown";
-            // 
-            // PluginsPage
-            // 
-            PluginsPage.BackColor = Color.FromArgb(50, 63, 74);
-            PluginsPage.Location = new Point(139, 4);
-            PluginsPage.Name = "PluginsPage";
-            PluginsPage.Size = new Size(711, 486);
-            PluginsPage.TabIndex = 3;
-            PluginsPage.Text = "Plugins";
             // 
             // MainForm
             // 

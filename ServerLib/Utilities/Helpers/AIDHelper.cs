@@ -4,10 +4,15 @@ namespace ServerLib.Utilities.Helpers
 {
     public class AIDHelper
     {
+        private static MongoID Id = MongoID.Default;
         public static string CreateNewID(string prefix = "")
         {
-            MongoID mongo = new(true);
-            var ret = mongo.Next().ToString();
+            if (Id == MongoID.Default)
+            {
+                Id = new MongoID(true).Next();
+            }
+            Id = Id.Next();
+            var ret = Id.ToString();
             if (prefix != "")
             {
                 ret = prefix + ret;

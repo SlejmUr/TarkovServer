@@ -28,7 +28,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JsonLib", "JsonLib\JsonLib.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BundleSupport", "Plugins\BundleSupport\BundleSupport.csproj", "{5060CFEE-CC9E-42B2-BCB1-02D39088EFC1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StressTester", "StressTester\StressTester.csproj", "{FB282476-6C58-4EF9-8EDB-943865742AFD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StressTester", "StressTester\StressTester.csproj", "{FB282476-6C58-4EF9-8EDB-943865742AFD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MTGAPlugin", "Plugins\MTGAPlugin\MTGAPlugin.csproj", "{1D4FDACF-A1DB-49FC-AE3E-56DCE7A1B839}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -76,6 +78,10 @@ Global
 		{FB282476-6C58-4EF9-8EDB-943865742AFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FB282476-6C58-4EF9-8EDB-943865742AFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FB282476-6C58-4EF9-8EDB-943865742AFD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D4FDACF-A1DB-49FC-AE3E-56DCE7A1B839}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D4FDACF-A1DB-49FC-AE3E-56DCE7A1B839}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D4FDACF-A1DB-49FC-AE3E-56DCE7A1B839}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D4FDACF-A1DB-49FC-AE3E-56DCE7A1B839}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

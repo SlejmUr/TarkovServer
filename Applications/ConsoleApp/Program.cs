@@ -1,4 +1,5 @@
-﻿using JsonLib.Classes.Actions;
+﻿using JsonLib;
+using JsonLib.Classes.Actions;
 using Newtonsoft.Json;
 using ServerLib.Controllers;
 using ServerLib.Properties;
@@ -32,7 +33,6 @@ namespace ConsoleApp
 
         static void Main(string[] args)
         {
-
             Console.Clear();
             if (!File.Exists("path.txt"))
             {
@@ -62,6 +62,9 @@ namespace ConsoleApp
                 Console.WriteLine(SLH.ArgumentHandler.LoadMyPlugin);
                 SLH.PluginLoader.ManualLoadPlugin(SLH.ArgumentHandler.LoadMyPlugin);
             }
+
+
+
             SL.Main.Init();
             LogDetailed("Initialization Done!");
 

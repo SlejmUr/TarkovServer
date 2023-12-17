@@ -35,19 +35,6 @@ namespace ServerLib.Web
             return true;
         }
 
-        [HTTP("GET", "/server/config/plugin")]
-        public static bool ConfigPlugin(HttpRequest request, ServerStruct serverStruct)
-        {
-            string resp = "";
-            if (ConfigController.Configs.CustomSettings.Server.PublicConfigEnabled)
-            {
-                resp = JsonConvert.SerializeObject(ConfigController.Configs.Plugins);
-            }
-            serverStruct.Response.MakeGetResponse(resp);
-            serverStruct.SendResponse();
-            return true;
-        }
-
         [HTTP("GET", "/server/config/custom")]
         public static bool ConfigCustom(HttpRequest request, ServerStruct serverStruct)
         {

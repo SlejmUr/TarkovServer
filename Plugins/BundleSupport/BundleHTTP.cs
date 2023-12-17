@@ -17,8 +17,9 @@ namespace BundleSupport
         [HTTP("GET", "/getBundleList")]
         public static bool GetBundeList(HttpRequest request, ServerStruct serverStruct)
         {
+            //For MTGA we reply as null to bypass it
             ServerHelper.PrintRequest(request, serverStruct);
-            return ServerHelper.SendUnityResponse(request, serverStruct, GetBundles());
+            return ServerHelper.SendUnityResponse(request, serverStruct, "null");
         }
 
         [HTTP("GET", "/singleplayer/bundles")]
