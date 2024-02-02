@@ -529,7 +529,7 @@ namespace JsonLib.Classes.ProfileRelated
             public LethalDamage LethalDamage { get; set; }
 
             [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-            public BodyPartsDamageHistory BodyParts { get; set; }
+            public Dictionary<string, List<DamageStats>> BodyParts { get; set; }
 
         }
         public class LethalDamage

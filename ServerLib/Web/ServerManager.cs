@@ -1,4 +1,5 @@
-﻿using ModdableWebServer.Helper;
+﻿using ModdableWebServer.Attributes;
+using ModdableWebServer.Helper;
 using ModdableWebServer.Servers;
 using NetCoreServer;
 using ServerLib.Utilities;
@@ -14,9 +15,9 @@ namespace ServerLib.Web
         static WSS_Server? WSS_Server = null;
         static WS_Server? WS_Server = null;
         static bool IsSsl = true;
-        static Dictionary<string, Dictionary<(string url, string method), MethodInfo>> HTTP_Plugins = new();
+        static Dictionary<string, Dictionary<HTTPAttribute, MethodInfo>> HTTP_Plugins = new();
         static Dictionary<string, Dictionary<string, MethodInfo>> WS_Plugins = new();
-        static Dictionary<(string url, string method), MethodInfo> Main_HTTP = new();
+        static Dictionary<HTTPAttribute, MethodInfo> Main_HTTP = new();
         static Dictionary<string, MethodInfo> Main_WS = new();
         public static void Start(string ip, int port, bool ssl = true, bool OnlyWS = false, bool IsCertValidate = false)
         {
@@ -36,17 +37,17 @@ namespace ServerLib.Web
                 Main_WS = AttributeMethodHelper.UrlWSLoader(Assembly.GetAssembly(typeof(ServerManager)));
                 WSS_Server.DoReturn404IfFail = false;
                 WSS_Server.ReceivedFailed += Failed;
-                WSS_Server.WS_AttributeToMethods.Merge(Assembly.GetAssembly(typeof(ServerManager)));
+                WSS_Server.MergeWSAttribute(Assembly.GetAssembly(typeof(ServerManager)));
                 if (!OnlyWS)
-                    WSS_Server.HTTP_AttributeToMethods.Merge(Assembly.GetAssembly(typeof(ServerManager)));
+                    WSS_Server.MergeAttribute(Assembly.GetAssembly(typeof(ServerManager)));
                 WSS_Server.Start();
             }
             else
             {
                 WS_Server = new(ip, port);
-                WS_Server.WS_AttributeToMethods.Merge(Assembly.GetAssembly(typeof(ServerManager)));
+                WS_Server.MergeWSAttribute(Assembly.GetAssembly(typeof(ServerManager)));
                 if (!OnlyWS)
-                    WS_Server.HTTP_AttributeToMethods.Merge(Assembly.GetAssembly(typeof(ServerManager)));
+                    WS_Server.MergeAttribute(Assembly.GetAssembly(typeof(ServerManager)));
                 WS_Server.DoReturn404IfFail = false;
                 WS_Server.ReceivedFailed += Failed;
                 WS_Server.Start();
@@ -89,13 +90,13 @@ namespace ServerLib.Web
                 var name = assembly.GetName().FullName;
                 HTTP_Plugins.Add(name, AttributeMethodHelper.UrlHTTPLoader(assembly));
                 WS_Plugins.Add(name, AttributeMethodHelper.UrlWSLoader(assembly));
-                WSS_Server.WS_AttributeToMethods.Merge(assembly);
-                WSS_Server.HTTP_AttributeToMethods.Merge(assembly);
+                WSS_Server.MergeWSAttribute(assembly);
+                WSS_Server.MergeAttribute(assembly);
             }
             if (!IsSsl && WS_Server != null)
             {
-                WS_Server.WS_AttributeToMethods.Merge(assembly);
-                WS_Server.HTTP_AttributeToMethods.Merge(assembly);
+                WS_Server.MergeWSAttribute(assembly);
+                WS_Server.MergeAttribute(assembly);
             }
         }
 
