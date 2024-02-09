@@ -15,4 +15,8 @@
     <ProjectReference Include="..\..\ServerLib\ServerLib.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Messages\" />
+  </ItemGroup>
+
 </Project>

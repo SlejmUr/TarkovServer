@@ -20,7 +20,7 @@ namespace Plugin
 
         public string Author => "SlejmUr";
 
-        public string Version => "0.2";
+        public string Version => "0.3";
 
         public string Description => "MiddleWare plugin for U19/U21 Tarkov Server";
 
