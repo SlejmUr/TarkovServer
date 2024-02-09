@@ -88,7 +88,7 @@ namespace ServerLib.Controllers
             character.Health.UpdateTime = time;
             character.Customization.Head = createReq.HeadId;
             character.Quests = new();
-            character.RepeatableQuests = new();
+            character.Achievements = new();
             character.Info.SavageLockTime = 1000000;
             character.Inventory = InventoryController.AssingInventory(character.Inventory);
             SaveHandler.Save(SessionId, "Character", SaveHandler.GetCharacterPath(SessionId), JsonHelper.FromCharacterBase(character));

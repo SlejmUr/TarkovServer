@@ -10,7 +10,7 @@ namespace JsonLib.Classes.QuestRelated
         {
             [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
             public string QuestName { get; set; }
-
+            
             [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
             public string _id { get; set; }
 
@@ -48,9 +48,6 @@ namespace JsonLib.Classes.QuestRelated
             public bool isKey { get; set; }
 
             [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-            public object questStatus { get; set; }
-
-            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
             public bool restartable { get; set; }
 
             [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
@@ -64,6 +61,15 @@ namespace JsonLib.Classes.QuestRelated
 
             [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
             public string successMessageText { get; set; }
+
+            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
+            public string acceptPlayerMessage { get; set; }
+
+            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
+            public string declinePlayerMessage { get; set; }
+
+            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
+            public string completePlayerMessage { get; set; }
 
             [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
             public string templateId { get; set; }
@@ -87,34 +93,23 @@ namespace JsonLib.Classes.QuestRelated
         public class Conditions
         {
             [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-            public List<AvailableForConditions> Started { get; set; }
+            public List<Condition> Started { get; set; }
 
             [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-            public List<AvailableForConditions> AvailableForFinish { get; set; }
+            public List<Condition> AvailableForFinish { get; set; }
 
             [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-            public List<AvailableForConditions> AvailableForStart { get; set; }
+            public List<Condition> AvailableForStart { get; set; }
 
             [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-            public List<AvailableForConditions> Success { get; set; }
+            public List<Condition> Success { get; set; }
 
             [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-            public List<AvailableForConditions> Fail { get; set; }
+            public List<Condition> Fail { get; set; }
 
         }
-        public class AvailableForConditions
-        {
-            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-            public string _parent { get; set; }
 
-            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-            public AvailableForProps _props { get; set; }
-
-            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-            public bool dynamicLocale { get; set; }
-
-        }
-        public class AvailableForProps
+        public class Condition
         {
             [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
             public string id { get; set; }
@@ -123,25 +118,28 @@ namespace JsonLib.Classes.QuestRelated
             public int index { get; set; }
 
             [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-            public string parentId { get; set; }
-
-            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-            public bool isEncoded { get; set; }
+            public string compareMethod { get; set; }
 
             [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
             public bool dynamicLocale { get; set; }
 
             [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-            public string value { get; set; }
-
-            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-            public string compareMethod { get; set; }
-
-            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
             public List<VisibilityCondition> visibilityConditions { get; set; }
 
             [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
+            public string globalQuestCounterId { get; set; }
+
+            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
+            public string parentId { get; set; }
+
+            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
             public QuestTarget? target { get; set; }
+
+            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
+            public string value { get; set; }
+
+            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
+            public object type { get; set; }
 
             [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
             public List<int> status { get; set; } //EQuestStatus
@@ -171,7 +169,7 @@ namespace JsonLib.Classes.QuestRelated
             public int minDurability { get; set; }
 
             [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-            public AvailableForCounter counter { get; set; }
+            public ConditionCounter counter { get; set; }
 
             [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
             public int plantTime { get; set; }
@@ -180,40 +178,75 @@ namespace JsonLib.Classes.QuestRelated
             public string zoneId { get; set; }
 
             [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-            public object type { get; set; }
-
-            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
             public bool countInRaid { get; set; }
 
-        }
-        public class AvailableForCounter
+            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
+            public int completeInSeconds { get; set; }
 
+            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
+            public bool isEncoded { get; set; }
+
+            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
+            public string conditionType { get; set; }
+
+        }
+
+        public class VisibilityCondition
         {
             [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
             public string id { get; set; }
 
             [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-            public List<CounterCondition> conditions { get; set; }
-
-        }
-        public class CounterCondition
-
-        {
-            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-            public string _parent { get; set; }
+            public string target { get; set; }
 
             [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-            public CounterProps _props { get; set; }
+            public int value { get; set; }
 
+            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
+            public bool dynamicLocale { get; set; }
+
+            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
+            public bool oneSessionOnly { get; set; }
+
+            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
+            public string conditionType { get; set; }
         }
-        public class CounterProps
 
+        public class ConditionCounter
         {
             [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
             public string id { get; set; }
+
+            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
+            public List<ConditionCounterCondition> conditions { get; set; }
+
+        }
+
+        public class ConditionCounterCondition
+        {
+            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
+            public string id { get; set; }
+
+            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
+            public bool dynamicLocale { get; set; }
 
             [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
             public QuestTarget? target { get; set; }
+
+            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
+            public int completeInSeconds { get; set; }
+
+            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
+            public ValueCompare energy { get; set; }
+
+            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
+            public string exitName { get; set; }
+
+            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
+            public ValueCompare hydration { get; set; }
+
+            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
+            public ValueCompare time { get; set; }
 
             [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
             public string compareMethod { get; set; }
@@ -225,10 +258,28 @@ namespace JsonLib.Classes.QuestRelated
             public List<string> weapon { get; set; }
 
             [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
+            public ConditionDistance distance { get; set; }
+
+            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
             public List<List<string>> equipmentInclusive { get; set; }
 
             [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
             public List<List<string>> weaponModsInclusive { get; set; }
+
+            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
+            public List<List<string>> weaponModsExclusive { get; set; }
+
+            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
+            public List<List<string>> enemyEquipmentInclusive { get; set; }
+
+            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
+            public List<List<string>> enemyEquipmentExclusive { get; set; }
+
+            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
+            public List<string> weaponCaliber { get; set; }
+
+            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
+            public List<string> savageRole { get; set; }
 
             [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
             public List<string> status { get; set; }
@@ -239,33 +290,54 @@ namespace JsonLib.Classes.QuestRelated
             [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
             public DaytimeCounter daytime { get; set; }
 
-        }
-        public class DaytimeCounter
+            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
+            public string conditionType { get; set; }
 
+            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
+            public List<EnemyHealthEffect> enemyHealthEffects { get; set; }
+
+            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
+            public bool resetOnSessionEnd { get; set; }
+        }
+
+        public class DaytimeCounter
         {
             [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
             public int from { get; set; }
 
             [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
             public int to { get; set; }
-
         }
-        public class VisibilityCondition
 
+        public class ValueCompare
         {
             [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-            public string id { get; set; }
+            public string compareMethod { get; set; }
 
+            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
+            public int value { get; set; }
+        }
+
+        public class EnemyHealthEffect
+        {
+            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
+            public List<string> bodyParts { get; set; }
+
+            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
+            public List<string> effects { get; set; }
+        }
+
+
+        public class ConditionDistance
+        {
             [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
             public int value { get; set; }
 
             [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-            public bool dynamicLocale { get; set; }
-
-            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-            public bool oneSessionOnly { get; set; }
-
+            public string compareMethod { get; set; }
         }
+
+
         public class Rewards
         {
             [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
@@ -290,22 +362,22 @@ namespace JsonLib.Classes.QuestRelated
             public List<Reward> Expired { get; set; }
 
         }
-        public class Reward : Item.Base
+        public class Reward
         {
             [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-            public string value { get; set; }
+            public double value { get; set; }
 
             [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
             public string id { get; set; }
 
             [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-            public string type { get; set; }
+            public string type { get; set; } //QuestRewardType
 
             [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
             public int index { get; set; }
 
             [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-            public string target { get; set; }
+            public QuestTarget target { get; set; }
 
             [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
             public List<Item.Base> items { get; set; }

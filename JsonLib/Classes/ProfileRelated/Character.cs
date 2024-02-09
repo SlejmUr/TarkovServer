@@ -1,5 +1,4 @@
 ﻿using JsonLib.Classes.ItemRelated;
-using JsonLib.Classes.QuestRelated;
 using JsonLib.Classes.TradeRelated;
 using JsonLib.Enums;
 using Newtonsoft.Json;
@@ -27,58 +26,85 @@ namespace JsonLib.Classes.ProfileRelated
             public Customization Customization { get; set; }
 
             [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
+            public Dictionary<string, bool> Encyclopedia { get; set; }
+
+            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
             public Health Health { get; set; }
 
             [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
             public Inventory Inventory { get; set; }
 
             [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-            public Skills Skills { get; set; }
-
-            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-            public Stats Stats { get; set; }
-
-            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-            public Dictionary<string, bool> Encyclopedia { get; set; }
-
-            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-            public ConditionCounters ConditionCounters { get; set; }
-
-            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-            public Dictionary<string, BackendCounter> BackendCounters { get; set; }
-
-            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
             public List<InsuredItem> InsuredItems { get; set; }
 
             [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-            public Hideout Hideout { get; set; }
+            public List<QuestItem> QuestItems { get; set; }
+
+            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
+            public Skills Skills { get; set; }
+
+            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
+            public _Notes Notes { get; set; }
+
+            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
+            public Dictionary<string, Counter> TaskConditionCounters { get; set; }
 
             [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
             public List<Quest> Quests { get; set; }
 
             [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-            public Dictionary<string, TraderInfo> TradersInfo { get; set; }
+            public Dictionary<string, int> Achievements { get; set; }
 
             [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
             public UnlockedInfo UnlockedInfo { get; set; }
 
             [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-            public RagfairInfo RagfairInfo { get; set; }
-
-            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-            public List<RepeatableQuests.CharacterRepeatableQuest> RepeatableQuests { get; set; }
-
-            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
             public List<Bonus> Bonuses { get; set; }
 
             [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-            public _Notes Notes { get; set; }
+            public Hideout Hideout { get; set; }
+
+            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
+            public RagfairInfo RagfairInfo { get; set; }
+
+            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
+            public List<string> WishList { get; set; }
+
+            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
+            public Stats Stats { get; set; }
+
+            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
+            public Dictionary<string, BackendCounter> BackendCounters { get; set; }
+
+            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
+            public Dictionary<string, TraderInfo> TradersInfo { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public string SurvivorClass { get; set; }
 
+            [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
+            public Dictionary<string, int> CheckedMagazines { get; set; }
+
+            [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
+            public List<string> CheckedChambers { get; set; }
+
+            [JsonProperty(NullValueHandling = NullValueHandling.Include)]
+            public object BonusController { get; set; }
+
+            [JsonProperty(NullValueHandling = NullValueHandling.Include)]
+            public Skills SkillsInfo { get; set; }
+
+            [JsonProperty(NullValueHandling = NullValueHandling.Include)]
+            public Inventory InventoryInfo { get; set; }
+
             [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-            public List<string> WishList { get; set; }
+            public int Experience { get; set; }
+
+            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
+            public string Side { get; set; }
+
+            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
+            public int MagDrillsMastering { get; set; }
 
         }
 
@@ -91,9 +117,6 @@ namespace JsonLib.Classes.ProfileRelated
         public class Info
         {
             [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-            public string EntryPoint { get; set; }
-
-            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
             public string Nickname { get; set; }
 
             [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
@@ -102,59 +125,44 @@ namespace JsonLib.Classes.ProfileRelated
             [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
             public string Side { get; set; }
 
-            [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public bool SquadnviteRestriction { get; set; }
-
-            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-            public string Voice { get; set; }
-
-            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-            public int Level { get; set; }
-
-            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-            public int Experience { get; set; }
-
             [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
             public int RegistrationDate { get; set; }
+
+            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
+            public int SavageLockTime { get; set; }
+            public string GroupId { get; set; }
+            public string TeamId { get; set; }
+            public string EntryPoint { get; set; }
+            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
+            public int NicknameChangeDate { get; set; }
 
             [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
             public string GameVersion { get; set; }
 
             [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-            public int AccountType { get; set; }
+            public string Voice { get; set; }
 
             [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-            public EMemberCategory MemberCategory { get; set; }
+            public bool IsStreamerModeAvailable { get; set; }
 
-            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-            public bool lockedMoveCommands { get; set; }
-
-            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-            public double SavageLockTime { get; set; }
-
-            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-            public int LastTimePlayedAsSavage { get; set; }
-
-            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-            public Settings Settings { get; set; }
-
-            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-            public int NicknameChangeDate { get; set; }
-
-            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-            public List<object> NeedWipeOptions { get; set; }
+            [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
+            public bool SquadnviteRestriction { get; set; }
 
             [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
             public List<Ban> Bans { get; set; }
 
             [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-            public bool BannedState { get; set; }
+            public Settings Settings { get; set; }
 
             [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-            public int BannedUntil { get; set; }
+            public EMemberCategory MemberCategory { get; set; }
 
             [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-            public bool IsStreamerModeAvailable { get; set; }
+            public int Experience { get; set; }
+
+
+            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
+            public int Level { get; set; }
 
         }
         public class Settings
@@ -472,12 +480,7 @@ namespace JsonLib.Classes.ProfileRelated
             public int Value { get; set; }
 
         }
-        public class ConditionCounters
-        {
-            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-            public List<Counter> Counters { get; set; }
 
-        }
         public class Counter
         {
             [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
@@ -487,7 +490,10 @@ namespace JsonLib.Classes.ProfileRelated
             public int value { get; set; }
 
             [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-            public string qid { get; set; }
+            public string sourceId { get; set; }
+
+            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
+            public string type { get; set; }
 
         }
         public class Aggressor
@@ -551,33 +557,6 @@ namespace JsonLib.Classes.ProfileRelated
 
             [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
             public int ImpactsCount { get; set; }
-
-        }
-        public class BodyPartsDamageHistory
-        {
-            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-            public List<DamageStats> Head { get; set; }
-
-            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-            public List<DamageStats> Chest { get; set; }
-
-            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-            public List<DamageStats> Stomach { get; set; }
-
-            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-            public List<DamageStats> LeftArm { get; set; }
-
-            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-            public List<DamageStats> RightArm { get; set; }
-
-            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-            public List<DamageStats> LeftLeg { get; set; }
-
-            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-            public List<DamageStats> RightLeg { get; set; }
-
-            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-            public List<DamageStats> Common { get; set; }
 
         }
         public class DamageStats
@@ -663,7 +642,17 @@ namespace JsonLib.Classes.ProfileRelated
 
             [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
             public string itemId { get; set; }
+        }
+        public class QuestItem
+        {
+            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
+            public string _id { get; set; }
 
+            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
+            public string _tpl { get; set; }
+
+            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
+            public string parentId { get; set; }
         }
         public class Hideout
         {
@@ -804,6 +793,16 @@ namespace JsonLib.Classes.ProfileRelated
         {
             [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
             public List<Note> Notes { get; set; }
+
+            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
+            public _TransactionInProcess TransactionInProcess { get; set; }
+
+            public class _TransactionInProcess
+            {
+                public object Handlers { get; set; }
+                public bool HasHandlers { get; set; }
+                public bool HasCheckChanges { get; set; }
+            }
 
         }
         public class Quest

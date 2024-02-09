@@ -8,13 +8,13 @@ namespace TestServer
 {
     public class URLs
     {
-        [HTTP("POST", "/testserver/")]
+        [HTTP("POST", "/testserver")]
         public static bool TestServer(HttpRequest request, ServerStruct serverStruct)
         {
             Console.WriteLine(request.Body);
             serverStruct.Response.MakeGetResponse("HELLO");
             serverStruct.SendResponse();
             return true;
-        }     
+        }
     }
 }

@@ -45,7 +45,7 @@ namespace TestPlugin
                 {
                     Console.WriteLine("yeetteete");
                 }
-
+                Console.WriteLine(Directory.GetCurrentDirectory());
 
             });
 

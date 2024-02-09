@@ -65,5 +65,7 @@ namespace JsonLib.Classes.DatabaseRelated
         public Dictionary<string, string> Weather { get; set; } = new();
 
         public LootBase Loot { get; set; } = new();
+
+        public List<Achievement> Achievements { get; set; } = new();
     }
 }

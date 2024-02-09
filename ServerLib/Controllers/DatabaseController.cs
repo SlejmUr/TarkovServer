@@ -72,7 +72,7 @@ namespace ServerLib.Controllers
                     DataBase.Others.Customization = JsonConvert.DeserializeObject<Dictionary<string, CustomizationItem.Base>>(File.ReadAllText("Files/others/customization.json"),
                     new JsonConverter[]
                     {
-                CustomizationItemPrefabConverter.Singleton
+                        CustomizationItemPrefabConverter.Singleton
                     });
                      Debug.PrintTime($"Customization Taken {sw.ElapsedMilliseconds}ms");
                 }),
@@ -85,6 +85,15 @@ namespace ServerLib.Controllers
                         staticLoot = JsonConvert.DeserializeObject<Dictionary<string, LootBase.StaticLootDetails>>(File.ReadAllText("Files/loot/staticLoot.json"))
                     };
                      Debug.PrintTime($"Loot Taken {sw.ElapsedMilliseconds}ms");
+                }),
+                Task.Run(() =>
+                {
+                    DataBase.Achievements = JsonConvert.DeserializeObject<List<Achievement>>(File.ReadAllText("Files/others/achievements.json"),
+                    new JsonConverter[]
+                    {
+                        QuestTargetConverter.Singleton
+                    });
+                     Debug.PrintTime($"Achievements Taken {sw.ElapsedMilliseconds}ms");
                 })
             };
             Task.WhenAll(tasks.AsParallel().Select(task => task)).Wait();
