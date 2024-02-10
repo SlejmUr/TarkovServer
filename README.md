@@ -2,7 +2,7 @@
 This server is back!
 
 # Other
-Tarkov Server on C# (.NET 6)
+Tarkov Server on C# (.NET 8)
 
 This is my attempt to port existing JavaScript/Go/Typescript code to C#.\
 Because I am not want and familiar with JS and his funny stuffs.
@@ -44,6 +44,20 @@ You can download dlls from here, since it necessary to build the project.
 Currently working on Unity 2019.4.39 version of server. \
 decompiling the code and cleaning it. \
 https://github.com/SlejmUr/U19_TarkovServer \
-tarkov 0.13.5.3.x will be the LTS version!\
+tarkov 0.14.0.1.28476 will be the new LTS version!\
 if unity 21 version of tarkov released will gonna check what changed,\
 but it shouldn't change much.
+
+# LTS
+Current LTS:
+- 0.14.0.1.28476\
+Reason:\
+New tarkov (0.14) released currently this is the version AKI, and other people using.\
+Currently it's a live version.\
+Supported until: 0.14.0.3+
+
+Older LTS:
+- 0.13.5.3.x\
+Reason:\
+Was pretty stable, long time was good, viable.\
+No longer support, because too much changed.
