@@ -120,6 +120,9 @@ namespace JsonLib.Classes.DatabaseRelated
             public int BaseCheckTime { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
+            public int BluntDamageReduceFromSoftArmorMod { get; set; }
+
+            [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public Customization Customization { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
@@ -216,10 +219,10 @@ namespace JsonLib.Classes.DatabaseRelated
             public List<string> EventType { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public xyz WalkSpeed { get; set; }
+            public XYZ WalkSpeed { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public xyz SprintSpeed { get; set; }
+            public XYZ SprintSpeed { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public SquadSettings SquadSettings { get; set; }
@@ -240,7 +243,7 @@ namespace JsonLib.Classes.DatabaseRelated
             public int GameSearchingTimeout { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public xyz WallContusionAbsorption { get; set; }
+            public XYZ WallContusionAbsorption { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public WeaponFastDrawSettings WeaponFastDrawSettings { get; set; }
@@ -1764,6 +1767,9 @@ namespace JsonLib.Classes.DatabaseRelated
             public int Default { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
+            public int EnvironmentDamageMultiplier { get; set; }
+
+            [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public int OverDamageReceivedMultiplier { get; set; }
 
         }
@@ -2037,28 +2043,28 @@ namespace JsonLib.Classes.DatabaseRelated
             public int OxygenRestoration { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public xyz WalkOverweightLimits { get; set; }
+            public XYZ WalkOverweightLimits { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public xyz BaseOverweightLimits { get; set; }
+            public XYZ BaseOverweightLimits { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public xyz SprintOverweightLimits { get; set; }
+            public XYZ SprintOverweightLimits { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public xyz WalkSpeedOverweightLimits { get; set; }
+            public XYZ WalkSpeedOverweightLimits { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public xyz CrouchConsumption { get; set; }
+            public XYZ CrouchConsumption { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public xyz WalkConsumption { get; set; }
+            public XYZ WalkConsumption { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public xyz StandupConsumption { get; set; }
+            public XYZ StandupConsumption { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public xyz TransitionSpeed { get; set; }
+            public XYZ TransitionSpeed { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public int SprintAccelerationLowerLimit { get; set; }
@@ -2070,13 +2076,13 @@ namespace JsonLib.Classes.DatabaseRelated
             public int SprintSensitivityLowerLimit { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public xyz AimConsumptionByPose { get; set; }
+            public XYZ AimConsumptionByPose { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public xyz RestorationMultiplierByPose { get; set; }
+            public XYZ RestorationMultiplierByPose { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public xyz OverweightConsumptionByPose { get; set; }
+            public XYZ OverweightConsumptionByPose { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public int AimingSpeedMultiplier { get; set; }
@@ -2100,7 +2106,7 @@ namespace JsonLib.Classes.DatabaseRelated
             public int BaseHoldBreathConsumption { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public xyz SoundRadius { get; set; }
+            public XYZ SoundRadius { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public int ExhaustedMeleeSpeed { get; set; }
@@ -2133,16 +2139,16 @@ namespace JsonLib.Classes.DatabaseRelated
             public bool StaminaExhaustionRocksCamera { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public xyz HoldBreathStaminaMultiplier { get; set; }
+            public XYZ HoldBreathStaminaMultiplier { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public xyz PoseLevelIncreaseSpeed { get; set; }
+            public XYZ PoseLevelIncreaseSpeed { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public xyz PoseLevelDecreaseSpeed { get; set; }
+            public XYZ PoseLevelDecreaseSpeed { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public xyz PoseLevelConsumptionPerNotch { get; set; }
+            public XYZ PoseLevelConsumptionPerNotch { get; set; }
 
         }
         public class StaminaRestoration
@@ -3032,7 +3038,7 @@ namespace JsonLib.Classes.DatabaseRelated
         public class Aiming
         {
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public xyz ProceduralIntensityByPose { get; set; }
+            public XYZ ProceduralIntensityByPose { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public int AimProceduralIntensity { get; set; }
@@ -3065,13 +3071,13 @@ namespace JsonLib.Classes.DatabaseRelated
             public int CameraSnapGlobalMult { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public xyz RecoilXIntensityByPose { get; set; }
+            public XYZ RecoilXIntensityByPose { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public xyz RecoilYIntensityByPose { get; set; }
+            public XYZ RecoilYIntensityByPose { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public xyz RecoilZIntensityByPose { get; set; }
+            public XYZ RecoilZIntensityByPose { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public bool RecoilCrank { get; set; }
@@ -3122,7 +3128,7 @@ namespace JsonLib.Classes.DatabaseRelated
             public int TimeToQuickdrawPistol { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public xyz DurRangeToIgnoreMalfs { get; set; }
+            public XYZ DurRangeToIgnoreMalfs { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public int DurFeedWt { get; set; }
@@ -3320,34 +3326,34 @@ namespace JsonLib.Classes.DatabaseRelated
         public class Inertia
         {
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public xyz InertiaLimits { get; set; }
+            public XYZ InertiaLimits { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public int InertiaLimitsStep { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public xyz ExitMovementStateSpeedThreshold { get; set; }
+            public XYZ ExitMovementStateSpeedThreshold { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public xyz WalkInertia { get; set; }
+            public XYZ WalkInertia { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public int FallThreshold { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public xyz SpeedLimitAfterFallMin { get; set; }
+            public XYZ SpeedLimitAfterFallMin { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public xyz SpeedLimitAfterFallMax { get; set; }
+            public XYZ SpeedLimitAfterFallMax { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public xyz SpeedLimitDurationMin { get; set; }
+            public XYZ SpeedLimitDurationMin { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public xyz SpeedLimitDurationMax { get; set; }
+            public XYZ SpeedLimitDurationMax { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public xyz SpeedInertiaAfterJump { get; set; }
+            public XYZ SpeedInertiaAfterJump { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public int BaseJumpPenaltyDuration { get; set; }
@@ -3362,76 +3368,76 @@ namespace JsonLib.Classes.DatabaseRelated
             public int PenaltyPower { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public xyz InertiaTiltCurveMin { get; set; }
+            public XYZ InertiaTiltCurveMin { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public xyz InertiaTiltCurveMax { get; set; }
+            public XYZ InertiaTiltCurveMax { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public xyz InertiaBackwardCoef { get; set; }
+            public XYZ InertiaBackwardCoef { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public xyz TiltInertiaMaxSpeed { get; set; }
+            public XYZ TiltInertiaMaxSpeed { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public xyz TiltStartSideBackSpeed { get; set; }
+            public XYZ TiltStartSideBackSpeed { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public xyz TiltMaxSideBackSpeed { get; set; }
+            public XYZ TiltMaxSideBackSpeed { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public xyz TiltAcceleration { get; set; }
+            public XYZ TiltAcceleration { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public int AverageRotationFrameSpan { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public xyz SprintSpeedInertiaCurveMin { get; set; }
+            public XYZ SprintSpeedInertiaCurveMin { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public xyz SprintSpeedInertiaCurveMax { get; set; }
+            public XYZ SprintSpeedInertiaCurveMax { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public xyz SprintBrakeInertia { get; set; }
+            public XYZ SprintBrakeInertia { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public xyz SprintTransitionMotionPreservation { get; set; }
+            public XYZ SprintTransitionMotionPreservation { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public xyz WeaponFlipSpeed { get; set; }
+            public XYZ WeaponFlipSpeed { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public xyz PreSprintAccelerationLimits { get; set; }
+            public XYZ PreSprintAccelerationLimits { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public xyz SprintAccelerationLimits { get; set; }
+            public XYZ SprintAccelerationLimits { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public xyz SideTime { get; set; }
+            public XYZ SideTime { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public xyz DiagonalTime { get; set; }
+            public XYZ DiagonalTime { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public xyz MaxTimeWithoutInput { get; set; }
+            public XYZ MaxTimeWithoutInput { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public int MinDirectionBlendTime { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public xyz MoveTimeRange { get; set; }
+            public XYZ MoveTimeRange { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public xyz ProneDirectionAccelerationRange { get; set; }
+            public XYZ ProneDirectionAccelerationRange { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public xyz ProneSpeedAccelerationRange { get; set; }
+            public XYZ ProneSpeedAccelerationRange { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public xyz MinMovementAccelerationRangeRight { get; set; }
+            public XYZ MinMovementAccelerationRangeRight { get; set; }
 
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-            public xyz MaxMovementAccelerationRangeRight { get; set; }
+            public XYZ MaxMovementAccelerationRangeRight { get; set; }
 
         }
         public class Ballistic

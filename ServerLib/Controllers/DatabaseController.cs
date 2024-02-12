@@ -78,13 +78,14 @@ namespace ServerLib.Controllers
                 }),
                 Task.Run(() =>
                 {
+                    /*
                     DataBase.Loot = new()
                     {
                         staticAmmo = JsonConvert.DeserializeObject<Dictionary<string, List<LootBase.StaticAmmoDetails>>>(File.ReadAllText("Files/loot/staticAmmo.json")),
                         staticContainers = JsonConvert.DeserializeObject<Dictionary<string, LootBase.StaticContainerDetails>>(File.ReadAllText("Files/loot/staticContainers.json")),
                         staticLoot = JsonConvert.DeserializeObject<Dictionary<string, LootBase.StaticLootDetails>>(File.ReadAllText("Files/loot/staticLoot.json"))
                     };
-                     Debug.PrintTime($"Loot Taken {sw.ElapsedMilliseconds}ms");
+                     Debug.PrintTime($"Loot Taken {sw.ElapsedMilliseconds}ms");*/
                 }),
                 Task.Run(() =>
                 {

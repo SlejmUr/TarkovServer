@@ -1,6 +1,7 @@
 ﻿using JsonLib.Classes.ProfileRelated;
 using Newtonsoft.Json;
 using System.Diagnostics;
+using System.Security.Cryptography;
 
 namespace JsonLib
 {
@@ -13,7 +14,7 @@ namespace JsonLib
                 var utc = DateTime.UtcNow;
                 if (Stopwatch != null)
                 {
-                    utc = utc.AddSeconds(Stopwatch.ElapsedMilliseconds);
+                    utc = utc.AddMilliseconds(Stopwatch.ElapsedMilliseconds);
                     Console.WriteLine($"added ms ({Stopwatch.ElapsedMilliseconds})");
                 }
                 return Convert.ToUInt32((utc - new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc)).TotalSeconds);
@@ -64,7 +65,7 @@ namespace JsonLib
         {
             this._timeStamp = reader.ReadUInt32();
             this._counter = reader.ReadUInt64();
-            this._stringID = null;
+            this._stringID = string.Empty;
             this._stringID = this.GetString();
             this.method_0();
         }
@@ -73,7 +74,7 @@ namespace JsonLib
         {
             Stopwatch = Stopwatch.StartNew();
             this._timeStamp = 0U;
-            this._stringID = null;
+            this._stringID = string.Empty;
             if (newProcessId)
             {
                 this._counter = Counter << 24;
@@ -89,7 +90,7 @@ namespace JsonLib
 
         public MongoID(Character.Base profile)
         {
-            this._stringID = null;
+            this._stringID = string.Empty;
             this._timeStamp = TimeStamp;
             uint num = Convert.ToUInt32(profile.Aid);
             uint num2 = Convert.ToUInt32(_random.Next(0, 16777215));
@@ -104,7 +105,7 @@ namespace JsonLib
             this._timeStamp = (newTimestamp ? TimeStamp : source._timeStamp);
             this._counter = ((increment > 0) ? (source._counter + (ulong)Convert.ToUInt32(increment)) : (source._counter - (ulong)Convert.ToUInt32(Math.Abs(increment))));
             //this._counter =  source._counter + (ulong)increment;
-            this._stringID = null;
+            this._stringID = string.Empty;
             this._stringID = this.GetString();
         }
 
@@ -121,7 +122,7 @@ namespace JsonLib
 
         public MongoID Next()
         {
-            return new MongoID(this, 1, true);
+            return new MongoID(this, RandomNumberGenerator.GetInt32(1,100), true);
         }
 
 
@@ -188,8 +189,8 @@ namespace JsonLib
                     MongoID a = (MongoID)obj;
                     return a == this;
                 }
-                string a2;
-                if ((a2 = (obj as string)) != null)
+                string? a2 = obj as string;
+                if (a2  != null)
                 {
                     return a2 == this.ToString();
                 }

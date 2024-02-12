@@ -28,14 +28,14 @@ namespace JsonLib.Helpers
         public static string FromCharacterBase(this Character.Base? @base)
         {
             ArgumentNullException.ThrowIfNull(@base);
-            return JsonConvert.SerializeObject(@base, new JsonConverter[] { Converters.ItemLocationConverter.Singleton });
+            return JsonConvert.SerializeObject(@base, [Converters.ItemLocationConverter.Singleton]);
         }
 
         public static Character.Base ToCharacterBase(this string file)
         {
             if (!File.Exists(file))
                 throw new FileNotFoundException(file);
-            var ret = JsonConvert.DeserializeObject<Character.Base>(File.ReadAllText(file), new JsonConverter[] { Converters.ItemLocationConverter.Singleton });
+            var ret = JsonConvert.DeserializeObject<Character.Base>(File.ReadAllText(file), [Converters.ItemLocationConverter.Singleton]);
             ArgumentNullException.ThrowIfNull(ret);
             return ret;
 
@@ -43,7 +43,7 @@ namespace JsonLib.Helpers
 
         public static Character.Base ToCharacterBaseAsString(this string json)
         {
-            var ret = JsonConvert.DeserializeObject<Character.Base>(json, new JsonConverter[] { Converters.ItemLocationConverter.Singleton });
+            var ret = JsonConvert.DeserializeObject<Character.Base>(json, [Converters.ItemLocationConverter.Singleton]);
             ArgumentNullException.ThrowIfNull(ret);
             return ret;
 

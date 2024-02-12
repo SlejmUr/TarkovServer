@@ -1120,6 +1120,8 @@ namespace JsonLib.Classes.ItemRelated
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public bool UseAmmoWithoutShell { get; set; }
 
+            [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
+            public bool bluntDamageReduceFromSoftArmor { get; set; }
         }
 
         public class IHealthEffect

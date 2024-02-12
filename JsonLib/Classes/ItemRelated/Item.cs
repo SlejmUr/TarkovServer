@@ -103,6 +103,8 @@ namespace JsonLib.Classes.ItemRelated
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public _RepairKit RepairKit { get; set; }
 
+            [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
+            public _CultistAmulet CultistAmulet { get; set; }
         }
 
         public class _Buff
@@ -308,6 +310,12 @@ namespace JsonLib.Classes.ItemRelated
             [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
             public int Resource { get; set; }
 
+        }
+
+        public class _CultistAmulet
+        {
+            [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
+            public int NumberOfUsages { get; set; }
         }
     }
 }

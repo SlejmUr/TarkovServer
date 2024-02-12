@@ -46,11 +46,6 @@ namespace ServerLib.Controllers
             //var LocationLoot = JsonConvert.DeserializeObject<LooseLoot.Base>(DatabaseController.DataBase.Location.Locations[location.locationId + "_looseLoot"]);
             LocationBase.UnixDateTime = TimeHelper.UnixTimeNow_Int();
 
-            var staticWeapons = DatabaseController.DataBase.Loot.staticContainers[location.locationId].staticWeapons;
-            foreach (var item in staticWeapons)
-            {
-                LocationBase.Loot.Add(item);
-            }
             return LocationBase;
         }
     }

@@ -53,10 +53,10 @@ namespace JsonLib.Classes.LocationRelated
             public bool randomRotation { get; set; }
 
             [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-            public xyz Position { get; set; }
+            public XYZ Position { get; set; }
 
             [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-            public xyz Rotation { get; set; }
+            public XYZ Rotation { get; set; }
 
             [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
             public bool IsAlwaysSpawn { get; set; }

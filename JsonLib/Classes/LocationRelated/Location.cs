@@ -472,7 +472,7 @@ namespace JsonLib.Classes.LocationRelated
             public string Infiltration { get; set; }
 
             [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-            public xyz Position { get; set; }
+            public XYZ Position { get; set; }
 
             [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
             public float Rotation { get; set; }
@@ -493,13 +493,13 @@ namespace JsonLib.Classes.LocationRelated
         public class Props
         {
             [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-            public xyz Center { get; set; }
+            public XYZ Center { get; set; }
 
             [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
             public double Radius { get; set; }
 
         }
-        public class xyz
+        public class XYZ
         {
             [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
             public double x { get; set; }

@@ -1,9 +1,9 @@
 ﻿namespace JsonLib.Classes.ItemRelated
 {
-    public class xyz
+    public class XYZ
     {
-        public int x;
-        public int y;
-        public int z;
+        public double x;
+        public double y;
+        public double z;
     }
 }
