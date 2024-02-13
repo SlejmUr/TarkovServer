@@ -8,6 +8,8 @@ using Newtonsoft.Json;
 using JsonLib.Classes.Request;
 using System.Xml.Linq;
 using ComponentAce.Compression.Libs.zlib;
+using static JsonLib.Classes.Response.RandomisedBotLevel;
+using static StressTester.StaticExt;
 
 namespace StressTester
 {
@@ -46,17 +48,27 @@ namespace StressTester
             var UserId = task.Result.Body;
             Console.WriteLine($"UserID added: {UserId}");
 
+            /*
+            var send_req = clientEx.SendRequest(MakePOSTResponse("/client/game/start", "", UserId));
+            send_req.Wait();
+            var res = send_req.Result;
+            Console.WriteLine(res.Status + " " + res.StatusPhrase);
+            Thread.Sleep(1000);
+            */
 
-            var tasks = GetTarkovTasks(clientEx, UserId, name);
+
+            
+            var tasks = GetTarkovTasks(UserId, name);
             Console.WriteLine(tasks.Count);
             foreach (var item in tasks)
             {
                 Console.WriteLine(item.Url + " started");
-                if (clientEx.IsConnected)
-                    clientEx.ReconnectAsync();
-                else
-                    clientEx.ConnectAsync();
-                Console.WriteLine(clientEx.SendRequest(item).Result.Status + " " + item.Url);
+                var result = clientEx.SendRequest(item);
+                result.Wait();
+                var res = result.Result;
+                Console.WriteLine(res.Status + " " + item.Url);
+                Thread.Sleep(1000);
+                Console.ReadLine();
             }
             task = clientEx.SendPostRequest("/webprofile/delete",
     JsonConvert.SerializeObject(new WebAccount()
@@ -70,58 +82,60 @@ namespace StressTester
         }
 
 
-        public static List<HttpRequest> GetTarkovTasks(HttpsClientEx clientEx, string UserId, string UserName)
+        public static List<HttpRequest> GetTarkovTasks(string UserId, string UserName)
         {
-            List<HttpRequest> ret = new();
-            ret.Add(clientEx.MakePOSTResponse("/client/game/start", "", UserId));
-            ret.Add(clientEx.MakePOSTResponse("/client/menu/locale/en", "", UserId));
-            ret.Add(clientEx.MakePOSTResponse("/client/game/version/validate", "", UserId));
-            ret.Add(clientEx.MakePOSTResponse("/client/languages", "", UserId));
-            ret.Add(clientEx.MakePOSTResponse("/client/game/config", "", UserId));
-            ret.Add(clientEx.MakePOSTResponse("/client/items", "", UserId));
-            ret.Add(clientEx.MakePOSTResponse("/client/customization", "", UserId));
-            ret.Add(clientEx.MakePOSTResponse("/client/globals", "", UserId));
-            ret.Add(clientEx.MakePOSTResponse("/client/trading/api/traderSettings", "", UserId));
-            ret.Add(clientEx.MakePOSTResponse("/client/settings", "", UserId));
-            ret.Add(clientEx.MakePOSTResponse("/client/game/profile/list", "", UserId));
-            ret.Add(clientEx.MakePOSTResponse("/client/locale/en", "", UserId));
-            ret.Add(clientEx.MakePOSTResponse("/client/account/customization", "", UserId));
-            ret.Add(clientEx.MakePOSTResponse("/client/game/profile/nickname/reserved", "", UserId));
-            ret.Add(clientEx.MakePOSTResponse("/client/game/profile/nickname/validate", JsonConvert.SerializeObject(new Nickname()
-            {
-                nickname = UserName
-            }), UserId));
-            ret.Add(clientEx.MakePOSTResponse("/client/game/profile/create", JsonConvert.SerializeObject(new Create()
-            {
-                HeadId = "5cc084dd14c02e000b0550a3",
-                Side = "Bear",
-                Nickname = UserName,
-                VoiceId = "5fc1221a95572123ae7384a2"
-            }), UserId));
-            ret.Add(clientEx.MakePOSTResponse("/client/game/profile/list", "", UserId)); 
-            ret.Add(clientEx.MakePOSTResponse("/client/game/profile/select", "", UserId));
-            ret.Add(clientEx.MakePOSTResponse("/client/profile/status", "", UserId));
-            ret.Add(clientEx.MakePOSTResponse("/client/weather", "", UserId));
-            ret.Add(clientEx.MakePOSTResponse("/client/locations", "", UserId));
-            ret.Add(clientEx.MakePOSTResponse("/client/handbook/templates", "", UserId));
-            ret.Add(clientEx.MakePOSTResponse("/client/hideout/areas", "", UserId));
-            ret.Add(clientEx.MakePOSTResponse("/client/hideout/qte/list", "", UserId));
-            ret.Add(clientEx.MakePOSTResponse("/client/hideout/settings", "", UserId));
-            ret.Add(clientEx.MakePOSTResponse("/client/hideout/production/recipes", "", UserId));
-            ret.Add(clientEx.MakePOSTResponse("/client/hideout/production/scavcase/recipes", "", UserId));
-            ret.Add(clientEx.MakePOSTResponse("/client/handbook/builds/my/list", "", UserId));
-            ret.Add(clientEx.MakePOSTResponse("/client/notifier/channel/create", "", UserId));
-            ret.Add(clientEx.MakePOSTResponse("/client/profile/status", "", UserId));
-            ret.Add(clientEx.MakePOSTResponse("/client/friend/list", "", UserId));
-            ret.Add(clientEx.MakePOSTResponse("/client/friend/request/list/outbox", "", UserId));
-            ret.Add(clientEx.MakePOSTResponse("/client/friend/request/list/inbox", "", UserId));
-            ret.Add(clientEx.MakePOSTResponse("/client/mail/dialog/list", "", UserId));
-            ret.Add(clientEx.MakePOSTResponse("/client/trading/customization/storage", "", UserId));
-            ret.Add(clientEx.MakePOSTResponse("/client/server/list", "", UserId));
-            ret.Add(clientEx.MakePOSTResponse("/client/match/group/current", "", UserId));
-            ret.Add(clientEx.MakePOSTResponse("/client/quest/list", "", UserId));
-            ret.Add(clientEx.MakePOSTResponse("/client/repeatalbeQuests/activityPeriods", "", UserId));
-            ret.Add(clientEx.MakePOSTResponse("/client/game/logout", "", UserId));
+            List<HttpRequest> ret =
+            [
+                MakePOSTResponse("/client/game/start", "", UserId),
+                MakePOSTResponse("/client/menu/locale/en", "", UserId),
+                MakePOSTResponse("/client/game/version/validate", "", UserId),
+                MakePOSTResponse("/client/languages", "", UserId),
+                MakePOSTResponse("/client/game/config", "", UserId),
+                MakePOSTResponse("/client/items", "", UserId),
+                MakePOSTResponse("/client/customization", "", UserId),
+                MakePOSTResponse("/client/globals", "", UserId),
+                MakePOSTResponse("/client/trading/api/traderSettings", "", UserId),
+                MakePOSTResponse("/client/settings", "", UserId),
+                MakePOSTResponse("/client/game/profile/list", "", UserId),
+                MakePOSTResponse("/client/locale/en", "", UserId),
+                MakePOSTResponse("/client/account/customization", "", UserId),
+                MakePOSTResponse("/client/game/profile/nickname/reserved", "", UserId),
+                MakePOSTResponse("/client/game/profile/nickname/validate", JsonConvert.SerializeObject(new Nickname()
+                {
+                    nickname = UserName
+                }), UserId),
+                MakePOSTResponse("/client/game/profile/create", JsonConvert.SerializeObject(new Create()
+                {
+                    HeadId = "5cc084dd14c02e000b0550a3",
+                    Side = "Bear",
+                    Nickname = UserName,
+                    VoiceId = "5fc1221a95572123ae7384a2"
+                }), UserId),
+                MakePOSTResponse("/client/game/profile/list", "", UserId),
+                MakePOSTResponse("/client/game/profile/select", "", UserId),
+                MakePOSTResponse("/client/profile/status", "", UserId),
+                MakePOSTResponse("/client/weather", "", UserId),
+                MakePOSTResponse("/client/locations", "", UserId),
+                MakePOSTResponse("/client/handbook/templates", "", UserId),
+                MakePOSTResponse("/client/hideout/areas", "", UserId),
+                MakePOSTResponse("/client/hideout/qte/list", "", UserId),
+                MakePOSTResponse("/client/hideout/settings", "", UserId),
+                MakePOSTResponse("/client/hideout/production/recipes", "", UserId),
+                MakePOSTResponse("/client/hideout/production/scavcase/recipes", "", UserId),
+                MakePOSTResponse("/client/handbook/builds/my/list", "", UserId),
+                MakePOSTResponse("/client/notifier/channel/create", "", UserId),
+                MakePOSTResponse("/client/profile/status", "", UserId),
+                MakePOSTResponse("/client/friend/list", "", UserId),
+                MakePOSTResponse("/client/friend/request/list/outbox", "", UserId),
+                MakePOSTResponse("/client/friend/request/list/inbox", "", UserId),
+                MakePOSTResponse("/client/mail/dialog/list", "", UserId),
+                MakePOSTResponse("/client/trading/customization/storage", "", UserId),
+                MakePOSTResponse("/client/server/list", "", UserId),
+                MakePOSTResponse("/client/match/group/current", "", UserId),
+                MakePOSTResponse("/client/quest/list", "", UserId),
+                MakePOSTResponse("/client/repeatalbeQuests/activityPeriods", "", UserId),
+                MakePOSTResponse("/client/game/logout", "", UserId),
+            ];
             return ret;
         }
 

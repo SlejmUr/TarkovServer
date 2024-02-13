@@ -22,15 +22,24 @@ namespace ServerLib.Utilities.Helpers
 
         public static int ToAID(string id)
         {
-            var bytes = System.Text.Encoding.UTF8.GetBytes(id);
-            int i_aid = 0;
-            for (int i = 0; i < bytes.Length; i += 4)
+            var mongo = new MongoID(id);
+            Console.WriteLine(mongo._timeStamp);
+            Console.WriteLine(mongo._counter);
+            var byts = BitConverter.GetBytes(mongo._counter);
+            var cf = BitConverter.ToInt32(byts[0..4]);
+            var cs = BitConverter.ToInt32(byts[4..8]);
+            Console.WriteLine(cf);
+            Console.WriteLine(cs);
+
+            var newc = cf ^ cs;
+            Console.WriteLine(newc);
+            int timestap = Convert.ToInt32(mongo._timeStamp);
+            if (timestap < 0)
             {
-
-                i_aid += BitConverter.ToInt32(bytes[i..(i + 4)]);
+                timestap *= -1;
             }
-
-            return i_aid;
+            var ret_aid = timestap ^ newc;
+            return ret_aid;
         }
     }
 }

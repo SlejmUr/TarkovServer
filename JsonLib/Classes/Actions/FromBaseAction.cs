@@ -15,7 +15,6 @@ namespace JsonLib.Classes.Actions
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
         public int time { get; set; }
-
     }
 
     public class OffraidHeal : BaseInteraction
@@ -34,7 +33,6 @@ namespace JsonLib.Classes.Actions
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
         public int time { get; set; }
-
     }
 
     public class Insure : BaseInteraction
@@ -47,7 +45,6 @@ namespace JsonLib.Classes.Actions
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
         public List<string> items { get; set; }
-
     }
 
     public class Note : BaseInteraction
@@ -67,9 +64,5 @@ namespace JsonLib.Classes.Actions
             public string Text { get; set; }
 
         }
-
     }
-
-
-
 }

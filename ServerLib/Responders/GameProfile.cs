@@ -166,7 +166,7 @@ namespace ServerLib.Responders
             CharacterController.CreateCharacter(SessionId, Uncompressed);
             UID rsp = new()
             {
-                uid = "pmc" + SessionId
+                uid = SessionId
             };
             return GetBody(JsonConvert.SerializeObject(rsp));
         }

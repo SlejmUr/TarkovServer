@@ -77,9 +77,11 @@ namespace ServerLib.Controllers
             var character = DatabaseController.DataBase.Characters.CharacterBase[createReq.Side.ToLower()];
             var time = TimeHelper.UnixTimeNow_Int();
 
-            character.Id = "pmc" + SessionId;
+            string ScavID = AIDHelper.CreateNewID();
+
+            character.Id = SessionId;
             character.Aid = AIDHelper.ToAID(SessionId);
-            character.Savage = "scav" + SessionId;
+            character.Savage = ScavID;
             character.Info.Side = createReq.Side;
             character.Info.Nickname = createReq.Nickname;
             character.Info.LowerNickname = createReq.Nickname.ToLower();
@@ -89,32 +91,34 @@ namespace ServerLib.Controllers
             character.Customization.Head = createReq.HeadId;
             character.Quests = new();
             character.Achievements = new();
-            character.Info.SavageLockTime = 1000000;
+            character.Info.SavageLockTime = 0;
             character.Inventory = InventoryController.AssingInventory(character.Inventory);
+            Debug.PrintInfo("Character stuff done, saving it!");
             SaveHandler.Save(SessionId, "Character", SaveHandler.GetCharacterPath(SessionId), JsonHelper.FromCharacterBase(character));
             var storage = DatabaseController.DataBase.Characters.CharacterStorage[createReq.Side.ToLower()];
             SaveHandler.Save(SessionId, "Storage", SaveHandler.GetStoragePath(SessionId), JsonConvert.SerializeObject(storage));
-            if (!Characters.ContainsKey(character.Id))
+            if (!Characters.ContainsKey($"pmc{SessionId}"))
             {
-                Characters.Add(character.Id, character);
+                Characters.Add($"pmc{SessionId}", character);
             }
             else
             {
-                Characters.Remove(character.Id);
-                Characters.Add(character.Id, character);
+                Characters.Remove($"pmc{SessionId}");
+                Characters.Add($"pmc{SessionId}", character);
             }
 
+            Debug.PrintInfo("PMC Done, generating scav!");
             //Generate scav
-            var scav = Scav.Generate(SessionId);
+            var scav = Scav.Generate(SessionId, ScavID);
             SaveHandler.Save(SessionId, "Scav", SaveHandler.GetScavPath(SessionId), JsonHelper.FromCharacterBase(scav));
-            if (!Characters.ContainsKey(scav.Id))
+            if (!Characters.ContainsKey($"scav{SessionId}"))
             {
-                Characters.Add(scav.Id, scav);
+                Characters.Add($"scav{SessionId}", scav);
             }
             else
             {
-                Characters.Remove(scav.Id);
-                Characters.Add(scav.Id, scav);
+                Characters.Remove($"scav{SessionId}");
+                Characters.Add($"scav{SessionId}", scav);
             }
 
             //Item ReID
@@ -170,13 +174,6 @@ namespace ServerLib.Controllers
             List<Character.Base> ouptut = new();
             if (!AccountController.IsWiped(SessionId))
             {
-                /*
-                var scav = JsonHelper.ToCharacterBase("Files/bot/playerScav.json");
-                scav.Aid = AIDHelper.ToAID(SessionId);
-                scav.Id = "scav" + SessionId;
-                scav.Info.RegistrationDate = TimeHelper.UnixTimeNow_Int();
-                */
-                
                 var scav = GetScavCharacter(SessionId);
                 if (scav != null) 
                 {
@@ -186,13 +183,12 @@ namespace ServerLib.Controllers
                 if (character != null)
                 {
                     ouptut.Add(character);
-                    //ouptut.Add(scav);
                 }
 
 
             }
 
-            return JsonConvert.SerializeObject(ouptut, new JsonConverter[] { Converters.ItemLocationConverter.Singleton });
+            return JsonConvert.SerializeObject(ouptut, [Converters.ItemLocationConverter.Singleton]);
         }
 
         public static List<Character.Base> SearchNickname(string Nickname)

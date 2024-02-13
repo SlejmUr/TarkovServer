@@ -256,9 +256,9 @@ namespace JsonLib
         }
         private static Random _random = new Random();
         private static readonly ulong _processId = Counter;
-        private static uint _newIdCounter;
-        private readonly uint _timeStamp;
-        private readonly ulong _counter;
+        public static uint _newIdCounter;
+        public readonly uint _timeStamp;
+        public readonly ulong _counter;
         private readonly string _stringID;
         public static string Default = "ffffffffffffffffffffffff";
     }

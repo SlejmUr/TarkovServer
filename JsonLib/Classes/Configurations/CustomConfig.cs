@@ -60,6 +60,10 @@ namespace JsonLib.Classes.Configurations
         {
             [JsonProperty("PublicConfigEnabled")]
             public bool PublicConfigEnabled { get; set; }
+            /*
+            [JsonProperty("VersionCheckEnabled")]
+            public bool VersionCheckEnabled { get; set; }
+            */
         }
     }
 }

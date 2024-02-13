@@ -4,6 +4,7 @@ using ModdableWebServer.Helper;
 using NetCoreServer;
 using Newtonsoft.Json;
 using ServerLib.Controllers;
+using ServerLib.Handlers;
 
 namespace ExtCommands
 {
@@ -13,7 +14,7 @@ namespace ExtCommands
         public static bool ExtCommandsAuth(HttpRequest request, ServerStruct serverStruct)
         {
             Console.WriteLine(request.Body);
-            var rsp = JWTHandler.CreateAuthToken("yeet", "yssss");
+            var rsp = JWTHandler_EX.CreateAuthToken("yeet", "yssss");
             serverStruct.Response.MakeGetResponse(rsp);
             serverStruct.SendResponse();
             return true;

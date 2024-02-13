@@ -5,7 +5,7 @@ namespace JsonLib.Classes.Response
     public class GameConfig
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-        public string aid { get; set; }
+        public int aid { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
         public string lang { get; set; }

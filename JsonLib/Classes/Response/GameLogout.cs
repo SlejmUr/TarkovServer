@@ -1,6 +1,4 @@
-﻿using Newtonsoft.Json;
-
-namespace JsonLib.Classes.Response
+﻿namespace JsonLib.Classes.Response
 {
     public class GameLogout
     {

@@ -13,7 +13,6 @@ namespace Plugin
         }
         public Plugin()
         {
-            JWTHandler.CreateRSA();
         }
 
         public string Name => "External Commands";

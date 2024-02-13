@@ -2,7 +2,6 @@
 
 namespace JsonLib.Classes.Actions
 {
-
     #region HideoutUpgradeComplete
     public class HideoutUpgradeComplete : ActionWithTime
     {

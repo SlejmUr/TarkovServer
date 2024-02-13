@@ -2,6 +2,7 @@
 using ModdableWebServer.Helper;
 using ModdableWebServer.Servers;
 using NetCoreServer;
+using ServerLib.Handlers;
 using ServerLib.Utilities;
 using System.Reflection;
 
@@ -21,6 +22,7 @@ namespace ServerLib.Web
         static Dictionary<string, MethodInfo> Main_WS = new();
         public static void Start(string ip, int port, bool ssl = true, bool OnlyWS = false, bool IsCertValidate = false)
         {
+            JWTHandler.CreateRSA();
             var sw = System.Diagnostics.Stopwatch.StartNew();
             IsSsl = ssl;
             if (ssl)
@@ -37,17 +39,17 @@ namespace ServerLib.Web
                 Main_WS = AttributeMethodHelper.UrlWSLoader(Assembly.GetAssembly(typeof(ServerManager)));
                 WSS_Server.DoReturn404IfFail = false;
                 WSS_Server.ReceivedFailed += Failed;
-                WSS_Server.MergeWSAttribute(Assembly.GetAssembly(typeof(ServerManager)));
+                WSS_Server.OverrideAttributes(Assembly.GetAssembly(typeof(ServerManager)));
                 if (!OnlyWS)
-                    WSS_Server.MergeAttribute(Assembly.GetAssembly(typeof(ServerManager)));
+                    WSS_Server.OverrideAttributes(Assembly.GetAssembly(typeof(ServerManager)));
                 WSS_Server.Start();
             }
             else
             {
                 WS_Server = new(ip, port);
-                WS_Server.MergeWSAttribute(Assembly.GetAssembly(typeof(ServerManager)));
+                WS_Server.OverrideAttributes(Assembly.GetAssembly(typeof(ServerManager)));
                 if (!OnlyWS)
-                    WS_Server.MergeAttribute(Assembly.GetAssembly(typeof(ServerManager)));
+                    WS_Server.OverrideAttributes(Assembly.GetAssembly(typeof(ServerManager)));
                 WS_Server.DoReturn404IfFail = false;
                 WS_Server.ReceivedFailed += Failed;
                 WS_Server.Start();

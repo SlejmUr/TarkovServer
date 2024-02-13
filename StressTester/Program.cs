@@ -17,7 +17,7 @@ namespace StressTester
                 address = args[0];
 
             // HTTPS server port
-            int port = 443;
+            int port = 6969;
             if (args.Length > 1)
                 port = int.Parse(args[1]);
 
@@ -30,19 +30,20 @@ namespace StressTester
             // Create a new HTTPS client
             List<HttpsClientEx> clients = new();
             
-            int max = 2;
-            for (int i = 0; i <= max; i++)
+            int max = 1;
+            for (int i = 0; i < max; i++)
             {
-                var client = new HttpsClientEx(context, address, port); ;
+                var client = new HttpsClientEx(context, address, port);
                 clients.Add(client);
             }
+            Console.WriteLine(clients.Count);
             foreach (var client in clients)
             {
-                Thread x =new(()=> ChainNeeded.StartThis(client));
-                x.Start();
+                ChainNeeded.StartThis(client);
             }
             Console.WriteLine("yeet");
             Console.WriteLine("done");
+            Console.ReadLine();
         }
     }
 }

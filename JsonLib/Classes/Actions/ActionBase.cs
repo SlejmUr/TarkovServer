@@ -7,12 +7,10 @@ namespace JsonLib.Classes.Actions
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
         public string Action { get; set; }
-
     }
 
     public class ActionWithTime : ActionBase
     {
-
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
         public int timestamp { get; set; }
     }

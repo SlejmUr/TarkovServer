@@ -4,6 +4,7 @@ using ModdableWebServer.Attributes;
 using NetCoreServer;
 using Newtonsoft.Json;
 using ServerLib.Controllers;
+using ServerLib.Handlers;
 using ServerLib.Utilities;
 using ServerLib.Utilities.Helpers;
 
@@ -104,19 +105,19 @@ namespace ServerLib.Web
             }
             GameConfig game = new()
             {
-                aid = SessionId,
+                aid = AIDHelper.ToAID(SessionId),
                 lang = AccountController.GetAccountLang(SessionId),
                 languages = LocaleController.GetDictLanguages(),
                 ndaFree = false,
                 taxonomy = 6,
-                activeProfileId = "pmc" + SessionId,
+                activeProfileId = SessionId,
                 backend = backend,
                 utc_time = TimeHelper.UnixTimeNow_Int(),
                 totalInGame = AccountController.ActiveAccountIds.Count,
                 reportAvailable = true,
                 twitchEventMember = false
             };
-
+            Console.WriteLine("game: " + JsonConvert.SerializeObject(game));
             var rsp = ResponseControl.GetBody(JsonConvert.SerializeObject(game));
             ServerHelper.SendUnityResponse(request, serverStruct, rsp);
             return true;
@@ -143,6 +144,21 @@ namespace ServerLib.Web
            // var conditions = JsonConvert.DeserializeObject<List<WaveInfo>>(Uncompressed);
             // RPS
             var rsp = "{}";
+            ServerHelper.SendUnityResponse(request, serverStruct, rsp);
+            return true;
+        }
+
+        [HTTP("POST", "/client/game/token/issue")]
+        public static bool TokenIssue(HttpRequest request, ServerStruct serverStruct)
+        {
+            ServerHelper.PrintRequest(request, serverStruct);
+            string SessionId = serverStruct.Headers.GetSessionId();
+            // RPS
+            GameTokenIssue gameTokenIssue = new()
+            { 
+                token = JWTHandler.CreateGameToken(SessionId)
+            };
+            var rsp = ResponseControl.GetBody(JsonConvert.SerializeObject(gameTokenIssue));
             ServerHelper.SendUnityResponse(request, serverStruct, rsp);
             return true;
         }

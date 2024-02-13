@@ -1,9 +1,6 @@
-﻿using JsonLib;
-using JsonLib.Classes.Actions;
-using Newtonsoft.Json;
-using ServerLib.Controllers;
-using ServerLib.Properties;
+﻿using ServerLib.Controllers;
 using ServerLib.Utilities;
+using ServerLib.Utilities.Helpers;
 using System.Reflection;
 using System.Text;
 using SL = ServerLib;
@@ -67,6 +64,13 @@ namespace ConsoleApp
 
             SL.Main.Init();
             LogDetailed("Initialization Done!");
+            /*
+            var keys = ProfileController.ProfilesDict.Keys;
+            foreach (var item in keys)
+            {
+                Console.WriteLine(JWTHandler.CreateGameToken(item));
+            }
+            */
 
             Console.WriteLine("Commands are starting with !. Like !help");
             Console.WriteLine("Type 'exit' or 'q' to end application");
