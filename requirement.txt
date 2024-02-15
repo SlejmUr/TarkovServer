@@ -1,0 +1,6 @@
+Running the Applications requires .NET8 (And maybe admin access if you run on lower ports [433, etc])
+
+To Connect to application you need MODIFY your LIVE or an "LTS" version of you tarkov!
+MY MOD for it is currently CLOSED SOURCE. Alternative is "Tarkov.Base" (Not updated)
+Mod will be on an addon/"plugin" for the already existing "Tarkov.Base" 
+You can use any "Core" patches and will work. (AKI/SIT/..etc)

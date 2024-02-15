@@ -1,6 +1,5 @@
 ﻿using JWT.Algorithms;
 using JWT.Builder;
-using JWT.Exceptions;
 using ServerLib.Controllers;
 using ServerLib.Utilities;
 using System.Security.Cryptography;
