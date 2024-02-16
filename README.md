@@ -8,12 +8,15 @@ And possibly easier to make a nice Server UI with this (Xaml, or just Winform).\
 Still in early phase, in development!
 
 ## Credits
+- BattleStateGames for making Escape From Tarkov
+- chronoxor for making NetCoreServer
 - TheMaoci for official Research and Dump Tutorials
 - JET Team for making Tarkov Server
 - Paulov for editing Existed Tarkov Server code
 - Altered Escape Team for MTGA and some of easier Server code
 - SPT-AKI Team for some of the newest Jsons
 - NBJF, Panther for Testing & Debugging
+- Nexus4880 for helping me understand the udp dumps
 - SlejmUr for the Original Idea
 
 ## Build
