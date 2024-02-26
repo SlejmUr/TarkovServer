@@ -247,11 +247,10 @@ namespace ServerLib.Controllers
 
         static void TraderBranch(string file, string dirname)
         {
-            Trader.Base trader = new();
-            if (!DataBase.Trader.Traders.TryGetValue(dirname, out trader))
-            {
+            Trader.Base? trader = new();
+            DataBase.Trader.Traders.TryGetValue(dirname, out trader);
+            if (trader == null)
                 trader = new();
-            }
             string filename = file.Replace("Files/traders\\" + dirname + "\\", "").Replace(".json", "");
             Debug.PrintDebug($"Trader: {dirname + "_" + filename}", "LoadTraders");
             //DataBase.Locations.Add(dirname + "_" + filename, File.ReadAllText(file));

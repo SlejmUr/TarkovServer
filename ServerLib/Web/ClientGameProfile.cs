@@ -1,4 +1,5 @@
 ﻿using JsonLib.Classes.Actions;
+using JsonLib.Classes.ProfileRelated;
 using ModdableWebServer;
 using ModdableWebServer.Attributes;
 using NetCoreServer;
@@ -121,10 +122,14 @@ namespace ServerLib.Web
             ServerHelper.PrintRequest(request, serverStruct);
             Debug.PrintDebug(ResponseControl.DeCompressReq(request.BodyBytes));
             var itemEventRouter = JsonConvert.DeserializeObject<ItemEventRouter>(ResponseControl.DeCompressReq(request.BodyBytes));           
-            var profileChanges = MoveActionController.CreateBasicChanges(MoveActionController.CreateNew(), SessionId);
+            var profileChanges = MoveActionController.CreateBasicChanges(MoveActionController.CreateNew(), SessionId); 
+            ArgumentNullException.ThrowIfNull(itemEventRouter, nameof(itemEventRouter));
             foreach (var item in itemEventRouter.data)
             {
-                var action = item.ToObject<ActionBase>().Action;
+                var actionBase = item.ToObject<ActionBase>();
+                if (actionBase == null)
+                    continue;
+                var action = actionBase.Action;
                 Debug.PrintInfo(action);
                 if (MoveActionController.ItemActions.TryGetValue(action, out var func))
                 {

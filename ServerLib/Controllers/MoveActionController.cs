@@ -544,7 +544,8 @@ namespace ServerLib.Controllers
 
         public static ProfileChanges ApplyInventory(string SessionId, ProfileChanges changes, JObject action)
         {
-            Inventory.ApplyInventoryChanges inventoryChanges = action.ToObject<Inventory.ApplyInventoryChanges>();
+            Inventory.ApplyInventoryChanges? inventoryChanges = action.ToObject<Inventory.ApplyInventoryChanges>();
+            ArgumentNullException.ThrowIfNull(inventoryChanges, nameof(inventoryChanges));
             bool IsScav = false;
             var character = CharacterController.GetPmcCharacter(SessionId);
             if (inventoryChanges.fromOwner != null && inventoryChanges.fromOwner.type.ToLower() == "profile")
@@ -552,10 +553,12 @@ namespace ServerLib.Controllers
                 character = CharacterController.GetScavCharacter(SessionId);
                 IsScav = true;
             }
-
+            ArgumentNullException.ThrowIfNull(character, nameof(character));
             foreach (var item in inventoryChanges.changedItems)
             {
                 var invItem = character.Inventory.Items.Find(x=>x.Id == item.Id);
+                if (invItem == null)
+                    continue;
                 invItem.ParentId = item.ParentId;
                 invItem.SlotId = item.SlotId;
                 invItem.Location = item.Location;

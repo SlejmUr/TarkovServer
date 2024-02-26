@@ -21,9 +21,9 @@
             public class Bundle
             {
                 public string key { get; set; }
-                public string[] dependencyKeys { get; }
+                public List<string> dependencyKeys { get; } = new();
             }
-            public Bundle[] manifest;
+            public List<Bundle> manifest = new();
         }
         /*
         {

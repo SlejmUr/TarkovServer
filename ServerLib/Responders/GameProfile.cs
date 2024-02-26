@@ -58,17 +58,21 @@ namespace ServerLib.Responders
             }
             if (!match.IsNew && !match.matchData.IsScav)
             {
-                response.profiles[0].status = "MatchWait";
-                response.profiles[0].profileToken = match.matchData.Users.Where(x => x.sessionId == SessionId).FirstOrDefault().profileToken;
-                response.profiles[0].ip = match.matchData.Ip;
-                response.profiles[0].port = match.matchData.Port;
-                response.profiles[0].location = match.matchData.Location;
-                response.profiles[0].raidMode = match.matchData.RaidMode.ToString();
-                response.profiles[0].mode = "deathmatch";
-                response.profiles[0].sid = match.matchData.Sid;
-                response.profiles[0].shortId = "VD0ABA";
-                response.profiles[0].version = "live";
-                response.profiles[0].additional_info = new();
+                var profileForToken = match.matchData.Users.Where(x => x.sessionId == SessionId).FirstOrDefault();
+                if (profileForToken != null) 
+                {
+                    response.profiles[0].status = "MatchWait";
+                    response.profiles[0].profileToken = profileForToken.profileToken;
+                    response.profiles[0].ip = match.matchData.Ip;
+                    response.profiles[0].port = match.matchData.Port;
+                    response.profiles[0].location = match.matchData.Location;
+                    response.profiles[0].raidMode = match.matchData.RaidMode.ToString();
+                    response.profiles[0].mode = "deathmatch";
+                    response.profiles[0].sid = match.matchData.Sid;
+                    response.profiles[0].shortId = "VD0ABA";
+                    response.profiles[0].version = "live";
+                    response.profiles[0].additional_info = new();
+                }
             }
 
             if (!string.IsNullOrEmpty(character.Savage))
@@ -85,17 +89,21 @@ namespace ServerLib.Responders
 
                 if (!match.IsNew && match.matchData.IsScav)
                 {
-                    response.profiles[1].status = "MatchWait";
-                    response.profiles[1].profileToken = match.matchData.Users.Where(x => x.sessionId == SessionId).FirstOrDefault().profileToken;
-                    response.profiles[1].ip = match.matchData.Ip;
-                    response.profiles[1].port = match.matchData.Port;
-                    response.profiles[1].location = match.matchData.Location;
-                    response.profiles[1].raidMode = match.matchData.RaidMode.ToString();
-                    response.profiles[1].mode = "deathmatch";
-                    response.profiles[1].sid = match.matchData.Sid;
-                    response.profiles[1].shortId = "VD0ABA";
-                    response.profiles[1].version = "live";
-                    response.profiles[1].additional_info = new();
+                    var tokenUser = match.matchData.Users.Where(x => x.sessionId == SessionId).FirstOrDefault();
+                    if (tokenUser != null)
+                    {
+                        response.profiles[1].status = "MatchWait";
+                        response.profiles[1].profileToken = tokenUser.profileToken;
+                        response.profiles[1].ip = match.matchData.Ip;
+                        response.profiles[1].port = match.matchData.Port;
+                        response.profiles[1].location = match.matchData.Location;
+                        response.profiles[1].raidMode = match.matchData.RaidMode.ToString();
+                        response.profiles[1].mode = "deathmatch";
+                        response.profiles[1].sid = match.matchData.Sid;
+                        response.profiles[1].shortId = "VD0ABA";
+                        response.profiles[1].version = "live";
+                        response.profiles[1].additional_info = new();
+                    }
                 }
             }
 

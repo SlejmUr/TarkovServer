@@ -19,7 +19,7 @@ namespace MTGAPlugin.WSPackets
         public virtual long Time { get; set; } = 0;
 
         [JsonProperty("Method")]
-        public virtual string Method { get; set; } = null;
+        public virtual string Method { get; set; } = string.Empty;
 
         [JsonProperty("AccountId")]
         public virtual string AccountId { get; set; } = "";

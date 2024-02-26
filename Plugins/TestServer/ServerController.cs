@@ -69,6 +69,8 @@ namespace TestServer
                 foreach (var item in loot.Items)
                 {
                     var item_template = ItemController.Get(item.Tpl);
+                    if (item_template == null)
+                        continue;
                     var path = item_template._props.Prefab.path;
                     if (string.IsNullOrEmpty(path))
                         continue;

@@ -5,6 +5,7 @@ using ServerLib.Utilities;
 using ServerLib.Utilities.Helpers;
 using static JsonLib.Classes.Others;
 using Newtonsoft.Json;
+using static JsonLib.Classes.ProfileRelated.Profile;
 
 namespace ServerLib.Controllers
 {
@@ -552,7 +553,9 @@ namespace ServerLib.Controllers
         public static Character.Inventory AssingInventory(Character.Inventory inventory)
         {
             inventory.Items = AssignNewIDs(inventory.Items);
-            inventory.Equipment = inventory.Items.Find(x=>x.Tpl == "55d7217a4bdc2d86028b456d").Id;
+            var EqItem = inventory.Items.Find(x => x.Tpl == "55d7217a4bdc2d86028b456d");
+            ArgumentNullException.ThrowIfNull(EqItem, nameof(EqItem));
+            inventory.Equipment = EqItem.Id;
             return inventory;
         }
 

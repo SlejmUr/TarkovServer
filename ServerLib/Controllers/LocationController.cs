@@ -1,4 +1,5 @@
 ﻿using JsonLib.Classes.LocationRelated;
+using JsonLib.Classes.ProfileRelated;
 using JsonLib.Classes.Request;
 using Newtonsoft.Json;
 using ServerLib.Utilities;
@@ -14,6 +15,7 @@ namespace ServerLib.Controllers
             if (lbase == null)
             {
                 Debug.PrintWarn("lbase == null!!!", "GetAllLocation");
+                ArgumentNullException.ThrowIfNull(lbase, nameof(lbase));
             }
             lbase.locations = new();
             foreach (var loc in DatabaseController.DataBase.Location.Locations)

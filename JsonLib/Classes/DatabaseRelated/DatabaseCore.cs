@@ -7,8 +7,8 @@ namespace JsonLib.Classes.DatabaseRelated
 {
     public class DatabaseCore
     {
-        public bot Bot { get; set; } = new();
-        public class bot
+        public DB_Bot Bot { get; set; } = new();
+        public class DB_Bot
         {
             public string Base { get; set; }
             public string Appearance { get; set; }
@@ -16,14 +16,14 @@ namespace JsonLib.Classes.DatabaseRelated
             public Dictionary<string, Bots.BotType> Types { get; set; } = new();
 
         }
-        public characters Characters { get; set; } = new();
-        public class characters
+        public DB_Characters Characters { get; set; } = new();
+        public class DB_Characters
         {
             public Dictionary<string, Character.Base> CharacterBase = new();
             public Dictionary<string, List<string>> CharacterStorage = new();
         }
-        public hideout Hideout { get; set; } = new();
-        public class hideout
+        public DB_Hideout Hideout { get; set; } = new();
+        public class DB_Hideout
         {
             public string Areas { get; set; }
             public string Production { get; set; }
@@ -31,23 +31,23 @@ namespace JsonLib.Classes.DatabaseRelated
             public string Scavcase { get; set; }
             public string Settings { get; set; }
         }
-        public locale Locale { get; set; } = new();
-        public class locale
+        public DB_Locale Locale { get; set; } = new();
+        public class DB_Locale
         {
             public string Languages { get; set; }
             public Dictionary<string, string> Locales { get; set; } = new();
             public Dictionary<string, Dictionary<string, string>> LocalesDict { get; set; } = new();
         }
-        public location Location { get; set; } = new();
-        public class location
+        public DB_Location Location { get; set; } = new();
+        public class DB_Location
         {
             public string AllLocations { get; set; }
             public string Base { get; set; }
             public Dictionary<string, string> Locations { get; set; } = new();
         }
 
-        public others Others { get; set; } = new();
-        public class others
+        public DB_Others Others { get; set; } = new();
+        public class DB_Others
         {
             public Handbook.Base Templates { get; set; }
             public string Quests { get; set; }
@@ -57,8 +57,8 @@ namespace JsonLib.Classes.DatabaseRelated
             public Dictionary<string, int> Resupply { get; set; } = new();
         }
 
-        public trader Trader = new();
-        public class trader
+        public DB_Traders Trader = new();
+        public class DB_Traders
         {
             public Dictionary<string, Trader.Base> Traders { get; set; } = new();
         }

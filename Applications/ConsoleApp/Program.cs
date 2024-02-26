@@ -97,15 +97,18 @@ namespace ConsoleApp
             Debug.PrintDebug(args.LoadedAssembly.GetName().FullName, "AssemblyLoad");
         }
 
-        internal static Assembly AssemblyResolveEvent(object? sender, ResolveEventArgs args)
+        internal static Assembly? AssemblyResolveEvent(object? sender, ResolveEventArgs args)
         {
             var _FileName = "";
             try
             {
                 var assembly = new AssemblyName(args.Name).Name;
-                Debug.PrintDebug(assembly, "AssemblyResolveEvent");
                 if (assembly == null)
+                {
                     Debug.PrintDebug("Assembly is null!");
+                    ArgumentNullException.ThrowIfNull(assembly,nameof(assembly));
+                }                  
+                Debug.PrintDebug(assembly, "AssemblyResolveEvent");
                 if (assembly.Contains(".resources"))
                     assembly = assembly.Replace(".resources", "");
                 _FileName = Path.Combine(File.ReadAllText("path.txt"), $"{assembly}.dll");

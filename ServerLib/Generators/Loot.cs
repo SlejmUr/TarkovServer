@@ -12,7 +12,7 @@ namespace ServerLib.Generators
         public static List<LootBase> GenerateLoot(string Location)
         {
             var locationLoot = JsonConvert.DeserializeObject<List<List<LootBase>>>(DatabaseController.DataBase.Location.Locations[$"{Location}_loot"]);
-
+            ArgumentNullException.ThrowIfNull(locationLoot, nameof(locationLoot));
             var Pre_Defined_Loots = RandomHelper.GetArrayValue(locationLoot);
 
             foreach (var item in Pre_Defined_Loots)

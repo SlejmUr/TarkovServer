@@ -22,6 +22,8 @@ namespace ServerLib.Web
         static Dictionary<string, MethodInfo> Main_WS = new();
         public static void Start(string ip, int port, bool ssl = true, bool OnlyWS = false, bool IsCertValidate = false)
         {
+            var ServerManagerAssembly = Assembly.GetAssembly(typeof(ServerManager));
+            ArgumentNullException.ThrowIfNull(ServerManagerAssembly, nameof(ServerManagerAssembly));
             JWTHandler.CreateRSA();
             var sw = System.Diagnostics.Stopwatch.StartNew();
             IsSsl = ssl;
@@ -35,21 +37,21 @@ namespace ServerLib.Web
                     context = CertHelper.GetContext(System.Security.Authentication.SslProtocols.Tls12, "cert/cert.pfx", "cert");
                 WSS_Server = new(context, ip, port);
 
-                Main_HTTP = AttributeMethodHelper.UrlHTTPLoader(Assembly.GetAssembly(typeof(ServerManager)));
-                Main_WS = AttributeMethodHelper.UrlWSLoader(Assembly.GetAssembly(typeof(ServerManager)));
+                Main_HTTP = AttributeMethodHelper.UrlHTTPLoader(ServerManagerAssembly);
+                Main_WS = AttributeMethodHelper.UrlWSLoader(ServerManagerAssembly);
                 WSS_Server.DoReturn404IfFail = false;
                 WSS_Server.ReceivedFailed += Failed;
-                WSS_Server.OverrideAttributes(Assembly.GetAssembly(typeof(ServerManager)));
+                WSS_Server.OverrideAttributes(ServerManagerAssembly);
                 if (!OnlyWS)
-                    WSS_Server.OverrideAttributes(Assembly.GetAssembly(typeof(ServerManager)));
+                    WSS_Server.OverrideAttributes(ServerManagerAssembly);
                 WSS_Server.Start();
             }
             else
             {
                 WS_Server = new(ip, port);
-                WS_Server.OverrideAttributes(Assembly.GetAssembly(typeof(ServerManager)));
+                WS_Server.OverrideAttributes(ServerManagerAssembly);
                 if (!OnlyWS)
-                    WS_Server.OverrideAttributes(Assembly.GetAssembly(typeof(ServerManager)));
+                    WS_Server.OverrideAttributes(ServerManagerAssembly);
                 WS_Server.DoReturn404IfFail = false;
                 WS_Server.ReceivedFailed += Failed;
                 WS_Server.Start();

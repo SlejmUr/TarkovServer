@@ -22,6 +22,7 @@ namespace ServerLib.Controllers
                 RebuildFromBaseConfigs();
                 LoadConfigs();
             }
+            ArgumentNullException.ThrowIfNull(Configs.Server, nameof(Configs.Server));
             if (Configs.Server.ServerIPs.Enable)
                 Debug.PrintWarn("This function is not working! Please disable it!","CONFIG");
             Debug.PrintInfo("Initialization Done!", "CONFIG");
