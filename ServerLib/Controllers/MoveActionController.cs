@@ -27,7 +27,7 @@ namespace ServerLib.Controllers
             { "Tag", TagItem },
             { "Toggle", ToggleItem },
             { "ApplyInventoryChanges", ApplyInventory },
-            { "template", Template },
+            //{ "template", Template },
         };
 
         public static ProfileChanges CreateNew()
@@ -38,7 +38,7 @@ namespace ServerLib.Controllers
                 warnings = new()
             };
         }
-
+        /*
         public static ProfileChanges Template(string SessionId, ProfileChanges changes, JObject action)
         {
             Inventory.Examine examineAction = action.ToObject<Inventory.Examine>();
@@ -57,6 +57,7 @@ namespace ServerLib.Controllers
                 SaveHandler.SaveScav(SessionId, character);
             return changes;
         }
+        */
 
         public static ProfileChanges CreateBasicChanges(ProfileChanges changes, string SessionId)
         {
@@ -86,7 +87,8 @@ namespace ServerLib.Controllers
 
         public static ProfileChanges MoveItem(string SessionId, ProfileChanges changes, JObject action)
         {
-            Inventory.Move moveAction = action.ToObject<Inventory.Move>();
+            Inventory.Move? moveAction = action.ToObject<Inventory.Move>();
+            ArgumentNullException.ThrowIfNull(moveAction, nameof(moveAction));
             if (changes.warnings.Count > 0)
                 return changes;
 
@@ -113,13 +115,14 @@ namespace ServerLib.Controllers
                         }
                         else
                         {
-                            item.Location = null;
+                            item.Location = new();
                         }
                         ownerInventoryAction.To.Add(item);
                         ownerInventoryAction.From.Remove(FromItemSave);
                     }
 
                     CharacterController.TryGetCharacter(ownerInventoryAction.FromId, out var FromChar);
+                    ArgumentNullException.ThrowIfNull(FromChar, nameof(FromChar));
                     FromChar.Inventory.Items = ownerInventoryAction.From;
                     string id = CharacterController.GetCharacterSessionId(FromChar);
                     if (id == string.Empty)
@@ -129,6 +132,7 @@ namespace ServerLib.Controllers
                     else
                         SaveHandler.SaveCharacter(id, FromChar);
                     CharacterController.TryGetCharacter(ownerInventoryAction.ToId, out var ToChar);
+                    ArgumentNullException.ThrowIfNull(ToChar, nameof(ToChar));
                     ToChar.Inventory.Items = ownerInventoryAction.To;
                     if (CharacterController.IsCharacterScav(ToChar))
                         SaveHandler.SaveScav(SessionId, ToChar);
@@ -155,9 +159,10 @@ namespace ServerLib.Controllers
                 }
                 else
                 {
-                    item.Location = null;
+                    item.Location = new();
                 }
                 CharacterController.TryGetCharacter(ownerInventoryAction.FromId, out var FromChar);
+                ArgumentNullException.ThrowIfNull(FromChar, nameof(FromChar));
                 FromChar.Inventory.Items = ownerInventoryAction.From;
                 if (CharacterController.IsCharacterScav(FromChar))
                     SaveHandler.SaveScav(SessionId, FromChar);
@@ -169,7 +174,8 @@ namespace ServerLib.Controllers
 
         public static ProfileChanges FoldItem(string SessionId, ProfileChanges changes, JObject action)
         {
-            Inventory.Fold foldAction = action.ToObject<Inventory.Fold>();
+            Inventory.Fold? foldAction = action.ToObject<Inventory.Fold>();
+            ArgumentNullException.ThrowIfNull(foldAction, nameof(foldAction));
             bool IsScav = false;
             var character = CharacterController.GetPmcCharacter(SessionId);
             if (foldAction.fromOwner != null && foldAction.fromOwner.type.ToLower() == "profile")
@@ -177,8 +183,9 @@ namespace ServerLib.Controllers
                 character = CharacterController.GetScavCharacter(SessionId);
                 IsScav = true;
             }
+            ArgumentNullException.ThrowIfNull(character, nameof(character));
             var item = character.Inventory.Items.Find(x => x.Id == foldAction.item);
-
+            ArgumentNullException.ThrowIfNull(item, nameof(item));
             item.Upd.Foldable.Folded = foldAction.value;
 
             if (!IsScav)
@@ -190,9 +197,10 @@ namespace ServerLib.Controllers
 
         public static ProfileChanges ExamineItem(string SessionId, ProfileChanges changes, JObject action)
         {
-            Inventory.Examine examineAction = action.ToObject<Inventory.Examine>();
+            Inventory.Examine? examineAction = action.ToObject<Inventory.Examine>();
+            ArgumentNullException.ThrowIfNull(examineAction, nameof(examineAction));
             bool IsScav = false;
-            TemplateItem.Base templateItem = null;
+            TemplateItem.Base? templateItem = null;
             var character = CharacterController.GetPmcCharacter(SessionId);
             if (examineAction.fromOwner != null && examineAction.fromOwner.type.ToLower() == "profile")
             {
@@ -205,6 +213,7 @@ namespace ServerLib.Controllers
                 {
                     case "trader":
                         var assortItem = TraderController.GetAssortItemByID(examineAction.fromOwner.id, examineAction.item);
+                        ArgumentNullException.ThrowIfNull(assortItem, nameof(assortItem));
                         templateItem = ItemController.Get(assortItem.Tpl);
                         break;
                     case "hideoutupgrade":
@@ -219,12 +228,13 @@ namespace ServerLib.Controllers
                 }
 
             }
+            ArgumentNullException.ThrowIfNull(character, nameof(character));
             var item = character.Inventory.Items.Find(x => x.Id == examineAction.item);
             if (item != null && templateItem == null)
             {
                 templateItem = ItemController.Get(item.Tpl);
             }
-
+            ArgumentNullException.ThrowIfNull(templateItem, nameof(templateItem));
             character.Encyclopedia.Add(templateItem._id,true);
             character.Info.Experience += (int)templateItem._props.ExamineExperience;
 
@@ -237,7 +247,8 @@ namespace ServerLib.Controllers
 
         public static ProfileChanges RemoveItem(string SessionId, ProfileChanges changes, JObject action)
         {
-            Inventory.Remove removeAction = action.ToObject<Inventory.Remove>();
+            Inventory.Remove? removeAction = action.ToObject<Inventory.Remove>();
+            ArgumentNullException.ThrowIfNull(removeAction, nameof(removeAction));
             bool IsScav = false;
             var character = CharacterController.GetPmcCharacter(SessionId);
             if (removeAction.fromOwner != null && removeAction.fromOwner.type.ToLower() == "profile")
@@ -256,7 +267,7 @@ namespace ServerLib.Controllers
             {
                 Debug.PrintWarn("ProfileChanges not exist?", "RemoveItem.WARN");
             }
-
+            ArgumentNullException.ThrowIfNull(character, nameof(character));
             var toRemoveItems = InventoryController.GetInventoryItemFamilyTreeIDs(character.Inventory.Items, removeAction.item);
 
             foreach (var item in toRemoveItems)
@@ -282,8 +293,8 @@ namespace ServerLib.Controllers
 
         public static ProfileChanges SplitItem(string SessionId, ProfileChanges changes, JObject action)
         {
-            Inventory.Split splitAction = action.ToObject<Inventory.Split>();
-
+            Inventory.Split? splitAction = action.ToObject<Inventory.Split>();
+            ArgumentNullException.ThrowIfNull(splitAction, nameof(splitAction));
             var ownerInventory = GetOwnerInventoryAction(SessionId, splitAction);
             var item = ownerInventory.From.Where(x => x.Id == splitAction.item).FirstOrDefault();
             if (item == null)
@@ -335,26 +346,27 @@ namespace ServerLib.Controllers
 
         public static ProfileChanges SwapItem(string SessionId, ProfileChanges changes, JObject action)
         {
-            Inventory.Swap swapAction = action.ToObject<Inventory.Swap>();
+            Inventory.Swap? swapAction = action.ToObject<Inventory.Swap>();
+            ArgumentNullException.ThrowIfNull(swapAction, nameof(swapAction));
             bool IsScav = false;
-            TemplateItem.Base templateItem = null;
             var character = CharacterController.GetPmcCharacter(SessionId);
             if (swapAction.fromOwner != null && swapAction.fromOwner.type.ToLower() == "profile")
             {
                 character = CharacterController.GetScavCharacter(SessionId);
                 IsScav = true;
             }
-
+            ArgumentNullException.ThrowIfNull(character, nameof(character));
             var swapItem = character.Inventory.Items.Find(x=>x.Id == swapAction.item);
             var swapItem2 = character.Inventory.Items.Find(x => x.Id == swapAction.item2);
-
+            ArgumentNullException.ThrowIfNull(swapItem, nameof(swapItem));
+            ArgumentNullException.ThrowIfNull(swapItem2, nameof(swapItem2));
             if (swapAction.to.location != null)
             {
                 swapItem.Location = JsonHelper.FromActionLocation(swapAction.to.location);
             }
             else
             {
-                swapItem.Location = null;
+                swapItem.Location = new();
             }
             swapItem.ParentId = swapAction.to.id;
             swapItem.SlotId = swapAction.to.container;
@@ -365,7 +377,7 @@ namespace ServerLib.Controllers
             }
             else
             {
-                swapItem2.Location = null;
+                swapItem2.Location = new();
             }
             swapItem2.ParentId = swapAction.to2.id;
             swapItem2.SlotId = swapAction.to2.container;
@@ -380,19 +392,20 @@ namespace ServerLib.Controllers
 
         public static ProfileChanges TransferItem(string SessionId, ProfileChanges changes, JObject action)
         {
-            Inventory.Transfer transferAction = action.ToObject<Inventory.Transfer>();
+            Inventory.Transfer? transferAction = action.ToObject<Inventory.Transfer>();
+            ArgumentNullException.ThrowIfNull(transferAction, nameof(transferAction));
             bool IsScav = false;
-            TemplateItem.Base templateItem = null;
             var character = CharacterController.GetPmcCharacter(SessionId);
             if (transferAction.fromOwner != null && transferAction.fromOwner.type.ToLower() == "profile")
             {
                 character = CharacterController.GetScavCharacter(SessionId);
                 IsScav = true;
             }
-
+            ArgumentNullException.ThrowIfNull(character, nameof(character));
             var toMerge = character.Inventory.Items.Find(x=>x.Id == transferAction.item);
             var mergeWith = character.Inventory.Items.Find(x => x.Id == transferAction.with);
-
+            ArgumentNullException.ThrowIfNull(toMerge, nameof(toMerge));
+            ArgumentNullException.ThrowIfNull(mergeWith, nameof(mergeWith));
             toMerge.Upd.StackObjectsCount -= transferAction.count;
             mergeWith.Upd.StackObjectsCount += transferAction.count;
 
@@ -586,6 +599,9 @@ namespace ServerLib.Controllers
         {
             var pmc = CharacterController.GetPmcCharacter(SessionId);
             var scav = CharacterController.GetScavCharacter(SessionId);
+            ArgumentNullException.ThrowIfNull(pmc, nameof(pmc));
+            ArgumentNullException.ThrowIfNull(scav, nameof(scav));
+
             List<Item.Base> From = pmc.Inventory.Items;
             string FromId = pmc.Id;
             List<Item.Base> To = pmc.Inventory.Items;
@@ -608,6 +624,7 @@ namespace ServerLib.Controllers
                 }
                 if (CharacterController.TryGetCharacter(SessionId, out var charbase))
                 {
+                    ArgumentNullException.ThrowIfNull(charbase, nameof(charbase));
                     From = charbase.Inventory.Items;
                     FromId = charbase.Id;
                     fromType = "otherCharacter";
@@ -637,6 +654,7 @@ namespace ServerLib.Controllers
         public static void OwnerActionSaveProfiles(string SessionId, OwnerInventoryAction ownerInventoryAction)
         {
             CharacterController.TryGetCharacter(ownerInventoryAction.FromId, out var FromChar);
+            ArgumentNullException.ThrowIfNull(FromChar, nameof(FromChar));
             FromChar.Inventory.Items = ownerInventoryAction.From;
             string id = CharacterController.GetCharacterSessionId(FromChar);
             if (id == string.Empty)
@@ -646,6 +664,7 @@ namespace ServerLib.Controllers
             else
                 SaveHandler.SaveCharacter(id, FromChar);
             CharacterController.TryGetCharacter(ownerInventoryAction.ToId, out var ToChar);
+            ArgumentNullException.ThrowIfNull(ToChar, nameof(ToChar));
             ToChar.Inventory.Items = ownerInventoryAction.To;
             if (CharacterController.IsCharacterScav(ToChar))
                 SaveHandler.SaveScav(SessionId, ToChar);

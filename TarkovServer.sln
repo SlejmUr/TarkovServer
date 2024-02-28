@@ -30,7 +30,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BundleSupport", "Plugins\Bu
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StressTester", "StressTester\StressTester.csproj", "{FB282476-6C58-4EF9-8EDB-943865742AFD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MTGAPlugin", "Plugins\MTGAPlugin\MTGAPlugin.csproj", "{1D4FDACF-A1DB-49FC-AE3E-56DCE7A1B839}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MTGAPlugin", "Plugins\MTGAPlugin\MTGAPlugin.csproj", "{1D4FDACF-A1DB-49FC-AE3E-56DCE7A1B839}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
