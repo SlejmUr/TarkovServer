@@ -419,7 +419,8 @@ namespace ServerLib.Controllers
 
         public static ProfileChanges ReadEncyclopedia(string SessionId, ProfileChanges changes, JObject action)
         {
-            Inventory.ReadEncyclopedia readEncyclopedia = action.ToObject<Inventory.ReadEncyclopedia>();
+            Inventory.ReadEncyclopedia? readEncyclopedia = action.ToObject<Inventory.ReadEncyclopedia>();
+            ArgumentNullException.ThrowIfNull(readEncyclopedia, nameof(readEncyclopedia));
             bool IsScav = false;
             var character = CharacterController.GetPmcCharacter(SessionId);
             if (readEncyclopedia.fromOwner != null && readEncyclopedia.fromOwner.type.ToLower() == "profile")
@@ -427,7 +428,7 @@ namespace ServerLib.Controllers
                 character = CharacterController.GetScavCharacter(SessionId);
                 IsScav = true;
             }
-
+            ArgumentNullException.ThrowIfNull(character, nameof(character));
             foreach (var item in readEncyclopedia.ids)
             {
                 character.Encyclopedia.Add(item, true);
@@ -442,7 +443,8 @@ namespace ServerLib.Controllers
 
         public static ProfileChanges BindItem(string SessionId, ProfileChanges changes, JObject action)
         {
-            Inventory.Bind bindAction = action.ToObject<Inventory.Bind>();
+            Inventory.Bind? bindAction = action.ToObject<Inventory.Bind>();
+            ArgumentNullException.ThrowIfNull(bindAction, nameof(bindAction));
             bool IsScav = false;
             var character = CharacterController.GetPmcCharacter(SessionId);
             if (bindAction.fromOwner != null && bindAction.fromOwner.type.ToLower() == "profile")
@@ -450,7 +452,7 @@ namespace ServerLib.Controllers
                 character = CharacterController.GetScavCharacter(SessionId);
                 IsScav = true;
             }
-
+            ArgumentNullException.ThrowIfNull(character, nameof(character));
             if (character.Inventory.FastPanel.ContainsKey(bindAction.index))
             {
                 character.Inventory.FastPanel[bindAction.index] = bindAction.item;
@@ -470,7 +472,8 @@ namespace ServerLib.Controllers
 
         public static ProfileChanges TagItem(string SessionId, ProfileChanges changes, JObject action)
         {
-            Inventory.Tag tagAction = action.ToObject<Inventory.Tag>();
+            Inventory.Tag? tagAction = action.ToObject<Inventory.Tag>();
+            ArgumentNullException.ThrowIfNull(tagAction, nameof(tagAction));
             bool IsScav = false;
             var character = CharacterController.GetPmcCharacter(SessionId);
             if (tagAction.fromOwner != null && tagAction.fromOwner.type.ToLower() == "profile")
@@ -478,9 +481,9 @@ namespace ServerLib.Controllers
                 character = CharacterController.GetScavCharacter(SessionId);
                 IsScav = true;
             }
-
+            ArgumentNullException.ThrowIfNull(character, nameof(character));
             var item = character.Inventory.Items.Find(x=>x.Id == tagAction.item);
-
+            ArgumentNullException.ThrowIfNull(item, nameof(item));
             if (item.Upd == null)
             {
                 item.Upd = new()
@@ -500,7 +503,7 @@ namespace ServerLib.Controllers
                     Name = tagAction.TagName
                 };
             }
-            else
+            else if (item.Upd != null && item.Upd.Tag != null)
             {
                 item.Upd.Tag.Color = tagAction.TagColor;
                 item.Upd.Tag.Name = tagAction.TagName;
@@ -515,7 +518,8 @@ namespace ServerLib.Controllers
 
         public static ProfileChanges ToggleItem(string SessionId, ProfileChanges changes, JObject action)
         {
-            Inventory.Toggle toggleAction = action.ToObject<Inventory.Toggle>();
+            Inventory.Toggle? toggleAction = action.ToObject<Inventory.Toggle>();
+            ArgumentNullException.ThrowIfNull(toggleAction, nameof(toggleAction));
             bool IsScav = false;
             var character = CharacterController.GetPmcCharacter(SessionId);
             if (toggleAction.fromOwner != null && toggleAction.fromOwner.type.ToLower() == "profile")
@@ -523,9 +527,9 @@ namespace ServerLib.Controllers
                 character = CharacterController.GetScavCharacter(SessionId);
                 IsScav = true;
             }
-
+            ArgumentNullException.ThrowIfNull(character, nameof(character));
             var item = character.Inventory.Items.Find(x => x.Id == toggleAction.item);
-
+            ArgumentNullException.ThrowIfNull(item, nameof(item));
             if (item.Upd == null)
             {
                 item.Upd = new()
@@ -543,7 +547,7 @@ namespace ServerLib.Controllers
                     On = toggleAction.value
                 };
             }
-            else
+            else if (item.Upd != null && item.Upd.Togglable != null)
             {
                 item.Upd.Togglable.On = toggleAction.value;
             }
