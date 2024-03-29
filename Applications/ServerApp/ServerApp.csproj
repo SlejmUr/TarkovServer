@@ -9,7 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="ReaLTaiizor" Version="3.8.0.1" />
+    <PackageReference Include="ReaLTaiizor" Version="3.8.0.4" />
   </ItemGroup>
 
   <ItemGroup>
