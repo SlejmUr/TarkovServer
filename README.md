@@ -1,3 +1,6 @@
+# Deprecated. Feel free to use any code from it.
+Deprecated the flavour of making a better game (that has moddability, better support) than EFT will EVER do.
+
 # Tarkov Server
 Tarkov Server on C# (.NET 8)
 
@@ -5,7 +8,6 @@ This is my attempt to port existing JavaScript/Go/Typescript code to C#.\
 Because I am not want and familiar with JS and his funny stuffs.
 
 And possibly easier to make a nice Server UI with this (Xaml, or just Winform).\
-Still in early phase, in development!
 
 ## Credits
 - BattleStateGames for making Escape From Tarkov
